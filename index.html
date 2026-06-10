@@ -121,15 +121,20 @@ body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background
 .card-body { flex: 1; }
 .card-name { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
 .card-type { font-size: 12px; color: var(--text-light); margin-bottom: 6px; }
+.card-address { font-size: 11px; color: var(--text-light); margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
 .card-badge {
   display: inline-block; font-size: 10px; font-weight: 700;
   padding: 2px 8px; border-radius: 6px;
 }
+.card-link { text-decoration: none; }
 
 /* POPUP CUSTOM */
 .mapboxgl-popup-content { border-radius: 12px; padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: none; }
 .popup-title { font-weight: 800; font-size: 14px; color: var(--text-dark); margin-bottom: 2px; }
 .popup-sub { font-size: 12px; color: var(--text-light); }
+.popup-link { font-size: 11px; margin-top: 6px; }
+.popup-link a { color: var(--terra); text-decoration: none; font-weight: 600; }
+.popup-link a:hover { text-decoration: underline; }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
@@ -204,38 +209,38 @@ const cats = [
 
 const places = {
   destacados: [
-    {name:'Plaza de Pomaire', type:'Centro neurálgico', icon:'fa-landmark', color:'#B84A1E', badge:'Punto Cero', badgeBg:'#FDEEE8', badgeTx:'#7B2000', lat:-33.650150873124666, lng:-71.1509517632811},
-    {name:'Restaurante San Antonio', type:'Tradición desde 1970', icon:'fa-utensils', color:'#C0392B', badge:'Famoso', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.651865985575924, lng:-71.1511776068967},
-    {name:'Espacio Greda', type:'Taller interactivo', icon:'fa-hands', color:'#7B2D00', badge:'Talleres', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.651666849463425, lng:-71.15033024212633},
-    {name:'Alcancía Más Grande del Mundo', type:'Los Paltos 323, Melipilla', icon:'fa-cow', color:'#2E7D52', badge:'Imperdible', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.65239227794508, lng:-71.15344532920979},
-    {name:'Granja Educativa Alfarera', type:'Experiencia cultural', icon:'fa-hands', color:'#7B2D00', badge:'Familiar', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.65072300269231, lng:-71.15374955708755}
+    {name:'Plaza de Pomaire', type:'Centro neurálgico', address:'', icon:'fa-landmark', color:'#B84A1E', badge:'Punto Cero', badgeBg:'#FDEEE8', badgeTx:'#7B2000', lat:-33.650150873124666, lng:-71.1509517632811, mapsLink:''},
+    {name:'Restaurante San Antonio', type:'Tradición desde 1970', address:'', icon:'fa-utensils', color:'#C0392B', badge:'Famoso', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.651865985575924, lng:-71.1511776068967, mapsLink:''},
+    {name:'Espacio Greda', type:'Taller interactivo', address:'', icon:'fa-hands', color:'#7B2D00', badge:'Talleres', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.651666849463425, lng:-71.15033024212633, mapsLink:''},
+    {name:'Chancho Alcancía - Más Grande del Mundo', type:'Atracción única', address:'Los Paltos 323, Melipilla, Región Metropolitana', icon:'fa-cow', color:'#2E7D52', badge:'Imperdible', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6492, lng:-71.1610, mapsLink:'https://maps.google.com/?q=-33.6492,-71.1610'},
+    {name:'Granja Educativa Alfarera', type:'Experiencia cultural', address:'', icon:'fa-hands', color:'#7B2D00', badge:'Familiar', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.65072300269231, lng:-71.15374955708755, mapsLink:''}
   ],
   alfareria: [
-    {name:'Espacio Greda', type:'Taller interactivo', icon:'fa-fire', color:'#7B2D00', badge:'Maestros', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.651666849463425, lng:-71.15033024212633},
-    {name:'Granja Educativa Alfarera', type:'Alfarería tradicional', icon:'fa-industry', color:'#8B3A0F', badge:'Patrimonio', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.65072300269231, lng:-71.15374955708755}
+    {name:'Espacio Greda', type:'Taller interactivo', address:'', icon:'fa-fire', color:'#7B2D00', badge:'Maestros', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.651666849463425, lng:-71.15033024212633, mapsLink:''},
+    {name:'Granja Educativa Alfarera', type:'Alfarería tradicional', address:'', icon:'fa-industry', color:'#8B3A0F', badge:'Patrimonio', badgeBg:'#FFF3E0', badgeTx:'#7B3A00', lat:-33.65072300269231, lng:-71.15374955708755, mapsLink:''}
   ],
   comida: [
-    {name:'Restaurante San Antonio', type:'Parrilladas y empanadas', icon:'fa-bowl-food', color:'#C0392B', badge:'Clásico', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.651865985575924, lng:-71.1511776068967},
-    {name:'Plaza de Pomaire', type:'Comida casera', icon:'fa-fire-burner', color:'#A93226', badge:'Tradicional', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.650150873124666, lng:-71.1509517632811}
+    {name:'Restaurante San Antonio', type:'Parrilladas y empanadas', address:'', icon:'fa-bowl-food', color:'#C0392B', badge:'Clásico', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.651865985575924, lng:-71.1511776068967, mapsLink:''},
+    {name:'Plaza de Pomaire', type:'Comida casera', address:'', icon:'fa-fire-burner', color:'#A93226', badge:'Tradicional', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.650150873124666, lng:-71.1509517632811, mapsLink:''}
   ],
   servicios: [
-    {name:'Posta Cesfam', type:'Urgencias', icon:'fa-kit-medical', color:'#B71C1C', badge:'24h', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.64969281324834, lng:-71.1505571621848},
-    {name:'Carabineros Policia', type:'Seguridad', icon:'fa-shield-halved', color:'#1A237E', badge:'Emergencias', badgeBg:'#E8EAF6', badgeTx:'#1A237E', lat:-33.650632883995854, lng:-71.15128883334937}
+    {name:'Posta Cesfam', type:'Urgencias', address:'', icon:'fa-kit-medical', color:'#B71C1C', badge:'24h', badgeBg:'#FEECEC', badgeTx:'#7B0000', lat:-33.64969281324834, lng:-71.1505571621848, mapsLink:''},
+    {name:'Carabineros Policia', type:'Seguridad', address:'', icon:'fa-shield-halved', color:'#1A237E', badge:'Emergencias', badgeBg:'#E8EAF6', badgeTx:'#1A237E', lat:-33.650632883995854, lng:-71.15128883334937, mapsLink:''}
   ],
   atractivos: [
-    {name:'Pomaire Pueblo', type:'Centro de Pomaire', icon:'fa-gopuram', color:'#E67E22', badge:'Centro', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6497, lng:-71.1615},
-    {name:'Pomaire Plaza', type:'San Antonio 361', icon:'fa-square', color:'#D68910', badge:'Plaza', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6495, lng:-71.1617},
-    {name:'Alcancía Más Grande del Mundo', type:'Los Paltos 323, Melipilla, Región Metropolitana', icon:'fa-cow', color:'#E67E22', badge:'Única', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6492, lng:-71.1610},
-    {name:'Kaede_fc', type:'Gral. Baquedano 240', icon:'fa-store', color:'#D68910', badge:'Tienda', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6500, lng:-71.1610},
-    {name:'Raíces', type:'Sector centro', icon:'fa-leaf', color:'#E67E22', badge:'Cultura', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6490, lng:-71.1620},
-    {name:'Proyecto Cora Escuela', type:'Camino a Pomaire', icon:'fa-school', color:'#D68910', badge:'Educativo', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6475, lng:-71.1650}
+    {name:'Pomaire Pueblo', type:'Centro de Pomaire', address:'', icon:'fa-gopuram', color:'#E67E22', badge:'Centro', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6497, lng:-71.1615, mapsLink:''},
+    {name:'Pomaire Plaza', type:'Centro comercial', address:'San Antonio 361', icon:'fa-square', color:'#D68910', badge:'Plaza', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6495, lng:-71.1617, mapsLink:'https://maps.google.com/?q=-33.6495,-71.1617'},
+    {name:'Chancho Alcancía - Más Grande del Mundo', type:'Atracción turística', address:'Los Paltos 323, Melipilla, Región Metropolitana', icon:'fa-cow', color:'#E67E22', badge:'Única', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6492, lng:-71.1610, mapsLink:'https://maps.google.com/?q=-33.6492,-71.1610'},
+    {name:'Kaede_fc', type:'Tienda', address:'Gral. Baquedano 240', icon:'fa-store', color:'#D68910', badge:'Tienda', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6500, lng:-71.1610, mapsLink:''},
+    {name:'Raíces', type:'Centro cultural', address:'Sector centro', icon:'fa-leaf', color:'#E67E22', badge:'Cultura', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6490, lng:-71.1620, mapsLink:''},
+    {name:'Proyecto Cora Escuela', type:'Centro educativo', address:'Camino a Pomaire', icon:'fa-school', color:'#D68910', badge:'Educativo', badgeBg:'#FEF0E0', badgeTx:'#7B3A00', lat:-33.6475, lng:-71.1650, mapsLink:''}
   ],
   calles: [
-    {name:'Calle Roberto Bravo', type:'Ruta turística', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6498, lng:-71.1610},
-    {name:'Calle San Antonio', type:'Ruta turística', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6494, lng:-71.1618},
-    {name:'Calle Arturo Prat', type:'Ruta turística', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6496, lng:-71.1622},
-    {name:'Calle Roto Chileno', type:'Ruta turística', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6501, lng:-71.1617},
-    {name:'Calle El Carmen', type:'Ruta turística', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6507, lng:-71.1615}
+    {name:'Calle Roberto Bravo', type:'Ruta turística', address:'', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6498, lng:-71.1610, mapsLink:''},
+    {name:'Calle San Antonio', type:'Ruta turística', address:'', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6494, lng:-71.1618, mapsLink:''},
+    {name:'Calle Arturo Prat', type:'Ruta turística', address:'', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6496, lng:-71.1622, mapsLink:''},
+    {name:'Calle Roto Chileno', type:'Ruta turística', address:'', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6501, lng:-71.1617, mapsLink:''},
+    {name:'Calle El Carmen', type:'Ruta turística', address:'', icon:'fa-street-view', color:'#27AE60', badge:'Caminata', badgeBg:'#E8F5E9', badgeTx:'#1B5E20', lat:-33.6507, lng:-71.1615, mapsLink:''}
   ]
 };
 
@@ -274,15 +279,18 @@ function renderContent() {
   
   const grid = document.getElementById('cardsGrid');
   grid.innerHTML = items.map(p => `
-    <div class="card" onclick="focusPlace(${p.lat}, ${p.lng})">
-      <div class="card-img" style="background:${p.color}"><i class="fa-solid ${p.icon}"></i></div>
-      <div class="card-body">
-        <div class="card-name">${p.name}</div>
-        <div class="card-type">${p.type}</div>
-        <span class="card-badge" style="background:${p.badgeBg};color:${p.badgeTx}">${p.badge}</span>
+    <a href="${p.mapsLink}" target="_blank" class="card-link" ${p.mapsLink ? '' : 'onclick="focusPlace(' + p.lat + ', ' + p.lng + '); return false;"'}>
+      <div class="card" ${!p.mapsLink ? 'onclick="focusPlace(' + p.lat + ', ' + p.lng + ')"' : ''}>
+        <div class="card-img" style="background:${p.color}"><i class="fa-solid ${p.icon}"></i></div>
+        <div class="card-body">
+          <div class="card-name">${p.name}</div>
+          <div class="card-type">${p.type}</div>
+          ${p.address ? `<div class="card-address"><i class="fa-solid fa-map-pin" style="font-size:10px;"></i>${p.address}</div>` : ''}
+          <span class="card-badge" style="background:${p.badgeBg};color:${p.badgeTx}">${p.badge}</span>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color: var(--cream-border)"></i>
       </div>
-      <i class="fa-solid fa-chevron-right" style="color: var(--cream-border)"></i>
-    </div>
+    </a>
   `).join('');
 
   updateMarkers(items, cat.color, cat.icon);
@@ -303,10 +311,18 @@ function updateMarkers(items, color, icon) {
       </div>
     `;
 
+    let popupHTML = `<div class="popup-title">${p.name}</div><div class="popup-sub">${p.type}</div>`;
+    if (p.address) {
+      popupHTML += `<div class="popup-sub" style="margin-top:4px;"><i class="fa-solid fa-map-pin"></i> ${p.address}</div>`;
+    }
+    if (p.mapsLink) {
+      popupHTML += `<div class="popup-link"><a href="${p.mapsLink}" target="_blank"><i class="fa-solid fa-map"></i> Abrir en Google Maps</a></div>`;
+    }
+
     const marker = new mapboxgl.Marker({element: el, anchor: 'bottom'})
       .setLngLat([p.lng, p.lat])
       .setPopup(new mapboxgl.Popup({offset: 30, closeButton: false})
-        .setHTML(`<div class="popup-title">${p.name}</div><div class="popup-sub">${p.type}</div>`))
+        .setHTML(popupHTML))
       .addTo(map);
     
     markers.push(marker);
