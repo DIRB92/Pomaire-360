@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="esomaire en 1 Día</title><html lang="es">
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pomaire en 1 Día</title>
 
 <style>
 body {
@@ -42,7 +45,7 @@ h2 {
     color: #8B4513;
 }
 
-/* TARJETAS */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -54,6 +57,18 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #ddd;
+}
+
+/* MAPA */
+#mapa {
+    text-align: center;
+}
+
+/* APORTES */
+#aportes {
+    background: #fff8f0;
+    border: 2px solid #f0d2b3;
+    text-align: center;
 }
 
 /* FOOTER */
@@ -70,10 +85,11 @@ footer {
 
 <header>
     <h1>Pomaire en 1 Día</h1>
-    <p>Guía turística para conocer lo esencial</p>
+    <p>Guía turística para disfrutar lo mejor del pueblo</p>
 </header>
 
 <nav>
+    <a href="#mapa">Mapa</a>
     <a href="#primera">Primera vez</a>
     <a href="#ruta">Ruta alfarera</a>
     <a href="#restaurantes">Restaurantes</a>
@@ -85,12 +101,28 @@ footer {
     <a href="#llegar">Cómo llegar</a>
 </nav>
 
+<!-- MAPA -->
+<section id="mapa">
+    <h2>Mapa de Pomaire</h2>
+
+    <iframe 
+        src="https://www.google.com/maps?q=Pomaire,Chile&output=embed"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+
+    <p>Usa el mapa para ubicar todos los puntos importantes del pueblo.</p>
+</section>
+
 <!-- PRIMERA VEZ -->
 <section id="primera">
 <h2>Primera vez en Pomaire</h2>
 <p>
-Pomaire es un pueblo tradicional conocido por su artesanía en greda.
-Aquí puedes disfrutar gastronomía típica, cultura y tradiciones chilenas en un solo día.
+Pomaire es un pueblo tradicional famoso por su artesanía en greda y su
+gastronomía típica chilena. Ideal para visitar en un día.
 </p>
 </section>
 
@@ -98,123 +130,9 @@ Aquí puedes disfrutar gastronomía típica, cultura y tradiciones chilenas en u
 <section id="ruta">
 <h2>Ruta Alfarera</h2>
 <ol>
-<li>Ingreso al pueblo</li>
+<li>Entrada del pueblo</li>
 <li>Feria artesanal</li>
-<li>Talleres de alfarería</li>
+<li>Talleres de greda</li>
 <li>Hornos tradicionales</li>
-<li>Tiendas de venta directa</li>
+<li>Tiendas locales</li>
 </ol>
-</section>
-
-<!-- RESTAURANTES -->
-<section id="restaurantes">
-<h2>Restaurantes</h2>
-<div class="grid">
-<div class="card">🍽 Empanadas gigantes</div>
-<div class="card">🍲 Cazuelas y platos típicos</div>
-<div class="card">🍖 Parrilladas</div>
-</div>
-</section>
-
-<!-- TIENDAS -->
-<section id="tiendas">
-<h2>Tiendas</h2>
-<div class="grid">
-<div class="card">🏺 Vasijas de greda</div>
-<div class="card">🛍 Artesanía local</div>
-<div class="card">🎁 Souvenirs</div>
-</div>
-</section>
-
-<!-- PASEOS -->
-<section id="paseos">
-<h2>Paseos</h2>
-<div class="grid">
-<div class="card">🌳 Plaza de Pomaire</div>
-<div class="card">🏘 Calles tradicionales</div>
-<div class="card">🏺 Ferias artesanales</div>
-</div>
-</section>
-
-<!-- FOTOS -->
-<section id="fotospots">
-<h2>Fotospots</h2>
-<div class="grid">
-<div class="card">📸 Letras de Pomaire</div>
-<div class="card">📸 Ollas gigantes</div>
-<div class="card">📸 Calle principal</div>
-</div>
-</section>
-
-<!-- EVENTOS -->
-<section id="eventos">
-<h2>Eventos</h2>
-<p>Ferias costumbristas, fiestas tradicionales, eventos gastronómicos.</p>
-</section>
-
-<!-- SERVICIOS -->
-<section id="servicios">
-<h2>Servicios Esenciales</h2>
-<div class="grid">
-<div class="card">🚻 Baños públicos</div>
-<div class="card">🅿️ Estacionamientos</div>
-<div class="card">🚑 Hospital / SAPU</div>
-<div class="card">🚓 Carabineros</div>
-<div class="card">💊 Farmacias</div>
-<div class="card">🏧 Cajeros automáticos</div>
-<div class="card">🏪 Cajas vecinas</div>
-<div class="card">🔧 Mecánicos</div>
-</div>
-</section>
-
-<!-- COMO LLEGAR -->
-<section id="llegar">
-<h2>Cómo llegar</h2>
-<p>
-Desde Santiago: Ruta 78 hacia Melipilla, luego desvío a Pomaire.
-Tiempo estimado: 1 hora aprox.
-</p>
-</section>
-
-<footer>
-<p>© 2026 Guía Turística Pomaire</p>
-</footer>
-
-<!-- APORTES -->
-<section id="aportes">
-    <h2>Apoya este proyecto</h2>
-
-    <p>
-        Esta guía turística es un proyecto independiente pensado para ayudar a
-        visitantes y potenciar el comercio local de Pomaire.
-    </p>
-
-    <p>
-        Si te fue útil, puedes apoyar de forma voluntaria 💛
-    </p>
-
-    <div style="text-align:center; margin-top:20px;">
-        <a href="https://link.mercadopago.cl/innovati" target="_blank">
-            <button style="
-                background-color:#009ee3;
-                color:white;
-                padding:15px 25px;
-                border:none;
-                border-radius:8px;
-                font-size:18px;
-                cursor:pointer;
-            ">
-                💳 Aportar con Mercado Pago
-            </button>
-        </a>
-    </div>
-
-    <p style="margin-top:20px; font-size:14px; color:gray;">
-        Aporte voluntario | No obligatorio
-    </p>
-</section>
-    
-</body>
-</html>
-<head>
-<meta charset="UTF-8">
