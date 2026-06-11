@@ -2,133 +2,219 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Pomaire en 1 Día</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomaire Guía Turística</title>
 
 <style>
+
+/* BASE */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333;
 }
 
 /* HEADER */
 header {
-    background: #8B4513;
+    background: linear-gradient(135deg, #8B4513, #b35c1e);
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 40px 20px;
 }
 
-/* MENU */
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* NAV */
 nav {
     background: #5a2e0c;
-    padding: 10px;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 nav a {
     color: white;
-    margin: 8px;
+    padding: 12px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    background: #8B4513;
 }
 
 /* SECCIONES */
 section {
-    padding: 30px;
     margin: 20px;
+    padding: 25px;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 h2 {
-    color: #8B4513;
+    color: #b35c1e;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
 }
 
 .card {
     background: #fafafa;
     padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
 }
 
 /* MAPA */
-#mapa {
-    text-align: center;
+iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    border: none;
+}
+
+/* BOTONES */
+.btn {
+    background: #009ee3;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px;
 }
 
 /* APORTES */
-#aportes {
-    background: #fff8f0;
-    border: 2px solid #f0d2b3;
-    text-align: center;
+.donaciones button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-/* FOOTER */
 footer {
-    background: #333;
+    background: #222;
     color: white;
     text-align: center;
     padding: 20px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Pomaire en 1 Día</h1>
-    <p>Guía turística para disfrutar lo mejor del pueblo</p>
+<h1>Pomaire en 1 Día</h1>
+<p>Descubre cultura, gastronomía y artesanía</p>
 </header>
 
 <nav>
-    <a href="#mapa">Mapa</a>
-    <a href="#primera">Primera vez</a>
-    <a href="#ruta">Ruta alfarera</a>
-    <a href="#restaurantes">Restaurantes</a>
-    <a href="#tiendas">Tiendas</a>
-    <a href="#paseos">Paseos</a>
-    <a href="#fotospots">Fotospots</a>
-    <a href="#eventos">Eventos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#llegar">Cómo llegar</a>
+<a href="#mapa">Mapa</a>
+<a href="#primera">Primera vez</a>
+<a href="#ruta">Ruta alfarera</a>
+<a href="#restaurantes">Restaurantes</a>
+<a href="#tiendas">Tiendas</a>
+<a href="#paseos">Paseos</a>
+<a href="#fotospots">Fotos</a>
+<a href="#eventos">Eventos</a>
+<a href="#servicios">Servicios</a>
+<a href="#chancho">Chancho</a>
+<a href="#aportes">Apoyar</a>
 </nav>
 
 <!-- MAPA -->
 <section id="mapa">
-    <h2>Mapa de Pomaire</h2>
+<h2>Mapa de="restaurantes"><h2>Mapa de Pomaire</h2>
+<h2>Restaurantes</h2>
+<div class="grid">
+<div class="card">🍽 Empanadas gigantes</div>
+<div class="card">🍲 Comida típica</div>
+<div class="card">🍖 Parrilladas</div>
+</div>
+</section>
 
-    <iframe 
-        src="https://www.google.com/maps?q=Pomaire,Chile&output=embed"
-        width="100%"
-        height="400"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-    </iframe>
+<!-- TIENDAS -->
+<section id="tiendas">
+<h2>Tiendas</h2>
+<div class="grid">
+<div class="card">🏺 Vasijas</div>
+<div class="card">🎁 Souvenirs</div>
+<div class="card">🛍 Artesanía</div>
+</div>
+</section>
 
-    <p>Usa el mapa para ubicar todos los puntos importantes del pueblo.</p>
+<!-- PASEOS -->
+<section id="paseos">
+<h2>Paseos</h2>
+<div class="grid">
+<div class="card">🌳 Plaza</div>
+<div class="card">🏘 Calles tradicionales</div>
+<div class="card">🏺 Feria artesanal</div>
+</div>
+</section>
+
+<!-- FOTOS -->
+<section id="fotospots">
+<h2>Fotospots</h2>
+<div class="grid">
+<div class="card">📸 Letras Pomaire</div>
+<div class="card">📸 Ollas gigantes</div>
+<div class="card">📸 Calle principal</div>
+</div>
+</section>
+
+<!-- EVENTOS -->
+<section id="eventos">
+<h2>Eventos</h2>
+<p>Fiestas costumbristas, ferias locales y gastronomía.</p>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+<h2>Servicios esenciales</h2>
+<div class="grid">
+<div class="card">🚻 Baños</div>
+<div class="card">🅿️ Estacionamiento</div>
+<div class="card">🚑 Salud</div>
+<div class="card">🚓 Policía</div>
+<div class="card">💊 Farmacia</div>
+<div class="card">🏧 Cajeros</div>
+</div>
+</section>
+
+<!-- CHANCHO -->
+<section id="chancho">
+
+
+<iframe src="https://www.google.com/maps?q=Pomaire,Chile&output=embed"></iframe>
+
 </section>
 
 <!-- PRIMERA VEZ -->
 <section id="primera">
-<h2>Primera vez en Pomaire</h2>
-<p>
-Pomaire es un pueblo tradicional famoso por su artesanía en greda y su
-gastronomía típica chilena. Ideal para visitar en un día.
-</p>
+<h2>Primera vez</h2>
+<p>Pomaire es reconocido por su artesanía en greda, su comida típica y su identidad rural chilena.</p>
 </section>
 
-<!-- RUTA ALFARERA -->
+<!-- RUTA -->
 <section id="ruta">
-<h2>Ruta Alfarera</h2>
+<h2>Ruta alfarera</h2>
 <ol>
 <li>Entrada del pueblo</li>
 <li>Feria artesanal</li>
@@ -136,3 +222,6 @@ gastronomía típica chilena. Ideal para visitar en un día.
 <li>Hornos tradicionales</li>
 <li>Tiendas locales</li>
 </ol>
+</section>
+
+<!-- RESTAURANTES -->
