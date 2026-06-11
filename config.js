@@ -1,1 +1,0 @@
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiZHJpYjkyIiwiYSI6ImNtcTdnbGY3ZzAxcm0zMm9scGFiYW9mem8ifQ.xQq7a1Psl-qCmuSkEOdkiw';
