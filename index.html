@@ -1,352 +1,186 @@
+<!DOCTYPE html>
+<html lang="esomaire en 1 Día</title><html lang="es">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --terra-900:#1C0F08;
-  --terra-800:#2E1810;
-  --terra-700:#4A2515;
-  --terra-600:#7A3D1F;
-  --terra-500:#B05A2A;
-  --terra-400:#D4754A;
-  --terra-300:#E8A882;
-  --terra-100:#F5EBE0;
-  --terra-50:#FAF6F1;
-  --cream:#FDFAF6;
-  --stone:#8B7355;
-  --stone-light:#C4AA8A;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
 }
-#app{width:100%;background:var(--cream);font-family:var(--font-sans)}
 
-.header{background:var(--terra-900);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--terra-800)}
-.logo-wrap{display:flex;align-items:center;gap:12px}
-.logo-badge{width:40px;height:40px;background:var(--terra-500);border-radius:10px;display:flex;align-items:center;justify-content:center}
-.logo-badge i{font-size:20px;color:#fff}
-.logo-name{font-size:20px;font-weight:500;color:#fff;letter-spacing:-0.5px}
-.logo-name span{color:var(--terra-400)}
-.logo-tagline{font-size:11px;color:var(--stone-light);margin-top:1px}
-.header-right{display:flex;align-items:center;gap:10px}
-.lang-pill{display:flex;background:var(--terra-800);border-radius:20px;overflow:hidden;border:1px solid var(--terra-700)}
-.lang-btn{padding:5px 11px;font-size:11px;color:var(--stone-light);cursor:pointer;transition:all 0.15s;background:transparent;border:none}
-.lang-btn.active{background:var(--terra-500);color:#fff}
-
-.search-row{background:var(--terra-800);padding:10px 24px;display:flex;gap:8px;align-items:center}
-.search-wrap{flex:1;display:flex;align-items:center;gap:8px;background:var(--terra-700);border-radius:10px;padding:0 12px;border:1px solid var(--terra-600)}
-.search-wrap i{color:var(--stone-light);font-size:15px}
-.search-input{flex:1;background:transparent;border:none;color:#fff;font-size:13px;padding:9px 0;outline:none}
-.search-input::placeholder{color:var(--stone-light)}
-.loc-btn{background:var(--terra-500);color:#fff;border:none;padding:9px 14px;border-radius:10px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.loc-btn i{font-size:14px}
-
-.nav-scroll{background:var(--terra-900);padding:0 20px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--terra-800)}
-.nav-scroll::-webkit-scrollbar{display:none}
-.nav-item{display:flex;align-items:center;gap:7px;padding:11px 13px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.15s;color:var(--stone-light);font-size:12px}
-.nav-item:hover{color:#fff;background:rgba(255,255,255,0.05)}
-.nav-item.active{color:#fff;border-bottom:2px solid var(--terra-400)}
-.nav-item .nav-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;transition:all 0.15s}
-.nav-item.active .nav-icon{background:var(--terra-500);color:#fff}
-.nav-item:not(.active) .nav-icon{background:var(--terra-800);color:var(--stone-light)}
-
-.map-wrap{position:relative;height:440px;background:#e8dfd0}
-#map{width:100%;height:100%}
-.map-legend{position:absolute;top:14px;left:14px;background:rgba(253,250,246,0.97);border-radius:12px;padding:10px 14px;z-index:10;border:1px solid var(--terra-300)}
-.map-legend-title{font-size:10px;font-weight:500;color:var(--stone);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
-.legend-row{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--terra-800)}
-.legend-pin{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.map-zoom{position:absolute;bottom:16px;right:16px;z-index:10;display:flex;flex-direction:column;gap:4px}
-
-.places-section{padding:18px 24px;background:var(--cream)}
-.sec-header{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-.sec-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.sec-title{font-size:14px;font-weight:500;color:var(--terra-800)}
-.sec-count{font-size:11px;color:var(--stone);margin-left:auto;background:var(--terra-100);padding:3px 9px;border-radius:20px}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
-.card{background:#fff;border:1px solid #EDE0D4;border-radius:14px;padding:14px;cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden}
-.card:hover{border-color:var(--terra-400);transform:translateY(-1px)}
-.card-icon-wrap{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
-.card-name{font-size:13px;font-weight:500;color:var(--terra-800);margin-bottom:3px;line-height:1.3}
-.card-type{font-size:11px;color:var(--stone);margin-bottom:8px}
-.card-tag{display:inline-flex;align-items:center;font-size:10px;padding:3px 9px;border-radius:20px;font-weight:500}
-.card-arrow{position:absolute;top:12px;right:12px;color:var(--terra-300);font-size:14px}
-
-.footer{background:var(--terra-900);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--terra-800)}
-.footer-logo{font-size:13px;color:var(--stone-light)}
-.footer-logo span{color:var(--terra-400);font-weight:500}
-.footer-links{display:flex;gap:18px}
-.footer-link{font-size:11px;color:var(--stone);cursor:pointer;transition:color 0.15s}
-.footer-link:hover{color:var(--stone-light)}
-
-.hero{
-background:linear-gradient(rgba(28,15,8,.65),rgba(28,15,8,.65)),url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
-background-size:cover;background-position:center;
-padding:80px 24px;color:white;text-align:center
+/* HEADER */
+header {
+    background: #8B4513;
+    color: white;
+    text-align: center;
+    padding: 30px;
 }
-.hero h1{font-size:48px;margin-bottom:12px}
-.hero p{font-size:18px;max-width:800px;margin:0 auto 20px auto}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.hero-btn{background:#B05A2A;color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold}
-.stats{display:flex;justify-content:center;gap:20px;margin-top:24px;flex-wrap:wrap}
-.stat{background:rgba(255,255,255,.12);padding:12px 18px;border-radius:10px}
 
+/* MENU */
+nav {
+    background: #5a2e0c;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* SECCIONES */
+section {
+    padding: 30px;
+    margin: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #8B4513;
+}
+
+/* TARJETAS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* FOOTER */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 </style>
+</head>
 
-<h2 class="sr-only">Pomaire360 — Guía turística interactiva de Pomaire, Chile</h2>
+<body>
 
-<div id="app">
+<header>
+    <h1>Pomaire en 1 Día</h1>
+    <p>Guía turística para conocer lo esencial</p>
+</header>
 
-<div class="hero">
-<h1>Pomaire360</h1>
-<p>Descubre artesanos, gastronomía, eventos y experiencias únicas en el pueblo alfarero más famoso de Chile.</p>
-<div class="hero-actions">
-<a class="hero-btn" href="#cardsGrid">Qué hacer</a>
-<a class="hero-btn" href="#map">Ver mapa</a>
+<nav>
+    <a href="#primera">Primera vez</a>
+    <a href="#ruta">Ruta alfarera</a>
+    <a href="#restaurantes">Restaurantes</a>
+    <a href="#tiendas">Tiendas</a>
+    <a href="#paseos">Paseos</a>
+    <a href="#fotospots">Fotospots</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#llegar">Cómo llegar</a>
+</nav>
+
+<!-- PRIMERA VEZ -->
+<section id="primera">
+<h2>Primera vez en Pomaire</h2>
+<p>
+Pomaire es un pueblo tradicional conocido por su artesanía en greda.
+Aquí puedes disfrutar gastronomía típica, cultura y tradiciones chilenas en un solo día.
+</p>
+</section>
+
+<!-- RUTA ALFARERA -->
+<section id="ruta">
+<h2>Ruta Alfarera</h2>
+<ol>
+<li>Ingreso al pueblo</li>
+<li>Feria artesanal</li>
+<li>Talleres de alfarería</li>
+<li>Hornos tradicionales</li>
+<li>Tiendas de venta directa</li>
+</ol>
+</section>
+
+<!-- RESTAURANTES -->
+<section id="restaurantes">
+<h2>Restaurantes</h2>
+<div class="grid">
+<div class="card">🍽 Empanadas gigantes</div>
+<div class="card">🍲 Cazuelas y platos típicos</div>
+<div class="card">🍖 Parrilladas</div>
 </div>
-<div class="stats">
-<div class="stat">🏺 Artesanos</div>
-<div class="stat">🍲 Gastronomía</div>
-<div class="stat">📍 Mapa interactivo</div>
-<div class="stat">🌎 Multilenguaje</div>
+</section>
+
+<!-- TIENDAS -->
+<section id="tiendas">
+<h2>Tiendas</h2>
+<div class="grid">
+<div class="card">🏺 Vasijas de greda</div>
+<div class="card">🛍 Artesanía local</div>
+<div class="card">🎁 Souvenirs</div>
 </div>
+</section>
+
+<!-- PASEOS -->
+<section id="paseos">
+<h2>Paseos</h2>
+<div class="grid">
+<div class="card">🌳 Plaza de Pomaire</div>
+<div class="card">🏘 Calles tradicionales</div>
+<div class="card">🏺 Ferias artesanales</div>
 </div>
+</section>
 
-
-  <div class="header">
-    <div class="logo-wrap">
-      <div class="logo-badge"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
-      <div>
-        <div class="logo-name">Pomaire<span>360</span></div>
-        <div class="logo-tagline">El pueblo alfarero de Chile</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="lang-pill">
-        <button class="lang-btn active">ES</button>
-        <button class="lang-btn">EN</button>
-        <button class="lang-btn">PT</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="search-row">
-    <div class="search-wrap">
-      <i class="ti ti-search" aria-hidden="true"></i>
-      <input class="search-input" type="text" placeholder="Buscar restaurante, taller, paseo..."/>
-    </div>
-    <button class="loc-btn"><i class="ti ti-current-location" aria-hidden="true"></i>Estoy aquí</button>
-  </div>
-
-  <div class="nav-scroll" id="navScroll">
-    <div class="nav-item active" data-cat="primera">
-      <div class="nav-icon"><i class="ti ti-star" aria-hidden="true"></i></div>Primera vez
-    </div>
-    <div class="nav-item" data-cat="alfarera">
-      <div class="nav-icon"><i class="ti ti-flame" aria-hidden="true"></i></div>Ruta alfarera
-    </div>
-    <div class="nav-item" data-cat="restaurantes">
-      <div class="nav-icon"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i></div>Restaurantes
-    </div>
-    <div class="nav-item" data-cat="tiendas">
-      <div class="nav-icon"><i class="ti ti-shopping-bag" aria-hidden="true"></i></div>Tiendas
-    </div>
-    <div class="nav-item" data-cat="paseos">
-      <div class="nav-icon"><i class="ti ti-tree" aria-hidden="true"></i></div>Paseos
-    </div>
-    <div class="nav-item" data-cat="fotospots">
-      <div class="nav-icon"><i class="ti ti-camera" aria-hidden="true"></i></div>Fotospots
-    </div>
-    <div class="nav-item" data-cat="eventos">
-      <div class="nav-icon"><i class="ti ti-confetti" aria-hidden="true"></i></div>Eventos
-    </div>
-    <div class="nav-item" data-cat="banos">
-      <div class="nav-icon"><i class="ti ti-accessible" aria-hidden="true"></i></div>Baños
-    </div>
-    <div class="nav-item" data-cat="estacionamientos">
-      <div class="nav-icon"><i class="ti ti-parking" aria-hidden="true"></i></div>Estacionamientos
-    </div>
-    <div class="nav-item" data-cat="emergencias">
-      <div class="nav-icon"><i class="ti ti-first-aid-kit" aria-hidden="true"></i></div>Emergencias
-    </div>
-    <div class="nav-item" data-cat="llegar">
-      <div class="nav-icon"><i class="ti ti-bus" aria-hidden="true"></i></div>Cómo llegar
-    </div>
-    <div class="nav-item" data-cat="historia">
-      <div class="nav-icon"><i class="ti ti-book" aria-hidden="true"></i></div>Historia
-    </div>
-  </div>
-
-  <div class="map-wrap">
-    <div id="map"></div>
-    <div class="map-legend" id="mapLegend">
-      <div class="map-legend-title">Mostrando</div>
-      <div class="legend-row"><div class="legend-pin" id="legendPin" style="background:#B05A2A"></div><span id="legendLabel">Primera vez</span></div>
-    </div>
-  </div>
-
-  <div class="places-section">
-    <div class="sec-header">
-      <div class="sec-icon" id="secIcon" style="background:#F5EBE0"><i class="ti ti-star" id="secIconI" style="color:#B05A2A" aria-hidden="true"></i></div>
-      <span class="sec-title" id="secTitle">Primera vez — ¿Qué hacer?</span>
-      <span class="sec-count" id="secCount">5 lugares</span>
-    </div>
-    <div class="cards" id="cardsGrid"></div>
-  </div>
-
-  <div class="footer">
-    <div class="footer-logo"><span>Pomaire360</span> — Hecho con amor desde Pomaire</div>
-    <div class="footer-links">
-      <span class="footer-link">Acerca de</span>
-      <span class="footer-link">Contacto</span>
-      <span class="footer-link">Accesibilidad</span>
-    </div>
-  </div>
-
+<!-- FOTOS -->
+<section id="fotospots">
+<h2>Fotospots</h2>
+<div class="grid">
+<div class="card">📸 Letras de Pomaire</div>
+<div class="card">📸 Ollas gigantes</div>
+<div class="card">📸 Calle principal</div>
 </div>
+</section>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/dist/mapbox-gl.css"/>
-<script src="https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/dist/mapbox-gl.js"></script>
-<script>
-const TOKEN = 'pk.eyJ1IjoiZHJpYjkyIiwiYSI6ImNtcTdnbGY3ZzAxcm0zMm9scGFiYW9mem8ifQ.xQq7a1Psl-qCmuSkEOdkiw';
+<!-- EVENTOS -->
+<section id="eventos">
+<h2>Eventos</h2>
+<p>Ferias costumbristas, fiestas tradicionales, eventos gastronómicos.</p>
+</section>
 
-const cats = {
-  primera:{label:'Primera vez — ¿Qué hacer?',icon:'ti-star',color:'#B05A2A',bg:'#F5EBE0',pin:'#B05A2A',places:[
-    {name:'Plaza de Pomaire',type:'Plaza central',tag:'Imperdible',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6283,lng:-71.0928},
-    {name:'Calle Artesanos',type:'Calle principal',tag:'Imperdible',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6290,lng:-71.0935},
-    {name:'Restaurante El Tambo',type:'Comida típica',tag:'Top rated',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6278,lng:-71.0920},
-    {name:'Taller Familia Vera',type:'Alfarería',tag:'Tradicional',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6295,lng:-71.0945},
-    {name:'Mirador Cerro',type:'Vista panorámica',tag:'Vistas',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6265,lng:-71.0910},
-  ]},
-  alfarera:{label:'Ruta alfarera',icon:'ti-flame',color:'#7A3D1F',bg:'#FAECE7',pin:'#7A3D1F',places:[
-    {name:'Taller Familia Vera',type:'Alfarería ancestral',tag:'Taller activo',tagBg:'#FAECE7',tagColor:'#7A3D1F',lat:-33.6295,lng:-71.0945},
-    {name:'Horno de Greda Antigua',type:'Horno tradicional',tag:'Patrimonio',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6300,lng:-71.0950},
-    {name:'Casa del Artesano',type:'Exposición y venta',tag:'Taller activo',tagBg:'#FAECE7',tagColor:'#7A3D1F',lat:-33.6285,lng:-71.0938},
-    {name:'Taller Los Ñandus',type:'Cerámica utilitaria',tag:'Visitas guiadas',tagBg:'#EDE9FE',tagColor:'#4C1D95',lat:-33.6292,lng:-71.0930},
-    {name:'Escuela de Alfarería',type:'Talleres turistas',tag:'Aprende',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6275,lng:-71.0925},
-  ]},
-  restaurantes:{label:'Restaurantes',icon:'ti-tools-kitchen-2',color:'#9B3057',bg:'#FEE2EF',pin:'#9B3057',places:[
-    {name:'El Tambo',type:'Cocina criolla',tag:'Popular',tagBg:'#FEE2EF',tagColor:'#9B3057',lat:-33.6278,lng:-71.0920},
-    {name:'La Cazuela de Barro',type:'Cazuelas y fondos',tag:'Tradicional',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6282,lng:-71.0932},
-    {name:'Picada Don Choche',type:'Empanadas y chicha',tag:'Económico',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6270,lng:-71.0915},
-    {name:'Fuente de Soda',type:'Completos y jugos',tag:'Rápido',tagBg:'#EDE9FE',tagColor:'#4C1D95',lat:-33.6288,lng:-71.0940},
-  ]},
-  tiendas:{label:'Tiendas',icon:'ti-shopping-bag',color:'#5B3A8A',bg:'#EDE9FE',pin:'#5B3A8A',places:[
-    {name:'Artesanías Pomaire',type:'Greda y cerámica',tag:'Souvenirs',tagBg:'#EDE9FE',tagColor:'#4C1D95',lat:-33.6291,lng:-71.0937},
-    {name:'Tienda La Greda',type:'Utilitarios de greda',tag:'Auténtico',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6283,lng:-71.0929},
-    {name:'Galería del Pueblo',type:'Arte y artesanía',tag:'Galería',tagBg:'#FEE2EF',tagColor:'#9B3057',lat:-33.6277,lng:-71.0922},
-  ]},
-  paseos:{label:'Paseos',icon:'ti-tree',color:'#166534',bg:'#DCFCE7',pin:'#166534',places:[
-    {name:'Cerro Pomaire',type:'Senderismo',tag:'45 min',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6265,lng:-71.0910},
-    {name:'Río Maipo — orilla',type:'Paseo ribereño',tag:'Tranquilo',tagBg:'#E0F2FE',tagColor:'#075985',lat:-33.6260,lng:-71.0900},
-    {name:'Sendero del Artesano',type:'Ruta cultural',tag:'2 km',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6272,lng:-71.0948},
-  ]},
-  fotospots:{label:'Fotospots',icon:'ti-camera',color:'#075985',bg:'#E0F2FE',pin:'#075985',places:[
-    {name:'Entrada del Pueblo',type:'Mural bienvenida',tag:'Instagrameable',tagBg:'#E0F2FE',tagColor:'#075985',lat:-33.6268,lng:-71.0955},
-    {name:'Calle Empedrada',type:'Arquitectura típica',tag:'Golden hour',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6286,lng:-71.0933},
-    {name:'Mirador Norte',type:'Vista panorámica',tag:'Amanecer',tagBg:'#FEE2EF',tagColor:'#9B3057',lat:-33.6260,lng:-71.0912},
-  ]},
-  eventos:{label:'Eventos',icon:'ti-confetti',color:'#B45309',bg:'#FEF3C7',pin:'#B45309',places:[
-    {name:'Feria Costumbrista',type:'Agosto — anual',tag:'Agosto',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6283,lng:-71.0928},
-    {name:'Festival del Barro',type:'Octubre — anual',tag:'Octubre',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6283,lng:-71.0928},
-  ]},
-  banos:{label:'Baños',icon:'ti-accessible',color:'#0F766E',bg:'#CCFBF1',pin:'#0F766E',places:[
-    {name:'Baños Plaza Central',type:'Baños públicos',tag:'Gratuito',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6281,lng:-71.0926},
-    {name:'Baños Municipales',type:'Acceso universal',tag:'Accesible',tagBg:'#CCFBF1',tagColor:'#0F766E',lat:-33.6289,lng:-71.0934},
-  ]},
-  estacionamientos:{label:'Estacionamientos',icon:'ti-parking',color:'#374151',bg:'#F3F4F6',pin:'#374151',places:[
-    {name:'Estac. Entrada Norte',type:'Gratuito · 200 autos',tag:'Gratuito',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6266,lng:-71.0956},
-    {name:'Estac. Plaza',type:'Pagado · $500/hr',tag:'Pagado',tagBg:'#FEF3C7',tagColor:'#92400E',lat:-33.6280,lng:-71.0924},
-    {name:'Estac. Sur',type:'Gratuito · 80 autos',tag:'Gratuito',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6302,lng:-71.0942},
-  ]},
-  emergencias:{label:'Emergencias',icon:'ti-first-aid-kit',color:'#B91C1C',bg:'#FEE2E2',pin:'#B91C1C',places:[
-    {name:'Posta Rural Pomaire',type:'Urgencias menores',tag:'24/7',tagBg:'#FEE2E2',tagColor:'#B91C1C',lat:-33.6274,lng:-71.0917},
-    {name:'Carabineros',type:'Seguridad pública',tag:'Emergencias',tagBg:'#E0F2FE',tagColor:'#075985',lat:-33.6279,lng:-71.0923},
-    {name:'Cuerpo de Bomberos',type:'Emergencias',tag:'Voluntarios',tagBg:'#FEE2E2',tagColor:'#B91C1C',lat:-33.6287,lng:-71.0936},
-    {name:'Farmacia del Pueblo',type:'Medicamentos',tag:'L-D 9-20h',tagBg:'#DCFCE7',tagColor:'#166534',lat:-33.6284,lng:-71.0930},
-  ]},
-  llegar:{label:'Cómo llegar',icon:'ti-bus',color:'#1D4ED8',bg:'#DBEAFE',pin:'#1D4ED8',places:[
-    {name:'Paradero Bus Pomaire',type:'Buses desde Stgo',tag:'Melipilla',tagBg:'#DBEAFE',tagColor:'#1D4ED8',lat:-33.6267,lng:-71.0957},
-    {name:'Acceso Ruta 78',type:'Auto desde Santiago',tag:'1h desde Stgo',tagBg:'#F3F4F6',tagColor:'#374151',lat:-33.6263,lng:-71.0960},
-  ]},
-  historia:{label:'Historia',icon:'ti-book',color:'#6B3F14',bg:'#FDF4E7',pin:'#6B3F14',places:[
-    {name:'Centro Cultural',type:'Museo local',tag:'Historia',tagBg:'#FDF4E7',tagColor:'#6B3F14',lat:-33.6281,lng:-71.0927},
-    {name:'Iglesia San Francisco',type:'Siglo XVIII',tag:'Patrimonio',tagBg:'#F5EBE0',tagColor:'#7A3D1F',lat:-33.6276,lng:-71.0921},
-  ]},
-};
+<!-- SERVICIOS -->
+<section id="servicios">
+<h2>Servicios Esenciales</h2>
+<div class="grid">
+<div class="card">🚻 Baños públicos</div>
+<div class="card">🅿️ Estacionamientos</div>
+<div class="card">🚑 Hospital / SAPU</div>
+<div class="card">🚓 Carabineros</div>
+<div class="card">💊 Farmacias</div>
+<div class="card">🏧 Cajeros automáticos</div>
+<div class="card">🏪 Cajas vecinas</div>
+<div class="card">🔧 Mecánicos</div>
+</div>
+</section>
 
-let map, markers=[], activeCat='primera';
+<!-- COMO LLEGAR -->
+<section id="llegar">
+<h2>Cómo llegar</h2>
+<p>
+Desde Santiago: Ruta 78 hacia Melipilla, luego desvío a Pomaire.
+Tiempo estimado: 1 hora aprox.
+</p>
+</section>
 
-function renderCards(cat){
-  const d=cats[cat], g=document.getElementById('cardsGrid');
-  document.getElementById('secTitle').textContent=d.label;
-  document.getElementById('secCount').textContent=d.places.length+' lugares';
-  document.getElementById('secIcon').style.background=d.bg;
-  document.getElementById('secIconI').className='ti '+d.icon;
-  document.getElementById('secIconI').style.color=d.color;
-  document.getElementById('legendLabel').textContent=d.label;
-  document.getElementById('legendPin').style.background=d.pin;
-  g.innerHTML=d.places.map(p=>`
-    <div class="card">
-      <i class="ti ti-chevron-right card-arrow" aria-hidden="true"></i>
-      <div class="card-icon-wrap" style="background:${d.bg}">
-        <i class="ti ${d.icon}" style="color:${d.color};font-size:18px" aria-hidden="true"></i>
-      </div>
-      <div class="card-name">${p.name}</div>
-      <div class="card-type">${p.type}</div>
-      <span class="card-tag" style="background:${p.tagBg};color:${p.tagColor}">${p.tag}</span>
-    </div>
-  `).join('');
-}
+<footer>
+<p>© 2026 Guía Turística Pomaire</p>
+</footer>
 
-function clearMarkers(){markers.forEach(m=>m.remove());markers=[];}
-
-function addMarkers(cat){
-  clearMarkers();
-  const d=cats[cat];
-  d.places.forEach(p=>{
-    const el=document.createElement('div');
-    el.style.cssText=`width:14px;height:14px;background:${d.pin};border-radius:50%;border:2.5px solid #fff;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.3)`;
-    const mk=new mapboxgl.Marker({element:el,anchor:'center'})
-      .setLngLat([p.lng,p.lat])
-      .setPopup(new mapboxgl.Popup({offset:18,closeButton:false}).setHTML(
-        `<div style="font-family:sans-serif;padding:2px 0">
-          <div style="font-weight:600;font-size:13px;color:#1C0F08;margin-bottom:2px">${p.name}</div>
-          <div style="font-size:11px;color:#8B7355">${p.type}</div>
-          <span style="display:inline-block;margin-top:5px;font-size:10px;padding:2px 8px;border-radius:20px;background:${p.tagBg};color:${p.tagColor};font-weight:500">${p.tag}</span>
-        </div>`
-      ))
-      .addTo(map);
-    markers.push(mk);
-  });
-}
-
-document.querySelectorAll('.nav-item').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    activeCat=btn.dataset.cat;
-    renderCards(activeCat);
-    if(map) addMarkers(activeCat);
-  });
-});
-
-document.querySelectorAll('.lang-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-  });
-});
-
-renderCards('primera');
-
-setTimeout(()=>{
-  mapboxgl.accessToken=TOKEN;
-  map=new mapboxgl.Map({
-    container:'map',
-    style:'mapbox://styles/mapbox/outdoors-v12',
-    center:[-71.0928,-33.6283],
-    zoom:15.5,
-    attributionControl:false
-  });
-  map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
-  map.on('load',()=>addMarkers('primera'));
-},300);
-</script>
+</body>
+</html>
+<head>
+<meta charset="UTF-8">
