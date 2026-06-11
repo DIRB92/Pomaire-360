@@ -3,89 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pomaire App Turística</title>
+<title>Pomaire App con Panel</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f4f4;
-}
+body { margin:0; font-family:Arial; background:#f4f4f4; }
 
-/* HEADER */
 header {
-    background: linear-gradient(135deg, #8B4513, #b35c1e);
-    color: white;
-    text-align: center;
-    padding: 20px;
+    background:#8B4513;
+    color:white;
+    text-align:center;
+    padding:15px;
 }
 
-/* FILTROS */
-#filtros {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: #fff;
-    padding: 10px;
+#map { height:60vh; }
+
+/* PANEL */
+#panel {
+    background:white;
+    padding:20px;
 }
 
-#filtros button {
-    margin: 5px;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background: #eee;
-    transition: 0.2s;
+input, select {
+    width:100%;
+    margin:5px 0;
+    padding:8px;
 }
 
-#filtros button:hover {
-    background: #ddd;
-}
-
-/* MAPA */
-#map {
-    width: 100%;
-    height: 70vh;
-}
-
-/* TARJETAS INFO */
-.info {
-    padding: 20px;
-}
-
-/* APORTES */
-#aportes {
-    padding: 30px;
-    text-align: center;
-    background: #fff8f0;
-}
-
-.donaciones button {
-    margin: 5px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    background: #ddd;
-    cursor: pointer;
-}
-
-.btn {
-    display: inline-block;
-    background: #009ee3;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    margin-top: 10px;
-    text-decoration: none;
-}
-
-/* FOOTER */
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
+button {
+    padding:10px;
+    background:#8B4513;
+    color:white;
+    border:none;
+    margin-top:10px;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -94,96 +44,32 @@ footer {
 
 <header>
 <h1>Pomaire App Turística</h1>
-<p>Explora, visita y disfruta el pueblo</p>
+<p>Mapa + Panel de administración</p>
 </header>
 
-<!-- FILTROS -->
-<div id="filtros">
-<button onclick="mostrarCategoria('todos')">🌍 Todo</button>
-<button onclick="mostrarCategoria('restaurante')">🍽 Restaurantes</button>
-<button onclick="mostrarCategoria('servicio')">🏪 Servicios</button>
-<button onclick="mostrarCategoria('foto')">📸 Fotospots</button>
-<button onclick="mostrarCategoria('tienda')">🏺 Tiendas</button>
-</div>
-
-<!-- MAPA -->
 <div id="map"></div>
 
-<!-- INFO EXTRA -->
-<div class="info">
-<h2>🐷 Chancho Alcancía más grande del mundo</h2>
-<p>Uno de los símbolos más representativos de Pomaire.</p>
+<!-- PANEL ADMIN -->
+<div id="panel">
+<h2>Agregar nuevo lugar</h2>
 
-<p><b>📍 Dirección:</b> Av. Roberto Bravo, Pomaire, Melipilla, Chile</p>
+<input id="nombre" placeholder="Nombre del lugar">
+<input id="lat" placeholder="Latitud (ej: -33.705)">
+<input id="lng" placeholder="Longitud (ej: -71.142)">
 
-<a href="https://www.google.com/maps?q=Chancho+Pomaire" target="_blank">
-Ver en Google Maps
-</a>
+<select id="categoria">
+<option value="restaurante">🍽 Restaurante</option>
+<option value="servicio">🏪 Servicio</option>
+<option value="foto">📸 Fotospot</option>
+<option value="tienda">🏺 Tienda</option>
+</select>
+
+<button onclick="guardarLugar()">Guardar lugar</button>
 </div>
-
-<!-- APORTES -->
-<section id="aportes">
-<h2>Apoya esta guía</h2>
-
-<p>Proyecto independiente para impulsar el turismo local 💛</p>
-
-<div class="donaciones">
-<button>$1.000</button>
-<button>$2.000</button>
-<button>$5.000</button>
-<button>$10.000</button>
-</div>
-
-<a class="btn" href="https://link.mercadopago.cl/innovati" target="_blank">
-💳 Donar con Mercado Pago
-</a>
-
-<p style="font-size:13px;color:gray;">
-Aporte voluntario
-</p>
-</section>
-
-<footer>
-<p>© 2026 Turismo Pomaire</p>
-</footer>
 
 <script>
 let map;
 let markers = [];
-
-/* LUGARES (puedes agregar más después) */
-const lugares = [
-{
-    nombre: "Chancho Alcancía Gigante",
-    lat: -33.7050,
-    lng: -71.1425,
-    categoria: "foto"
-},
-{
-    nombre: "Feria Artesanal",
-    lat: -33.7055,
-    lng: -71.1420,
-    categoria: "tienda"
-},
-{
-    nombre: "Restaurante Tradicional",
-    lat: -33.7060,
-    lng: -71.1415,
-    categoria: "restaurante"
-},
-{
-    nombre: "Baños Públicos",
-    lat: -33.7053,
-    lng: -71.1410,
-    categoria: "servicio"
-},
-{
-    nombre: "Cajero automático",
-    lat: -33.7048,
-    lng: -71.1418,
-    categoria: "servicio"
-}
-];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -191,46 +77,64 @@ function initMap() {
         zoom: 16
     });
 
-    cargarMarcadores("todos");
+    cargarLugares();
 }
 
-function cargarMarcadores(categoria) {
+/* GUARDAR */
+function guardarLugar() {
+    const nombre = document.getElementById("nombre").value;
+    const lat = parseFloat(document.getElementById("lat").value);
+    const lng = parseFloat(document.getElementById("lng").value);
+    const categoria = document.getElementById("categoria").value;
+
+    if (!nombre || isNaN(lat) || isNaN(lng)) {
+        alert("Completa todos los campos correctamente");
+        return;
+    }
+
+    let lugares = JSON.parse(localStorage.getItem("lugares")) || [];
+
+    lugares.push({ nombre, lat, lng, categoria });
+
+    localStorage.setItem("lugares", JSON.stringify(lugares));
+
+    alert("✅ Lugar guardado");
+
+    cargarLugares();
+}
+
+/* CARGAR */
+function cargarLugares() {
     limpiarMarcadores();
 
+    let lugares = JSON.parse(localStorage.getItem("lugares")) || [];
+
     lugares.forEach(lugar => {
-        if (categoria === "todos" || lugar.categoria === categoria) {
+        const marker = new google.maps.Marker({
+            position: { lat: lugar.lat, lng: lugar.lng },
+            map: map,
+            title: lugar.nombre
+        });
 
-            const marker = new google.maps.Marker({
-                position: { lat: lugar.lat, lng: lugar.lng },
-                map: map,
-                title: lugar.nombre
-            });
+        const info = new google.maps.InfoWindow({
+            content: `<b>${lugar.nombre}</b><br>${lugar.categoria}`
+        });
 
-            const info = new google.maps.InfoWindow({
-                content: `<b>${lugar.nombre}</b><br>Categoría: ${lugar.categoria}<q=${lugar.lat},${lugar.lng}Cómo llegar</a>`
-            });
+        marker.addListener("click", () => info.open(map, marker));
 
-            marker.addListener("click", () => info.open(map, marker));
-
-            markers.push(marker);
-        }
+        markers.push(marker);
     });
 }
 
+/* LIMPIAR */
 function limpiarMarcadores() {
     markers.forEach(m => m.setMap(null));
     markers = [];
 }
-
-function mostrarCategoria(cat) {
-    cargarMarcadores(cat);
-}
 </script>
 
-<!-- GOOGLE MAPS API -->
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDzthaKLe4ErDUpefWcSlOvk2ZMSPJMg&callback=initMap">
-</script>
+<!-- GOOGLE MAPS -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDzthaKLe4ErDUpefWcSlOvk2ZMSPJMg&callback=initMap" async defer></script>
 
 </body>
 </html>
