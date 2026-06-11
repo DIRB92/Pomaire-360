@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pomaire Guía Turística</title>
+<title>Pomaire App Turística</title>
 
 <style>
-
-/* BASE */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f7f7f7;
-    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
 }
 
 /* HEADER */
@@ -20,206 +17,220 @@ header {
     background: linear-gradient(135deg, #8B4513, #b35c1e);
     color: white;
     text-align: center;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-/* NAV */
-nav {
-    background: #5a2e0c;
+/* FILTROS */
+#filtros {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background: #fff;
+    padding: 10px;
 }
 
-nav a {
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 14px;
+#filtros button {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #eee;
+    transition: 0.2s;
 }
 
-nav a:hover {
-    background: #8B4513;
-}
-
-/* SECCIONES */
-section {
-    margin: 20px;
-    padding: 25px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-h2 {
-    color: #b35c1e;
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: #fafafa;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.03);
+#filtros button:hover {
+    background: #ddd;
 }
 
 /* MAPA */
-iframe {
+#map {
     width: 100%;
-    height: 400px;
-    border-radius: 10px;
-    border: none;
+    height: 70vh;
 }
 
-/* BOTONES */
+/* TARJETAS INFO */
+.info {
+    padding: 20px;
+}
+
+/* APORTES */
+#aportes {
+    padding: 30px;
+    text-align: center;
+    background: #fff8f0;
+}
+
+.donaciones button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: #ddd;
+    cursor: pointer;
+}
+
 .btn {
+    display: inline-block;
     background: #009ee3;
     color: white;
     padding: 12px 20px;
     border-radius: 8px;
-    display: inline-block;
+    margin-top: 10px;
     text-decoration: none;
-    margin: 5px;
 }
 
-/* APORTES */
-.donaciones button {
-    padding: 10px 15px;
-    margin: 5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
+/* FOOTER */
 footer {
     background: #222;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Pomaire en 1 Día</h1>
-<p>Descubre cultura, gastronomía y artesanía</p>
+<h1>Pomaire App Turística</h1>
+<p>Explora, visita y disfruta el pueblo</p>
 </header>
 
-<nav>
-<a href="#mapa">Mapa</a>
-<a href="#primera">Primera vez</a>
-<a href="#ruta">Ruta alfarera</a>
-<a href="#restaurantes">Restaurantes</a>
-<a href="#tiendas">Tiendas</a>
-<a href="#paseos">Paseos</a>
-<a href="#fotospots">Fotos</a>
-<a href="#eventos">Eventos</a>
-<a href="#servicios">Servicios</a>
-<a href="#chancho">Chancho</a>
-<a href="#aportes">Apoyar</a>
-</nav>
+<!-- FILTROS -->
+<div id="filtros">
+<button onclick="mostrarCategoria('todos')">🌍 Todo</button>
+<button onclick="mostrarCategoria('restaurante')">🍽 Restaurantes</button>
+<button onclick="mostrarCategoria('servicio')">🏪 Servicios</button>
+<button onclick="mostrarCategoria('foto')">📸 Fotospots</button>
+<button onclick="mostrarCategoria('tienda')">🏺 Tiendas</button>
+</div>
 
 <!-- MAPA -->
-<section id="mapa">
-<div class="grid">
-<div class="card">🍽 Empanadas gigantes</div>
-<div class="card">🍲 Comida típica</div>
-<div class="card">🍖 Parrilladas</div>
+<div id="map"></div>
+
+<!-- INFO EXTRA -->
+<div class="info">
+<h2>🐷 Chancho Alcancía más grande del mundo</h2>
+<p>Uno de los símbolos más representativos de Pomaire.</p>
+
+<p><b>📍 Dirección:</b> Av. Roberto Bravo, Pomaire, Melipilla, Chile</p>
+
+<a href="https://www.google.com/maps?q=Chancho+Pomaire" target="_blank">
+Ver en Google Maps
+</a>
 </div>
-</section>
 
-<!-- TIENDAS -->
-<section id="tiendas">
-<h2>Tiendas</h2>
-<div class="grid">
-<div class="card">🏺 Vasijas</div>
-<div class="card">🎁 Souvenirs</div>
-<div class="card">🛍 Artesanía</div>
+<!-- APORTES -->
+<section id="aportes">
+<h2>Apoya esta guía</h2>
+
+<p>Proyecto independiente para impulsar el turismo local 💛</p>
+
+<div class="donaciones">
+<button>$1.000</button>
+<button>$2.000</button>
+<button>$5.000</button>
+<button>$10.000</button>
 </div>
+
+<a class="btn" href="https://link.mercadopago.cl/innovati" target="_blank">
+💳 Donar con Mercado Pago
+</a>
+
+<p style="font-size:13px;color:gray;">
+Aporte voluntario
+</p>
 </section>
 
-<!-- PASEOS -->
-<section id="paseos">
-<h2>Paseos</h2>
-<div class="grid">
-<div class="card">🌳 Plaza</div>
-<div class="card">🏘 Calles tradicionales</div>
-<div class="card">🏺 Feria artesanal</div>
-</div>
-</section>
+<footer>
+<p>© 2026 Turismo Pomaire</p>
+</footer>
 
-<!-- FOTOS -->
-<section id="fotospots">
-<h2>Fotospots</h2>
-<div class="grid">
-<div class="card">📸 Letras Pomaire</div>
-<div class="card">📸 Ollas gigantes</div>
-<div class="card">📸 Calle principal</div>
-</div>
-</section>
+<script>
+let map;
+let markers = [];
 
-<!-- EVENTOS -->
-<section id="eventos">
-<h2>Eventos</h2>
-<p>Fiestas costumbristas, ferias locales y gastronomía.</p>
-</section>
+/* LUGARES (puedes agregar más después) */
+const lugares = [
+{
+    nombre: "Chancho Alcancía Gigante",
+    lat: -33.7050,
+    lng: -71.1425,
+    categoria: "foto"
+},
+{
+    nombre: "Feria Artesanal",
+    lat: -33.7055,
+    lng: -71.1420,
+    categoria: "tienda"
+},
+{
+    nombre: "Restaurante Tradicional",
+    lat: -33.7060,
+    lng: -71.1415,
+    categoria: "restaurante"
+},
+{
+    nombre: "Baños Públicos",
+    lat: -33.7053,
+    lng: -71.1410,
+    categoria: "servicio"
+},
+{
+    nombre: "Cajero automático",
+    lat: -33.7048,
+    lng: -71.1418,
+    categoria: "servicio"
+}
+];
 
-<!-- SERVICIOS -->
-<section id="servicios">
-<h2>Servicios esenciales</h2>
-<div class="grid">
-<div class="card">🚻 Baños</div>
-<div class="card">🅿️ Estacionamiento</div>
-<div class="card">🚑 Salud</div>
-<div class="card">🚓 Policía</div>
-<div class="card">💊 Farmacia</div>
-<div class="card">🏧 Cajeros</div>
-</div>
-</section>
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -33.705, lng: -71.142 },
+        zoom: 16
+    });
 
-<!-- CHANCHO -->
-<section id="chancho">
+    cargarMarcadores("todos");
+}
 
+function cargarMarcadores(categoria) {
+    limpiarMarcadores();
 
-<iframe src="https://www.google.com/maps?q=Pomaire,Chile&output=embed"></iframe>
+    lugares.forEach(lugar => {
+        if (categoria === "todos" || lugar.categoria === categoria) {
 
-</section>
+            const marker = new google.maps.Marker({
+                position: { lat: lugar.lat, lng: lugar.lng },
+                map: map,
+                title: lugar.nombre
+            });
 
-<!-- PRIMERA VEZ -->
-<section id="primera">
-<h2>Primera vez</h2>
-<p>Pomaire es reconocido por su artesanía en greda, su comida típica y su identidad rural chilena.</p>
-</section>
+            const info = new google.maps.InfoWindow({
+                content: `<b>${lugar.nombre}</b><br>Categoría: ${lugar.categoria}<q=${lugar.lat},${lugar.lng}Cómo llegar</a>`
+            });
 
-<!-- RUTA -->
-<section id="ruta">
-<h2>Ruta alfarera</h2>
-<ol>
-<li>Entrada del pueblo</li>
-<li>Feria artesanal</li>
-<li>Talleres de greda</li>
-<li>Hornos tradicionales</li>
-<li>Tiendas locales</li>
-</ol>
-</section>
+            marker.addListener("click", () => info.open(map, marker));
 
-<!-- RESTAURANTES -->
+            markers.push(marker);
+        }
+    });
+}
+
+function limpiarMarcadores() {
+    markers.forEach(m => m.setMap(null));
+    markers = [];
+}
+
+function mostrarCategoria(cat) {
+    cargarMarcadores(cat);
+}
+</script>
+
+<!-- GOOGLE MAPS API -->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApDzthaKLe4ErDUpefWcSlOvk2ZMSPJMg&callback=initMap">
+</script>
+
+</body>
+</html>
