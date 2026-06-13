@@ -378,6 +378,33 @@
     .sites-bar { top: .6rem; left: .6rem; gap: .3rem; }
     .site-btn { font-size: .68rem; padding: .28rem .55rem; }
   }
+
+  /* ── LANG SELECTOR ───────────────────────────────── */
+  .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    background: rgba(255,255,255,.12);
+    color: rgba(255,255,255,.8);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 6px;
+    padding: .18rem .38rem;
+    font-size: .7rem;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1.4;
+    transition: background .15s, color .15s;
+    letter-spacing: .02em;
+  }
+  .lang-btn:hover { background: rgba(255,255,255,.25); color: #fff; }
+  .lang-btn.lang-active { background: #fff; color: var(--clay-dark); }
+  @media (max-width:480px) {
+    .lang-btn { font-size: .62rem; padding: .15rem .3rem; }
+  }
 </style>
 </head>
 <body>
@@ -385,16 +412,26 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#inicio">🏺 Pomaire 360</a>
-  <a class="nav-link" href="#estacionamientos">Estacionar</a>
-  <a class="nav-link" href="#salud">Salud</a>
-  <a class="nav-link" href="#seguridad">Seguridad</a>
-  <a class="nav-link" href="#comercio">Comercio</a>
-  <a class="nav-link" href="#alfareria">Alfarería</a>
-  <a class="nav-link" href="#gastronomia">Comer</a>
-  <a class="nav-link" href="#alrededores">Alrededores</a>
-  <a class="nav-link" href="#plaza">Plaza Pública</a>
-  <a class="nav-link" href="#mapa">Mapa</a>
-  <a class="nav-link" href="#donaciones">Apoyar</a>
+  <a class="nav-link" href="#estacionamientos" data-t="nav_park">Estacionar</a>
+  <a class="nav-link" href="#salud" data-t="nav_health">Salud</a>
+  <a class="nav-link" href="#seguridad" data-t="nav_security">Seguridad</a>
+  <a class="nav-link" href="#comercio" data-t="nav_commerce">Comercio</a>
+  <a class="nav-link" href="#alfareria" data-t="nav_pottery">Alfarería</a>
+  <a class="nav-link" href="#gastronomia" data-t="nav_food">Comer</a>
+  <a class="nav-link" href="#alrededores" data-t="nav_around">Alrededores</a>
+  <a class="nav-link" href="#plaza" data-t="nav_plaza">Plaza Pública</a>
+  <a class="nav-link" href="#mapa" data-t="nav_map">Mapa</a>
+  <a class="nav-link" href="#donaciones" data-t="nav_donate">Apoyar</a>
+
+  <div class="lang-selector">
+    <button class="lang-btn" data-lang="es" onclick="applyLang('es')">ES</button>
+    <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
+    <button class="lang-btn" data-lang="pt" onclick="applyLang('pt')">PT</button>
+    <button class="lang-btn" data-lang="fr" onclick="applyLang('fr')">FR</button>
+    <button class="lang-btn" data-lang="ru" onclick="applyLang('ru')">РУ</button>
+    <button class="lang-btn" data-lang="ja" onclick="applyLang('ja')">日本</button>
+    <button class="lang-btn" data-lang="zh" onclick="applyLang('zh')">中文</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -407,16 +444,16 @@
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
   </div>
   <span class="hero-pottery">🏺</span>
-  <div class="hero-tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
-  <h1>Bienvenido/a a <em>Pomaire</em></h1>
+  <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
+  <h1 data-t="hero_h1">Bienvenido/a a <em>Pomaire</em></h1>
   <p class="hero-sub">
-    Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.
+    <span data-t="hero_sub">Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.</span>
   </p>
   <div class="emergency-bar">
-    <a href="tel:133">🚔 133 Carabineros</a>
-    <a href="tel:131">🚑 131 SAMU Ambulancia</a>
-    <a href="tel:132">🚒 132 Bomberos</a>
-    <a href="tel:149">🕊️ 149 Paz ciudadana</a>
+    <a href="tel:133" data-t="emer_police">🚔 133 Carabineros</a>
+    <a href="tel:131" data-t="emer_samu">🚑 131 SAMU Ambulancia</a>
+    <a href="tel:132" data-t="emer_fire">🚒 132 Bomberos</a>
+    <a href="tel:149" data-t="emer_peace">🕊️ 149 Paz ciudadana</a>
   </div>
 </section>
 
@@ -426,8 +463,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🅿️</span>
       <div>
-        <h2>Estacionamientos</h2>
-        <p>Llegan miles de visitantes cada fin de semana — planifica dónde dejar tu auto</p>
+        <h2 data-t="s_park_title">Estacionamientos</h2>
+        <p data-t="s_park_sub">Llegan miles de visitantes cada fin de semana — planifica dónde dejar tu auto</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -468,8 +505,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🏥</span>
       <div>
-        <h2>Salud y urgencias médicas</h2>
-        <p>CESFAM, hospital y SAMU para Pomaire y alrededores</p>
+        <h2 data-t="s_health_title">Salud y urgencias médicas</h2>
+        <p data-t="s_health_sub">CESFAM, hospital y SAMU para Pomaire y alrededores</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -514,14 +551,14 @@
     <div class="section-header reveal">
       <span class="section-icon">🚔</span>
       <div>
-        <h2>Seguridad y emergencias</h2>
-        <p>Carabineros, Bomberos y líneas de apoyo</p>
+        <h2 data-t="s_sec_title">Seguridad y emergencias</h2>
+        <p data-t="s_sec_sub">Carabineros, Bomberos y líneas de apoyo</p>
       </div>
     </div>
 
     <div class="section-divider reveal">🏺 · 🏺 · 🏺</div>
 
-    <h3 style="text-align:center;color:var(--muted);font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;" class="reveal">Números de emergencia</h3>
+    <h3 style="text-align:center;color:var(--muted);font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;" class="reveal" data-t="emer_numbers">Números de emergencia</h3>
     <div class="emergency-grid reveal">
       <div class="emer-num"><a href="tel:133">133</a><span>Carabineros</span></div>
       <div class="emer-num"><a href="tel:131">131</a><span>SAMU Ambulancia</span></div>
@@ -565,8 +602,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🛒</span>
       <div>
-        <h2>Almacenes y servicios cotidianos</h2>
-        <p>Lo básico para vivir o pasar el día en Pomaire</p>
+        <h2 data-t="s_com_title">Almacenes y servicios cotidianos</h2>
+        <p data-t="s_com_sub">Lo básico para vivir o pasar el día en Pomaire</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -623,8 +660,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🌳</span>
       <div>
-        <h2>Plaza y espacios públicos</h2>
-        <p>Puntos de encuentro y descanso en el corazón de Pomaire</p>
+        <h2 data-t="s_pla_title">Plaza y espacios públicos</h2>
+        <p data-t="s_pla_sub">Puntos de encuentro y descanso en el corazón de Pomaire</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -665,8 +702,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🏺</span>
       <div>
-        <h2>Alfarería — el corazón de Pomaire</h2>
-        <p>Talleres, compras y la tradición artesanal que define al pueblo</p>
+        <h2 data-t="s_pot_title">Alfarería — el corazón de Pomaire</h2>
+        <p data-t="s_pot_sub">Talleres, compras y la tradición artesanal que define al pueblo</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -711,8 +748,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🍽️</span>
       <div>
-        <h2>Gastronomía típica</h2>
-        <p>Sabores tradicionales en cazuela de greda</p>
+        <h2 data-t="s_gas_title">Gastronomía típica</h2>
+        <p data-t="s_gas_sub">Sabores tradicionales en cazuela de greda</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -751,8 +788,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🌄</span>
       <div>
-        <h2>Alrededores de Pomaire</h2>
-        <p>Los Chiñihues y sectores cercanos que vale la pena conocer</p>
+        <h2 data-t="s_aro_title">Alrededores de Pomaire</h2>
+        <p data-t="s_aro_sub">Los Chiñihues y sectores cercanos que vale la pena conocer</p>
       </div>
     </div>
     <div class="cards reveal">
@@ -805,8 +842,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🗺️</span>
       <div>
-        <h2>Pomaire en el mapa</h2>
-        <p>Ubicación del pueblo y sus alrededores</p>
+        <h2 data-t="s_map_title">Pomaire en el mapa</h2>
+        <p data-t="s_map_sub">Ubicación del pueblo y sus alrededores</p>
       </div>
     </div>
     <div class="map-wrap reveal">
@@ -833,17 +870,17 @@
     <div class="section-header">
       <span class="section-icon" style="font-size:2.5rem;">💛</span>
       <div>
-        <h2>Apoya este proyecto</h2>
-        <p>Guía gratuita, mantenida con voluntad y amor por Pomaire</p>
+        <h2 data-t="s_don_title">Apoya este proyecto</h2>
+        <p data-t="s_don_sub">Guía gratuita, mantenida con voluntad y amor por Pomaire</p>
       </div>
     </div>
     <p class="donate-tagline">
-      Pomaire 360 es un proyecto independiente sin publicidad. Si te fue útil esta guía, un aporte voluntario ayuda a mantener la información actualizada. ¡Gracias!
+      <span data-t="donate_text">Pomaire 360 es un proyecto independiente sin publicidad. Si te fue útil esta guía, un aporte voluntario ayuda a mantener la información actualizada. ¡Gracias!</span>
     </p>
     <a class="donate-btn" href="https://link.mercadopago.cl/innovati" target="_blank" rel="noopener">
       🏺 Hacer un aporte voluntario
     </a>
-    <p class="donate-note">Pago seguro con Mercado Pago · tarjeta, transferencia o billetera digital</p>
+    <p class="donate-note" data-t="donate_note">Pago seguro con Mercado Pago · tarjeta, transferencia o billetera digital</p>
   </div>
 </section>
 
@@ -859,7 +896,7 @@
     <a href="https://www.melipilla.cl" target="_blank">melipilla.cl</a> ·
     <a href="https://corpomelipilla.cl" target="_blank">corpomelipilla.cl</a>
   </p>
-  <p style="margin-top:.5rem;font-size:.76rem;">Última revisión: junio 2026 · Pomaire, Melipilla, Región Metropolitana</p>
+  <p style="margin-top:.5rem;font-size:.76rem;" data-t="footer_date">Última revisión: junio 2026 · Pomaire, Melipilla, Región Metropolitana</p>
 </footer>
 
 <script>
@@ -875,5 +912,273 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 </script>
+
+<script>
+const LANGS = {
+  es: {
+    nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
+    nav_commerce:"Comercio", nav_pottery:"Alfarería", nav_food:"Comer",
+    nav_around:"Alrededores", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar",
+    hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
+    hero_h1:"Bienvenido/a a <em>Pomaire</em>",
+    hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
+    emer_police:"🚔 133 Carabineros", emer_samu:"🚑 131 SAMU Ambulancia", emer_fire:"🚒 132 Bomberos", emer_peace:"🕊️ 149 Paz ciudadana",
+    s_park_title:"Estacionamientos", s_park_sub:"Llegan miles de visitantes cada fin de semana — planifica dónde dejar tu auto",
+    s_health_title:"Salud y urgencias médicas", s_health_sub:"CESFAM, hospital y SAMU para Pomaire y alrededores",
+    s_sec_title:"Seguridad y emergencias", s_sec_sub:"Carabineros, Bomberos y líneas de apoyo",
+    s_com_title:"Almacenes y servicios cotidianos", s_com_sub:"Lo básico para vivir o pasar el día en Pomaire",
+    s_pot_title:"Alfarería — el corazón de Pomaire", s_pot_sub:"Talleres, compras y la tradición artesanal que define al pueblo",
+    s_gas_title:"Gastronomía típica", s_gas_sub:"Sabores tradicionales en cazuela de greda",
+    s_aro_title:"Alrededores de Pomaire", s_aro_sub:"Los Chiñihues y sectores cercanos que vale la pena conocer",
+    s_pla_title:"Plaza y espacios públicos", s_pla_sub:"Puntos de encuentro y descanso en el corazón de Pomaire",
+    s_map_title:"Pomaire en el mapa", s_map_sub:"Ubicación del pueblo y sus alrededores",
+    s_don_title:"Apoya este proyecto", s_don_sub:"Guía gratuita, mantenida con voluntad y amor por Pomaire",
+    donate_text:"Pomaire 360 es un proyecto independiente sin publicidad. Si te fue útil esta guía, un aporte voluntario ayuda a mantener la información actualizada. ¡Gracias!",
+    donate_btn:"🏺 Hacer un aporte voluntario",
+    donate_note:"Pago seguro con Mercado Pago · tarjeta, transferencia o billetera digital",
+    emer_numbers:"Números de emergencia",
+    footer_tagline:"Guía para visitantes y nuevos residentes",
+    footer_emer:"Emergencias:",
+    footer_disc:"Información de carácter orientativo. Verifica horarios y datos directamente con cada institución.",
+    footer_date:"Última revisión: junio 2026 · Pomaire, Melipilla, Región Metropolitana"
+  },
+  en: {
+    nav_park:"Parking", nav_health:"Health", nav_security:"Safety", nav_commerce:"Shops",
+    nav_pottery:"Pottery", nav_food:"Eat", nav_around:"Around", nav_plaza:"Town Square",
+    nav_map:"Map", nav_donate:"Support",
+    hero_tag:"📍 Pomaire · Melipilla · Metropolitan Region",
+    hero_h1:"Welcome to <em>Pomaire</em>",
+    hero_sub:"Everything you need to know if you're visiting or just moved to the most famous pottery village in Chile. Services, emergencies, parking and much more.",
+    emer_police:"🚔 133 Police", emer_samu:"🚑 131 Ambulance", emer_fire:"🚒 132 Fire Dept.", emer_peace:"🕊️ 149 Citizens' Line",
+    s_park_title:"Parking", s_park_sub:"Thousands of visitors arrive every weekend — plan where to park your car",
+    s_health_title:"Health & Medical Emergencies", s_health_sub:"CESFAM clinic, hospital and ambulance for Pomaire and surroundings",
+    s_sec_title:"Safety & Emergencies", s_sec_sub:"Police, Fire Department and support lines",
+    s_com_title:"Shops & Everyday Services", s_com_sub:"The basics for living or spending the day in Pomaire",
+    s_pot_title:"Pottery — the heart of Pomaire", s_pot_sub:"Workshops, shopping and the craft tradition that defines this village",
+    s_gas_title:"Traditional Food", s_gas_sub:"Traditional flavours served in clay pots",
+    s_aro_title:"Around Pomaire", s_aro_sub:"Los Chiñihues and nearby areas worth exploring",
+    s_pla_title:"Town Square & Public Spaces", s_pla_sub:"Meeting points and rest areas in the heart of Pomaire",
+    s_map_title:"Pomaire on the Map", s_map_sub:"Village location and surroundings",
+    s_don_title:"Support this Project", s_don_sub:"Free guide, maintained with dedication and love for Pomaire",
+    donate_text:"Pomaire 360 is an independent, ad-free project. If this guide was helpful, a voluntary contribution helps keep the information updated. Thank you!",
+    donate_btn:"🏺 Make a voluntary contribution",
+    donate_note:"Secure payment via Mercado Pago · card, bank transfer or digital wallet",
+    emer_numbers:"Emergency Numbers",
+    footer_tagline:"Guide for visitors and new residents",
+    footer_emer:"Emergencies:",
+    footer_disc:"Information is for guidance only. Please verify hours and details directly with each institution.",
+    footer_date:"Last updated: June 2026 · Pomaire, Melipilla, Metropolitan Region"
+  },
+  pt: {
+    nav_park:"Estacionar", nav_health:"Saúde", nav_security:"Segurança", nav_commerce:"Comércio",
+    nav_pottery:"Olaria", nav_food:"Comer", nav_around:"Arredores", nav_plaza:"Praça",
+    nav_map:"Mapa", nav_donate:"Apoiar",
+    hero_tag:"📍 Pomaire · Melipilla · Região Metropolitana",
+    hero_h1:"Bem-vindo/a a <em>Pomaire</em>",
+    hero_sub:"Tudo o que você precisa saber se está visitando ou acabou de chegar à vila de cerâmica mais famosa do Chile. Serviços, emergências, estacionamento e muito mais.",
+    emer_police:"🚔 133 Polícia", emer_samu:"🚑 131 Ambulância", emer_fire:"🚒 132 Bombeiros", emer_peace:"🕊️ 149 Linha Cidadã",
+    s_park_title:"Estacionamento", s_park_sub:"Milhares de visitantes chegam todo fim de semana — planeje onde deixar seu carro",
+    s_health_title:"Saúde e Urgências Médicas", s_health_sub:"Posto de saúde, hospital e SAMU para Pomaire e arredores",
+    s_sec_title:"Segurança e Emergências", s_sec_sub:"Polícia, Bombeiros e linhas de apoio",
+    s_com_title:"Mercados e Serviços do Dia a Dia", s_com_sub:"O essencial para viver ou passar o dia em Pomaire",
+    s_pot_title:"Olaria — o coração de Pomaire", s_pot_sub:"Ateliês, compras e a tradição artesanal que define a vila",
+    s_gas_title:"Gastronomia Típica", s_gas_sub:"Sabores tradicionais em panela de barro",
+    s_aro_title:"Arredores de Pomaire", s_aro_sub:"Los Chiñihues e setores próximos que vale a pena conhecer",
+    s_pla_title:"Praça e Espaços Públicos", s_pla_sub:"Pontos de encontro e descanso no coração de Pomaire",
+    s_map_title:"Pomaire no Mapa", s_map_sub:"Localização da vila e arredores",
+    s_don_title:"Apoie este Projeto", s_don_sub:"Guia gratuito, mantido com dedicação e amor por Pomaire",
+    donate_text:"Pomaire 360 é um projeto independente sem publicidade. Se este guia foi útil, uma contribuição voluntária ajuda a manter as informações atualizadas. Obrigado!",
+    donate_btn:"🏺 Fazer uma contribuição voluntária",
+    donate_note:"Pagamento seguro via Mercado Pago · cartão, transferência ou carteira digital",
+    emer_numbers:"Números de Emergência",
+    footer_tagline:"Guia para visitantes e novos moradores",
+    footer_emer:"Emergências:",
+    footer_disc:"As informações são apenas orientativas. Verifique horários e dados diretamente com cada instituição.",
+    footer_date:"Última atualização: junho 2026 · Pomaire, Melipilla, Região Metropolitana"
+  },
+  fr: {
+    nav_park:"Parking", nav_health:"Santé", nav_security:"Sécurité", nav_commerce:"Commerces",
+    nav_pottery:"Poterie", nav_food:"Manger", nav_around:"Alentours", nav_plaza:"Place",
+    nav_map:"Carte", nav_donate:"Soutenir",
+    hero_tag:"📍 Pomaire · Melipilla · Région Métropolitaine",
+    hero_h1:"Bienvenue à <em>Pomaire</em>",
+    hero_sub:"Tout ce que vous devez savoir si vous visitez ou venez d'arriver dans le village de poterie le plus célèbre du Chili. Services, urgences, parking et bien plus.",
+    emer_police:"🚔 133 Police", emer_samu:"🚑 131 Ambulance", emer_fire:"🚒 132 Pompiers", emer_peace:"🕊️ 149 Ligne Citoyenne",
+    s_park_title:"Parking", s_park_sub:"Des milliers de visiteurs arrivent chaque week-end — planifiez où garer votre voiture",
+    s_health_title:"Santé et Urgences Médicales", s_health_sub:"Clinique, hôpital et SAMU pour Pomaire et ses environs",
+    s_sec_title:"Sécurité et Urgences", s_sec_sub:"Police, Pompiers et lignes d'assistance",
+    s_com_title:"Épiceries et Services Quotidiens", s_com_sub:"L'essentiel pour vivre ou passer la journée à Pomaire",
+    s_pot_title:"Poterie — le cœur de Pomaire", s_pot_sub:"Ateliers, achats et tradition artisanale qui définit ce village",
+    s_gas_title:"Gastronomie Typique", s_gas_sub:"Saveurs traditionnelles dans des plats en argile",
+    s_aro_title:"Autour de Pomaire", s_aro_sub:"Los Chiñihues et les environs qui méritent le détour",
+    s_pla_title:"Place et Espaces Publics", s_pla_sub:"Points de rencontre et de repos au cœur de Pomaire",
+    s_map_title:"Pomaire sur la Carte", s_map_sub:"Localisation du village et de ses environs",
+    s_don_title:"Soutenez ce Projet", s_don_sub:"Guide gratuit, maintenu avec dévouement et amour pour Pomaire",
+    donate_text:"Pomaire 360 est un projet indépendant sans publicité. Si ce guide vous a été utile, une contribution volontaire aide à maintenir les informations à jour. Merci !",
+    donate_btn:"🏺 Faire une contribution volontaire",
+    donate_note:"Paiement sécurisé via Mercado Pago · carte, virement ou portefeuille numérique",
+    emer_numbers:"Numéros d'Urgence",
+    footer_tagline:"Guide pour visiteurs et nouveaux résidents",
+    footer_emer:"Urgences :",
+    footer_disc:"Les informations sont indicatives. Vérifiez les horaires et détails directement avec chaque institution.",
+    footer_date:"Dernière mise à jour : juin 2026 · Pomaire, Melipilla, Région Métropolitaine"
+  },
+  ru: {
+    nav_park:"Парковка", nav_health:"Здоровье", nav_security:"Безопасность", nav_commerce:"Магазины",
+    nav_pottery:"Керамика", nav_food:"Еда", nav_around:"Окрестности", nav_plaza:"Площадь",
+    nav_map:"Карта", nav_donate:"Поддержать",
+    hero_tag:"📍 Помайре · Мелипилья · Столичный регион",
+    hero_h1:"Добро пожаловать в <em>Помайре</em>",
+    hero_sub:"Всё, что нужно знать при посещении или переезде в самую известную гончарную деревню Чили. Услуги, экстренные службы, парковка и многое другое.",
+    emer_police:"🚔 133 Полиция", emer_samu:"🚑 131 Скорая помощь", emer_fire:"🚒 132 Пожарная", emer_peace:"🕊️ 149 Гражданская линия",
+    s_park_title:"Парковка", s_park_sub:"Тысячи туристов приезжают каждые выходные — планируйте парковку заранее",
+    s_health_title:"Здоровье и медицинские экстренные случаи", s_health_sub:"Медпункт, больница и скорая помощь для Помайре и окрестностей",
+    s_sec_title:"Безопасность и экстренные службы", s_sec_sub:"Полиция, пожарная охрана и линии поддержки",
+    s_com_title:"Магазины и повседневные услуги", s_com_sub:"Всё необходимое для жизни или дневного визита в Помайре",
+    s_pot_title:"Гончарное дело — сердце Помайре", s_pot_sub:"Мастерские, покупки и ремесленные традиции деревни",
+    s_gas_title:"Традиционная кухня", s_gas_sub:"Традиционные блюда в глиняной посуде",
+    s_aro_title:"Окрестности Помайре", s_aro_sub:"Лос-Чиньихуэс и близлежащие места, которые стоит посетить",
+    s_pla_title:"Площадь и общественные пространства", s_pla_sub:"Места встреч и отдыха в сердце Помайре",
+    s_map_title:"Помайре на карте", s_map_sub:"Расположение деревни и окрестностей",
+    s_don_title:"Поддержите этот проект", s_don_sub:"Бесплатный путеводитель, поддерживаемый с любовью к Помайре",
+    donate_text:"Pomaire 360 — независимый проект без рекламы. Если это руководство оказалось полезным, добровольный взнос поможет поддерживать информацию актуальной. Спасибо!",
+    donate_btn:"🏺 Сделать добровольный взнос",
+    donate_note:"Безопасная оплата через Mercado Pago · карта, перевод или цифровой кошелёк",
+    emer_numbers:"Экстренные номера",
+    footer_tagline:"Путеводитель для туристов и новых жителей",
+    footer_emer:"Экстренные службы:",
+    footer_disc:"Информация носит ориентировочный характер. Уточняйте расписание непосредственно в учреждениях.",
+    footer_date:"Последнее обновление: июнь 2026 · Помайре, Мелипилья, Столичный регион"
+  },
+  ja: {
+    nav_park:"駐車場", nav_health:"医療", nav_security:"安全", nav_commerce:"ショッピング",
+    nav_pottery:"陶芸", nav_food:"グルメ", nav_around:"周辺", nav_plaza:"広場",
+    nav_map:"地図", nav_donate:"サポート",
+    hero_tag:"📍 ポマイレ · メリピジャ · 首都圏",
+    hero_h1:"<em>ポマイレ</em>へようこそ",
+    hero_sub:"チレで最も有名な陶芸の村を訪れる方、または新たに住み始めた方に必要な情報をすべてご案内します。サービス、緊急連絡先、駐車場など。",
+    emer_police:"🚔 133 警察", emer_samu:"🚑 131 救急車", emer_fire:"🚒 132 消防", emer_peace:"🕊️ 149 市民ライン",
+    s_park_title:"駐車場", s_park_sub:"毎週末に何千人もの観光客が訪れます — 駐車場を事前に計画しましょう",
+    s_health_title:"医療・緊急サービス", s_health_sub:"ポマイレ周辺のクリニック、病院、救急車",
+    s_sec_title:"安全・緊急サービス", s_sec_sub:"警察、消防、サポートライン",
+    s_com_title:"商店・日用サービス", s_com_sub:"ポマイレでの生活や日帰り訪問に必要な基本情報",
+    s_pot_title:"陶芸 — ポマイレの心", s_pot_sub:"工房、ショッピング、村を象徴する伝統工芸",
+    s_gas_title:"伝統料理", s_gas_sub:"土鍋で提供される伝統的な味",
+    s_aro_title:"ポマイレ周辺", s_aro_sub:"ロス・チニュエスと近隣の見どころ",
+    s_pla_title:"広場・公共スペース", s_pla_sub:"ポマイレの中心部にある集合・休憩スポット",
+    s_map_title:"地図でポマイレを見る", s_map_sub:"村の位置と周辺",
+    s_don_title:"このプロジェクトを支援する", s_don_sub:"ポマイレへの愛で維持される無料ガイド",
+    donate_text:"Pomaire 360 は広告のない独立したプロジェクトです。このガイドが役に立ったなら、任意の寄付が情報の更新維持に役立ちます。ありがとうございます！",
+    donate_btn:"🏺 任意寄付をする",
+    donate_note:"Mercado Pago で安全に支払い · カード、送金、またはデジタルウォレット",
+    emer_numbers:"緊急番号",
+    footer_tagline:"観光客と新住民のためのガイド",
+    footer_emer:"緊急連絡先：",
+    footer_disc:"情報は目安です。時間や詳細は各機関に直接ご確認ください。",
+    footer_date:"最終更新：2026年6月 · ポマイレ、メリピジャ、首都圏"
+  },
+  zh: {
+    nav_park:"停车场", nav_health:"医疗", nav_security:"安全", nav_commerce:"商店",
+    nav_pottery:"陶艺", nav_food:"美食", nav_around:"周边", nav_plaza:"广场",
+    nav_map:"地图", nav_donate:"支持",
+    hero_tag:"📍 波马伊雷 · 梅利皮利亚 · 首都大区",
+    hero_h1:"欢迎来到<em>波马伊雷</em>",
+    hero_sub:"无论您是游客还是刚搬来的新居民，这里提供您在智利最著名陶艺村所需的一切信息：服务、紧急联系、停车场等。",
+    emer_police:"🚔 133 警察", emer_samu:"🚑 131 救护车", emer_fire:"🚒 132 消防", emer_peace:"🕊️ 149 市民热线",
+    s_park_title:"停车场", s_park_sub:"每个周末都有数千名游客到访 — 请提前规划停车位置",
+    s_health_title:"医疗与紧急服务", s_health_sub:"波马伊雷及周边地区的诊所、医院和救护车",
+    s_sec_title:"安全与紧急服务", s_sec_sub:"警察、消防和支援热线",
+    s_com_title:"商店与日常服务", s_com_sub:"在波马伊雷生活或游览所需的基本信息",
+    s_pot_title:"陶艺 — 波马伊雷的灵魂", s_pot_sub:"工坊、购物与定义这个村庄的传统工艺",
+    s_gas_title:"传统美食", s_gas_sub:"用陶器盛放的传统风味",
+    s_aro_title:"波马伊雷周边", s_aro_sub:"洛斯奇尼乌埃斯和值得探索的附近地区",
+    s_pla_title:"广场与公共空间", s_pla_sub:"波马伊雷中心的集会与休憩场所",
+    s_map_title:"波马伊雷地图", s_map_sub:"村庄位置与周边环境",
+    s_don_title:"支持本项目", s_don_sub:"免费指南，以对波马伊雷的热爱维护",
+    donate_text:"Pomaire 360 是一个独立的无广告项目。如果本指南对您有帮助，自愿捐款将有助于保持信息更新。谢谢！",
+    donate_btn:"🏺 进行自愿捐款",
+    donate_note:"通过 Mercado Pago 安全支付 · 信用卡、银行转账或数字钱包",
+    emer_numbers:"紧急电话",
+    footer_tagline:"游客与新居民指南",
+    footer_emer:"紧急联系：",
+    footer_disc:"信息仅供参考，请直接向各机构核实时间及详情。",
+    footer_date:"最后更新：2026年6月 · 波马伊雷，梅利皮利亚，首都大区"
+  }
+};
+
+let currentLang = 'es';
+
+const KEYS = {
+  '[data-t="nav_park"]':      t => t.nav_park,
+  '[data-t="nav_health"]':    t => t.nav_health,
+  '[data-t="nav_security"]':  t => t.nav_security,
+  '[data-t="nav_commerce"]':  t => t.nav_commerce,
+  '[data-t="nav_pottery"]':   t => t.nav_pottery,
+  '[data-t="nav_food"]':      t => t.nav_food,
+  '[data-t="nav_around"]':    t => t.nav_around,
+  '[data-t="nav_plaza"]':     t => t.nav_plaza,
+  '[data-t="nav_map"]':       t => t.nav_map,
+  '[data-t="nav_donate"]':    t => t.nav_donate,
+  '[data-t="hero_tag"]':      t => t.hero_tag,
+  '[data-t="hero_h1"]':       t => t.hero_h1,
+  '[data-t="hero_sub"]':      t => t.hero_sub,
+  '[data-t="emer_police"]':   t => t.emer_police,
+  '[data-t="emer_samu"]':     t => t.emer_samu,
+  '[data-t="emer_fire"]':     t => t.emer_fire,
+  '[data-t="emer_peace"]':    t => t.emer_peace,
+  '[data-t="s_park_title"]':  t => t.s_park_title,
+  '[data-t="s_park_sub"]':    t => t.s_park_sub,
+  '[data-t="s_health_title"]':t => t.s_health_title,
+  '[data-t="s_health_sub"]':  t => t.s_health_sub,
+  '[data-t="s_sec_title"]':   t => t.s_sec_title,
+  '[data-t="s_sec_sub"]':     t => t.s_sec_sub,
+  '[data-t="s_com_title"]':   t => t.s_com_title,
+  '[data-t="s_com_sub"]':     t => t.s_com_sub,
+  '[data-t="s_pot_title"]':   t => t.s_pot_title,
+  '[data-t="s_pot_sub"]':     t => t.s_pot_sub,
+  '[data-t="s_gas_title"]':   t => t.s_gas_title,
+  '[data-t="s_gas_sub"]':     t => t.s_gas_sub,
+  '[data-t="s_aro_title"]':   t => t.s_aro_title,
+  '[data-t="s_aro_sub"]':     t => t.s_aro_sub,
+  '[data-t="s_pla_title"]':   t => t.s_pla_title,
+  '[data-t="s_pla_sub"]':     t => t.s_pla_sub,
+  '[data-t="s_map_title"]':   t => t.s_map_title,
+  '[data-t="s_map_sub"]':     t => t.s_map_sub,
+  '[data-t="s_don_title"]':   t => t.s_don_title,
+  '[data-t="s_don_sub"]':     t => t.s_don_sub,
+  '[data-t="donate_text"]':   t => t.donate_text,
+  '[data-t="donate_btn"]':    t => t.donate_btn,
+  '[data-t="donate_note"]':   t => t.donate_note,
+  '[data-t="emer_numbers"]':  t => t.emer_numbers,
+  '[data-t="footer_tagline"]':t => t.footer_tagline,
+  '[data-t="footer_emer"]':   t => t.footer_emer,
+  '[data-t="footer_disc"]':   t => t.footer_disc,
+  '[data-t="footer_date"]':   t => t.footer_date,
+};
+
+function applyLang(lang) {
+  const t = LANGS[lang];
+  if (!t) return;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  for (const [sel, fn] of Object.entries(KEYS)) {
+    document.querySelectorAll(sel).forEach(el => { el.innerHTML = fn(t); });
+  }
+  // highlight active button
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('lang-active', b.dataset.lang === lang);
+  });
+  // persist
+  try { localStorage.setItem('p360lang', lang); } catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = (() => { try { return localStorage.getItem('p360lang'); } catch(e){ return null; } })();
+  const browser = (navigator.language || 'es').slice(0,2);
+  const auto = saved || (['es','en','pt','fr','ru','ja','zh'].includes(browser) ? browser : 'es');
+  applyLang(auto);
+});
+</script>
+
 </body>
 </html>
