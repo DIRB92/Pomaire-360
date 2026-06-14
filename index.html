@@ -143,34 +143,44 @@
     z-index: 100;
     background: rgba(184,92,44,.96);
     backdrop-filter: blur(6px);
-    padding: 0 1.5rem;
+    padding: .5rem 1.2rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
-    height: 56px;
-    overflow-x: auto;
-    scrollbar-width: none;
+    gap: .35rem .6rem;
+    overflow: visible;
+    height: auto;
   }
-  nav::-webkit-scrollbar { display: none; }
 
   .nav-brand {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     color: var(--white);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     white-space: nowrap;
     text-decoration: none;
     letter-spacing: .02em;
-    margin-right: .5rem;
+    margin-right: .4rem;
+    flex-shrink: 0;
   }
+
+  .nav-links-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem .45rem;
+    align-items: center;
+    flex: 1;
+  }
+
+  .lang-selector { flex-shrink: 0; }
 
   nav a.nav-link {
     color: rgba(255,255,255,.85);
     text-decoration: none;
-    font-size: .78rem;
+    font-size: .73rem;
     font-weight: 500;
     white-space: nowrap;
-    padding: .25rem .55rem;
+    padding: .22rem .5rem;
     border-radius: 20px;
     transition: background .18s, color .18s;
   }
@@ -480,32 +490,78 @@
     .site-btn { font-size: .68rem; padding: .28rem .55rem; }
   }
 
-  /* ── LANG SELECTOR ───────────────────────────────── */
+  /* ── LANG DROPDOWN ───────────────────────────────── */
   .lang-selector {
-    display: flex;
-    align-items: center;
-    gap: .3rem;
+    position: relative;
     margin-left: auto;
     flex-shrink: 0;
   }
-  .lang-btn {
-    background: rgba(255,255,255,.12);
-    color: rgba(255,255,255,.8);
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 6px;
-    padding: .18rem .38rem;
-    font-size: .7rem;
+  .lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 22px;
+    padding: .32rem .75rem;
+    font-size: .78rem;
     font-weight: 700;
     cursor: pointer;
-    line-height: 1.4;
-    transition: background .15s, color .15s;
     letter-spacing: .02em;
+    transition: background .15s;
+    white-space: nowrap;
+    font-family: inherit;
   }
-  .lang-btn:hover { background: rgba(255,255,255,.25); color: #fff; }
-  .lang-btn.lang-active { background: #fff; color: var(--clay-dark); }
-  @media (max-width:480px) {
-    .lang-btn { font-size: .62rem; padding: .15rem .3rem; }
+  .lang-toggle:hover { background: rgba(255,255,255,.28); }
+  .lang-toggle .lang-arrow {
+    font-size: .55rem;
+    transition: transform .2s;
+    display: inline-block;
   }
+  .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + .5rem);
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.18);
+    overflow: hidden;
+    min-width: 160px;
+    z-index: 200;
+    border: 1px solid rgba(184,92,44,.1);
+  }
+  .lang-selector.open .lang-dropdown { display: block; }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .62rem 1rem;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: background .12s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+  }
+  .lang-option:hover { background: var(--smoke); }
+  .lang-option.lang-active {
+    background: #FFF3EC;
+    color: var(--clay-dark);
+    font-weight: 700;
+  }
+  .lang-option .lang-flag { font-size: 1.1rem; line-height: 1; }
+  .lang-option .lang-name { flex: 1; }
+  .lang-option .lang-check { color: var(--clay); font-size: .8rem; opacity: 0; }
+  .lang-option.lang-active .lang-check { opacity: 1; }
 
   /* ── WEATHER ─────────────────────────────────────── */
   .weather-box {
@@ -702,30 +758,52 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#inicio">🏺 Pomaire 360</a>
-  <a class="nav-link" href="#estacionamientos" data-t="nav_park">Estacionar</a>
-  <a class="nav-link" href="#salud" data-t="nav_health">Salud</a>
-  <a class="nav-link" href="#seguridad" data-t="nav_security">Seguridad</a>
-  <a class="nav-link" href="#comercio" data-t="nav_commerce">Comercio</a>
-  <a class="nav-link" href="#alfareria" data-t="nav_pottery">Alfarería</a>
-  <a class="nav-link" href="#gastronomia" data-t="nav_food">Comer</a>
-  <a class="nav-link" href="#alrededores" data-t="nav_around">Alrededores</a>
-  <a class="nav-link" href="#plaza" data-t="nav_plaza">Plaza Pública</a>
-  <a class="nav-link" href="#clima" data-t="nav_weather">Clima</a>
-  <a class="nav-link" href="#recorrido" data-t="nav_tour">Recorrido</a>
-  <a class="nav-link" href="#galeria" data-t="nav_gallery">Galería</a>
-  <a class="nav-link" href="#eventos" data-t="nav_events">Eventos</a>
-  <a class="nav-link" href="#resenas" data-t="nav_reviews">Reseñas</a>
-  <a class="nav-link" href="#mapa" data-t="nav_map">Mapa</a>
-  <a class="nav-link" href="#donaciones" data-t="nav_donate">Apoyar</a>
-
-  <div class="lang-selector">
-    <button class="lang-btn" data-lang="es" onclick="applyLang('es')">ES</button>
-    <button class="lang-btn" data-lang="en" onclick="applyLang('en')">EN</button>
-    <button class="lang-btn" data-lang="pt" onclick="applyLang('pt')">PT</button>
-    <button class="lang-btn" data-lang="fr" onclick="applyLang('fr')">FR</button>
-    <button class="lang-btn" data-lang="ru" onclick="applyLang('ru')">РУ</button>
-    <button class="lang-btn" data-lang="ja" onclick="applyLang('ja')">日本</button>
-    <button class="lang-btn" data-lang="zh" onclick="applyLang('zh')">中文</button>
+  <div class="nav-links-wrap">
+    <a class="nav-link" href="#estacionamientos" data-t="nav_park">Estacionar</a>
+    <a class="nav-link" href="#salud" data-t="nav_health">Salud</a>
+    <a class="nav-link" href="#seguridad" data-t="nav_security">Seguridad</a>
+    <a class="nav-link" href="#comercio" data-t="nav_commerce">Comercio</a>
+    <a class="nav-link" href="#alfareria" data-t="nav_pottery">Alfarería</a>
+    <a class="nav-link" href="#gastronomia" data-t="nav_food">Comer</a>
+    <a class="nav-link" href="#alrededores" data-t="nav_around">Alrededores</a>
+    <a class="nav-link" href="#plaza" data-t="nav_plaza">Plaza Pública</a>
+    <a class="nav-link" href="#clima" data-t="nav_weather">Clima</a>
+    <a class="nav-link" href="#recorrido" data-t="nav_tour">Recorrido</a>
+    <a class="nav-link" href="#galeria" data-t="nav_gallery">Galería</a>
+    <a class="nav-link" href="#eventos" data-t="nav_events">Eventos</a>
+    <a class="nav-link" href="#resenas" data-t="nav_reviews">Reseñas</a>
+    <a class="nav-link" href="#mapa" data-t="nav_map">Mapa</a>
+    <a class="nav-link" href="#donaciones" data-t="nav_donate">Apoyar</a>
+  </div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇨🇱</span>
+      <span id="langCurrentName">Español</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="en" onclick="selectLang('en')">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="pt" onclick="selectLang('pt')">
+        <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+      </button>
+      <button class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -976,7 +1054,7 @@
       </div>
 	   <div class="card">
         <div class="card-icon">🏢</div>
-        <span class="card-badge">Salón del Reino</span>
+        <span class="card-badge">Salón de Reino</span>
         <h3>Salón de Reino de los Testigos de Jehová</h3>
         <p class="card-detail">Espacio Público Espiritual. Horarios: Jueves 19:00 - 21:15 hrs.     Sábado 19:00-20:45 Hrs..</p>
         <a class="card-link" href="https://maps.app.goo.gl/1M3zuqJmMoVK41NQ8" target="_blank">📍 Ver en mapa</a>
@@ -1030,10 +1108,9 @@
 	  <div class="card">
         <div class="card-icon">🐷</div>
         <span class="card-badge">Chanco Alcancia</span>
-        <h3>Chancho Alcancia Más grande del mundo</h3>
+        <h3>Chancho Alcancia Más grande de todo el mundo</h3>
         <p class="card-detail">Museo con figuras de greda gigantes</p>
-       <a class="card-link" href="https://maps.app.goo.gl/KpmWTt5UvgBCez176">📍 Ver en mapa</a>
-	  </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1763,9 +1840,17 @@ function applyLang(lang) {
     document.querySelectorAll(sel).forEach(el => { el.innerHTML = fn(t); });
   }
   // highlight active button
-  document.querySelectorAll('.lang-btn').forEach(b => {
+  document.querySelectorAll('.lang-option').forEach(b => {
     b.classList.toggle('lang-active', b.dataset.lang === lang);
   });
+  const labels = {
+    es:['🇨🇱','Español'], en:['🇬🇧','English'], pt:['🇧🇷','Português'],
+    fr:['🇫🇷','Français'], ru:['🇷🇺','Русский'], ja:['🇯🇵','日本語'], zh:['🇨🇳','中文']
+  };
+  if (labels[lang]) {
+    document.getElementById('langCurrentFlag').textContent = labels[lang][0];
+    document.getElementById('langCurrentName').textContent = labels[lang][1];
+  }
   // persist
   try { localStorage.setItem('p360lang', lang); } catch(e){}
 }
@@ -1864,5 +1949,27 @@ function loadUserReviews() {
 }
 </script>
 
+
+<script>
+function toggleLangMenu(e) {
+  e.stopPropagation();
+  const sel = document.getElementById('langSelector');
+  const btn = document.getElementById('langToggleBtn');
+  const isOpen = sel.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+}
+function selectLang(lang) {
+  applyLang(lang);
+  document.getElementById('langSelector').classList.remove('open');
+  document.getElementById('langToggleBtn').setAttribute('aria-expanded', 'false');
+}
+document.addEventListener('click', () => {
+  const sel = document.getElementById('langSelector');
+  if (sel) {
+    sel.classList.remove('open');
+    document.getElementById('langToggleBtn').setAttribute('aria-expanded','false');
+  }
+});
+</script>
 </body>
 </html>
