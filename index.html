@@ -751,7 +751,162 @@
   .user-review-item strong { color:var(--clay-dark); }
   @media(max-width:500px){ .form-row { grid-template-columns:1fr; } }
 
+
+  /* ── INTERACTIVE MAP ─────────────────────────────── */
+  .map-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .map-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .map-filter {
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.18);
+    color: var(--muted);
+    border-radius: 20px;
+    padding: .4rem .85rem;
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .map-filter:hover { border-color: var(--clay); color: var(--clay-dark); }
+  .map-filter.active { background: var(--clay); color: #fff; border-color: var(--clay); }
+
+  .locate-btn {
+    background: var(--clay-dark);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: .5rem 1rem;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s;
+    font-family: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .locate-btn:hover { background: var(--clay); }
+  .locate-btn.active { background: var(--green); }
+
+  .leaflet-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 3px solid var(--smoke);
+    height: 420px;
+  }
+  #leafletMap { width: 100%; height: 100%; z-index: 1; }
+
+  .map-hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: .8rem;
+    margin-top: .7rem;
+  }
+
+  /* Leaflet popup theming */
+  .leaflet-popup-content-wrapper { border-radius: 10px; }
+  .leaflet-popup-content { font-family: 'Inter', sans-serif; margin: .8rem 1rem; }
+  .map-popup strong { color: var(--clay-dark); font-size: .92rem; display:block; margin-bottom:.2rem; }
+  .map-popup p { font-size: .8rem; color: var(--muted); margin-bottom: .4rem; }
+  .map-popup .popup-dist { font-size: .76rem; color: var(--green); font-weight: 700; }
+  .map-popup a { font-size: .78rem; color: var(--clay); font-weight: 600; text-decoration: none; }
+
+  /* Routes block */
+  .routes-block { margin-top: 2rem; }
+  .routes-block h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--clay-dark);
+    margin-bottom: .9rem;
+  }
+  .routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: .7rem;
+  }
+  .route-card {
+    background: var(--white);
+    border: 2px solid rgba(184,92,44,.15);
+    border-radius: var(--radius);
+    padding: 1rem .9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .35rem;
+    cursor: pointer;
+    transition: border-color .15s, transform .15s, background .15s;
+    font-family: inherit;
+    text-align: center;
+  }
+  .route-card:hover { transform: translateY(-2px); border-color: var(--clay-light); }
+  .route-card.active { background: #FFF3EC; border-color: var(--clay); }
+  .route-icon { font-size: 1.8rem; }
+  .route-card strong { font-size: .85rem; color: var(--text); }
+  .route-meta { font-size: .72rem; color: var(--muted); }
+
+  .route-clear {
+    margin-top: .8rem;
+    background: none;
+    border: 1.5px solid var(--clay-light);
+    color: var(--clay);
+    border-radius: 20px;
+    padding: .35rem .9rem;
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .route-clear:hover { background: var(--clay); color: #fff; }
+
+  /* Places list with distance */
+  .places-list {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .place-row {
+    background: var(--white);
+    border-radius: 10px;
+    padding: .7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: background .15s;
+    border-left: 3px solid var(--clay-light);
+  }
+  .place-row:hover { background: #FFF8F3; }
+  .place-row .place-icon { font-size: 1.3rem; flex-shrink:0; }
+  .place-row .place-info { flex: 1; min-width:0; }
+  .place-row .place-name { font-size: .87rem; font-weight: 600; color: var(--text); }
+  .place-row .place-cat { font-size: .73rem; color: var(--muted); }
+  .place-row .place-dist {
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--green);
+    background: #EAF5EC;
+    padding: .2rem .55rem;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .map-controls { flex-direction: column; align-items: stretch; }
+    .leaflet-wrap { height: 340px; }
+  }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 </head>
 <body>
 
@@ -1209,31 +1364,70 @@
   </div>
 </section>
 
-<!-- MAPA -->
+<!-- MAPA INTERACTIVO -->
 <section id="mapa">
   <div class="section-inner">
     <div class="section-header reveal">
       <span class="section-icon">🗺️</span>
       <div>
-        <h2 data-t="s_map_title">Pomaire en el mapa</h2>
-        <p data-t="s_map_sub">Ubicación del pueblo y sus alrededores</p>
+        <h2 data-t="s_map_title">Mapa interactivo de Pomaire</h2>
+        <p data-t="s_map_sub">Filtra lugares, calcula distancias y sigue una ruta sugerida</p>
       </div>
     </div>
-    <div class="map-wrap reveal">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10580.0!2d-71.1450!3d-33.6420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scl!4v1"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa de Pomaire">
-      </iframe>
+
+    <!-- Controles: filtros + ubicación -->
+    <div class="map-controls reveal">
+      <div class="map-filters" id="mapFilters">
+        <button class="map-filter active" data-cat="all">🏺 <span data-t="filter_all">Todos</span></button>
+        <button class="map-filter" data-cat="parking">🅿️ <span data-t="filter_parking">Estacionar</span></button>
+        <button class="map-filter" data-cat="health">🏥 <span data-t="filter_health">Salud</span></button>
+        <button class="map-filter" data-cat="security">🚔 <span data-t="filter_security">Seguridad</span></button>
+        <button class="map-filter" data-cat="pottery">🏺 <span data-t="filter_pottery">Alfarería</span></button>
+        <button class="map-filter" data-cat="food">🍽️ <span data-t="filter_food">Comer</span></button>
+        <button class="map-filter" data-cat="services">🛒 <span data-t="filter_services">Servicios</span></button>
+        <button class="map-filter" data-cat="around">🌾 <span data-t="filter_around">Alrededores</span></button>
+      </div>
+      <button class="locate-btn" id="locateBtn" onclick="locateUser()">
+        📍 <span data-t="locate_btn">Usar mi ubicación</span>
+      </button>
     </div>
-    <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:.6rem;" class="reveal">
-      <a class="card-link" style="background:var(--clay);color:#fff;padding:.45rem 1rem;border-radius:22px;text-decoration:none;font-size:.85rem;font-weight:600;" href="https://maps.google.com/?q=Pomaire+Chile" target="_blank">🗺️ Abrir Pomaire</a>
-      <a class="card-link" style="background:var(--clay);color:#fff;padding:.45rem 1rem;border-radius:22px;text-decoration:none;font-size:.85rem;font-weight:600;" href="https://maps.google.com/?q=estacionamiento+Pomaire" target="_blank">🅿️ Estacionamientos</a>
-      <a class="card-link" style="background:var(--clay);color:#fff;padding:.45rem 1rem;border-radius:22px;text-decoration:none;font-size:.85rem;font-weight:600;" href="https://maps.google.com/?q=restaurante+Pomaire" target="_blank">🍽️ Restaurantes</a>
-      <a class="card-link" style="background:var(--clay);color:#fff;padding:.45rem 1rem;border-radius:22px;text-decoration:none;font-size:.85rem;font-weight:600;" href="https://maps.google.com/?q=Los+Chiñihues+Melipilla" target="_blank">🌾 Los Chiñihues</a>
+
+    <!-- Mapa Leaflet -->
+    <div class="leaflet-wrap reveal">
+      <div id="leafletMap"></div>
     </div>
+    <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias</p>
+
+    <!-- Rutas sugeridas -->
+    <div class="routes-block reveal">
+      <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
+      <div class="routes-grid">
+        <button class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
+          <span class="route-icon">🏺</span>
+          <strong data-t="route_artisan_name">Ruta del Artesano</strong>
+          <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1.5 hrs</span>
+        </button>
+        <button class="route-card" data-route="family" onclick="loadRoute('family')">
+          <span class="route-icon">👨‍👩‍👧</span>
+          <strong data-t="route_family_name">Ruta Familiar</strong>
+          <span class="route-meta" data-t="route_family_meta">4 paradas · ~2.5 hrs</span>
+        </button>
+        <button class="route-card" data-route="food" onclick="loadRoute('food')">
+          <span class="route-icon">🍽️</span>
+          <strong data-t="route_food_name">Ruta Gastronómica</strong>
+          <span class="route-meta" data-t="route_food_meta">3 paradas · ~1 hr</span>
+        </button>
+        <button class="route-card" data-route="nature" onclick="loadRoute('nature')">
+          <span class="route-icon">🌄</span>
+          <strong data-t="route_nature_name">Ruta Naturaleza</strong>
+          <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3 hrs</span>
+        </button>
+      </div>
+      <button class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
+    </div>
+
+    <!-- Lista de lugares con distancia -->
+    <div class="places-list reveal" id="placesList"></div>
   </div>
 </section>
 
@@ -1582,6 +1776,15 @@ const LANGS = {
     review_form_title:"¿Ya visitaste Pomaire? ¡Cuéntanos!",
     rev_ph_name:"Tu nombre", rev_ph_origin:"Tu ciudad / país", rev_ph_text:"Cuéntanos tu experiencia...",
     review_btn:"⭐ Publicar reseña",
+    filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Salud", filter_security:"Seguridad",
+    filter_pottery:"Alfarería", filter_food:"Comer", filter_services:"Servicios", filter_around:"Alrededores",
+    locate_btn:"Usar mi ubicación", map_hint:"📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias",
+    routes_title:"🧭 Recorridos sugeridos",
+    route_artisan_name:"Ruta del Artesano", route_artisan_meta:"3 paradas · ~1.5 hrs",
+    route_family_name:"Ruta Familiar", route_family_meta:"4 paradas · ~2.5 hrs",
+    route_food_name:"Ruta Gastronómica", route_food_meta:"3 paradas · ~1 hr",
+    route_nature_name:"Ruta Naturaleza", route_nature_meta:"3 paradas · ~3 hrs",
+    route_clear:"Quitar ruta"
   },
   en: {
     nav_park:"Parking", nav_health:"Health", nav_security:"Safety", nav_commerce:"Shops",
@@ -1643,6 +1846,15 @@ const LANGS = {
     review_form_title:"Already visited Pomaire? Tell us!",
     rev_ph_name:"Your name", rev_ph_origin:"Your city / country", rev_ph_text:"Share your experience...",
     review_btn:"⭐ Post review",
+    filter_all:"All", filter_parking:"Parking", filter_health:"Health", filter_security:"Safety",
+    filter_pottery:"Pottery", filter_food:"Eat", filter_services:"Services", filter_around:"Around",
+    locate_btn:"Use my location", map_hint:"📍 Enable your location or click a starting point on the map to calculate distances",
+    routes_title:"🧭 Suggested Routes",
+    route_artisan_name:"Artisan Route", route_artisan_meta:"3 stops · ~1.5 hrs",
+    route_family_name:"Family Route", route_family_meta:"4 stops · ~2.5 hrs",
+    route_food_name:"Food Route", route_food_meta:"3 stops · ~1 hr",
+    route_nature_name:"Nature Route", route_nature_meta:"3 stops · ~3 hrs",
+    route_clear:"Clear route"
   },
   pt: {
     nav_park:"Estacionar", nav_health:"Saúde", nav_security:"Segurança", nav_commerce:"Comércio",
@@ -1702,7 +1914,16 @@ const LANGS = {
     rev_4_name:"Wei L.", rev_4_origin:" · China",
     review_form_title:"Já visitou Pomaire? Conte para nós!",
     rev_ph_name:"Seu nome", rev_ph_origin:"Sua cidade / país", rev_ph_text:"Conte sua experiência...",
-    review_btn:"⭐ Publicar avaliação"
+    review_btn:"⭐ Publicar avaliação",
+    filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Saúde", filter_security:"Segurança",
+    filter_pottery:"Olaria", filter_food:"Comer", filter_services:"Serviços", filter_around:"Arredores",
+    locate_btn:"Usar minha localização", map_hint:"📍 Ative sua localização ou clique em um ponto de partida no mapa para calcular distâncias",
+    routes_title:"🧭 Roteiros sugeridos",
+    route_artisan_name:"Rota do Artesão", route_artisan_meta:"3 paradas · ~1,5h",
+    route_family_name:"Rota Familiar", route_family_meta:"4 paradas · ~2,5h",
+    route_food_name:"Rota Gastronômica", route_food_meta:"3 paradas · ~1h",
+    route_nature_name:"Rota Natureza", route_nature_meta:"3 paradas · ~3h",
+    route_clear:"Remover rota"
   },
   fr: {
     nav_park:"Parking", nav_health:"Santé", nav_security:"Sécurité", nav_commerce:"Commerces",
@@ -1762,7 +1983,16 @@ const LANGS = {
     rev_4_name:"Wei L.", rev_4_origin:" · Chine",
     review_form_title:"Vous avez déjà visité Pomaire ? Dites-nous tout !",
     rev_ph_name:"Votre nom", rev_ph_origin:"Votre ville / pays", rev_ph_text:"Partagez votre expérience...",
-    review_btn:"⭐ Publier un avis"
+    review_btn:"⭐ Publier un avis",
+    filter_all:"Tous", filter_parking:"Parking", filter_health:"Santé", filter_security:"Sécurité",
+    filter_pottery:"Poterie", filter_food:"Manger", filter_services:"Services", filter_around:"Alentours",
+    locate_btn:"Utiliser ma position", map_hint:"📍 Activez votre position ou cliquez sur un point de départ sur la carte pour calculer les distances",
+    routes_title:"🧭 Itinéraires suggérés",
+    route_artisan_name:"Route de l'Artisan", route_artisan_meta:"3 arrêts · ~1h30",
+    route_family_name:"Route Familiale", route_family_meta:"4 arrêts · ~2h30",
+    route_food_name:"Route Gastronomique", route_food_meta:"3 arrêts · ~1h",
+    route_nature_name:"Route Nature", route_nature_meta:"3 arrêts · ~3h",
+    route_clear:"Effacer l'itinéraire"
   },
   ru: {
     nav_park:"Парковка", nav_health:"Здоровье", nav_security:"Безопасность", nav_commerce:"Магазины",
@@ -1822,7 +2052,16 @@ const LANGS = {
     rev_4_name:"Wei L.", rev_4_origin:" · Китай",
     review_form_title:"Уже посетили Помайре? Расскажите нам!",
     rev_ph_name:"Ваше имя", rev_ph_origin:"Ваш город / страна", rev_ph_text:"Поделитесь своими впечатлениями...",
-    review_btn:"⭐ Опубликовать отзыв"
+    review_btn:"⭐ Опубликовать отзыв",
+    filter_all:"Все", filter_parking:"Парковка", filter_health:"Здоровье", filter_security:"Безопасность",
+    filter_pottery:"Керамика", filter_food:"Еда", filter_services:"Услуги", filter_around:"Окрестности",
+    locate_btn:"Использовать моё местоположение", map_hint:"📍 Включите геолокацию или нажмите на карту, чтобы задать точку отправления",
+    routes_title:"🧭 Предложенные маршруты",
+    route_artisan_name:"Маршрут ремесленника", route_artisan_meta:"3 точки · ~1.5 ч",
+    route_family_name:"Семейный маршрут", route_family_meta:"4 точки · ~2.5 ч",
+    route_food_name:"Гастрономический маршрут", route_food_meta:"3 точки · ~1 ч",
+    route_nature_name:"Природный маршрут", route_nature_meta:"3 точки · ~3 ч",
+    route_clear:"Убрать маршрут"
   },
   ja: {
     nav_park:"駐車場", nav_health:"医療", nav_security:"安全", nav_commerce:"ショッピング",
@@ -1882,7 +2121,16 @@ const LANGS = {
     rev_4_name:"Wei L.", rev_4_origin:" · 中国",
     review_form_title:"もうポマイレを訪れましたか？教えてください！",
     rev_ph_name:"お名前", rev_ph_origin:"お住まいの都市/国", rev_ph_text:"体験を共有してください...",
-    review_btn:"⭐ レビューを投稿"
+    review_btn:"⭐ レビューを投稿",
+    filter_all:"すべて", filter_parking:"駐車場", filter_health:"医療", filter_security:"安全",
+    filter_pottery:"陶芸", filter_food:"グルメ", filter_services:"サービス", filter_around:"周辺",
+    locate_btn:"現在地を使用", map_hint:"📍 位置情報を有効にするか、地図上の出発点をクリックして距離を計算してください",
+    routes_title:"🧭 おすすめルート",
+    route_artisan_name:"職人ルート", route_artisan_meta:"3か所 · 約1.5時間",
+    route_family_name:"ファミリールート", route_family_meta:"4か所 · 約2.5時間",
+    route_food_name:"グルメルート", route_food_meta:"3か所 · 約1時間",
+    route_nature_name:"自然ルート", route_nature_meta:"3か所 · 約3時間",
+    route_clear:"ルートを消去"
   },
   zh: {
     nav_park:"停车场", nav_health:"医疗", nav_security:"安全", nav_commerce:"商店",
@@ -1942,7 +2190,16 @@ const LANGS = {
     rev_4_name:"Wei L.", rev_4_origin:" · 中国",
     review_form_title:"已经去过波马伊雷？告诉我们吧！",
     rev_ph_name:"您的姓名", rev_ph_origin:"您的城市/国家", rev_ph_text:"分享您的体验...",
-    review_btn:"⭐ 发布评价"
+    review_btn:"⭐ 发布评价",
+    filter_all:"全部", filter_parking:"停车场", filter_health:"医疗", filter_security:"安全",
+    filter_pottery:"陶艺", filter_food:"美食", filter_services:"服务", filter_around:"周边",
+    locate_btn:"使用我的位置", map_hint:"📍 启用您的位置或点击地图上的起点以计算距离",
+    routes_title:"🧭 推荐路线",
+    route_artisan_name:"工匠路线", route_artisan_meta:"3个站点 · 约1.5小时",
+    route_family_name:"家庭路线", route_family_meta:"4个站点 · 约2.5小时",
+    route_food_name:"美食路线", route_food_meta:"3个站点 · 约1小时",
+    route_nature_name:"自然路线", route_nature_meta:"3个站点 · 约3小时",
+    route_clear:"清除路线"
   }
 };
 
@@ -2036,6 +2293,27 @@ const KEYS = {
   '[data-t="rev_4_text"]': t => t.rev_4_text, '[data-t="rev_4_name"]': t => t.rev_4_name, '[data-t="rev_4_origin"]': t => t.rev_4_origin,
   '[data-t="review_form_title"]': t => t.review_form_title,
   '[data-t="review_btn"]':        t => t.review_btn,
+
+  '[data-t="filter_all"]': t => t.filter_all,
+  '[data-t="filter_parking"]': t => t.filter_parking,
+  '[data-t="filter_health"]': t => t.filter_health,
+  '[data-t="filter_security"]': t => t.filter_security,
+  '[data-t="filter_pottery"]': t => t.filter_pottery,
+  '[data-t="filter_food"]': t => t.filter_food,
+  '[data-t="filter_services"]': t => t.filter_services,
+  '[data-t="filter_around"]': t => t.filter_around,
+  '[data-t="locate_btn"]': t => t.locate_btn,
+  '[data-t="map_hint"]': t => t.map_hint,
+  '[data-t="routes_title"]': t => t.routes_title,
+  '[data-t="route_artisan_name"]': t => t.route_artisan_name,
+  '[data-t="route_artisan_meta"]': t => t.route_artisan_meta,
+  '[data-t="route_family_name"]': t => t.route_family_name,
+  '[data-t="route_family_meta"]': t => t.route_family_meta,
+  '[data-t="route_food_name"]': t => t.route_food_name,
+  '[data-t="route_food_meta"]': t => t.route_food_meta,
+  '[data-t="route_nature_name"]': t => t.route_nature_name,
+  '[data-t="route_nature_meta"]': t => t.route_nature_meta,
+  '[data-t="route_clear"]': t => t.route_clear,
 };
 
 function applyLang(lang) {
@@ -2177,6 +2455,245 @@ document.addEventListener('click', () => {
     document.getElementById('langToggleBtn').setAttribute('aria-expanded','false');
   }
 });
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// MAPA INTERACTIVO — Pomaire 360
+// ══════════════════════════════════════════════════════════════════════════
+
+const PLACES = [
+  // PARKING
+  { id:'p1', cat:'parking', icon:'🅿️', lat:-33.6408, lng:-71.1445, name:'Estacionamiento Entrada Pomaire', desc:'Entrada norte, calle Rafael Morandé' },
+  { id:'p2', cat:'parking', icon:'🚗', lat:-33.6418, lng:-71.1462, name:'Estacionamiento 18 de Septiembre', desc:'Lateral al casco principal' },
+  // HEALTH
+  { id:'h1', cat:'health', icon:'🏥', lat:-33.6432, lng:-71.1430, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354' },
+  { id:'h2', cat:'health', icon:'💊', lat:-33.6425, lng:-71.1455, name:'Farmacia Pomaire', desc:'San Antonio 140' },
+  // SECURITY
+  { id:'s1', cat:'security', icon:'🚔', lat:-33.6415, lng:-71.1438, name:'Tenencia Carabineros Pomaire', desc:'Calle San Rafael 496' },
+  // POTTERY
+  { id:'a1', cat:'pottery', icon:'🏺', lat:-33.6420, lng:-71.1448, name:'Calle de los Alfareros', desc:'Rafael Morandé — talleres y tiendas' },
+  { id:'a2', cat:'pottery', icon:'🐷', lat:-33.6424, lng:-71.1440, name:'Chanchito Alcancía Gigante', desc:'El más grande del mundo' },
+  // FOOD
+  { id:'f1', cat:'food', icon:'🥘', lat:-33.6421, lng:-71.1444, name:'Restaurantes Calle Principal', desc:'Cazuelas y empanadas gigantes' },
+  { id:'f2', cat:'food', icon:'🍷', lat:-33.6419, lng:-71.1450, name:'Chicherías artesanales', desc:'Chicha de manzana y uva' },
+  // SERVICES / PLAZA
+  { id:'sv1', cat:'services', icon:'🌳', lat:-33.6422, lng:-71.1446, name:'Plaza de Pomaire', desc:'Corazón del pueblo' },
+  { id:'sv2', cat:'services', icon:'⛪', lat:-33.6423, lng:-71.1447, name:'Iglesia San Antonio de Padua', desc:'Iglesia histórica' },
+  { id:'sv3', cat:'services', icon:'🏧', lat:-33.6417, lng:-71.1452, name:'Cajero Automático', desc:'Calle Roberto Bravo 445' },
+  { id:'sv4', cat:'services', icon:'ℹ️', lat:-33.6422, lng:-71.1445, name:'Punto de Información Turística', desc:'En la plaza de Pomaire' },
+  // AROUND
+  { id:'ar1', cat:'around', icon:'🌾', lat:-33.6550, lng:-71.1600, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas' },
+];
+
+const ROUTES = {
+  artisan: { ids: ['p1','a1','a2'], color:'#B85C2C' },
+  family:  { ids: ['p1','sv1','a1','f1'], color:'#4A7C59' },
+  food:    { ids: ['p2','f1','f2'], color:'#D4622A' },
+  nature:  { ids: ['p1','sv1','ar1'], color:'#6B8E5A' }
+};
+
+let leafletMap, userMarker, userLatLng = null, routeLine = null;
+const markers = {};
+let activeCategory = 'all';
+let activeRoute = null;
+
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2-lat1) * Math.PI/180;
+  const dLon = (lon2-lon1) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function fmtDist(km) {
+  if (km < 1) return `${Math.round(km*1000)} m`;
+  return `${km.toFixed(1)} km`;
+}
+function fmtWalkTime(km) {
+  const mins = Math.round((km / 4.5) * 60); // walking speed ~4.5km/h
+  if (mins < 1) return '<1 min';
+  if (mins < 60) return `${mins} min`;
+  return `${Math.floor(mins/60)}h ${mins%60}min`;
+}
+
+function initMap() {
+  leafletMap = L.map('leafletMap', { zoomControl: true }).setView([-33.6420, -71.1448], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap',
+    maxZoom: 19
+  }).addTo(leafletMap);
+
+  PLACES.forEach(p => {
+    const marker = L.marker([p.lat, p.lng], {
+      icon: L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="background:#B85C2C;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.3);">${p.icon}</div>`,
+        iconSize: [34,34],
+        iconAnchor: [17,17]
+      })
+    });
+    marker.bindPopup(buildPopup(p));
+    marker.addTo(leafletMap);
+    markers[p.id] = marker;
+  });
+
+  // Click on map = manual start point
+  leafletMap.on('click', (e) => {
+    if (e.originalEvent.target.closest('.leaflet-marker-icon')) return;
+    setUserLocation(e.latlng.lat, e.latlng.lng, false);
+  });
+
+  renderPlacesList();
+}
+
+function buildPopup(p, distKm) {
+  const distHtml = distKm !== undefined
+    ? `<div class="popup-dist">📍 ${fmtDist(distKm)} · 🚶 ${fmtWalkTime(distKm)}</div>`
+    : '';
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}<a href="https://maps.google.com/?q=${p.lat},${p.lng}" target="_blank">Abrir en Google Maps →</a></div>`;
+}
+
+function setUserLocation(lat, lng, fromGPS) {
+  userLatLng = { lat, lng };
+  if (userMarker) leafletMap.removeLayer(userMarker);
+  userMarker = L.marker([lat, lng], {
+    icon: L.divIcon({
+      className: 'user-marker',
+      html: `<div style="background:#2563eb;border:3px solid #fff;border-radius:50%;width:20px;height:20px;box-shadow:0 0 0 6px rgba(37,99,235,.25);"></div>`,
+      iconSize: [20,20],
+      iconAnchor: [10,10]
+    })
+  }).addTo(leafletMap);
+
+  const hint = document.getElementById('mapHint');
+  hint.textContent = fromGPS
+    ? '✅ Usando tu ubicación GPS — distancias actualizadas'
+    : '✅ Punto de partida fijado — distancias actualizadas';
+
+  updateDistances();
+  renderPlacesList();
+}
+
+function locateUser() {
+  const btn = document.getElementById('locateBtn');
+  if (!navigator.geolocation) {
+    alert('Tu navegador no soporta geolocalización. Haz clic en el mapa para fijar tu punto de partida manualmente.');
+    return;
+  }
+  btn.textContent = '📡 Buscando...';
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      setUserLocation(pos.coords.latitude, pos.coords.longitude, true);
+      leafletMap.setView([pos.coords.latitude, pos.coords.longitude], 15);
+      btn.innerHTML = '✅ <span data-t="locate_btn">Ubicación activa</span>';
+      btn.classList.add('active');
+    },
+    (err) => {
+      btn.innerHTML = '📍 <span data-t="locate_btn">Usar mi ubicación</span>';
+      alert('No se pudo obtener tu ubicación. Puedes hacer clic en cualquier punto del mapa para fijar tu punto de partida manualmente.');
+    },
+    { enableHighAccuracy: true, timeout: 8000 }
+  );
+}
+
+function updateDistances() {
+  if (!userLatLng) return;
+  PLACES.forEach(p => {
+    const d = haversine(userLatLng.lat, userLatLng.lng, p.lat, p.lng);
+    markers[p.id].setPopupContent(buildPopup(p, d));
+  });
+}
+
+function renderPlacesList() {
+  const list = document.getElementById('placesList');
+  let filtered = activeCategory === 'all' ? PLACES : PLACES.filter(p => p.cat === activeCategory);
+
+  let withDist = filtered.map(p => {
+    const d = userLatLng ? haversine(userLatLng.lat, userLatLng.lng, p.lat, p.lng) : null;
+    return { ...p, dist: d };
+  });
+
+  if (userLatLng) withDist.sort((a,b) => a.dist - b.dist);
+
+  list.innerHTML = withDist.map(p => `
+    <div class="place-row" onclick="focusPlace('${p.id}')">
+      <span class="place-icon">${p.icon}</span>
+      <div class="place-info">
+        <div class="place-name">${p.name}</div>
+        <div class="place-cat">${p.desc}</div>
+      </div>
+      ${p.dist !== null ? `<span class="place-dist">${fmtDist(p.dist)}</span>` : ''}
+    </div>
+  `).join('');
+}
+
+function focusPlace(id) {
+  const p = PLACES.find(x => x.id === id);
+  if (!p) return;
+  leafletMap.setView([p.lat, p.lng], 17);
+  markers[id].openPopup();
+  document.getElementById('leafletMap').scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+// ── FILTERS ──────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.map-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.map-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCategory = btn.dataset.cat;
+
+      Object.entries(markers).forEach(([id, marker]) => {
+        const place = PLACES.find(p => p.id === id);
+        const visible = activeCategory === 'all' || place.cat === activeCategory;
+        const el = marker.getElement();
+        if (el) el.style.display = visible ? '' : 'none';
+      });
+      renderPlacesList();
+    });
+  });
+});
+
+// ── ROUTES ───────────────────────────────────────────────────────────────
+function loadRoute(routeKey) {
+  clearRoute(false);
+  const route = ROUTES[routeKey];
+  if (!route) return;
+
+  document.querySelectorAll('.route-card').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[data-route="${routeKey}"]`).classList.add('active');
+  activeRoute = routeKey;
+
+  const latlngs = route.ids.map(id => {
+    const p = PLACES.find(x => x.id === id);
+    return [p.lat, p.lng];
+  });
+
+  routeLine = L.polyline(latlngs, { color: route.color, weight: 4, opacity: 0.75, dashArray: '8,6' }).addTo(leafletMap);
+
+  // Highlight markers in route, dim others
+  Object.entries(markers).forEach(([id, marker]) => {
+    const el = marker.getElement();
+    if (!el) return;
+    el.style.opacity = route.ids.includes(id) ? '1' : '0.25';
+  });
+
+  leafletMap.fitBounds(routeLine.getBounds(), { padding: [40,40] });
+  document.getElementById('routeClearBtn').style.display = 'inline-block';
+}
+
+function clearRoute(resetUI = true) {
+  if (routeLine) { leafletMap.removeLayer(routeLine); routeLine = null; }
+  Object.values(markers).forEach(m => { const el = m.getElement(); if (el) el.style.opacity = '1'; });
+  if (resetUI) {
+    document.querySelectorAll('.route-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('routeClearBtn').style.display = 'none';
+    activeRoute = null;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initMap);
 </script>
 </body>
 </html>
