@@ -904,6 +904,120 @@
     .map-controls { flex-direction: column; align-items: stretch; }
     .leaflet-wrap { height: 340px; }
   }
+
+  /* ── DIRECTORIES (datos PDF) ─────────────────────── */
+  .dir-block { margin-top: 2rem; }
+  .dir-block > h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--clay-dark);
+    margin-bottom: .3rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .dir-block > .dir-sub {
+    color: var(--muted);
+    font-size: .83rem;
+    margin-bottom: 1rem;
+  }
+  .dir-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: .8rem;
+  }
+  .dir-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: .9rem 1rem;
+    border-left: 3px solid var(--clay-light);
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .dir-item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(90,40,10,.13); }
+  .dir-item .dir-name { font-size: .93rem; font-weight: 600; color: var(--text); line-height: 1.25; }
+  .dir-item .dir-addr { font-size: .8rem; color: var(--muted); }
+  .dir-item .dir-tag {
+    display: inline-block;
+    font-size: .66rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em;
+    background: var(--smoke); color: var(--clay-dark);
+    padding: .12rem .5rem; border-radius: 10px;
+    width: fit-content;
+  }
+  .dir-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .25rem; }
+  .dir-links a {
+    display: inline-flex; align-items: center; gap: .25rem;
+    font-size: .76rem; font-weight: 600;
+    text-decoration: none;
+    color: var(--clay);
+    border: 1.4px solid var(--clay-light);
+    padding: .25rem .6rem; border-radius: 16px;
+    transition: background .15s, color .15s;
+  }
+  .dir-links a:hover { background: var(--clay); color: #fff; }
+  .dir-links a.ig { color: var(--earth); border-color: rgba(107,66,38,.3); }
+  .dir-count {
+    font-size: .74rem; font-weight: 700; color: var(--clay);
+    background: #FFF3EC; border-radius: 12px;
+    padding: .1rem .55rem; margin-left: .4rem;
+  }
+  .dir-scroll {
+    max-height: 560px;
+    overflow-y: auto;
+    padding: .25rem .4rem .25rem 0;
+    margin-right: -.4rem;
+  }
+  .dir-scroll::-webkit-scrollbar { width: 8px; }
+  .dir-scroll::-webkit-scrollbar-thumb { background: var(--clay-light); border-radius: 8px; }
+
+  /* ── OFFICIAL TOURIST ROUTE ──────────────────────── */
+  .official-route {
+    background: linear-gradient(140deg, #FFF8F3 0%, #FBEFE5 100%);
+    border: 2px solid rgba(184,92,44,.18);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .official-route .or-head { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-bottom: .4rem; }
+  .official-route .or-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--clay-dark);
+  }
+  .official-route .or-src { font-size: .76rem; color: var(--muted); margin-bottom: 1rem; }
+  .or-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.3rem; }
+  .or-badge {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: var(--white); border: 1.5px solid var(--clay-light);
+    border-radius: 22px; padding: .35rem .85rem;
+    font-size: .8rem; font-weight: 700; color: var(--clay-dark);
+  }
+  .or-itinerary { display: flex; flex-direction: column; gap: .15rem; margin-bottom: 1.4rem; }
+  .or-stop { display: grid; grid-template-columns: 64px 40px 1fr; gap: .4rem .9rem; align-items: start; position: relative; padding-bottom: 1rem; }
+  .or-stop::after {
+    content: ''; position: absolute; left: 83px; top: 36px; bottom: -2px;
+    width: 2px; background: linear-gradient(var(--clay-light), rgba(184,92,44,.15));
+  }
+  .or-stop:last-child::after { display: none; }
+  .or-time { font-size: .76rem; font-weight: 800; color: var(--clay); text-align: right; padding-top: .55rem; white-space: nowrap; }
+  .or-dot { width: 38px; height: 38px; border-radius: 50%; background: var(--clay); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 2px 8px rgba(184,92,44,.3); }
+  .or-stop .or-txt { padding-top: .35rem; }
+  .or-stop .or-txt strong { font-size: .92rem; color: var(--text); }
+  .or-stop .or-txt span { font-size: .82rem; color: var(--muted); display: block; }
+  .or-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 1rem; }
+  .or-feature {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 1.1rem 1.2rem;
+    border-top: 3px solid var(--clay);
+  }
+  .or-feature h4 { font-size: .98rem; font-weight: 700; color: var(--clay-dark); margin-bottom: .4rem; display: flex; align-items: center; gap: .4rem; }
+  .or-feature p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 500px) {
+    .or-stop { grid-template-columns: 50px 34px 1fr; gap: .3rem .6rem; }
+    .or-stop::after { left: 66px; }
+    .or-dot { width: 32px; height: 32px; font-size: .95rem; }
+  }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -920,6 +1034,8 @@
     <a class="nav-link" href="#comercio" data-t="nav_commerce">Comercio</a>
     <a class="nav-link" href="#alfareria" data-t="nav_pottery">Alfarería</a>
     <a class="nav-link" href="#gastronomia" data-t="nav_food">Comer</a>
+    <a class="nav-link" href="#alojamientos">Alojamientos</a>
+    <a class="nav-link" href="#interes">Qué ver</a>
     <a class="nav-link" href="#alrededores" data-t="nav_around">Alrededores</a>
     <a class="nav-link" href="#plaza" data-t="nav_plaza">Plaza Pública</a>
     <a class="nav-link" href="#clima" data-t="nav_weather">Clima</a>
@@ -1267,6 +1383,27 @@
         <p class="card-detail">Museo con figuras de greda gigantes</p>
       </div>
     </div>
+
+    <!-- TALLERES DE GREDA -->
+    <div class="dir-block reveal">
+      <h3>🎨 Talleres de greda <span class="dir-count" id="tallerCount"></span></h3>
+      <p class="dir-sub">Aprende a modelar la greda con artesanos pomairinos · <em>Pottery workshops</em></p>
+      <div class="dir-grid" id="tallerDir"></div>
+    </div>
+
+    <!-- DEMOSTRACIONES EN TORNO -->
+    <div class="dir-block reveal">
+      <h3>🌀 Demostraciones en torno <span class="dir-count" id="demoCount"></span></h3>
+      <p class="dir-sub">Mira a los maestros dar forma a la greda en vivo · <em>Pottery wheel demonstrations</em></p>
+      <div class="dir-grid" id="demoDir"></div>
+    </div>
+
+    <!-- TIENDAS Y ARTESANOS -->
+    <div class="dir-block reveal">
+      <h3>🏺 Tiendas y artesanos de greda <span class="dir-count" id="artesanoCount"></span></h3>
+      <p class="dir-sub">Compra directamente al artesano. Listado completo de alfareros de Pomaire · <em>Pottery shops &amp; artisans</em></p>
+      <div class="dir-grid dir-scroll" id="artesanoDir"></div>
+    </div>
   </div>
 </section>
 
@@ -1306,6 +1443,62 @@
         <p class="card-detail">Numerosos restaurantes en la calle principal y sus laterales. Los fines de semana pueden tener espera. Se recomienda llegar antes del mediodía.</p>
         <a class="card-link" href="https://maps.google.com/?q=restaurante+Pomaire+Chile" target="_blank">📍 Buscar restaurantes</a>
       </div>
+    </div>
+
+    <!-- DIRECTORIO DE RESTAURANTES (datos oficiales PDF) -->
+    <div class="dir-block reveal">
+      <h3>🍴 Directorio de restaurantes <span class="dir-count" id="restCount"></span></h3>
+      <p class="dir-sub">Restaurantes de Pomaire con dirección, teléfono y días de atención · <em>Restaurants directory</em></p>
+      <div class="dir-grid" id="restaurantDir"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALOJAMIENTOS -->
+<section id="alojamientos">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-icon">🛏️</span>
+      <div>
+        <h2>Alojamientos</h2>
+        <p>Hostales, cabañas y suites para quedarte en Pomaire · <em>Where to stay</em></p>
+      </div>
+    </div>
+    <div class="dir-block reveal" style="margin-top:0;">
+      <div class="dir-grid" id="alojamientoDir"></div>
+    </div>
+    <p class="card-detail reveal" style="margin-top:1.2rem;color:var(--muted);font-size:.85rem;">
+      💡 Quedarte a dormir te permite disfrutar Pomaire sin la multitud de los buses de turismo y vivir el pueblo de noche.
+    </p>
+  </div>
+</section>
+
+<!-- PUNTOS DE INTERÉS -->
+<section id="interes">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-icon">✨</span>
+      <div>
+        <h2>Qué ver y puntos de interés</h2>
+        <p>Atractivos, tiendas con encanto y experiencias al paso · <em>Highlights &amp; things to see</em></p>
+      </div>
+    </div>
+    <div class="dir-block reveal" style="margin-top:0;">
+      <div class="dir-grid" id="interesDir"></div>
+    </div>
+
+    <!-- JARDINERÍA -->
+    <div class="dir-block reveal">
+      <h3>🌱 Jardinería y viveros <span class="dir-count" id="jardinCount"></span></h3>
+      <p class="dir-sub">Plantas, flores y un respiro verde · <em>Gardening &amp; plants</em></p>
+      <div class="dir-grid" id="jardinDir"></div>
+    </div>
+
+    <!-- SERVICIOS CLAVE -->
+    <div class="dir-block reveal">
+      <h3>📌 Puntos clave y servicios <span class="dir-count" id="servicioCount"></span></h3>
+      <p class="dir-sub">Ubicaciones útiles durante tu visita · <em>Key points &amp; services</em></p>
+      <div class="dir-grid" id="servicioDir"></div>
     </div>
   </div>
 </section>
@@ -1384,6 +1577,8 @@
         <button class="map-filter" data-cat="security">🚔 <span data-t="filter_security">Seguridad</span></button>
         <button class="map-filter" data-cat="pottery">🏺 <span data-t="filter_pottery">Alfarería</span></button>
         <button class="map-filter" data-cat="food">🍽️ <span data-t="filter_food">Comer</span></button>
+        <button class="map-filter" data-cat="lodging">🛏️ <span>Dormir</span></button>
+        <button class="map-filter" data-cat="highlight">✨ <span>Qué ver</span></button>
         <button class="map-filter" data-cat="services">🛒 <span data-t="filter_services">Servicios</span></button>
         <button class="map-filter" data-cat="around">🌾 <span data-t="filter_around">Alrededores</span></button>
       </div>
@@ -1402,6 +1597,11 @@
     <div class="routes-block reveal">
       <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
       <div class="routes-grid">
+        <button class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
+          <span class="route-icon">🧳</span>
+          <strong>Ruta Oficial</strong>
+          <span class="route-meta">5 paradas · día completo</span>
+        </button>
         <button class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
           <span class="route-icon">🏺</span>
           <strong data-t="route_artisan_name">Ruta del Artesano</strong>
@@ -1459,6 +1659,76 @@
         <p data-t="s_tour_sub">La ruta perfecta para aprovechar tu día en Pomaire</p>
       </div>
     </div>
+
+    <!-- RUTA TURÍSTICA OFICIAL (Municipalidad de Melipilla) -->
+    <div class="official-route reveal">
+      <div class="or-head">
+        <span style="font-size:1.8rem;">🧳</span>
+        <h3>Ruta Turística Oficial de Pomaire</h3>
+      </div>
+      <p class="or-src">Itinerario sugerido por la Oficina de Turismo · Municipalidad de Melipilla · <em>Official tourist route</em></p>
+      <div class="or-badges">
+        <span class="or-badge">🚶 Recorrido a pie: ~35 min</span>
+        <span class="or-badge">🚗 Recorrido en auto: ~19 min</span>
+        <span class="or-badge">📅 Día completo desde Santiago</span>
+      </div>
+
+      <div class="or-itinerary">
+        <div class="or-stop">
+          <div class="or-time">08:00</div><div class="or-dot">🚌</div>
+          <div class="or-txt"><strong>Salida desde Santiago</strong><span>Inicio del viaje hacia el pueblo alfarero.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">09:30</div><div class="or-dot">📍</div>
+          <div class="or-txt"><strong>Llegada a Pomaire</strong><span>Recibimiento en la Oficina de Información Turística (OIT), en la Plaza de Pomaire.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">10:00</div><div class="or-dot">☕</div>
+          <div class="or-txt"><strong>Desayuno en Imperio Pomaire</strong><span>Roberto Bravo 78 · Sabores típicos chilenos para comenzar el día.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">12:00</div><div class="or-dot">🏺</div>
+          <div class="or-txt"><strong>Taller de greda en la Granja Alfarera</strong><span>Bernardo O'Higgins 260 · Experiencia inmersiva: del torno al horno.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">13:30</div><div class="or-dot">🥘</div>
+          <div class="or-txt"><strong>Almuerzo en Restaurant La Greda</strong><span>Cocina criolla y parrilla chilena con más de 30 años de historia.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">15:10</div><div class="or-dot">🌿</div>
+          <div class="or-txt"><strong>Visita al Vivero Luchín</strong><span>San Antonio 191 · Un respiro verde entre plantas, flores y maceteros.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">16:10</div><div class="or-dot">🛍️</div>
+          <div class="or-txt"><strong>Tarde libre de compras</strong><span>Recorre los talleres y tiendas de greda de la calle Roberto Bravo.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">18:00</div><div class="or-dot">🏠</div>
+          <div class="or-txt"><strong>Retorno a Santiago</strong><span>Fin del recorrido con recuerdos hechos a mano.</span></div>
+        </div>
+      </div>
+
+      <div class="or-features">
+        <div class="or-feature">
+          <h4>☕ Imperio Pomaire</h4>
+          <p>Nacido del esfuerzo de Romina y Fabio por la cocina tradicional. Tras siete años abrieron un segundo local y hoy es un referente de los sabores típicos de Pomaire.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🏺 Granja Alfarera</h4>
+          <p>Espacio turístico-cultural dedicado a preservar el oficio de la greda. Ofrece demostraciones en vivo, talleres con artesanos pomairinos y un recorrido por todo el proceso, desde la extracción hasta el horno.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🥘 La Greda Restaurant</h4>
+          <p>Más de 30 años de tradición. Don Víctor Larraín transformó la antigua casona de adobe familiar en un referente gastronómico, cuna de la empanada más grande del mundo y de tres generaciones de cocina criolla.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🌿 Vivero Luchín</h4>
+          <p>Pequeño y encantador vivero que combina lo rural, lo botánico y lo artesanal. Ideal para una pausa tranquila tras recorrer talleres y restaurantes, y para llevarse un recuerdo vivo de Pomaire.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal">💡 Recorrido libre · explora a tu ritmo</h3>
     <div class="tour-timeline reveal">
       <div class="tour-step">
         <div class="tour-time">09:00</div>
@@ -2463,34 +2733,59 @@ document.addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════════════════════
 
 const PLACES = [
-  // PARKING
-  { id:'p1', cat:'parking', icon:'🅿️', lat:-33.6408, lng:-71.1445, name:'Estacionamiento Entrada Pomaire', desc:'Entrada norte, calle Rafael Morandé' },
-  { id:'p2', cat:'parking', icon:'🚗', lat:-33.6418, lng:-71.1462, name:'Estacionamiento 18 de Septiembre', desc:'Lateral al casco principal' },
-  // HEALTH
-  { id:'h1', cat:'health', icon:'🏥', lat:-33.6432, lng:-71.1430, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354' },
-  { id:'h2', cat:'health', icon:'💊', lat:-33.6425, lng:-71.1455, name:'Farmacia Pomaire', desc:'San Antonio 140' },
-  // SECURITY
-  { id:'s1', cat:'security', icon:'🚔', lat:-33.6415, lng:-71.1438, name:'Tenencia Carabineros Pomaire', desc:'Calle San Rafael 496' },
-  // POTTERY
-  { id:'a1', cat:'pottery', icon:'🏺', lat:-33.6420, lng:-71.1448, name:'Calle de los Alfareros', desc:'Rafael Morandé — talleres y tiendas' },
-  { id:'a2', cat:'pottery', icon:'🐷', lat:-33.6424, lng:-71.1440, name:'Chanchito Alcancía Gigante', desc:'El más grande del mundo' },
-  // FOOD
-  { id:'f1', cat:'food', icon:'🥘', lat:-33.6421, lng:-71.1444, name:'Restaurantes Calle Principal', desc:'Cazuelas y empanadas gigantes' },
-  { id:'f2', cat:'food', icon:'🍷', lat:-33.6419, lng:-71.1450, name:'Chicherías artesanales', desc:'Chicha de manzana y uva' },
-  // SERVICES / PLAZA
-  { id:'sv1', cat:'services', icon:'🌳', lat:-33.6422, lng:-71.1446, name:'Plaza de Pomaire', desc:'Corazón del pueblo' },
-  { id:'sv2', cat:'services', icon:'⛪', lat:-33.6423, lng:-71.1447, name:'Iglesia San Antonio de Padua', desc:'Iglesia histórica' },
-  { id:'sv3', cat:'services', icon:'🏧', lat:-33.6417, lng:-71.1452, name:'Cajero Automático', desc:'Calle Roberto Bravo 445' },
-  { id:'sv4', cat:'services', icon:'ℹ️', lat:-33.6422, lng:-71.1445, name:'Punto de Información Turística', desc:'En la plaza de Pomaire' },
-  // AROUND
-  { id:'ar1', cat:'around', icon:'🌾', lat:-33.6550, lng:-71.1600, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas' },
+  // ── PARKING ──
+  { id:'pk1', cat:'parking', icon:'🅿️', lat:-33.65167, lng:-71.1484, name:'Estacionamiento Entrada Pomaire', desc:'Rafael Morandé · acceso principal', addr:'Rafael Morandé, Pomaire' },
+  { id:'pk2', cat:'parking', icon:'🚗', lat:-33.64985, lng:-71.15405, name:'Estacionamiento y baños públicos', desc:'Guillermo Barros con Diego de Almagro', addr:'Guillermo Barros con Diego de Almagro, Pomaire' },
+  { id:'pk3', cat:'parking', icon:'🚌', lat:-33.65078, lng:-71.14907, name:'Zona 18 de Septiembre', desc:'Lateral al casco principal', addr:'18 de Septiembre, Pomaire' },
+  // ── HEALTH ──
+  { id:'he1', cat:'health', icon:'🏥', lat:-33.6497, lng:-71.15053, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354', addr:'Julita Vera 354, Pomaire' },
+  { id:'he2', cat:'health', icon:'💊', lat:-33.6486, lng:-71.15205, name:'Farmacia Pomaire', desc:'San Antonio 362', addr:'San Antonio 362, Pomaire' },
+  // ── SECURITY ──
+  { id:'se1', cat:'security', icon:'🚔', lat:-33.6485, lng:-71.15195, name:'Carabineros — Tenencia Pomaire', desc:'San Antonio 361', addr:'San Antonio 361, Pomaire' },
+  { id:'se2', cat:'security', icon:'🚒', lat:-33.64857, lng:-71.15212, name:'Bomberos de Pomaire', desc:'San Antonio 362', addr:'San Antonio 362, Pomaire' },
+  // ── SERVICES ──
+  { id:'sv1', cat:'services', icon:'ℹ️', lat:-33.65033, lng:-71.15093, name:'Plaza de Pomaire · OIT', desc:'Oficina de Información Turística · punto de encuentro', addr:'Plaza de Pomaire, San Antonio 140' },
+  { id:'sv2', cat:'services', icon:'⛪', lat:-33.655, lng:-71.15043, name:'Iglesia de Pomaire', desc:'Templo histórico del pueblo', addr:'Iglesia de Pomaire' },
+  { id:'sv3', cat:'services', icon:'🏧', lat:-33.6535, lng:-71.15005, name:'Cajero Automático (ATM)', desc:'Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire' },
+  { id:'sv4', cat:'services', icon:'🏫', lat:-33.649, lng:-71.1518, name:'Colegio de Pomaire', desc:'San Antonio s/n', addr:'Colegio de Pomaire' },
+  { id:'sv5', cat:'services', icon:'✝️', lat:-33.65055, lng:-71.15065, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire' },
+  // ── POTTERY ──
+  { id:'po1', cat:'pottery', icon:'🏺', lat:-33.64935, lng:-71.15265, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire' },
+  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.652, lng:-71.15, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire' },
+  { id:'po3', cat:'pottery', icon:'🎨', lat:-33.65185, lng:-71.14985, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire' },
+  { id:'po4', cat:'pottery', icon:'🎨', lat:-33.64975, lng:-71.15418, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire' },
+  { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
+  { id:'po6', cat:'pottery', icon:'🐷', lat:-33.65, lng:-71.1485, name:'El Chancho más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire' },
+  // ── FOOD ──
+  { id:'fo1', cat:'food', icon:'☕', lat:-33.6513, lng:-71.1503, name:'Imperio Pomaire', desc:'Desayunos y cocina típica · Roberto Bravo 78', addr:'Roberto Bravo 78, Pomaire' },
+  { id:'fo2', cat:'food', icon:'🥘', lat:-33.65327, lng:-71.14982, name:'Restaurant La Greda', desc:'Cocina criolla · 30+ años · Manuel Rodríguez', addr:'Manuel Rodríguez 251, Pomaire' },
+  { id:'fo3', cat:'food', icon:'🍽️', lat:-33.6508, lng:-71.15055, name:'Restaurante Los Naranjos', desc:'Roberto Bravo 29', addr:'Roberto Bravo 29, Pomaire' },
+  { id:'fo4', cat:'food', icon:'🍖', lat:-33.6526, lng:-71.14992, name:'La Casa del Costillar', desc:'Roberto Bravo 324', addr:'Roberto Bravo 324, Pomaire' },
+  { id:'fo5', cat:'food', icon:'🍽️', lat:-33.6492, lng:-71.1515, name:'El Boliche de Pomaire', desc:'San Antonio 17', addr:'San Antonio 17, Pomaire' },
+  { id:'fo6', cat:'food', icon:'🍽️', lat:-33.65315, lng:-71.14972, name:'La Normita — Tenedor libre', desc:'Manuel Rodríguez 325', addr:'Manuel Rodríguez 325, Pomaire' },
+  { id:'fo7', cat:'food', icon:'🍖', lat:-33.6519, lng:-71.14988, name:'El Parrón', desc:'Parrilla · Arturo Prat 210', addr:'Arturo Prat 210, Pomaire' },
+  { id:'fo8', cat:'food', icon:'🍽️', lat:-33.6542, lng:-71.1494, name:'La Pica de la Mireya', desc:'Roto Chileno 249', addr:'Roto Chileno 249, Pomaire' },
+  // ── LODGING ──
+  { id:'lo1', cat:'lodging', icon:'🛏️', lat:-33.6494, lng:-71.15255, name:'Hostal Pomaire / Lodge & Suites', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire' },
+  { id:'lo2', cat:'lodging', icon:'🏡', lat:-33.6483, lng:-71.1528, name:'La Quinta de la Plaza', desc:'San Antonio 410', addr:'San Antonio 410, Pomaire' },
+  { id:'lo3', cat:'lodging', icon:'🏕️', lat:-33.6524, lng:-71.14995, name:'Cabañas Glamen', desc:'Roberto Bravo 284', addr:'Roberto Bravo 284, Pomaire' },
+  // ── HIGHLIGHT ──
+  { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65255, lng:-71.14988, name:'Cervecería Pomaire', desc:'Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire' },
+  { id:'hl2', cat:'highlight', icon:'🛍️', lat:-33.65125, lng:-71.15035, name:'Calafate Austral', desc:'Tienda con encanto · Roberto Bravo 77B', addr:'Roberto Bravo 77, Pomaire' },
+  { id:'hl3', cat:'highlight', icon:'🧀', lat:-33.65192, lng:-71.1499, name:'Charcutería Don Mati', desc:'Arturo Prat 237', addr:'Arturo Prat 237, Pomaire' },
+  { id:'hl4', cat:'highlight', icon:'🍦', lat:-33.6555, lng:-71.15, name:'Heladería Alsa', desc:'Roberto Bravo 1606', addr:'Roberto Bravo 1606, Pomaire' },
+  { id:'hl5', cat:'highlight', icon:'🏺', lat:-33.6478, lng:-71.15155, name:'Los Ceramistas', desc:'General Baquedano 350', addr:'General Baquedano 350, Pomaire' },
+  { id:'hl6', cat:'highlight', icon:'🌿', lat:-33.6489, lng:-71.152, name:'Vivero Luchín', desc:'Jardín y vivero · San Antonio 191', addr:'San Antonio 191, Pomaire' },
+  // ── AROUND ──
+  { id:'ar1', cat:'around', icon:'🌾', lat:-33.665, lng:-71.17, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas', addr:'Los Chiñihues, Melipilla' },
 ];
 
 const ROUTES = {
-  artisan: { ids: ['p1','a1','a2'], color:'#B85C2C' },
-  family:  { ids: ['p1','sv1','a1','f1'], color:'#4A7C59' },
-  food:    { ids: ['p2','f1','f2'], color:'#D4622A' },
-  nature:  { ids: ['p1','sv1','ar1'], color:'#6B8E5A' }
+  oficial: { ids: ['sv1','fo1','po1','fo2','hl6'], color:'#8C3D16' },
+  artisan: { ids: ['pk1','po5','po2','po3','po1'], color:'#B85C2C' },
+  family:  { ids: ['sv1','po6','po1','fo2'], color:'#4A7C59' },
+  food:    { ids: ['fo3','fo1','fo4','fo2'], color:'#D4622A' },
+  nature:  { ids: ['sv1','hl6','ar1'], color:'#6B8E5A' }
 };
 
 let leafletMap, userMarker, userLatLng = null, routeLine = null;
@@ -2518,7 +2813,7 @@ function fmtWalkTime(km) {
 }
 
 function initMap() {
-  leafletMap = L.map('leafletMap', { zoomControl: true }).setView([-33.6420, -71.1448], 15);
+  leafletMap = L.map('leafletMap', { zoomControl: true }).setView([-33.6512, -71.1505], 16);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap',
     maxZoom: 19
@@ -2551,7 +2846,10 @@ function buildPopup(p, distKm) {
   const distHtml = distKm !== undefined
     ? `<div class="popup-dist">📍 ${fmtDist(distKm)} · 🚶 ${fmtWalkTime(distKm)}</div>`
     : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}<a href="https://maps.google.com/?q=${p.lat},${p.lng}" target="_blank">Abrir en Google Maps →</a></div>`;
+  const gmaps = p.addr
+    ? `https://maps.google.com/?q=${encodeURIComponent(p.addr)}`
+    : `https://maps.google.com/?q=${p.lat},${p.lng}`;
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
@@ -2694,6 +2992,199 @@ function clearRoute(resetUI = true) {
 }
 
 document.addEventListener('DOMContentLoaded', initMap);
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// DIRECTORIOS — datos oficiales (Mapa-Pomaire.pdf · Municipalidad de Melipilla)
+// ══════════════════════════════════════════════════════════════════════════
+const DIRECTORY = {
+  restaurants: [
+    { n:'Imperio Pomaire', a:'Roberto Bravo 78', p:'+56 9 73421189', d:'Lunes a domingo' },
+    { n:'Restaurant La Greda', a:'Manuel Rodríguez 251', p:'', d:'30+ años · empanada más grande del mundo' },
+    { n:'Restaurante Los Naranjos', a:'Roberto Bravo 29', p:'+56 9 45606393', d:'Miércoles a domingo' },
+    { n:'La Cañada', a:'Roberto Bravo 307', p:'+56 9 76768309', d:'Sábado y domingo' },
+    { n:'La Pica del Artesano', a:'Roberto Bravo 114', p:'+56 9 92812141', d:'Lunes a domingo' },
+    { n:'El Boliche de Pomaire', a:'San Antonio 17', p:'+56 9 32734479', d:'Lunes a domingo' },
+    { n:'La Normita (Tenedor libre)', a:'Manuel Rodríguez 325', p:'+56 9 46609599', d:'Lunes a domingo' },
+    { n:'Emporio Doña Tránsito', a:'San Antonio 321', p:'+56 9 54461130', d:'Sábado y domingo' },
+    { n:'San Sebastián', a:'Roberto Bravo 50', p:'+56 9 90440988', d:'Lunes a domingo' },
+    { n:'La Pica de la Mireya', a:'Roto Chileno 249', p:'+56 9 53387756', d:'Lunes a domingo' },
+    { n:'El Nico', a:'Roberto Bravo 397', p:'+56 9 61629311', d:'Sábado y domingo' },
+    { n:'Las Delicias de Patricia', a:'Manuel Rodríguez 321', p:'+56 9 59296110', d:'Miércoles a domingo' },
+    { n:'San Antonio', a:'San Antonio 298', p:'+56 9 65707019', d:'Lunes a domingo' },
+    { n:'Restaurant Chilper', a:'Camino La Cruz 454', p:'+56 9 76256505', d:'Lunes a domingo' },
+    { n:'La Casa del Costillar', a:'Roberto Bravo 324', p:'+56 9 54153360', d:'Lunes a domingo' },
+    { n:'El Rincón de las Brujas', a:'Roberto Bravo 302', p:'+56 9 35410406', d:'Lunes a domingo' },
+    { n:'Quinta Los Naranjos', a:'San Antonio 279', p:'+56 9 59579197', d:'Sábado y domingo' },
+    { n:'Flor y tierra', a:'Guillermo Barros 225', p:'+56 9 88291191', d:'Sábado y domingo' },
+    { n:'Restaurant El Cototudo', a:'Roto Chileno 340', p:'+56 9 42419789', d:'Lunes a domingo' },
+    { n:'La Coyita', a:'San Antonio 615', p:'+56 9 49772557', d:'Sábado y domingo' },
+    { n:'La Fuente de mi Tierra', a:'Roberto Bravo 49', p:'+56 9 84753494', d:'Lunes a domingo' },
+    { n:'San Pedro', a:'Roto Chileno 332', p:'+56 9 85285787', d:'Lunes a domingo' },
+    { n:'El Ranchito de Amalia', a:'Manuel Rodríguez 204', p:'+56 9 91843195', d:'Lunes a domingo' },
+    { n:'Los Secretos de Anita', a:'San Antonio 213', p:'+56 9 74906024', d:'Viernes a domingo' },
+    { n:'El Parrón', a:'Arturo Prat 210', p:'+56 9 52433979', d:'Lunes a domingo' },
+    { n:'Las Tinajas de Pomaire', a:'San Antonio 402', p:'+56 9 90177467', d:'Sábado y domingo' },
+    { n:'Glamen', a:'Roberto Bravo 289', p:'+56 9 54109214', d:'Sábado y domingo' },
+  ],
+  talleres: [
+    { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera' },
+    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl' },
+    { n:'Taller del Sol', a:'Arturo Prat 237 B', p:'+56 9 45203264', ig:'tallerdelsol_pomaire' },
+    { n:'Taller Barros', a:'Guillermo Barros 150', p:'+56 9 50432417', ig:'taller.barros.pomaire' },
+  ],
+  demos: [
+    { n:'Juan Pablo Muñoz', a:'Roberto Bravo 164', p:'+56 9 50821246', ig:'pablo.artesanodepomaire' },
+    { n:'Pascual Gómez', a:'Arturo Prat 352', p:'+56 9 89075630' },
+    { n:'Jorge Garrido', a:'Bernardo O\'Higgins 260', p:'+56 9 84144279' },
+    { n:'El Pericote Artesanía', a:'Guillermo Barros 150', p:'+56 9 40869289', ig:'el.rinconcito.alfarero' },
+  ],
+  jardin: [
+    { n:'Vivero Luchín', a:'San Antonio 191', p:'+56 9 54095760' },
+    { n:'Jardín Monserrat', a:'El Carmen 389', p:'+56 9 91510810' },
+  ],
+  alojamientos: [
+    { n:'Hostal Pomaire', a:'Bernardo O\'Higgins 219', p:'+56 9 48172678', ig:'hostalpomaire' },
+    { n:'Pomaire Lodge & Suites', a:'Bernardo O\'Higgins 219', p:'+56 9 65707019', ig:'pomairesuites' },
+    { n:'La Quinta de la Plaza', a:'San Antonio 410', p:'+56 9 99598919' },
+    { n:'Cabañas Glamen', a:'Roberto Bravo 284', p:'+56 9 54109214' },
+  ],
+  interes: [
+    { n:'El chancho más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo' },
+    { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal' },
+    { n:'Calafate Austral', a:'Roberto Bravo 77B', p:'+56 9 36572068', ig:'calafateaustral.cl', tag:'Tienda' },
+    { n:'La Chakana', a:'Roberto Bravo 195', p:'+56 9 91162709', tag:'Tienda' },
+    { n:'Charcutería Don Mati', a:'Arturo Prat 237', p:'+56 9 65852914', ig:'charcuteriadonmati', tag:'Charcutería' },
+    { n:'Los Ceramistas', a:'General Baquedano 350', p:'+56 9 22579079', tag:'Cerámica' },
+    { n:'Heladería Alsa', a:'Roberto Bravo 1606', p:'', tag:'Heladería' },
+    { n:'Cervecería / Chanchería Don Manuel', a:'Pasaje Juana Álvarez 107', p:'+56 9 42271014', tag:'Cecinas' },
+    { n:'Artesanías Miriam (mimbre)', a:'San Antonio 180, local 3', p:'+56 9 94810090', tag:'Artesanía mimbre' },
+    { n:'Tejidos de Punto', a:'San Antonio 180, local 4', p:'+56 9 96711139', tag:'Tejidos' },
+    { n:'Vestuaristas Pomaire', a:'Galería La Loica, Roberto Bravo 324', p:'', ig:'vestuaristas', tag:'Vestuario' },
+    { n:'El Místico (masajes, reiki)', a:'Roberto Bravo 27', p:'', tag:'Bienestar' },
+    { n:'La Yerberita (farmacia natural)', a:'Roberto Bravo 1606', p:'', tag:'Bienestar' },
+    { n:'Paseo Jardín de los Almendros', a:'Pomaire', p:'', tag:'Paseo' },
+  ],
+  servicios: [
+    { n:'Oficina de Información Turística (OIT)', a:'Plaza de Pomaire', p:'+56 9 41814611', tag:'Turismo' },
+    { n:'Plaza de Pomaire (punto de encuentro)', a:'San Antonio 140', p:'', tag:'9:30 a 20:30 hrs' },
+    { n:'CESFAM Pomaire', a:'Artesana Julita Vera 354', p:'+56 2 28323466', tag:'Salud' },
+    { n:'Carabineros', a:'San Antonio 361', p:'133', tag:'Seguridad' },
+    { n:'Bomberos', a:'San Antonio 362', p:'+56 2 29224430', tag:'Emergencia' },
+    { n:'Farmacia', a:'San Antonio 362', p:'+56 2 29224430', tag:'Salud' },
+    { n:'Cajero Automático (ATM)', a:'Roberto Bravo 445', p:'', tag:'Dinero' },
+    { n:'Iglesia de Pomaire', a:'El Carmen 420', p:'', tag:'Templo' },
+    { n:'Colegio de Pomaire', a:'San Antonio s/n', p:'', tag:'Educación' },
+    { n:'El Cristo', a:'Roberto Bravo 1', p:'', tag:'Mirador' },
+    { n:'Estacionamiento y baños públicos', a:'Guillermo Barros con Diego de Almagro', p:'', tag:'Servicios' },
+  ],
+  artesanos: [
+    { n:'Camila y Diego', a:'Roberto Bravo 29', p:'+56 9 61277310' },
+    { n:'Isolina Guzmán Araya', a:'Roberto Bravo 59', p:'+56 9 87667822' },
+    { n:'Cerámicas Los Gemelos', a:'Roberto Bravo 455', p:'+56 9 62759986' },
+    { n:'Juana García', a:'Manuel Rodríguez 347', p:'+56 9 92174717' },
+    { n:'Familia Gatica Catalán', a:'Roberto Bravo 252, Galería Catalán Local 26', p:'+56 9 82814690' },
+    { n:'Isabel R. & Eduardo G.', a:'Roberto Bravo esq. 18 de Septiembre', p:'+56 9 66055530' },
+    { n:'Gredas Nene La Ruca', a:'Roberto Bravo 44B', p:'+56 9 88291191' },
+    { n:'Cerámicas Valentina', a:'Roberto Bravo 88-A', p:'+56 9 73887858' },
+    { n:'El Larita', a:'Roberto Bravo 465', p:'+56 9 97335365' },
+    { n:'Pachamama Taller', a:'Arturo Prat 338 B', p:'+56 9 54042248' },
+    { n:'Eduardo Pardo Z.', a:'Roberto Bravo 272', p:'+56 9 99498024' },
+    { n:'Nano Santibáñez', a:'San Antonio 39', p:'+56 9 96212055' },
+    { n:'Roberto Bravo', a:'Roberto Bravo 447', p:'+56 9 77750106' },
+    { n:'Aracely', a:'General Baquedano esq. San Antonio', p:'+56 9 83342757' },
+    { n:'Lámparas Irarrazaval Diseños', a:'Roberto Bravo 53 A', p:'+56 9 82851797' },
+    { n:'Jesús Mi Alfarero', a:'Roberto Bravo 221', p:'+56 9 97568575' },
+    { n:'Cerámica El Arbolito', a:'Roberto Bravo 510', p:'+56 9 93733512' },
+    { n:'Taller Edi Art', a:'General Baquedano 316', p:'+56 9 79340584' },
+    { n:'Miguel Salinas Baeza', a:'Roberto Bravo 13B', p:'+56 9 94560850' },
+    { n:'La Raquelita', a:'Roberto Bravo 88', p:'+56 9 95169386' },
+    { n:'Taller San José', a:'Roberto Bravo 460', p:'+56 9 82117144' },
+    { n:'Cerámica y Decoración Inelia', a:'Arturo Prat 338', p:'+56 9 75182329' },
+    { n:'San Marcos', a:'Roberto Bravo 267', p:'+56 9 53160316' },
+    { n:'Segundo Enrique Trujillo S.', a:'San Antonio 10', p:'+56 9 85669982' },
+    { n:'Rosa y Marcela', a:'Roberto Bravo 414', p:'+56 9 85039992' },
+    { n:'Gredas Ximena', a:'San Antonio esq. Arturo Prat', p:'+56 9 96687585' },
+    { n:'Cerámica Badi', a:'Roberto Bravo 49', p:'+56 9 87584538' },
+    { n:'Cerámicas Fonola', a:'Roberto Bravo 185', p:'+56 9 92467532' },
+    { n:'La Palmera', a:'Roberto Bravo 502', p:'+56 9 87854529' },
+    { n:'Alfarería Edison', a:'General Baquedano 312', p:'+56 9 79340584' },
+    { n:'Doña Laurita', a:'Roberto Bravo 407', p:'+56 9 61651455' },
+    { n:'Gredas Flores', a:'San Antonio 335', p:'+56 9 51123005' },
+    { n:'Cerámicas El Cheo', a:'Roberto Bravo 56 A', p:'+56 9 91661194' },
+    { n:'Cerámicas Tania', a:'Roberto Bravo 454', p:'+56 9 62577048' },
+    { n:'Enrique Garrido', a:'Manuel Rodríguez 345', p:'+56 9 73165446' },
+    { n:'Artesanías Bernarda Hernández', a:'Roberto Bravo 248, Galería Serruchos', p:'+56 9 90225433' },
+    { n:'Robertito', a:'Roberto Bravo esq. 18 de Septiembre', p:'+56 9 46497460' },
+    { n:'Fresia Castillo Romero', a:'Roberto Bravo 13A', p:'+56 9 94511658' },
+    { n:'Artesanía Tradicional El Gomero', a:'Roberto Bravo 80', p:'+56 9 91606574' },
+    { n:'Rosa Mora', a:'Roberto Bravo 457', p:'+56 9 95580575' },
+    { n:'Octavio Fernando Silva R.', a:'Manuel Rodríguez con San Antonio', p:'+56 9 31471192' },
+    { n:'Mami Inés', a:'Roberto Bravo 252, Galería Catalán Local 1', p:'+56 9 83290566' },
+    { n:'Artesanía Tradicional Loza de Greda', a:'Roberto Bravo con Morandé', p:'+56 9 98781143' },
+    { n:'Gredas La Mamy', a:'Roberto Bravo 44C', p:'+56 9 97225185' },
+    { n:'Cerámicas Miguel Ángel', a:'Roberto Bravo 97', p:'' },
+    { n:'María Elisa Salinas Aguilera', a:'Roberto Bravo 469', p:'+56 9 92320964' },
+    { n:'Donde Miguel', a:'Arturo Prat 380', p:'+56 9 92682046' },
+    { n:'La Poza', a:'Roberto Bravo 311', p:'+56 9 93617561' },
+    { n:'Artesanía Utilitaria El Cone', a:'San Antonio 215', p:'+56 9 84730313' },
+    { n:'Mi Chanchita', a:'Roberto Bravo 453', p:'+56 9 96721752' },
+    { n:'Cerámicas Rosa Ester', a:'Manuel Rodríguez 15', p:'+56 9 77751558' },
+    { n:'Don Francisco', a:'Roberto Bravo 56 B', p:'+56 9 68089602' },
+    { n:'Taller Tierra Arte', a:'Roberto Bravo 221', p:'+56 9 77877784' },
+    { n:'María', a:'El Carmen 275', p:'+56 9 89909036' },
+    { n:'Oscar Alejandro Durán', a:'El Carmen 690', p:'+56 9 83527207' },
+    { n:'Marisol Quiróz Abarca', a:'Lautaro 752', p:'+56 9 99745542' },
+    { n:'Fábrica Roca', a:'Roberto Bravo 114', p:'+56 9 99745542' },
+    { n:'Cerámicas Dami', a:'El Carmen 479', p:'+56 9 68007192' },
+    { n:'Cerámica Carolina', a:'El Limonal 722', p:'+56 9 71031885' },
+    { n:'Amelia Rojas Quiróz', a:'Bernardo O\'Higgins 315', p:'+56 9 78316925' },
+    { n:'Rosa Rojas', a:'General Baquedano 448', p:'+56 9 77877784' },
+    { n:'Cerámicas Anaís', a:'El Carmen 329', p:'+56 9 67749664' },
+    { n:'Elías Veliz', a:'Rafael Morandé 480 B', p:'+56 9 90325852' },
+  ],
+};
+
+function telHref(p) {
+  if (!p) return '';
+  const first = p.split('/')[0];
+  let digits = first.replace(/[^\d]/g, '');
+  if (digits.length <= 4) return 'tel:' + digits;            // emergencias (133, etc.)
+  if (!digits.startsWith('56')) digits = '56' + digits;
+  return 'tel:+' + digits;
+}
+
+function dirItemHTML(it) {
+  const mapsUrl = 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
+  const tag = (it.tag || it.d) ? `<span class="dir-tag">${it.tag || it.d}</span>` : '';
+  let links = `<a href="${mapsUrl}" target="_blank" rel="noopener">🗺️ Mapa</a>`;
+  if (it.p) links += `<a href="${telHref(it.p)}">📞 ${it.p}</a>`;
+  if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
+  return `<div class="dir-item">
+      <span class="dir-name">${it.n}</span>
+      ${tag}
+      <span class="dir-addr">📍 ${it.a}</span>
+      <div class="dir-links">${links}</div>
+    </div>`;
+}
+
+function renderDir(containerId, list, countId) {
+  const el = document.getElementById(containerId);
+  if (el) el.innerHTML = list.map(dirItemHTML).join('');
+  if (countId) { const c = document.getElementById(countId); if (c) c.textContent = list.length; }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDir('restaurantDir', DIRECTORY.restaurants, 'restCount');
+  renderDir('tallerDir',     DIRECTORY.talleres,    'tallerCount');
+  renderDir('demoDir',       DIRECTORY.demos,       'demoCount');
+  renderDir('artesanoDir',   DIRECTORY.artesanos,   'artesanoCount');
+  renderDir('alojamientoDir',DIRECTORY.alojamientos);
+  renderDir('interesDir',    DIRECTORY.interes);
+  renderDir('jardinDir',     DIRECTORY.jardin,      'jardinCount');
+  renderDir('servicioDir',   DIRECTORY.servicios,   'servicioCount');
+});
 </script>
 </body>
 </html>
