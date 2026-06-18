@@ -189,6 +189,121 @@
     color: #fff;
   }
 
+  /* ── NAV DROPDOWN GROUPS ─────────────────────────── */
+  .nav-burger {
+    display: none;
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: .3rem .6rem;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .nav-group { position: relative; }
+  .nav-group-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    background: transparent;
+    color: rgba(255,255,255,.92);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: .32rem .7rem;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background .15s, border-color .15s;
+  }
+  .nav-group-btn:hover,
+  .nav-group.open .nav-group-btn {
+    background: rgba(255,255,255,.18);
+    border-color: rgba(255,255,255,.25);
+    color: #fff;
+  }
+  .nav-group-btn .ng-arrow { font-size: .6rem; transition: transform .2s; }
+  .nav-group.open .nav-group-btn .ng-arrow { transform: rotate(180deg); }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + .45rem);
+    left: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    overflow: hidden;
+    min-width: 190px;
+    z-index: 250;
+    border: 1px solid rgba(184,92,44,.12);
+    padding: .35rem;
+  }
+  .nav-group.open .nav-menu { display: block; }
+  .nav-menu a {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .55rem .75rem;
+    font-size: .86rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background .12s, color .12s;
+  }
+  .nav-menu a:hover { background: var(--smoke); color: var(--clay-dark); }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    background: #FFDDAA;
+    color: var(--clay-dark);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 700;
+    padding: .34rem .9rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.2); }
+
+  @media (max-width: 860px) {
+    nav { gap: .4rem .5rem; }
+    .nav-burger { display: inline-block; }
+    .nav-links-wrap {
+      display: none;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: .3rem;
+      margin-top: .5rem;
+      order: 3;
+    }
+    .nav-links-wrap.open { display: flex; }
+    .nav-group { width: 100%; }
+    .nav-group-btn { width: 100%; justify-content: space-between; }
+    .nav-menu {
+      position: static;
+      box-shadow: none;
+      border: none;
+      background: rgba(255,255,255,.12);
+      min-width: 0;
+      margin: .15rem 0 .3rem;
+    }
+    .nav-menu a { color: #fff; }
+    .nav-menu a:hover { background: rgba(255,255,255,.2); color: #fff; }
+    .nav-cta { width: 100%; justify-content: center; margin-top: .2rem; }
+    .lang-selector { order: 2; }
+  }
+
   /* ── HERO ────────────────────────────────────────── */
   #inicio {
     background: linear-gradient(145deg, var(--clay-dark) 0%, var(--clay) 55%, var(--clay-light) 100%);
@@ -1027,24 +1142,50 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#inicio">🏺 Pomaire 360</a>
-  <div class="nav-links-wrap">
-    <a class="nav-link" href="#estacionamientos" data-t="nav_park">Estacionar</a>
-    <a class="nav-link" href="#salud" data-t="nav_health">Salud</a>
-    <a class="nav-link" href="#seguridad" data-t="nav_security">Seguridad</a>
-    <a class="nav-link" href="#comercio" data-t="nav_commerce">Comercio</a>
-    <a class="nav-link" href="#alfareria" data-t="nav_pottery">Alfarería</a>
-    <a class="nav-link" href="#gastronomia" data-t="nav_food">Comer</a>
-    <a class="nav-link" href="#alojamientos">Alojamientos</a>
-    <a class="nav-link" href="#interes">Qué ver</a>
-    <a class="nav-link" href="#alrededores" data-t="nav_around">Alrededores</a>
-    <a class="nav-link" href="#plaza" data-t="nav_plaza">Plaza Pública</a>
-    <a class="nav-link" href="#clima" data-t="nav_weather">Clima</a>
-    <a class="nav-link" href="#recorrido" data-t="nav_tour">Recorrido</a>
-    <a class="nav-link" href="#galeria" data-t="nav_gallery">Galería</a>
-    <a class="nav-link" href="#eventos" data-t="nav_events">Eventos</a>
-    <a class="nav-link" href="#resenas" data-t="nav_reviews">Reseñas</a>
-    <a class="nav-link" href="#mapa" data-t="nav_map">Mapa</a>
-    <a class="nav-link" href="#donaciones" data-t="nav_donate">Apoyar</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 Esenciales <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="#estacionamientos">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="#salud">🏥 <span data-t="nav_health">Salud</span></a>
+        <a href="#seguridad">🚔 <span data-t="nav_security">Seguridad</span></a>
+        <a href="#comercio">🛒 <span data-t="nav_commerce">Comercio</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 Qué hacer <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="#alfareria">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+        <a href="#interes">✨ Qué ver</a>
+        <a href="#plaza">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
+        <a href="#alrededores">🌄 <span data-t="nav_around">Alrededores</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Comer y dormir <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="#gastronomia">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="#alojamientos">🛏️ Alojamientos</a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 Planifica <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
+        <a href="#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+        <a href="#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="#resenas">⭐ <span data-t="nav_reviews">Reseñas</span></a>
+      </div>
+    </div>
+
+    <a class="nav-cta" href="#donaciones">💛 <span data-t="nav_donate">Apoyar</span></a>
   </div>
   <div class="lang-selector" id="langSelector">
     <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
@@ -2724,6 +2865,50 @@ document.addEventListener('click', () => {
     sel.classList.remove('open');
     document.getElementById('langToggleBtn').setAttribute('aria-expanded','false');
   }
+});
+
+// ── NAV DROPDOWN MENUS ───────────────────────────────────────────────────
+function closeAllGroups() {
+  document.querySelectorAll('.nav-group.open').forEach(g => {
+    g.classList.remove('open');
+    const b = g.querySelector('.nav-group-btn');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  });
+}
+function toggleGroup(e, btn) {
+  e.stopPropagation();
+  const group = btn.parentElement;
+  const wasOpen = group.classList.contains('open');
+  closeAllGroups();
+  if (!wasOpen) {
+    group.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+function toggleNav(e) {
+  e.stopPropagation();
+  const wrap = document.getElementById('navGroups');
+  const burger = document.getElementById('navBurger');
+  const open = wrap.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+  if (!open) closeAllGroups();
+}
+// Close groups when clicking outside; close mobile nav + groups when a link is chosen
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-group')) closeAllGroups();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-menu a, .nav-cta').forEach(a => {
+    a.addEventListener('click', () => {
+      closeAllGroups();
+      const wrap = document.getElementById('navGroups');
+      const burger = document.getElementById('navBurger');
+      if (wrap && wrap.classList.contains('open')) {
+        wrap.classList.remove('open');
+        if (burger) burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 });
 </script>
 
