@@ -1204,6 +1204,103 @@
   .reading-highlight { background: #FFE08A !important; color: #2D1A0A !important; border-radius: 4px; box-shadow: 0 0 0 3px #FFE08A; }
   body.reading-mode { cursor: help; }
   body.reading-mode section *:hover { outline: 2px dashed rgba(184,92,44,.4); outline-offset: 2px; }
+
+  /* ── RUTA DEL VINO ───────────────────────────────── */
+  #ruta-vino {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,.06) 0, transparent 40%),
+      linear-gradient(150deg, #3B0A1E 0%, #6E1230 45%, #8C1D3F 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  #ruta-vino::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Ccircle cx='34' cy='28' r='6'/%3E%3Ccircle cx='27' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  #ruta-vino .section-inner { position: relative; z-index: 1; }
+  #ruta-vino .section-header h2 { color: #fff; }
+  #ruta-vino .section-header p { color: rgba(255,255,255,.78); }
+
+  .wine-tag {
+    display: inline-block;
+    background: rgba(255,255,255,.14);
+    color: #FFD9C2;
+    font-size: .75rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: .3rem .9rem; border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  .wine-intro {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,.9);
+    max-width: 720px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .wine-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+  .wine-card {
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.4rem;
+    transition: transform .18s, background .18s, border-color .18s;
+  }
+  .wine-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.13); border-color: rgba(255,217,194,.5); }
+  .wine-card .wc-icon { font-size: 2.4rem; display: block; margin-bottom: .6rem; filter: drop-shadow(0 3px 8px rgba(0,0,0,.3)); }
+  .wine-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+  .wine-card p { font-size: .9rem; color: rgba(255,255,255,.82); line-height: 1.6; }
+
+  .wine-steps {
+    background: rgba(0,0,0,.22);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.6rem 1.2rem;
+    border: 1px solid rgba(255,255,255,.12);
+    margin-bottom: 2rem;
+  }
+  .wine-steps h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: #FFD9C2; margin-bottom: 1.3rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .wine-step { display: grid; grid-template-columns: 44px 1fr; gap: 1rem; align-items: start; margin-bottom: 1.2rem; }
+  .wine-step:last-child { margin-bottom: 0; }
+  .wine-step .ws-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #C0395E, #8C1D3F);
+    border: 2px solid rgba(255,255,255,.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 800; color: #fff;
+    box-shadow: 0 3px 12px rgba(0,0,0,.35);
+  }
+  .wine-step .ws-body strong { display: block; font-size: 1rem; color: #fff; margin-bottom: .2rem; }
+  .wine-step .ws-body span { font-size: .88rem; color: rgba(255,255,255,.78); }
+
+  .wine-cta {
+    display: flex; flex-wrap: wrap; gap: .8rem; align-items: center;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+  }
+  .wine-cta p { font-size: .92rem; color: rgba(255,255,255,.88); flex: 1; min-width: 220px; }
+  .wine-cta a {
+    display: inline-flex; align-items: center; gap: .45rem;
+    background: #FFD9C2; color: #6E1230;
+    font-weight: 800; font-size: .92rem;
+    text-decoration: none; padding: .65rem 1.4rem; border-radius: 24px;
+    white-space: nowrap; transition: transform .15s, box-shadow .15s;
+  }
+  .wine-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+  .wine-note { font-size: .78rem; color: rgba(255,255,255,.55); margin-top: 1.2rem; text-align: center; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -1230,7 +1327,8 @@
       <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 Qué hacer <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#alfareria">🏺 <span data-t="nav_pottery">Alfarería</span></a>
-        <a href="#interes">✨ Qué ver</a>
+        <a href="#ruta-vino">🍷 Ruta del Vino</a>
+        <a href="#interes">✨ <span data-t="nav_seewhat">Qué ver</span></a>
         <a href="#plaza">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
         <a href="#alrededores">🌄 <span data-t="nav_around">Alrededores</span></a>
       </div>
@@ -1240,7 +1338,7 @@
       <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Comer y dormir <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#gastronomia">🍽️ <span data-t="nav_food">Comer</span></a>
-        <a href="#alojamientos">🛏️ Alojamientos</a>
+        <a href="#alojamientos">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
       </div>
     </div>
 
@@ -1673,8 +1771,8 @@
     <div class="section-header reveal">
       <span class="section-icon">🛏️</span>
       <div>
-        <h2>Alojamientos</h2>
-        <p>Hostales, cabañas y suites para quedarte en Pomaire · <em>Where to stay</em></p>
+        <h2 data-t="s_lodging_title">Alojamientos</h2>
+        <p data-t="s_lodging_sub">Hostales, cabañas y suites para quedarte en Pomaire · <em>Where to stay</em></p>
       </div>
     </div>
     <div class="dir-block reveal" style="margin-top:0;">
@@ -1692,8 +1790,8 @@
     <div class="section-header reveal">
       <span class="section-icon">✨</span>
       <div>
-        <h2>Qué ver y puntos de interés</h2>
-        <p>Atractivos, tiendas con encanto y experiencias al paso · <em>Highlights &amp; things to see</em></p>
+        <h2 data-t="s_interes_title">Qué ver y puntos de interés</h2>
+        <p data-t="s_interes_sub">Atractivos, tiendas con encanto y experiencias al paso · <em>Highlights &amp; things to see</em></p>
       </div>
     </div>
     <div class="dir-block reveal" style="margin-top:0;">
@@ -1767,6 +1865,83 @@
         <p class="card-detail">La señal celular en Pomaire es razonable en el centro, pero puede ser débil en Los Chiñihues y sectores rurales. Algunos restaurantes ofrecen WiFi.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RUTA DEL VINO -->
+<section id="ruta-vino">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-icon">🍷</span>
+      <div>
+        <h2>Ruta del Vino y la Chicha</h2>
+        <p>El secano costero de Pomaire y Los Chiñihues, tierra de viñas tradicionales · <em>Wine &amp; chicha route</em></p>
+      </div>
+    </div>
+
+    <div class="wine-tag reveal">🍇 Experiencia · Valle de Melipilla · Secano Costero</div>
+    <p class="wine-intro reveal">
+      Más allá de la greda, el entorno de Pomaire es <strong>tierra de viñas y parras tradicionales</strong>. En el secano costero y el sector de <strong>Los Chiñihues</strong> sobreviven pequeños productores familiares que elaboran <strong>chicha de manzana y uva</strong>, pipeño y vino campesino con técnicas heredadas por generaciones. Una ruta para descubrir el lado rural y festivo del pueblo alfarero.
+    </p>
+
+    <div class="wine-cards reveal">
+      <div class="wine-card">
+        <span class="wc-icon">🍇</span>
+        <h3>Cepa País</h3>
+        <p>La uva tradicional del secano chileno, base de los vinos campesinos y del pipeño. Una de las cepas más antiguas del país, cultivada en parronales rústicos de la zona.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🍷</span>
+        <h3>Chicha artesanal</h3>
+        <p>La bebida emblemática del lugar: chicha de manzana y de uva, fresca y dulce. Se encuentra en los restaurantes típicos y abunda especialmente en torno a las Fiestas Patrias.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🥂</span>
+        <h3>Pipeño del secano</h3>
+        <p>Vino joven y rústico, de carácter campesino, ideal para acompañar una cazuela o una empanada gigante. El maridaje perfecto de la cocina pomairina.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🌾</span>
+        <h3>Los Chiñihues</h3>
+        <p>Sector rural a pocos minutos de Pomaire, de viñedos, quebradas y caminos tranquilos. El corazón de la tradición vitivinícola familiar de los alrededores.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🏺</span>
+        <h3>Maridaje en greda</h3>
+        <p>La chicha y el vino se sirven en jarras y vasijas de greda hechas en el propio pueblo, uniendo en una sola experiencia las dos grandes tradiciones de Pomaire.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">📅</span>
+        <h3>Mejor temporada</h3>
+        <p>La vendimia (marzo–abril) y las Fiestas Patrias (septiembre) son las épocas con más chicha fresca, parras cargadas y ambiente festivo en el secano.</p>
+      </div>
+    </div>
+
+    <div class="wine-steps reveal">
+      <h3>🧭 Cómo recorrer la ruta</h3>
+      <div class="wine-step">
+        <div class="ws-num">1</div>
+        <div class="ws-body"><strong>Parte en el centro de Pomaire</strong><span>Prueba una chicha de manzana o uva en los restaurantes típicos de la calle Roberto Bravo y San Antonio.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">2</div>
+        <div class="ws-body"><strong>Sigue hacia Los Chiñihues</strong><span>Recorre en auto los caminos rurales del secano, entre parronales y quebradas. Lleva el estanque lleno: hay poca señal y pocos servicios.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">3</div>
+        <div class="ws-body"><strong>Busca a los productores familiares</strong><span>Pregunta en el pueblo por chicha y vino artesanal de temporada; muchos se venden directamente en casas y puestos del sector.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">4</div>
+        <div class="ws-body"><strong>Cierra con gastronomía</strong><span>Vuelve al pueblo y marida tu hallazgo con una cazuela o empanada servida en greda. ¡Salud!</span></div>
+      </div>
+    </div>
+
+    <div class="wine-cta reveal">
+      <p>🍷 ¿Tienes una viña, parronal o produces chicha en la zona? Suma tu lugar a esta ruta y aparece en la guía.</p>
+      <a href="https://maps.google.com/?q=Los+Chiñihues+Pomaire+Melipilla" target="_blank" rel="noopener">🗺️ Ver Los Chiñihues</a>
+    </div>
+    <p class="wine-note reveal">Ruta basada en la tradición vitivinícola del secano costero de Melipilla. Los productores y horarios varían según la temporada; consulta en el pueblo. Bebe con moderación · solo mayores de 18 años.</p>
   </div>
 </section>
 
@@ -1941,7 +2116,7 @@
       </div>
     </div>
 
-    <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal">💡 Recorrido libre · explora a tu ritmo</h3>
+    <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal free-tour-label">💡 Recorrido libre · explora a tu ritmo</h3>
     <div class="tour-timeline reveal">
       <div class="tour-step">
         <div class="tour-time">09:00</div>
@@ -2161,7 +2336,7 @@
     <p class="donate-tagline">
       <span data-t="donate_text">Pomaire 360 es un proyecto independiente sin publicidad. Si te fue útil esta guía, un aporte voluntario ayuda a mantener la información actualizada. ¡Gracias!</span>
     </p>
-    <a class="donate-btn" href="https://link.mercadopago.cl/innovati" target="_blank" rel="noopener">
+    <a class="donate-btn" href="https://link.mercadopago.cl/innovati" target="_blank" rel="noopener" data-t="donate_btn">
       🏺 Hacer un aporte voluntario
     </a>
     <p class="donate-note" data-t="donate_note">Pago seguro con Mercado Pago · tarjeta, transferencia o billetera digital</p>
@@ -2171,9 +2346,9 @@
 <!-- FOOTER -->
 <footer>
   <p style="font-size:1.4rem;margin-bottom:.5rem;">🏺</p>
-  <p><strong>Pomaire 360 — Guía para visitantes y nuevos residentes</strong></p>
-  <p>Emergencias: <strong>133</strong> Carabineros · <strong>131</strong> SAMU Ambulancia · <strong>132</strong> Bomberos</p>
-  <p style="margin-top:.75rem;">
+  <p><strong>Pomaire 360 — <span data-t="footer_tagline">Guía para visitantes y nuevos residentes</span></strong></p>
+  <p><span data-t="footer_emer">Emergencias:</span> <strong>133</strong> Carabineros · <strong>131</strong> SAMU Ambulancia · <strong>132</strong> Bomberos</p>
+  <p style="margin-top:.75rem;" data-t="footer_disc">
     Información de carácter orientativo. Verifica horarios y datos directamente con cada institución.
   </p>
   <p>
@@ -2804,9 +2979,24 @@ function applyLang(lang) {
   if (!t) return;
   currentLang = lang;
   document.documentElement.lang = lang;
-  for (const [sel, fn] of Object.entries(KEYS)) {
-    document.querySelectorAll(sel).forEach(el => { el.innerHTML = fn(t); });
-  }
+  const base = LANGS.es;
+  const val = (k) => (t[k] !== undefined ? t[k] : base[k]);
+  // Texto traducible (cualquier elemento con data-t)
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const v = val(el.dataset.t);
+    if (v !== undefined) el.innerHTML = v;
+  });
+  // Placeholders de formularios
+  document.querySelectorAll('[data-ph-t]').forEach(el => {
+    const v = val(el.dataset.phT);
+    if (v !== undefined) el.setAttribute('placeholder', v);
+  });
+  // Subtítulos / captions (galería)
+  document.querySelectorAll('[data-caption-t]').forEach(el => {
+    const v = val(el.dataset.captionT);
+    const span = el.querySelector('span');
+    if (span && v !== undefined) span.textContent = v;
+  });
   // highlight active button
   document.querySelectorAll('.lang-option').forEach(b => {
     b.classList.toggle('lang-active', b.dataset.lang === lang);
@@ -2819,6 +3009,9 @@ function applyLang(lang) {
     document.getElementById('langCurrentFlag').textContent = labels[lang][0];
     document.getElementById('langCurrentName').textContent = labels[lang][1];
   }
+  // Re-renderizar widgets dinámicos en el idioma actual
+  if (typeof window.translateContent === 'function') window.translateContent(lang);
+  if (typeof window.localizeWeather === 'function') window.localizeWeather();
   // persist
   try { localStorage.setItem('p360lang', lang); } catch(e){}
 }
