@@ -122,17 +122,18 @@
     --green:      #4A7C59;
     --radius:     14px;
     --shadow:     0 2px 16px rgba(90,40,10,.10);
+    --fontScale:  1;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: calc(100% * var(--fontScale)); }
 
   body {
     font-family: 'Inter', sans-serif;
     background: var(--cream);
     color: var(--text);
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.65;
   }
 
@@ -143,20 +144,21 @@
     z-index: 100;
     background: rgba(184,92,44,.96);
     backdrop-filter: blur(6px);
-    padding: .5rem 1.2rem;
+    padding: .7rem 1.4rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: .35rem .6rem;
+    gap: .4rem .7rem;
     overflow: visible;
     height: auto;
+    box-shadow: 0 3px 14px rgba(90,40,10,.18);
   }
 
   .nav-brand {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
     color: var(--white);
-    font-size: 1.05rem;
+    font-size: 1.35rem;
     white-space: nowrap;
     text-decoration: none;
     letter-spacing: .02em;
@@ -192,13 +194,13 @@
   /* ── NAV DROPDOWN GROUPS ─────────────────────────── */
   .nav-burger {
     display: none;
-    background: rgba(255,255,255,.15);
+    background: rgba(255,255,255,.18);
     color: #fff;
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 10px;
-    font-size: 1.2rem;
+    border: 1.5px solid rgba(255,255,255,.3);
+    border-radius: 12px;
+    font-size: 1.5rem;
     line-height: 1;
-    padding: .3rem .6rem;
+    padding: .35rem .7rem;
     cursor: pointer;
     margin-left: auto;
   }
@@ -207,73 +209,77 @@
   .nav-group-btn {
     display: inline-flex;
     align-items: center;
-    gap: .35rem;
-    background: transparent;
-    color: rgba(255,255,255,.92);
-    border: 1px solid transparent;
-    border-radius: 20px;
-    padding: .32rem .7rem;
-    font-size: .82rem;
-    font-weight: 600;
+    gap: .45rem;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,.22);
+    border-radius: 24px;
+    padding: .5rem 1.1rem;
+    font-size: .98rem;
+    font-weight: 700;
     cursor: pointer;
     font-family: inherit;
     white-space: nowrap;
-    transition: background .15s, border-color .15s;
+    letter-spacing: .01em;
+    transition: background .15s, border-color .15s, transform .12s;
   }
   .nav-group-btn:hover,
   .nav-group.open .nav-group-btn {
-    background: rgba(255,255,255,.18);
-    border-color: rgba(255,255,255,.25);
-    color: #fff;
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--clay-dark);
+    transform: translateY(-1px);
   }
-  .nav-group-btn .ng-arrow { font-size: .6rem; transition: transform .2s; }
+  .nav-group-btn .ng-arrow { font-size: .7rem; transition: transform .2s; }
   .nav-group.open .nav-group-btn .ng-arrow { transform: rotate(180deg); }
 
   .nav-menu {
     display: none;
     position: absolute;
-    top: calc(100% + .45rem);
+    top: calc(100% + .55rem);
     left: 0;
     background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    border-radius: 14px;
+    box-shadow: 0 14px 36px rgba(0,0,0,.25);
     overflow: hidden;
-    min-width: 190px;
+    min-width: 230px;
     z-index: 250;
     border: 1px solid rgba(184,92,44,.12);
-    padding: .35rem;
+    padding: .45rem;
   }
-  .nav-group.open .nav-menu { display: block; }
+  .nav-group.open .nav-menu { display: block; animation: navDrop .18s ease; }
+  @keyframes navDrop { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform:none; } }
   .nav-menu a {
     display: flex;
     align-items: center;
-    gap: .55rem;
-    padding: .55rem .75rem;
-    font-size: .86rem;
-    font-weight: 500;
+    gap: .65rem;
+    padding: .7rem .9rem;
+    font-size: .98rem;
+    font-weight: 600;
     color: var(--text);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 9px;
     white-space: nowrap;
-    transition: background .12s, color .12s;
+    transition: background .12s, color .12s, padding-left .12s;
   }
-  .nav-menu a:hover { background: var(--smoke); color: var(--clay-dark); }
+  .nav-menu a:hover { background: var(--smoke); color: var(--clay-dark); padding-left: 1.15rem; }
 
   .nav-cta {
     display: inline-flex;
     align-items: center;
-    gap: .35rem;
+    gap: .4rem;
     background: #FFDDAA;
     color: var(--clay-dark);
     text-decoration: none;
-    font-size: .82rem;
-    font-weight: 700;
-    padding: .34rem .9rem;
-    border-radius: 20px;
+    font-size: .98rem;
+    font-weight: 800;
+    padding: .5rem 1.2rem;
+    border-radius: 24px;
     white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
     transition: transform .15s, box-shadow .15s;
   }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.2); }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.28); }
 
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; }
@@ -1133,6 +1139,71 @@
     .or-stop::after { left: 66px; }
     .or-dot { width: 32px; height: 32px; font-size: .95rem; }
   }
+
+  /* ── PANEL DE ACCESIBILIDAD ──────────────────────── */
+  .a11y { position: fixed; left: 1rem; bottom: 1rem; z-index: 1000; }
+  .a11y-toggle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--clay-dark);
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 1.7rem;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0,0,0,.3);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .15s, background .15s;
+  }
+  .a11y-toggle:hover { transform: scale(1.06); background: var(--clay); }
+  .a11y-menu {
+    display: none;
+    position: absolute;
+    left: 0; bottom: calc(100% + .6rem);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    border: 1px solid rgba(184,92,44,.15);
+    padding: 1.1rem 1.2rem;
+    width: 270px;
+  }
+  .a11y.open .a11y-menu { display: block; animation: navDrop .18s ease; }
+  .a11y-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700; color: var(--clay-dark);
+    margin-bottom: .9rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .a11y-row { margin-bottom: 1rem; }
+  .a11y-row > span { display: block; font-size: .85rem; font-weight: 600; color: var(--muted); margin-bottom: .45rem; }
+  .a11y-btns { display: flex; gap: .5rem; }
+  .a11y-btns button {
+    flex: 1;
+    background: var(--smoke);
+    color: var(--clay-dark);
+    border: 1.5px solid transparent;
+    border-radius: 12px;
+    padding: .6rem .4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .15s, border-color .15s, transform .1s;
+  }
+  .a11y-btns button:hover { background: #FFE9D6; border-color: var(--clay-light); }
+  .a11y-btns button:active { transform: scale(.96); }
+  .a11y-btns button.a11y-big { font-size: 1.35rem; }
+  .a11y-btns button.a11y-small { font-size: .82rem; }
+  .a11y-btns button.active { background: var(--clay); color: #fff; }
+  .a11y-scale-label { text-align:center; font-size:.78rem; color:var(--muted); margin-top:.4rem; }
+  .a11y-hint { font-size: .76rem; color: var(--muted); line-height: 1.5; border-top: 1px solid var(--smoke); padding-top: .7rem; }
+  .a11y-close {
+    position: absolute; top: .6rem; right: .7rem;
+    background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--muted);
+  }
+  /* resaltado del texto que se está leyendo */
+  .reading-highlight { background: #FFE08A !important; color: #2D1A0A !important; border-radius: 4px; box-shadow: 0 0 0 3px #FFE08A; }
+  body.reading-mode { cursor: help; }
+  body.reading-mode section *:hover { outline: 2px dashed rgba(184,92,44,.4); outline-offset: 2px; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -3371,6 +3442,158 @@ document.addEventListener('DOMContentLoaded', () => {
   renderDir('jardinDir',     DIRECTORY.jardin,      'jardinCount');
   renderDir('servicioDir',   DIRECTORY.servicios,   'servicioCount');
 });
+</script>
+<!-- PANEL DE ACCESIBILIDAD -->
+<div class="a11y" id="a11yPanel">
+  <button class="a11y-toggle" id="a11yToggle" onclick="toggleA11y(event)" aria-label="Opciones de accesibilidad" aria-expanded="false" title="Accesibilidad">♿</button>
+  <div class="a11y-menu" role="dialog" aria-label="Opciones de accesibilidad">
+    <button class="a11y-close" onclick="toggleA11y(event)" aria-label="Cerrar">✕</button>
+    <div class="a11y-title">♿ Accesibilidad</div>
+
+    <div class="a11y-row">
+      <span>🔠 Tamaño de letra</span>
+      <div class="a11y-btns">
+        <button class="a11y-small" onclick="changeFont(-1)" aria-label="Reducir tamaño de letra">A−</button>
+        <button onclick="resetFont()" aria-label="Tamaño normal">A</button>
+        <button class="a11y-big" onclick="changeFont(1)" aria-label="Aumentar tamaño de letra">A+</button>
+      </div>
+      <div class="a11y-scale-label" id="a11yScaleLabel">Tamaño normal (100%)</div>
+    </div>
+
+    <div class="a11y-row">
+      <span>🔊 Lectura en voz alta</span>
+      <div class="a11y-btns">
+        <button id="readToggleBtn" onclick="toggleReadMode()">🔊 Activar</button>
+        <button onclick="readWholePage()" aria-label="Leer toda la página">📖 Leer todo</button>
+      </div>
+    </div>
+
+    <p class="a11y-hint" id="a11yHint">Activa la lectura y luego toca cualquier texto del sitio para escucharlo en voz alta.</p>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+// ACCESIBILIDAD — tamaño de letra + lectura en voz alta
+// ══════════════════════════════════════════════════════════════════════════
+const FONT_STEPS = [0.9, 1, 1.15, 1.3, 1.45, 1.6];
+let fontIdx = 1;
+
+function applyFont() {
+  document.documentElement.style.setProperty('--fontScale', FONT_STEPS[fontIdx]);
+  const pct = Math.round(FONT_STEPS[fontIdx] * 100);
+  const lbl = document.getElementById('a11yScaleLabel');
+  if (lbl) lbl.textContent = (fontIdx === 1 ? 'Tamaño normal' : 'Tamaño') + ' (' + pct + '%)';
+  try { localStorage.setItem('p360font', fontIdx); } catch(e){}
+}
+function changeFont(dir) {
+  fontIdx = Math.max(0, Math.min(FONT_STEPS.length - 1, fontIdx + dir));
+  applyFont();
+}
+function resetFont() { fontIdx = 1; applyFont(); }
+
+function toggleA11y(e) {
+  if (e) e.stopPropagation();
+  const p = document.getElementById('a11yPanel');
+  const open = p.classList.toggle('open');
+  document.getElementById('a11yToggle').setAttribute('aria-expanded', open);
+}
+document.addEventListener('click', (e) => {
+  const p = document.getElementById('a11yPanel');
+  if (p && p.classList.contains('open') && !e.target.closest('.a11y')) p.classList.remove('open');
+});
+
+// ── Lectura en voz alta (Web Speech API) ──────────────────────────────────
+const speechOK = ('speechSynthesis' in window);
+let readingMode = false;
+let lastSpoken = null;
+
+function speechLang() {
+  const map = { es:'es-ES', en:'en-US', pt:'pt-BR', fr:'fr-FR', ru:'ru-RU', ja:'ja-JP', zh:'zh-CN' };
+  return map[document.documentElement.lang] || 'es-ES';
+}
+function speak(text) {
+  if (!speechOK || !text) return;
+  text = text.replace(/\s+/g, ' ').trim();
+  if (!text) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = speechLang();
+  u.rate = 0.95;
+  window.speechSynthesis.speak(u);
+}
+function stopSpeak() {
+  if (speechOK) window.speechSynthesis.cancel();
+  if (lastSpoken) { lastSpoken.classList.remove('reading-highlight'); lastSpoken = null; }
+}
+function toggleReadMode() {
+  if (!speechOK) { alert('Tu navegador no soporta la lectura en voz alta.'); return; }
+  readingMode = !readingMode;
+  const btn = document.getElementById('readToggleBtn');
+  const hint = document.getElementById('a11yHint');
+  document.body.classList.toggle('reading-mode', readingMode);
+  if (readingMode) {
+    btn.textContent = '⏹ Detener';
+    btn.classList.add('active');
+    hint.textContent = '✅ Lectura activa: toca cualquier texto del sitio para escucharlo.';
+    speak('Lectura en voz alta activada. Toca cualquier texto para escucharlo.');
+  } else {
+    btn.textContent = '🔊 Activar';
+    btn.classList.remove('active');
+    hint.textContent = 'Activa la lectura y luego toca cualquier texto del sitio para escucharlo en voz alta.';
+    stopSpeak();
+  }
+}
+
+// Al tocar texto en modo lectura, leerlo en voz alta
+document.addEventListener('click', (e) => {
+  if (!readingMode) return;
+  if (e.target.closest('.a11y')) return;          // no leer los propios controles
+  const el = e.target.closest('p, h1, h2, h3, h4, li, span, a, strong, .card, .dir-item, .or-txt, .tour-content, .event-info, .review-card');
+  if (!el) return;
+  const txt = el.innerText || el.textContent;
+  if (!txt || !txt.trim()) return;
+  if (lastSpoken) lastSpoken.classList.remove('reading-highlight');
+  el.classList.add('reading-highlight');
+  lastSpoken = el;
+  speak(txt);
+}, true);
+
+// Leer toda la página (secciones principales)
+function readWholePage() {
+  if (!speechOK) { alert('Tu navegador no soporta la lectura en voz alta.'); return; }
+  const parts = [];
+  document.querySelectorAll('h1, section h2, section h3, section p, .card h3, .card .card-detail').forEach(el => {
+    if (el.offsetParent === null) return;          // omitir ocultos
+    const t = (el.innerText || '').trim();
+    if (t) parts.push(t);
+  });
+  const full = parts.join('. ');
+  window.speechSynthesis.cancel();
+  // dividir en fragmentos para evitar el límite de longitud
+  const chunks = full.match(/[\s\S]{1,200}(?:\.|$)/g) || [full];
+  chunks.forEach(c => {
+    const u = new SpeechSynthesisUtterance(c.trim());
+    u.lang = speechLang();
+    u.rate = 0.95;
+    window.speechSynthesis.speak(u);
+  });
+}
+
+// Restaurar tamaño guardado + ocultar lectura si no es compatible
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = parseInt(localStorage.getItem('p360font'));
+    if (!isNaN(saved) && saved >= 0 && saved < FONT_STEPS.length) fontIdx = saved;
+  } catch(e){}
+  applyFont();
+  if (!speechOK) {
+    const b = document.getElementById('readToggleBtn');
+    if (b) { b.disabled = true; b.textContent = '🔇 No disponible'; }
+  }
+});
+// Detener la lectura al salir de la página
+window.addEventListener('beforeunload', stopSpeak);
 </script>
 </body>
 </html>
