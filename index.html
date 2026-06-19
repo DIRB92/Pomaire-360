@@ -612,6 +612,10 @@
     color: #fff;
     transform: translateY(-1px);
   }
+  /* Botón que abre el mapa: asegura estilo idéntico a los enlaces */
+  button.site-btn { cursor: pointer; font-family: inherit; line-height: 1; }
+  /* Fuerza un salto de línea para que el siguiente botón quede debajo */
+  .sites-break { flex-basis: 100%; height: 0; }
   @media (max-width: 600px) {
     .sites-bar { top: .6rem; left: .6rem; gap: .3rem; }
     .site-btn { font-size: .68rem; padding: .28rem .55rem; }
@@ -1445,6 +1449,8 @@
     <a class="site-btn" href="https://holamelipilla.cl" target="_blank" rel="noopener">🏠 Hola Melipilla</a>
     <a class="site-btn" href="https://melipilla.cl" target="_blank" rel="noopener">🏛️ Municipalidad</a>
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
+    <div class="sites-break"></div>
+    <button class="site-btn" type="button" onclick="openOfficialMap()">🗺️ Ver mapa oficial de Pomaire</button>
   </div>
   <span class="hero-pottery">🏺</span>
   <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
