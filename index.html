@@ -289,9 +289,10 @@
 
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; }
-    .nav-burger { display: inline-block; }
+    /* En móvil mostramos los menús siempre en vertical, sin hamburguesa */
+    .nav-burger { display: none; }
     .nav-links-wrap {
-      display: none;
+      display: flex;
       flex-basis: 100%;
       flex-direction: column;
       align-items: stretch;
@@ -299,7 +300,6 @@
       margin-top: .5rem;
       order: 3;
     }
-    .nav-links-wrap.open { display: flex; }
     .nav-group { width: 100%; }
     .nav-group-btn { width: 100%; justify-content: space-between; }
     .nav-menu {
