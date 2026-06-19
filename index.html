@@ -1367,7 +1367,7 @@
   <div class="nav-links-wrap" id="navGroups">
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 Esenciales <span class="ng-arrow">▾</span></button>
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#estacionamientos">🅿️ <span data-t="nav_park">Estacionar</span></a>
         <a href="#salud">🏥 <span data-t="nav_health">Salud</span></a>
@@ -1377,10 +1377,10 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 Qué hacer <span class="ng-arrow">▾</span></button>
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#alfareria">🏺 <span data-t="nav_pottery">Alfarería</span></a>
-        <a href="#ruta-vino">🍷 Ruta del Vino</a>
+        <a href="#ruta-vino">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
         <a href="#interes">✨ <span data-t="nav_seewhat">Qué ver</span></a>
         <a href="#plaza">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
         <a href="#alrededores">🌄 <span data-t="nav_around">Alrededores</span></a>
@@ -1388,7 +1388,7 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Comer y dormir <span class="ng-arrow">▾</span></button>
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#gastronomia">🍽️ <span data-t="nav_food">Comer</span></a>
         <a href="#alojamientos">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
@@ -1396,7 +1396,7 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 Planifica <span class="ng-arrow">▾</span></button>
+      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
         <a href="#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
@@ -1447,10 +1447,10 @@
   <!-- MENU OTROS SITIOS -->
   <div class="sites-bar">
     <a class="site-btn" href="https://holamelipilla.cl" target="_blank" rel="noopener">🏠 Hola Melipilla</a>
-    <a class="site-btn" href="https://melipilla.cl" target="_blank" rel="noopener">🏛️ Municipalidad</a>
+    <a class="site-btn" href="https://melipilla.cl" target="_blank" rel="noopener">🏛️ <span data-t="site_municipality">Municipalidad</span></a>
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
     <div class="sites-break"></div>
-    <button class="site-btn" type="button" onclick="openOfficialMap()">🗺️ Ver mapa oficial de Pomaire</button>
+    <button class="site-btn" type="button" onclick="openOfficialMap()">🗺️ <span data-t="site_official_map">Ver mapa oficial de Pomaire</span></button>
   </div>
   <span class="hero-pottery">🏺</span>
   <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
@@ -2094,7 +2094,7 @@
       </div>
     </div>
     <div id="weather-widget" class="weather-box reveal">
-      <div class="weather-loading">⏳ Cargando clima...</div>
+      <div class="weather-loading" data-t="weather_loading">⏳ Cargando clima...</div>
     </div>
     <p class="weather-note reveal" data-t="weather_note">Datos en tiempo real · Open-Meteo · Coordenadas Pomaire</p>
   </div>
@@ -2252,23 +2252,23 @@
       </div>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" data-caption-t="gal_1">
-        <div class="gallery-placeholder">🏺<span>Alfarería en greda</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🏺<span data-t="gal_1">Alfarería en greda</span></div>
       </div>
-      <div class="gallery-item" data-caption-t="gal_2">
-        <div class="gallery-placeholder">🥘<span>Cazuela de barro</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🥘<span data-t="gal_2">Cazuela de barro</span></div>
       </div>
-      <div class="gallery-item" data-caption-t="gal_3">
-        <div class="gallery-placeholder">🌾<span>Los Chiñihues</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🌾<span data-t="gal_3">Los Chiñihues</span></div>
       </div>
-      <div class="gallery-item" data-caption-t="gal_4">
-        <div class="gallery-placeholder">🏘️<span>Calle principal</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🏘️<span data-t="gal_4">Calle principal</span></div>
       </div>
-      <div class="gallery-item" data-caption-t="gal_5">
-        <div class="gallery-placeholder">🎨<span>Artesanos trabajando</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">🎨<span data-t="gal_5">Artesanos trabajando</span></div>
       </div>
-      <div class="gallery-item" data-caption-t="gal_6">
-        <div class="gallery-placeholder">⛪<span>Iglesia San Antonio</span></div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">⛪<span data-t="gal_6">Iglesia San Antonio</span></div>
       </div>
     </div>
     <p class="gallery-note reveal" data-t="gallery_note">📷 ¿Visitaste Pomaire? Comparte tus fotos etiquetando <strong>#Pomaire360</strong></p>
@@ -2287,7 +2287,7 @@
     </div>
     <div class="events-list reveal">
       <div class="event-card">
-        <div class="event-month">ENE–FEB</div>
+        <div class="event-month" data-t="ev_m1">ENE–FEB</div>
         <div class="event-info">
           <h3 data-t="ev_1_title">Temporada alta de verano</h3>
           <p data-t="ev_1_desc">Mayor afluencia de turistas nacionales. Llegar temprano es clave. Los artesanos tienen más stock y variedad.</p>
@@ -2295,7 +2295,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-month">JUN</div>
+        <div class="event-month" data-t="ev_m2">JUN</div>
         <div class="event-info">
           <h3 data-t="ev_2_title">Fiesta de San Antonio de Padua</h3>
           <p data-t="ev_2_desc">Festividad religiosa patronal de Pomaire. Procesión, actividades culturales y gastronomía especial en la plaza.</p>
@@ -2303,7 +2303,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-month">SEP</div>
+        <div class="event-month" data-t="ev_m3">SEP</div>
         <div class="event-info">
           <h3 data-t="ev_3_title">Fiestas Patrias</h3>
           <p data-t="ev_3_desc">18 de septiembre — ambiente de fondas, chicha artesanal, cueca y artesanía festiva. Una de las mejores épocas para visitar.</p>
@@ -2311,7 +2311,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-month">NOV–DIC</div>
+        <div class="event-month" data-t="ev_m4">NOV–DIC</div>
         <div class="event-info">
           <h3 data-t="ev_4_title">Feria de artesanía navideña</h3>
           <p data-t="ev_4_desc">Artesanos presentan piezas especiales de temporada. Nacimientos en greda, adornos y regalos únicos hechos a mano.</p>
@@ -2949,6 +2949,8 @@ let currentLang = 'es';
 const LANG_EXTRA = {
   es: {
     nav_lodging:"Alojamientos", nav_seewhat:"Qué ver",
+    nav_g_essentials:"Esenciales", nav_g_todo:"Qué hacer", nav_g_eatsleep:"Comer y dormir", nav_g_plan:"Planifica", nav_winery:"Ruta del Vino", site_municipality:"Municipalidad", site_official_map:"Ver mapa oficial de Pomaire",
+    ev_m1:"ENE–FEB", ev_m2:"JUN", ev_m3:"SEP", ev_m4:"NOV–DIC", weather_loading:"⏳ Cargando clima...",
     a11y_title:"♿ Accesibilidad", a11y_font:"🔠 Tamaño de letra", a11y_read:"🔊 Lectura en voz alta", a11y_readall:"📖 Leer todo", a11y_hint:"Activa la lectura y luego toca cualquier texto del sitio para escucharlo en voz alta.", a11y_hint_active:"✅ Lectura activa: toca cualquier texto del sitio para escucharlo.", a11y_activate:"🔊 Activar", a11y_stop:"⏹ Detener", a11y_unavailable:"🔇 No disponible", a11y_size_normal:"Tamaño normal", a11y_size:"Tamaño", a11y_voice_on:"Lectura en voz alta activada. Toca cualquier texto para escucharlo.", a11y_no_support:"Tu navegador no soporta la lectura en voz alta.", a11y_aria_options:"Opciones de accesibilidad", a11y_aria_close:"Cerrar",
     s_lodging_title:"Alojamientos", s_lodging_sub:"Hostales, cabañas y suites para quedarte en Pomaire · <em>Where to stay</em>",
     s_interes_title:"Qué ver y puntos de interés", s_interes_sub:"Atractivos, tiendas con encanto y experiencias al paso · <em>Highlights &amp; things to see</em>",
@@ -3032,6 +3034,8 @@ const LANG_EXTRA = {
   },
   en: {
     nav_lodging:"Lodging", nav_seewhat:"What to see",
+    nav_g_essentials:"Essentials", nav_g_todo:"What to do", nav_g_eatsleep:"Eat & sleep", nav_g_plan:"Plan", nav_winery:"Wine Route", site_municipality:"Municipality", site_official_map:"View official Pomaire map",
+    ev_m1:"JAN–FEB", ev_m2:"JUN", ev_m3:"SEP", ev_m4:"NOV–DEC", weather_loading:"⏳ Loading weather...",
     a11y_title:"♿ Accessibility", a11y_font:"🔠 Font size", a11y_read:"🔊 Read aloud", a11y_readall:"📖 Read all", a11y_hint:"Turn on reading and then tap any text on the site to hear it read aloud.", a11y_hint_active:"✅ Reading active: tap any text on the site to hear it.", a11y_activate:"🔊 Turn on", a11y_stop:"⏹ Stop", a11y_unavailable:"🔇 Unavailable", a11y_size_normal:"Normal size", a11y_size:"Size", a11y_voice_on:"Read aloud turned on. Tap any text to hear it.", a11y_no_support:"Your browser does not support read aloud.", a11y_aria_options:"Accessibility options", a11y_aria_close:"Close",
     s_lodging_title:"Lodging", s_lodging_sub:"Hostels, cabins and suites to stay overnight in Pomaire · <em>Where to stay</em>",
     s_interes_title:"What to see & points of interest", s_interes_sub:"Attractions, charming shops and quick experiences · <em>Highlights &amp; things to see</em>",
@@ -3115,6 +3119,8 @@ const LANG_EXTRA = {
   },
   pt: {
     nav_lodging:"Hospedagem", nav_seewhat:"O que ver",
+    nav_g_essentials:"Essenciais", nav_g_todo:"O que fazer", nav_g_eatsleep:"Comer e dormir", nav_g_plan:"Planeje", nav_winery:"Rota do Vinho", site_municipality:"Prefeitura", site_official_map:"Ver mapa oficial de Pomaire",
+    ev_m1:"JAN–FEV", ev_m2:"JUN", ev_m3:"SET", ev_m4:"NOV–DEZ", weather_loading:"⏳ Carregando clima...",
     a11y_title:"♿ Acessibilidade", a11y_font:"🔠 Tamanho da fonte", a11y_read:"🔊 Leitura em voz alta", a11y_readall:"📖 Ler tudo", a11y_hint:"Ative a leitura e depois toque em qualquer texto do site para ouvi-lo em voz alta.", a11y_hint_active:"✅ Leitura ativa: toque em qualquer texto do site para ouvi-lo.", a11y_activate:"🔊 Ativar", a11y_stop:"⏹ Parar", a11y_unavailable:"🔇 Indisponível", a11y_size_normal:"Tamanho normal", a11y_size:"Tamanho", a11y_voice_on:"Leitura em voz alta ativada. Toque em qualquer texto para ouvi-lo.", a11y_no_support:"Seu navegador não suporta a leitura em voz alta.", a11y_aria_options:"Opções de acessibilidade", a11y_aria_close:"Fechar",
     s_lodging_title:"Hospedagem", s_lodging_sub:"Hostels, cabanas e suítes para se hospedar em Pomaire · <em>Where to stay</em>",
     s_interes_title:"O que ver e pontos de interesse", s_interes_sub:"Atrações, lojas charmosas e experiências rápidas · <em>Highlights &amp; things to see</em>",
@@ -3198,6 +3204,8 @@ const LANG_EXTRA = {
   },
   fr: {
     nav_lodging:"Hébergements", nav_seewhat:"À voir",
+    nav_g_essentials:"Essentiels", nav_g_todo:"Que faire", nav_g_eatsleep:"Manger et dormir", nav_g_plan:"Planifier", nav_winery:"Route du Vin", site_municipality:"Mairie", site_official_map:"Voir la carte officielle de Pomaire",
+    ev_m1:"JAN–FÉV", ev_m2:"JUIN", ev_m3:"SEP", ev_m4:"NOV–DÉC", weather_loading:"⏳ Chargement de la météo...",
     a11y_title:"♿ Accessibilité", a11y_font:"🔠 Taille du texte", a11y_read:"🔊 Lecture à voix haute", a11y_readall:"📖 Tout lire", a11y_hint:"Activez la lecture puis touchez n'importe quel texte du site pour l'entendre à voix haute.", a11y_hint_active:"✅ Lecture active : touchez n'importe quel texte du site pour l'entendre.", a11y_activate:"🔊 Activer", a11y_stop:"⏹ Arrêter", a11y_unavailable:"🔇 Indisponible", a11y_size_normal:"Taille normale", a11y_size:"Taille", a11y_voice_on:"Lecture à voix haute activée. Touchez n'importe quel texte pour l'entendre.", a11y_no_support:"Votre navigateur ne prend pas en charge la lecture à voix haute.", a11y_aria_options:"Options d'accessibilité", a11y_aria_close:"Fermer",
     s_lodging_title:"Hébergements", s_lodging_sub:"Auberges, cabanes et suites pour séjourner à Pomaire · <em>Where to stay</em>",
     s_interes_title:"À voir et points d'intérêt", s_interes_sub:"Attractions, boutiques de charme et expériences en chemin · <em>Highlights &amp; things to see</em>",
@@ -3281,6 +3289,8 @@ const LANG_EXTRA = {
   },
   ru: {
     nav_lodging:"Жильё", nav_seewhat:"Что посмотреть",
+    nav_g_essentials:"Главное", nav_g_todo:"Чем заняться", nav_g_eatsleep:"Еда и ночлег", nav_g_plan:"Планирование", nav_winery:"Винный маршрут", site_municipality:"Муниципалитет", site_official_map:"Официальная карта Помайре",
+    ev_m1:"ЯНВ–ФЕВ", ev_m2:"ИЮН", ev_m3:"СЕН", ev_m4:"НОЯ–ДЕК", weather_loading:"⏳ Загрузка погоды...",
     a11y_title:"♿ Доступность", a11y_font:"🔠 Размер шрифта", a11y_read:"🔊 Чтение вслух", a11y_readall:"📖 Читать всё", a11y_hint:"Включите чтение и затем нажмите на любой текст сайта, чтобы услышать его вслух.", a11y_hint_active:"✅ Чтение включено: нажмите на любой текст сайта, чтобы услышать его.", a11y_activate:"🔊 Включить", a11y_stop:"⏹ Остановить", a11y_unavailable:"🔇 Недоступно", a11y_size_normal:"Обычный размер", a11y_size:"Размер", a11y_voice_on:"Чтение вслух включено. Нажмите на любой текст, чтобы услышать его.", a11y_no_support:"Ваш браузер не поддерживает чтение вслух.", a11y_aria_options:"Параметры доступности", a11y_aria_close:"Закрыть",
     s_lodging_title:"Жильё", s_lodging_sub:"Хостелы, домики и сьюты для ночёвки в Помайре · <em>Where to stay</em>",
     s_interes_title:"Что посмотреть и точки интереса", s_interes_sub:"Достопримечательности, уютные магазины и впечатления по пути · <em>Highlights &amp; things to see</em>",
@@ -3364,6 +3374,8 @@ const LANG_EXTRA = {
   },
   ja: {
     nav_lodging:"宿泊", nav_seewhat:"見どころ",
+    nav_g_essentials:"基本情報", nav_g_todo:"観光・体験", nav_g_eatsleep:"食事と宿泊", nav_g_plan:"計画", nav_winery:"ワインの道", site_municipality:"市役所", site_official_map:"ポマイレ公式地図を見る",
+    ev_m1:"1〜2月", ev_m2:"6月", ev_m3:"9月", ev_m4:"11〜12月", weather_loading:"⏳ 天気を読み込み中...",
     a11y_title:"♿ アクセシビリティ", a11y_font:"🔠 文字サイズ", a11y_read:"🔊 読み上げ", a11y_readall:"📖 すべて読む", a11y_hint:"読み上げをオンにして、サイトの任意のテキストをタップすると音声で読み上げます。", a11y_hint_active:"✅ 読み上げ中：サイトの任意のテキストをタップして聞いてください。", a11y_activate:"🔊 オンにする", a11y_stop:"⏹ 停止", a11y_unavailable:"🔇 利用不可", a11y_size_normal:"標準サイズ", a11y_size:"サイズ", a11y_voice_on:"読み上げをオンにしました。任意のテキストをタップして聞いてください。", a11y_no_support:"お使いのブラウザは読み上げに対応していません。", a11y_aria_options:"アクセシビリティ オプション", a11y_aria_close:"閉じる",
     s_lodging_title:"宿泊", s_lodging_sub:"ポマイレに泊まるためのホステル・コテージ・スイート · <em>Where to stay</em>",
     s_interes_title:"見どころと観光スポット", s_interes_sub:"名所、魅力的な店、立ち寄り体験 · <em>Highlights &amp; things to see</em>",
@@ -3447,6 +3459,8 @@ const LANG_EXTRA = {
   },
   zh: {
     nav_lodging:"住宿", nav_seewhat:"看点",
+    nav_g_essentials:"必备信息", nav_g_todo:"玩什么", nav_g_eatsleep:"吃与住", nav_g_plan:"行程规划", nav_winery:"葡萄酒之路", site_municipality:"市政府", site_official_map:"查看波迈雷官方地图",
+    ev_m1:"1–2月", ev_m2:"6月", ev_m3:"9月", ev_m4:"11–12月", weather_loading:"⏳ 正在加载天气...",
     a11y_title:"♿ 无障碍", a11y_font:"🔠 字体大小", a11y_read:"🔊 朗读", a11y_readall:"📖 全部朗读", a11y_hint:"开启朗读后，点按网站上的任意文字即可听到朗读。", a11y_hint_active:"✅ 朗读已开启：点按网站上的任意文字即可听到。", a11y_activate:"🔊 开启", a11y_stop:"⏹ 停止", a11y_unavailable:"🔇 不可用", a11y_size_normal:"标准大小", a11y_size:"大小", a11y_voice_on:"朗读已开启。点按任意文字即可听到。", a11y_no_support:"您的浏览器不支持朗读。", a11y_aria_options:"无障碍选项", a11y_aria_close:"关闭",
     s_lodging_title:"住宿", s_lodging_sub:"在波迈雷过夜的旅舍、小屋和套房 · <em>Where to stay</em>",
     s_interes_title:"看点与兴趣点", s_interes_sub:"景点、迷人的店铺和顺路体验 · <em>Highlights &amp; things to see</em>",
