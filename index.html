@@ -932,6 +932,49 @@
     margin-top: .7rem;
   }
 
+  /* Mapa oficial ilustrado */
+  .official-map { text-align: center; margin-top: 1.1rem; }
+  .official-map-btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--clay-dark); color: #fff;
+    border: none; border-radius: 999px;
+    padding: .7rem 1.4rem; font-size: .92rem; font-weight: 700;
+    font-family: 'Inter', sans-serif; cursor: pointer;
+    box-shadow: var(--shadow); transition: transform .15s, background .15s;
+  }
+  .official-map-btn:hover { transform: translateY(-2px); background: var(--clay); }
+  .official-map-note { color: var(--muted); font-size: .78rem; margin-top: .5rem; }
+
+  /* Lightbox */
+  .map-lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(20,12,8,.92); padding: 2vh 2vw;
+    align-items: center; justify-content: center;
+  }
+  .map-lightbox.open { display: flex; }
+  .map-lightbox-inner { position: relative; max-width: 96vw; max-height: 96vh; }
+  .map-lightbox-inner img {
+    max-width: 96vw; max-height: 88vh; width: auto; height: auto;
+    border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    background: #fff; display: block;
+  }
+  .map-lightbox-close {
+    position: absolute; top: -14px; right: -14px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #fff; color: var(--clay-dark); border: none;
+    font-size: 1.2rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,.4); z-index: 2;
+  }
+  .map-lightbox-dl {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(255,255,255,.94); color: var(--clay-dark);
+    padding: .5rem 1rem; border-radius: 999px; font-size: .82rem;
+    font-weight: 700; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,.3);
+  }
+  @media (max-width: 600px) {
+    .map-lightbox-close { top: 4px; right: 4px; }
+  }
+
   /* Leaflet popup theming */
   .leaflet-popup-content-wrapper { border-radius: 10px; }
   .leaflet-popup-content { font-family: 'Inter', sans-serif; margin: .8rem 1rem; }
@@ -1981,6 +2024,14 @@
     </div>
     <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias</p>
 
+    <!-- Mapa oficial ilustrado -->
+    <div class="official-map reveal">
+      <button class="official-map-btn" onclick="openOfficialMap()" type="button">
+        🗺️ <span data-t="official_map_btn">Ver mapa oficial ilustrado de Pomaire</span>
+      </button>
+      <p class="official-map-note" data-t="official_map_note">Plano turístico oficial con el directorio numerado de talleres de artesanos.</p>
+    </div>
+
     <!-- Rutas sugeridas -->
     <div class="routes-block reveal">
       <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
@@ -2358,6 +2409,18 @@
   <p style="margin-top:.5rem;font-size:.76rem;" data-t="footer_date">Última revisión: junio 2026 · Pomaire, Melipilla, Región Metropolitana</p>
 </footer>
 
+<!-- Lightbox mapa oficial -->
+<div class="map-lightbox" id="officialMapLightbox" onclick="closeOfficialMap(event)">
+  <div class="map-lightbox-inner">
+    <button class="map-lightbox-close" onclick="closeOfficialMap(event)" aria-label="Cerrar" type="button">✕</button>
+    <picture>
+      <source srcset="mapa-oficial-pomaire.webp" type="image/webp">
+      <img src="mapa-oficial-pomaire.jpg" alt="Mapa oficial ilustrado de Pomaire con directorio de talleres de artesanos" id="officialMapImg" loading="lazy">
+    </picture>
+    <a class="map-lightbox-dl" href="mapa-oficial-pomaire.jpg" download="mapa-oficial-pomaire.jpg">⬇️ <span data-t="official_map_dl">Descargar mapa</span></a>
+  </div>
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -2437,6 +2500,7 @@ const LANGS = {
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Salud", filter_security:"Seguridad",
     filter_pottery:"Alfarería", filter_food:"Comer", filter_services:"Servicios", filter_around:"Alrededores",
     locate_btn:"Usar mi ubicación", map_hint:"📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias",
+    official_map_btn:"Ver mapa oficial ilustrado de Pomaire", official_map_note:"Plano turístico oficial con el directorio numerado de talleres de artesanos.", official_map_dl:"Descargar mapa",
     routes_title:"🧭 Recorridos sugeridos",
     route_artisan_name:"Ruta del Artesano", route_artisan_meta:"3 paradas · ~1.5 hrs",
     route_family_name:"Ruta Familiar", route_family_meta:"4 paradas · ~2.5 hrs",
@@ -2507,6 +2571,7 @@ const LANGS = {
     filter_all:"All", filter_parking:"Parking", filter_health:"Health", filter_security:"Safety",
     filter_pottery:"Pottery", filter_food:"Eat", filter_services:"Services", filter_around:"Around",
     locate_btn:"Use my location", map_hint:"📍 Enable your location or click a starting point on the map to calculate distances",
+    official_map_btn:"View official illustrated map of Pomaire", official_map_note:"Official tourist map with the numbered directory of artisan workshops.", official_map_dl:"Download map",
     routes_title:"🧭 Suggested Routes",
     route_artisan_name:"Artisan Route", route_artisan_meta:"3 stops · ~1.5 hrs",
     route_family_name:"Family Route", route_family_meta:"4 stops · ~2.5 hrs",
@@ -2576,6 +2641,7 @@ const LANGS = {
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Saúde", filter_security:"Segurança",
     filter_pottery:"Olaria", filter_food:"Comer", filter_services:"Serviços", filter_around:"Arredores",
     locate_btn:"Usar minha localização", map_hint:"📍 Ative sua localização ou clique em um ponto de partida no mapa para calcular distâncias",
+    official_map_btn:"Ver mapa oficial ilustrado de Pomaire", official_map_note:"Mapa turístico oficial com o diretório numerado das oficinas de artesãos.", official_map_dl:"Baixar mapa",
     routes_title:"🧭 Roteiros sugeridos",
     route_artisan_name:"Rota do Artesão", route_artisan_meta:"3 paradas · ~1,5h",
     route_family_name:"Rota Familiar", route_family_meta:"4 paradas · ~2,5h",
@@ -2645,6 +2711,7 @@ const LANGS = {
     filter_all:"Tous", filter_parking:"Parking", filter_health:"Santé", filter_security:"Sécurité",
     filter_pottery:"Poterie", filter_food:"Manger", filter_services:"Services", filter_around:"Alentours",
     locate_btn:"Utiliser ma position", map_hint:"📍 Activez votre position ou cliquez sur un point de départ sur la carte pour calculer les distances",
+    official_map_btn:"Voir le plan officiel illustré de Pomaire", official_map_note:"Plan touristique officiel avec l'annuaire numéroté des ateliers d'artisans.", official_map_dl:"Télécharger le plan",
     routes_title:"🧭 Itinéraires suggérés",
     route_artisan_name:"Route de l'Artisan", route_artisan_meta:"3 arrêts · ~1h30",
     route_family_name:"Route Familiale", route_family_meta:"4 arrêts · ~2h30",
@@ -2714,6 +2781,7 @@ const LANGS = {
     filter_all:"Все", filter_parking:"Парковка", filter_health:"Здоровье", filter_security:"Безопасность",
     filter_pottery:"Керамика", filter_food:"Еда", filter_services:"Услуги", filter_around:"Окрестности",
     locate_btn:"Использовать моё местоположение", map_hint:"📍 Включите геолокацию или нажмите на карту, чтобы задать точку отправления",
+    official_map_btn:"Посмотреть официальную иллюстрированную карту Помайре", official_map_note:"Официальная туристическая карта с нумерованным каталогом мастерских ремесленников.", official_map_dl:"Скачать карту",
     routes_title:"🧭 Предложенные маршруты",
     route_artisan_name:"Маршрут ремесленника", route_artisan_meta:"3 точки · ~1.5 ч",
     route_family_name:"Семейный маршрут", route_family_meta:"4 точки · ~2.5 ч",
@@ -2783,6 +2851,7 @@ const LANGS = {
     filter_all:"すべて", filter_parking:"駐車場", filter_health:"医療", filter_security:"安全",
     filter_pottery:"陶芸", filter_food:"グルメ", filter_services:"サービス", filter_around:"周辺",
     locate_btn:"現在地を使用", map_hint:"📍 位置情報を有効にするか、地図上の出発点をクリックして距離を計算してください",
+    official_map_btn:"ポマイレの公式イラストマップを見る", official_map_note:"職人工房の番号付きディレクトリ付き公式観光マップ。", official_map_dl:"マップをダウンロード",
     routes_title:"🧭 おすすめルート",
     route_artisan_name:"職人ルート", route_artisan_meta:"3か所 · 約1.5時間",
     route_family_name:"ファミリールート", route_family_meta:"4か所 · 約2.5時間",
@@ -2852,6 +2921,7 @@ const LANGS = {
     filter_all:"全部", filter_parking:"停车场", filter_health:"医疗", filter_security:"安全",
     filter_pottery:"陶艺", filter_food:"美食", filter_services:"服务", filter_around:"周边",
     locate_btn:"使用我的位置", map_hint:"📍 启用您的位置或点击地图上的起点以计算距离",
+    official_map_btn:"查看波马伊雷官方手绘地图", official_map_note:"官方旅游地图，附有工匠工坊的编号目录。", official_map_dl:"下载地图",
     routes_title:"🧭 推荐路线",
     route_artisan_name:"工匠路线", route_artisan_meta:"3个站点 · 约1.5小时",
     route_family_name:"家庭路线", route_family_meta:"4个站点 · 约2.5小时",
@@ -3261,6 +3331,18 @@ function fmtWalkTime(km) {
   if (mins < 60) return `${mins} min`;
   return `${Math.floor(mins/60)}h ${mins%60}min`;
 }
+
+// Official illustrated map lightbox
+function openOfficialMap() {
+  const lb = document.getElementById('officialMapLightbox');
+  if (lb) { lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeOfficialMap(e) {
+  if (e && e.target.closest && e.target.closest('.map-lightbox-inner') && !e.target.closest('.map-lightbox-close')) return;
+  const lb = document.getElementById('officialMapLightbox');
+  if (lb) { lb.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOfficialMap(); });
 
 function initMap() {
   leafletMap = L.map('leafletMap', { zoomControl: true }).setView([-33.6512, -71.1505], 16);
