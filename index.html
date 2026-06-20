@@ -617,8 +617,22 @@
   button.site-btn { cursor: pointer; font-family: inherit; line-height: 1; }
   /* Fuerza un salto de línea para que el siguiente botón quede debajo */
   .sites-break { flex-basis: 100%; height: 0; }
+  @media (max-width: 860px) {
+    /* La barra de sitios pasa al flujo normal y se centra, para no
+       superponerse con la vasija del hero en móvil/tablet */
+    .sites-bar {
+      position: static;
+      top: auto; left: auto;
+      justify-content: center;
+      gap: .4rem;
+      margin: 0 auto 1.1rem;
+    }
+    /* Menos relleno superior porque la barra de sitios ya ocupa ese espacio */
+    #inicio { padding-top: 1.75rem; }
+    /* La vasija con su propio espacio, bien visible */
+    .hero-pottery { font-size: 3.6rem; margin-top: .25rem; margin-bottom: .6rem; }
+  }
   @media (max-width: 600px) {
-    .sites-bar { top: .6rem; left: .6rem; gap: .4rem; }
     .site-btn { font-size: .9rem; padding: .55rem 1rem; }
   }
 
