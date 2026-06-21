@@ -4056,7 +4056,7 @@ const PLACES = [
   { id:'hl2', cat:'highlight', icon:'🛍️', lat:-33.65125, lng:-71.15035, name:'Calafate Austral', desc:'Tienda con encanto · Roberto Bravo 77B', addr:'Roberto Bravo 77, Pomaire' },
   { id:'hl3', cat:'highlight', icon:'🧀', lat:-33.65192, lng:-71.1499, name:'Charcutería Don Mati', desc:'Arturo Prat 237', addr:'Arturo Prat 237, Pomaire' },
   { id:'hl4', cat:'highlight', icon:'🍦', lat:-33.6555, lng:-71.15, name:'Heladería Alsa', desc:'Roberto Bravo 1606', addr:'Roberto Bravo 1606, Pomaire' },
-  { id:'hl5', cat:'highlight', icon:'🏺', lat:-33.6478, lng:-71.15155, name:'Los Ceramistas', desc:'General Baquedano 350', addr:'General Baquedano 350, Pomaire' },
+  { id:'hl5', cat:'highlight', icon:'🏺', lat:-33.6475116, lng:-71.1503954, name:'Los Ceramistas', desc:'General Baquedano 350', addr:'General Baquedano 350, Pomaire', gmap:'https://maps.app.goo.gl/Hae5UCCkPmBnMSHPA' },
   { id:'hl6', cat:'highlight', icon:'🌿', lat:-33.6489, lng:-71.152, name:'Vivero Luchín', desc:'Jardín y vivero · San Antonio 191', addr:'San Antonio 191, Pomaire' },
   // ── AROUND ──
   { id:'ar1', cat:'around', icon:'🌾', lat:-33.665, lng:-71.17, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas', addr:'Los Chiñihues, Melipilla' },
@@ -4140,9 +4140,11 @@ function buildPopup(p, distKm) {
   const distHtml = distKm !== undefined
     ? `<div class="popup-dist">📍 ${fmtDist(distKm)} · 🚶 ${fmtWalkTime(distKm)}</div>`
     : '';
-  const gmaps = p.addr
-    ? `https://maps.google.com/?q=${encodeURIComponent(p.addr)}`
-    : `https://maps.google.com/?q=${p.lat},${p.lng}`;
+  const gmaps = p.gmap
+    ? p.gmap
+    : (p.addr
+        ? `https://maps.google.com/?q=${encodeURIComponent(p.addr)}`
+        : `https://maps.google.com/?q=${p.lat},${p.lng}`);
   return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
 }
 
