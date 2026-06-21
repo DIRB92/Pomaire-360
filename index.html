@@ -375,6 +375,32 @@
     margin: 0 auto 2rem;
   }
 
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .55rem;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+  }
+  .hero-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(255,255,255,.24);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .42rem .9rem;
+    border-radius: 22px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    transition: background .18s, transform .18s;
+  }
+  .hero-stat:hover { background: rgba(255,255,255,.24); transform: translateY(-2px); }
+  .hero-stat .hs-ico { font-size: 1.05rem; line-height: 1; }
+
   .emergency-bar {
     display: flex;
     flex-wrap: wrap;
@@ -1537,6 +1563,12 @@
   <p class="hero-sub">
     <span data-t="hero_sub">Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.</span>
   </p>
+  <div class="hero-stats">
+    <span class="hero-stat"><span class="hs-ico">🏺</span><span data-t="hs_heritage">Tradición alfarera centenaria</span></span>
+    <span class="hero-stat"><span class="hs-ico">🗺️</span><span data-t="hs_distance">A 50 min de Santiago</span></span>
+    <span class="hero-stat"><span class="hs-ico">🎨</span><span data-t="hs_artisans">Artesanos trabajando en vivo</span></span>
+    <span class="hero-stat"><span class="hs-ico">🥟</span><span data-t="hs_food">Empanadas gigantes</span></span>
+  </div>
   <div class="emergency-bar">
     <a href="tel:133" data-t="emer_police">🚔 133 Carabineros</a>
     <a href="tel:131" data-t="emer_samu">🚑 131 SAMU Ambulancia</a>
@@ -3646,6 +3678,20 @@ const LANG_EXTRA = {
 // Fusionar las traducciones adicionales dentro de LANGS
 Object.keys(LANG_EXTRA).forEach(function(l){
   if (LANGS[l]) Object.assign(LANGS[l], LANG_EXTRA[l]);
+});
+
+/* ══ BADGES DE VALOR DEL HERO (multiidioma) ══ */
+const HERO_STATS_I18N = {
+  es: { hs_heritage:"Tradición alfarera centenaria", hs_distance:"A 50 min de Santiago", hs_artisans:"Artesanos trabajando en vivo", hs_food:"Empanadas gigantes" },
+  en: { hs_heritage:"Centuries-old pottery tradition", hs_distance:"50 min from Santiago", hs_artisans:"Artisans working live", hs_food:"Giant empanadas" },
+  pt: { hs_heritage:"Tradição oleira centenária", hs_distance:"A 50 min de Santiago", hs_artisans:"Artesãos trabalhando ao vivo", hs_food:"Empanadas gigantes" },
+  fr: { hs_heritage:"Tradition potière centenaire", hs_distance:"À 50 min de Santiago", hs_artisans:"Artisans au travail en direct", hs_food:"Empanadas géantes" },
+  ru: { hs_heritage:"Вековая гончарная традиция", hs_distance:"50 минут от Сантьяго", hs_artisans:"Гончары за работой вживую", hs_food:"Гигантские эмпанадас" },
+  ja: { hs_heritage:"何世紀も続く陶芸の伝統", hs_distance:"サンティアゴから50分", hs_artisans:"職人の実演が見られる", hs_food:"巨大エンパナーダ" },
+  zh: { hs_heritage:"百年制陶传统", hs_distance:"距圣地亚哥50分钟", hs_artisans:"现场制作的工匠", hs_food:"巨型肉馅饼" }
+};
+Object.keys(HERO_STATS_I18N).forEach(function(l){
+  if (LANGS[l]) Object.assign(LANGS[l], HERO_STATS_I18N[l]);
 });
 
 const KEYS = {
