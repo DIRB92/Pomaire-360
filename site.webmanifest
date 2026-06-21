@@ -1,0 +1,15 @@
+{
+  "name": "Pomaire 360 — Guía del pueblo alfarero de Chile",
+  "short_name": "Pomaire 360",
+  "description": "Guía gratuita de servicios, turismo y emergencias para Pomaire (Melipilla), Chile.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#8C3D16",
+  "theme_color": "#B85C2C",
+  "icons": [
+    { "src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/favicon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
