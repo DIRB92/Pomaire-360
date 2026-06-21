@@ -429,6 +429,71 @@
   }
   .emergency-bar a:hover { background: rgba(0,0,0,.45); }
 
+  /* ── HERO CTA ────────────────────────────────────── */
+  .hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .7rem;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .95rem;
+    font-weight: 800;
+    text-decoration: none;
+    padding: .7rem 1.4rem;
+    border-radius: 26px;
+    border: 2px solid rgba(255,255,255,.55);
+    color: #fff;
+    background: rgba(255,255,255,.12);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    transition: transform .15s, box-shadow .15s, background .15s;
+  }
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.22);
+    box-shadow: 0 8px 22px rgba(0,0,0,.25);
+  }
+  .hero-cta.primary {
+    background: #FFDDAA;
+    border-color: #FFDDAA;
+    color: var(--clay-dark);
+    box-shadow: 0 4px 16px rgba(0,0,0,.22);
+  }
+  .hero-cta.primary:hover { background: #FFE8C4; border-color: #FFE8C4; }
+
+  /* ── WHATSAPP FLOAT ──────────────────────────────── */
+  .wa-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: .95rem;
+    padding: .8rem 1.15rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.28);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .wa-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+  .wa-float svg { width: 26px; height: 26px; flex-shrink: 0; }
+  .wa-float .wa-text { white-space: nowrap; }
+  @media (max-width: 600px) {
+    .wa-float { padding: .85rem; border-radius: 50%; right: 16px; bottom: 16px; }
+    .wa-float .wa-text { display: none; }
+  }
+
   /* ── SECTIONS ────────────────────────────────────── */
   section { padding: 3.5rem 1.5rem; }
   section:nth-child(even) { background: var(--smoke); }
@@ -1568,6 +1633,11 @@
   <p class="hero-sub">
     <span data-t="hero_sub">Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.</span>
   </p>
+  <div class="hero-cta-row">
+    <a class="hero-cta primary" href="#recorrido"><span aria-hidden="true">🧭</span><span data-t="cta_plan">Planifica tu visita</span></a>
+    <a class="hero-cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pomaire%2C+Melipilla%2C+Chile" target="_blank" rel="noopener"><span aria-hidden="true">🗺️</span><span data-t="cta_directions">Cómo llegar</span></a>
+    <a class="hero-cta" href="#gastronomia"><span aria-hidden="true">🍽️</span><span data-t="cta_eat">Dónde comer</span></a>
+  </div>
   <div class="hero-stats">
     <span class="hero-stat"><span class="hs-ico">🏺</span><span data-t="hs_heritage">Tradición alfarera centenaria</span></span>
     <span class="hero-stat"><span class="hs-ico">🗺️</span><span data-t="hs_distance">A 50 min de Santiago</span></span>
@@ -2569,6 +2639,12 @@
   </div>
 </div>
 
+<!-- Botón flotante de WhatsApp para compartir el sitio -->
+<a id="waShare" class="wa-float" href="https://wa.me/?text=%C2%A1Descubre%20Pomaire%2C%20el%20pueblo%20alfarero%20m%C3%A1s%20famoso%20de%20Chile!%20%F0%9F%8F%BA%20https%3A%2F%2Fpomaire360.cl%2F" target="_blank" rel="noopener" aria-label="Compartir Pomaire 360 por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  <span class="wa-text" data-t="wa_text">Compartir</span>
+</a>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -2592,6 +2668,9 @@ const LANGS = {
     hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
     hero_h1:"Bienvenido/a a <em>Pomaire</em>",
     hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
+    cta_plan:"Planifica tu visita", cta_directions:"Cómo llegar", cta_eat:"Dónde comer",
+    wa_text:"Compartir", wa_aria:"Compartir Pomaire 360 por WhatsApp",
+    wa_share:"¡Descubre Pomaire, el pueblo alfarero más famoso de Chile! 🏺 Guía completa de servicios, gastronomía y turismo: https://pomaire360.cl/",
     emer_police:"🚔 133 Carabineros", emer_samu:"🚑 131 SAMU Ambulancia", emer_fire:"🚒 132 Bomberos", emer_peace:"🕊️ 149 Paz ciudadana",
     s_park_title:"Estacionamientos", s_park_sub:"Llegan miles de visitantes cada fin de semana — planifica dónde dejar tu auto",
     s_health_title:"Salud y urgencias médicas", s_health_sub:"CESFAM, hospital y SAMU para Pomaire y alrededores",
@@ -2663,6 +2742,9 @@ const LANGS = {
     hero_tag:"📍 Pomaire · Melipilla · Metropolitan Region",
     hero_h1:"Welcome to <em>Pomaire</em>",
     hero_sub:"Everything you need to know if you're visiting or just moved to the most famous pottery village in Chile. Services, emergencies, parking and much more.",
+    cta_plan:"Plan your visit", cta_directions:"How to get there", cta_eat:"Where to eat",
+    wa_text:"Share", wa_aria:"Share Pomaire 360 on WhatsApp",
+    wa_share:"Discover Pomaire, Chile's most famous pottery village! 🏺 Complete guide to services, food and tourism: https://pomaire360.cl/",
     emer_police:"🚔 133 Police", emer_samu:"🚑 131 Ambulance", emer_fire:"🚒 132 Fire Dept.", emer_peace:"🕊️ 149 Citizens' Line",
     s_park_title:"Parking", s_park_sub:"Thousands of visitors arrive every weekend — plan where to park your car",
     s_health_title:"Health & Medical Emergencies", s_health_sub:"CESFAM clinic, hospital and ambulance for Pomaire and surroundings",
@@ -2734,6 +2816,9 @@ const LANGS = {
     hero_tag:"📍 Pomaire · Melipilla · Região Metropolitana",
     hero_h1:"Bem-vindo/a a <em>Pomaire</em>",
     hero_sub:"Tudo o que você precisa saber se está visitando ou acabou de chegar à vila de cerâmica mais famosa do Chile. Serviços, emergências, estacionamento e muito mais.",
+    cta_plan:"Planeje sua visita", cta_directions:"Como chegar", cta_eat:"Onde comer",
+    wa_text:"Compartilhar", wa_aria:"Compartilhar Pomaire 360 no WhatsApp",
+    wa_share:"Descubra Pomaire, a vila de cerâmica mais famosa do Chile! 🏺 Guia completo de serviços, gastronomia e turismo: https://pomaire360.cl/",
     emer_police:"🚔 133 Polícia", emer_samu:"🚑 131 Ambulância", emer_fire:"🚒 132 Bombeiros", emer_peace:"🕊️ 149 Linha Cidadã",
     s_park_title:"Estacionamento", s_park_sub:"Milhares de visitantes chegam todo fim de semana — planeje onde deixar seu carro",
     s_health_title:"Saúde e Urgências Médicas", s_health_sub:"Posto de saúde, hospital e SAMU para Pomaire e arredores",
@@ -2804,6 +2889,9 @@ const LANGS = {
     hero_tag:"📍 Pomaire · Melipilla · Région Métropolitaine",
     hero_h1:"Bienvenue à <em>Pomaire</em>",
     hero_sub:"Tout ce que vous devez savoir si vous visitez ou venez d'arriver dans le village de poterie le plus célèbre du Chili. Services, urgences, parking et bien plus.",
+    cta_plan:"Planifiez votre visite", cta_directions:"Comment venir", cta_eat:"Où manger",
+    wa_text:"Partager", wa_aria:"Partager Pomaire 360 sur WhatsApp",
+    wa_share:"Découvrez Pomaire, le village de poterie le plus célèbre du Chili ! 🏺 Guide complet des services, de la gastronomie et du tourisme : https://pomaire360.cl/",
     emer_police:"🚔 133 Police", emer_samu:"🚑 131 Ambulance", emer_fire:"🚒 132 Pompiers", emer_peace:"🕊️ 149 Ligne Citoyenne",
     s_park_title:"Parking", s_park_sub:"Des milliers de visiteurs arrivent chaque week-end — planifiez où garer votre voiture",
     s_health_title:"Santé et Urgences Médicales", s_health_sub:"Clinique, hôpital et SAMU pour Pomaire et ses environs",
@@ -2874,6 +2962,9 @@ const LANGS = {
     hero_tag:"📍 Помайре · Мелипилья · Столичный регион",
     hero_h1:"Добро пожаловать в <em>Помайре</em>",
     hero_sub:"Всё, что нужно знать при посещении или переезде в самую известную гончарную деревню Чили. Услуги, экстренные службы, парковка и многое другое.",
+    cta_plan:"Спланируйте визит", cta_directions:"Как добраться", cta_eat:"Где поесть",
+    wa_text:"Поделиться", wa_aria:"Поделиться Pomaire 360 в WhatsApp",
+    wa_share:"Откройте для себя Помайре — самую известную гончарную деревню Чили! 🏺 Полный гид по услугам, кухне и туризму: https://pomaire360.cl/",
     emer_police:"🚔 133 Полиция", emer_samu:"🚑 131 Скорая помощь", emer_fire:"🚒 132 Пожарная", emer_peace:"🕊️ 149 Гражданская линия",
     s_park_title:"Парковка", s_park_sub:"Тысячи туристов приезжают каждые выходные — планируйте парковку заранее",
     s_health_title:"Здоровье и медицинские экстренные случаи", s_health_sub:"Медпункт, больница и скорая помощь для Помайре и окрестностей",
@@ -2944,6 +3035,9 @@ const LANGS = {
     hero_tag:"📍 ポマイレ · メリピジャ · 首都圏",
     hero_h1:"<em>ポマイレ</em>へようこそ",
     hero_sub:"チレで最も有名な陶芸の村を訪れる方、または新たに住み始めた方に必要な情報をすべてご案内します。サービス、緊急連絡先、駐車場など。",
+    cta_plan:"訪問を計画する", cta_directions:"アクセス方法", cta_eat:"食事はこちら",
+    wa_text:"シェア", wa_aria:"Pomaire 360 をWhatsAppでシェア",
+    wa_share:"チレで最も有名な陶芸の村ポマイレを発見しよう！🏺 サービス・グルメ・観光の完全ガイド：https://pomaire360.cl/",
     emer_police:"🚔 133 警察", emer_samu:"🚑 131 救急車", emer_fire:"🚒 132 消防", emer_peace:"🕊️ 149 市民ライン",
     s_park_title:"駐車場", s_park_sub:"毎週末に何千人もの観光客が訪れます — 駐車場を事前に計画しましょう",
     s_health_title:"医療・緊急サービス", s_health_sub:"ポマイレ周辺のクリニック、病院、救急車",
@@ -3014,6 +3108,9 @@ const LANGS = {
     hero_tag:"📍 波马伊雷 · 梅利皮利亚 · 首都大区",
     hero_h1:"欢迎来到<em>波马伊雷</em>",
     hero_sub:"无论您是游客还是刚搬来的新居民，这里提供您在智利最著名陶艺村所需的一切信息：服务、紧急联系、停车场等。",
+    cta_plan:"规划您的行程", cta_directions:"如何前往", cta_eat:"美食推荐",
+    wa_text:"分享", wa_aria:"通过 WhatsApp 分享 Pomaire 360",
+    wa_share:"探索智利最著名的陶艺村波迈雷！🏺 服务、美食与旅游完整指南：https://pomaire360.cl/",
     emer_police:"🚔 133 警察", emer_samu:"🚑 131 救护车", emer_fire:"🚒 132 消防", emer_peace:"🕊️ 149 市民热线",
     s_park_title:"停车场", s_park_sub:"每个周末都有数千名游客到访 — 请提前规划停车位置",
     s_health_title:"医疗与紧急服务", s_health_sub:"波马伊雷及周边地区的诊所、医院和救护车",
@@ -3849,6 +3946,14 @@ function applyLang(lang) {
   if (typeof window.translateContent === 'function') window.translateContent(lang);
   if (typeof window.localizeWeather === 'function') window.localizeWeather();
   if (typeof window.refreshA11y === 'function') window.refreshA11y();
+  // Enlace flotante de WhatsApp (mensaje traducido)
+  const wa = document.getElementById('waShare');
+  if (wa) {
+    const msg = val('wa_share');
+    if (msg) wa.href = 'https://wa.me/?text=' + encodeURIComponent(msg);
+    const waLabel = val('wa_aria');
+    if (waLabel) wa.setAttribute('aria-label', waLabel);
+  }
   // persist
   try { localStorage.setItem('p360lang', lang); } catch(e){}
 }
