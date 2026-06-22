@@ -1162,6 +1162,7 @@
   .map-popup strong { color: var(--clay-dark); font-size: .92rem; display:block; margin-bottom:.2rem; }
   .map-popup p { font-size: .8rem; color: var(--muted); margin-bottom: .4rem; }
   .map-popup .popup-dist { font-size: .76rem; color: var(--green); font-weight: 700; }
+  .map-popup .popup-contacts { margin: .35rem 0 .15rem; display: flex; flex-wrap: wrap; gap: .15rem .5rem; }
   .map-popup a { font-size: .78rem; color: var(--clay); font-weight: 600; text-decoration: none; }
 
   /* Routes block */
@@ -4160,6 +4161,7 @@ const PLACES = [
   { id:'fo7', cat:'food', icon:'🍖', lat:-33.6519, lng:-71.14988, name:'El Parrón', desc:'Parrilla · Arturo Prat 210', addr:'Arturo Prat 210, Pomaire' },
   { id:'fo8', cat:'food', icon:'🍽️', lat:-33.6542, lng:-71.1494, name:'La Pica de la Mireya', desc:'Roto Chileno 249', addr:'Roto Chileno 249, Pomaire' },
   { id:'fo9', cat:'food', icon:'🍽️', lat:-33.65165080014213, lng:-71.14996004940937, name:'Restaurante La Cañada', desc:'Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/FQvXzcwckKkUEpSt5' },
+  { id:'fo10', cat:'food', icon:'🍬', lat:-33.651957, lng:-71.149992, name:'Dulcería Heladería Dulcepo', desc:'Dulces, postres y helados', addr:'Pomaire', gmap:'https://maps.app.goo.gl/JJJJmuB2tGdpF6tu7', ig:'dulcepo.cl', wsp:'56933925873' },
   // ── LODGING ──
   { id:'lo1', cat:'lodging', icon:'🛏️', lat:-33.65198924949971, lng:-71.15296875422749, name:'Hostal Pomaire', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/x98TVQ53oSQwUmNX6' },
   { id:'lo2', cat:'lodging', icon:'🏡', lat:-33.6483, lng:-71.1528, name:'La Quinta de la Plaza', desc:'San Antonio 410', addr:'San Antonio 410, Pomaire' },
@@ -4258,7 +4260,11 @@ function buildPopup(p, distKm) {
     : (p.addr
         ? `https://maps.google.com/?q=${encodeURIComponent(p.addr)}`
         : `https://maps.google.com/?q=${p.lat},${p.lng}`);
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
+  const contacts = [];
+  if (p.ig)  contacts.push(`<a href="https://instagram.com/${p.ig}" target="_blank" rel="noopener">📷 Instagram</a>`);
+  if (p.wsp) contacts.push(`<a href="https://wa.me/${p.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`);
+  const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
