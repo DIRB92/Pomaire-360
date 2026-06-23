@@ -4166,6 +4166,7 @@ const PLACES = [
   { id:'lo1', cat:'lodging', icon:'🛏️', lat:-33.65198924949971, lng:-71.15296875422749, name:'Hostal Pomaire', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/x98TVQ53oSQwUmNX6' },
   { id:'lo2', cat:'lodging', icon:'🏡', lat:-33.6483, lng:-71.1528, name:'La Quinta de la Plaza', desc:'San Antonio 410', addr:'San Antonio 410, Pomaire' },
   { id:'lo3', cat:'lodging', icon:'🏕️', lat:-33.64827253156989, lng:-71.15605889381351, name:'Cabañas Glamen 1', desc:'Roberto Bravo 284', addr:'Roberto Bravo 284, Pomaire', gmap:'https://maps.app.goo.gl/gAN7Hg36i716RHet9' },
+  { id:'lo4', cat:'lodging', icon:'🏕️', lat:-33.647366520043605, lng:-71.15680309312565, name:'Cabañas Glamen 2', desc:'Cabañas · alojamiento', addr:'Pomaire', gmap:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7', web:'https://hostaldelcentro.cl/' },
   // ── HIGHLIGHT ──
   { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65165740947676, lng:-71.14995842541745, name:'Cervecería Pomaire', desc:'Cerveza artesanal | Shop & botellas · Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', ig:'cerveceriapomaire_' },
   { id:'hl2', cat:'highlight', icon:'🛍️', lat:-33.65478707835062, lng:-71.15025443200825, name:'Tienda Calafate Austral', desc:'Tienda con encanto · Roberto Bravo 77B', addr:'Roberto Bravo 77, Pomaire', gmap:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6', ig:'calafateaustral.cl' },
@@ -4263,6 +4264,7 @@ function buildPopup(p, distKm) {
   const contacts = [];
   if (p.ig)  contacts.push(`<a href="https://instagram.com/${p.ig}" target="_blank" rel="noopener">📷 Instagram</a>`);
   if (p.wsp) contacts.push(`<a href="https://wa.me/${p.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`);
+  if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
   return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
 }
@@ -4464,6 +4466,7 @@ const DIRECTORY = {
     { n:'Pomaire Lodge & Suites', a:'Bernardo O\'Higgins 219', p:'+56 9 65707019', ig:'pomairesuites' },
     { n:'La Quinta de la Plaza', a:'San Antonio 410', p:'+56 9 99598919' },
     { n:'Cabañas Glamen 1', a:'Roberto Bravo 284', p:'+56 9 54109214', map:'https://maps.app.goo.gl/gAN7Hg36i716RHet9' },
+    { n:'Cabañas Glamen 2', a:'Pomaire', p:'+56 9 54109214', web:'https://hostaldelcentro.cl/', map:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7' },
   ],
   interes: [
     { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7' },
