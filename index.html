@@ -4441,7 +4441,7 @@ const DIRECTORY = {
     { n:'Los Secretos de Anita', a:'San Antonio 213', p:'+56 9 74906024', d:'Viernes a domingo' },
     { n:'El Parrón', a:'Arturo Prat 210', p:'+56 9 52433979', d:'Lunes a domingo' },
     { n:'Las Tinajas de Pomaire', a:'San Antonio 402', p:'+56 9 90177467', d:'Sábado y domingo' },
-    { n:'Glamen', a:'Roberto Bravo 289', p:'+56 9 54109214', d:'Sábado y domingo' },
+    { n:'Glamen', a:'Roberto Bravo 289', p:'+56 9 54109214', tag:'Cabañas Alojamiento', web:'https://hostaldelcentro.cl/' },
   ],
   talleres: [
     { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera', map:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
@@ -4616,6 +4616,7 @@ function dirItemHTML(it) {
   let links = `<a href="${mapsUrl}" target="_blank" rel="noopener">🗺️ ${mapLabel}</a>`;
   if (it.p) links += `<a href="${telHref(it.p)}">📞 ${it.p}</a>`;
   if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
+  if (it.web) links += `<a href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
   return `<div class="dir-item">
       <span class="dir-name">${it.n}</span>
       ${tag}
