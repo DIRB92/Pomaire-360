@@ -195,10 +195,10 @@
 
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; }
-    /* En móvil mostramos los menús siempre en vertical, sin hamburguesa */
-    .nav-burger { display: none; }
+    /* Menú colapsable en móvil: oculto por defecto, se abre con la hamburguesa */
+    .nav-burger { display: inline-flex; align-items: center; order: 1; }
     .nav-links-wrap {
-      display: flex;
+      display: none;
       flex-basis: 100%;
       flex-direction: column;
       align-items: stretch;
@@ -206,6 +206,7 @@
       margin-top: .5rem;
       order: 3;
     }
+    .nav-links-wrap.open { display: flex; }
     .nav-group { width: 100%; }
     .nav-group-btn { width: 100%; justify-content: space-between; }
     .nav-menu {
