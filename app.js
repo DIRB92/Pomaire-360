@@ -1480,17 +1480,28 @@ document.addEventListener('click', (e) => {
   if (!e.target.closest('.nav-group')) closeAllGroups();
 });
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.nav-menu a, .nav-cta').forEach(a => {
-    a.addEventListener('click', () => {
-      closeAllGroups();
-      const wrap = document.getElementById('navGroups');
-      const burger = document.getElementById('navBurger');
-      if (wrap && wrap.classList.contains('open')) {
-        wrap.classList.remove('open');
-        if (burger) burger.setAttribute('aria-expanded', 'false');
-      }
-    });
+  function closeMobileNav() {
+    closeAllGroups();
+    const wrap = document.getElementById('navGroups');
+    const burger = document.getElementById('navBurger');
+    if (wrap && wrap.classList.contains('open')) {
+      wrap.classList.remove('open');
+      if (burger) burger.setAttribute('aria-expanded', 'false');
+    }
+  }
+  // Cerrar el menú móvil al elegir cualquier opción (incluye botones Mapa y Apoyar)
+  document.querySelectorAll('.nav-menu a, .nav-cta, .nav-map-btn').forEach(a => {
+    a.addEventListener('click', closeMobileNav);
   });
+  // Cerrar el menú móvil al hacer scroll (subir o bajar)
+  let lastY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const wrap = document.getElementById('navGroups');
+    if (wrap && wrap.classList.contains('open') && Math.abs(window.scrollY - lastY) > 10) {
+      closeMobileNav();
+    }
+    lastY = window.scrollY;
+  }, { passive: true });
 });
 
 /* ===== */
