@@ -1495,7 +1495,7 @@ const PLACES = [
   { id:'sv7', cat:'services', icon:'🏛️', lat:-33.65266285604718, lng:-71.15463474076532, name:'Templo Salón del Reino · Testigos de Jehová', desc:'Salón del Reino de los Testigos de Jehová', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7' },
   // ── POTTERY ──
   { id:'po1', cat:'pottery', icon:'🏺', lat:-33.65119135971276, lng:-71.15284938597316, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire', gmap:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.652, lng:-71.15, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire' },
+  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/' },
   { id:'po3', cat:'pottery', icon:'🎨', lat:-33.652051018925114, lng:-71.14908723334928, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire', gmap:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
@@ -1616,6 +1616,7 @@ function buildPopup(p, distKm) {
   if (p.ig)  contacts.push(`<a href="https://instagram.com/${p.ig}" target="_blank" rel="noopener">📷 Instagram</a>`);
   if (p.wsp) contacts.push(`<a href="https://wa.me/${p.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`);
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
+  if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
   return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
 }
@@ -1798,7 +1799,7 @@ const DIRECTORY = {
   ],
   talleres: [
     { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera', map:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl' },
+    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', map:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8' },
     { n:'Taller del Sol', a:'Arturo Prat 237 B', p:'+56 9 45203264', ig:'tallerdelsol_pomaire', map:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
     { n:'Taller Barros', a:'Guillermo Barros 150', p:'+56 9 50432417', ig:'taller.barros.pomaire', map:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   ],
@@ -1971,6 +1972,7 @@ function dirItemHTML(it) {
   if (it.p) links += `<a href="${telHref(it.p)}">📞 ${it.p}</a>`;
   if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
   if (it.web) links += `<a href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
+  if (it.fb) links += `<a href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
   return `<div class="dir-item">
       <span class="dir-name">${it.n}</span>
       ${tag}
