@@ -170,6 +170,29 @@
   }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.28); }
 
+  .nav-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,.22);
+    border-radius: 24px;
+    padding: .5rem 1.1rem;
+    font-size: .98rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: .01em;
+    transition: background .15s, border-color .15s, transform .12s;
+  }
+  .nav-map-btn:hover {
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--clay-dark);
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; }
     /* En móvil mostramos los menús siempre en vertical, sin hamburguesa */
@@ -196,6 +219,7 @@
     .nav-menu a { color: #fff; }
     .nav-menu a:hover { background: rgba(255,255,255,.2); color: #fff; }
     .nav-cta { width: 100%; justify-content: center; margin-top: .2rem; }
+    .nav-map-btn { width: 100%; justify-content: center; margin-top: .2rem; }
     .lang-selector { order: 2; }
   }
 
