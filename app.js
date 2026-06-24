@@ -76,6 +76,7 @@ const LANGS = {
     review_form_title:"¿Ya visitaste Pomaire? ¡Cuéntanos!",
     rev_ph_name:"Tu nombre", rev_ph_origin:"Tu ciudad / país", rev_ph_text:"Cuéntanos tu experiencia...",
     review_btn:"⭐ Publicar reseña",
+    rev_local_note:"📝 Tu reseña se guarda solo en este navegador (aún no se comparten públicamente).",
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Salud", filter_security:"Seguridad",
     filter_pottery:"Alfarería", filter_food:"Comer", filter_services:"Servicios", filter_around:"Alrededores",
     locate_btn:"Usar mi ubicación", map_hint:"📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias",
@@ -150,6 +151,7 @@ const LANGS = {
     review_form_title:"Already visited Pomaire? Tell us!",
     rev_ph_name:"Your name", rev_ph_origin:"Your city / country", rev_ph_text:"Share your experience...",
     review_btn:"⭐ Post review",
+    rev_local_note:"📝 Your review is saved only in this browser (reviews are not shared publicly yet).",
     filter_all:"All", filter_parking:"Parking", filter_health:"Health", filter_security:"Safety",
     filter_pottery:"Pottery", filter_food:"Eat", filter_services:"Services", filter_around:"Around",
     locate_btn:"Use my location", map_hint:"📍 Enable your location or click a starting point on the map to calculate distances",
@@ -223,6 +225,7 @@ const LANGS = {
     review_form_title:"Já visitou Pomaire? Conte para nós!",
     rev_ph_name:"Seu nome", rev_ph_origin:"Sua cidade / país", rev_ph_text:"Conte sua experiência...",
     review_btn:"⭐ Publicar avaliação",
+    rev_local_note:"📝 Sua avaliação fica salva apenas neste navegador (ainda não são compartilhadas publicamente).",
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Saúde", filter_security:"Segurança",
     filter_pottery:"Olaria", filter_food:"Comer", filter_services:"Serviços", filter_around:"Arredores",
     locate_btn:"Usar minha localização", map_hint:"📍 Ative sua localização ou clique em um ponto de partida no mapa para calcular distâncias",
@@ -296,6 +299,7 @@ const LANGS = {
     review_form_title:"Vous avez déjà visité Pomaire ? Dites-nous tout !",
     rev_ph_name:"Votre nom", rev_ph_origin:"Votre ville / pays", rev_ph_text:"Partagez votre expérience...",
     review_btn:"⭐ Publier un avis",
+    rev_local_note:"📝 Votre avis est enregistré uniquement dans ce navigateur (pas encore partagé publiquement).",
     filter_all:"Tous", filter_parking:"Parking", filter_health:"Santé", filter_security:"Sécurité",
     filter_pottery:"Poterie", filter_food:"Manger", filter_services:"Services", filter_around:"Alentours",
     locate_btn:"Utiliser ma position", map_hint:"📍 Activez votre position ou cliquez sur un point de départ sur la carte pour calculer les distances",
@@ -369,6 +373,7 @@ const LANGS = {
     review_form_title:"Уже посетили Помайре? Расскажите нам!",
     rev_ph_name:"Ваше имя", rev_ph_origin:"Ваш город / страна", rev_ph_text:"Поделитесь своими впечатлениями...",
     review_btn:"⭐ Опубликовать отзыв",
+    rev_local_note:"📝 Ваш отзыв сохраняется только в этом браузере (пока не публикуется для всех).",
     filter_all:"Все", filter_parking:"Парковка", filter_health:"Здоровье", filter_security:"Безопасность",
     filter_pottery:"Керамика", filter_food:"Еда", filter_services:"Услуги", filter_around:"Окрестности",
     locate_btn:"Использовать моё местоположение", map_hint:"📍 Включите геолокацию или нажмите на карту, чтобы задать точку отправления",
@@ -442,6 +447,7 @@ const LANGS = {
     review_form_title:"もうポマイレを訪れましたか？教えてください！",
     rev_ph_name:"お名前", rev_ph_origin:"お住まいの都市/国", rev_ph_text:"体験を共有してください...",
     review_btn:"⭐ レビューを投稿",
+    rev_local_note:"📝 レビューはこのブラウザにのみ保存されます（まだ公開共有されません）。",
     filter_all:"すべて", filter_parking:"駐車場", filter_health:"医療", filter_security:"安全",
     filter_pottery:"陶芸", filter_food:"グルメ", filter_services:"サービス", filter_around:"周辺",
     locate_btn:"現在地を使用", map_hint:"📍 位置情報を有効にするか、地図上の出発点をクリックして距離を計算してください",
@@ -515,6 +521,7 @@ const LANGS = {
     review_form_title:"已经去过波马伊雷？告诉我们吧！",
     rev_ph_name:"您的姓名", rev_ph_origin:"您的城市/国家", rev_ph_text:"分享您的体验...",
     review_btn:"⭐ 发布评价",
+    rev_local_note:"📝 您的评价仅保存在此浏览器中（暂不公开共享）。",
     filter_all:"全部", filter_parking:"停车场", filter_health:"医疗", filter_security:"安全",
     filter_pottery:"陶艺", filter_food:"美食", filter_services:"服务", filter_around:"周边",
     locate_btn:"使用我的位置", map_hint:"📍 启用您的位置或点击地图上的起点以计算距离",
@@ -1323,13 +1330,30 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadWeather() {
   const box = document.getElementById('weather-widget');
   try {
-    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-33.642&longitude=-71.145&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature&timezone=America/Santiago&forecast_days=1');
+    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-33.642&longitude=-71.145&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code,apparent_temperature&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=America/Santiago&forecast_days=3');
     const d = await r.json();
     const c = d.current;
     const icons = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'❄️',73:'❄️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
     const descs = {0:'Cielo despejado',1:'Mayormente despejado',2:'Parcialmente nublado',3:'Nublado',45:'Niebla',48:'Niebla',51:'Llovizna leve',53:'Llovizna',55:'Llovizna intensa',61:'Lluvia leve',63:'Lluvia moderada',65:'Lluvia intensa',71:'Nieve leve',73:'Nieve',75:'Nieve intensa',80:'Chubascos',81:'Chubascos',82:'Chubascos fuertes',95:'Tormenta',96:'Tormenta',99:'Tormenta'};
     const icon = icons[c.weather_code] || '🌡️';
     const desc = descs[c.weather_code] || 'Variable';
+
+    // Pronóstico de 3 días
+    let forecast = '';
+    if (d.daily && d.daily.time) {
+      const dayNames = ['dom','lun','mar','mié','jue','vie','sáb'];
+      let cards = '';
+      for (let i = 0; i < Math.min(3, d.daily.time.length); i++) {
+        const dt = new Date(d.daily.time[i] + 'T12:00:00');
+        const label = i === 0 ? 'Hoy' : dayNames[dt.getDay()];
+        const ic = icons[d.daily.weather_code[i]] || '🌡️';
+        const mx = Math.round(d.daily.temperature_2m_max[i]);
+        const mn = Math.round(d.daily.temperature_2m_min[i]);
+        cards += `<div class="wf-day"><div class="wf-name">${label}</div><div class="wf-ico">${ic}</div><div class="wf-temp"><strong>${mx}°</strong> <span>${mn}°</span></div></div>`;
+      }
+      forecast = `<div class="weather-forecast">${cards}</div>`;
+    }
+
     box.innerHTML = `
       <div class="weather-main">
         <span class="weather-icon">${icon}</span>
@@ -1341,6 +1365,7 @@ async function loadWeather() {
       <div class="weather-stat"><div class="ws-val">${c.relative_humidity_2m}%</div><div class="ws-lab">Humedad</div></div>
       <div class="weather-stat"><div class="ws-val">${Math.round(c.wind_speed_10m)} km/h</div><div class="ws-lab">Viento</div></div>
       <div class="weather-stat"><div class="ws-val">${Math.round(c.apparent_temperature)}°C</div><div class="ws-lab">Sensación</div></div>
+      ${forecast}
     `;
   } catch(e) {
     box.innerHTML = '<div class="weather-loading">No se pudo cargar el clima. Verifica tu conexión.</div>';
@@ -1591,7 +1616,19 @@ function initMap() {
     });
     marker.bindPopup(buildPopup(p));
     marker.addTo(leafletMap);
+    marker.placeId = p.id;
     markers[p.id] = marker;
+  });
+
+  // Deep links: al abrir un marcador, reflejar el lugar en la URL (#lugar=ID)
+  leafletMap.on('popupopen', (e) => {
+    const id = e.popup && e.popup._source && e.popup._source.placeId;
+    if (id) { try { history.replaceState(null, '', '#lugar=' + id); } catch (_) {} }
+  });
+  leafletMap.on('popupclose', () => {
+    if (location.hash.indexOf('#lugar=') === 0) {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (_) {}
+    }
   });
 
   // Click on map = manual start point
@@ -1601,7 +1638,30 @@ function initMap() {
   });
 
   renderPlacesList();
+  openPlaceFromHash();
 }
+
+// Abre el marcador indicado en la URL (#lugar=ID), p.ej. al compartir un enlace
+function openPlaceFromHash() {
+  const m = location.hash.match(/^#lugar=([\w-]+)/);
+  if (m && markers[m[1]]) {
+    setTimeout(() => focusPlace(m[1]), 350);
+  }
+}
+window.addEventListener('hashchange', openPlaceFromHash);
+
+// Copia al portapapeles el enlace directo a un lugar del mapa
+function copyPlaceLink(ev, id) {
+  if (ev) ev.preventDefault();
+  const url = location.origin + location.pathname + '#lugar=' + id;
+  try { history.replaceState(null, '', '#lugar=' + id); } catch (_) {}
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function () {
+      if (ev && ev.target) ev.target.textContent = '✅ Enlace copiado';
+    }).catch(function () {});
+  }
+}
+window.copyPlaceLink = copyPlaceLink;
 
 function buildPopup(p, distKm) {
   const distHtml = distKm !== undefined
@@ -1618,7 +1678,7 @@ function buildPopup(p, distKm) {
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
   if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a></div>`;
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a><a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
@@ -2154,3 +2214,12 @@ window.refreshA11y = function() {
   if (btn && !btn.disabled) btn.textContent = readingMode ? a11yT('a11y_stop') : a11yT('a11y_activate');
   if (hint) hint.textContent = readingMode ? a11yT('a11y_hint_active') : a11yT('a11y_hint');
 };
+
+
+
+/* ── PWA: registrar Service Worker (modo offline) ──────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/service-worker.js').catch(function () {});
+  });
+}

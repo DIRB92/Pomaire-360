@@ -783,8 +783,15 @@
   .weather-stat { background:var(--smoke); border-radius:10px; padding:.75rem 1rem; text-align:center; }
   .weather-stat .ws-val { font-size:1.3rem; font-weight:700; color:var(--clay-dark); }
   .weather-stat .ws-lab { font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .weather-forecast { grid-column:1/-1; display:flex; gap:.6rem; margin-top:.25rem; border-top:1px solid var(--smoke); padding-top:1rem; }
+  .wf-day { flex:1; background:var(--smoke); border-radius:10px; padding:.7rem .4rem; text-align:center; }
+  .wf-day .wf-name { font-size:.78rem; font-weight:700; color:var(--clay-dark); text-transform:capitalize; }
+  .wf-day .wf-ico { font-size:1.7rem; line-height:1; margin:.3rem 0; }
+  .wf-day .wf-temp { font-size:.85rem; color:var(--text); }
+  .wf-day .wf-temp span { color:var(--muted); }
   .weather-note { text-align:center; color:var(--muted); font-size:.78rem; margin-top:.75rem; }
   .weather-loading { text-align:center; padding:2rem; color:var(--muted); font-size:1rem; }
+  .review-local-note { font-size:.78rem; color:var(--muted); margin-top:.6rem; text-align:center; }
 
   /* ── TOUR TIMELINE ───────────────────────────────── */
   .tour-timeline { position:relative; padding-left:0; }
@@ -1065,6 +1072,8 @@
   .map-popup .popup-dist { font-size: .76rem; color: var(--green); font-weight: 700; }
   .map-popup .popup-contacts { margin: .35rem 0 .15rem; display: flex; flex-wrap: wrap; gap: .15rem .5rem; }
   .map-popup a { font-size: .78rem; color: var(--clay); font-weight: 600; text-decoration: none; }
+  .map-popup > a { display: block; margin-top: .3rem; }
+  .map-popup .popup-share { color: var(--clay-dark); }
 
   /* Routes block */
   .routes-block { margin-top: 2rem; }
