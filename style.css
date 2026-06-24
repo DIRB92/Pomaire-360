@@ -450,6 +450,8 @@
     transition: background .15s, color .15s;
   }
   .card a.card-link:hover { background: var(--clay); color: #fff; }
+  .card a.card-link + a.card-link { margin-left: .4rem; }
+  #directorio-restaurantes { scroll-margin-top: 5rem; }
 
   /* priority cards */
   .card.priority { border-left-color: var(--clay-dark); background: #FFF8F3; }
