@@ -378,7 +378,7 @@
     align-items: flex-end;
     gap: .6rem;
   }
-  .wa-float, .ig-float {
+  .wa-float, .ig-float, .tt-float {
     display: inline-flex;
     align-items: center;
     gap: .55rem;
@@ -393,13 +393,14 @@
   }
   .wa-float { background: #25D366; }
   .ig-float { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-  .wa-float:hover, .ig-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
-  .wa-float svg, .ig-float svg { width: 26px; height: 26px; flex-shrink: 0; }
-  .wa-float .wa-text, .ig-float .ig-text { white-space: nowrap; }
+  .tt-float { background: #010101; }
+  .wa-float:hover, .ig-float:hover, .tt-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+  .wa-float svg, .ig-float svg, .tt-float svg { width: 26px; height: 26px; flex-shrink: 0; }
+  .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text { white-space: nowrap; }
   @media (max-width: 600px) {
     .social-fab { right: 16px; bottom: 16px; }
-    .wa-float, .ig-float { padding: .85rem; border-radius: 50%; }
-    .wa-float .wa-text, .ig-float .ig-text { display: none; }
+    .wa-float, .ig-float, .tt-float { padding: .85rem; border-radius: 50%; }
+    .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text { display: none; }
   }
 
   /* ── SECTIONS ────────────────────────────────────── */
