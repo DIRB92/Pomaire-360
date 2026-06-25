@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#B85C2C">
+<meta name="theme-color" content="#8C3D16">
 <title>El Chancho alcancía de greda más grande del mundo — Pomaire | Pomaire 360</title>
-<meta name="description" content="El chancho-alcancía de greda más grande del mundo, un atractivo imperdible de Pomaire. Figuras gigantes de greda en Los Paltos 323. Horarios, ubicación y cómo llegar.">
+<meta name="description" content="El chancho-alcancía de greda más grande del mundo, creado por el maestro alfarero César Silva Rojo en Pomaire. Conoce su historia, cómo visitarlo y cómo llegar.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
 
@@ -13,13 +13,13 @@
 <meta property="og:type" content="place">
 <meta property="og:site_name" content="Pomaire 360">
 <meta property="og:title" content="El Chancho alcancía de greda más grande del mundo — Pomaire">
-<meta property="og:description" content="Un atractivo imperdible de Pomaire: figuras gigantes de greda. Horarios, ubicación y cómo llegar.">
+<meta property="og:description" content="Creado por el maestro alfarero César Silva Rojo. Conoce su historia y cómo visitarlo en Pomaire.">
 <meta property="og:url" content="https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
 <meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="El Chancho alcancía de greda más grande del mundo — Pomaire">
-<meta name="twitter:description" content="Un atractivo imperdible de Pomaire: figuras gigantes de greda.">
+<meta name="twitter:description" content="Creado por el maestro alfarero César Silva Rojo. Conoce su historia.">
 <meta name="twitter:image" content="https://pomaire360.cl/og-image.jpg">
 
 <link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
@@ -33,10 +33,11 @@
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   "name": "El Chancho alcancía de greda más grande del mundo",
-  "description": "El chancho-alcancía de greda más grande del mundo, un atractivo imperdible de Pomaire. Figuras gigantes de greda donde fotografiarte y conocer la tradición alfarera del pueblo.",
+  "description": "El chancho-alcancía de greda más grande del mundo, creado por el maestro alfarero César Silva Rojo en Pomaire.",
   "image": "https://pomaire360.cl/og-image.jpg",
   "url": "https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/",
   "telephone": "+56936515838",
+  "creator": { "@type": "Person", "name": "César Silva Rojo", "jobTitle": "Maestro Alfarero" },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Los Paltos 323",
@@ -54,91 +55,187 @@
 </script>
 
 <style>
-  .biz-topbar {
-    background: linear-gradient(135deg, var(--clay-dark), var(--clay));
-    color: #fff; padding: .8rem 1.2rem;
+  /* ===== Página de negocio: El Chancho ===== */
+  .ch-topbar {
+    background: rgba(140,61,22,.95); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    color: #fff; padding: .7rem 1.2rem;
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     position: sticky; top: 0; z-index: 100;
   }
-  .biz-topbar a { color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem; }
-  .biz-topbar .biz-brand { font-family: 'Playfair Display', serif; font-weight: 900; }
-  .biz-wrap { max-width: 760px; margin: 0 auto; padding: 1.5rem 1.2rem 3rem; }
-  .biz-hero {
-    text-align: center; padding: 2.5rem 1rem;
-    background: linear-gradient(160deg, #FFF8EF, var(--cream));
-    border-radius: 20px; margin-bottom: 1.5rem;
-    border: 1px solid rgba(184,92,44,.12);
+  .ch-topbar a { color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem; }
+  .ch-topbar .ch-brand { font-family: 'Playfair Display', serif; font-weight: 900; }
+
+  /* HERO */
+  .ch-hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 3rem 1.2rem;
+    /* Reemplazar el gradiente por: url('/elchanchoalcanciamasgrandedelmundo/foto-hero.jpg') center/cover */
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,200,120,.35), transparent 60%),
+      linear-gradient(160deg, #B85C2C 0%, #8C3D16 55%, #5e2810 100%);
+    color: #fff; overflow: hidden;
   }
-  .biz-hero .biz-emoji { font-size: 4.5rem; line-height: 1; }
-  .biz-badge {
-    display: inline-flex; align-items: center; gap: .3rem;
-    background: linear-gradient(135deg, #8C3D16, #B85C2C); color: #fff;
-    font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
-    padding: .25rem .7rem; border-radius: 12px; margin: .8rem 0 .4rem;
+  .ch-hero::after {
+    content: '🐷'; position: absolute; font-size: 38vh; right: -6vh; bottom: -10vh;
+    opacity: .10; line-height: 1; pointer-events: none;
   }
-  .biz-hero h1 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--clay-dark); line-height: 1.15; }
-  .biz-hero p { color: var(--muted); margin-top: .6rem; max-width: 520px; margin-inline: auto; }
-  .biz-section { background: var(--white); border-radius: 16px; padding: 1.3rem 1.4rem; margin-bottom: 1rem; box-shadow: 0 3px 14px rgba(90,40,10,.07); }
-  .biz-section h2 { font-size: 1.05rem; color: var(--clay-dark); margin-bottom: .7rem; }
-  .biz-info-row { display: flex; gap: .6rem; font-size: .95rem; color: var(--text); padding: .35rem 0; }
-  .biz-info-row .ic { flex-shrink: 0; }
-  .biz-links { display: flex; flex-wrap: wrap; gap: .6rem; }
-  .biz-link {
-    display: inline-flex; align-items: center; gap: .4rem;
-    text-decoration: none; font-weight: 700; font-size: .92rem;
-    padding: .6rem 1.1rem; border-radius: 24px;
-    border: 1.5px solid var(--clay-light); color: var(--clay);
-    transition: background .15s, color .15s;
+  .ch-hero-content { position: relative; z-index: 2; max-width: 760px; }
+  .ch-kicker {
+    display: inline-block; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35);
+    padding: .35rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 700; margin-bottom: 1.2rem;
   }
-  .biz-link:hover { background: var(--clay); color: #fff; }
-  .biz-link.primary { background: var(--clay); color: #fff; border-color: var(--clay); }
-  .biz-link.primary:hover { background: var(--clay-dark); }
-  .biz-back-cta { text-align: center; margin-top: 1.5rem; }
-  .biz-back-cta a { color: var(--clay-dark); font-weight: 700; text-decoration: none; }
-  .biz-photos-note { font-size: .82rem; color: var(--muted); font-style: italic; }
+  .ch-hero h1 {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.08; letter-spacing: -.01em;
+    text-shadow: 0 2px 18px rgba(0,0,0,.35);
+  }
+  .ch-author { margin-top: 1.1rem; font-size: 1.05rem; opacity: .95; }
+  .ch-author strong { font-weight: 800; }
+  .ch-hero-btns { margin-top: 1.8rem; display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+  .ch-btn {
+    display: inline-flex; align-items: center; gap: .4rem; text-decoration: none;
+    font-weight: 800; font-size: 1rem; padding: .85rem 1.7rem; border-radius: 30px; transition: transform .15s, box-shadow .15s;
+  }
+  .ch-btn-primary { background: #FFDDAA; color: #8C3D16; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .ch-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+  .ch-btn-ghost { background: rgba(255,255,255,.12); color: #fff; border: 2px solid rgba(255,255,255,.6); }
+  .ch-btn-ghost:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+  /* Layout general */
+  .ch-wrap { max-width: 920px; margin: 0 auto; padding: 3rem 1.2rem; }
+
+  /* SECCIÓN AUTOR */
+  .ch-bio { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; align-items: center; }
+  .ch-photo {
+    aspect-ratio: 3/4; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(160deg, #E8845A, #B85C2C);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff;
+    box-shadow: 0 10px 30px rgba(140,61,22,.25);
+  }
+  .ch-photo .ph-ico { font-size: 3.5rem; }
+  .ch-photo small { opacity: .85; margin-top: .4rem; font-size: .8rem; }
+  .ch-bio-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--clay-dark); }
+  .ch-bio-role { color: var(--clay); font-weight: 700; margin: .2rem 0 1rem; }
+  .ch-bio-text p { color: var(--text); line-height: 1.65; }
+  .ch-social { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.3rem; }
+  .ch-soc {
+    display: inline-flex; align-items: center; gap: .4rem; text-decoration: none;
+    font-weight: 700; font-size: .9rem; padding: .6rem 1.1rem; border-radius: 24px; color: #fff;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .ch-soc:hover { transform: translateY(-2px); }
+  .ch-soc.wa { background: #25D366; }
+  .ch-soc.ig { background: linear-gradient(45deg,#f09433,#dc2743,#bc1888); }
+  .ch-soc.fb { background: #1877F2; }
+  .ch-soc.maps { background: var(--clay); }
+
+  /* SECCIÓN HISTORIA (timeline) */
+  .ch-historia { margin-top: 3.5rem; }
+  .ch-historia h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--clay-dark); text-align: center; margin-bottom: 2.5rem;
+  }
+  .ch-timeline { list-style: none; position: relative; max-width: 640px; margin: 0 auto; padding-left: 0; }
+  .ch-timeline::before {
+    content: ''; position: absolute; left: 27px; top: 10px; bottom: 10px; width: 3px;
+    background: linear-gradient(var(--clay-light), var(--clay-dark)); border-radius: 2px;
+  }
+  .ct-step { position: relative; padding: 0 0 1.8rem 4.5rem; }
+  .ct-step .ct-ico {
+    position: absolute; left: 0; top: 0; width: 56px; height: 56px; border-radius: 50%;
+    background: var(--white); border: 3px solid var(--clay); color: var(--clay-dark);
+    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(140,61,22,.18); z-index: 2;
+  }
+  .ct-step h3 { font-size: 1.1rem; color: var(--clay-dark); margin-bottom: .2rem; }
+  .ct-step p { color: var(--text); font-size: .92rem; line-height: 1.55; }
+  .ct-step.ct-final .ct-ico { background: var(--clay); color: #fff; }
+
+  /* VISITAR */
+  .ch-visit { margin-top: 3.5rem; background: var(--white); border-radius: 18px; padding: 1.8rem; box-shadow: 0 4px 16px rgba(90,40,10,.08); }
+  .ch-visit h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--clay-dark); margin-bottom: 1rem; }
+  .ch-visit-row { display: flex; gap: .6rem; padding: .4rem 0; font-size: .96rem; color: var(--text); }
+  .ch-visit-btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+
+  .ch-foot { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+  .ch-foot a { color: var(--clay-dark); font-weight: 700; text-decoration: none; }
+
+  @media (max-width: 680px) {
+    .ch-bio { grid-template-columns: 1fr; }
+    .ch-photo { max-width: 260px; margin: 0 auto; aspect-ratio: 4/3; }
+  }
 </style>
 </head>
 <body>
 
-<div class="biz-topbar">
-  <a class="biz-brand" href="/">🏺 Pomaire 360</a>
-  <a href="/#mapa">← Volver a la guía</a>
+<div class="ch-topbar">
+  <a class="ch-brand" href="/">🏺 Pomaire 360</a>
+  <a href="/#lugar=po6">📍 Ver en el mapa</a>
 </div>
 
-<div class="biz-wrap">
-
-  <div class="biz-hero">
-    <div class="biz-emoji">🐷</div>
-    <div class="biz-badge">💎 Premium</div>
+<!-- HERO -->
+<header class="ch-hero">
+  <div class="ch-hero-content">
+    <span class="ch-kicker">🐷 Atractivo imperdible de Pomaire</span>
     <h1>El Chancho alcancía de greda más grande del mundo</h1>
-    <p>Un atractivo imperdible de Pomaire: un espacio con figuras gigantes de greda, ideal para fotografiarte y conocer la tradición alfarera del pueblo en gran formato.</p>
-  </div>
-
-  <div class="biz-section">
-    <h2>📋 Información</h2>
-    <div class="biz-info-row"><span class="ic">📍</span><span><strong>Dirección:</strong> Los Paltos 323, Pomaire, Melipilla</span></div>
-    <div class="biz-info-row"><span class="ic">🕒</span><span><strong>Horario:</strong> Sábado 12:00–18:00 · Domingo 12:00–19:30 · Lunes a Viernes cerrado</span></div>
-    <div class="biz-info-row"><span class="ic">📞</span><span><strong>Teléfono:</strong> +56 9 3651 5838</span></div>
-  </div>
-
-  <div class="biz-section">
-    <h2>📸 Galería</h2>
-    <p class="biz-photos-note">Próximamente: fotos del lugar.</p>
-  </div>
-
-  <div class="biz-section">
-    <h2>🔗 Contacto y ubicación</h2>
-    <div class="biz-links">
-      <a class="biz-link primary" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener">🗺️ Cómo llegar</a>
-      <a class="biz-link" href="tel:+56936515838">📞 Llamar</a>
-      <a class="biz-link" href="https://pomaire360.cl/#lugar=po6">📍 Ver en el mapa interactivo</a>
+    <p class="ch-author">Creado por <strong>César Silva Rojo</strong></p>
+    <div class="ch-hero-btns">
+      <a href="#historia" class="ch-btn ch-btn-primary">Ver Historia</a>
+      <a href="#visitar" class="ch-btn ch-btn-ghost">Cómo Visitar</a>
     </div>
   </div>
+</header>
 
-  <div class="biz-back-cta">
-    <a href="/">🏺 Ver la guía completa de Pomaire 360 →</a>
-  </div>
+<div class="ch-wrap">
 
+  <!-- SECCIÓN 1: AUTOR -->
+  <section class="ch-bio" id="autor">
+    <div class="ch-photo">
+      <span class="ph-ico">📷</span>
+      <small>Foto de César próximamente</small>
+    </div>
+    <div class="ch-bio-text">
+      <h2>César Silva Rojo</h2>
+      <p class="ch-bio-role">Maestro Alfarero · Pomaire, Chile</p>
+      <p>Maestro alfarero pomairino y autor del chancho-alcancía de greda más grande del mundo. Con años de oficio dando forma a la greda de Pomaire, transformó una idea imposible en una obra única que hoy es atractivo del pueblo.</p>
+      <div class="ch-social">
+        <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener">🗺️ Cómo llegar</a>
+        <a class="ch-soc wa" href="tel:+56936515838">📞 Llamar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: HISTORIA -->
+  <section class="ch-historia" id="historia">
+    <h2>La historia de una idea imposible</h2>
+    <ol class="ch-timeline">
+      <li class="ct-step"><span class="ct-ico">💡</span><h3>La idea</h3><p>Todo parte de un sueño: crear el chancho-alcancía de greda más grande del mundo, llevando la tradición de Pomaire a una escala nunca vista.</p></li>
+      <li class="ct-step"><span class="ct-ico">✏️</span><h3>El diseño</h3><p>Bocetos y cálculos para definir proporciones, estructura y resistencia de una pieza gigante de greda.</p></li>
+      <li class="ct-step"><span class="ct-ico">🤲</span><h3>El modelado</h3><p>El trabajo a mano: dar forma a la greda con la técnica heredada de generaciones de alfareros pomairinos.</p></li>
+      <li class="ct-step"><span class="ct-ico">🌬️</span><h3>El secado</h3><p>Días de paciencia para que la greda pierda humedad lentamente y evitar grietas en una obra de este tamaño.</p></li>
+      <li class="ct-step"><span class="ct-ico">🔥</span><h3>La cocción</h3><p>El paso más delicado: el fuego del horno endurece la greda y le da su color terracota definitivo.</p></li>
+      <li class="ct-step ct-final"><span class="ct-ico">🏆</span><h3>La obra terminada</h3><p>El resultado: el chancho-alcancía de greda más grande del mundo, orgullo de Pomaire y atractivo para sus visitantes.</p></li>
+    </ol>
+  </section>
+
+  <!-- VISITAR -->
+  <section class="ch-visit" id="visitar">
+    <h2>Cómo visitar</h2>
+    <div class="ch-visit-row">📍 <span><strong>Dirección:</strong> Los Paltos 323, Pomaire, Melipilla</span></div>
+    <div class="ch-visit-row">🕒 <span><strong>Horario:</strong> Sábado 12:00–18:00 · Domingo 12:00–19:30 · Lunes a Viernes cerrado</span></div>
+    <div class="ch-visit-row">📞 <span><strong>Teléfono:</strong> +56 9 3651 5838</span></div>
+    <div class="ch-visit-btns">
+      <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener">🗺️ Cómo llegar</a>
+      <a class="ch-soc" style="background:var(--clay-dark)" href="/#lugar=po6">📍 Ver en el mapa interactivo</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="ch-foot">
+  <a href="/">🏺 Volver a la guía completa de Pomaire 360 →</a>
 </div>
 
 </body>
