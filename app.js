@@ -1535,7 +1535,7 @@ const PLACES = [
   { id:'po3', cat:'pottery', icon:'🎨', lat:-33.652051018925114, lng:-71.14908723334928, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire', gmap:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
-  { id:'po6', cat:'pottery', icon:'🐷', lat:-33.652552962128134, lng:-71.1534523252861, name:'El Chancho alcancia de greda más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire' },
+  { id:'po6', cat:'pottery', icon:'🐷', lat:-33.652552962128134, lng:-71.1534523252861, name:'El Chancho alcancia de greda más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire', gmap:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', wsp:'56936515838', plan:'premium' },
   // ── FOOD ──
   { id:'fo1', cat:'food', icon:'☕', lat:-33.65460729825698, lng:-71.15001597751701, name:'Imperio Pomaire', desc:'Desayunos y cocina típica · Roberto Bravo 78', addr:'Roberto Bravo 78, Pomaire', gmap:'https://maps.app.goo.gl/muAoduKWg9frboTy7' },
   { id:'fo2', cat:'food', icon:'🥘', lat:-33.65317799731006, lng:-71.14994054878586, name:'Restaurant La Greda', desc:'Cocina criolla · 30+ años · Manuel Rodríguez', addr:'Manuel Rodríguez 251, Pomaire', gmap:'https://maps.app.goo.gl/SsdjchMYiy3K6eZeA' },
@@ -1902,7 +1902,7 @@ const DIRECTORY = {
     { n:'Cabañas Glamen 2', a:'Pomaire', p:'+56 9 54109214', web:'https://hostaldelcentro.cl/', map:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7' },
   ],
   interes: [
-    { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7' },
+    { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', wsp:'56936515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', slug:'chancho-greda', hours:'Sáb 12:00–18:00 · Dom 12:00–19:30 · Lun a Vie cerrado', desc:'El chancho-alcancía de greda más grande del mundo: un atractivo imperdible de Pomaire. Un espacio con figuras gigantes de greda, ideal para fotografiarte y conocer la tradición alfarera del pueblo en gran formato.' },
     { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', plan:'premium', slug:'cerveceria-pomaire', hours:'Vie a Dom · 12:00–21:00', desc:'Cerveza artesanal de Pomaire: shop y venta de botellas. Un espacio para disfrutar cerveza local hecha en el pueblo alfarero, ideal para acompañar la gastronomía típica.' },
     { n:'Tienda Calafate Austral', a:'Roberto Bravo 77B', p:'+56 9 36572068', ig:'calafateaustral.cl', tag:'Tienda', map:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6' },
     { n:'La Chakana', a:'Roberto Bravo 195', p:'+56 9 91162709', tag:'Tienda' },
