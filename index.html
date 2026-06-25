@@ -1235,6 +1235,14 @@
 </div>
 
 <!-- Botón flotante de WhatsApp para compartir el sitio -->
+<!-- Modal de perfil de negocio (Destacado / Premium) -->
+<div class="profile-modal" id="profileModal" onclick="if(event.target===this)closeProfile()">
+  <div class="profile-card">
+    <button class="profile-close" onclick="closeProfile()" aria-label="Cerrar">✕</button>
+    <div id="profileBody"></div>
+  </div>
+</div>
+
 <!-- Botones flotantes de redes: Instagram (arriba) y WhatsApp (abajo) -->
 <div class="social-fab">
   <a class="ig-float" href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener" aria-label="Instagram Pomaire 360">

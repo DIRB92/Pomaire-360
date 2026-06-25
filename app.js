@@ -1531,7 +1531,7 @@ const PLACES = [
   { id:'sv7', cat:'services', icon:'🏛️', lat:-33.65266285604718, lng:-71.15463474076532, name:'Templo Salón del Reino · Testigos de Jehová', desc:'Salón del Reino de los Testigos de Jehová', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7' },
   // ── POTTERY ──
   { id:'po1', cat:'pottery', icon:'🏺', lat:-33.65119135971276, lng:-71.15284938597316, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire', gmap:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/' },
+  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', plan:'destacado' },
   { id:'po3', cat:'pottery', icon:'🎨', lat:-33.652051018925114, lng:-71.14908723334928, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire', gmap:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
@@ -1555,7 +1555,7 @@ const PLACES = [
   { id:'lo4', cat:'lodging', icon:'🏕️', lat:-33.647366520043605, lng:-71.15680309312565, name:'Cabañas Glamen 2', desc:'Cabañas · alojamiento', addr:'Pomaire', gmap:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7', web:'https://hostaldelcentro.cl/' },
   { id:'lo5', cat:'lodging', icon:'🛏️', lat:-33.65136884009364, lng:-71.15274217075873, name:'Pomaire Lodge & Suites', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/56MaGEtivjNeZrDr8', ig:'pomairesuites' },
   // ── HIGHLIGHT ──
-  { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65165740947676, lng:-71.14995842541745, name:'Cervecería Pomaire', desc:'Cerveza artesanal | Shop & botellas · Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', ig:'cerveceriapomaire_' },
+  { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65165740947676, lng:-71.14995842541745, name:'Cervecería Pomaire', desc:'Cerveza artesanal | Shop & botellas · Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', ig:'cerveceriapomaire_', plan:'premium' },
   { id:'hl2', cat:'highlight', icon:'🛍️', lat:-33.65478707835062, lng:-71.15025443200825, name:'Tienda Calafate Austral', desc:'Tienda con encanto · Roberto Bravo 77B', addr:'Roberto Bravo 77, Pomaire', gmap:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6', ig:'calafateaustral.cl' },
   { id:'hl3', cat:'highlight', icon:'🧀', lat:-33.65192, lng:-71.1499, name:'Charcutería Don Mati', desc:'Arturo Prat 237', addr:'Arturo Prat 237, Pomaire' },
   { id:'hl4', cat:'highlight', icon:'🍦', lat:-33.651768302417416, lng:-71.14981400869864, name:'Panadería y Heladería ALSA', desc:'Roberto Bravo 1606', addr:'Roberto Bravo 1606, Pomaire', gmap:'https://maps.app.goo.gl/m6g2m7SAkA74wqGR9' },
@@ -1617,12 +1617,19 @@ function initMap() {
   }).addTo(leafletMap);
 
   PLACES.forEach(p => {
+    const featured = p.plan === 'destacado' || p.plan === 'premium';
+    const bg = featured ? '#E6B246' : '#B85C2C';
+    const sz = featured ? 42 : 34;
+    const shadow = featured
+      ? 'box-shadow:0 0 0 3px rgba(230,178,70,.5),0 3px 10px rgba(0,0,0,.4);'
+      : 'box-shadow:0 2px 8px rgba(0,0,0,.3);';
     const marker = L.marker([p.lat, p.lng], {
+      zIndexOffset: featured ? 1000 : 0,
       icon: L.divIcon({
-        className: 'custom-marker',
-        html: `<div style="background:#B85C2C;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.3);">${p.icon}</div>`,
-        iconSize: [34,34],
-        iconAnchor: [17,17]
+        className: 'custom-marker' + (featured ? ' is-featured' : ''),
+        html: `<div style="background:${bg};border:2px solid #fff;border-radius:50%;width:${sz}px;height:${sz}px;display:flex;align-items:center;justify-content:center;font-size:${featured ? 19 : 16}px;${shadow}">${p.icon}</div>`,
+        iconSize: [sz, sz],
+        iconAnchor: [sz / 2, sz / 2]
       })
     });
     marker.bindPopup(buildPopup(p));
@@ -1678,6 +1685,9 @@ function buildPopup(p, distKm) {
   const distHtml = distKm !== undefined
     ? `<div class="popup-dist">📍 ${fmtDist(distKm)} · 🚶 ${fmtWalkTime(distKm)}</div>`
     : '';
+  const badge = (p.plan === 'destacado' || p.plan === 'premium')
+    ? `<span class="popup-badge badge-${p.plan}">${p.plan === 'premium' ? '💎' : '⭐'} ${planLabel(p.plan)}</span>`
+    : '';
   const gmaps = p.gmap
     ? p.gmap
     : (p.addr
@@ -1689,7 +1699,7 @@ function buildPopup(p, distKm) {
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
   if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong><p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a><a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a><a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
@@ -1870,7 +1880,7 @@ const DIRECTORY = {
   ],
   talleres: [
     { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera', map:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', map:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8' },
+    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', map:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', plan:'destacado', slug:'espacio-greda', hours:'Lun a Dom · 10:00–19:00', desc:'Taller de greda en Pomaire donde puedes ver y aprender el oficio alfarero tradicional, comprar piezas y conocer todo el proceso, desde el torno hasta el horno.' },
     { n:'Taller del Sol', a:'Arturo Prat 237 B', p:'+56 9 45203264', ig:'tallerdelsol_pomaire', map:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
     { n:'Taller Barros', a:'Guillermo Barros 150', p:'+56 9 50432417', ig:'taller.barros.pomaire', map:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   ],
@@ -1893,7 +1903,7 @@ const DIRECTORY = {
   ],
   interes: [
     { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7' },
-    { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7' },
+    { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', plan:'premium', slug:'cerveceria-pomaire', hours:'Vie a Dom · 12:00–21:00', desc:'Cerveza artesanal de Pomaire: shop y venta de botellas. Un espacio para disfrutar cerveza local hecha en el pueblo alfarero, ideal para acompañar la gastronomía típica.' },
     { n:'Tienda Calafate Austral', a:'Roberto Bravo 77B', p:'+56 9 36572068', ig:'calafateaustral.cl', tag:'Tienda', map:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6' },
     { n:'La Chakana', a:'Roberto Bravo 195', p:'+56 9 91162709', tag:'Tienda' },
     { n:'Charcutería Don Mati', a:'Arturo Prat 237', p:'+56 9 65852914', ig:'charcuteriadonmati', tag:'Charcutería' },
@@ -2034,7 +2044,26 @@ function dirT(text) {
   return (entry && entry[currentLang]) ? entry[currentLang] : text;
 }
 
+/* ── PLANES (monetización): destacado / premium ──────────────────────────── */
+const PROFILES = {};
+const PLAN_LABEL = {
+  destacado: { es:'Destacado', en:'Featured', pt:'Destaque', fr:'En vedette', ru:'Рекомендуем', ja:'おすすめ', zh:'推荐' },
+  premium:   { es:'Premium',   en:'Premium',  pt:'Premium',  fr:'Premium',    ru:'Премиум',    ja:'プレミアム', zh:'高级' }
+};
+const PROFILE_T = {
+  see:   { es:'Ver perfil ▸', en:'View profile ▸', pt:'Ver perfil ▸', fr:'Voir le profil ▸', ru:'Профиль ▸', ja:'プロフィール ▸', zh:'查看资料 ▸' },
+  hours: { es:'Horario', en:'Hours', pt:'Horário', fr:'Horaires', ru:'Часы', ja:'営業時間', zh:'营业时间' }
+};
+function planLabel(plan) { return (PLAN_LABEL[plan] && (PLAN_LABEL[plan][currentLang] || PLAN_LABEL[plan].es)) || ''; }
+function profileT(k) { return (PROFILE_T[k] && (PROFILE_T[k][currentLang] || PROFILE_T[k].es)) || ''; }
+function planBadge(plan) {
+  if (!plan || !PLAN_LABEL[plan]) return '';
+  const icon = plan === 'premium' ? '💎' : '⭐';
+  return `<span class="dir-badge badge-${plan}">${icon} ${planLabel(plan)}</span>`;
+}
+
 function dirItemHTML(it) {
+  if (it.plan && it.slug) PROFILES[it.slug] = it;
   const mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
   const rawTag = it.tag || it.d;
   const tag = rawTag ? `<span class="dir-tag">${dirT(rawTag)}</span>` : '';
@@ -2044,19 +2073,67 @@ function dirItemHTML(it) {
   if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
   if (it.web) links += `<a href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
   if (it.fb) links += `<a href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
-  return `<div class="dir-item">
+  const featured = it.plan === 'destacado' || it.plan === 'premium';
+  const moreBtn = (featured && it.slug) ? `<button class="dir-more" onclick="openProfile('${it.slug}')">${profileT('see')}</button>` : '';
+  return `<div class="dir-item${featured ? ' dir-featured plan-' + it.plan : ''}">
       <span class="dir-name">${it.n}</span>
+      ${planBadge(it.plan)}
       ${tag}
       <span class="dir-addr">📍 ${it.a}</span>
       <div class="dir-links">${links}</div>
+      ${moreBtn}
     </div>`;
 }
 
 function renderDir(containerId, list, countId) {
   const el = document.getElementById(containerId);
-  if (el) el.innerHTML = list.map(dirItemHTML).join('');
+  // Orden: premium primero, luego destacado, luego gratis (estable dentro de cada grupo)
+  const rank = (it) => it.plan === 'premium' ? 0 : (it.plan === 'destacado' ? 1 : 2);
+  const ordered = list.map((it, i) => ({ it, i }))
+    .sort((a, b) => (rank(a.it) - rank(b.it)) || (a.i - b.i))
+    .map((x) => x.it);
+  if (el) el.innerHTML = ordered.map(dirItemHTML).join('');
   if (countId) { const c = document.getElementById(countId); if (c) c.textContent = list.length; }
 }
+
+// Abre el perfil ampliado (modal) de un negocio destacado/premium
+function openProfile(slug) {
+  const it = PROFILES[slug];
+  const modal = document.getElementById('profileModal');
+  const body = document.getElementById('profileBody');
+  if (!it || !modal || !body) return;
+  const mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
+  const mapLabel = DIR_MAP_LABEL[currentLang] || DIR_MAP_LABEL.es;
+  let links = `<a class="pf-link" href="${mapsUrl}" target="_blank" rel="noopener">🗺️ ${mapLabel}</a>`;
+  if (it.p)  links += `<a class="pf-link" href="${telHref(it.p)}">📞 ${it.p}</a>`;
+  if (it.wsp) links += `<a class="pf-link" href="https://wa.me/${it.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`;
+  if (it.ig) links += `<a class="pf-link" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 Instagram</a>`;
+  if (it.web) links += `<a class="pf-link" href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
+  if (it.fb) links += `<a class="pf-link" href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
+  let gallery = '';
+  if (it.photos && it.photos.length) {
+    gallery = '<div class="pf-gallery">' + it.photos.map((u) => `<img src="${u}" alt="${it.n}" loading="lazy">`).join('') + '</div>';
+  }
+  body.innerHTML = `
+    ${gallery}
+    <div class="pf-head">${planBadge(it.plan)}<h3>${it.n}</h3></div>
+    ${it.desc ? `<p class="pf-desc">${it.desc}</p>` : ''}
+    <div class="pf-meta">
+      <div>📍 ${it.a}</div>
+      ${it.hours ? `<div>🕒 <strong>${profileT('hours')}:</strong> ${it.hours}</div>` : ''}
+    </div>
+    <div class="pf-links">${links}</div>
+  `;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProfile() {
+  const modal = document.getElementById('profileModal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+window.openProfile = openProfile;
+window.closeProfile = closeProfile;
 
 function renderAllDirs() {
   renderDir('restaurantDir', DIRECTORY.restaurants, 'restCount');
