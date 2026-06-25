@@ -562,6 +562,29 @@
   .plan-feats { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
   .plan-feats li { font-size: .86rem; color: var(--text); padding-left: 1.4rem; position: relative; line-height: 1.35; }
   .plan-feats li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+  .plan-btn {
+    margin-top: auto;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .92rem;
+    font-weight: 800;
+    color: #fff;
+    background: #25D366;
+    padding: .75rem 1rem;
+    border-radius: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    transition: transform .15s, box-shadow .15s, background .15s;
+  }
+  .plan-feats { margin-bottom: 1.2rem; }
+  .plan-btn::before { content: '💬'; }
+  .plan-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37,211,102,.4); }
+  .plan-card:not(.plan-prem):not(.plan-dest) .plan-btn { background: var(--clay); }
+  .plan-card:not(.plan-prem):not(.plan-dest) .plan-btn:hover { box-shadow: 0 6px 18px rgba(184,92,44,.4); }
   .plans-cta { text-align: center; }
   .plans-wa-btn {
     display: inline-flex; align-items: center; gap: .5rem;

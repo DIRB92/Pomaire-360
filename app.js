@@ -2135,6 +2135,18 @@ function closeProfile() {
 window.openProfile = openProfile;
 window.closeProfile = closeProfile;
 
+/* ── Selección de plan → WhatsApp ───────────────────────────────────────── */
+function selectPlan(plan) {
+  const msgs = {
+    gratis:    'Hola, quiero sumar mi negocio al plan GRATIS de Pomaire 360 🏺',
+    destacado: 'Hola, quiero contratar el plan DESTACADO ($4.990/mes) para mi negocio en Pomaire 360 ⭐',
+    premium:   'Hola, quiero contratar el plan PREMIUM ($9.990/mes) para mi negocio en Pomaire 360 💎'
+  };
+  const msg = msgs[plan] || 'Hola, quiero que mi negocio aparezca en Pomaire 360';
+  window.open('https://wa.me/56957517166?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+}
+window.selectPlan = selectPlan;
+
 function renderAllDirs() {
   renderDir('restaurantDir', DIRECTORY.restaurants, 'restCount');
   renderDir('tallerDir',     DIRECTORY.talleres,    'tallerCount');
