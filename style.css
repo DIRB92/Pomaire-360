@@ -1329,6 +1329,8 @@
     border: none; border-radius: 16px;
     padding: .3rem .8rem; cursor: pointer;
     font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
     transition: background .15s, transform .12s;
   }
   .dir-more:hover { background: #FFDDAA; transform: translateY(-1px); }

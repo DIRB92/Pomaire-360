@@ -8,4 +8,10 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://pomaire360.cl/"/>
   </url>
+  <url>
+    <loc>https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
