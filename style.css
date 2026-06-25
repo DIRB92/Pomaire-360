@@ -604,7 +604,34 @@
   }
 
   #donaciones { text-align: center; background: var(--clay-dark); }
-  #banos { scroll-margin-top: 90px; }  #donaciones .section-header { justify-content: center; }
+  #banos { scroll-margin-top: 90px; }
+  .map-featured-btn {
+    display: flex; align-items: center; gap: .8rem;
+    text-decoration: none;
+    margin: 0 0 1rem;
+    padding: .85rem 1.1rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #FFF3DC, #FCE7C0);
+    border: 1.5px solid #E6B246;
+    box-shadow: 0 4px 14px rgba(230,178,70,.25);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .map-featured-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(230,178,70,.35); }
+  .map-featured-btn .mfb-ico { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+  .map-featured-btn .mfb-txt { flex: 1; font-size: .9rem; color: var(--clay-dark); line-height: 1.3; }
+  .map-featured-btn .mfb-badge {
+    display: inline-block; background: linear-gradient(135deg, #8C3D16, #B85C2C); color: #fff;
+    font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+    padding: .1rem .45rem; border-radius: 8px; margin-right: .4rem; vertical-align: middle;
+  }
+  .map-featured-btn .mfb-go {
+    flex-shrink: 0; font-weight: 800; font-size: .85rem; color: #fff;
+    background: var(--clay); padding: .5rem .9rem; border-radius: 20px; white-space: nowrap;
+  }
+  @media (max-width: 560px) {
+    .map-featured-btn { flex-wrap: wrap; }
+    .map-featured-btn .mfb-go { width: 100%; text-align: center; }
+  }  #donaciones .section-header { justify-content: center; }
   #donaciones .section-header h2 { color: #fff; }
   #donaciones .section-header p { color: rgba(255,255,255,.7); }
 
