@@ -540,7 +540,7 @@ let currentLang = 'es';
 /* ══ TRADUCCIONES ADICIONALES (contenido que faltaba traducir) ══ */
 const LANG_EXTRA = {
   es: {
-    nav_lodging:"Alojamientos", nav_seewhat:"Qué ver",
+    nav_lodging:"Alojamientos", nav_banos:"Baños", nav_seewhat:"Qué ver",
     nav_g_essentials:"Esenciales", nav_g_todo:"Qué hacer", nav_g_eatsleep:"Comer y dormir", nav_g_plan:"Planifica", nav_winery:"Ruta del Vino", site_municipality:"Municipalidad", site_official_map:"Ver mapa oficial de Pomaire",
     ev_m1:"ENE–FEB", ev_m2:"JUN", ev_m3:"SEP", ev_m4:"NOV–DIC", weather_loading:"⏳ Cargando clima...", social_title:"Síguenos en redes", social_sub:"Fotos, novedades y la vida del pueblo alfarero, todos los días.", social_ig:"Síguenos en Instagram",
     a11y_title:"♿ Accesibilidad", a11y_font:"🔠 Tamaño de letra", a11y_read:"🔊 Lectura en voz alta", a11y_readall:"📖 Leer todo", a11y_hint:"Activa la lectura y luego toca cualquier texto del sitio para escucharlo en voz alta.", a11y_hint_active:"✅ Lectura activa: toca cualquier texto del sitio para escucharlo.", a11y_activate:"🔊 Activar", a11y_stop:"⏹ Detener", a11y_unavailable:"🔇 No disponible", a11y_size_normal:"Tamaño normal", a11y_size:"Tamaño", a11y_voice_on:"Lectura en voz alta activada. Toca cualquier texto para escucharlo.", a11y_no_support:"Tu navegador no soporta la lectura en voz alta.", a11y_aria_options:"Opciones de accesibilidad", a11y_aria_close:"Cerrar",
@@ -625,7 +625,7 @@ const LANG_EXTRA = {
     filter_lodging:"Dormir", filter_highlight:"Qué ver", route_oficial_name:"Ruta Oficial", route_oficial_meta:"5 paradas · día completo"
   },
   en: {
-    nav_lodging:"Lodging", nav_seewhat:"What to see",
+    nav_lodging:"Lodging", nav_banos:"Restrooms", nav_seewhat:"What to see",
     nav_g_essentials:"Essentials", nav_g_todo:"What to do", nav_g_eatsleep:"Eat & sleep", nav_g_plan:"Plan", nav_winery:"Wine Route", site_municipality:"Municipality", site_official_map:"View official Pomaire map",
     ev_m1:"JAN–FEB", ev_m2:"JUN", ev_m3:"SEP", ev_m4:"NOV–DEC", weather_loading:"⏳ Loading weather...", social_title:"Follow us on social media", social_sub:"Photos, news and the life of the pottery village, every day.", social_ig:"Follow us on Instagram",
     a11y_title:"♿ Accessibility", a11y_font:"🔠 Font size", a11y_read:"🔊 Read aloud", a11y_readall:"📖 Read all", a11y_hint:"Turn on reading and then tap any text on the site to hear it read aloud.", a11y_hint_active:"✅ Reading active: tap any text on the site to hear it.", a11y_activate:"🔊 Turn on", a11y_stop:"⏹ Stop", a11y_unavailable:"🔇 Unavailable", a11y_size_normal:"Normal size", a11y_size:"Size", a11y_voice_on:"Read aloud turned on. Tap any text to hear it.", a11y_no_support:"Your browser does not support read aloud.", a11y_aria_options:"Accessibility options", a11y_aria_close:"Close",
@@ -710,7 +710,7 @@ const LANG_EXTRA = {
     filter_lodging:"Stay", filter_highlight:"See", route_oficial_name:"Official Route", route_oficial_meta:"5 stops · full day"
   },
   pt: {
-    nav_lodging:"Hospedagem", nav_seewhat:"O que ver",
+    nav_lodging:"Hospedagem", nav_banos:"Banheiros", nav_seewhat:"O que ver",
     nav_g_essentials:"Essenciais", nav_g_todo:"O que fazer", nav_g_eatsleep:"Comer e dormir", nav_g_plan:"Planeje", nav_winery:"Rota do Vinho", site_municipality:"Prefeitura", site_official_map:"Ver mapa oficial de Pomaire",
     ev_m1:"JAN–FEV", ev_m2:"JUN", ev_m3:"SET", ev_m4:"NOV–DEZ", weather_loading:"⏳ Carregando clima...", social_title:"Siga-nos nas redes", social_sub:"Fotos, novidades e a vida do povoado dos oleiros, todos os dias.", social_ig:"Siga-nos no Instagram",
     a11y_title:"♿ Acessibilidade", a11y_font:"🔠 Tamanho da fonte", a11y_read:"🔊 Leitura em voz alta", a11y_readall:"📖 Ler tudo", a11y_hint:"Ative a leitura e depois toque em qualquer texto do site para ouvi-lo em voz alta.", a11y_hint_active:"✅ Leitura ativa: toque em qualquer texto do site para ouvi-lo.", a11y_activate:"🔊 Ativar", a11y_stop:"⏹ Parar", a11y_unavailable:"🔇 Indisponível", a11y_size_normal:"Tamanho normal", a11y_size:"Tamanho", a11y_voice_on:"Leitura em voz alta ativada. Toque em qualquer texto para ouvi-lo.", a11y_no_support:"Seu navegador não suporta a leitura em voz alta.", a11y_aria_options:"Opções de acessibilidade", a11y_aria_close:"Fechar",
@@ -795,7 +795,7 @@ const LANG_EXTRA = {
     filter_lodging:"Dormir", filter_highlight:"Ver", route_oficial_name:"Rota Oficial", route_oficial_meta:"5 paradas · dia completo"
   },
   fr: {
-    nav_lodging:"Hébergements", nav_seewhat:"À voir",
+    nav_lodging:"Hébergements", nav_banos:"Toilettes", nav_seewhat:"À voir",
     nav_g_essentials:"Essentiels", nav_g_todo:"Que faire", nav_g_eatsleep:"Manger et dormir", nav_g_plan:"Planifier", nav_winery:"Route du Vin", site_municipality:"Mairie", site_official_map:"Voir la carte officielle de Pomaire",
     ev_m1:"JAN–FÉV", ev_m2:"JUIN", ev_m3:"SEP", ev_m4:"NOV–DÉC", weather_loading:"⏳ Chargement de la météo...", social_title:"Suivez-nous sur les réseaux", social_sub:"Photos, actualités et la vie du village des potiers, chaque jour.", social_ig:"Suivez-nous sur Instagram",
     a11y_title:"♿ Accessibilité", a11y_font:"🔠 Taille du texte", a11y_read:"🔊 Lecture à voix haute", a11y_readall:"📖 Tout lire", a11y_hint:"Activez la lecture puis touchez n'importe quel texte du site pour l'entendre à voix haute.", a11y_hint_active:"✅ Lecture active : touchez n'importe quel texte du site pour l'entendre.", a11y_activate:"🔊 Activer", a11y_stop:"⏹ Arrêter", a11y_unavailable:"🔇 Indisponible", a11y_size_normal:"Taille normale", a11y_size:"Taille", a11y_voice_on:"Lecture à voix haute activée. Touchez n'importe quel texte pour l'entendre.", a11y_no_support:"Votre navigateur ne prend pas en charge la lecture à voix haute.", a11y_aria_options:"Options d'accessibilité", a11y_aria_close:"Fermer",
@@ -880,7 +880,7 @@ const LANG_EXTRA = {
     filter_lodging:"Dormir", filter_highlight:"À voir", route_oficial_name:"Itinéraire Officiel", route_oficial_meta:"5 arrêts · journée complète"
   },
   ru: {
-    nav_lodging:"Жильё", nav_seewhat:"Что посмотреть",
+    nav_lodging:"Жильё", nav_banos:"Туалеты", nav_seewhat:"Что посмотреть",
     nav_g_essentials:"Главное", nav_g_todo:"Чем заняться", nav_g_eatsleep:"Еда и ночлег", nav_g_plan:"Планирование", nav_winery:"Винный маршрут", site_municipality:"Муниципалитет", site_official_map:"Официальная карта Помайре",
     ev_m1:"ЯНВ–ФЕВ", ev_m2:"ИЮН", ev_m3:"СЕН", ev_m4:"НОЯ–ДЕК", weather_loading:"⏳ Загрузка погоды...", social_title:"Подпишитесь на нас", social_sub:"Фото, новости и жизнь гончарного посёлка каждый день.", social_ig:"Подпишитесь в Instagram",
     a11y_title:"♿ Доступность", a11y_font:"🔠 Размер шрифта", a11y_read:"🔊 Чтение вслух", a11y_readall:"📖 Читать всё", a11y_hint:"Включите чтение и затем нажмите на любой текст сайта, чтобы услышать его вслух.", a11y_hint_active:"✅ Чтение включено: нажмите на любой текст сайта, чтобы услышать его.", a11y_activate:"🔊 Включить", a11y_stop:"⏹ Остановить", a11y_unavailable:"🔇 Недоступно", a11y_size_normal:"Обычный размер", a11y_size:"Размер", a11y_voice_on:"Чтение вслух включено. Нажмите на любой текст, чтобы услышать его.", a11y_no_support:"Ваш браузер не поддерживает чтение вслух.", a11y_aria_options:"Параметры доступности", a11y_aria_close:"Закрыть",
@@ -965,7 +965,7 @@ const LANG_EXTRA = {
     filter_lodging:"Ночлег", filter_highlight:"Посмотреть", route_oficial_name:"Официальный маршрут", route_oficial_meta:"5 остановок · полный день"
   },
   ja: {
-    nav_lodging:"宿泊", nav_seewhat:"見どころ",
+    nav_lodging:"宿泊", nav_banos:"トイレ", nav_seewhat:"見どころ",
     nav_g_essentials:"基本情報", nav_g_todo:"観光・体験", nav_g_eatsleep:"食事と宿泊", nav_g_plan:"計画", nav_winery:"ワインの道", site_municipality:"市役所", site_official_map:"ポマイレ公式地図を見る",
     ev_m1:"1〜2月", ev_m2:"6月", ev_m3:"9月", ev_m4:"11〜12月", weather_loading:"⏳ 天気を読み込み中...", social_title:"SNSでフォロー", social_sub:"毎日、陶工の村の写真・お知らせ・暮らしをお届け。", social_ig:"Instagramでフォロー",
     a11y_title:"♿ アクセシビリティ", a11y_font:"🔠 文字サイズ", a11y_read:"🔊 読み上げ", a11y_readall:"📖 すべて読む", a11y_hint:"読み上げをオンにして、サイトの任意のテキストをタップすると音声で読み上げます。", a11y_hint_active:"✅ 読み上げ中：サイトの任意のテキストをタップして聞いてください。", a11y_activate:"🔊 オンにする", a11y_stop:"⏹ 停止", a11y_unavailable:"🔇 利用不可", a11y_size_normal:"標準サイズ", a11y_size:"サイズ", a11y_voice_on:"読み上げをオンにしました。任意のテキストをタップして聞いてください。", a11y_no_support:"お使いのブラウザは読み上げに対応していません。", a11y_aria_options:"アクセシビリティ オプション", a11y_aria_close:"閉じる",
@@ -1050,7 +1050,7 @@ const LANG_EXTRA = {
     filter_lodging:"宿泊", filter_highlight:"見る", route_oficial_name:"公式ルート", route_oficial_meta:"5か所 · 終日"
   },
   zh: {
-    nav_lodging:"住宿", nav_seewhat:"看点",
+    nav_lodging:"住宿", nav_banos:"洗手间", nav_seewhat:"看点",
     nav_g_essentials:"必备信息", nav_g_todo:"玩什么", nav_g_eatsleep:"吃与住", nav_g_plan:"行程规划", nav_winery:"葡萄酒之路", site_municipality:"市政府", site_official_map:"查看波迈雷官方地图",
     ev_m1:"1–2月", ev_m2:"6月", ev_m3:"9月", ev_m4:"11–12月", weather_loading:"⏳ 正在加载天气...", social_title:"关注我们的社媒", social_sub:"每天分享陶工小镇的照片、动态与生活。", social_ig:"在 Instagram 关注我们",
     a11y_title:"♿ 无障碍", a11y_font:"🔠 字体大小", a11y_read:"🔊 朗读", a11y_readall:"📖 全部朗读", a11y_hint:"开启朗读后，点按网站上的任意文字即可听到朗读。", a11y_hint_active:"✅ 朗读已开启：点按网站上的任意文字即可听到。", a11y_activate:"🔊 开启", a11y_stop:"⏹ 停止", a11y_unavailable:"🔇 不可用", a11y_size_normal:"标准大小", a11y_size:"大小", a11y_voice_on:"朗读已开启。点按任意文字即可听到。", a11y_no_support:"您的浏览器不支持朗读。", a11y_aria_options:"无障碍选项", a11y_aria_close:"关闭",

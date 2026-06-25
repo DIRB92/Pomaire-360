@@ -603,7 +603,8 @@
     .plan-card.plan-prem { transform: none; }
   }
 
-  #donaciones { text-align: center; background: var(--clay-dark); }  #donaciones .section-header { justify-content: center; }
+  #donaciones { text-align: center; background: var(--clay-dark); }
+  #banos { scroll-margin-top: 90px; }  #donaciones .section-header { justify-content: center; }
   #donaciones .section-header h2 { color: #fff; }
   #donaciones .section-header p { color: rgba(255,255,255,.7); }
 
