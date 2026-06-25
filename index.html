@@ -246,6 +246,232 @@
   </div>
 </section>
 
+<!-- MAPA INTERACTIVO -->
+<section id="mapa">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-icon">🗺️</span>
+      <div>
+        <h2 data-t="s_map_title">Mapa interactivo de Pomaire</h2>
+        <p data-t="s_map_sub">Filtra lugares, calcula distancias y sigue una ruta sugerida</p>
+      </div>
+    </div>
+
+    <!-- Controles: filtros + ubicación -->
+    <div class="map-controls reveal">
+      <div class="map-filters" id="mapFilters">
+        <button class="map-filter active" data-cat="all">🏺 <span data-t="filter_all">Todos</span></button>
+        <button class="map-filter" data-cat="parking">🅿️ <span data-t="filter_parking">Estacionar</span></button>
+        <button class="map-filter" data-cat="health">🏥 <span data-t="filter_health">Salud</span></button>
+        <button class="map-filter" data-cat="security">🚔 <span data-t="filter_security">Seguridad</span></button>
+        <button class="map-filter" data-cat="pottery">🏺 <span data-t="filter_pottery">Alfarería</span></button>
+        <button class="map-filter" data-cat="food">🍽️ <span data-t="filter_food">Comer</span></button>
+        <button class="map-filter" data-cat="lodging">🛏️ <span data-t="filter_lodging">Dormir</span></button>
+        <button class="map-filter" data-cat="highlight">✨ <span data-t="filter_highlight">Qué ver</span></button>
+        <button class="map-filter" data-cat="services">🛒 <span data-t="filter_services">Servicios</span></button>
+        <button class="map-filter" data-cat="around">🌾 <span data-t="filter_around">Alrededores</span></button>
+      </div>
+      <button class="locate-btn" id="locateBtn" onclick="locateUser()">
+        📍 <span data-t="locate_btn">Usar mi ubicación</span>
+      </button>
+    </div>
+
+    <!-- Mapa Leaflet -->
+    <div class="leaflet-wrap reveal">
+      <div id="leafletMap"></div>
+    </div>
+    <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias</p>
+
+    <!-- Mapa oficial ilustrado -->
+    <div class="official-map reveal">
+      <button class="official-map-btn" onclick="openOfficialMap()" type="button">
+        🗺️ <span data-t="official_map_btn">Ver mapa oficial ilustrado de Pomaire</span>
+      </button>
+      <p class="official-map-note" data-t="official_map_note">Plano turístico oficial con el directorio numerado de talleres de artesanos.</p>
+    </div>
+
+    <!-- Rutas sugeridas -->
+    <div class="routes-block reveal">
+      <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
+      <div class="routes-grid">
+        <button class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
+          <span class="route-icon">🧳</span>
+          <strong data-t="route_oficial_name">Ruta Oficial</strong>
+          <span class="route-meta" data-t="route_oficial_meta">5 paradas · día completo</span>
+        </button>
+        <button class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
+          <span class="route-icon">🏺</span>
+          <strong data-t="route_artisan_name">Ruta del Artesano</strong>
+          <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1.5 hrs</span>
+        </button>
+        <button class="route-card" data-route="family" onclick="loadRoute('family')">
+          <span class="route-icon">👨‍👩‍👧</span>
+          <strong data-t="route_family_name">Ruta Familiar</strong>
+          <span class="route-meta" data-t="route_family_meta">4 paradas · ~2.5 hrs</span>
+        </button>
+        <button class="route-card" data-route="food" onclick="loadRoute('food')">
+          <span class="route-icon">🍽️</span>
+          <strong data-t="route_food_name">Ruta Gastronómica</strong>
+          <span class="route-meta" data-t="route_food_meta">3 paradas · ~1 hr</span>
+        </button>
+        <button class="route-card" data-route="nature" onclick="loadRoute('nature')">
+          <span class="route-icon">🌄</span>
+          <strong data-t="route_nature_name">Ruta Naturaleza</strong>
+          <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3 hrs</span>
+        </button>
+      </div>
+      <button class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
+    </div>
+
+    <!-- Lista de lugares con distancia -->
+    <div class="places-list reveal" id="placesList"></div>
+  </div>
+</section>
+
+
+
+<!-- RECORRIDO TURÍSTICO -->
+<section id="recorrido">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-icon">🧭</span>
+      <div>
+        <h2 data-t="s_tour_title">Recorrido turístico paso a paso</h2>
+        <p data-t="s_tour_sub">La ruta perfecta para aprovechar tu día en Pomaire</p>
+      </div>
+    </div>
+
+    <!-- RUTA TURÍSTICA OFICIAL (Municipalidad de Melipilla) -->
+    <div class="official-route reveal">
+      <div class="or-head">
+        <span style="font-size:1.8rem;">🧳</span>
+        <h3 data-t="or_title">Ruta Turística Oficial de Pomaire</h3>
+      </div>
+      <p class="or-src" data-t="or_src">Itinerario sugerido por la Oficina de Turismo · Municipalidad de Melipilla · <em>Official tourist route</em></p>
+      <div class="or-badges">
+        <span class="or-badge" data-t="or_badge1">🚶 Recorrido a pie: ~35 min</span>
+        <span class="or-badge" data-t="or_badge2">🚗 Recorrido en auto: ~19 min</span>
+        <span class="or-badge" data-t="or_badge3">📅 Día completo desde Santiago</span>
+      </div>
+
+      <div class="or-itinerary">
+        <div class="or-stop">
+          <div class="or-time">08:00</div><div class="or-dot">🚌</div>
+          <div class="or-txt"><strong data-t="or_st1_t">Salida desde Santiago</strong><span data-t="or_st1_d">Inicio del viaje hacia el pueblo alfarero.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">09:30</div><div class="or-dot">📍</div>
+          <div class="or-txt"><strong data-t="or_st2_t">Llegada a Pomaire</strong><span data-t="or_st2_d">Recibimiento en la Oficina de Información Turística (OIT), en la Plaza de Pomaire.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">10:00</div><div class="or-dot">☕</div>
+          <div class="or-txt"><strong data-t="or_st3_t">Desayuno en Imperio Pomaire</strong><span data-t="or_st3_d">Roberto Bravo 78 · Sabores típicos chilenos para comenzar el día.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">12:00</div><div class="or-dot">🏺</div>
+          <div class="or-txt"><strong data-t="or_st4_t">Taller de greda en la Granja Alfarera</strong><span data-t="or_st4_d">Bernardo O'Higgins 260 · Experiencia inmersiva: del torno al horno.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">13:30</div><div class="or-dot">🥘</div>
+          <div class="or-txt"><strong data-t="or_st5_t">Almuerzo en Restaurant La Greda</strong><span data-t="or_st5_d">Cocina criolla y parrilla chilena con más de 30 años de historia.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">15:10</div><div class="or-dot">🌿</div>
+          <div class="or-txt"><strong data-t="or_st6_t">Visita al Vivero Luchín</strong><span data-t="or_st6_d">San Antonio 191 · Un respiro verde entre plantas, flores y maceteros.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">16:10</div><div class="or-dot">🛍️</div>
+          <div class="or-txt"><strong data-t="or_st7_t">Tarde libre de compras</strong><span data-t="or_st7_d">Recorre los talleres y tiendas de greda de la calle Roberto Bravo.</span></div>
+        </div>
+        <div class="or-stop">
+          <div class="or-time">18:00</div><div class="or-dot">🏠</div>
+          <div class="or-txt"><strong data-t="or_st8_t">Retorno a Santiago</strong><span data-t="or_st8_d">Fin del recorrido con recuerdos hechos a mano.</span></div>
+        </div>
+      </div>
+
+      <div class="or-features">
+        <div class="or-feature">
+          <h4>☕ Imperio Pomaire</h4>
+          <p data-t="or_f1">Nacido del esfuerzo de Romina y Fabio por la cocina tradicional. Tras siete años abrieron un segundo local y hoy es un referente de los sabores típicos de Pomaire.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🏺 Granja Alfarera</h4>
+          <p data-t="or_f2">Espacio turístico-cultural dedicado a preservar el oficio de la greda. Ofrece demostraciones en vivo, talleres con artesanos pomairinos y un recorrido por todo el proceso, desde la extracción hasta el horno.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🥘 La Greda Restaurant</h4>
+          <p data-t="or_f3">Más de 30 años de tradición. Don Víctor Larraín transformó la antigua casona de adobe familiar en un referente gastronómico, cuna de la empanada más grande del mundo y de tres generaciones de cocina criolla.</p>
+        </div>
+        <div class="or-feature">
+          <h4>🌿 Vivero Luchín</h4>
+          <p data-t="or_f4">Pequeño y encantador vivero que combina lo rural, lo botánico y lo artesanal. Ideal para una pausa tranquila tras recorrer talleres y restaurantes, y para llevarse un recuerdo vivo de Pomaire.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal free-tour-label" data-t="free_tour_label">💡 Recorrido libre · explora a tu ritmo</h3>
+    <div class="tour-timeline reveal">
+      <div class="tour-step">
+        <div class="tour-time">09:00</div>
+        <div class="tour-dot">🅿️</div>
+        <div class="tour-content">
+          <h3 data-t="tour_1_title">Llegada y estacionamiento</h3>
+          <p data-t="tour_1_desc">Llega antes de las 10:00 para conseguir estacionamiento en calle Rafael Morandé. Los fines de semana se llena rápido.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">09:30</div>
+        <div class="tour-dot">☕</div>
+        <div class="tour-content">
+          <h3 data-t="tour_2_title">Desayuno en la plaza</h3>
+          <p data-t="tour_2_desc">Toma un café o desayuno liviano en algún local de la plaza central antes de que empiece la actividad.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">10:00</div>
+        <div class="tour-dot">🏺</div>
+        <div class="tour-content">
+          <h3 data-t="tour_3_title">Recorre los talleres alfareros</h3>
+          <p data-t="tour_3_desc">Camina por la calle principal y entra a los talleres. Mira a los artesanos trabajar en el torno y conoce el proceso de la greda.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">12:00</div>
+        <div class="tour-dot">🛍️</div>
+        <div class="tour-content">
+          <h3 data-t="tour_4_title">Compras de artesanía</h3>
+          <p data-t="tour_4_desc">Compra directamente a los artesanos. Jarras, cazuelas, tinajas y el famoso chanchito alcancía de greda.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">13:00</div>
+        <div class="tour-dot">🥘</div>
+        <div class="tour-content">
+          <h3 data-t="tour_5_title">Almuerzo típico</h3>
+          <p data-t="tour_5_desc">Siéntate a disfrutar una cazuela de vacuno o empanada gigante servida en recipiente de greda. ¡El plato más icónico de Pomaire!</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">15:00</div>
+        <div class="tour-dot">🏔️</div>
+        <div class="tour-content">
+          <h3 data-t="tour_6_title">Paseo por los alrededores</h3>
+          <p data-t="tour_6_desc">Si tienes auto, date una vuelta por Los Chiñihues. Paisaje rural, viñedos y tranquilidad a pocos minutos del casco turístico.</p>
+        </div>
+      </div>
+      <div class="tour-step">
+        <div class="tour-time">17:00</div>
+        <div class="tour-dot">🌅</div>
+        <div class="tour-content">
+          <h3 data-t="tour_7_title">Regreso con recuerdos</h3>
+          <p data-t="tour_7_desc">Última vuelta por los puestos antes de partir. Muchos artesanos hacen descuentos al final del día. ¡Buen viaje!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ESTACIONAMIENTOS -->
 <section id="estacionamientos">
   <div class="section-inner">
@@ -781,89 +1007,6 @@
   </div>
 </section>
 
-<!-- MAPA INTERACTIVO -->
-<section id="mapa">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-icon">🗺️</span>
-      <div>
-        <h2 data-t="s_map_title">Mapa interactivo de Pomaire</h2>
-        <p data-t="s_map_sub">Filtra lugares, calcula distancias y sigue una ruta sugerida</p>
-      </div>
-    </div>
-
-    <!-- Controles: filtros + ubicación -->
-    <div class="map-controls reveal">
-      <div class="map-filters" id="mapFilters">
-        <button class="map-filter active" data-cat="all">🏺 <span data-t="filter_all">Todos</span></button>
-        <button class="map-filter" data-cat="parking">🅿️ <span data-t="filter_parking">Estacionar</span></button>
-        <button class="map-filter" data-cat="health">🏥 <span data-t="filter_health">Salud</span></button>
-        <button class="map-filter" data-cat="security">🚔 <span data-t="filter_security">Seguridad</span></button>
-        <button class="map-filter" data-cat="pottery">🏺 <span data-t="filter_pottery">Alfarería</span></button>
-        <button class="map-filter" data-cat="food">🍽️ <span data-t="filter_food">Comer</span></button>
-        <button class="map-filter" data-cat="lodging">🛏️ <span data-t="filter_lodging">Dormir</span></button>
-        <button class="map-filter" data-cat="highlight">✨ <span data-t="filter_highlight">Qué ver</span></button>
-        <button class="map-filter" data-cat="services">🛒 <span data-t="filter_services">Servicios</span></button>
-        <button class="map-filter" data-cat="around">🌾 <span data-t="filter_around">Alrededores</span></button>
-      </div>
-      <button class="locate-btn" id="locateBtn" onclick="locateUser()">
-        📍 <span data-t="locate_btn">Usar mi ubicación</span>
-      </button>
-    </div>
-
-    <!-- Mapa Leaflet -->
-    <div class="leaflet-wrap reveal">
-      <div id="leafletMap"></div>
-    </div>
-    <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias</p>
-
-    <!-- Mapa oficial ilustrado -->
-    <div class="official-map reveal">
-      <button class="official-map-btn" onclick="openOfficialMap()" type="button">
-        🗺️ <span data-t="official_map_btn">Ver mapa oficial ilustrado de Pomaire</span>
-      </button>
-      <p class="official-map-note" data-t="official_map_note">Plano turístico oficial con el directorio numerado de talleres de artesanos.</p>
-    </div>
-
-    <!-- Rutas sugeridas -->
-    <div class="routes-block reveal">
-      <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
-      <div class="routes-grid">
-        <button class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
-          <span class="route-icon">🧳</span>
-          <strong data-t="route_oficial_name">Ruta Oficial</strong>
-          <span class="route-meta" data-t="route_oficial_meta">5 paradas · día completo</span>
-        </button>
-        <button class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
-          <span class="route-icon">🏺</span>
-          <strong data-t="route_artisan_name">Ruta del Artesano</strong>
-          <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1.5 hrs</span>
-        </button>
-        <button class="route-card" data-route="family" onclick="loadRoute('family')">
-          <span class="route-icon">👨‍👩‍👧</span>
-          <strong data-t="route_family_name">Ruta Familiar</strong>
-          <span class="route-meta" data-t="route_family_meta">4 paradas · ~2.5 hrs</span>
-        </button>
-        <button class="route-card" data-route="food" onclick="loadRoute('food')">
-          <span class="route-icon">🍽️</span>
-          <strong data-t="route_food_name">Ruta Gastronómica</strong>
-          <span class="route-meta" data-t="route_food_meta">3 paradas · ~1 hr</span>
-        </button>
-        <button class="route-card" data-route="nature" onclick="loadRoute('nature')">
-          <span class="route-icon">🌄</span>
-          <strong data-t="route_nature_name">Ruta Naturaleza</strong>
-          <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3 hrs</span>
-        </button>
-      </div>
-      <button class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
-    </div>
-
-    <!-- Lista de lugares con distancia -->
-    <div class="places-list reveal" id="placesList"></div>
-  </div>
-</section>
-
-
 <!-- CLIMA -->
 <section id="clima">
   <div class="section-inner">
@@ -878,147 +1021,6 @@
       <div class="weather-loading" data-t="weather_loading">⏳ Cargando clima...</div>
     </div>
     <p class="weather-note reveal" data-t="weather_note">Datos en tiempo real · Open-Meteo · Coordenadas Pomaire</p>
-  </div>
-</section>
-
-<!-- RECORRIDO TURÍSTICO -->
-<section id="recorrido">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-icon">🧭</span>
-      <div>
-        <h2 data-t="s_tour_title">Recorrido turístico paso a paso</h2>
-        <p data-t="s_tour_sub">La ruta perfecta para aprovechar tu día en Pomaire</p>
-      </div>
-    </div>
-
-    <!-- RUTA TURÍSTICA OFICIAL (Municipalidad de Melipilla) -->
-    <div class="official-route reveal">
-      <div class="or-head">
-        <span style="font-size:1.8rem;">🧳</span>
-        <h3 data-t="or_title">Ruta Turística Oficial de Pomaire</h3>
-      </div>
-      <p class="or-src" data-t="or_src">Itinerario sugerido por la Oficina de Turismo · Municipalidad de Melipilla · <em>Official tourist route</em></p>
-      <div class="or-badges">
-        <span class="or-badge" data-t="or_badge1">🚶 Recorrido a pie: ~35 min</span>
-        <span class="or-badge" data-t="or_badge2">🚗 Recorrido en auto: ~19 min</span>
-        <span class="or-badge" data-t="or_badge3">📅 Día completo desde Santiago</span>
-      </div>
-
-      <div class="or-itinerary">
-        <div class="or-stop">
-          <div class="or-time">08:00</div><div class="or-dot">🚌</div>
-          <div class="or-txt"><strong data-t="or_st1_t">Salida desde Santiago</strong><span data-t="or_st1_d">Inicio del viaje hacia el pueblo alfarero.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">09:30</div><div class="or-dot">📍</div>
-          <div class="or-txt"><strong data-t="or_st2_t">Llegada a Pomaire</strong><span data-t="or_st2_d">Recibimiento en la Oficina de Información Turística (OIT), en la Plaza de Pomaire.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">10:00</div><div class="or-dot">☕</div>
-          <div class="or-txt"><strong data-t="or_st3_t">Desayuno en Imperio Pomaire</strong><span data-t="or_st3_d">Roberto Bravo 78 · Sabores típicos chilenos para comenzar el día.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">12:00</div><div class="or-dot">🏺</div>
-          <div class="or-txt"><strong data-t="or_st4_t">Taller de greda en la Granja Alfarera</strong><span data-t="or_st4_d">Bernardo O'Higgins 260 · Experiencia inmersiva: del torno al horno.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">13:30</div><div class="or-dot">🥘</div>
-          <div class="or-txt"><strong data-t="or_st5_t">Almuerzo en Restaurant La Greda</strong><span data-t="or_st5_d">Cocina criolla y parrilla chilena con más de 30 años de historia.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">15:10</div><div class="or-dot">🌿</div>
-          <div class="or-txt"><strong data-t="or_st6_t">Visita al Vivero Luchín</strong><span data-t="or_st6_d">San Antonio 191 · Un respiro verde entre plantas, flores y maceteros.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">16:10</div><div class="or-dot">🛍️</div>
-          <div class="or-txt"><strong data-t="or_st7_t">Tarde libre de compras</strong><span data-t="or_st7_d">Recorre los talleres y tiendas de greda de la calle Roberto Bravo.</span></div>
-        </div>
-        <div class="or-stop">
-          <div class="or-time">18:00</div><div class="or-dot">🏠</div>
-          <div class="or-txt"><strong data-t="or_st8_t">Retorno a Santiago</strong><span data-t="or_st8_d">Fin del recorrido con recuerdos hechos a mano.</span></div>
-        </div>
-      </div>
-
-      <div class="or-features">
-        <div class="or-feature">
-          <h4>☕ Imperio Pomaire</h4>
-          <p data-t="or_f1">Nacido del esfuerzo de Romina y Fabio por la cocina tradicional. Tras siete años abrieron un segundo local y hoy es un referente de los sabores típicos de Pomaire.</p>
-        </div>
-        <div class="or-feature">
-          <h4>🏺 Granja Alfarera</h4>
-          <p data-t="or_f2">Espacio turístico-cultural dedicado a preservar el oficio de la greda. Ofrece demostraciones en vivo, talleres con artesanos pomairinos y un recorrido por todo el proceso, desde la extracción hasta el horno.</p>
-        </div>
-        <div class="or-feature">
-          <h4>🥘 La Greda Restaurant</h4>
-          <p data-t="or_f3">Más de 30 años de tradición. Don Víctor Larraín transformó la antigua casona de adobe familiar en un referente gastronómico, cuna de la empanada más grande del mundo y de tres generaciones de cocina criolla.</p>
-        </div>
-        <div class="or-feature">
-          <h4>🌿 Vivero Luchín</h4>
-          <p data-t="or_f4">Pequeño y encantador vivero que combina lo rural, lo botánico y lo artesanal. Ideal para una pausa tranquila tras recorrer talleres y restaurantes, y para llevarse un recuerdo vivo de Pomaire.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal free-tour-label" data-t="free_tour_label">💡 Recorrido libre · explora a tu ritmo</h3>
-    <div class="tour-timeline reveal">
-      <div class="tour-step">
-        <div class="tour-time">09:00</div>
-        <div class="tour-dot">🅿️</div>
-        <div class="tour-content">
-          <h3 data-t="tour_1_title">Llegada y estacionamiento</h3>
-          <p data-t="tour_1_desc">Llega antes de las 10:00 para conseguir estacionamiento en calle Rafael Morandé. Los fines de semana se llena rápido.</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">09:30</div>
-        <div class="tour-dot">☕</div>
-        <div class="tour-content">
-          <h3 data-t="tour_2_title">Desayuno en la plaza</h3>
-          <p data-t="tour_2_desc">Toma un café o desayuno liviano en algún local de la plaza central antes de que empiece la actividad.</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">10:00</div>
-        <div class="tour-dot">🏺</div>
-        <div class="tour-content">
-          <h3 data-t="tour_3_title">Recorre los talleres alfareros</h3>
-          <p data-t="tour_3_desc">Camina por la calle principal y entra a los talleres. Mira a los artesanos trabajar en el torno y conoce el proceso de la greda.</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">12:00</div>
-        <div class="tour-dot">🛍️</div>
-        <div class="tour-content">
-          <h3 data-t="tour_4_title">Compras de artesanía</h3>
-          <p data-t="tour_4_desc">Compra directamente a los artesanos. Jarras, cazuelas, tinajas y el famoso chanchito alcancía de greda.</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">13:00</div>
-        <div class="tour-dot">🥘</div>
-        <div class="tour-content">
-          <h3 data-t="tour_5_title">Almuerzo típico</h3>
-          <p data-t="tour_5_desc">Siéntate a disfrutar una cazuela de vacuno o empanada gigante servida en recipiente de greda. ¡El plato más icónico de Pomaire!</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">15:00</div>
-        <div class="tour-dot">🏔️</div>
-        <div class="tour-content">
-          <h3 data-t="tour_6_title">Paseo por los alrededores</h3>
-          <p data-t="tour_6_desc">Si tienes auto, date una vuelta por Los Chiñihues. Paisaje rural, viñedos y tranquilidad a pocos minutos del casco turístico.</p>
-        </div>
-      </div>
-      <div class="tour-step">
-        <div class="tour-time">17:00</div>
-        <div class="tour-dot">🌅</div>
-        <div class="tour-content">
-          <h3 data-t="tour_7_title">Regreso con recuerdos</h3>
-          <p data-t="tour_7_desc">Última vuelta por los puestos antes de partir. Muchos artesanos hacen descuentos al final del día. ¡Buen viaje!</p>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
