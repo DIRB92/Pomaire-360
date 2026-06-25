@@ -1531,7 +1531,7 @@ const PLACES = [
   { id:'sv7', cat:'services', icon:'🏛️', lat:-33.65266285604718, lng:-71.15463474076532, name:'Templo Salón del Reino · Testigos de Jehová', desc:'Salón del Reino de los Testigos de Jehová', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7' },
   // ── POTTERY ──
   { id:'po1', cat:'pottery', icon:'🏺', lat:-33.65119135971276, lng:-71.15284938597316, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire', gmap:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', plan:'destacado' },
+  { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/' },
   { id:'po3', cat:'pottery', icon:'🎨', lat:-33.652051018925114, lng:-71.14908723334928, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire', gmap:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
@@ -1555,7 +1555,7 @@ const PLACES = [
   { id:'lo4', cat:'lodging', icon:'🏕️', lat:-33.647366520043605, lng:-71.15680309312565, name:'Cabañas Glamen 2', desc:'Cabañas · alojamiento', addr:'Pomaire', gmap:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7', web:'https://hostaldelcentro.cl/' },
   { id:'lo5', cat:'lodging', icon:'🛏️', lat:-33.65136884009364, lng:-71.15274217075873, name:'Pomaire Lodge & Suites', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/56MaGEtivjNeZrDr8', ig:'pomairesuites' },
   // ── HIGHLIGHT ──
-  { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65165740947676, lng:-71.14995842541745, name:'Cervecería Pomaire', desc:'Cerveza artesanal | Shop & botellas · Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', ig:'cerveceriapomaire_', plan:'premium' },
+  { id:'hl1', cat:'highlight', icon:'🍺', lat:-33.65165740947676, lng:-71.14995842541745, name:'Cervecería Pomaire', desc:'Cerveza artesanal | Shop & botellas · Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', ig:'cerveceriapomaire_' },
   { id:'hl2', cat:'highlight', icon:'🛍️', lat:-33.65478707835062, lng:-71.15025443200825, name:'Tienda Calafate Austral', desc:'Tienda con encanto · Roberto Bravo 77B', addr:'Roberto Bravo 77, Pomaire', gmap:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6', ig:'calafateaustral.cl' },
   { id:'hl3', cat:'highlight', icon:'🧀', lat:-33.65192, lng:-71.1499, name:'Charcutería Don Mati', desc:'Arturo Prat 237', addr:'Arturo Prat 237, Pomaire' },
   { id:'hl4', cat:'highlight', icon:'🍦', lat:-33.651768302417416, lng:-71.14981400869864, name:'Panadería y Heladería ALSA', desc:'Roberto Bravo 1606', addr:'Roberto Bravo 1606, Pomaire', gmap:'https://maps.app.goo.gl/m6g2m7SAkA74wqGR9' },
@@ -1880,7 +1880,7 @@ const DIRECTORY = {
   ],
   talleres: [
     { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera', map:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
-    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', map:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', plan:'destacado', slug:'espacio-greda', hours:'Lun a Dom · 10:00–19:00', desc:'Taller de greda en Pomaire donde puedes ver y aprender el oficio alfarero tradicional, comprar piezas y conocer todo el proceso, desde el torno hasta el horno.' },
+    { n:'Espacio Greda', a:'Arturo Prat 352', p:'+56 9 20854538', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/', map:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8' },
     { n:'Taller del Sol', a:'Arturo Prat 237 B', p:'+56 9 45203264', ig:'tallerdelsol_pomaire', map:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
     { n:'Taller Barros', a:'Guillermo Barros 150', p:'+56 9 50432417', ig:'taller.barros.pomaire', map:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   ],
@@ -1903,7 +1903,7 @@ const DIRECTORY = {
   ],
   interes: [
     { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', slug:'chancho-greda', hours:'Sáb 12:00–18:00 · Dom 12:00–19:30 · Lun a Vie cerrado', desc:'El chancho-alcancía de greda más grande del mundo: un atractivo imperdible de Pomaire. Un espacio con figuras gigantes de greda, ideal para fotografiarte y conocer la tradición alfarera del pueblo en gran formato.' },
-    { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7', plan:'premium', slug:'cerveceria-pomaire', hours:'Vie a Dom · 12:00–21:00', desc:'Cerveza artesanal de Pomaire: shop y venta de botellas. Un espacio para disfrutar cerveza local hecha en el pueblo alfarero, ideal para acompañar la gastronomía típica.' },
+    { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7' },
     { n:'Tienda Calafate Austral', a:'Roberto Bravo 77B', p:'+56 9 36572068', ig:'calafateaustral.cl', tag:'Tienda', map:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6' },
     { n:'La Chakana', a:'Roberto Bravo 195', p:'+56 9 91162709', tag:'Tienda' },
     { n:'Charcutería Don Mati', a:'Arturo Prat 237', p:'+56 9 65852914', ig:'charcuteriadonmati', tag:'Charcutería' },
