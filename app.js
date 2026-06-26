@@ -1780,7 +1780,8 @@ function buildPopup(p, distKm) {
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
   if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${p.note ? `<p style="margin:.35rem 0;color:#8C3D16;font-weight:700;">${p.note}</p>` : ''}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
+  const noteHtml = (p.note && (typeof window.isPomaireWinter !== 'function' || window.isPomaireWinter())) ? `<p style="margin:.35rem 0;color:#8C3D16;font-weight:700;">${p.note}</p>` : '';
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${noteHtml}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
