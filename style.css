@@ -402,6 +402,18 @@
     .wa-float, .ig-float, .tt-float { padding: .85rem; border-radius: 50%; }
     .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text { display: none; }
   }
+  /* Animación flotante (movimiento suave) de los botones de redes */
+  @keyframes fab-bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-7px); }
+  }
+  .social-fab .tt-float { animation: fab-bob 2.6s ease-in-out infinite; }
+  .social-fab .ig-float { animation: fab-bob 2.6s ease-in-out infinite .3s; }
+  .social-fab .wa-float { animation: fab-bob 2.6s ease-in-out infinite .6s; }
+  .social-fab .tt-float:hover, .social-fab .ig-float:hover, .social-fab .wa-float:hover { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .social-fab .tt-float, .social-fab .ig-float, .social-fab .wa-float { animation: none; }
+  }
 
   /* ── SECTIONS ────────────────────────────────────── */
   section { padding: 3.5rem 1.5rem; }
