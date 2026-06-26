@@ -65,6 +65,27 @@
   .ch-topbar a { color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem; }
   .ch-topbar .ch-brand { font-family: 'Playfair Display', serif; font-weight: 900; }
 
+  /* ANUNCIO LLAMATIVO (vacaciones de invierno) */
+  .ch-promo {
+    text-align: center; color: #5e2810; font-weight: 800;
+    font-size: clamp(.92rem, 2.6vw, 1.08rem); letter-spacing: .01em;
+    padding: .75rem 1rem; line-height: 1.35;
+    background: linear-gradient(90deg, #ffd166, #ff9966, #ff5e62, #ff9966, #ffd166);
+    background-size: 300% 100%;
+    animation: promo-shine 5s linear infinite, promo-glow 2s ease-in-out infinite;
+  }
+  .ch-promo strong { font-weight: 900; }
+  .ch-promo .ch-promo-snow { display: inline-block; animation: promo-spin 3.5s linear infinite; }
+  @keyframes promo-shine { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+  @keyframes promo-glow {
+    0%, 100% { box-shadow: 0 2px 12px rgba(255,94,98,.35); }
+    50%      { box-shadow: 0 4px 22px rgba(255,153,102,.8); }
+  }
+  @keyframes promo-spin { 0% { transform: rotate(0); } 100% { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ch-promo, .ch-promo .ch-promo-snow { animation: none; }
+  }
+
   /* HERO */
   .ch-hero {
     position: relative;
@@ -192,6 +213,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ANUNCIO LLAMATIVO: vacaciones de invierno (se muestra/oculta segun fecha) -->
+<div class="ch-promo" data-winter-promo style="display:none;" role="status">
+  <span class="ch-promo-snow">❄️</span>
+  <span data-t="ch_winter_promo">¡Estaremos abiertos en las vacaciones de invierno! · Lunes a domingo</span>
+  <span class="ch-promo-snow">❄️</span>
 </div>
 
 <!-- HERO -->

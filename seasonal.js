@@ -1,36 +1,53 @@
 /* ════════════════════════════════════════════════════════════════════════
    Avisos de temporada · Pomaire 360
    Muestra/oculta automáticamente los avisos de "vacaciones de invierno"
-   (banner en la página de El Chancho y nota en el mapa interactivo)
    según el rango de fechas configurado abajo.
 
-   ▸ PARA ACTUALIZAR CADA AÑO: edita o agrega rangos en WINTER_RANGES.
-     Formato de fecha: 'AAAA-MM-DD' (inclusive). Puedes dejar varios años
-     cargados y el aviso aparecerá solo dentro de cada rango.
+   Hay dos ventanas:
+   • WINTER_RANGES → cuando el lugar REALMENTE está abierto lun-dom
+       (banner en "Cómo visitar" [data-winter] y nota del mapa)
+   • PROMO_RANGES  → anuncio LLAMATIVO anticipado + durante las vacaciones
+       (barra superior [data-winter-promo]); ideal para promocionar antes.
+
+   ▸ PARA ACTUALIZAR CADA AÑO: edita o agrega rangos abajo.
+     Formato de fecha: 'AAAA-MM-DD' (inclusive).
    ════════════════════════════════════════════════════════════════════════ */
 (function(){
   var WINTER_RANGES = [
     { start: '2026-07-06', end: '2026-07-19' }   // Vacaciones de invierno 2026 (referencial · ajustar a fechas oficiales)
-    // { start: '2027-07-12', end: '2027-07-25' } // ← ejemplo para el próximo año
+    // { start: '2027-07-12', end: '2027-07-25' } // ← ejemplo próximo año
+  ];
+  // Anuncio anticipado: se muestra desde antes y hasta el fin del receso
+  var PROMO_RANGES = [
+    { start: '2026-06-20', end: '2026-07-19' }   // promoción vacaciones de invierno 2026
+    // { start: '2027-06-20', end: '2027-07-25' } // ← ejemplo próximo año
   ];
   window.POMAIRE_WINTER_RANGES = WINTER_RANGES;
+  window.POMAIRE_PROMO_RANGES = PROMO_RANGES;
 
   function ymd(d){
     return d.getFullYear() + '-' +
       String(d.getMonth() + 1).padStart(2, '0') + '-' +
       String(d.getDate()).padStart(2, '0');
   }
-  // ¿Hoy está dentro de algún rango de vacaciones de invierno?
-  window.isPomaireWinter = function(date){
+  function inRanges(ranges, date){
     var today = ymd(date || new Date());
-    return WINTER_RANGES.some(function(r){ return today >= r.start && today <= r.end; });
-  };
+    return ranges.some(function(r){ return today >= r.start && today <= r.end; });
+  }
+  // ¿Hoy el lugar está abierto por vacaciones de invierno?
+  window.isPomaireWinter = function(date){ return inRanges(WINTER_RANGES, date); };
+  // ¿Hoy se debe mostrar el anuncio promocional (anticipado + durante)?
+  window.isPomaireWinterPromo = function(date){ return inRanges(PROMO_RANGES, date); };
 
-  // Mostrar/ocultar elementos marcados con [data-winter] (van ocultos por defecto)
+  // Mostrar/ocultar elementos marcados (van ocultos por defecto)
   function applyWinterBanners(){
-    var show = window.isPomaireWinter();
+    var w = window.isPomaireWinter();
     document.querySelectorAll('[data-winter]').forEach(function(el){
-      el.style.display = show ? '' : 'none';
+      el.style.display = w ? '' : 'none';
+    });
+    var p = window.isPomaireWinterPromo();
+    document.querySelectorAll('[data-winter-promo]').forEach(function(el){
+      el.style.display = p ? '' : 'none';
     });
   }
   window.applyWinterBanners = applyWinterBanners;

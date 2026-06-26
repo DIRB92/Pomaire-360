@@ -39,3 +39,13 @@ Object.assign(window.LANGS.fr,{"ch_winter":"<strong>Vacances d'hiver :</strong> 
 Object.assign(window.LANGS.ru,{"ch_winter":"<strong>Зимние каникулы:</strong> открыто с понедельника по воскресенье"});
 Object.assign(window.LANGS.ja,{"ch_winter":"<strong>冬休み:</strong> 月曜〜日曜 営業"});
 Object.assign(window.LANGS.zh,{"ch_winter":"<strong>冬季假期：</strong>周一至周日开放"});
+
+
+/* ══ Anuncio promocional vacaciones de invierno · El Chancho (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"ch_winter_promo":"¡Estaremos abiertos en las vacaciones de invierno! · Lunes a domingo"});
+Object.assign(window.LANGS.en,{"ch_winter_promo":"We'll be open during the winter break! · Monday to Sunday"});
+Object.assign(window.LANGS.pt,{"ch_winter_promo":"Estaremos abertos nas férias de inverno! · Segunda a domingo"});
+Object.assign(window.LANGS.fr,{"ch_winter_promo":"Nous serons ouverts pendant les vacances d'hiver ! · Du lundi au dimanche"});
+Object.assign(window.LANGS.ru,{"ch_winter_promo":"Мы открыты на зимних каникулах! · С понедельника по воскресенье"});
+Object.assign(window.LANGS.ja,{"ch_winter_promo":"冬休みも営業します！· 月曜〜日曜"});
+Object.assign(window.LANGS.zh,{"ch_winter_promo":"冬季假期照常开放！· 周一至周日"});
