@@ -1634,3 +1634,31 @@
   }
   .wine-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.3); }
   .wine-note { font-size: .78rem; color: rgba(255,255,255,.55); margin-top: 1.2rem; text-align: center; }
+
+
+
+  /* ===== Subpáginas de apartado (Esenciales, etc.) ===== */
+  .sub-topbar {
+    background: linear-gradient(135deg, var(--clay-dark), var(--clay));
+    color: #fff; padding: .7rem 1.2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .sub-topbar a { color: #fff; text-decoration: none; font-weight: 700; font-size: .92rem; }
+  .sub-topbar .sub-brand { font-family: 'Playfair Display', serif; font-weight: 900; }
+  .sub-hero {
+    text-align: center; padding: 2.6rem 1.2rem 2rem;
+    background: linear-gradient(160deg, #FFF8EF, var(--cream));
+    border-bottom: 1px solid rgba(184,92,44,.12);
+  }
+  .sub-hero .sub-ico { font-size: 3rem; line-height: 1; }
+  .sub-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 5vw, 2.6rem); color: var(--clay-dark); margin-top: .4rem; line-height: 1.12; }
+  .sub-hero p { color: var(--muted); margin-top: .5rem; max-width: 560px; margin-inline: auto; }
+  .sub-wrap { max-width: 920px; margin: 0 auto; padding: 2rem 1.2rem; }
+  .sub-cross { max-width: 920px; margin: .5rem auto 0; padding: 0 1.2rem; }
+  .sub-cross h2 { font-size: 1rem; color: var(--clay-dark); margin-bottom: .6rem; text-align: center; }
+  .sub-cross-links { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+  .sub-cross-links a { text-decoration: none; font-weight: 700; font-size: .85rem; color: var(--clay); border: 1.5px solid var(--clay-light); padding: .4rem .9rem; border-radius: 20px; transition: background .15s, color .15s; }
+  .sub-cross-links a:hover { background: var(--clay); color: #fff; }
+  .sub-foot { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+  .sub-foot a { color: var(--clay-dark); font-weight: 700; text-decoration: none; }
