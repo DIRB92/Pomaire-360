@@ -1596,7 +1596,7 @@ const PLACES = [
   { id:'pk2', cat:'parking', icon:'🚗', lat:-33.65027186391058, lng:-71.15430268749077, name:'Futuros Estacionamiento y baños públicos', desc:'Guillermo Barros con Diego de Almagro', addr:'Guillermo Barros con Diego de Almagro, Pomaire', gmap:'https://www.google.com/maps/search/?api=1&query=-33.65027186391058,-71.15430268749077' },
   { id:'pk3', cat:'parking', icon:'🚌', lat:-33.65078, lng:-71.14907, name:'Zona 18 de Septiembre', desc:'Lateral al casco principal', addr:'18 de Septiembre, Pomaire' },
   // ── HEALTH ──
-  { id:'he1', cat:'health', icon:'🏥', lat:-33.6497, lng:-71.15053, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354', addr:'Julita Vera 354, Pomaire' },
+  { id:'he1', cat:'health', icon:'🏥', lat:-33.6497, lng:-71.15053, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354', addr:'Julita Vera 354, Pomaire', phone:'+56 2 2568 8849' },
   { id:'he2', cat:'health', icon:'💊', lat:-33.653491296625084, lng:-71.15118860753486, name:'Farmacia Acua-Naser Pomaire', desc:'San Antonio 362', addr:'San Antonio 362, Pomaire', gmap:'https://maps.app.goo.gl/c4QqqSLASBynLttk6' },
   // ── SECURITY ──
   { id:'se1', cat:'security', icon:'🚔', lat:-33.650798492760984, lng:-71.1512808846173, name:'Carabineros Policia', desc:'San Antonio 361', addr:'San Antonio 361, Pomaire', gmap:'https://maps.app.goo.gl/c555fkuX9t6jcMZs7' },
@@ -1775,6 +1775,7 @@ function buildPopup(p, distKm) {
         ? `https://maps.google.com/?q=${encodeURIComponent(p.addr)}`
         : `https://maps.google.com/?q=${p.lat},${p.lng}`);
   const contacts = [];
+  if (p.phone) contacts.push(`<a href="tel:${p.phone.replace(/[^+\d]/g,'')}">📞 ${p.phone}</a>`);
   if (p.ig)  contacts.push(`<a href="https://instagram.com/${p.ig}" target="_blank" rel="noopener">📷 Instagram</a>`);
   if (p.wsp) contacts.push(`<a href="https://wa.me/${p.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`);
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
@@ -2002,7 +2003,7 @@ const DIRECTORY = {
   servicios: [
     { n:'Oficina de Información Turística (OIT)', a:'Plaza de Pomaire', p:'+56 9 41814611', tag:'Turismo' },
     { n:'Plaza de Pomaire (punto de encuentro)', a:'San Antonio 140', p:'', tag:'9:30 a 20:30 hrs' },
-    { n:'CESFAM Pomaire', a:'Artesana Julita Vera 354', p:'+56 2 28323466', tag:'Salud' },
+    { n:'CESFAM Pomaire', a:'Artesana Julita Vera 354', p:'+56 2 2568 8849', tag:'Salud' },
     { n:'Carabineros Policia', a:'San Antonio 361', p:'133', tag:'Seguridad', map:'https://maps.app.goo.gl/c555fkuX9t6jcMZs7' },
     { n:'Bomberos', a:'San Antonio 362', p:'+56 2 29224430', tag:'Emergencia', map:'https://maps.app.goo.gl/MaJDFK4cwLwf9VZz5' },
     { n:'Farmacia Acua-Naser Pomaire', a:'San Antonio 362', p:'+56 2 29224430', tag:'Salud', map:'https://maps.app.goo.gl/c4QqqSLASBynLttk6' },
