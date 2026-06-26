@@ -159,9 +159,9 @@
     <div class="nav-group">
       <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="#gastronomia">🍽️ <span data-t="nav_food">Comer</span></a>
-        <a href="#alojamientos">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
-        <a href="#banos">🚽 <span data-t="nav_banos">Baños</span></a>
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
+        <a href="/plaza/#banos">🚽 <span data-t="nav_banos">Baños</span></a>
       </div>
     </div>
 
@@ -479,73 +479,6 @@
   </div>
 </section>
 
-
-<!-- GASTRONOMÍA -->
-<section id="gastronomia">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-icon">🍽️</span>
-      <div>
-        <h2 data-t="s_gas_title">Gastronomía típica</h2>
-        <p data-t="s_gas_sub">Sabores tradicionales en cazuela de greda</p>
-      </div>
-    </div>
-    <div class="cards reveal">
-      <div class="card priority">
-        <div class="card-icon">🥘</div>
-        <span class="card-badge" data-t="ga1_badge">Plato estrella</span>
-        <h3 data-t="ga1_title">Cazuela de barro</h3>
-        <p class="card-detail" data-t="ga1_detail">El plato más icónico de Pomaire. Cazuelas, empanadas y pastel de choclo servidos en recipientes de greda fabricados en el propio pueblo.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🥟</div>
-        <span class="card-badge" data-t="ga2_badge">Clásico</span>
-        <h3 data-t="ga2_title">Empanadas gigantes</h3>
-        <p class="card-detail" data-t="ga2_detail">Pomaire es famoso por sus empanadas de gran tamaño. Hay locales de empanadas a lo largo de toda la calle principal.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🍷</div>
-        <span class="card-badge" data-t="ga3_badge">Bebidas</span>
-        <h3 data-t="ga3_title">Chicha y bebidas tradicionales</h3>
-        <p class="card-detail" data-t="ga3_detail">Chicha de manzana y uva, mote con huesillo y bebidas artesanales. Perfectos para acompañar la gastronomía local.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏪</div>
-        <span class="card-badge" data-t="ga4_badge">Dónde comer</span>
-        <h3 data-t="ga4_title">Restaurantes y fondas</h3>
-        <p class="card-detail" data-t="ga4_detail">Numerosos restaurantes en la calle principal y sus laterales. Los fines de semana pueden tener espera. Se recomienda llegar antes del mediodía.</p>
-        <a class="card-link" href="#directorio-restaurantes" data-t="ga4_link">📋 Ver directorio</a>
-        <a class="card-link" href="#mapa" data-t="ga4_map">🗺️ Ver en el mapa</a>
-      </div>
-    </div>
-
-    <!-- DIRECTORIO DE RESTAURANTES (datos oficiales PDF) -->
-    <div class="dir-block reveal" id="directorio-restaurantes">
-      <h3><span data-t="dir_rest_h">🍴 Directorio de restaurantes</span> <span class="dir-count" id="restCount"></span></h3>
-      <p class="dir-sub" data-t="dir_rest_sub">Restaurantes de Pomaire con dirección, teléfono y días de atención · <em>Restaurants directory</em></p>
-      <div class="dir-grid" id="restaurantDir"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ALOJAMIENTOS -->
-<section id="alojamientos">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-icon">🛏️</span>
-      <div>
-        <h2 data-t="s_lodging_title">Alojamientos</h2>
-        <p data-t="s_lodging_sub">Hostales, cabañas y suites para quedarte en Pomaire · <em>Where to stay</em></p>
-      </div>
-    </div>
-    <div class="dir-block reveal" style="margin-top:0;">
-      <div class="dir-grid" id="alojamientoDir"></div>
-    </div>
-    <p class="card-detail reveal" style="margin-top:1.2rem;color:var(--muted);font-size:.85rem;" data-t="lodging_note">
-      💡 Quedarte a dormir te permite disfrutar Pomaire sin la multitud de los buses de turismo y vivir el pueblo de noche.
-    </p>
-  </div>
-</section>
 
 <!-- CLIMA -->
 <section id="clima">
