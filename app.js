@@ -2412,3 +2412,33 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').catch(function () {});
   });
 }
+
+
+
+/* ══ Aviso flotante de invierno (Home · marquee) ══ */
+const HOME_PROMO_I18N = {
+  es:{ home_winter_promo:"Negocios de Pomaire abiertos durante las vacaciones de invierno" },
+  en:{ home_winter_promo:"Pomaire businesses open during the winter break" },
+  pt:{ home_winter_promo:"Comércios de Pomaire abertos durante as férias de inverno" },
+  fr:{ home_winter_promo:"Commerces de Pomaire ouverts pendant les vacances d'hiver" },
+  ru:{ home_winter_promo:"Заведения Помайре открыты во время зимних каникул" },
+  ja:{ home_winter_promo:"ポマイレの店舗は冬休み中も営業中" },
+  zh:{ home_winter_promo:"波马伊雷的店铺在冬季假期照常营业" }
+};
+Object.keys(HOME_PROMO_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], HOME_PROMO_I18N[l]); });
+
+// Posicionar el nav justo debajo del aviso flotante (cuando está visible)
+(function(){
+  function syncHomePromo(){
+    var promo = document.getElementById('homePromo');
+    var nav = document.querySelector('nav');
+    if (!nav) return;
+    var visible = promo && getComputedStyle(promo).display !== 'none';
+    nav.style.top = visible ? promo.offsetHeight + 'px' : '';
+  }
+  window.syncHomePromo = syncHomePromo;
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncHomePromo);
+  else syncHomePromo();
+  window.addEventListener('load', syncHomePromo);
+  window.addEventListener('resize', syncHomePromo);
+})();

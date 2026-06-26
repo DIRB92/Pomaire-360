@@ -415,6 +415,38 @@
     .social-fab .tt-float, .social-fab .ig-float, .social-fab .wa-float { animation: none; }
   }
 
+  /* ── AVISO FLOTANTE HOME (vacaciones de invierno · marquee) ── */
+  .home-promo {
+    position: sticky; top: 0; z-index: 200;
+    overflow: hidden; white-space: nowrap;
+    color: #5e2810;
+    background: linear-gradient(90deg, #ffd166, #ff9966, #ff5e62, #ff9966, #ffd166);
+    background-size: 300% 100%;
+    box-shadow: 0 2px 14px rgba(0,0,0,.2);
+    animation: hp-shine 6s linear infinite, hp-glow 2.2s ease-in-out infinite;
+  }
+  .home-promo-track {
+    display: inline-flex; align-items: center;
+    padding: .55rem 0; font-weight: 800;
+    font-size: clamp(.9rem, 2.4vw, 1.05rem); letter-spacing: .01em;
+    animation: hp-slide 24s linear infinite; will-change: transform;
+  }
+  .home-promo-item { padding: 0 2.4rem; }
+  .home-promo .hp-snow { display: inline-block; animation: hp-spin 3.5s linear infinite; }
+  .home-promo:hover .home-promo-track { animation-play-state: paused; }
+  @keyframes hp-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes hp-shine { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+  @keyframes hp-glow {
+    0%, 100% { box-shadow: 0 2px 14px rgba(255,94,98,.4); }
+    50%      { box-shadow: 0 5px 26px rgba(255,153,102,.85); }
+  }
+  @keyframes hp-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .home-promo, .home-promo-track, .home-promo .hp-snow { animation: none; }
+    .home-promo-track { display: flex; justify-content: center; white-space: normal; }
+    .home-promo-item:not(:first-child) { display: none; }
+  }
+
   /* ── SECTIONS ────────────────────────────────────── */
   section { padding: 3.5rem 1.5rem; }
   section:nth-child(even) { background: var(--smoke); }
