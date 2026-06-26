@@ -203,6 +203,7 @@
     <div class="ch-hero-btns">
       <a href="#autor" class="ch-btn ch-btn-primary" data-t="ch_btn_hist">Ver Historia</a>
       <a href="#visitar" class="ch-btn ch-btn-ghost" data-t="ch_btn_visit">Cómo Visitar</a>
+      <button type="button" class="ch-btn ch-btn-ghost" style="font-family:inherit;cursor:pointer;" onclick="sharePage()" data-t="ch_share">📤 Compartir</button>
     </div>
   </div>
 </header>
@@ -247,6 +248,7 @@
     <div class="ch-visit-btns">
       <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Cómo llegar</a>
       <a class="ch-soc" style="background:var(--clay-dark)" href="/#lugar=po6" data-t="ch_seemap_btn">📍 Ver en el mapa interactivo</a>
+      <button type="button" class="ch-soc" style="background:#25D366;font-family:inherit;cursor:pointer;border:none;" onclick="sharePage()" data-t="ch_share">📤 Compartir</button>
     </div>
   </section>
 
@@ -258,5 +260,25 @@
 
 <script src="/langs.js"></script>
 <script src="/subi18n.js"></script>
+<script>
+  function sharePage() {
+    var lang = document.documentElement.lang || 'es';
+    var L = (window.LANGS && (window.LANGS[lang] || window.LANGS.es)) || {};
+    var url = 'https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/';
+    var text = L.ch_share_msg || 'El Chancho alcancía de greda más grande del mundo — Pomaire';
+    var title = document.title;
+    if (navigator.share) {
+      navigator.share({ title: title, text: text, url: url }).catch(function(){});
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text + ' ' + url).then(function(){
+        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+      }).catch(function(){
+        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+      });
+    } else {
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+    }
+  }
+</script>
 </body>
 </html>
