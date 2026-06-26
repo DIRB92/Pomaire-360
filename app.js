@@ -1167,6 +1167,74 @@ const MFB_I18N = {
 };
 Object.keys(MFB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], MFB_I18N[l]); });
 
+/* ══ GRÚAS Y MECÁNICOS (multiidioma) ══ */
+const GRUAS_I18N = {
+  es: {
+    nav_gruas:"Grúas y mecánicos",
+    s_gm_title:"Grúas y mecánicos", s_gm_sub:"Asistencia mecánica, grúas y servicios para tu vehículo en Pomaire y la ruta",
+    gm1_badge:"Mecánico · Taller", gm1_title:"Talleres mecánicos", gm1_detail:"Hay pequeños talleres en la ruta de acceso y camino a Melipilla. Para reparaciones mayores, lo más completo está en Melipilla ciudad (≈15 min en auto).", gm1_link:"📍 Buscar talleres",
+    gm2_badge:"Grúa · Asistencia en ruta", gm2_title:"Grúas y remolque", gm2_detail:"Para fallas o panne en la Ruta 78 (Autopista del Sol) o dentro del pueblo. Si un accidente bloquea la vía o hay personas heridas, llama primero a emergencias.", gm2_link1:"📞 Emergencias 133", gm2_link2:"📍 Buscar grúas",
+    gm3_badge:"Vulcanización · Neumáticos", gm3_title:"Vulcanizaciones", gm3_detail:"Para pinchazos y cambio de neumáticos. Hay vulcanizaciones en la ruta hacia Melipilla. Útil si viajas con la rueda de repuesto sin aire.", gm3_link:"📍 Buscar vulcanización",
+    gm4_badge:"¿Tienes una grúa o taller?", gm4_title:"Suma tu servicio aquí", gm4_detail:"Si ofreces grúa, mecánica o asistencia en ruta en Pomaire o Melipilla, publícate gratis en Pomaire 360 y aparece en esta guía para quienes lo necesiten.", gm4_link:"📣 Anúnciate",
+    gm_note:"🛟 Información de carácter orientativo. Confirma cobertura, tarifas y horarios directamente con cada prestador antes de contratar."
+  },
+  en: {
+    nav_gruas:"Towing & mechanics",
+    s_gm_title:"Towing & mechanics", s_gm_sub:"Mechanical assistance, tow trucks and services for your vehicle in Pomaire and on the road",
+    gm1_badge:"Mechanic · Workshop", gm1_title:"Car repair workshops", gm1_detail:"There are small workshops along the access road and on the way to Melipilla. For major repairs, the most complete options are in Melipilla city (≈15 min by car).", gm1_link:"📍 Find workshops",
+    gm2_badge:"Tow truck · Roadside help", gm2_title:"Towing & breakdown", gm2_detail:"For breakdowns on Route 78 (Autopista del Sol) or within the town. If a crash blocks the road or there are injured people, call emergencies first.", gm2_link1:"📞 Emergencies 133", gm2_link2:"📍 Find tow trucks",
+    gm3_badge:"Tire repair · Tyres", gm3_title:"Tire repair shops", gm3_detail:"For punctures and tyre changes. There are tire repair shops on the road toward Melipilla. Handy if you travel with a flat spare.", gm3_link:"📍 Find tire repair",
+    gm4_badge:"Do you run a tow truck or workshop?", gm4_title:"Add your service here", gm4_detail:"If you offer towing, mechanics or roadside assistance in Pomaire or Melipilla, list your business for free on Pomaire 360 and appear in this guide for those who need it.", gm4_link:"📣 Advertise",
+    gm_note:"🛟 Information is for guidance only. Confirm coverage, prices and hours directly with each provider before hiring."
+  },
+  pt: {
+    nav_gruas:"Guincho e mecânicos",
+    s_gm_title:"Guincho e mecânicos", s_gm_sub:"Assistência mecânica, guincho e serviços para o seu veículo em Pomaire e na estrada",
+    gm1_badge:"Mecânico · Oficina", gm1_title:"Oficinas mecânicas", gm1_detail:"Há pequenas oficinas na via de acesso e no caminho para Melipilla. Para reparos maiores, as opções mais completas ficam na cidade de Melipilla (≈15 min de carro).", gm1_link:"📍 Buscar oficinas",
+    gm2_badge:"Guincho · Assistência na estrada", gm2_title:"Guincho e reboque", gm2_detail:"Para falhas ou pane na Rota 78 (Autopista del Sol) ou dentro do povoado. Se um acidente bloquear a via ou houver feridos, ligue primeiro para a emergência.", gm2_link1:"📞 Emergências 133", gm2_link2:"📍 Buscar guinchos",
+    gm3_badge:"Borracharia · Pneus", gm3_title:"Borracharias", gm3_detail:"Para furos e troca de pneus. Há borracharias na estrada para Melipilla. Útil se você viaja com o estepe sem ar.", gm3_link:"📍 Buscar borracharia",
+    gm4_badge:"Tem um guincho ou oficina?", gm4_title:"Adicione seu serviço aqui", gm4_detail:"Se você oferece guincho, mecânica ou assistência na estrada em Pomaire ou Melipilla, anuncie-se grátis no Pomaire 360 e apareça neste guia para quem precisar.", gm4_link:"📣 Anuncie",
+    gm_note:"🛟 Informação de caráter orientativo. Confirme cobertura, preços e horários diretamente com cada prestador antes de contratar."
+  },
+  fr: {
+    nav_gruas:"Dépannage & mécaniciens",
+    s_gm_title:"Dépannage et mécaniciens", s_gm_sub:"Assistance mécanique, dépanneuses et services pour votre véhicule à Pomaire et sur la route",
+    gm1_badge:"Mécanicien · Garage", gm1_title:"Garages automobiles", gm1_detail:"Il y a de petits garages sur la route d'accès et en direction de Melipilla. Pour les grosses réparations, les options les plus complètes sont en ville de Melipilla (≈15 min en voiture).", gm1_link:"📍 Chercher des garages",
+    gm2_badge:"Dépanneuse · Assistance routière", gm2_title:"Dépannage et remorquage", gm2_detail:"Pour une panne sur la Route 78 (Autopista del Sol) ou dans le village. Si un accident bloque la voie ou s'il y a des blessés, appelez d'abord les urgences.", gm2_link1:"📞 Urgences 133", gm2_link2:"📍 Chercher des dépanneuses",
+    gm3_badge:"Vulcanisation · Pneus", gm3_title:"Réparation de pneus", gm3_detail:"Pour les crevaisons et le changement de pneus. Il y a des ateliers de pneus sur la route vers Melipilla. Utile si vous roulez avec une roue de secours à plat.", gm3_link:"📍 Chercher un atelier de pneus",
+    gm4_badge:"Vous avez une dépanneuse ou un garage ?", gm4_title:"Ajoutez votre service ici", gm4_detail:"Si vous proposez dépannage, mécanique ou assistance routière à Pomaire ou Melipilla, référencez-vous gratuitement sur Pomaire 360 et apparaissez dans ce guide pour ceux qui en ont besoin.", gm4_link:"📣 Annoncez",
+    gm_note:"🛟 Informations à titre indicatif. Confirmez la couverture, les tarifs et les horaires directement avec chaque prestataire avant de réserver."
+  },
+  ru: {
+    nav_gruas:"Эвакуатор и механики",
+    s_gm_title:"Эвакуатор и механики", s_gm_sub:"Техпомощь, эвакуаторы и услуги для вашего автомобиля в Помайре и на трассе",
+    gm1_badge:"Механик · Мастерская", gm1_title:"Авторемонтные мастерские", gm1_detail:"Небольшие мастерские есть на подъездной дороге и по пути в Мелипилью. Для крупного ремонта самые полные варианты — в городе Мелипилья (≈15 мин на машине).", gm1_link:"📍 Найти мастерские",
+    gm2_badge:"Эвакуатор · Помощь на дороге", gm2_title:"Эвакуатор и буксировка", gm2_detail:"При поломке на трассе 78 (Autopista del Sol) или в посёлке. Если авария блокирует дорогу или есть пострадавшие, сначала звоните в экстренные службы.", gm2_link1:"📞 Экстренный 133", gm2_link2:"📍 Найти эвакуатор",
+    gm3_badge:"Шиномонтаж · Шины", gm3_title:"Шиномонтаж", gm3_detail:"Для проколов и замены шин. Шиномонтаж есть на дороге в сторону Мелипильи. Полезно, если вы едете со спущенной запаской.", gm3_link:"📍 Найти шиномонтаж",
+    gm4_badge:"У вас есть эвакуатор или мастерская?", gm4_title:"Добавьте свою услугу", gm4_detail:"Если вы предлагаете эвакуатор, ремонт или помощь на дороге в Помайре или Мелипилье, разместитесь бесплатно на Pomaire 360 и появитесь в этом гиде для тех, кому это нужно.", gm4_link:"📣 Реклама",
+    gm_note:"🛟 Информация носит ориентировочный характер. Уточняйте зону обслуживания, цены и часы работы у каждого поставщика перед заказом."
+  },
+  ja: {
+    nav_gruas:"レッカー・整備",
+    s_gm_title:"レッカーと整備", s_gm_sub:"ポマイレと道中での車の整備・レッカー・サービス",
+    gm1_badge:"整備士 · 工場", gm1_title:"自動車整備工場", gm1_detail:"アクセス道路やメリピージャへの道沿いに小さな工場があります。大きな修理は、メリピージャ市内が最も充実しています（車で約15分）。", gm1_link:"📍 工場を探す",
+    gm2_badge:"レッカー · ロードサービス", gm2_title:"レッカー・牽引", gm2_detail:"ルート78（Autopista del Sol）や村内での故障時に。事故で道路がふさがれている、または負傷者がいる場合は、まず緊急に連絡してください。", gm2_link1:"📞 緊急 133", gm2_link2:"📍 レッカーを探す",
+    gm3_badge:"タイヤ修理 · タイヤ", gm3_title:"タイヤ修理（パンク）", gm3_detail:"パンクやタイヤ交換に。メリピージャ方面の道沿いにタイヤ修理店があります。スペアタイヤの空気が抜けているときに便利です。", gm3_link:"📍 タイヤ修理を探す",
+    gm4_badge:"レッカーや整備工場をお持ちですか？", gm4_title:"あなたのサービスを掲載", gm4_detail:"ポマイレやメリピージャでレッカー・整備・ロードサービスを提供しているなら、Pomaire 360 に無料で掲載し、必要とする人のためにこのガイドに載せましょう。", gm4_link:"📣 広告掲載",
+    gm_note:"🛟 情報は目安です。契約前に、対応範囲・料金・営業時間を各業者に直接ご確認ください。"
+  },
+  zh: {
+    nav_gruas:"拖车与修理",
+    s_gm_title:"拖车与修理", s_gm_sub:"波马伊雷及沿途的车辆机械援助、拖车与服务",
+    gm1_badge:"修理 · 修理厂", gm1_title:"汽车修理厂", gm1_detail:"进镇公路和前往梅利皮利亚的路上有小型修理厂。大修的话，最齐全的选择在梅利皮利亚市区（开车约15分钟）。", gm1_link:"📍 寻找修理厂",
+    gm2_badge:"拖车 · 道路救援", gm2_title:"拖车与拖吊", gm2_detail:"用于78号公路（Autopista del Sol）或镇内的故障抛锚。如果事故堵塞道路或有人受伤，请先拨打急救电话。", gm2_link1:"📞 急救 133", gm2_link2:"📍 寻找拖车",
+    gm3_badge:"补胎 · 轮胎", gm3_title:"补胎/轮胎店", gm3_detail:"用于扎胎和更换轮胎。前往梅利皮利亚的路上有补胎店。如果备胎没气，这很有用。", gm3_link:"📍 寻找补胎店",
+    gm4_badge:"您有拖车或修理厂吗？", gm4_title:"在此添加您的服务", gm4_detail:"如果您在波马伊雷或梅利皮利亚提供拖车、修理或道路救援服务，可免费在 Pomaire 360 登记，出现在本指南中供有需要的人查找。", gm4_link:"📣 刊登广告",
+    gm_note:"🛟 信息仅供参考。在预订前请直接向各服务商确认服务范围、价格和营业时间。"
+  }
+};
+Object.keys(GRUAS_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], GRUAS_I18N[l]); });
+
 const KEYS = {
   '[data-t="nav_park"]':      t => t.nav_park,
   '[data-t="nav_health"]':    t => t.nav_health,
