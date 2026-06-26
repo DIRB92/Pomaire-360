@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
 <title>Ruta del Vino y la Chicha en Pomaire y Los Chiñihues | Pomaire 360</title>
-<meta name="description" content="La ruta del vino y la chicha del secano costero de Pomaire y Los Chiñihues: cepa País, chicha artesanal, pipeño y cómo recorrerla.">
+<meta name="description" content="La ruta del vino y la chicha del secano costero de Pomaire y Los Chiñihues: cepa País, chicha artesanal y pipeño.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pomaire360.cl/ruta-del-vino/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Pomaire 360">
 <meta property="og:title" content="Ruta del Vino y la Chicha en Pomaire y Los Chiñihues | Pomaire 360">
-<meta property="og:description" content="La ruta del vino y la chicha del secano costero de Pomaire y Los Chiñihues: cepa País, chicha artesanal, pipeño y cómo recorrerla.">
+<meta property="og:description" content="La ruta del vino y la chicha del secano costero de Pomaire y Los Chiñihues: cepa País, chicha artesanal y pipeño.">
 <meta property="og:url" content="https://pomaire360.cl/ruta-del-vino/">
 <meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
 <meta property="og:locale" content="es_CL">
@@ -25,57 +25,117 @@
 
 <div class="sub-topbar">
   <a class="sub-brand" href="/">🏺 Pomaire 360</a>
-  <a href="/#mapa">🗺️ Ver en el mapa</a>
+  <div style="display:flex;align-items:center;gap:.8rem;">
+    <a href="/#mapa">🗺️ <span data-t="sub_seemap">Ver en el mapa</span></a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+        <span id="langCurrentFlag">🇨🇱</span><span id="langCurrentName">Español</span><span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span></button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<header class="sub-hero">
-  <div class="sub-ico">🍷</div>
-  <h1>Ruta del Vino y la Chicha</h1>
-  <p>El secano costero de Pomaire y Los Chiñihues, tierra de viñas tradicionales.</p>
-</header>
+<section id="ruta-vino">
+  <div class="section-inner">
+    <div class="section-header ">
+      <span class="section-icon">🍷</span>
+      <div>
+        <h2 data-t="wine_title">Ruta del Vino y la Chicha</h2>
+        <p data-t="wine_sub">El secano costero de Pomaire y Los Chiñihues, tierra de viñas tradicionales · <em>Wine &amp; chicha route</em></p>
+      </div>
+    </div>
 
-<main class="sub-wrap">
-  <div class="wine-tag">🍇 Experiencia · Valle de Melipilla · Secano Costero</div>
-  <p class="wine-intro">Más allá de la greda, el entorno de Pomaire es <strong>tierra de viñas y parras tradicionales</strong>. En el secano costero y el sector de <strong>Los Chiñihues</strong> sobreviven pequeños productores familiares que elaboran <strong>chicha de manzana y uva</strong>, pipeño y vino campesino con técnicas heredadas por generaciones.</p>
+    <div class="wine-tag " data-t="wine_tag">🍇 Experiencia · Valle de Melipilla · Secano Costero</div>
+    <p class="wine-intro " data-t="wine_intro">
+      Más allá de la greda, el entorno de Pomaire es <strong>tierra de viñas y parras tradicionales</strong>. En el secano costero y el sector de <strong>Los Chiñihues</strong> sobreviven pequeños productores familiares que elaboran <strong>chicha de manzana y uva</strong>, pipeño y vino campesino con técnicas heredadas por generaciones. Una ruta para descubrir el lado rural y festivo del pueblo alfarero.
+    </p>
 
-  <div class="wine-cards">
-    <div class="wine-card"><span class="wc-icon">🍇</span><h3>Cepa País</h3><p>La uva tradicional del secano chileno, base de los vinos campesinos y del pipeño. Una de las cepas más antiguas del país.</p></div>
-    <div class="wine-card"><span class="wc-icon">🍷</span><h3>Chicha artesanal</h3><p>La bebida emblemática del lugar: chicha de manzana y de uva, fresca y dulce. Abunda en torno a las Fiestas Patrias.</p></div>
-    <div class="wine-card"><span class="wc-icon">🥂</span><h3>Pipeño del secano</h3><p>Vino joven y rústico, de carácter campesino, ideal para acompañar una cazuela o una empanada gigante.</p></div>
-    <div class="wine-card"><span class="wc-icon">🌾</span><h3>Los Chiñihues</h3><p>Sector rural a pocos minutos de Pomaire, de viñedos, quebradas y caminos tranquilos.</p></div>
-    <div class="wine-card"><span class="wc-icon">🏺</span><h3>Maridaje en greda</h3><p>La chicha y el vino se sirven en jarras y vasijas de greda hechas en el propio pueblo.</p></div>
-    <div class="wine-card"><span class="wc-icon">📅</span><h3>Mejor temporada</h3><p>La vendimia (marzo–abril) y las Fiestas Patrias (septiembre) son las épocas con más chicha fresca y ambiente festivo.</p></div>
+    <div class="wine-cards ">
+      <div class="wine-card">
+        <span class="wc-icon">🍇</span>
+        <h3 data-t="wine_c1_t">Cepa País</h3>
+        <p data-t="wine_c1_d">La uva tradicional del secano chileno, base de los vinos campesinos y del pipeño. Una de las cepas más antiguas del país, cultivada en parronales rústicos de la zona.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🍷</span>
+        <h3 data-t="wine_c2_t">Chicha artesanal</h3>
+        <p data-t="wine_c2_d">La bebida emblemática del lugar: chicha de manzana y de uva, fresca y dulce. Se encuentra en los restaurantes típicos y abunda especialmente en torno a las Fiestas Patrias.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🥂</span>
+        <h3 data-t="wine_c3_t">Pipeño del secano</h3>
+        <p data-t="wine_c3_d">Vino joven y rústico, de carácter campesino, ideal para acompañar una cazuela o una empanada gigante. El maridaje perfecto de la cocina pomairina.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🌾</span>
+        <h3 data-t="wine_c4_t">Los Chiñihues</h3>
+        <p data-t="wine_c4_d">Sector rural a pocos minutos de Pomaire, de viñedos, quebradas y caminos tranquilos. El corazón de la tradición vitivinícola familiar de los alrededores.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">🏺</span>
+        <h3 data-t="wine_c5_t">Maridaje en greda</h3>
+        <p data-t="wine_c5_d">La chicha y el vino se sirven en jarras y vasijas de greda hechas en el propio pueblo, uniendo en una sola experiencia las dos grandes tradiciones de Pomaire.</p>
+      </div>
+      <div class="wine-card">
+        <span class="wc-icon">📅</span>
+        <h3 data-t="wine_c6_t">Mejor temporada</h3>
+        <p data-t="wine_c6_d">La vendimia (marzo–abril) y las Fiestas Patrias (septiembre) son las épocas con más chicha fresca, parras cargadas y ambiente festivo en el secano.</p>
+      </div>
+    </div>
+
+    <div class="wine-steps ">
+      <h3 data-t="wine_steps_h">🧭 Cómo recorrer la ruta</h3>
+      <div class="wine-step">
+        <div class="ws-num">1</div>
+        <div class="ws-body"><strong data-t="wine_s1_t">Parte en el centro de Pomaire</strong><span data-t="wine_s1_d">Prueba una chicha de manzana o uva en los restaurantes típicos de la calle Roberto Bravo y San Antonio.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">2</div>
+        <div class="ws-body"><strong data-t="wine_s2_t">Sigue hacia Los Chiñihues</strong><span data-t="wine_s2_d">Recorre en auto los caminos rurales del secano, entre parronales y quebradas. Lleva el estanque lleno: hay poca señal y pocos servicios.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">3</div>
+        <div class="ws-body"><strong data-t="wine_s3_t">Busca a los productores familiares</strong><span data-t="wine_s3_d">Pregunta en el pueblo por chicha y vino artesanal de temporada; muchos se venden directamente en casas y puestos del sector.</span></div>
+      </div>
+      <div class="wine-step">
+        <div class="ws-num">4</div>
+        <div class="ws-body"><strong data-t="wine_s4_t">Cierra con gastronomía</strong><span data-t="wine_s4_d">Vuelve al pueblo y marida tu hallazgo con una cazuela o empanada servida en greda. ¡Salud!</span></div>
+      </div>
+    </div>
+
+    <div class="wine-cta ">
+      <p data-t="wine_cta_t">🍷 ¿Tienes una viña, parronal o produces chicha en la zona? Suma tu lugar a esta ruta y aparece en la guía.</p>
+      <a href="https://maps.google.com/?q=Los+Chiñihues+Pomaire+Melipilla" target="_blank" rel="noopener" data-t="wine_cta_btn">🗺️ Ver Los Chiñihues</a>
+    </div>
+    <p class="wine-note " data-t="wine_note">Ruta basada en la tradición vitivinícola del secano costero de Melipilla. Los productores y horarios varían según la temporada; consulta en el pueblo. Bebe con moderación · solo mayores de 18 años.</p>
   </div>
-
-  <div class="wine-steps">
-    <h3>🧭 Cómo recorrer la ruta</h3>
-    <div class="wine-step"><div class="ws-num">1</div><div class="ws-body"><strong>Parte en el centro de Pomaire</strong><span>Prueba una chicha de manzana o uva en los restaurantes típicos de la calle Roberto Bravo y San Antonio.</span></div></div>
-    <div class="wine-step"><div class="ws-num">2</div><div class="ws-body"><strong>Sigue hacia Los Chiñihues</strong><span>Recorre en auto los caminos rurales del secano. Lleva el estanque lleno: hay poca señal y pocos servicios.</span></div></div>
-    <div class="wine-step"><div class="ws-num">3</div><div class="ws-body"><strong>Busca a los productores familiares</strong><span>Pregunta en el pueblo por chicha y vino artesanal de temporada; muchos se venden directamente en casas y puestos.</span></div></div>
-    <div class="wine-step"><div class="ws-num">4</div><div class="ws-body"><strong>Cierra con gastronomía</strong><span>Vuelve al pueblo y marida tu hallazgo con una cazuela o empanada servida en greda. ¡Salud!</span></div></div>
-  </div>
-
-  <div class="wine-cta">
-    <p>🍷 ¿Tienes una viña, parronal o produces chicha en la zona? Suma tu lugar a esta ruta y aparece en la guía.</p>
-    <a href="https://maps.google.com/?q=Los+Chiñihues+Pomaire+Melipilla" target="_blank" rel="noopener">🗺️ Ver Los Chiñihues</a>
-  </div>
-  <p class="wine-note">Bebe con moderación · solo mayores de 18 años.</p>
-</main>
+</section>
 
 <div class="sub-cross">
-  <h2>Más cosas que hacer en Pomaire</h2>
+  <h2 data-t="sub_more">Más en Pomaire 360</h2>
   <div class="sub-cross-links">
-    <a href="/alfareria/">🏺 Alfarería</a>
-    <a href="/que-ver/">✨ Qué ver</a>
-    <a href="/plaza/">🌳 Plaza</a>
-    <a href="/alrededores/">🌄 Alrededores</a>
-    <a href="/#mapa">🗺️ Mapa</a>
+    <a href="/alfareria/">🏺 <span data-t="nav_pottery">nav_pottery</span></a>
+    <a href="/que-ver/">✨ <span data-t="nav_seewhat">nav_seewhat</span></a>
+    <a href="/plaza/">🌳 <span data-t="nav_plaza">nav_plaza</span></a>
+    <a href="/alrededores/">🌄 <span data-t="nav_around">nav_around</span></a>
+    <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
   </div>
 </div>
 
 <div class="sub-foot">
-  <a href="/">🏺 Volver a la guía completa de Pomaire 360 →</a>
+  <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
 </div>
 
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
 </body>
 </html>

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
 <title>Plaza y espacios públicos de Pomaire | Pomaire 360</title>
-<meta name="description" content="La plaza de Pomaire, la Iglesia San Antonio de Padua, baños públicos y espacios de encuentro en el corazón del pueblo alfarero.">
+<meta name="description" content="La plaza de Pomaire, la Iglesia San Antonio de Padua, baños públicos y espacios de encuentro.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pomaire360.cl/plaza/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Pomaire 360">
 <meta property="og:title" content="Plaza y espacios públicos de Pomaire | Pomaire 360">
-<meta property="og:description" content="La plaza de Pomaire, la Iglesia San Antonio de Padua, baños públicos y espacios de encuentro en el corazón del pueblo alfarero.">
+<meta property="og:description" content="La plaza de Pomaire, la Iglesia San Antonio de Padua, baños públicos y espacios de encuentro.">
 <meta property="og:url" content="https://pomaire360.cl/plaza/">
 <meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
 <meta property="og:locale" content="es_CL">
@@ -25,38 +25,82 @@
 
 <div class="sub-topbar">
   <a class="sub-brand" href="/">🏺 Pomaire 360</a>
-  <a href="/#mapa">🗺️ Ver en el mapa</a>
+  <div style="display:flex;align-items:center;gap:.8rem;">
+    <a href="/#mapa">🗺️ <span data-t="sub_seemap">Ver en el mapa</span></a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+        <span id="langCurrentFlag">🇨🇱</span><span id="langCurrentName">Español</span><span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span></button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<header class="sub-hero">
-  <div class="sub-ico">🌳</div>
-  <h1>Plaza y espacios públicos</h1>
-  <p>Puntos de encuentro y descanso en el corazón de Pomaire.</p>
-</header>
-
-<main class="sub-wrap">
-  <div class="cards">
-    <div class="card priority"><div class="card-icon">🌳</div><span class="card-badge">Plaza · Centro</span><h3>Plaza de Pomaire</h3><p class="card-detail">La plaza central es el corazón del pueblo. Rodeada de locales de artesanía y gastronomía. Ideal para descansar y orientarse.</p><a class="card-link" href="https://maps.google.com/?q=Plaza+de+Pomaire+Chile" target="_blank" rel="noopener">📍 Ver en mapa</a></div>
-    <div class="card"><div class="card-icon">⛪</div><span class="card-badge">Iglesia</span><h3>Iglesia San Antonio de Padua</h3><p class="card-detail">Iglesia histórica del pueblo. Referente arquitectónico.</p><a class="card-link" href="https://www.google.com/maps/search/?api=1&query=-33.646214708973325,-71.15097954893574" target="_blank" rel="noopener">📍 Ver en mapa</a></div>
-    <div class="card"><div class="card-icon">🏢</div><span class="card-badge">Salón del Reino</span><h3>Salón de Reino de los Testigos de Jehová</h3><p class="card-detail">Espacio Público Espiritual. Horarios: Jueves 19:00–21:15 hrs · Sábado 19:00–20:45 hrs.</p><a class="card-link" href="https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7" target="_blank" rel="noopener">📍 Ver en mapa</a></div>
-    <div class="card" id="banos"><div class="card-icon">🚽</div><span class="card-badge">Servicios</span><h3>Baños públicos</h3><p class="card-detail">Hay baños disponibles cerca de la plaza central y en algunos locales gastronómicos. En temporada alta puede haber cola.</p></div>
+<section id="plaza">
+  <div class="section-inner">
+    <div class="section-header ">
+      <span class="section-icon">🌳</span>
+      <div>
+        <h2 data-t="s_pla_title">Plaza y espacios públicos</h2>
+        <p data-t="s_pla_sub">Puntos de encuentro y descanso en el corazón de Pomaire</p>
+      </div>
+    </div>
+    <div class="cards ">
+      <div class="card priority">
+        <div class="card-icon">🌳</div>
+        <span class="card-badge" data-t="pl1_badge">Plaza · Centro</span>
+        <h3 data-t="pl1_title">Plaza de Pomaire</h3>
+        <p class="card-detail" data-t="pl1_detail">La plaza central es el corazón del pueblo. Rodeada de locales de artesanía y gastronomía. Ideal para descansar y orientarse.</p>
+        <a class="card-link" href="https://maps.google.com/?q=Plaza+de+Pomaire+Chile" target="_blank" data-t="lnk_map">📍 Ver en mapa</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">⛪</div>
+        <span class="card-badge" data-t="pl2_badge">Iglesia</span>
+        <h3>Iglesia San Antonio de Padua</h3>
+        <p class="card-detail" data-t="pl2_detail">Iglesia histórica del pueblo. Referente arquitectónico.</p>
+        <a class="card-link" href="https://www.google.com/maps/search/?api=1&query=-33.646214708973325,-71.15097954893574" target="_blank" data-t="lnk_map">📍 Ver en mapa</a>
+      </div>
+	   <div class="card">
+        <div class="card-icon">🏢</div>
+        <span class="card-badge" data-t="pl3_badge">Salón del Reino</span>
+        <h3>Salón de Reino de los Testigos de Jehová</h3>
+        <p class="card-detail" data-t="pl3_detail">Espacio Público Espiritual. Horarios: Jueves 19:00 - 21:15 hrs.     Sábado 19:00-20:45 Hrs..</p>
+        <a class="card-link" href="https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7" target="_blank" data-t="lnk_map">📍 Ver en mapa</a>
+      </div>
+      <div class="card" id="banos">
+        <div class="card-icon">🚽</div>
+        <span class="card-badge" data-t="pl4_badge">Servicios</span>
+        <h3 data-t="pl4_title">Baños públicos</h3>
+        <p class="card-detail" data-t="pl4_detail">Hay baños disponibles cerca de la plaza central y en algunos locales gastronómicos. En temporada alta puede haber cola.</p>
+      </div>
+    </div>
   </div>
-</main>
+</section>
 
 <div class="sub-cross">
-  <h2>Más cosas que hacer en Pomaire</h2>
+  <h2 data-t="sub_more">Más en Pomaire 360</h2>
   <div class="sub-cross-links">
-    <a href="/alfareria/">🏺 Alfarería</a>
-    <a href="/ruta-del-vino/">🍷 Ruta del Vino</a>
-    <a href="/que-ver/">✨ Qué ver</a>
-    <a href="/alrededores/">🌄 Alrededores</a>
-    <a href="/#mapa">🗺️ Mapa</a>
+    <a href="/alfareria/">🏺 <span data-t="nav_pottery">nav_pottery</span></a>
+    <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">nav_winery</span></a>
+    <a href="/que-ver/">✨ <span data-t="nav_seewhat">nav_seewhat</span></a>
+    <a href="/alrededores/">🌄 <span data-t="nav_around">nav_around</span></a>
+    <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
   </div>
 </div>
 
 <div class="sub-foot">
-  <a href="/">🏺 Volver a la guía completa de Pomaire 360 →</a>
+  <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
 </div>
 
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
 </body>
 </html>

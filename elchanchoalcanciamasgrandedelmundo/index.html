@@ -172,7 +172,23 @@
 
 <div class="ch-topbar">
   <a class="ch-brand" href="/">🏺 Pomaire 360</a>
-  <a href="/#lugar=po6">📍 Ver en el mapa</a>
+  <div style="display:flex;align-items:center;gap:.8rem;">
+    <a href="/#lugar=po6">📍 <span data-t="sub_seemap">Ver en el mapa</span></a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+        <span id="langCurrentFlag">🇨🇱</span><span id="langCurrentName">Español</span><span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span></button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -238,5 +254,7 @@
   <a href="/">🏺 Volver a la guía completa de Pomaire 360 →</a>
 </div>
 
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
 </body>
 </html>
