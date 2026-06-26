@@ -67,6 +67,7 @@
 
   /* ANUNCIO LLAMATIVO (vacaciones de invierno) */
   .ch-promo {
+    position: sticky; top: 0; z-index: 99;
     text-align: center; color: #5e2810; font-weight: 800;
     font-size: clamp(.92rem, 2.6vw, 1.08rem); letter-spacing: .01em;
     padding: .75rem 1rem; line-height: 1.35;
@@ -326,6 +327,17 @@
       window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
     }
   }
+  // Fija la barra de anuncio justo debajo de la barra superior (sticky apilado)
+  function syncPromoOffset(){
+    var promo = document.querySelector('.ch-promo');
+    var topbar = document.querySelector('.ch-topbar');
+    if (!promo || !topbar) return;
+    var visible = getComputedStyle(promo).display !== 'none';
+    promo.style.top = visible ? topbar.offsetHeight + 'px' : '0px';
+  }
+  syncPromoOffset();
+  window.addEventListener('resize', syncPromoOffset);
+  window.addEventListener('load', syncPromoOffset);
 </script>
 </body>
 </html>
