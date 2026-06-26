@@ -49,3 +49,13 @@ Object.assign(window.LANGS.fr,{"ch_winter_promo":"Nous serons ouverts pendant le
 Object.assign(window.LANGS.ru,{"ch_winter_promo":"Мы открыты на зимних каникулах! · С понедельника по воскресенье"});
 Object.assign(window.LANGS.ja,{"ch_winter_promo":"冬休みも営業します！· 月曜〜日曜"});
 Object.assign(window.LANGS.zh,{"ch_winter_promo":"冬季假期照常开放！· 周一至周日"});
+
+
+/* ══ Horario CESFAM Pomaire (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"he1_hours":"🕒 Horario: 8:29 a 17:29 hrs"});
+Object.assign(window.LANGS.en,{"he1_hours":"🕒 Hours: 8:29 to 17:29"});
+Object.assign(window.LANGS.pt,{"he1_hours":"🕒 Horário: 8:29 às 17:29"});
+Object.assign(window.LANGS.fr,{"he1_hours":"🕒 Horaires : 8h29 à 17h29"});
+Object.assign(window.LANGS.ru,{"he1_hours":"🕒 Часы работы: 8:29–17:29"});
+Object.assign(window.LANGS.ja,{"he1_hours":"🕒 営業時間: 8:29〜17:29"});
+Object.assign(window.LANGS.zh,{"he1_hours":"🕒 营业时间：8:29至17:29"});

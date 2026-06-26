@@ -1596,7 +1596,7 @@ const PLACES = [
   { id:'pk2', cat:'parking', icon:'🚗', lat:-33.65027186391058, lng:-71.15430268749077, name:'Futuros Estacionamiento y baños públicos', desc:'Guillermo Barros con Diego de Almagro', addr:'Guillermo Barros con Diego de Almagro, Pomaire', gmap:'https://www.google.com/maps/search/?api=1&query=-33.65027186391058,-71.15430268749077' },
   { id:'pk3', cat:'parking', icon:'🚌', lat:-33.65078, lng:-71.14907, name:'Zona 18 de Septiembre', desc:'Lateral al casco principal', addr:'18 de Septiembre, Pomaire' },
   // ── HEALTH ──
-  { id:'he1', cat:'health', icon:'🏥', lat:-33.6497, lng:-71.15053, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354', addr:'Julita Vera 354, Pomaire', phone:'+56 2 2568 8849' },
+  { id:'he1', cat:'health', icon:'🏥', lat:-33.6497, lng:-71.15053, name:'CESFAM Alfarera Rosa Reyes Vilches', desc:'Artesana Julita Vera 354', addr:'Julita Vera 354, Pomaire', phone:'+56 2 2568 8849', hours:'8:29 a 17:29 hrs' },
   { id:'he2', cat:'health', icon:'💊', lat:-33.653491296625084, lng:-71.15118860753486, name:'Farmacia Acua-Naser Pomaire', desc:'San Antonio 362', addr:'San Antonio 362, Pomaire', gmap:'https://maps.app.goo.gl/c4QqqSLASBynLttk6' },
   // ── SECURITY ──
   { id:'se1', cat:'security', icon:'🚔', lat:-33.650798492760984, lng:-71.1512808846173, name:'Carabineros Policia', desc:'San Antonio 361', addr:'San Antonio 361, Pomaire', gmap:'https://maps.app.goo.gl/c555fkuX9t6jcMZs7' },
@@ -1782,7 +1782,8 @@ function buildPopup(p, distKm) {
   if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
   const noteHtml = (p.note && (typeof window.isPomaireWinter !== 'function' || window.isPomaireWinter())) ? `<p style="margin:.35rem 0;color:#8C3D16;font-weight:700;">${p.note}</p>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${noteHtml}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
+  const hoursHtml = p.hours ? `<p style="margin:.25rem 0;color:#444;">🕒 ${p.hours}</p>` : '';
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${hoursHtml}${noteHtml}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
