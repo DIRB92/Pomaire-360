@@ -10,7 +10,7 @@
     '#comercio': '/comercio/', '#alfareria': '/alfareria/', '#ruta-vino': '/ruta-del-vino/',
     '#interes': '/que-ver/', '#plaza': '/plaza/', '#alrededores': '/alrededores/',
     '#gastronomia': '/gastronomia/', '#alojamientos': '/alojamientos/', '#anunciate': '/anunciate/',
-    '#banos': '/plaza/#banos'
+    '#banos': '/plaza/#banos', '#gruas': '/gruas/'
   };
   function go() { var d = map[location.hash]; if (d) location.replace(d); }
   go();
@@ -157,7 +157,7 @@
         <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
         <a href="/seguridad/">🚔 <span data-t="nav_security">Seguridad</span></a>
         <a href="/comercio/">🛒 <span data-t="nav_commerce">Comercio</span></a>
-        <a href="#gruas">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
       </div>
     </div>
 
@@ -492,52 +492,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- GRÚAS Y MECÁNICOS -->
-<section id="gruas">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-icon">🔧</span>
-      <div>
-        <h2 data-t="s_gm_title">Grúas y mecánicos</h2>
-        <p data-t="s_gm_sub">Asistencia mecánica, grúas y servicios para tu vehículo en Pomaire y la ruta</p>
-      </div>
-    </div>
-    <div class="cards reveal">
-      <div class="card">
-        <div class="card-icon">🔧</div>
-        <span class="card-badge" data-t="gm1_badge">Mecánico · Taller</span>
-        <h3 data-t="gm1_title">Talleres mecánicos</h3>
-        <p class="card-detail" data-t="gm1_detail">Hay pequeños talleres en la ruta de acceso y camino a Melipilla. Para reparaciones mayores, lo más completo está en Melipilla ciudad (≈15 min en auto).</p>
-        <a class="card-link" href="https://www.google.com/maps/search/mec%C3%A1nico+Pomaire+Melipilla" target="_blank" rel="noopener" data-t="gm1_link">📍 Buscar talleres</a>
-      </div>
-      <div class="card priority">
-        <div class="card-icon">🚛</div>
-        <span class="card-badge" data-t="gm2_badge">Grúa · Asistencia en ruta</span>
-        <h3 data-t="gm2_title">Grúas y remolque</h3>
-        <p class="card-detail" data-t="gm2_detail">Para fallas o panne en la Ruta 78 (Autopista del Sol) o dentro del pueblo. Si un accidente bloquea la vía o hay personas heridas, llama primero a emergencias.</p>
-        <a class="card-link" href="tel:133" data-t="gm2_link1">📞 Emergencias 133</a>
-        <a class="card-link" href="https://www.google.com/maps/search/gruas+melipilla/@-33.6779515,-71.2239126,11957m/data=!3m1!1e3" target="_blank" rel="noopener" data-t="gm2_link2">📍 Buscar grúas</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">🛞</div>
-        <span class="card-badge" data-t="gm3_badge">Vulcanización · Neumáticos</span>
-        <h3 data-t="gm3_title">Vulcanizaciones</h3>
-        <p class="card-detail" data-t="gm3_detail">Para pinchazos y cambio de neumáticos. Hay vulcanizaciones en la ruta hacia Melipilla. Útil si viajas con la rueda de repuesto sin aire.</p>
-        <a class="card-link" href="https://www.google.com/maps/search/vulcanizaci%C3%B3n+Pomaire+Melipilla" target="_blank" rel="noopener" data-t="gm3_link">📍 Buscar vulcanización</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📣</div>
-        <span class="card-badge" data-t="gm4_badge">¿Tienes una grúa o taller?</span>
-        <h3 data-t="gm4_title">Suma tu servicio aquí</h3>
-        <p class="card-detail" data-t="gm4_detail">Si ofreces grúa, mecánica o asistencia en ruta en Pomaire o Melipilla, publícate gratis en Pomaire 360 y aparece en esta guía para quienes lo necesiten.</p>
-        <a class="card-link" href="/anunciate/" data-t="gm4_link">📣 Anúnciate</a>
-      </div>
-    </div>
-    <p class="map-hint reveal" data-t="gm_note">🛟 Información de carácter orientativo. Confirma cobertura, tarifas y horarios directamente con cada prestador antes de contratar.</p>
   </div>
 </section>
 
