@@ -2,6 +2,21 @@
 <html lang="es" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
+<script>
+/* Redirección de enlaces antiguos (#seccion) a las nuevas subpáginas */
+(function () {
+  var map = {
+    '#estacionamientos': '/estacionamientos/', '#salud': '/salud/', '#seguridad': '/seguridad/',
+    '#comercio': '/comercio/', '#alfareria': '/alfareria/', '#ruta-vino': '/ruta-del-vino/',
+    '#interes': '/que-ver/', '#plaza': '/plaza/', '#alrededores': '/alrededores/',
+    '#gastronomia': '/gastronomia/', '#alojamientos': '/alojamientos/', '#anunciate': '/anunciate/',
+    '#banos': '/plaza/#banos'
+  };
+  function go() { var d = map[location.hash]; if (d) location.replace(d); }
+  go();
+  window.addEventListener('hashchange', go);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
 
