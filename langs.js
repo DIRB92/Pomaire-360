@@ -29,3 +29,13 @@ Object.assign(window.LANGS.fr,{"ch_share":"📤 Partager","ch_share_msg":"🐷 D
 Object.assign(window.LANGS.ru,{"ch_share":"📤 Поделиться","ch_share_msg":"🐷 Узнайте о самой большой глиняной копилке-свинке в мире, в Помайре — создал César Silva Rojo:"});
 Object.assign(window.LANGS.ja,{"ch_share":"📤 シェア","ch_share_msg":"🐷 ポマイレにある世界最大の陶器の貯金箱の豚をチェック — セサル・シルバ・ロホ作:"});
 Object.assign(window.LANGS.zh,{"ch_share":"📤 分享","ch_share_msg":"🐷 来看看波马伊雷世界最大的陶土小猪存钱罐 — 由 César Silva Rojo 创作："});
+
+
+/* ══ Aviso vacaciones de invierno · El Chancho (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"ch_winter":"<strong>Vacaciones de invierno:</strong> abierto de lunes a domingo"});
+Object.assign(window.LANGS.en,{"ch_winter":"<strong>Winter break:</strong> open Monday to Sunday"});
+Object.assign(window.LANGS.pt,{"ch_winter":"<strong>Férias de inverno:</strong> aberto de segunda a domingo"});
+Object.assign(window.LANGS.fr,{"ch_winter":"<strong>Vacances d'hiver :</strong> ouvert du lundi au dimanche"});
+Object.assign(window.LANGS.ru,{"ch_winter":"<strong>Зимние каникулы:</strong> открыто с понедельника по воскресенье"});
+Object.assign(window.LANGS.ja,{"ch_winter":"<strong>冬休み:</strong> 月曜〜日曜 営業"});
+Object.assign(window.LANGS.zh,{"ch_winter":"<strong>冬季假期：</strong>周一至周日开放"});

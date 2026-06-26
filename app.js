@@ -1615,7 +1615,7 @@ const PLACES = [
   { id:'po3', cat:'pottery', icon:'🎨', lat:-33.652051018925114, lng:-71.14908723334928, name:'Taller del Sol', desc:'Taller de greda · Arturo Prat 237 B', addr:'Arturo Prat 237, Pomaire', gmap:'https://maps.app.goo.gl/9sp8oEZ3oQpxwDwu7' },
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
-  { id:'po6', cat:'pottery', icon:'🐷', lat:-33.652552962128134, lng:-71.1534523252861, name:'El Chancho alcancia de greda más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire', gmap:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', page:'/elchanchoalcanciamasgrandedelmundo/' },
+  { id:'po6', cat:'pottery', icon:'🐷', lat:-33.652552962128134, lng:-71.1534523252861, name:'El Chancho alcancia de greda más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire', gmap:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', page:'/elchanchoalcanciamasgrandedelmundo/', note:'❄️ Vacaciones de invierno: abierto de lunes a domingo' },
   { id:'po7', cat:'pottery', icon:'🪴', lat:-33.646604815161965, lng:-71.14997538348244, name:'Fábrica de maceteros y vasijas de greda Don Petro', desc:'Maceteros y vasijas de greda · Pomaire', addr:'Pomaire', gmap:'https://maps.app.goo.gl/n2dMSDsuNTaB4BEAA' },
   // ── FOOD ──
   { id:'fo1', cat:'food', icon:'☕', lat:-33.65460729825698, lng:-71.15001597751701, name:'Imperio Pomaire', desc:'Desayunos y cocina típica · Roberto Bravo 78', addr:'Roberto Bravo 78, Pomaire', gmap:'https://maps.app.goo.gl/muAoduKWg9frboTy7' },
@@ -1780,7 +1780,7 @@ function buildPopup(p, distKm) {
   if (p.web) contacts.push(`<a href="${p.web}" target="_blank" rel="noopener">🌐 Web</a>`);
   if (p.fb)  contacts.push(`<a href="${p.fb}" target="_blank" rel="noopener">📘 Facebook</a>`);
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${p.note ? `<p style="margin:.35rem 0;color:#8C3D16;font-weight:700;">${p.note}</p>` : ''}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
