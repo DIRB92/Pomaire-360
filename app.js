@@ -1616,6 +1616,7 @@ const PLACES = [
   { id:'po4', cat:'pottery', icon:'🎨', lat:-33.65435030691243, lng:-71.15447074355414, name:'Taller Barros', desc:'Taller de greda · Guillermo Barros 150', addr:'Guillermo Barros 150, Pomaire', gmap:'https://maps.app.goo.gl/Mpo926U8kMj5Rvog6' },
   { id:'po5', cat:'pottery', icon:'🏺', lat:-33.6522, lng:-71.15, name:'Calle de los Alfareros', desc:'Roberto Bravo · talleres y tiendas', addr:'Roberto Bravo, Pomaire' },
   { id:'po6', cat:'pottery', icon:'🐷', lat:-33.652552962128134, lng:-71.1534523252861, name:'El Chancho alcancia de greda más grande del mundo', desc:'Figura gigante de greda · Los Paltos 323', addr:'Los Paltos 323, Pomaire', gmap:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', page:'/elchanchoalcanciamasgrandedelmundo/' },
+  { id:'po7', cat:'pottery', icon:'🪴', lat:-33.646604815161965, lng:-71.14997538348244, name:'Fábrica de maceteros y vasijas de greda Don Petro', desc:'Maceteros y vasijas de greda · Pomaire', addr:'Pomaire', gmap:'https://maps.app.goo.gl/n2dMSDsuNTaB4BEAA' },
   // ── FOOD ──
   { id:'fo1', cat:'food', icon:'☕', lat:-33.65460729825698, lng:-71.15001597751701, name:'Imperio Pomaire', desc:'Desayunos y cocina típica · Roberto Bravo 78', addr:'Roberto Bravo 78, Pomaire', gmap:'https://maps.app.goo.gl/muAoduKWg9frboTy7' },
   { id:'fo2', cat:'food', icon:'🥘', lat:-33.65317799731006, lng:-71.14994054878586, name:'Restaurant La Greda', desc:'Cocina criolla · 30+ años · Manuel Rodríguez', addr:'Manuel Rodríguez 251, Pomaire', gmap:'https://maps.app.goo.gl/SsdjchMYiy3K6eZeA' },
