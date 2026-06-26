@@ -1155,6 +1155,18 @@ Object.keys(HERO_STATS_I18N).forEach(function(l){
   if (LANGS[l]) Object.assign(LANGS[l], HERO_STATS_I18N[l]);
 });
 
+/* ══ Banner destacado del mapa (El Chancho) ══ */
+const MFB_I18N = {
+  es:{ mfb_text:'Conoce <strong>El Chancho alcancía de greda más grande del mundo</strong>', mfb_go:'Ver página →' },
+  en:{ mfb_text:"Discover <strong>the world's largest clay piggy bank</strong>", mfb_go:'View page →' },
+  pt:{ mfb_text:'Conheça <strong>o maior cofrinho de barro do mundo</strong>', mfb_go:'Ver página →' },
+  fr:{ mfb_text:'Découvrez <strong>la plus grande tirelire en argile du monde</strong>', mfb_go:'Voir la page →' },
+  ru:{ mfb_text:'Узнайте о <strong>самой большой глиняной копилке-свинке в мире</strong>', mfb_go:'Открыть страницу →' },
+  ja:{ mfb_text:'<strong>世界最大の陶器の貯金箱の豚</strong>を見る', mfb_go:'ページを見る →' },
+  zh:{ mfb_text:'探索 <strong>世界上最大的陶土小猪存钱罐</strong>', mfb_go:'查看页面 →' }
+};
+Object.keys(MFB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], MFB_I18N[l]); });
+
 const KEYS = {
   '[data-t="nav_park"]':      t => t.nav_park,
   '[data-t="nav_health"]':    t => t.nav_health,
