@@ -2427,14 +2427,12 @@ const HOME_PROMO_I18N = {
 };
 Object.keys(HOME_PROMO_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], HOME_PROMO_I18N[l]); });
 
-// Posicionar el nav justo debajo del aviso flotante (cuando está visible)
+// El nav permanece fijo arriba (sticky top:0). El aviso de invierno ya no es
+// sticky: se desplaza con la página, por lo que el nav nunca queda oculto tras él.
 (function(){
   function syncHomePromo(){
-    var promo = document.getElementById('homePromo');
     var nav = document.querySelector('nav');
-    if (!nav) return;
-    var visible = promo && getComputedStyle(promo).display !== 'none';
-    nav.style.top = visible ? promo.offsetHeight + 'px' : '';
+    if (nav) nav.style.top = '';
   }
   window.syncHomePromo = syncHomePromo;
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncHomePromo);

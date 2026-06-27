@@ -30,7 +30,7 @@
   nav {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 900;
     background: rgba(184,92,44,.96);
     backdrop-filter: blur(6px);
     padding: .7rem 1.4rem;
@@ -207,6 +207,16 @@
       order: 3;
     }
     .nav-links-wrap.open { display: flex; }
+    /* En móvil el menú abierto puede ser más alto que la pantalla:
+       se le permite scroll interno para que TODOS los botones sean accesibles
+       (Mapa, Apoyar, etc.) sin que se corten. */
+    .nav-links-wrap.open {
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-right: .25rem;
+    }
     .nav-group { width: 100%; }
     .nav-group-btn { width: 100%; justify-content: space-between; }
     .nav-menu {
@@ -417,7 +427,7 @@
 
   /* ── AVISO FLOTANTE HOME (vacaciones de invierno · marquee) ── */
   .home-promo {
-    position: sticky; top: 0; z-index: 200;
+    position: relative; z-index: 1;
     overflow: hidden; white-space: nowrap;
     color: #5e2810;
     background: linear-gradient(90deg, #ffd166, #ff9966, #ff5e62, #ff9966, #ffd166);
