@@ -484,6 +484,9 @@
   }
 
   /* ── AVISO FLOTANTE HOME (vacaciones de invierno · marquee) ── */
+  /* Barra superior de promoción OCULTA por pedido del dueño del sitio.
+     Para volver a mostrarla, elimina la siguiente línea (display:none). */
+  .home-promo { display: none !important; }
   .home-promo {
     position: relative; z-index: 1;
     overflow: hidden; white-space: nowrap;
