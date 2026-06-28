@@ -49,8 +49,24 @@
     document.querySelectorAll('[data-winter-promo]').forEach(function(el){
       el.style.display = p ? '' : 'none';
     });
+    updatePromoHeight();
   }
   window.applyWinterBanners = applyWinterBanners;
+
+  // Mide la altura real de la barra superior fija y la expone como --promoH,
+  // para que el nav (sticky) se ubique justo debajo sin solaparse.
+  function updatePromoHeight(){
+    var root = document.documentElement;
+    var bar = document.querySelector('.home-promo[data-winter-promo]');
+    var h = (bar && bar.offsetParent !== null) ? bar.offsetHeight : 0;
+    root.style.setProperty('--promoH', h + 'px');
+  }
+  window.updatePromoHeight = updatePromoHeight;
+
+  // Recalcular ante cambios de tamaño/orientación (el texto puede ajustar líneas)
+  window.addEventListener('resize', updatePromoHeight);
+  window.addEventListener('orientationchange', updatePromoHeight);
+  window.addEventListener('load', updatePromoHeight);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyWinterBanners);

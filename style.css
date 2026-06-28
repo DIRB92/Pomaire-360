@@ -29,7 +29,7 @@
   /* ── NAV ─────────────────────────────────────────── */
   nav {
     position: sticky;
-    top: 0;
+    top: var(--promoH, 0px);
     z-index: 900;
     background: rgba(184,92,44,.96);
     backdrop-filter: blur(6px);
@@ -484,11 +484,12 @@
   }
 
   /* ── AVISO FLOTANTE HOME (vacaciones de invierno · marquee) ── */
-  /* Barra superior de promoción OCULTA por pedido del dueño del sitio.
-     Para volver a mostrarla, elimina la siguiente línea (display:none). */
-  .home-promo { display: none !important; }
+  /* Barra superior FIJA / FLOTANTE de promoción.
+     Se muestra/oculta automáticamente según las fechas de PROMO_RANGES (seasonal.js).
+     Queda pegada arriba (sticky) por encima del nav; la altura se mide en
+     seasonal.js y se expone como --promoH para desplazar el nav justo debajo. */
   .home-promo {
-    position: relative; z-index: 1;
+    position: sticky; top: 0; z-index: 1000;
     overflow: hidden; white-space: nowrap;
     color: #5e2810;
     background: linear-gradient(90deg, #ffd166, #ff9966, #ff5e62, #ff9966, #ffd166);
