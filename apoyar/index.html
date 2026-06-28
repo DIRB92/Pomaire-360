@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>Apoyar Pomaire 360 — aporte voluntario | Pomaire 360</title>
+<meta name="description" content="Pomaire 360 es una guía independiente y sin publicidad. Apóyala con un aporte voluntario y ayúdanos a mantener la información del pueblo alfarero siempre actualizada.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://pomaire360.cl/apoyar/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Apoyar Pomaire 360 — aporte voluntario">
+<meta property="og:description" content="Guía independiente y sin publicidad del pueblo alfarero. Un aporte voluntario ayuda a mantenerla actualizada.">
+<meta property="og:url" content="https://pomaire360.cl/apoyar/">
+<meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://pomaire360.cl/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="sub-topbar">
+  <a class="sub-brand" href="/">🏺 Pomaire 360</a>
+  <div style="display:flex;align-items:center;gap:.8rem;">
+    <a href="/#mapa">🗺️ <span data-t="sub_seemap">Ver en el mapa</span></a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+        <span id="langCurrentFlag">🇨🇱</span><span id="langCurrentName">Español</span><span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" role="listbox">
+        <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></button>
+        <button class="lang-option" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="apoyar-hero">
+  <div class="apoyar-card">
+    <span class="apoyar-badge" data-t="apoyar_tag">💛 Proyecto independiente · Hecho en Pomaire</span>
+    <span class="apoyar-emoji" aria-hidden="true">💛</span>
+    <h1 class="apoyar-title" data-t="s_don_title">Apoya este proyecto</h1>
+    <p class="apoyar-subtitle" data-t="s_don_sub">Guía gratuita, mantenida con voluntad y amor por Pomaire</p>
+    <p class="apoyar-text" data-t="donate_text">Pomaire 360 es un proyecto independiente sin publicidad. Si te fue útil esta guía, un aporte voluntario ayuda a mantener la información actualizada. ¡Gracias!</p>
+    <a class="apoyar-btn" href="https://link.mercadopago.cl/innovati" target="_blank" rel="noopener" data-t="donate_btn">🏺 Hacer un aporte voluntario</a>
+    <p class="apoyar-note" data-t="donate_note">Pago seguro con Mercado Pago · tarjeta, transferencia o billetera digital</p>
+  </div>
+
+  <div class="apoyar-benefits">
+    <div class="apoyar-benefit">
+      <h3 data-t="apoyar_b1_t">🔄 Siempre actualizado</h3>
+      <p data-t="apoyar_b1_d">Horarios, contactos y datos revisados constantemente.</p>
+    </div>
+    <div class="apoyar-benefit">
+      <h3 data-t="apoyar_b2_t">🚫 Sin publicidad</h3>
+      <p data-t="apoyar_b2_d">Una guía limpia, sin anuncios ni rastreo.</p>
+    </div>
+    <div class="apoyar-benefit">
+      <h3 data-t="apoyar_b3_t">🤝 Apoyo local</h3>
+      <p data-t="apoyar_b3_d">Damos visibilidad a los artesanos y locales del pueblo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="apoyar-other">
+  <h2 data-t="apoyar_other_t">Otras formas de apoyar</h2>
+  <div class="apoyar-other-btns">
+    <button class="apoyar-sec-btn" type="button" onclick="shareApoyar()" data-t="apoyar_share">📲 Compartir la guía</button>
+    <a class="apoyar-sec-btn" href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener" data-t="apoyar_follow">📸 Síguenos en Instagram</a>
+  </div>
+</section>
+
+<div class="sub-cross">
+  <h2 data-t="sub_more">Más en Pomaire 360</h2>
+  <div class="sub-cross-links">
+    <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+    <a href="/gastronomia/">🍴 <span data-t="nav_food">Comer</span></a>
+    <a href="/que-ver/">✨ <span data-t="nav_seewhat">Qué ver</span></a>
+    <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+  </div>
+</div>
+
+<div class="sub-foot">
+  <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
+</div>
+
+<script src="/langs.js"></script>
+<script>
+/* Claves de traducción exclusivas de esta página, fusionadas en LANGS
+   antes de que subi18n.js aplique el idioma (sin tocar langs.js). */
+(function(){
+  var X = {
+    es:{ apoyar_tag:"💛 Proyecto independiente · Hecho en Pomaire", apoyar_b1_t:"🔄 Siempre actualizado", apoyar_b1_d:"Horarios, contactos y datos revisados constantemente.", apoyar_b2_t:"🚫 Sin publicidad", apoyar_b2_d:"Una guía limpia, sin anuncios ni rastreo.", apoyar_b3_t:"🤝 Apoyo local", apoyar_b3_d:"Damos visibilidad a los artesanos y locales del pueblo.", apoyar_other_t:"Otras formas de apoyar", apoyar_share:"📲 Compartir la guía", apoyar_follow:"📸 Síguenos en Instagram" },
+    en:{ apoyar_tag:"💛 Independent project · Made in Pomaire", apoyar_b1_t:"🔄 Always up to date", apoyar_b1_d:"Hours, contacts and details checked constantly.", apoyar_b2_t:"🚫 Ad-free", apoyar_b2_d:"A clean guide, with no ads or tracking.", apoyar_b3_t:"🤝 Local support", apoyar_b3_d:"We give visibility to the village's artisans and shops.", apoyar_other_t:"Other ways to support", apoyar_share:"📲 Share the guide", apoyar_follow:"📸 Follow us on Instagram" },
+    pt:{ apoyar_tag:"💛 Projeto independente · Feito em Pomaire", apoyar_b1_t:"🔄 Sempre atualizado", apoyar_b1_d:"Horários, contatos e dados revisados constantemente.", apoyar_b2_t:"🚫 Sem publicidade", apoyar_b2_d:"Um guia limpo, sem anúncios nem rastreamento.", apoyar_b3_t:"🤝 Apoio local", apoyar_b3_d:"Damos visibilidade aos artesãos e comércios do vilarejo.", apoyar_other_t:"Outras formas de apoiar", apoyar_share:"📲 Compartilhar o guia", apoyar_follow:"📸 Siga-nos no Instagram" },
+    fr:{ apoyar_tag:"💛 Projet indépendant · Fait à Pomaire", apoyar_b1_t:"🔄 Toujours à jour", apoyar_b1_d:"Horaires, contacts et infos vérifiés en permanence.", apoyar_b2_t:"🚫 Sans publicité", apoyar_b2_d:"Un guide épuré, sans pub ni traçage.", apoyar_b3_t:"🤝 Soutien local", apoyar_b3_d:"Nous donnons de la visibilité aux artisans et commerces du village.", apoyar_other_t:"Autres façons de soutenir", apoyar_share:"📲 Partager le guide", apoyar_follow:"📸 Suivez-nous sur Instagram" },
+    ru:{ apoyar_tag:"💛 Независимый проект · Сделано в Помайре", apoyar_b1_t:"🔄 Всегда актуально", apoyar_b1_d:"Часы работы, контакты и данные постоянно обновляются.", apoyar_b2_t:"🚫 Без рекламы", apoyar_b2_d:"Чистый гид — без рекламы и слежки.", apoyar_b3_t:"🤝 Поддержка местных", apoyar_b3_d:"Мы продвигаем мастеров и заведения посёлка.", apoyar_other_t:"Другие способы поддержать", apoyar_share:"📲 Поделиться гидом", apoyar_follow:"📸 Подписывайтесь в Instagram" },
+    ja:{ apoyar_tag:"💛 独立プロジェクト · ポマイレ発", apoyar_b1_t:"🔄 常に最新", apoyar_b1_d:"営業時間・連絡先・情報を随時更新。", apoyar_b2_t:"🚫 広告なし", apoyar_b2_d:"広告も追跡もない、すっきりしたガイド。", apoyar_b3_t:"🤝 地元を応援", apoyar_b3_d:"村の職人や店舗を紹介しています。", apoyar_other_t:"他の応援方法", apoyar_share:"📲 ガイドを共有", apoyar_follow:"📸 Instagramでフォロー" },
+    zh:{ apoyar_tag:"💛 独立项目 · 波迈雷出品", apoyar_b1_t:"🔄 持续更新", apoyar_b1_d:"营业时间、联系方式和信息持续核实。", apoyar_b2_t:"🚫 无广告", apoyar_b2_d:"干净的指南，无广告、无追踪。", apoyar_b3_t:"🤝 支持本地", apoyar_b3_d:"我们为村里的工匠和店铺提供曝光。", apoyar_other_t:"其他支持方式", apoyar_share:"📲 分享指南", apoyar_follow:"📸 在 Instagram 关注我们" }
+  };
+  if (window.LANGS) { for (var l in X) { if (window.LANGS[l]) { for (var k in X[l]) window.LANGS[l][k] = X[l][k]; } } }
+})();
+function shareApoyar(){
+  var L = window.LANGS || {}, lang = document.documentElement.lang || 'es';
+  var t = (L[lang] && L[lang].wa_share) || (L.es && L.es.wa_share) || 'https://pomaire360.cl/';
+  if (navigator.share) {
+    navigator.share({ title: 'Pomaire 360', text: t, url: 'https://pomaire360.cl/' }).catch(function(){});
+  } else {
+    window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener');
+  }
+}
+</script>
+<script src="/subi18n.js"></script>
+<script src="/a11y.js"></script>
+</body>
+</html>
