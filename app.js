@@ -1395,6 +1395,8 @@ function applyLang(lang) {
   }
   // persist
   try { localStorage.setItem('p360lang', lang); } catch(e){}
+  // Recalcular la altura de la barra promo fija (el texto cambia de largo por idioma)
+  if (typeof window.updatePromoHeight === 'function') window.updatePromoHeight();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -2417,13 +2419,13 @@ if ('serviceWorker' in navigator) {
 
 /* ══ Aviso flotante de invierno (Home · marquee) ══ */
 const HOME_PROMO_I18N = {
-  es:{ home_winter_promo:"Negocios de Pomaire abiertos durante las vacaciones de invierno" },
-  en:{ home_winter_promo:"Pomaire businesses open during the winter break" },
-  pt:{ home_winter_promo:"Comércios de Pomaire abertos durante as férias de inverno" },
-  fr:{ home_winter_promo:"Commerces de Pomaire ouverts pendant les vacances d'hiver" },
-  ru:{ home_winter_promo:"Заведения Помайре открыты во время зимних каникул" },
-  ja:{ home_winter_promo:"ポマイレの店舗は冬休み中も営業中" },
-  zh:{ home_winter_promo:"波马伊雷的店铺在冬季假期照常营业" }
+  es:{ home_winter_promo:"Los locales estarán abiertos toda la semana y fines de semana durante las vacaciones de invierno" },
+  en:{ home_winter_promo:"Shops open all week and weekends during the winter break" },
+  pt:{ home_winter_promo:"Comércios abertos a semana toda e fins de semana durante as férias de inverno" },
+  fr:{ home_winter_promo:"Commerces ouverts toute la semaine et le week-end pendant les vacances d'hiver" },
+  ru:{ home_winter_promo:"Заведения открыты всю неделю и в выходные во время зимних каникул" },
+  ja:{ home_winter_promo:"冬休み期間中、店舗は平日も週末も営業しています" },
+  zh:{ home_winter_promo:"冬季假期期间，店铺全周及周末照常营业" }
 };
 Object.keys(HOME_PROMO_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], HOME_PROMO_I18N[l]); });
 
