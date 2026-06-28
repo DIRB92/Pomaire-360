@@ -1780,9 +1780,9 @@
   padding: 4.5rem 1.3rem 5rem;
   text-align: center;
   background:
-    radial-gradient(circle at 18% 18%, rgba(255,212,140,.35), transparent 46%),
-    radial-gradient(circle at 85% 12%, rgba(255,170,90,.30), transparent 42%),
-    linear-gradient(160deg, #B85C2C 0%, #8C3D16 55%, #6E2E10 100%);
+    radial-gradient(circle at 18% 18%, rgba(255,200,120,.18), transparent 45%),
+    radial-gradient(circle at 85% 12%, rgba(255,150,70,.16), transparent 42%),
+    linear-gradient(160deg, #9B481F 0%, #7A3414 55%, #5C2410 100%);
 }
 .apoyar-hero::before,
 .apoyar-hero::after {
@@ -1801,21 +1801,21 @@
   z-index: 1;
   max-width: 620px;
   margin: 0 auto;
-  background: rgba(255,255,255,.08);
+  background: rgba(48,22,10,.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.20);
   border-radius: 26px;
   padding: 2.6rem 1.8rem 2.4rem;
-  box-shadow: 0 24px 60px rgba(40,15,0,.40);
+  box-shadow: 0 24px 60px rgba(40,15,0,.45);
 }
 .apoyar-badge {
   display: inline-block;
-  background: rgba(255,255,255,.16);
-  border: 1px solid rgba(255,255,255,.28);
-  color: #FFE9C9;
+  background: rgba(255,255,255,.22);
+  border: 1px solid rgba(255,255,255,.40);
+  color: #FFF3E2;
   font-size: .78rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: .02em;
   padding: .35rem .9rem;
   border-radius: 50px;
@@ -1841,14 +1841,15 @@
   color: #fff;
   margin: 0 0 .5rem;
   line-height: 1.12;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
 }
 .apoyar-subtitle {
-  color: #FFE2BD;
+  color: #FFE7C7;
   font-size: 1rem;
   margin: 0 0 1.4rem;
 }
 .apoyar-text {
-  color: rgba(255,255,255,.92);
+  color: #fff;
   font-size: 1rem;
   line-height: 1.6;
   max-width: 480px;
@@ -1876,7 +1877,7 @@
   50% { box-shadow: 0 10px 38px rgba(255,200,110,.85); }
 }
 .apoyar-note {
-  color: rgba(255,255,255,.65);
+  color: rgba(255,255,255,.82);
   font-size: .82rem;
   margin: 1.2rem auto 0;
   max-width: 360px;
@@ -1893,8 +1894,8 @@
   z-index: 1;
 }
 .apoyar-benefit {
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(30,14,6,.42);
+  border: 1px solid rgba(255,255,255,.20);
   border-radius: 18px;
   padding: 1.3rem 1rem;
   text-align: center;
@@ -1902,9 +1903,9 @@
   -webkit-backdrop-filter: blur(6px);
   transition: transform .18s, background .2s;
 }
-.apoyar-benefit:hover { transform: translateY(-4px); background: rgba(255,255,255,.16); }
+.apoyar-benefit:hover { transform: translateY(-4px); background: rgba(30,14,6,.55); }
 .apoyar-benefit h3 { color: #fff; font-size: 1rem; margin: 0 0 .4rem; }
-.apoyar-benefit p { color: rgba(255,255,255,.78); font-size: .85rem; line-height: 1.5; margin: 0; }
+.apoyar-benefit p { color: rgba(255,255,255,.88); font-size: .85rem; line-height: 1.5; margin: 0; }
 
 /* Otras formas de apoyar */
 .apoyar-other {
