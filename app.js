@@ -1449,8 +1449,25 @@ async function loadWeather() {
       <div class="weather-stat"><div class="ws-val">${Math.round(c.apparent_temperature)}°C</div><div class="ws-lab">Sensación</div></div>
       ${forecast}
     `;
+
+    // Barra de clima alargada (debajo del menú) — reutiliza los mismos datos
+    const bar = document.getElementById('weather-bar');
+    if (bar) {
+      bar.querySelector('.weather-bar-inner').innerHTML =
+        `<span class="wb-item wb-loc">📍 Pomaire</span>` +
+        `<span class="wb-sep"></span>` +
+        `<span class="wb-item wb-now">${icon} <strong>${Math.round(c.temperature_2m)}°C</strong> <span class="wb-desc">${desc}</span></span>` +
+        `<span class="wb-sep"></span>` +
+        `<span class="wb-item">💧 ${c.relative_humidity_2m}%</span>` +
+        `<span class="wb-sep"></span>` +
+        `<span class="wb-item">💨 ${Math.round(c.wind_speed_10m)} km/h</span>` +
+        `<span class="wb-sep"></span>` +
+        `<span class="wb-item">🌡️ ${Math.round(c.apparent_temperature)}°C</span>`;
+    }
   } catch(e) {
-    box.innerHTML = '<div class="weather-loading">No se pudo cargar el clima. Verifica tu conexión.</div>';
+    if (box) box.innerHTML = '<div class="weather-loading">No se pudo cargar el clima. Verifica tu conexión.</div>';
+    const bar = document.getElementById('weather-bar');
+    if (bar) bar.querySelector('.weather-bar-inner').innerHTML = '<span class="wb-loading">📍 Pomaire · clima no disponible por ahora</span>';
   }
 }
 loadWeather();

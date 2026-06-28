@@ -1950,3 +1950,48 @@
 @media (prefers-reduced-motion: reduce) {
   .apoyar-emoji, .apoyar-btn { animation: none; }
 }
+
+
+/* ════════════════════════════════════════════════════════════════
+   BARRA DE CLIMA ALARGADA (debajo del menú)
+   ════════════════════════════════════════════════════════════════ */
+.weather-bar {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(90deg, #FFF6EA 0%, #FCE7D1 50%, #FFF6EA 100%);
+  border-bottom: 1px solid rgba(184,92,44,.18);
+  box-shadow: 0 2px 8px rgba(90,40,10,.06);
+  color: var(--clay-dark, #6E2E10);
+  transition: background .25s;
+}
+.weather-bar:hover { background: linear-gradient(90deg, #FFF0DE 0%, #FADCBE 50%, #FFF0DE 100%); }
+.weather-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: .5rem 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  font-size: .9rem;
+  line-height: 1.2;
+}
+.weather-bar-inner::-webkit-scrollbar { display: none; }
+.wb-item { display: inline-flex; align-items: center; gap: .35rem; white-space: nowrap; }
+.wb-loc { font-weight: 700; }
+.wb-now strong { font-size: 1.05rem; font-weight: 800; }
+.wb-desc { color: #9A6038; }
+.wb-sep { flex: 0 0 auto; width: 1px; height: 1.05rem; background: rgba(184,92,44,.28); }
+.wb-loading { color: #9A6038; font-size: .88rem; padding: .1rem 0; }
+
+@media (max-width: 560px) {
+  .weather-bar-inner { justify-content: flex-start; gap: .85rem; font-size: .84rem; }
+  .wb-desc { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .weather-bar { transition: none; }
+}
