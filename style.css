@@ -31,16 +31,18 @@
     position: sticky;
     top: var(--promoH, 0px);
     z-index: 900;
-    background: rgba(184,92,44,.96);
-    backdrop-filter: blur(6px);
-    padding: .7rem 1.4rem;
+    background: linear-gradient(135deg, rgba(192,98,48,.97) 0%, rgba(156,70,30,.97) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: .6rem 1.4rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: .4rem .7rem;
     overflow: visible;
     height: auto;
-    box-shadow: 0 3px 14px rgba(90,40,10,.18);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 4px 18px rgba(90,40,10,.22);
   }
 
   .nav-brand {
@@ -194,60 +196,59 @@
   }
 
   @media (max-width: 860px) {
-    nav { gap: .4rem .5rem; }
-    /* Menú colapsable en móvil: oculto por defecto, se abre con la hamburguesa */
-    .nav-burger { display: inline-flex; align-items: center; order: 1; }
+    nav { gap: .4rem .5rem; padding: .55rem 1rem; }
+
+    /* El menú YA NO se colapsa: la hamburguesa desaparece y las píldoras
+       quedan SIEMPRE visibles, repartidas en filas (wrap) y centradas. */
+    .nav-burger { display: none !important; }
+
+    .lang-selector { order: 2; margin-left: auto; }
+
     .nav-links-wrap {
-      display: none;
+      display: flex !important;
       flex-basis: 100%;
-      flex-direction: column;
-      align-items: stretch;
-      gap: .25rem;
-      margin-top: .4rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      margin-top: .5rem;
       order: 3;
     }
-    .nav-links-wrap.open { display: flex; }
 
-    /* ── Botones del menú móvil: visibles, interactivos y llamativos ── */
+    /* Píldoras compactas pero táctiles (ancho automático, no a pantalla completa) */
+    .nav-group { width: auto; position: relative; }
     .nav-group-btn,
     .nav-map-btn,
     .nav-cta {
-      width: 100%;
-      padding: .6rem 1rem;
-      font-size: .9rem;
-      border-radius: 16px;
+      width: auto;
+      padding: .45rem .9rem;
+      font-size: .82rem;
+      border-radius: 22px;
       box-shadow: 0 2px 8px rgba(0,0,0,.14);
       transition: transform .18s cubic-bezier(.34,1.56,.64,1),
                   background .2s, border-color .2s, box-shadow .2s, color .2s;
     }
-    /* Botones de categoría y mapa con vidrio sutil */
     .nav-group-btn,
     .nav-map-btn {
       background: rgba(255,255,255,.16);
       border: 1.5px solid rgba(255,255,255,.35);
     }
-    .nav-group-btn { justify-content: space-between; }
-
-    /* Hover / categoría abierta → resaltado claro */
     .nav-group-btn:hover,
     .nav-map-btn:hover,
     .nav-group.open .nav-group-btn {
       background: #fff;
       border-color: #fff;
       color: var(--clay-dark);
-      transform: translateY(-2px) scale(1.015);
+      transform: translateY(-2px) scale(1.02);
       box-shadow: 0 6px 16px rgba(0,0,0,.25);
     }
-    /* Feedback táctil al presionar */
     .nav-group-btn:active,
     .nav-map-btn:active,
     .nav-cta:active { transform: scale(.96); box-shadow: 0 1px 5px rgba(0,0,0,.2); }
 
     /* CTA "Apoyar" destacado con degradado cálido */
     .nav-cta {
-      justify-content: center;
-      margin-top: .25rem;
-      font-size: .92rem;
       background: linear-gradient(135deg, #FFE2AE 0%, #FFC56B 100%);
       box-shadow: 0 4px 14px rgba(255,170,60,.45);
     }
@@ -255,41 +256,31 @@
       transform: translateY(-2px) scale(1.03);
       box-shadow: 0 8px 22px rgba(255,170,60,.6);
     }
-    .nav-map-btn { justify-content: center; margin-top: .15rem; }
 
-    /* Animación de entrada escalonada al abrir el menú */
-    .nav-links-wrap.open > * {
-      animation: navItemIn .3s ease both;
-    }
-    .nav-links-wrap.open > *:nth-child(1) { animation-delay: .03s; }
-    .nav-links-wrap.open > *:nth-child(2) { animation-delay: .06s; }
-    .nav-links-wrap.open > *:nth-child(3) { animation-delay: .09s; }
-    .nav-links-wrap.open > *:nth-child(4) { animation-delay: .12s; }
-    .nav-links-wrap.open > *:nth-child(5) { animation-delay: .15s; }
-    .nav-links-wrap.open > *:nth-child(6) { animation-delay: .18s; }
-    @keyframes navItemIn {
-      from { opacity: 0; transform: translateX(-14px); }
-      to   { opacity: 1; transform: none; }
-    }
-
-    .nav-menu a { padding: .5rem .8rem; font-size: .86rem; gap: .55rem; }
-    .nav-group { width: 100%; }
+    /* Dropdowns como popover centrado bajo su botón (no empujan la fila) */
     .nav-menu {
-      position: static;
-      box-shadow: none;
-      border: none;
-      background: rgba(255,255,255,.12);
-      min-width: 0;
-      margin: .15rem 0 .3rem;
+      position: absolute;
+      top: calc(100% + .5rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 14px 36px rgba(0,0,0,.28);
+      border: 1px solid rgba(184,92,44,.12);
+      min-width: 220px;
+      max-width: min(280px, 88vw);
+      padding: .45rem;
+      margin: 0;
     }
-    .nav-menu a { color: #fff; }
-    .nav-menu a:hover { background: rgba(255,255,255,.2); color: #fff; }
-    .lang-selector { order: 2; }
+    .nav-group.open .nav-menu { display: block; animation: navDropM .18s ease; }
+    @keyframes navDropM { from { opacity: 0; } to { opacity: 1; } }
+    .nav-menu a { color: var(--text); padding: .6rem .85rem; font-size: .9rem; gap: .6rem; }
+    .nav-menu a:hover { background: var(--smoke); color: var(--clay-dark); padding-left: 1.1rem; }
   }
 
   /* Respeta la preferencia de menos animación */
   @media (prefers-reduced-motion: reduce) {
-    .nav-links-wrap.open > * { animation: none !important; }
+    .nav-group.open .nav-menu { animation: none !important; }
   }
 
   /* ── HERO ────────────────────────────────────────── */
