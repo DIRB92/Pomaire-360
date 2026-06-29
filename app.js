@@ -1648,6 +1648,7 @@ const PLACES = [
   { id:'fo9', cat:'food', icon:'🍽️', lat:-33.65165080014213, lng:-71.14996004940937, name:'Restaurante La Cañada', desc:'Roberto Bravo 307', addr:'Roberto Bravo 307, Pomaire', gmap:'https://maps.app.goo.gl/FQvXzcwckKkUEpSt5' },
   { id:'fo10', cat:'food', icon:'🍬', lat:-33.651957, lng:-71.149992, name:'Dulcería Heladería Dulcepo', desc:'Dulces, postres y helados', addr:'Pomaire', gmap:'https://maps.app.goo.gl/JJJJmuB2tGdpF6tu7', ig:'dulcepo.cl', wsp:'56933925873' },
   { id:'fo11', cat:'food', icon:'🍽️', lat:-33.65435582442494, lng:-71.150266197532, name:'Restaurante San Pedro - Pomaire', desc:'Roto Chileno 332', addr:'Roto Chileno 332, Pomaire', gmap:'https://maps.app.goo.gl/UM7eCtd4QQAMXpwK7' },
+  { id:'fo12', cat:'food', icon:'🍽️', lat:-33.667105, lng:-71.114189, name:'La Escondida', desc:'Restaurante · Pomaire', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/yUXuFcNrwCdLx2UU8' },
   // ── LODGING ──
   { id:'lo1', cat:'lodging', icon:'🛏️', lat:-33.65198924949971, lng:-71.15296875422749, name:'Hostal Pomaire', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/x98TVQ53oSQwUmNX6' },
   { id:'lo2', cat:'lodging', icon:'🏡', lat:-33.64978985059087, lng:-71.15138707552667, name:'La Quinta de la Plaza', desc:'San Antonio 410', addr:'San Antonio 410, Pomaire', gmap:'https://maps.app.goo.gl/YBcasr5ChiRt6etNA', wsp:'56999598919', web:'https://laquintadelaplaza-cl.webnode.cl/' },
