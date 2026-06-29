@@ -1580,6 +1580,37 @@
     .or-dot { width: 32px; height: 32px; font-size: .95rem; }
   }
 
+  /* ── RECORRIDOS INTERACTIVOS ─────────────────────── */
+  .tour-intro {
+    font-size: .82rem; color: var(--clay-dark); font-weight: 600;
+    background: rgba(184,92,44,.08); border: 1px dashed var(--clay-light);
+    border-radius: 12px; padding: .6rem .85rem; margin: 0 0 1.1rem;
+  }
+  .stop-select {
+    display: block; width: 100%; max-width: 340px; margin: .3rem 0 .15rem;
+    font-family: inherit; font-size: .85rem; font-weight: 600; color: var(--clay-dark);
+    background: var(--white); border: 1.5px solid var(--clay-light); border-radius: 10px;
+    padding: .4rem .6rem; cursor: pointer; transition: border-color .15s, box-shadow .15s;
+  }
+  .stop-select:hover { border-color: var(--clay); }
+  .stop-select:focus { outline: none; border-color: var(--clay); box-shadow: 0 0 0 3px rgba(184,92,44,.18); }
+  .pick-label { font-size: .92rem; color: var(--text); display: block; }
+  .tour-content .pick-label { font-weight: 700; }
+  .pick-detail { font-size: .8rem; color: var(--muted); display: block; margin-top: .1rem; }
+  .pick-detail .pick-maplink { color: var(--clay); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .pick-detail .pick-maplink:hover { text-decoration: underline; }
+  .tour-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.2rem 0 .4rem; }
+  .tour-see, .tour-reset {
+    font-family: inherit; font-size: .85rem; font-weight: 700; cursor: pointer;
+    border-radius: 22px; padding: .55rem 1.1rem; border: 1.5px solid var(--clay);
+    transition: background .15s, color .15s, transform .1s;
+  }
+  .tour-see { background: var(--clay); color: #fff; }
+  .tour-see:hover { background: var(--clay-dark); }
+  .tour-reset { background: transparent; color: var(--clay-dark); }
+  .tour-reset:hover { background: #FFE9D6; }
+  .tour-see:active, .tour-reset:active { transform: scale(.97); }
+
   /* ── PANEL DE ACCESIBILIDAD ──────────────────────── */
   .a11y { position: fixed; left: 1rem; bottom: 1rem; z-index: 1000; }
   .a11y-toggle {

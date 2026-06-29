@@ -1945,6 +1945,34 @@ function clearRoute(resetUI = true) {
   }
 }
 
+// Dibuja un recorrido personalizado a partir de una lista de IDs de lugares
+// (usado por los itinerarios interactivos en tour-interactive.js)
+function showCustomRoute(ids, color) {
+  if (!leafletMap || !Array.isArray(ids)) return;
+  clearRoute(true);
+  const pts = ids
+    .map(id => { const p = PLACES.find(x => x.id === id); return p ? [p.lat, p.lng] : null; })
+    .filter(Boolean);
+  if (pts.length === 0) return;
+
+  if (pts.length >= 2) {
+    routeLine = L.polyline(pts, { color: color || '#8C3D16', weight: 4, opacity: 0.8, dashArray: '8,6' }).addTo(leafletMap);
+  }
+
+  Object.entries(markers).forEach(([id, marker]) => {
+    const el = marker.getElement();
+    if (el) el.style.opacity = ids.includes(id) ? '1' : '0.25';
+  });
+
+  if (routeLine) leafletMap.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+  else leafletMap.setView(pts[0], 16);
+
+  document.getElementById('routeClearBtn').style.display = 'inline-block';
+}
+window.showCustomRoute = showCustomRoute;
+window.clearRoute = clearRoute;
+window.focusPlace = focusPlace;
+
 document.addEventListener('DOMContentLoaded', initMap);
 
 /* ===== */
@@ -2268,7 +2296,7 @@ function renderAllDirs() {
 }
 
 // Permite a applyLang() re-renderizar los directorios en el idioma actual
-window.translateContent = function(lang) { renderAllDirs(); };
+window.translateContent = function(lang) { renderAllDirs(); if (typeof window.refreshTourPicks === 'function') window.refreshTourPicks(lang); };
 
 document.addEventListener('DOMContentLoaded', renderAllDirs);
 

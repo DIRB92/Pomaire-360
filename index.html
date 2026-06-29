@@ -142,6 +142,7 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script defer src="seasonal.js"></script>
 <script defer src="app.js"></script>
+<script defer src="tour-interactive.js"></script>
 </head>
 <body>
 
@@ -384,6 +385,7 @@
         <span class="or-badge" data-t="or_badge3">📅 Día completo desde Santiago</span>
       </div>
 
+      <p class="tour-intro" data-group="official"></p>
       <div class="or-itinerary">
         <div class="or-stop">
           <div class="or-time">08:00</div><div class="or-dot">🚌</div>
@@ -393,30 +395,35 @@
           <div class="or-time">09:30</div><div class="or-dot">📍</div>
           <div class="or-txt"><strong data-t="or_st2_t">Llegada a Pomaire</strong><span data-t="or_st2_d">Recibimiento en la Oficina de Información Turística (OIT), en la Plaza de Pomaire.</span></div>
         </div>
-        <div class="or-stop">
+        <div class="or-stop or-pick" data-pick="p_or_breakfast">
           <div class="or-time">10:00</div><div class="or-dot">☕</div>
-          <div class="or-txt"><strong data-t="or_st3_t">Desayuno en Imperio Pomaire</strong><span data-t="or_st3_d">Roberto Bravo 78 · Sabores típicos chilenos para comenzar el día.</span></div>
+          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Desayuno"></select><span class="pick-detail"></span></div>
         </div>
-        <div class="or-stop">
+        <div class="or-stop or-pick" data-pick="p_or_workshop">
           <div class="or-time">12:00</div><div class="or-dot">🏺</div>
-          <div class="or-txt"><strong data-t="or_st4_t">Taller de greda en la Granja Alfarera</strong><span data-t="or_st4_d">Bernardo O'Higgins 260 · Experiencia inmersiva: del torno al horno.</span></div>
+          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Taller de greda"></select><span class="pick-detail"></span></div>
         </div>
-        <div class="or-stop">
+        <div class="or-stop or-pick" data-pick="p_or_lunch">
           <div class="or-time">13:30</div><div class="or-dot">🥘</div>
-          <div class="or-txt"><strong data-t="or_st5_t">Almuerzo en Restaurant La Greda</strong><span data-t="or_st5_d">Cocina criolla y parrilla chilena con más de 30 años de historia.</span></div>
+          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Almuerzo"></select><span class="pick-detail"></span></div>
         </div>
-        <div class="or-stop">
+        <div class="or-stop or-pick" data-pick="p_or_green">
           <div class="or-time">15:10</div><div class="or-dot">🌿</div>
-          <div class="or-txt"><strong data-t="or_st6_t">Visita al Vivero Luchín</strong><span data-t="or_st6_d">San Antonio 191 · Un respiro verde entre plantas, flores y maceteros.</span></div>
+          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Pausa verde"></select><span class="pick-detail"></span></div>
         </div>
-        <div class="or-stop">
+        <div class="or-stop or-pick" data-pick="p_or_shop">
           <div class="or-time">16:10</div><div class="or-dot">🛍️</div>
-          <div class="or-txt"><strong data-t="or_st7_t">Tarde libre de compras</strong><span data-t="or_st7_d">Recorre los talleres y tiendas de greda de la calle Roberto Bravo.</span></div>
+          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Compras de greda"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop">
           <div class="or-time">18:00</div><div class="or-dot">🏠</div>
           <div class="or-txt"><strong data-t="or_st8_t">Retorno a Santiago</strong><span data-t="or_st8_d">Fin del recorrido con recuerdos hechos a mano.</span></div>
         </div>
+      </div>
+
+      <div class="tour-actions" data-group="official">
+        <button type="button" class="tour-see"></button>
+        <button type="button" class="tour-reset"></button>
       </div>
 
       <div class="or-features">
@@ -440,53 +447,60 @@
     </div>
 
     <h3 style="text-align:center;color:var(--muted);font-size:.88rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.5rem;" class="reveal free-tour-label" data-t="free_tour_label">💡 Recorrido libre · explora a tu ritmo</h3>
+    <p class="tour-intro" data-group="free"></p>
     <div class="tour-timeline reveal">
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_parking">
         <div class="tour-time">09:00</div>
         <div class="tour-dot">🅿️</div>
         <div class="tour-content">
-          <h3 data-t="tour_1_title">Llegada y estacionamiento</h3>
-          <p data-t="tour_1_desc">Llega antes de las 10:00 para conseguir estacionamiento en calle Rafael Morandé. Los fines de semana se llena rápido.</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Estacionamiento"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_breakfast">
         <div class="tour-time">09:30</div>
         <div class="tour-dot">☕</div>
         <div class="tour-content">
-          <h3 data-t="tour_2_title">Desayuno en la plaza</h3>
-          <p data-t="tour_2_desc">Toma un café o desayuno liviano en algún local de la plaza central antes de que empiece la actividad.</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Desayuno"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_workshop">
         <div class="tour-time">10:00</div>
         <div class="tour-dot">🏺</div>
         <div class="tour-content">
-          <h3 data-t="tour_3_title">Recorre los talleres alfareros</h3>
-          <p data-t="tour_3_desc">Camina por la calle principal y entra a los talleres. Mira a los artesanos trabajar en el torno y conoce el proceso de la greda.</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Talleres alfareros"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_shop">
         <div class="tour-time">12:00</div>
         <div class="tour-dot">🛍️</div>
         <div class="tour-content">
-          <h3 data-t="tour_4_title">Compras de artesanía</h3>
-          <p data-t="tour_4_desc">Compra directamente a los artesanos. Jarras, cazuelas, tinajas y el famoso chanchito alcancía de greda.</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Compras de artesanía"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_lunch">
         <div class="tour-time">13:00</div>
         <div class="tour-dot">🥘</div>
         <div class="tour-content">
-          <h3 data-t="tour_5_title">Almuerzo típico</h3>
-          <p data-t="tour_5_desc">Siéntate a disfrutar una cazuela de vacuno o empanada gigante servida en recipiente de greda. ¡El plato más icónico de Pomaire!</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Almuerzo típico"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
-      <div class="tour-step">
+      <div class="tour-step tour-pick" data-pick="p_ft_around">
         <div class="tour-time">15:00</div>
         <div class="tour-dot">🏔️</div>
         <div class="tour-content">
-          <h3 data-t="tour_6_title">Paseo por los alrededores</h3>
-          <p data-t="tour_6_desc">Si tienes auto, date una vuelta por Los Chiñihues. Paisaje rural, viñedos y tranquilidad a pocos minutos del casco turístico.</p>
+          <strong class="pick-label"></strong>
+          <select class="stop-select" aria-label="Paseo por los alrededores"></select>
+          <span class="pick-detail"></span>
         </div>
       </div>
       <div class="tour-step">
@@ -497,6 +511,11 @@
           <p data-t="tour_7_desc">Última vuelta por los puestos antes de partir. Muchos artesanos hacen descuentos al final del día. ¡Buen viaje!</p>
         </div>
       </div>
+    </div>
+
+    <div class="tour-actions" data-group="free">
+      <button type="button" class="tour-see"></button>
+      <button type="button" class="tour-reset"></button>
     </div>
   </div>
 </section>
