@@ -1167,6 +1167,18 @@ const MFB_I18N = {
 };
 Object.keys(MFB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], MFB_I18N[l]); });
 
+/* ══ Propaganda flotante del Chancho (Home) ══ */
+const FPB_I18N = {
+  es:{ fpb_tag:'💎 Imperdible', fpb_text:'El chancho alcancía de greda <strong>más grande del mundo</strong>', fpb_cta:'Conócelo →', fpb_close:'Cerrar' },
+  en:{ fpb_tag:'💎 Must-see', fpb_text:"The world's <strong>largest clay piggy bank</strong>", fpb_cta:'Discover it →', fpb_close:'Close' },
+  pt:{ fpb_tag:'💎 Imperdível', fpb_text:'O <strong>maior cofrinho de barro do mundo</strong>', fpb_cta:'Conheça →', fpb_close:'Fechar' },
+  fr:{ fpb_tag:'💎 À voir', fpb_text:'La <strong>plus grande tirelire en argile du monde</strong>', fpb_cta:'Découvrir →', fpb_close:'Fermer' },
+  ru:{ fpb_tag:'💎 Не пропустите', fpb_text:'<strong>Самая большая глиняная копилка-свинка</strong> в мире', fpb_cta:'Открыть →', fpb_close:'Закрыть' },
+  ja:{ fpb_tag:'💎 必見', fpb_text:'<strong>世界最大の陶器の貯金箱の豚</strong>', fpb_cta:'見てみる →', fpb_close:'閉じる' },
+  zh:{ fpb_tag:'💎 必看', fpb_text:'<strong>世界最大的陶土小猪存钱罐</strong>', fpb_cta:'去看看 →', fpb_close:'关闭' }
+};
+Object.keys(FPB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], FPB_I18N[l]); });
+
 /* ══ GRÚAS Y MECÁNICOS (multiidioma) ══ */
 const GRUAS_I18N = {
   es: {
@@ -2488,4 +2500,81 @@ Object.keys(HOME_PROMO_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LA
   else syncHomePromo();
   window.addEventListener('load', syncHomePromo);
   window.addEventListener('resize', syncHomePromo);
+})();
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   PROPAGANDA FLOTANTE — El Chancho de greda más grande del mundo
+   Aparece en el Home tras un breve retraso, es llamativa, se puede
+   cerrar (se recuerda por unos días) y al hacer clic lleva a la página.
+   ════════════════════════════════════════════════════════════════ */
+(function () {
+  var STORE_KEY = 'p360_pig_float';
+  var REVISIT_DAYS = 3; // si la cierran, vuelve a aparecer pasados N días
+
+  function isDismissed() {
+    try {
+      var v = localStorage.getItem(STORE_KEY);
+      if (!v) return false;
+      var ts = parseInt(v, 10);
+      if (isNaN(ts)) return true;
+      return (Date.now() - ts) < REVISIT_DAYS * 86400000;
+    } catch (e) { return false; }
+  }
+
+  function init() {
+    var el = document.getElementById('floatPig');
+    if (!el) return;
+    if (isDismissed()) { el.remove(); return; }
+
+    var closeBtn = el.querySelector('.float-pig-close');
+
+    // aria-label del cierre en el idioma actual
+    try {
+      var lg = document.documentElement.lang || 'es';
+      if (typeof LANGS !== 'undefined' && LANGS[lg] && LANGS[lg].fpb_close && closeBtn) {
+        closeBtn.setAttribute('aria-label', LANGS[lg].fpb_close);
+      }
+    } catch (e) {}
+
+    function setHeightVar() {
+      document.documentElement.style.setProperty('--pig-h', el.offsetHeight + 'px');
+    }
+
+    function show() {
+      el.hidden = false;
+      requestAnimationFrame(function () {
+        setHeightVar();
+        el.classList.add('is-in');
+        document.body.classList.add('pig-open');
+      });
+    }
+
+    function hide() {
+      el.classList.remove('is-in');
+      el.classList.add('is-out');
+      document.body.classList.remove('pig-open');
+      try { localStorage.setItem(STORE_KEY, String(Date.now())); } catch (e) {}
+      setTimeout(function () { if (el && el.parentNode) el.remove(); }, 380);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        hide();
+      });
+    }
+
+    window.addEventListener('resize', function () { if (!el.hidden) setHeightVar(); });
+
+    setTimeout(show, 1600);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
