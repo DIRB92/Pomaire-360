@@ -2156,3 +2156,108 @@
   .sg-benefits { grid-template-columns: 1fr; }
   .sg-btn { flex: 1 1 100%; }
 }
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   PROPAGANDA FLOTANTE — El Chancho de greda más grande del mundo
+   ════════════════════════════════════════════════════════════════ */
+.float-pig {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  z-index: 1200;
+  width: min(94vw, 440px);
+  opacity: 0;
+  transform: translateX(-50%) translateY(22px);
+  pointer-events: none;
+  transition: opacity .4s ease, transform .45s cubic-bezier(.18,.9,.3,1.25);
+}
+.float-pig.is-in  { opacity: 1; transform: translateX(-50%) translateY(0);   pointer-events: auto; }
+.float-pig.is-out { opacity: 0; transform: translateX(-50%) translateY(22px); pointer-events: none; }
+
+.float-pig-link {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  background: linear-gradient(135deg, #FFF3E2, #FFE3C6);
+  border: 2px solid var(--clay);
+  border-radius: 18px;
+  padding: .75rem 1rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 0 rgba(184,92,44,.45);
+  animation: pigPulse 2.8s ease-out infinite;
+}
+.float-pig-link:hover {
+  background: linear-gradient(135deg, #FFEFD8, #FFDBB4);
+}
+@keyframes pigPulse {
+  0%   { box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 0   rgba(184,92,44,.45); }
+  70%  { box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 14px rgba(184,92,44,0); }
+  100% { box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 0   rgba(184,92,44,0); }
+}
+/* destello que cruza la tarjeta */
+.float-pig-link::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-18deg);
+  animation: pigShine 3.6s ease-in-out infinite;
+}
+@keyframes pigShine {
+  0%, 55% { left: -60%; }
+  100%    { left: 135%; }
+}
+
+.float-pig-emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 4px rgba(140,61,22,.25));
+  animation: pigBob 2.4s ease-in-out infinite;
+}
+@keyframes pigBob {
+  0%, 100% { transform: translateY(0)    rotate(-3deg); }
+  50%      { transform: translateY(-5px) rotate(3deg); }
+}
+
+.float-pig-body { display: flex; flex-direction: column; gap: .18rem; min-width: 0; }
+.float-pig-tag {
+  align-self: flex-start;
+  font-size: .64rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  color: #fff; background: var(--clay-dark);
+  padding: .16rem .55rem; border-radius: 999px;
+}
+.float-pig-text { font-size: .92rem; font-weight: 600; color: var(--clay-dark); line-height: 1.22; }
+.float-pig-text strong { font-weight: 800; }
+.float-pig-cta { font-size: .82rem; font-weight: 800; color: var(--clay); }
+
+.float-pig-close {
+  position: absolute; top: -11px; right: -11px; z-index: 3;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid #fff; background: var(--clay-dark); color: #fff;
+  font-size: .85rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,.28);
+  transition: background .15s, transform .15s;
+}
+.float-pig-close:hover { background: #2D1A0A; transform: scale(1.08); }
+
+/* En móvil ocupa casi todo el ancho y empuja los botones flotantes hacia arriba */
+@media (max-width: 680px) {
+  .float-pig { width: calc(100vw - 1.4rem); bottom: 16px; }
+  .float-pig-emoji { font-size: 2.1rem; }
+  body.pig-open .social-fab { bottom: calc(20px + var(--pig-h, 100px) + 14px); transition: bottom .35s ease; }
+  body.pig-open .a11y       { bottom: calc(1rem + var(--pig-h, 100px) + 14px); transition: bottom .35s ease; }
+}
+
+/* Respeta la preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .float-pig { transition: opacity .3s ease; transform: translateX(-50%); }
+  .float-pig.is-in, .float-pig.is-out { transform: translateX(-50%); }
+  .float-pig-link, .float-pig-link::after, .float-pig-emoji { animation: none; }
+}
