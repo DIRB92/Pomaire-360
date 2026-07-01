@@ -549,29 +549,161 @@
         <p data-t="s_gallery_sub">Imágenes del pueblo alfarero y sus tradiciones</p>
       </div>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-item">
-        <div class="gallery-placeholder">🏺<span data-t="gal_1">Alfarería en greda</span></div>
+
+    <!-- Bento Gallery Grid -->
+    <div class="bento-gallery reveal">
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Pomaire y sus calles">
+        <img src="img/gallery/pomaire-20240916_120821-thumb.jpg"
+             data-full="img/gallery/pomaire-20240916_120821-web.jpg"
+             alt="Vista panorámica de las calles de Pomaire, pueblo alfarero de Chile"
+             loading="lazy" width="1200" height="889">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_1">Pomaire y sus calles</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">🥘<span data-t="gal_2">Cazuela de barro</span></div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Tradición alfarera">
+        <img src="img/gallery/pomaire-20240930_123030-thumb.jpg"
+             data-full="img/gallery/pomaire-20240930_123030-web.jpg"
+             alt="Artesanía y tradición alfarera en Pomaire"
+             loading="lazy" width="1200" height="901">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_2">Tradición alfarera</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">🌾<span data-t="gal_3">Los Chiñihues</span></div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Piezas de greda artesanal">
+        <img src="img/gallery/pomaire-20240930_123149-thumb.jpg"
+             data-full="img/gallery/pomaire-20240930_123149-web.jpg"
+             alt="Piezas de greda artesanal hechas a mano en Pomaire"
+             loading="lazy" width="1200" height="901">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_3">Piezas de greda artesanal</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">🏘️<span data-t="gal_4">Calle principal</span></div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Vida en el pueblo">
+        <img src="img/gallery/pomaire-20241014_102408-thumb.jpg"
+             data-full="img/gallery/pomaire-20241014_102408-web.jpg"
+             alt="Vida cotidiana y comercio en el pueblo de Pomaire"
+             loading="lazy" width="1200" height="901">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_4">Vida en el pueblo</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">🎨<span data-t="gal_5">Artesanos trabajando</span></div>
+
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: El Chancho alcancía de greda más grande del mundo">
+        <img src="img/gallery/pomaire-chancho-greda-thumb.jpg"
+             data-full="img/gallery/pomaire-chancho-greda-web.jpg"
+             alt="El chancho alcancía de greda más grande del mundo en Pomaire"
+             loading="lazy" width="1200" height="900">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_5">El Chancho alcancía más grande del mundo 🐷</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">⛪<span data-t="gal_6">Iglesia San Antonio</span></div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Barrio Baquedano">
+        <img src="img/gallery/pomaire-barrio-baquedano-thumb.jpg"
+             data-full="img/gallery/pomaire-barrio-baquedano-web.jpg"
+             alt="Agrupación Social Cultural Deportiva Barrio Baquedano, Pomaire"
+             loading="lazy" width="1200" height="900">
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_6">Barrio Baquedano</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
       </div>
     </div>
+
     <p class="gallery-note reveal" data-t="gallery_note">📷 ¿Visitaste Pomaire? Comparte tus fotos etiquetando <strong>#Pomaire360</strong></p>
   </div>
 </section>
+
+<!-- Lightbox para galería -->
+<div class="gallery-lightbox" id="galleryLightbox" onclick="closeGalleryLightbox(event)" role="dialog" aria-label="Visor de imagen" aria-hidden="true">
+  <button class="glb-close" onclick="closeGalleryLightbox(event)" aria-label="Cerrar visor" type="button">✕</button>
+  <button class="glb-prev" onclick="navGallery(-1)" aria-label="Imagen anterior" type="button">‹</button>
+  <button class="glb-next" onclick="navGallery(1)" aria-label="Imagen siguiente" type="button">›</button>
+  <div class="glb-content">
+    <img id="glbImg" src="" alt="">
+    <p class="glb-caption" id="glbCaption"></p>
+  </div>
+  <div class="glb-counter" id="glbCounter"></div>
+</div>
+
+<script>
+/* ── Gallery Lightbox ─────────────────────────────── */
+(function(){
+  var lb = document.getElementById('galleryLightbox');
+  var lbImg = document.getElementById('glbImg');
+  var lbCap = document.getElementById('glbCaption');
+  var lbCount = document.getElementById('glbCounter');
+  var items = document.querySelectorAll('.bento-item');
+  var current = 0;
+
+  function openLightbox(idx){
+    current = idx;
+    showSlide();
+    lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showSlide(){
+    var item = items[current];
+    var img = item.querySelector('img');
+    var cap = item.querySelector('.bento-caption');
+    lbImg.src = img.getAttribute('data-full') || img.src;
+    lbImg.alt = img.alt;
+    lbCap.textContent = cap ? cap.textContent : '';
+    lbCount.textContent = (current+1) + ' / ' + items.length;
+  }
+
+  window.closeGalleryLightbox = function(e){
+    if(e.target === lb || e.target.classList.contains('glb-close')){
+      lb.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+  };
+
+  window.navGallery = function(dir){
+    current = (current + dir + items.length) % items.length;
+    showSlide();
+  };
+
+  items.forEach(function(item, i){
+    item.addEventListener('click', function(){ openLightbox(i); });
+    item.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(i); }
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(lb.getAttribute('aria-hidden') === 'false'){
+      if(e.key === 'Escape'){ lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; lbImg.src=''; }
+      if(e.key === 'ArrowRight') navGallery(1);
+      if(e.key === 'ArrowLeft') navGallery(-1);
+    }
+  });
+
+  /* Lazy-load full images on hover (preload) */
+  items.forEach(function(item){
+    item.addEventListener('mouseenter', function(){
+      var img = item.querySelector('img');
+      var full = img.getAttribute('data-full');
+      if(full && !item._preloaded){
+        var pre = new Image();
+        pre.src = full;
+        item._preloaded = true;
+      }
+    }, {once:true});
+  });
+})();
+</script>
 
 <!-- EVENTOS -->
 <section id="eventos">
