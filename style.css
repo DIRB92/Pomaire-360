@@ -461,14 +461,18 @@
     .wa-float, .ig-float, .tt-float { padding: .85rem; border-radius: 50%; }
     .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text { display: none; }
   }
-  /* Animación flotante (movimiento suave) de los botones de redes */
+  /* Animación flotante (movimiento suave) de los botones de redes.
+     Antes era infinita y permanente; ahora se ejecuta una sola vez al
+     cargar la página para llamar la atención sin competir de forma
+     continua con el resto de elementos flotantes (banner del Chancho,
+     accesibilidad, aviso de temporada). */
   @keyframes fab-bob {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-7px); }
   }
-  .social-fab .tt-float { animation: fab-bob 2.6s ease-in-out infinite; }
-  .social-fab .ig-float { animation: fab-bob 2.6s ease-in-out infinite .3s; }
-  .social-fab .wa-float { animation: fab-bob 2.6s ease-in-out infinite .6s; }
+  .social-fab .tt-float { animation: fab-bob 1.4s ease-in-out 2; }
+  .social-fab .ig-float { animation: fab-bob 1.4s ease-in-out 2 .15s; }
+  .social-fab .wa-float { animation: fab-bob 1.4s ease-in-out 2 .3s; }
   .social-fab .tt-float:hover, .social-fab .ig-float:hover, .social-fab .wa-float:hover { animation: none; }
   @media (prefers-reduced-motion: reduce) {
     .social-fab .tt-float, .social-fab .ig-float, .social-fab .wa-float { animation: none; }
@@ -486,7 +490,11 @@
     background: linear-gradient(90deg, #ffd166, #ff9966, #ff5e62, #ff9966, #ffd166);
     background-size: 300% 100%;
     box-shadow: 0 2px 14px rgba(0,0,0,.2);
-    animation: hp-shine 6s linear infinite, hp-glow 2.2s ease-in-out infinite;
+    /* Antes combinaba brillo de fondo + un parpadeo de sombra tipo alerta
+       urgente en bucle infinito. Se quita el parpadeo (hp-glow) para que
+       la barra no simule una notificación permanente; se conserva solo
+       el brillo de fondo, más sutil. */
+    animation: hp-shine 6s linear infinite;
   }
   .home-promo-track {
     display: inline-flex; align-items: center;
@@ -499,10 +507,6 @@
   .home-promo:hover .home-promo-track { animation-play-state: paused; }
   @keyframes hp-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @keyframes hp-shine { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
-  @keyframes hp-glow {
-    0%, 100% { box-shadow: 0 2px 14px rgba(255,94,98,.4); }
-    50%      { box-shadow: 0 5px 26px rgba(255,153,102,.85); }
-  }
   @keyframes hp-spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
   @media (prefers-reduced-motion: reduce) {
     .home-promo, .home-promo-track, .home-promo .hp-snow { animation: none; }
@@ -2188,7 +2192,11 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 0 rgba(184,92,44,.45);
-  animation: pigPulse 2.8s ease-out infinite;
+  /* Antes: pulso + brillo cruzado + bamboleo del emoji, las 3 en bucle
+     infinito simultáneo. Se deja solo un pulso suave y limitado a 3
+     repeticiones para llamar la atención sin competir visualmente de
+     forma permanente con el resto de elementos flotantes de la página. */
+  animation: pigPulse 2.8s ease-out 3;
 }
 .float-pig-link:hover {
   background: linear-gradient(135deg, #FFEFD8, #FFDBB4);
@@ -2198,31 +2206,12 @@
   70%  { box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 14px rgba(184,92,44,0); }
   100% { box-shadow: 0 14px 38px rgba(140,61,22,.30), 0 0 0 0   rgba(184,92,44,0); }
 }
-/* destello que cruza la tarjeta */
-.float-pig-link::after {
-  content: "";
-  position: absolute;
-  top: 0; left: -60%;
-  width: 40%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
-  transform: skewX(-18deg);
-  animation: pigShine 3.6s ease-in-out infinite;
-}
-@keyframes pigShine {
-  0%, 55% { left: -60%; }
-  100%    { left: 135%; }
-}
 
 .float-pig-emoji {
   font-size: 2.4rem;
   line-height: 1;
   flex-shrink: 0;
   filter: drop-shadow(0 3px 4px rgba(140,61,22,.25));
-  animation: pigBob 2.4s ease-in-out infinite;
-}
-@keyframes pigBob {
-  0%, 100% { transform: translateY(0)    rotate(-3deg); }
-  50%      { transform: translateY(-5px) rotate(3deg); }
 }
 
 .float-pig-body { display: flex; flex-direction: column; gap: .18rem; min-width: 0; }

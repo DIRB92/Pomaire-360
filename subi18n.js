@@ -22,6 +22,18 @@
   function selectLang(l){ applyLang(l); var s=document.getElementById('langSelector'); if(s)s.classList.remove('open'); }
   document.addEventListener('click',function(e){ var s=document.getElementById('langSelector'); if(s&&!e.target.closest('#langSelector')) s.classList.remove('open'); });
   window.toggleLangMenu=toggleLangMenu; window.selectLang=selectLang;
-  function init(){ var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){} var lang=saved||((navigator.language||'es').slice(0,2)); if(!window.LANGS||!window.LANGS[lang]) lang='es'; applyLang(lang); }
+  function getUrlLang(){
+    try{
+      var p=new URLSearchParams(window.location.search).get('lang');
+      return p?p.toLowerCase():null;
+    }catch(e){ return null; }
+  }
+  function init(){
+    var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){}
+    var urlLang=getUrlLang();
+    var lang=urlLang||saved||((navigator.language||'es').slice(0,2));
+    if(!window.LANGS||!window.LANGS[lang]) lang='es';
+    applyLang(lang);
+  }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();

@@ -5,7 +5,7 @@
    - Recursos estáticos: cache-first con actualización en segundo plano.
    - Tiles del mapa y API de clima: siempre red (no se interceptan). */
 
-const CACHE = 'pomaire360-v12';
+const CACHE = 'pomaire360-v13';
 
 // Solo recursos del mismo origen (cross-origin como Leaflet se cachea en runtime).
 const CORE = [
@@ -14,7 +14,9 @@ const CORE = [
   '/apoyar/',
   '/sugerencias/',
   '/style.css',
+  '/langs.js',
   '/app.js',
+  '/subi18n.js',
   '/site.webmanifest',
   '/favicon-32x32.png',
   '/favicon-96x96.png',
