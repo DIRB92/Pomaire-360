@@ -740,6 +740,108 @@
         <p data-t="s_events_sub">Festividades, ferias y celebraciones en Pomaire</p>
       </div>
     </div>
+
+    <!-- Schema Event JSON-LD (eventos principales de Pomaire) -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Fiesta de San Antonio de Padua — Pomaire",
+        "description": "Festividad religiosa patronal de Pomaire. Procesión, actividades culturales y gastronomía especial en la plaza.",
+        "startDate": "2026-06-13",
+        "endDate": "2026-06-13",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Plaza de Pomaire",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pomaire",
+            "addressRegion": "Región Metropolitana",
+            "addressCountry": "CL"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -33.6424, "longitude": -71.1453 }
+        },
+        "organizer": { "@type": "Organization", "name": "Comunidad de Pomaire", "url": "https://pomaire360.cl/" },
+        "image": "https://pomaire360.cl/og-image.jpg",
+        "isAccessibleForFree": true
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Fiestas Patrias en Pomaire",
+        "description": "Celebración del 18 de septiembre con fondas, chicha artesanal, cueca y artesanía festiva. Una de las mejores épocas para visitar.",
+        "startDate": "2026-09-17",
+        "endDate": "2026-09-20",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Pomaire",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pomaire",
+            "addressRegion": "Región Metropolitana",
+            "addressCountry": "CL"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -33.6424, "longitude": -71.1453 }
+        },
+        "organizer": { "@type": "Organization", "name": "Comunidad de Pomaire", "url": "https://pomaire360.cl/" },
+        "image": "https://pomaire360.cl/og-image.jpg",
+        "isAccessibleForFree": true
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Feria de Artesanía Navideña — Pomaire",
+        "description": "Artesanos presentan piezas especiales de temporada. Nacimientos en greda, adornos y regalos únicos hechos a mano.",
+        "startDate": "2026-11-28",
+        "endDate": "2026-12-24",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Calle principal de Pomaire",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pomaire",
+            "addressRegion": "Región Metropolitana",
+            "addressCountry": "CL"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -33.6512, "longitude": -71.1505 }
+        },
+        "organizer": { "@type": "Organization", "name": "Artesanos de Pomaire", "url": "https://pomaire360.cl/" },
+        "image": "https://pomaire360.cl/og-image.jpg",
+        "isAccessibleForFree": true
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Temporada Alta de Verano — Pomaire",
+        "description": "Mayor afluencia de turistas nacionales. Los artesanos tienen más stock y variedad. Se recomienda llegar temprano.",
+        "startDate": "2027-01-02",
+        "endDate": "2027-02-28",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Pomaire",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pomaire",
+            "addressRegion": "Región Metropolitana",
+            "addressCountry": "CL"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": -33.6512, "longitude": -71.1505 }
+        },
+        "organizer": { "@type": "Organization", "name": "Comunidad de Pomaire", "url": "https://pomaire360.cl/" },
+        "image": "https://pomaire360.cl/og-image.jpg",
+        "isAccessibleForFree": true
+      }
+    ]
+    </script>
     <div class="events-list reveal">
       <div class="event-card">
         <div class="event-month" data-t="ev_m1">ENE–FEB</div>
@@ -835,7 +937,7 @@
         </div>
         <textarea id="rev-text" rows="3" placeholder="Cuéntanos tu experiencia..." data-ph-t="rev_ph_text"></textarea>
         <button onclick="submitReview()" data-t="review_btn">⭐ Publicar reseña</button>
-        <p class="review-local-note" data-t="rev_local_note">📝 Tu reseña se guarda solo en este navegador (aún no se comparten públicamente).</p>
+        <p class="review-local-note" data-t="rev_local_note">📝 Tu reseña se envía al equipo de Pomaire 360. Las mejores serán publicadas en el sitio.</p>
       </div>
       <div id="reviews-user" class="user-reviews-list"></div>
     </div>

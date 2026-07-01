@@ -1512,8 +1512,23 @@ function submitReview() {
   const text   = document.getElementById('rev-text').value.trim();
   if (!name || !text) { alert('Por favor ingresa tu nombre y comentario.'); return; }
   const reviews = getReviews();
-  reviews.unshift({ name, origin, text, stars: selectedStars, date: new Date().toLocaleDateString('es-CL') });
+  const review = { name, origin, text, stars: selectedStars, date: new Date().toLocaleDateString('es-CL') };
+  reviews.unshift(review);
   try { localStorage.setItem('p360reviews', JSON.stringify(reviews.slice(0,20))); } catch(e){}
+
+  /* ── Enviar reseña a Formspree (email notification) ── */
+  var formData = new FormData();
+  formData.append('name', name);
+  formData.append('origin', origin || 'No indicado');
+  formData.append('stars', selectedStars + '/5');
+  formData.append('review', text);
+  formData.append('_subject', '⭐ Nueva reseña en Pomaire 360 — ' + name);
+  fetch('https://formspree.io/f/xpwrpjdk', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).catch(function(){/* silently fail — review saved locally anyway */});
+
   document.getElementById('rev-name').value = '';
   document.getElementById('rev-origin').value = '';
   document.getElementById('rev-text').value = '';
