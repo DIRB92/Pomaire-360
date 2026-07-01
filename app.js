@@ -1986,7 +1986,25 @@ window.showCustomRoute = showCustomRoute;
 window.clearRoute = clearRoute;
 window.focusPlace = focusPlace;
 
-document.addEventListener('DOMContentLoaded', initMap);
+/* ── Lazy-load map with IntersectionObserver ─────────────────── */
+(function(){
+  var mapSection = document.getElementById('mapa');
+  if (!mapSection) return;
+  if (!('IntersectionObserver' in window)) { document.addEventListener('DOMContentLoaded', initMap); return; }
+  var mapLoaded = false;
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !mapLoaded) {
+      mapLoaded = true;
+      initMap();
+      observer.disconnect();
+    }
+  }, { rootMargin: '200px' });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ observer.observe(mapSection); });
+  } else {
+    observer.observe(mapSection);
+  }
+})();
 
 /* ===== */
 

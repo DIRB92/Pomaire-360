@@ -138,8 +138,8 @@
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="seasonal.js"></script>
 <script defer src="app.js"></script>
 <script defer src="tour-interactive.js"></script>
@@ -163,7 +163,7 @@
   <div class="nav-links-wrap" id="navGroups">
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
         <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
@@ -174,7 +174,7 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
         <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
@@ -185,7 +185,7 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
         <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
@@ -194,7 +194,7 @@
     </div>
 
     <div class="nav-group">
-      <button class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
         <a href="#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
@@ -217,25 +217,25 @@
       <span class="lang-arrow">▼</span>
     </button>
     <div class="lang-dropdown" role="listbox">
-      <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
+      <button type="button" role="option" class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
         <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="en" onclick="selectLang('en')">
+      <button type="button" role="option" class="lang-option" data-lang="en" onclick="selectLang('en')">
         <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="pt" onclick="selectLang('pt')">
+      <button type="button" role="option" class="lang-option" data-lang="pt" onclick="selectLang('pt')">
         <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+      <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
         <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+      <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
         <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
         <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
       </button>
-      <button class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+      <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
         <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
       </button>
     </div>
@@ -284,19 +284,19 @@
 
     <!-- Controles: filtros + ubicación -->
     <div class="map-controls reveal">
-      <div class="map-filters" id="mapFilters">
-        <button class="map-filter active" data-cat="all">🏺 <span data-t="filter_all">Todos</span></button>
-        <button class="map-filter" data-cat="parking">🅿️ <span data-t="filter_parking">Estacionar</span></button>
-        <button class="map-filter" data-cat="health">🏥 <span data-t="filter_health">Salud</span></button>
-        <button class="map-filter" data-cat="security">🚔 <span data-t="filter_security">Seguridad</span></button>
-        <button class="map-filter" data-cat="pottery">🏺 <span data-t="filter_pottery">Alfarería</span></button>
-        <button class="map-filter" data-cat="food">🍽️ <span data-t="filter_food">Comer</span></button>
-        <button class="map-filter" data-cat="lodging">🛏️ <span data-t="filter_lodging">Dormir</span></button>
-        <button class="map-filter" data-cat="highlight">✨ <span data-t="filter_highlight">Qué ver</span></button>
-        <button class="map-filter" data-cat="services">🛒 <span data-t="filter_services">Servicios</span></button>
-        <button class="map-filter" data-cat="around">🌾 <span data-t="filter_around">Alrededores</span></button>
+      <div class="map-filters" id="mapFilters" role="group" aria-label="Filtrar lugares del mapa">
+        <button type="button" class="map-filter active" data-cat="all" aria-pressed="true">🏺 <span data-t="filter_all">Todos</span></button>
+        <button type="button" class="map-filter" data-cat="parking" aria-pressed="false">🅿️ <span data-t="filter_parking">Estacionar</span></button>
+        <button type="button" class="map-filter" data-cat="health" aria-pressed="false">🏥 <span data-t="filter_health">Salud</span></button>
+        <button type="button" class="map-filter" data-cat="security" aria-pressed="false">🚔 <span data-t="filter_security">Seguridad</span></button>
+        <button type="button" class="map-filter" data-cat="pottery" aria-pressed="false">🏺 <span data-t="filter_pottery">Alfarería</span></button>
+        <button type="button" class="map-filter" data-cat="food" aria-pressed="false">🍽️ <span data-t="filter_food">Comer</span></button>
+        <button type="button" class="map-filter" data-cat="lodging" aria-pressed="false">🛏️ <span data-t="filter_lodging">Dormir</span></button>
+        <button type="button" class="map-filter" data-cat="highlight" aria-pressed="false">✨ <span data-t="filter_highlight">Qué ver</span></button>
+        <button type="button" class="map-filter" data-cat="services" aria-pressed="false">🛒 <span data-t="filter_services">Servicios</span></button>
+        <button type="button" class="map-filter" data-cat="around" aria-pressed="false">🌾 <span data-t="filter_around">Alrededores</span></button>
       </div>
-      <button class="locate-btn" id="locateBtn" onclick="locateUser()">
+      <button type="button" class="locate-btn" id="locateBtn" onclick="locateUser()">
         📍 <span data-t="locate_btn">Usar mi ubicación</span>
       </button>
     </div>
@@ -326,33 +326,33 @@
     <div class="routes-block reveal">
       <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
       <div class="routes-grid">
-        <button class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
+        <button type="button" class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
           <span class="route-icon">🧳</span>
           <strong data-t="route_oficial_name">Ruta Oficial</strong>
           <span class="route-meta" data-t="route_oficial_meta">5 paradas · día completo</span>
         </button>
-        <button class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
+        <button type="button" class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
           <span class="route-icon">🏺</span>
           <strong data-t="route_artisan_name">Ruta del Artesano</strong>
           <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1.5 hrs</span>
         </button>
-        <button class="route-card" data-route="family" onclick="loadRoute('family')">
+        <button type="button" class="route-card" data-route="family" onclick="loadRoute('family')">
           <span class="route-icon">👨‍👩‍👧</span>
           <strong data-t="route_family_name">Ruta Familiar</strong>
           <span class="route-meta" data-t="route_family_meta">4 paradas · ~2.5 hrs</span>
         </button>
-        <button class="route-card" data-route="food" onclick="loadRoute('food')">
+        <button type="button" class="route-card" data-route="food" onclick="loadRoute('food')">
           <span class="route-icon">🍽️</span>
           <strong data-t="route_food_name">Ruta Gastronómica</strong>
           <span class="route-meta" data-t="route_food_meta">3 paradas · ~1 hr</span>
         </button>
-        <button class="route-card" data-route="nature" onclick="loadRoute('nature')">
+        <button type="button" class="route-card" data-route="nature" onclick="loadRoute('nature')">
           <span class="route-icon">🌄</span>
           <strong data-t="route_nature_name">Ruta Naturaleza</strong>
           <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3 hrs</span>
         </button>
       </div>
-      <button class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
+      <button type="button" class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
     </div>
 
     <!-- Lista de lugares con distancia -->
