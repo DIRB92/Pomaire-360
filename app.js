@@ -1523,7 +1523,7 @@ function submitReview() {
   formData.append('stars', selectedStars + '/5');
   formData.append('review', text);
   formData.append('_subject', '⭐ Nueva reseña en Pomaire 360 — ' + name);
-  fetch('https://formspree.io/f/xpwrpjdk', {
+  fetch('https://formspree.io/f/xlgypgrl', {
     method: 'POST',
     body: formData,
     headers: { 'Accept': 'application/json' }
