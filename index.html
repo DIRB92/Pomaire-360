@@ -129,14 +129,14 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://b.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
@@ -553,10 +553,14 @@
     <!-- Bento Gallery Grid -->
     <div class="bento-gallery reveal">
       <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Pomaire y sus calles">
-        <img src="img/gallery/pomaire-20240916_120821-thumb.jpg"
-             data-full="img/gallery/pomaire-20240916_120821-web.jpg"
-             alt="Vista panorámica de las calles de Pomaire, pueblo alfarero de Chile"
-             loading="lazy" width="1200" height="889">
+        <picture>
+             <source srcset="img/gallery/pomaire-20240916_120821-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-20240916_120821-thumb.jpg"
+                  data-full="img/gallery/pomaire-20240916_120821-web.webp"
+                  data-full-jpg="img/gallery/pomaire-20240916_120821-web.jpg"
+                  alt="Vista panorámica de las calles de Pomaire, pueblo alfarero de Chile"
+                  loading="lazy" width="1200" height="889">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_1">Pomaire y sus calles</span>
           <span class="bento-zoom">🔍</span>
@@ -564,10 +568,14 @@
       </div>
 
       <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Tradición alfarera">
-        <img src="img/gallery/pomaire-20240930_123030-thumb.jpg"
-             data-full="img/gallery/pomaire-20240930_123030-web.jpg"
-             alt="Artesanía y tradición alfarera en Pomaire"
-             loading="lazy" width="1200" height="901">
+        <picture>
+             <source srcset="img/gallery/pomaire-20240930_123030-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-20240930_123030-thumb.jpg"
+                  data-full="img/gallery/pomaire-20240930_123030-web.webp"
+                  data-full-jpg="img/gallery/pomaire-20240930_123030-web.jpg"
+                  alt="Artesanía y tradición alfarera en Pomaire"
+                  loading="lazy" width="1200" height="901">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_2">Tradición alfarera</span>
           <span class="bento-zoom">🔍</span>
@@ -575,10 +583,14 @@
       </div>
 
       <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Piezas de greda artesanal">
-        <img src="img/gallery/pomaire-20240930_123149-thumb.jpg"
-             data-full="img/gallery/pomaire-20240930_123149-web.jpg"
-             alt="Piezas de greda artesanal hechas a mano en Pomaire"
-             loading="lazy" width="1200" height="901">
+        <picture>
+             <source srcset="img/gallery/pomaire-20240930_123149-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-20240930_123149-thumb.jpg"
+                  data-full="img/gallery/pomaire-20240930_123149-web.webp"
+                  data-full-jpg="img/gallery/pomaire-20240930_123149-web.jpg"
+                  alt="Piezas de greda artesanal hechas a mano en Pomaire"
+                  loading="lazy" width="1200" height="901">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_3">Piezas de greda artesanal</span>
           <span class="bento-zoom">🔍</span>
@@ -586,10 +598,14 @@
       </div>
 
       <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Vida en el pueblo">
-        <img src="img/gallery/pomaire-20241014_102408-thumb.jpg"
-             data-full="img/gallery/pomaire-20241014_102408-web.jpg"
-             alt="Vida cotidiana y comercio en el pueblo de Pomaire"
-             loading="lazy" width="1200" height="901">
+        <picture>
+             <source srcset="img/gallery/pomaire-20241014_102408-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-20241014_102408-thumb.jpg"
+                  data-full="img/gallery/pomaire-20241014_102408-web.webp"
+                  data-full-jpg="img/gallery/pomaire-20241014_102408-web.jpg"
+                  alt="Vida cotidiana y comercio en el pueblo de Pomaire"
+                  loading="lazy" width="1200" height="901">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_4">Vida en el pueblo</span>
           <span class="bento-zoom">🔍</span>
@@ -597,10 +613,14 @@
       </div>
 
       <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: El Chancho alcancía de greda más grande del mundo">
-        <img src="img/gallery/pomaire-chancho-greda-thumb.jpg"
-             data-full="img/gallery/pomaire-chancho-greda-web.jpg"
-             alt="El chancho alcancía de greda más grande del mundo en Pomaire"
-             loading="lazy" width="1200" height="900">
+        <picture>
+             <source srcset="img/gallery/pomaire-chancho-greda-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-chancho-greda-thumb.jpg"
+                  data-full="img/gallery/pomaire-chancho-greda-web.webp"
+                  data-full-jpg="img/gallery/pomaire-chancho-greda-web.jpg"
+                  alt="El chancho alcancía de greda más grande del mundo en Pomaire"
+                  loading="lazy" width="1200" height="900">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_5">El Chancho alcancía más grande del mundo 🐷</span>
           <span class="bento-zoom">🔍</span>
@@ -608,10 +628,14 @@
       </div>
 
       <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Barrio Baquedano">
-        <img src="img/gallery/pomaire-barrio-baquedano-thumb.jpg"
-             data-full="img/gallery/pomaire-barrio-baquedano-web.jpg"
-             alt="Agrupación Social Cultural Deportiva Barrio Baquedano, Pomaire"
-             loading="lazy" width="1200" height="900">
+        <picture>
+             <source srcset="img/gallery/pomaire-barrio-baquedano-thumb.webp" type="image/webp">
+             <img src="img/gallery/pomaire-barrio-baquedano-thumb.jpg"
+                  data-full="img/gallery/pomaire-barrio-baquedano-web.webp"
+                  data-full-jpg="img/gallery/pomaire-barrio-baquedano-web.jpg"
+                  alt="Agrupación Social Cultural Deportiva Barrio Baquedano, Pomaire"
+                  loading="lazy" width="1200" height="900">
+           </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_6">Barrio Baquedano</span>
           <span class="bento-zoom">🔍</span>
@@ -656,7 +680,8 @@
     var item = items[current];
     var img = item.querySelector('img');
     var cap = item.querySelector('.bento-caption');
-    lbImg.src = img.getAttribute('data-full') || img.src;
+    var fullSrc = img.getAttribute('data-full') || img.getAttribute('data-full-jpg') || img.src;
+    lbImg.src = fullSrc;
     lbImg.alt = img.alt;
     lbCap.textContent = cap ? cap.textContent : '';
     lbCount.textContent = (current+1) + ' / ' + items.length;
