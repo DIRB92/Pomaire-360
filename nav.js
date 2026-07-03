@@ -73,3 +73,30 @@
     init();
   }
 })();
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Hero slideshow — rota las fotos de fondo del hero cada pocos segundos.
+   Respeta prefers-reduced-motion (deja fija la primera foto sin animar).
+   ══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  function initHeroSlideshow() {
+    var slides = document.querySelectorAll('.hero-slideshow .hero-slide');
+    if (slides.length < 2) return;
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // deja solo la primera foto (is-active), sin rotar
+
+    var current = 0;
+    setInterval(function () {
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }, 5000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlideshow);
+  } else {
+    initHeroSlideshow();
+  }
+})();

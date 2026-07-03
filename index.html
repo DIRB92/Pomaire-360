@@ -131,6 +131,7 @@
 
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/img/gallery/pomaire-20240916_120821-web.webp" as="image">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
@@ -252,6 +253,15 @@
 
 <!-- HERO -->
 <section id="inicio">
+
+  <!-- Slideshow de fondo: fotos reales de Pomaire, rotan cada pocos segundos -->
+  <div class="hero-slideshow" aria-hidden="true">
+    <div class="hero-slide is-active" style="background-image:url('img/gallery/pomaire-20240916_120821-web.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/gallery/pomaire-20240930_123030-web.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/gallery/pomaire-20240930_123149-web.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/gallery/pomaire-20241014_102408-web.webp')"></div>
+    <div class="hero-slide" style="background-image:url('img/gallery/pomaire-chancho-greda-web.webp')"></div>
+  </div>
 
   <!-- MENU OTROS SITIOS -->
   <div class="sites-bar">
