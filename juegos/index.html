@@ -35,38 +35,55 @@
 </script>
 <style>
   /* ══════════════════════════════════════════════════════════════════════
-     Pomaire Arcade — estilos encapsulados bajo #pomaire-arcade
+     Pomaire Arcade v2 — estilos encapsulados bajo #pomaire-arcade
      para no interferir con el resto del sitio (nav, tarjetas .card, etc.)
      ══════════════════════════════════════════════════════════════════════ */
   #pomaire-arcade{
     --arc-raw: #E4D6BE;
     --arc-cream: #F6EEE1;
     --arc-fired: #B24A34;
+    --arc-fired-light: #D9694A;
     --arc-fired-dark: #8F3A29;
     --arc-dark: #2A231D;
     --arc-gold: #C88A3D;
+    --arc-gold-light: #E6B246;
+    --arc-green: #4A7C59;
     --arc-line: rgba(42,35,29,0.14);
+    --arc-radius: 16px;
   }
 
   #pomaire-arcade{
+    position: relative;
     background: var(--arc-raw);
     background-image:
-      radial-gradient(ellipse at 10% 0%, rgba(200,138,61,0.10), transparent 55%),
-      radial-gradient(ellipse at 90% 100%, rgba(178,74,52,0.10), transparent 55%);
+      radial-gradient(ellipse at 10% 0%, rgba(200,138,61,0.14), transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(178,74,52,0.14), transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.4), transparent 70%);
     color: var(--arc-dark);
     font-family: 'Work Sans', sans-serif;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding: 32px 16px 64px;
+    padding: 40px 16px 64px;
+    overflow: hidden;
+  }
+  /* motas de textura tipo cerámica, muy sutiles */
+  #pomaire-arcade::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image: radial-gradient(rgba(42,35,29,0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events:none;
   }
 
   #pomaire-arcade header.arc-header{
     text-align:center;
     max-width:640px;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     padding: 0;
     background: none;
+    position: relative;
+    z-index: 1;
   }
   #pomaire-arcade .eyebrow{
     font-family:'JetBrains Mono', monospace;
@@ -74,189 +91,300 @@
     letter-spacing:0.14em;
     text-transform:uppercase;
     color: var(--arc-fired-dark);
-    margin-bottom:6px;
+    margin-bottom:8px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
   }
+  #pomaire-arcade .eyebrow::before,
+  #pomaire-arcade .eyebrow::after{ content:'🏺'; font-size:11px; opacity:.7; }
   #pomaire-arcade h1{
     font-family:'Zilla Slab', serif;
     font-weight:700;
-    font-size:42px;
-    margin:0 0 8px;
+    font-size:44px;
+    margin:0 0 10px;
     color: var(--arc-dark);
-    line-height: 1.15;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
   }
   #pomaire-arcade header.arc-header p{
-    font-size:15px;
-    line-height:1.5;
+    font-size:15.5px;
+    line-height:1.55;
     color: rgba(42,35,29,0.72);
     margin:0;
   }
 
-  /* Signature nav: tabs styled like broken pottery shards */
+  /* Tabs modernas: cápsulas flotantes con icono, tipo dock */
   #pomaire-arcade nav.arc-tabs{
     display:flex;
-    gap:10px;
+    gap:8px;
     flex-wrap:wrap;
     justify-content:center;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
     max-width: 720px;
-    position: static;
-    background: none;
-    box-shadow: none;
-    padding: 0;
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.5);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px -8px rgba(42,35,29,0.2), inset 0 0 0 1px rgba(255,255,255,0.4);
+    padding: 6px;
+    border-radius: 18px;
   }
   #pomaire-arcade .tab{
-    font-family:'Zilla Slab', serif;
-    font-weight:700;
-    font-size:15px;
-    color: var(--arc-cream);
-    background: var(--arc-dark);
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color: var(--arc-dark);
+    background: transparent;
     border:none;
-    padding: 14px 20px 16px;
+    padding: 11px 18px;
     cursor:pointer;
-    clip-path: polygon(6% 0%, 100% 4%, 94% 100%, 0% 96%);
-    transform: rotate(-1.4deg);
-    transition: transform .18s ease, background .18s ease;
-    opacity:0.62;
+    border-radius: 13px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    transition: transform .22s cubic-bezier(.34,1.56,.64,1), background .2s ease, color .2s ease, box-shadow .2s ease;
+    opacity:0.68;
   }
-  #pomaire-arcade .tab:nth-child(2){ transform: rotate(1.1deg); clip-path: polygon(2% 6%, 96% 0%, 100% 92%, 6% 100%); }
-  #pomaire-arcade .tab:nth-child(3){ transform: rotate(-0.8deg); clip-path: polygon(8% 2%, 100% 0%, 92% 98%, 0% 100%); }
-  #pomaire-arcade .tab:nth-child(4){ transform: rotate(1.6deg); clip-path: polygon(0% 2%, 94% 0%, 100% 96%, 4% 100%); }
-  #pomaire-arcade .tab:hover{ opacity:0.85; }
+  #pomaire-arcade .tab .tab-ico{ font-size:17px; line-height:1; }
+  #pomaire-arcade .tab:hover{ opacity:1; background: rgba(255,255,255,0.55); }
   #pomaire-arcade .tab.active{
-    background: var(--arc-fired);
+    background: linear-gradient(135deg, var(--arc-fired-light), var(--arc-fired));
+    color: var(--arc-cream);
     opacity:1;
-    transform: rotate(0deg) scale(1.04);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 18px -6px rgba(178,74,52,0.55);
   }
 
   #pomaire-arcade main.arc-main{
     width:100%;
     max-width: 640px;
     background: var(--arc-cream);
-    border-radius: 4px;
-    padding: 28px;
-    box-shadow: 0 1px 0 var(--arc-line), 0 18px 40px -24px rgba(42,35,29,0.35);
+    border-radius: var(--arc-radius);
+    padding: 30px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 24px 48px -24px rgba(42,35,29,0.4), 0 2px 8px rgba(42,35,29,0.08);
     border: 1px solid var(--arc-line);
+    position: relative;
+    z-index: 1;
   }
 
   #pomaire-arcade .game{ display:none; padding: 0; background: none; }
-  #pomaire-arcade .game.active{ display:block; }
+  #pomaire-arcade .game.active{ display:block; animation: gameIn .35s ease; }
+  @keyframes gameIn{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
 
   #pomaire-arcade h2{
     font-family:'Zilla Slab', serif;
-    font-size:22px;
+    font-size:23px;
     margin: 0 0 4px;
     color: var(--arc-dark);
+    display:flex; align-items:center; gap:8px;
   }
   #pomaire-arcade .sub{
-    font-size:13px;
+    font-size:13.5px;
     color: rgba(42,35,29,0.65);
     margin: 0 0 18px;
+    line-height:1.5;
   }
 
   #pomaire-arcade .hud{
     display:flex;
-    gap:18px;
+    gap:10px;
     flex-wrap:wrap;
-    font-family:'JetBrains Mono', monospace;
     font-size:13px;
-    margin-bottom:16px;
-    color: var(--arc-fired-dark);
+    margin-bottom:18px;
   }
-  #pomaire-arcade .hud b{ color: var(--arc-dark); }
+  #pomaire-arcade .hud-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background: var(--arc-raw);
+    border-radius: 20px;
+    padding: 6px 13px;
+    font-family:'JetBrains Mono', monospace;
+    color: var(--arc-fired-dark);
+    box-shadow: inset 0 0 0 1px var(--arc-line);
+  }
+  #pomaire-arcade .hud-pill b{ color: var(--arc-dark); font-weight:700; }
+  #pomaire-arcade .hud-pill .ico{ font-size:14px; }
 
   #pomaire-arcade button.action{
     font-family:'Work Sans', sans-serif;
-    font-weight:600;
+    font-weight:700;
     font-size:14px;
-    background: var(--arc-fired);
+    background: linear-gradient(135deg, var(--arc-fired-light), var(--arc-fired));
     color: var(--arc-cream);
     border:none;
-    padding:10px 16px;
-    border-radius:3px;
+    padding:11px 20px;
+    border-radius:11px;
     cursor:pointer;
+    box-shadow: 0 4px 12px -4px rgba(178,74,52,0.5);
+    transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
   }
-  #pomaire-arcade button.action:hover{ background: var(--arc-fired-dark); }
-  #pomaire-arcade button.action:disabled{ background:#c9bda6; cursor:not-allowed; }
+  #pomaire-arcade button.action:hover{ transform: translateY(-2px); box-shadow: 0 8px 16px -4px rgba(178,74,52,0.55); filter: brightness(1.05); }
+  #pomaire-arcade button.action:active{ transform: translateY(0) scale(.97); }
+  #pomaire-arcade button.action:disabled{ background:#c9bda6; cursor:not-allowed; box-shadow:none; transform:none; }
 
-  /* ---- Memorama ---- */
+  /* ---- Memorama: flip 3D real ---- */
   #pomaire-arcade #memo-grid{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap:8px;
-    max-width: 360px;
+    gap:10px;
+    max-width: 380px;
     margin: 0 auto;
+    perspective: 800px;
   }
   #pomaire-arcade .card{
     aspect-ratio:1;
-    background: var(--arc-fired);
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:26px;
     cursor:pointer;
     user-select:none;
-    transition: transform .15s ease, background .15s ease;
-    box-shadow: none;
-    padding: 0;
-    flex-direction: row;
-    gap: 0;
+    background: none;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .45s cubic-bezier(.2,.8,.3,1.1);
   }
-  #pomaire-arcade .card.flipped, #pomaire-arcade .card.matched{
-    background: var(--arc-raw);
-    transform: scale(1.02);
+  #pomaire-arcade .card-face{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px;
+    border-radius:10px;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 10px -3px rgba(42,35,29,0.35);
   }
-  #pomaire-arcade .card.matched{ opacity:0.55; cursor:default; }
-  #pomaire-arcade .card:hover{ transform: none; box-shadow: none; }
-  #pomaire-arcade .card:focus-visible{ outline: 3px solid var(--arc-gold); outline-offset: 2px; }
+  #pomaire-arcade .card-face.front{
+    background: linear-gradient(150deg, var(--arc-fired-light), var(--arc-fired-dark));
+    transform: rotateY(0deg);
+  }
+  #pomaire-arcade .card-face.front::after{
+    content:'🏺'; opacity:.35; font-size:20px;
+  }
+  #pomaire-arcade .card-face.back{
+    background: var(--arc-cream);
+    border: 2px solid var(--arc-raw);
+    transform: rotateY(180deg);
+  }
+  #pomaire-arcade .card.flipped, #pomaire-arcade .card.matched{ transform: rotateY(180deg); }
+  #pomaire-arcade .card.matched .card-face.back{
+    background: linear-gradient(150deg, #eef7ef, var(--arc-raw));
+    border-color: var(--arc-green);
+  }
+  #pomaire-arcade .card.matched{ opacity:0.85; cursor:default; }
+  #pomaire-arcade .card:hover:not(.flipped):not(.matched) .card-face.front{ box-shadow: 0 8px 16px -4px rgba(42,35,29,0.4); transform: translateY(-2px); }
+  #pomaire-arcade .card:focus-visible .card-face{ outline: 3px solid var(--arc-gold); outline-offset: 2px; }
   #pomaire-arcade .card.mismatch{ animation: cardShake .4s ease; }
   @keyframes cardShake{
-    0%,100%{ transform: scale(1.02) translateX(0); }
-    25%{ transform: scale(1.02) translateX(-5px); }
-    75%{ transform: scale(1.02) translateX(5px); }
+    0%,100%{ transform: rotateY(180deg) translateX(0); }
+    25%{ transform: rotateY(180deg) translateX(-6px); }
+    75%{ transform: rotateY(180deg) translateX(6px); }
   }
+  #pomaire-arcade .card.matched{ animation: cardPop .4s ease; }
+  @keyframes cardPop{
+    0%{ transform: rotateY(180deg) scale(1); }
+    50%{ transform: rotateY(180deg) scale(1.08); }
+    100%{ transform: rotateY(180deg) scale(1); }
+  }
+  #pomaire-arcade .memo-win{
+    text-align:center;
+    margin-top:14px;
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:16px;
+    color: var(--arc-green);
+    display:none;
+    animation: gameIn .4s ease;
+  }
+  #pomaire-arcade .memo-win.show{ display:block; }
 
-  /* ---- Clicker ---- */
+  /* ---- Clicker / Moldeado ---- */
   #pomaire-arcade #clay-wrap{
     position: relative;
-    width: 150px;
-    margin: 8px auto 8px;
+    width: 170px;
+    margin: 6px auto 4px;
   }
   #pomaire-arcade #clay-lump{
-    width:150px;height:150px;border-radius:50%;
-    background: radial-gradient(circle at 35% 30%, #c9633f, var(--arc-fired) 60%, var(--arc-fired-dark));
+    width:170px;height:170px;border-radius:50%;
+    background: radial-gradient(circle at 32% 28%, #d97850, var(--arc-fired) 55%, var(--arc-fired-dark) 100%);
     margin: 0 auto;
     display:flex;align-items:center;justify-content:center;
-    font-size:44px;
+    font-size:50px;
     cursor:pointer;
     user-select:none;
-    box-shadow: 0 10px 22px -10px rgba(42,35,29,0.5);
-    transition: transform .08s ease, box-shadow .08s ease;
+    position: relative;
+    box-shadow: 0 16px 30px -12px rgba(42,35,29,0.55), inset 0 -8px 16px rgba(0,0,0,0.15), inset 0 8px 16px rgba(255,255,255,0.12);
+    transition: transform .1s cubic-bezier(.34,1.56,.64,1), box-shadow .1s ease;
   }
-  #pomaire-arcade #clay-lump:hover{ box-shadow: 0 12px 26px -8px rgba(42,35,29,0.6); }
+  #pomaire-arcade #clay-lump::after{
+    content:''; position:absolute; inset:0; border-radius:50%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.18) 40deg, transparent 90deg);
+    animation: clayShine 3.5s linear infinite;
+  }
+  @keyframes clayShine{ to{ transform: rotate(360deg); } }
+  #pomaire-arcade #clay-lump:hover{ transform: scale(1.04); box-shadow: 0 20px 36px -12px rgba(42,35,29,0.6), inset 0 -8px 16px rgba(0,0,0,0.15), inset 0 8px 16px rgba(255,255,255,0.15); }
   #pomaire-arcade #clay-lump:active,
-  #pomaire-arcade #clay-lump.is-pressed{ transform: scale(0.9); }
+  #pomaire-arcade #clay-lump.is-pressed{ transform: scale(0.88); }
   #pomaire-arcade .clay-float{
     position:absolute;
     left:50%;
-    top:10%;
+    top:15%;
     font-family:'JetBrains Mono', monospace;
-    font-weight:700;
-    font-size:20px;
+    font-weight:800;
+    font-size:19px;
     color: var(--arc-fired-dark);
     pointer-events:none;
-    animation: clayFloatUp .8s ease-out forwards;
+    animation: clayFloatUp .85s cubic-bezier(.2,.6,.4,1) forwards;
     white-space:nowrap;
+    text-shadow: 0 1px 0 rgba(255,255,255,.6);
+    z-index: 3;
   }
   @keyframes clayFloatUp{
-    0%{ opacity:1; transform: translate(-50%, 0) scale(1); }
-    100%{ opacity:0; transform: translate(-50%, -60px) scale(1.15); }
+    0%{ opacity:1; transform: translate(-50%, 0) scale(0.8) rotate(0deg); }
+    30%{ transform: translate(-50%, -18px) scale(1.2) rotate(-4deg); }
+    100%{ opacity:0; transform: translate(-50%, -72px) scale(1) rotate(4deg); }
+  }
+  /* partículas de greda que saltan al hacer clic */
+  #pomaire-arcade .clay-particle{
+    position:absolute;
+    width:7px; height:7px;
+    border-radius: 2px;
+    background: var(--arc-gold);
+    pointer-events:none;
+    left:50%; top:50%;
+    animation: particleFly .55s ease-out forwards;
+    z-index: 2;
+  }
+  @keyframes particleFly{
+    0%{ opacity:1; transform: translate(-50%,-50%) translate(0,0) scale(1) rotate(0deg); }
+    100%{ opacity:0; transform: translate(-50%,-50%) translate(var(--px), var(--py)) scale(0.3) rotate(180deg); }
+  }
+  #pomaire-arcade .clay-progress-wrap{
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+  #pomaire-arcade .clay-progress-label{
+    display:flex; justify-content:space-between;
+    font-size:11.5px; color: rgba(42,35,29,0.6);
+    font-family:'JetBrains Mono', monospace;
+    margin-bottom:5px;
+  }
+  #pomaire-arcade .clay-progress-track{
+    height: 10px;
+    background: var(--arc-raw);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px var(--arc-line);
+  }
+  #pomaire-arcade .clay-progress-bar{
+    height:100%;
+    background: linear-gradient(90deg, var(--arc-gold), var(--arc-gold-light));
+    border-radius: 8px;
+    width:0%;
+    transition: width .25s ease;
   }
   #pomaire-arcade .shop-title{
     font-family:'Zilla Slab', serif;
     font-weight:700;
     font-size:15px;
-    margin: 18px 0 8px;
+    margin: 20px 0 10px;
     color: var(--arc-dark);
     text-align:center;
   }
@@ -264,78 +392,137 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 12px;
+    padding:12px 14px;
     border:1.5px solid var(--arc-line);
-    border-radius:4px;
-    margin-bottom:8px;
+    border-radius:12px;
+    margin-bottom:9px;
     background: var(--arc-raw);
-    transition: border-color .2s ease, box-shadow .2s ease;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
   }
   #pomaire-arcade .shop-item.affordable{
     border-color: var(--arc-gold);
-    box-shadow: 0 0 0 2px rgba(200,138,61,0.18);
+    box-shadow: 0 0 0 3px rgba(200,138,61,0.16), 0 4px 12px -4px rgba(200,138,61,0.3);
   }
-  #pomaire-arcade .shop-item .info{ font-size:13px; line-height:1.4; }
-  #pomaire-arcade .shop-item .info b{ font-family:'Zilla Slab', serif; font-size:15px; display:block; }
-  #pomaire-arcade .shop-item button.action.just-bought{ animation: buyPulse .35s ease; }
+  #pomaire-arcade .shop-item .info{ font-size:13px; line-height:1.4; display:flex; align-items:center; gap:10px; }
+  #pomaire-arcade .shop-item .info .shop-ico{
+    font-size:22px;
+    width:38px; height:38px;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--arc-cream);
+    border-radius: 10px;
+    flex-shrink:0;
+  }
+  #pomaire-arcade .shop-item .info b{ font-family:'Zilla Slab', serif; font-size:15px; display:block; color:var(--arc-dark); }
+  #pomaire-arcade .shop-item .info span{ color: rgba(42,35,29,0.6); }
+  #pomaire-arcade .shop-item button.action.just-bought{ animation: buyPulse .4s ease; }
   @keyframes buyPulse{
     0%{ transform: scale(1); }
-    40%{ transform: scale(1.12); }
+    40%{ transform: scale(1.15) rotate(-3deg); }
     100%{ transform: scale(1); }
   }
 
-  /* ---- Platformer ---- */
+  /* ---- Recolector / Platformer ---- */
+  #pomaire-arcade .plat-wrap{ position:relative; }
   #pomaire-arcade #plat-canvas{
     display:block;
     width:100%;
     max-width:100%;
-    background: linear-gradient(#e9dcc4, #d8c6a3);
-    border-radius:4px;
+    border-radius:14px;
     border:1px solid var(--arc-line);
     touch-action:none;
+    box-shadow: 0 10px 24px -12px rgba(42,35,29,0.4);
   }
   #pomaire-arcade .plat-controls{
     display:flex;
-    gap:8px;
-    margin-top:10px;
+    gap:9px;
+    margin-top:12px;
   }
   #pomaire-arcade .plat-controls button{
     flex:1;
     font-size:20px;
-    padding:12px;
-    border-radius:4px;
-    border:1px solid var(--arc-line);
-    background: var(--arc-raw);
+    padding:13px;
+    border-radius:12px;
+    border:none;
+    background: linear-gradient(135deg, #fff, var(--arc-raw));
+    box-shadow: 0 3px 8px -2px rgba(42,35,29,0.25), inset 0 0 0 1px var(--arc-line);
     cursor:pointer;
+    transition: transform .12s ease;
+    user-select:none;
+  }
+  #pomaire-arcade .plat-controls button:active{ transform: scale(.92); }
+  #pomaire-arcade #plat-jump{
+    background: linear-gradient(135deg, var(--arc-gold-light), var(--arc-gold));
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
   }
 
-  /* ---- Puzzle ---- */
+  /* ---- Rompecabezas ---- */
+  #pomaire-arcade .puzzle-wrap{ display:flex; flex-direction:column; align-items:center; gap:14px; }
   #pomaire-arcade #puzzle-grid{
     display:grid;
     grid-template-columns: repeat(3, 1fr);
-    gap:2px;
+    gap:3px;
     width: 300px;
     height: 300px;
-    margin: 0 auto 14px;
+    margin: 0 auto;
     background: var(--arc-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px -12px rgba(42,35,29,0.4);
   }
   #pomaire-arcade .tile{
     background-repeat:no-repeat;
     cursor:pointer;
+    transition: filter .15s ease;
   }
+  #pomaire-arcade .tile:hover:not(.blank){ filter: brightness(1.08); }
   #pomaire-arcade .tile.blank{
     background: var(--arc-raw) !important;
     cursor:default;
   }
   #pomaire-arcade .tile:focus-visible{ outline: 3px solid var(--arc-gold); outline-offset: -3px; z-index: 1; position: relative; }
+  #pomaire-arcade .puzzle-preview-btn{
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    background: transparent;
+    color: var(--arc-fired-dark);
+    border: 1.5px dashed var(--arc-line);
+    padding: 7px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  #pomaire-arcade .puzzle-preview-btn:hover{ background: var(--arc-raw); border-color: var(--arc-gold); }
+  #pomaire-arcade .puzzle-preview{
+    width: 90px; height:90px;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 4px 10px -4px rgba(42,35,29,0.4);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .25s ease, max-height .25s ease;
+  }
+  #pomaire-arcade .puzzle-preview.show{ opacity:1; max-height: 90px; }
+  #pomaire-arcade .puzzle-win{
+    text-align:center;
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    color: var(--arc-green);
+    font-size:16px;
+  }
 
   #pomaire-arcade footer.arc-footer{
-    margin-top: 26px;
+    margin-top: 30px;
     font-size:12px;
     color: rgba(42,35,29,0.55);
     text-align:center;
     background: none;
     padding: 0;
+    position: relative;
+    z-index: 1;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -343,8 +530,11 @@
   }
 
   @media (max-width: 480px){
-    #pomaire-arcade h1{ font-size: 32px; }
+    #pomaire-arcade h1{ font-size: 34px; }
     #pomaire-arcade #puzzle-grid{ width: 260px; height: 260px; }
+    #pomaire-arcade .tab{ padding: 10px 13px; font-size:13px; }
+    #pomaire-arcade .tab .tab-label{ display:none; }
+    #pomaire-arcade .tab .tab-ico{ font-size:19px; }
   }
 </style>
 </head>
@@ -446,74 +636,83 @@
 </header>
 
 <nav class="arc-tabs">
-  <button class="tab active" data-game="memo">Memorama</button>
-  <button class="tab" data-game="click">Moldeado</button>
-  <button class="tab" data-game="plat">Recolector</button>
-  <button class="tab" data-game="puzzle">Rompecabezas</button>
+  <button class="tab active" data-game="memo"><span class="tab-ico">🧠</span><span class="tab-label">Memorama</span></button>
+  <button class="tab" data-game="click"><span class="tab-ico">🏺</span><span class="tab-label">Moldeado</span></button>
+  <button class="tab" data-game="plat"><span class="tab-ico">🏃</span><span class="tab-label">Recolector</span></button>
+  <button class="tab" data-game="puzzle"><span class="tab-ico">🧩</span><span class="tab-label">Rompecabezas</span></button>
 </nav>
 
 <main class="arc-main">
 
   <!-- MEMORAMA -->
   <section class="game active" id="game-memo">
-    <h2>Memorama de greda</h2>
+    <h2><span>🧠</span> Memorama de greda</h2>
     <p class="sub">Encuentra las 8 parejas de piezas de alfarería.</p>
     <div class="hud">
-      <span>Movimientos: <b id="memo-moves">0</b></span>
-      <span>Parejas: <b id="memo-pairs">0</b>/8</span>
+      <span class="hud-pill"><span class="ico">🔁</span>Movimientos: <b id="memo-moves">0</b></span>
+      <span class="hud-pill"><span class="ico">🏺</span>Parejas: <b id="memo-pairs">0</b>/8</span>
     </div>
     <div id="memo-grid"></div>
-    <p style="text-align:center;margin-top:16px;">
-      <button class="action" id="memo-restart">Reiniciar</button>
+    <p class="memo-win" id="memo-win">🎉 ¡Completado en <span id="memo-win-moves">0</span> movimientos!</p>
+    <p style="text-align:center;margin-top:18px;">
+      <button class="action" id="memo-restart">↻ Reiniciar</button>
     </p>
   </section>
 
   <!-- CLICKER -->
   <section class="game" id="game-click">
-    <h2>Moldeado</h2>
+    <h2><span>🏺</span> Moldeado</h2>
     <p class="sub">Haz clic en la greda para formar piezas. Compra torno y horno para producir sola.</p>
     <div class="hud">
-      <span>Greda: <b id="click-score">0</b></span>
-      <span>Por segundo: <b id="click-cps">0</b></span>
+      <span class="hud-pill"><span class="ico">🧱</span>Greda: <b id="click-score">0</b></span>
+      <span class="hud-pill"><span class="ico">⚡</span>Por segundo: <b id="click-cps">0</b></span>
     </div>
     <div id="clay-wrap">
       <div id="clay-lump" role="button" tabindex="0" aria-label="Moldear greda">🏺</div>
     </div>
-    <p class="shop-title">Mejoras · producción automática</p>
+    <div class="clay-progress-wrap">
+      <div class="clay-progress-label"><span>Siguiente mejora</span><span id="clay-progress-text">0 / 15</span></div>
+      <div class="clay-progress-track"><div class="clay-progress-bar" id="clay-progress-bar"></div></div>
+    </div>
+    <p class="shop-title">✨ Mejoras · producción automática</p>
     <div id="shop"></div>
   </section>
 
   <!-- PLATAFORMERO -->
   <section class="game" id="game-plat">
-    <h2>Recolector de greda</h2>
+    <h2><span>🏃</span> Recolector de greda</h2>
     <p class="sub">Muévete y salta para atrapar la greda (🟤). Evita las piedras (⚫).</p>
     <div class="hud">
-      <span>Puntos: <b id="plat-score">0</b></span>
-      <span>Vidas: <b id="plat-lives">3</b></span>
+      <span class="hud-pill"><span class="ico">⭐</span>Puntos: <b id="plat-score">0</b></span>
+      <span class="hud-pill"><span class="ico">❤️</span>Vidas: <b id="plat-lives">3</b></span>
     </div>
-    <canvas id="plat-canvas" width="580" height="320"></canvas>
+    <div class="plat-wrap">
+      <canvas id="plat-canvas" width="580" height="320"></canvas>
+    </div>
     <div class="plat-controls">
-      <button id="plat-left">◀</button>
+      <button id="plat-left" aria-label="Mover a la izquierda">◀</button>
       <button id="plat-jump">⤒ Saltar</button>
-      <button id="plat-right">▶</button>
+      <button id="plat-right" aria-label="Mover a la derecha">▶</button>
     </div>
-    <p style="font-size:12px;color:rgba(42,35,29,0.6);margin-top:8px;">
+    <p style="font-size:12px;color:rgba(42,35,29,0.6);margin-top:10px;text-align:center;">
       En computador: flechas ◀ ▶ para moverte, barra espaciadora para saltar.
     </p>
   </section>
 
   <!-- PUZZLE -->
   <section class="game" id="game-puzzle">
-    <h2>Rompecabezas de la vasija</h2>
+    <h2><span>🧩</span> Rompecabezas de la vasija</h2>
     <p class="sub">Ordena las piezas para reconstruir la vasija.</p>
     <div class="hud">
-      <span>Movimientos: <b id="puzzle-moves">0</b></span>
-      <span id="puzzle-status">En progreso</span>
+      <span class="hud-pill"><span class="ico">🔁</span>Movimientos: <b id="puzzle-moves">0</b></span>
+      <span class="hud-pill" id="puzzle-status-pill"><span class="ico">⏳</span><span id="puzzle-status">En progreso</span></span>
     </div>
-    <div id="puzzle-grid"></div>
-    <p style="text-align:center;">
-      <button class="action" id="puzzle-shuffle">Mezclar de nuevo</button>
-    </p>
+    <div class="puzzle-wrap">
+      <div id="puzzle-grid"></div>
+      <button type="button" class="puzzle-preview-btn" id="puzzle-preview-btn">👁️ Espiar la vasija completa</button>
+      <div class="puzzle-preview" id="puzzle-preview"></div>
+      <button class="action" id="puzzle-shuffle">🔀 Mezclar de nuevo</button>
+    </div>
   </section>
 
 </main>
@@ -565,6 +764,7 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     flipped = []; matched = 0; moves = 0; lock = false;
     document.getElementById('memo-moves').textContent = 0;
     document.getElementById('memo-pairs').textContent = 0;
+    document.getElementById('memo-win').classList.remove('show');
     const grid = document.getElementById('memo-grid');
     grid.innerHTML = '';
     deck.forEach((icon, i)=>{
@@ -575,6 +775,10 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
       card.tabIndex = 0;
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', 'Carta oculta');
+      card.innerHTML = `
+        <div class="card-face front"></div>
+        <div class="card-face back">${icon}</div>
+      `;
       card.addEventListener('click', ()=>flip(card));
       card.addEventListener('keydown', (e)=>{
         if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flip(card); }
@@ -585,7 +789,6 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
 
   function flip(card){
     if(lock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
-    card.textContent = card.dataset.icon;
     card.classList.add('flipped');
     flipped.push(card);
     if(flipped.length === 2){
@@ -600,10 +803,13 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
         matched++;
         document.getElementById('memo-pairs').textContent = matched;
         flipped = []; lock = false;
+        if(matched === icons.length){
+          document.getElementById('memo-win-moves').textContent = moves;
+          document.getElementById('memo-win').classList.add('show');
+        }
       } else {
         a.classList.add('mismatch'); b.classList.add('mismatch');
         setTimeout(()=>{
-          a.textContent=''; b.textContent='';
           a.classList.remove('flipped','mismatch'); b.classList.remove('flipped','mismatch');
           flipped = []; lock = false;
         }, 700);
@@ -615,14 +821,14 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
   build();
 })();
 
-/* ================= CLICKER ================= */
+/* ================= CLICKER / MOLDEADO ================= */
 (function(){
   let score = 0;
   let cps = 0;
   const items = [
-    {id:'torno', name:'Torno alfarero', desc:'+1 greda/seg', baseCost:15, cost:15, cps:1, owned:0},
-    {id:'horno', name:'Horno de barro', desc:'+5 greda/seg', baseCost:100, cost:100, cps:5, owned:0},
-    {id:'ayudante', name:'Ayudante artesano', desc:'+20 greda/seg', baseCost:500, cost:500, cps:20, owned:0},
+    {id:'torno', name:'Torno alfarero', desc:'+1 greda/seg', icon:'🌀', baseCost:15, cost:15, cps:1, owned:0},
+    {id:'horno', name:'Horno de barro', desc:'+5 greda/seg', icon:'🔥', baseCost:100, cost:100, cps:5, owned:0},
+    {id:'ayudante', name:'Ayudante artesano', desc:'+20 greda/seg', icon:'🖐️', baseCost:500, cost:500, cps:20, owned:0},
   ];
 
   const lump = document.getElementById('clay-lump');
@@ -630,6 +836,20 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
   const scoreEl = document.getElementById('click-score');
   const cpsEl = document.getElementById('click-cps');
   const shop = document.getElementById('shop');
+  const progressBar = document.getElementById('clay-progress-bar');
+  const progressText = document.getElementById('clay-progress-text');
+
+  function cheapestUnowned(){
+    // la barra de progreso siempre apunta a la mejora más barata disponible
+    return items.reduce((a,b)=> a.cost < b.cost ? a : b);
+  }
+
+  function updateProgress(){
+    const target = cheapestUnowned();
+    const pct = Math.max(0, Math.min(100, (score/target.cost)*100));
+    progressBar.style.width = pct + '%';
+    progressText.textContent = Math.floor(Math.min(score,target.cost)) + ' / ' + target.cost + ' — ' + target.icon + ' ' + target.name;
+  }
 
   function render(justBoughtId){
     scoreEl.textContent = Math.floor(score);
@@ -640,7 +860,7 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
       const div = document.createElement('div');
       div.className = 'shop-item' + (affordable ? ' affordable' : '');
       div.innerHTML = `
-        <div class="info"><b>${item.name} (${item.owned})</b>${item.desc}</div>
+        <div class="info"><span class="shop-ico">${item.icon}</span><div><b>${item.name} (${item.owned})</b><span>${item.desc}</span></div></div>
         <button class="action"${affordable ? '' : ' disabled'}>Comprar · ${item.cost}</button>
       `;
       const btn = div.querySelector('button');
@@ -652,11 +872,12 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
           cps += item.cps;
           item.cost = Math.ceil(item.baseCost * Math.pow(1.18, item.owned));
           render(item.id);
-          floatText('+' + item.cps + '/seg', '#4A7C59');
+          floatText('+' + item.cps + '/seg', 'var(--arc-green)');
         }
       });
       shop.appendChild(div);
     });
+    updateProgress();
   }
 
   function floatText(text, color){
@@ -664,16 +885,30 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     el.className = 'clay-float';
     el.textContent = text;
     if(color) el.style.color = color;
-    // pequeño desplazamiento horizontal aleatorio para que no se apilen exactos
     el.style.marginLeft = (Math.random()*30 - 15) + 'px';
     wrap.appendChild(el);
     el.addEventListener('animationend', () => el.remove());
+  }
+
+  function burstParticles(){
+    for(let i=0;i<7;i++){
+      const p = document.createElement('span');
+      p.className = 'clay-particle';
+      const angle = Math.random()*Math.PI*2;
+      const dist = 40 + Math.random()*40;
+      p.style.setProperty('--px', (Math.cos(angle)*dist)+'px');
+      p.style.setProperty('--py', (Math.sin(angle)*dist)+'px');
+      p.style.background = Math.random() > 0.5 ? 'var(--arc-gold)' : 'var(--arc-fired-light)';
+      wrap.appendChild(p);
+      p.addEventListener('animationend', () => p.remove());
+    }
   }
 
   function moldear(){
     score += 1;
     render();
     floatText('+1');
+    burstParticles();
     lump.classList.add('is-pressed');
     setTimeout(()=>lump.classList.remove('is-pressed'), 90);
   }
@@ -690,80 +925,189 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
   render();
 })();
 
-/* ================= PLATAFORMERO ================= */
+/* ================= RECOLECTOR / PLATAFORMERO ================= */
 (function(){
   const canvas = document.getElementById('plat-canvas');
   const ctx = canvas.getContext('2d');
   const W = canvas.width, H = canvas.height;
   const groundY = H - 40;
 
-  let player = { x: W/2 - 20, y: groundY - 40, w: 40, h: 40, vy: 0, vx: 0, onGround: true };
+  let player = { x: W/2 - 20, y: groundY - 40, w: 40, h: 40, vy: 0, vx: 0, onGround: true, squash: 1 };
   const GRAVITY = 0.7, JUMP_V = -13, SPEED = 4;
   let items = [];
-  let score = 0, lives = 3, spawnTimer = 0, running = true;
+  let particles = [];
+  let popups = []; // "+1" text popups
+  let score = 0, lives = 3, spawnTimer = 0, running = true, t = 0;
 
-  function resetItems(){ items = []; }
+  // fondo con degradado + colinas suaves, precalculado una vez
+  const skyGrad = ctx.createLinearGradient(0,0,0,H);
+  skyGrad.addColorStop(0, '#f3e6cf');
+  skyGrad.addColorStop(1, '#e0c9a0');
+
+  function resetItems(){ items = []; particles = []; popups = []; }
 
   function spawn(){
-    const isRock = Math.random() < 0.3;
+    const isRock = Math.random() < 0.28;
     items.push({
       x: Math.random()*(W-24),
       y: -24,
       w: 24, h: 24,
       vy: 2 + Math.random()*1.5,
-      rock: isRock
+      rock: isRock,
+      spin: Math.random()*Math.PI*2
     });
+  }
+
+  function burst(x,y,color){
+    for(let i=0;i<8;i++){
+      const angle = Math.random()*Math.PI*2;
+      const speed = 1.5 + Math.random()*2.5;
+      particles.push({
+        x, y, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed - 1,
+        life: 1, color
+      });
+    }
   }
 
   function update(){
     if(!running) return;
+    t++;
     player.vy += GRAVITY;
     player.y += player.vy;
     player.x += player.vx;
-    if(player.y + player.h >= groundY){ player.y = groundY - player.h; player.vy = 0; player.onGround = true; }
+    if(player.y + player.h >= groundY){
+      if(!player.onGround) player.squash = 0.7; // aterrizaje: aplastado
+      player.y = groundY - player.h; player.vy = 0; player.onGround = true;
+    }
     player.x = Math.max(0, Math.min(W - player.w, player.x));
+    player.squash += (1 - player.squash) * 0.2; // vuelve a la forma normal
 
     spawnTimer++;
     if(spawnTimer > 45){ spawn(); spawnTimer = 0; }
 
-    items.forEach(it => it.y += it.vy);
+    items.forEach(it => { it.y += it.vy; it.spin += 0.06; });
 
     items = items.filter(it=>{
       if(it.y > H) return false;
       const hit = it.x < player.x+player.w && it.x+it.w > player.x &&
                   it.y < player.y+player.h && it.y+it.h > player.y;
       if(hit){
-        if(it.rock){ lives--; document.getElementById('plat-lives').textContent = lives;
+        if(it.rock){
+          lives--; document.getElementById('plat-lives').textContent = lives;
+          burst(it.x+12, it.y+12, '#6b6b6b');
+          popups.push({x: it.x+12, y: it.y, life:1, text:'💥', color:'#8F3A29'});
           if(lives<=0){ running=false; }
-        } else { score++; document.getElementById('plat-score').textContent = score; }
+        } else {
+          score++; document.getElementById('plat-score').textContent = score;
+          burst(it.x+12, it.y+12, '#C88A3D');
+          popups.push({x: it.x+12, y: it.y, life:1, text:'+1', color:'#4A7C59'});
+        }
         return false;
       }
       return true;
     });
+
+    particles.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; p.vy+=0.15; p.life-=0.04; });
+    particles = particles.filter(p=>p.life>0);
+    popups.forEach(p=>{ p.y-=0.8; p.life-=0.02; });
+    popups = popups.filter(p=>p.life>0);
+  }
+
+  function drawGround(){
+    ctx.fillStyle = skyGrad;
+    ctx.fillRect(0,0,W,H);
+    // colinas de fondo suaves (parallax simple estático)
+    ctx.fillStyle = 'rgba(184,92,44,0.10)';
+    ctx.beginPath();
+    ctx.moveTo(0, groundY-30);
+    ctx.quadraticCurveTo(W*0.25, groundY-70, W*0.5, groundY-30);
+    ctx.quadraticCurveTo(W*0.75, groundY+10, W, groundY-40);
+    ctx.lineTo(W, groundY); ctx.lineTo(0, groundY);
+    ctx.closePath(); ctx.fill();
+
+    ctx.fillStyle = '#c9a877';
+    ctx.fillRect(0, groundY, W, H-groundY);
+    // textura de "tierra" con líneas suaves
+    ctx.strokeStyle = 'rgba(42,35,29,0.08)';
+    ctx.lineWidth = 1;
+    for(let i=0;i<W;i+=26){
+      ctx.beginPath();
+      ctx.moveTo(i + ((t*0.15)%26), groundY+4);
+      ctx.lineTo(i + ((t*0.15)%26) - 10, H);
+      ctx.stroke();
+    }
   }
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-    ctx.fillStyle = '#c9b892';
-    ctx.fillRect(0, groundY, W, H-groundY);
+    drawGround();
 
-    ctx.font = '30px serif';
-    ctx.fillText('🧑‍🎨', player.x, player.y+32);
+    // sombra elíptica del jugador
+    ctx.save();
+    ctx.globalAlpha = 0.25;
+    ctx.fillStyle = '#2A231D';
+    ctx.beginPath();
+    ctx.ellipse(player.x+player.w/2, groundY+6, 16*player.squash, 5, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.restore();
 
+    // jugador con squash/stretch
+    ctx.save();
+    ctx.translate(player.x+player.w/2, player.y+player.h/2);
+    ctx.scale(1/player.squash, player.squash);
+    ctx.font = '32px serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('🧑‍🎨', 0, 2);
+    ctx.restore();
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+
+    // items cayendo con rotación
     items.forEach(it=>{
+      ctx.save();
+      ctx.translate(it.x+12, it.y+12);
+      ctx.rotate(Math.sin(it.spin)*0.3);
       ctx.font = '22px serif';
-      ctx.fillText(it.rock ? '⚫' : '🟤', it.x, it.y+18);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(it.rock ? '⚫' : '🟤', 0, 0);
+      ctx.restore();
     });
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+
+    // partículas
+    particles.forEach(p=>{
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(p.x-2, p.y-2, 4, 4);
+    });
+    ctx.globalAlpha = 1;
+
+    // popups de puntaje
+    popups.forEach(p=>{
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.fillStyle = p.color;
+      ctx.font = 'bold 15px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(p.text, p.x, p.y);
+      ctx.textAlign = 'left';
+    });
+    ctx.globalAlpha = 1;
 
     if(!running){
-      ctx.fillStyle = 'rgba(42,35,29,0.75)';
+      ctx.fillStyle = 'rgba(42,35,29,0.78)';
       ctx.fillRect(0,0,W,H);
       ctx.fillStyle = '#F6EEE1';
-      ctx.font = '24px sans-serif';
+      ctx.font = 'bold 26px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('Fin del juego · Puntos: ' + score, W/2, H/2);
-      ctx.font = '14px sans-serif';
-      ctx.fillText('Toca "Saltar" para reiniciar', W/2, H/2+28);
+      ctx.fillText('🏺 Fin del juego', W/2, H/2 - 16);
+      ctx.font = '16px sans-serif';
+      ctx.fillText('Puntos: ' + score, W/2, H/2 + 12);
+      ctx.font = '13px sans-serif';
+      ctx.fillStyle = 'rgba(246,238,225,0.75)';
+      ctx.fillText('Toca "Saltar" para reiniciar', W/2, H/2 + 38);
       ctx.textAlign = 'left';
     }
   }
@@ -775,13 +1119,13 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
 
   function jump(){
     if(!running){
-      player = { x: W/2-20, y: groundY-40, w:40, h:40, vy:0, vx:0, onGround:true };
+      player = { x: W/2-20, y: groundY-40, w:40, h:40, vy:0, vx:0, onGround:true, squash:1 };
       score = 0; lives = 3; resetItems(); running = true;
       document.getElementById('plat-score').textContent = 0;
       document.getElementById('plat-lives').textContent = 3;
       return;
     }
-    if(player.onGround){ player.vy = JUMP_V; player.onGround = false; }
+    if(player.onGround){ player.vy = JUMP_V; player.onGround = false; player.squash = 1.25; }
   }
 
   document.getElementById('plat-left').addEventListener('mousedown', ()=>player.vx=-SPEED);
@@ -861,7 +1205,7 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     }
     moves = 0;
     document.getElementById('puzzle-moves').textContent = 0;
-    document.getElementById('puzzle-status').textContent = 'En progreso';
+    document.getElementById('puzzle-status').textContent = '⏳ En progreso';
   }
 
   function validMoves(blankIndex){
@@ -909,12 +1253,30 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
       document.getElementById('puzzle-moves').textContent = moves;
       render();
       if(board.every((v,i)=>v===i)){
-        document.getElementById('puzzle-status').textContent = '¡Completado! 🏺';
+        document.getElementById('puzzle-status').textContent = '🏺 ¡Completado!';
+        document.getElementById('puzzle-status-pill').style.background = 'var(--arc-raw)';
+        document.getElementById('puzzle-status-pill').style.boxShadow = 'inset 0 0 0 1.5px var(--arc-green)';
       }
     }
   }
 
+  const previewBtn = document.getElementById('puzzle-preview-btn');
+  const previewEl = document.getElementById('puzzle-preview');
+  previewBtn.addEventListener('click', ()=>{
+    const show = !previewEl.classList.contains('show');
+    if(show){
+      previewEl.style.backgroundImage = `url(${imgURL})`;
+      previewEl.classList.add('show');
+      previewBtn.textContent = '🙈 Ocultar vasija';
+    } else {
+      previewEl.classList.remove('show');
+      previewBtn.textContent = '👁️ Espiar la vasija completa';
+    }
+  });
+
   document.getElementById('puzzle-shuffle').addEventListener('click', ()=>{
+    document.getElementById('puzzle-status-pill').style.background = '';
+    document.getElementById('puzzle-status-pill').style.boxShadow = '';
     shuffleBoard(); render();
   });
 
