@@ -208,31 +208,81 @@
   }
   #pomaire-arcade .card.matched{ opacity:0.55; cursor:default; }
   #pomaire-arcade .card:hover{ transform: none; box-shadow: none; }
+  #pomaire-arcade .card:focus-visible{ outline: 3px solid var(--arc-gold); outline-offset: 2px; }
+  #pomaire-arcade .card.mismatch{ animation: cardShake .4s ease; }
+  @keyframes cardShake{
+    0%,100%{ transform: scale(1.02) translateX(0); }
+    25%{ transform: scale(1.02) translateX(-5px); }
+    75%{ transform: scale(1.02) translateX(5px); }
+  }
 
   /* ---- Clicker ---- */
+  #pomaire-arcade #clay-wrap{
+    position: relative;
+    width: 150px;
+    margin: 8px auto 8px;
+  }
   #pomaire-arcade #clay-lump{
     width:150px;height:150px;border-radius:50%;
     background: radial-gradient(circle at 35% 30%, #c9633f, var(--arc-fired) 60%, var(--arc-fired-dark));
-    margin: 8px auto 20px;
+    margin: 0 auto;
     display:flex;align-items:center;justify-content:center;
     font-size:44px;
     cursor:pointer;
+    user-select:none;
     box-shadow: 0 10px 22px -10px rgba(42,35,29,0.5);
-    transition: transform .08s ease;
+    transition: transform .08s ease, box-shadow .08s ease;
   }
-  #pomaire-arcade #clay-lump:active{ transform: scale(0.94); }
+  #pomaire-arcade #clay-lump:hover{ box-shadow: 0 12px 26px -8px rgba(42,35,29,0.6); }
+  #pomaire-arcade #clay-lump:active,
+  #pomaire-arcade #clay-lump.is-pressed{ transform: scale(0.9); }
+  #pomaire-arcade .clay-float{
+    position:absolute;
+    left:50%;
+    top:10%;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:20px;
+    color: var(--arc-fired-dark);
+    pointer-events:none;
+    animation: clayFloatUp .8s ease-out forwards;
+    white-space:nowrap;
+  }
+  @keyframes clayFloatUp{
+    0%{ opacity:1; transform: translate(-50%, 0) scale(1); }
+    100%{ opacity:0; transform: translate(-50%, -60px) scale(1.15); }
+  }
+  #pomaire-arcade .shop-title{
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:15px;
+    margin: 18px 0 8px;
+    color: var(--arc-dark);
+    text-align:center;
+  }
   #pomaire-arcade .shop-item{
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:10px 12px;
-    border:1px solid var(--arc-line);
+    border:1.5px solid var(--arc-line);
     border-radius:4px;
     margin-bottom:8px;
     background: var(--arc-raw);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  #pomaire-arcade .shop-item.affordable{
+    border-color: var(--arc-gold);
+    box-shadow: 0 0 0 2px rgba(200,138,61,0.18);
   }
   #pomaire-arcade .shop-item .info{ font-size:13px; line-height:1.4; }
   #pomaire-arcade .shop-item .info b{ font-family:'Zilla Slab', serif; font-size:15px; display:block; }
+  #pomaire-arcade .shop-item button.action.just-bought{ animation: buyPulse .35s ease; }
+  @keyframes buyPulse{
+    0%{ transform: scale(1); }
+    40%{ transform: scale(1.12); }
+    100%{ transform: scale(1); }
+  }
 
   /* ---- Platformer ---- */
   #pomaire-arcade #plat-canvas{
@@ -277,6 +327,7 @@
     background: var(--arc-raw) !important;
     cursor:default;
   }
+  #pomaire-arcade .tile:focus-visible{ outline: 3px solid var(--arc-gold); outline-offset: -3px; z-index: 1; position: relative; }
 
   #pomaire-arcade footer.arc-footer{
     margin-top: 26px;
@@ -425,7 +476,10 @@
       <span>Greda: <b id="click-score">0</b></span>
       <span>Por segundo: <b id="click-cps">0</b></span>
     </div>
-    <div id="clay-lump">🏺</div>
+    <div id="clay-wrap">
+      <div id="clay-lump" role="button" tabindex="0" aria-label="Moldear greda">🏺</div>
+    </div>
+    <p class="shop-title">Mejoras · producción automática</p>
     <div id="shop"></div>
   </section>
 
@@ -518,7 +572,13 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
       card.className = 'card';
       card.dataset.icon = icon;
       card.dataset.index = i;
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'Carta oculta');
       card.addEventListener('click', ()=>flip(card));
+      card.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flip(card); }
+      });
       grid.appendChild(card);
     });
   }
@@ -535,13 +595,16 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
       const [a,b] = flipped;
       if(a.dataset.icon === b.dataset.icon){
         a.classList.add('matched'); b.classList.add('matched');
+        a.setAttribute('aria-label', 'Pareja encontrada: ' + a.dataset.icon);
+        b.setAttribute('aria-label', 'Pareja encontrada: ' + b.dataset.icon);
         matched++;
         document.getElementById('memo-pairs').textContent = matched;
         flipped = []; lock = false;
       } else {
+        a.classList.add('mismatch'); b.classList.add('mismatch');
         setTimeout(()=>{
           a.textContent=''; b.textContent='';
-          a.classList.remove('flipped'); b.classList.remove('flipped');
+          a.classList.remove('flipped','mismatch'); b.classList.remove('flipped','mismatch');
           flipped = []; lock = false;
         }, 700);
       }
@@ -562,34 +625,62 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     {id:'ayudante', name:'Ayudante artesano', desc:'+20 greda/seg', baseCost:500, cost:500, cps:20, owned:0},
   ];
 
-  function render(){
-    document.getElementById('click-score').textContent = Math.floor(score);
-    document.getElementById('click-cps').textContent = cps;
-    const shop = document.getElementById('shop');
+  const lump = document.getElementById('clay-lump');
+  const wrap = document.getElementById('clay-wrap');
+  const scoreEl = document.getElementById('click-score');
+  const cpsEl = document.getElementById('click-cps');
+  const shop = document.getElementById('shop');
+
+  function render(justBoughtId){
+    scoreEl.textContent = Math.floor(score);
+    cpsEl.textContent = cps;
     shop.innerHTML = '';
     items.forEach(item=>{
+      const affordable = score >= item.cost;
       const div = document.createElement('div');
-      div.className = 'shop-item';
+      div.className = 'shop-item' + (affordable ? ' affordable' : '');
       div.innerHTML = `
         <div class="info"><b>${item.name} (${item.owned})</b>${item.desc}</div>
-        <button class="action" ${score < item.cost ? 'disabled' : ''}>Comprar · ${item.cost}</button>
+        <button class="action"${affordable ? '' : ' disabled'}>Comprar · ${item.cost}</button>
       `;
-      div.querySelector('button').addEventListener('click', ()=>{
+      const btn = div.querySelector('button');
+      if(item.id === justBoughtId) btn.classList.add('just-bought');
+      btn.addEventListener('click', ()=>{
         if(score >= item.cost){
           score -= item.cost;
           item.owned++;
           cps += item.cps;
           item.cost = Math.ceil(item.baseCost * Math.pow(1.18, item.owned));
-          render();
+          render(item.id);
+          floatText('+' + item.cps + '/seg', '#4A7C59');
         }
       });
       shop.appendChild(div);
     });
   }
 
-  document.getElementById('clay-lump').addEventListener('click', ()=>{
+  function floatText(text, color){
+    const el = document.createElement('span');
+    el.className = 'clay-float';
+    el.textContent = text;
+    if(color) el.style.color = color;
+    // pequeño desplazamiento horizontal aleatorio para que no se apilen exactos
+    el.style.marginLeft = (Math.random()*30 - 15) + 'px';
+    wrap.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+
+  function moldear(){
     score += 1;
     render();
+    floatText('+1');
+    lump.classList.add('is-pressed');
+    setTimeout(()=>lump.classList.remove('is-pressed'), 90);
+  }
+
+  lump.addEventListener('click', moldear);
+  lump.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); moldear(); }
   });
 
   setInterval(()=>{
@@ -796,6 +887,14 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
         tile.style.backgroundImage = `url(${imgURL})`;
         tile.style.backgroundSize = `${SIZE*TILE}px ${SIZE*TILE}px`;
         tile.style.backgroundPosition = `-${sc*TILE}px -${sr*TILE}px`;
+      }
+      if(val !== 8){
+        tile.tabIndex = 0;
+        tile.setAttribute('role', 'button');
+        tile.setAttribute('aria-label', 'Pieza del rompecabezas');
+        tile.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tryMove(idx); }
+        });
       }
       tile.addEventListener('click', ()=>tryMove(idx));
       grid.appendChild(tile);
