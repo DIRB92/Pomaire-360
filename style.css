@@ -9,6 +9,10 @@
     --muted:      #7A5C40;
     --white:      #FFFFFF;
     --green:      #4A7C59;
+    --gold:       #E6B246;
+    --gold-dark:  #C9912B;
+    --teal:       #2F7A6B;
+    --teal-dark:  #1D5C50;
     --radius:     14px;
     --shadow:     0 2px 16px rgba(90,40,10,.10);
     --fontScale:  1;
@@ -1636,6 +1640,185 @@
   }
   .dir-scroll::-webkit-scrollbar { width: 8px; }
   .dir-scroll::-webkit-scrollbar-thumb { background: var(--clay-light); border-radius: 8px; }
+
+  /* ════════════════════════════════════════════════════════════════
+     TARJETAS DE SERVICIO REDISEÑADAS (card-v2)
+     Usadas en /comercio/ para un look más atractivo e ilustrado.
+     ════════════════════════════════════════════════════════════════ */
+  .cards-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.3rem;
+  }
+  .card-v2 {
+    position: relative;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 1.5rem 1.4rem 1.4rem;
+    box-shadow: 0 4px 18px rgba(90,40,10,.09);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    border: 1px solid rgba(184,92,44,.10);
+    transition: transform .22s cubic-bezier(.25,.8,.25,1), box-shadow .22s;
+  }
+  .card-v2::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0; height: 5px;
+    background: linear-gradient(90deg, var(--card-accent, var(--clay)) 0%, var(--card-accent-2, var(--clay-light)) 100%);
+  }
+  .card-v2::after {
+    content: '';
+    position: absolute; top: -30px; right: -30px;
+    width: 110px; height: 110px; border-radius: 50%;
+    background: var(--card-accent, var(--clay));
+    opacity: .06;
+    pointer-events: none;
+  }
+  .card-v2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px rgba(90,40,10,.16);
+  }
+  .card-v2 .cv2-icon {
+    width: 58px; height: 58px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.75rem;
+    background: linear-gradient(140deg, var(--card-accent, var(--clay)) 0%, var(--card-accent-2, var(--clay-light)) 100%);
+    box-shadow: 0 6px 16px rgba(90,40,10,.22);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .card-v2 .cv2-badge {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: .68rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .04em;
+    padding: .18rem .6rem; border-radius: 10px;
+    background: color-mix(in srgb, var(--card-accent, var(--clay)) 14%, var(--smoke));
+    color: var(--card-accent-dark, var(--clay-dark));
+    position: relative; z-index: 1;
+  }
+  .card-v2 h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+    position: relative; z-index: 1;
+  }
+  .card-v2 p.cv2-detail {
+    font-size: .87rem;
+    color: var(--muted);
+    line-height: 1.55;
+    flex: 1;
+    position: relative; z-index: 1;
+  }
+  .card-v2 .cv2-links {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    margin-top: .3rem;
+    position: relative; z-index: 1;
+  }
+  .card-v2 a.cv2-link {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .8rem; font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    background: var(--card-accent, var(--clay));
+    padding: .48rem .95rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(90,40,10,.2);
+    transition: transform .15s, box-shadow .15s, filter .15s;
+  }
+  .card-v2 a.cv2-link:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 20px rgba(90,40,10,.3); }
+  .card-v2 a.cv2-link.cv2-link-ghost {
+    background: transparent;
+    color: var(--card-accent-dark, var(--clay-dark));
+    border: 1.5px solid var(--card-accent, var(--clay-light));
+    box-shadow: none;
+  }
+  .card-v2 a.cv2-link.cv2-link-ghost:hover { background: var(--card-accent, var(--clay)); color: #fff; }
+
+  /* prioridad / destacada */
+  .card-v2.cv2-priority {
+    background: linear-gradient(165deg, #FFF9F3 0%, #FFF1E4 100%);
+    border-color: rgba(184,92,44,.22);
+  }
+  .card-v2.cv2-priority .cv2-badge {
+    background: var(--card-accent, var(--clay));
+    color: #fff;
+  }
+
+  /* paleta de acentos por índice (rotación de color para variedad visual) */
+  .card-v2:nth-of-type(6n+1) { --card-accent: var(--clay); --card-accent-2: var(--clay-light); --card-accent-dark: var(--clay-dark); }
+  .card-v2:nth-of-type(6n+2) { --card-accent: var(--teal); --card-accent-2: #4FA491; --card-accent-dark: var(--teal-dark); }
+  .card-v2:nth-of-type(6n+3) { --card-accent: var(--gold-dark); --card-accent-2: var(--gold); --card-accent-dark: #8C6A1A; }
+  .card-v2:nth-of-type(6n+4) { --card-accent: var(--green); --card-accent-2: #6FA97D; --card-accent-dark: #345B3E; }
+  .card-v2:nth-of-type(6n+5) { --card-accent: #8C3D16; --card-accent-2: #B85C2C; --card-accent-dark: #5C2410; }
+  .card-v2:nth-of-type(6n+6) { --card-accent: #6E4A9E; --card-accent-2: #9576C4; --card-accent-dark: #4B3170; }
+
+  @media (max-width: 600px) {
+    .cards-v2 { grid-template-columns: 1fr; }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     "TODAS LAS TIENDAS" — directorio por pestañas/categorías
+     ════════════════════════════════════════════════════════════════ */
+  .shops-all { margin-top: 3rem; }
+  .shops-all-head { margin-bottom: 1.3rem; }
+  .shops-all-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--clay-dark);
+    display: flex; align-items: center; gap: .55rem;
+  }
+  .shops-all-head p { color: var(--muted); font-size: .87rem; margin-top: .3rem; }
+
+  .shop-cat-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1.2rem;
+  }
+  .shop-cat-tab {
+    display: inline-flex; align-items: center; gap: .45rem;
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.18);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 700;
+    padding: .55rem 1rem;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s, transform .12s;
+  }
+  .shop-cat-tab .sct-count {
+    font-size: .68rem; font-weight: 800;
+    background: rgba(184,92,44,.12);
+    color: var(--clay-dark);
+    border-radius: 10px;
+    padding: .05rem .45rem;
+  }
+  .shop-cat-tab:hover { border-color: var(--clay); color: var(--clay-dark); transform: translateY(-1px); }
+  .shop-cat-tab.active {
+    background: var(--clay);
+    border-color: var(--clay);
+    color: #fff;
+  }
+  .shop-cat-tab.active .sct-count { background: rgba(255,255,255,.25); color: #fff; }
+
+  .shop-cat-panel { display: none; }
+  .shop-cat-panel.active { display: block; animation: navDrop .2s ease; }
+
+  .shop-cat-panel .dir-sub { color: var(--muted); font-size: .83rem; margin-bottom: 1rem; }
+
+  @media (max-width: 600px) {
+    .shop-cat-tabs { gap: .4rem; }
+    .shop-cat-tab { font-size: .78rem; padding: .48rem .85rem; }
+  }
 
   /* ── OFFICIAL TOURIST ROUTE ──────────────────────── */
   .official-route {
