@@ -59,3 +59,14 @@ Object.assign(window.LANGS.fr,{"he1_hours":"🕒 Horaires : 8h29 à 17h29"});
 Object.assign(window.LANGS.ru,{"he1_hours":"🕒 Часы работы: 8:29–17:29"});
 Object.assign(window.LANGS.ja,{"he1_hours":"🕒 営業時間: 8:29〜17:29"});
 Object.assign(window.LANGS.zh,{"he1_hours":"🕒 营业时间：8:29至17:29"});
+
+
+
+/* ══ POMAIRE ARCADE · sección Juegos (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"nav_games":"Juegos"});
+Object.assign(window.LANGS.en,{"nav_games":"Games"});
+Object.assign(window.LANGS.pt,{"nav_games":"Jogos"});
+Object.assign(window.LANGS.fr,{"nav_games":"Jeux"});
+Object.assign(window.LANGS.ru,{"nav_games":"Игры"});
+Object.assign(window.LANGS.ja,{"nav_games":"ゲーム"});
+Object.assign(window.LANGS.zh,{"nav_games":"游戏"});

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>Pomaire Arcade — Juegos de greda y alfarería | Pomaire 360</title>
+<meta name="description" content="Cuatro juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire: memorama, moldeado, recolector y rompecabezas. Juega gratis, sin descargas.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://pomaire360.cl/juegos/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Pomaire Arcade — Juegos de greda y alfarería">
+<meta property="og:description" content="Cuatro juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire. Juega gratis, sin descargas.">
+<meta property="og:url" content="https://pomaire360.cl/juegos/">
+<meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
+<meta property="og:locale" content="es_CL">
+<link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://pomaire360.cl/site.webmanifest">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Pomaire 360", "item": "https://pomaire360.cl/"},
+    {"@type": "ListItem", "position": 2, "name": "Juegos", "item": "https://pomaire360.cl/juegos/"}
+  ]
+}
+</script>
+<style>
+  /* ══════════════════════════════════════════════════════════════════════
+     Pomaire Arcade — estilos encapsulados bajo #pomaire-arcade
+     para no interferir con el resto del sitio (nav, tarjetas .card, etc.)
+     ══════════════════════════════════════════════════════════════════════ */
+  #pomaire-arcade{
+    --arc-raw: #E4D6BE;
+    --arc-cream: #F6EEE1;
+    --arc-fired: #B24A34;
+    --arc-fired-dark: #8F3A29;
+    --arc-dark: #2A231D;
+    --arc-gold: #C88A3D;
+    --arc-line: rgba(42,35,29,0.14);
+  }
+
+  #pomaire-arcade{
+    background: var(--arc-raw);
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(200,138,61,0.10), transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(178,74,52,0.10), transparent 55%);
+    color: var(--arc-dark);
+    font-family: 'Work Sans', sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 32px 16px 64px;
+  }
+
+  #pomaire-arcade header.arc-header{
+    text-align:center;
+    max-width:640px;
+    margin-bottom: 28px;
+    padding: 0;
+    background: none;
+  }
+  #pomaire-arcade .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color: var(--arc-fired-dark);
+    margin-bottom:6px;
+  }
+  #pomaire-arcade h1{
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:42px;
+    margin:0 0 8px;
+    color: var(--arc-dark);
+    line-height: 1.15;
+  }
+  #pomaire-arcade header.arc-header p{
+    font-size:15px;
+    line-height:1.5;
+    color: rgba(42,35,29,0.72);
+    margin:0;
+  }
+
+  /* Signature nav: tabs styled like broken pottery shards */
+  #pomaire-arcade nav.arc-tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom: 30px;
+    max-width: 720px;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  #pomaire-arcade .tab{
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:15px;
+    color: var(--arc-cream);
+    background: var(--arc-dark);
+    border:none;
+    padding: 14px 20px 16px;
+    cursor:pointer;
+    clip-path: polygon(6% 0%, 100% 4%, 94% 100%, 0% 96%);
+    transform: rotate(-1.4deg);
+    transition: transform .18s ease, background .18s ease;
+    opacity:0.62;
+  }
+  #pomaire-arcade .tab:nth-child(2){ transform: rotate(1.1deg); clip-path: polygon(2% 6%, 96% 0%, 100% 92%, 6% 100%); }
+  #pomaire-arcade .tab:nth-child(3){ transform: rotate(-0.8deg); clip-path: polygon(8% 2%, 100% 0%, 92% 98%, 0% 100%); }
+  #pomaire-arcade .tab:nth-child(4){ transform: rotate(1.6deg); clip-path: polygon(0% 2%, 94% 0%, 100% 96%, 4% 100%); }
+  #pomaire-arcade .tab:hover{ opacity:0.85; }
+  #pomaire-arcade .tab.active{
+    background: var(--arc-fired);
+    opacity:1;
+    transform: rotate(0deg) scale(1.04);
+  }
+
+  #pomaire-arcade main.arc-main{
+    width:100%;
+    max-width: 640px;
+    background: var(--arc-cream);
+    border-radius: 4px;
+    padding: 28px;
+    box-shadow: 0 1px 0 var(--arc-line), 0 18px 40px -24px rgba(42,35,29,0.35);
+    border: 1px solid var(--arc-line);
+  }
+
+  #pomaire-arcade .game{ display:none; padding: 0; background: none; }
+  #pomaire-arcade .game.active{ display:block; }
+
+  #pomaire-arcade h2{
+    font-family:'Zilla Slab', serif;
+    font-size:22px;
+    margin: 0 0 4px;
+    color: var(--arc-dark);
+  }
+  #pomaire-arcade .sub{
+    font-size:13px;
+    color: rgba(42,35,29,0.65);
+    margin: 0 0 18px;
+  }
+
+  #pomaire-arcade .hud{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    margin-bottom:16px;
+    color: var(--arc-fired-dark);
+  }
+  #pomaire-arcade .hud b{ color: var(--arc-dark); }
+
+  #pomaire-arcade button.action{
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    background: var(--arc-fired);
+    color: var(--arc-cream);
+    border:none;
+    padding:10px 16px;
+    border-radius:3px;
+    cursor:pointer;
+  }
+  #pomaire-arcade button.action:hover{ background: var(--arc-fired-dark); }
+  #pomaire-arcade button.action:disabled{ background:#c9bda6; cursor:not-allowed; }
+
+  /* ---- Memorama ---- */
+  #pomaire-arcade #memo-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:8px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  #pomaire-arcade .card{
+    aspect-ratio:1;
+    background: var(--arc-fired);
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    cursor:pointer;
+    user-select:none;
+    transition: transform .15s ease, background .15s ease;
+    box-shadow: none;
+    padding: 0;
+    flex-direction: row;
+    gap: 0;
+  }
+  #pomaire-arcade .card.flipped, #pomaire-arcade .card.matched{
+    background: var(--arc-raw);
+    transform: scale(1.02);
+  }
+  #pomaire-arcade .card.matched{ opacity:0.55; cursor:default; }
+  #pomaire-arcade .card:hover{ transform: none; box-shadow: none; }
+
+  /* ---- Clicker ---- */
+  #pomaire-arcade #clay-lump{
+    width:150px;height:150px;border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #c9633f, var(--arc-fired) 60%, var(--arc-fired-dark));
+    margin: 8px auto 20px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:44px;
+    cursor:pointer;
+    box-shadow: 0 10px 22px -10px rgba(42,35,29,0.5);
+    transition: transform .08s ease;
+  }
+  #pomaire-arcade #clay-lump:active{ transform: scale(0.94); }
+  #pomaire-arcade .shop-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 12px;
+    border:1px solid var(--arc-line);
+    border-radius:4px;
+    margin-bottom:8px;
+    background: var(--arc-raw);
+  }
+  #pomaire-arcade .shop-item .info{ font-size:13px; line-height:1.4; }
+  #pomaire-arcade .shop-item .info b{ font-family:'Zilla Slab', serif; font-size:15px; display:block; }
+
+  /* ---- Platformer ---- */
+  #pomaire-arcade #plat-canvas{
+    display:block;
+    width:100%;
+    max-width:100%;
+    background: linear-gradient(#e9dcc4, #d8c6a3);
+    border-radius:4px;
+    border:1px solid var(--arc-line);
+    touch-action:none;
+  }
+  #pomaire-arcade .plat-controls{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+  }
+  #pomaire-arcade .plat-controls button{
+    flex:1;
+    font-size:20px;
+    padding:12px;
+    border-radius:4px;
+    border:1px solid var(--arc-line);
+    background: var(--arc-raw);
+    cursor:pointer;
+  }
+
+  /* ---- Puzzle ---- */
+  #pomaire-arcade #puzzle-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:2px;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 14px;
+    background: var(--arc-dark);
+  }
+  #pomaire-arcade .tile{
+    background-repeat:no-repeat;
+    cursor:pointer;
+  }
+  #pomaire-arcade .tile.blank{
+    background: var(--arc-raw) !important;
+    cursor:default;
+  }
+
+  #pomaire-arcade footer.arc-footer{
+    margin-top: 26px;
+    font-size:12px;
+    color: rgba(42,35,29,0.55);
+    text-align:center;
+    background: none;
+    padding: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #pomaire-arcade *{ transition:none !important; animation:none !important; }
+  }
+
+  @media (max-width: 480px){
+    #pomaire-arcade h1{ font-size: 32px; }
+    #pomaire-arcade #puzzle-grid{ width: 260px; height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/">🏺 Pomaire 360</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
+        <a href="/seguridad/">🚔 <span data-t="nav_security">Seguridad</span></a>
+        <a href="/comercio/">🛒 <span data-t="nav_commerce">Servicios</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+        <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">Qué ver</span></a>
+        <a href="/plaza/">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Alrededores</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
+        <a href="/plaza/#banos">🚽 <span data-t="nav_banos">Baños</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
+        <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="/#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="/#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+        <a href="/#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="/#resenas">⭐ <span data-t="nav_reviews">Reseñas</span></a>
+        <a href="/juegos/">🎮 <span data-t="nav_games">Juegos</span></a>
+        <a href="/anunciate/">📣 <span data-t="nav_advertise">Anúnciate</span></a>
+        <a href="/sugerencias/">💬 <span data-t="nav_suggest">Sugerencias</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+    <a class="nav-cta" href="/apoyar/">💛 <span data-t="nav_donate">Apoyar</span></a>
+  </div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇨🇱</span>
+      <span id="langCurrentName">Español</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <button type="button" role="option" class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="en" onclick="selectLang('en')">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="pt" onclick="selectLang('pt')">
+        <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="pomaire-arcade">
+
+<header class="arc-header">
+  <div class="eyebrow">Pomaire360.cl</div>
+  <h1>Pomaire Arcade</h1>
+  <p>Cuatro juegos clásicos, hechos con greda. Elige uno y a jugar.</p>
+</header>
+
+<nav class="arc-tabs">
+  <button class="tab active" data-game="memo">Memorama</button>
+  <button class="tab" data-game="click">Moldeado</button>
+  <button class="tab" data-game="plat">Recolector</button>
+  <button class="tab" data-game="puzzle">Rompecabezas</button>
+</nav>
+
+<main class="arc-main">
+
+  <!-- MEMORAMA -->
+  <section class="game active" id="game-memo">
+    <h2>Memorama de greda</h2>
+    <p class="sub">Encuentra las 8 parejas de piezas de alfarería.</p>
+    <div class="hud">
+      <span>Movimientos: <b id="memo-moves">0</b></span>
+      <span>Parejas: <b id="memo-pairs">0</b>/8</span>
+    </div>
+    <div id="memo-grid"></div>
+    <p style="text-align:center;margin-top:16px;">
+      <button class="action" id="memo-restart">Reiniciar</button>
+    </p>
+  </section>
+
+  <!-- CLICKER -->
+  <section class="game" id="game-click">
+    <h2>Moldeado</h2>
+    <p class="sub">Haz clic en la greda para formar piezas. Compra torno y horno para producir sola.</p>
+    <div class="hud">
+      <span>Greda: <b id="click-score">0</b></span>
+      <span>Por segundo: <b id="click-cps">0</b></span>
+    </div>
+    <div id="clay-lump">🏺</div>
+    <div id="shop"></div>
+  </section>
+
+  <!-- PLATAFORMERO -->
+  <section class="game" id="game-plat">
+    <h2>Recolector de greda</h2>
+    <p class="sub">Muévete y salta para atrapar la greda (🟤). Evita las piedras (⚫).</p>
+    <div class="hud">
+      <span>Puntos: <b id="plat-score">0</b></span>
+      <span>Vidas: <b id="plat-lives">3</b></span>
+    </div>
+    <canvas id="plat-canvas" width="580" height="320"></canvas>
+    <div class="plat-controls">
+      <button id="plat-left">◀</button>
+      <button id="plat-jump">⤒ Saltar</button>
+      <button id="plat-right">▶</button>
+    </div>
+    <p style="font-size:12px;color:rgba(42,35,29,0.6);margin-top:8px;">
+      En computador: flechas ◀ ▶ para moverte, barra espaciadora para saltar.
+    </p>
+  </section>
+
+  <!-- PUZZLE -->
+  <section class="game" id="game-puzzle">
+    <h2>Rompecabezas de la vasija</h2>
+    <p class="sub">Ordena las piezas para reconstruir la vasija.</p>
+    <div class="hud">
+      <span>Movimientos: <b id="puzzle-moves">0</b></span>
+      <span id="puzzle-status">En progreso</span>
+    </div>
+    <div id="puzzle-grid"></div>
+    <p style="text-align:center;">
+      <button class="action" id="puzzle-shuffle">Mezclar de nuevo</button>
+    </p>
+  </section>
+
+</main>
+
+<footer class="arc-footer">Hecho para Pomaire360.cl · sin conexión a servidores externos</footer>
+
+</div>
+
+<div class="sub-cross">
+  <h2 data-t="sub_more">Más en Pomaire 360</h2>
+  <div class="sub-cross-links">
+    <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+    <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+    <a href="/#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+    <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+  </div>
+</div>
+
+<div class="sub-foot">
+  <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
+</div>
+
+<script>
+/* ---------- Navegación de tabs ---------- */
+document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('#pomaire-arcade .tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('#pomaire-arcade .game').forEach(g=>g.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('game-'+tab.dataset.game).classList.add('active');
+  });
+});
+
+/* ================= MEMORAMA ================= */
+(function(){
+  const icons = ['🏺','🔥','🌀','🖐️','🪨','🧺','🎨','🌿'];
+  let deck = [], flipped = [], matched = 0, moves = 0, lock = false;
+
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]] = [arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  function build(){
+    deck = shuffle([...icons, ...icons]);
+    flipped = []; matched = 0; moves = 0; lock = false;
+    document.getElementById('memo-moves').textContent = 0;
+    document.getElementById('memo-pairs').textContent = 0;
+    const grid = document.getElementById('memo-grid');
+    grid.innerHTML = '';
+    deck.forEach((icon, i)=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.icon = icon;
+      card.dataset.index = i;
+      card.addEventListener('click', ()=>flip(card));
+      grid.appendChild(card);
+    });
+  }
+
+  function flip(card){
+    if(lock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+    card.textContent = card.dataset.icon;
+    card.classList.add('flipped');
+    flipped.push(card);
+    if(flipped.length === 2){
+      moves++;
+      document.getElementById('memo-moves').textContent = moves;
+      lock = true;
+      const [a,b] = flipped;
+      if(a.dataset.icon === b.dataset.icon){
+        a.classList.add('matched'); b.classList.add('matched');
+        matched++;
+        document.getElementById('memo-pairs').textContent = matched;
+        flipped = []; lock = false;
+      } else {
+        setTimeout(()=>{
+          a.textContent=''; b.textContent='';
+          a.classList.remove('flipped'); b.classList.remove('flipped');
+          flipped = []; lock = false;
+        }, 700);
+      }
+    }
+  }
+
+  document.getElementById('memo-restart').addEventListener('click', build);
+  build();
+})();
+
+/* ================= CLICKER ================= */
+(function(){
+  let score = 0;
+  let cps = 0;
+  const items = [
+    {id:'torno', name:'Torno alfarero', desc:'+1 greda/seg', baseCost:15, cost:15, cps:1, owned:0},
+    {id:'horno', name:'Horno de barro', desc:'+5 greda/seg', baseCost:100, cost:100, cps:5, owned:0},
+    {id:'ayudante', name:'Ayudante artesano', desc:'+20 greda/seg', baseCost:500, cost:500, cps:20, owned:0},
+  ];
+
+  function render(){
+    document.getElementById('click-score').textContent = Math.floor(score);
+    document.getElementById('click-cps').textContent = cps;
+    const shop = document.getElementById('shop');
+    shop.innerHTML = '';
+    items.forEach(item=>{
+      const div = document.createElement('div');
+      div.className = 'shop-item';
+      div.innerHTML = `
+        <div class="info"><b>${item.name} (${item.owned})</b>${item.desc}</div>
+        <button class="action" ${score < item.cost ? 'disabled' : ''}>Comprar · ${item.cost}</button>
+      `;
+      div.querySelector('button').addEventListener('click', ()=>{
+        if(score >= item.cost){
+          score -= item.cost;
+          item.owned++;
+          cps += item.cps;
+          item.cost = Math.ceil(item.baseCost * Math.pow(1.18, item.owned));
+          render();
+        }
+      });
+      shop.appendChild(div);
+    });
+  }
+
+  document.getElementById('clay-lump').addEventListener('click', ()=>{
+    score += 1;
+    render();
+  });
+
+  setInterval(()=>{
+    if(cps > 0){ score += cps/10; render(); }
+  }, 100);
+
+  render();
+})();
+
+/* ================= PLATAFORMERO ================= */
+(function(){
+  const canvas = document.getElementById('plat-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const groundY = H - 40;
+
+  let player = { x: W/2 - 20, y: groundY - 40, w: 40, h: 40, vy: 0, vx: 0, onGround: true };
+  const GRAVITY = 0.7, JUMP_V = -13, SPEED = 4;
+  let items = [];
+  let score = 0, lives = 3, spawnTimer = 0, running = true;
+
+  function resetItems(){ items = []; }
+
+  function spawn(){
+    const isRock = Math.random() < 0.3;
+    items.push({
+      x: Math.random()*(W-24),
+      y: -24,
+      w: 24, h: 24,
+      vy: 2 + Math.random()*1.5,
+      rock: isRock
+    });
+  }
+
+  function update(){
+    if(!running) return;
+    player.vy += GRAVITY;
+    player.y += player.vy;
+    player.x += player.vx;
+    if(player.y + player.h >= groundY){ player.y = groundY - player.h; player.vy = 0; player.onGround = true; }
+    player.x = Math.max(0, Math.min(W - player.w, player.x));
+
+    spawnTimer++;
+    if(spawnTimer > 45){ spawn(); spawnTimer = 0; }
+
+    items.forEach(it => it.y += it.vy);
+
+    items = items.filter(it=>{
+      if(it.y > H) return false;
+      const hit = it.x < player.x+player.w && it.x+it.w > player.x &&
+                  it.y < player.y+player.h && it.y+it.h > player.y;
+      if(hit){
+        if(it.rock){ lives--; document.getElementById('plat-lives').textContent = lives;
+          if(lives<=0){ running=false; }
+        } else { score++; document.getElementById('plat-score').textContent = score; }
+        return false;
+      }
+      return true;
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = '#c9b892';
+    ctx.fillRect(0, groundY, W, H-groundY);
+
+    ctx.font = '30px serif';
+    ctx.fillText('🧑‍🎨', player.x, player.y+32);
+
+    items.forEach(it=>{
+      ctx.font = '22px serif';
+      ctx.fillText(it.rock ? '⚫' : '🟤', it.x, it.y+18);
+    });
+
+    if(!running){
+      ctx.fillStyle = 'rgba(42,35,29,0.75)';
+      ctx.fillRect(0,0,W,H);
+      ctx.fillStyle = '#F6EEE1';
+      ctx.font = '24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Fin del juego · Puntos: ' + score, W/2, H/2);
+      ctx.font = '14px sans-serif';
+      ctx.fillText('Toca "Saltar" para reiniciar', W/2, H/2+28);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  function loop(){
+    update(); draw();
+    requestAnimationFrame(loop);
+  }
+
+  function jump(){
+    if(!running){
+      player = { x: W/2-20, y: groundY-40, w:40, h:40, vy:0, vx:0, onGround:true };
+      score = 0; lives = 3; resetItems(); running = true;
+      document.getElementById('plat-score').textContent = 0;
+      document.getElementById('plat-lives').textContent = 3;
+      return;
+    }
+    if(player.onGround){ player.vy = JUMP_V; player.onGround = false; }
+  }
+
+  document.getElementById('plat-left').addEventListener('mousedown', ()=>player.vx=-SPEED);
+  document.getElementById('plat-right').addEventListener('mousedown', ()=>player.vx=SPEED);
+  document.getElementById('plat-left').addEventListener('touchstart', (e)=>{e.preventDefault();player.vx=-SPEED;});
+  document.getElementById('plat-right').addEventListener('touchstart', (e)=>{e.preventDefault();player.vx=SPEED;});
+  ['mouseup','mouseleave','touchend'].forEach(ev=>{
+    document.getElementById('plat-left').addEventListener(ev, ()=>player.vx=0);
+    document.getElementById('plat-right').addEventListener(ev, ()=>player.vx=0);
+  });
+  document.getElementById('plat-jump').addEventListener('click', jump);
+
+  window.addEventListener('keydown', e=>{
+    if(e.key === 'ArrowLeft') player.vx = -SPEED;
+    if(e.key === 'ArrowRight') player.vx = SPEED;
+    if(e.key === ' ') jump();
+  });
+  window.addEventListener('keyup', e=>{
+    if(e.key === 'ArrowLeft' && player.vx<0) player.vx = 0;
+    if(e.key === 'ArrowRight' && player.vx>0) player.vx = 0;
+  });
+
+  loop();
+})();
+
+/* ================= PUZZLE ================= */
+(function(){
+  const SIZE = 3;
+  const TILE = 100;
+  let board = []; // array of 0..8, 8 = blank
+  let moves = 0;
+  let imgURL = '';
+
+  function drawVasija(){
+    const c = document.createElement('canvas');
+    c.width = SIZE*TILE; c.height = SIZE*TILE;
+    const g = c.getContext('2d');
+    g.fillStyle = '#E4D6BE';
+    g.fillRect(0,0,c.width,c.height);
+    // cuerpo de la vasija
+    g.fillStyle = '#B24A34';
+    g.beginPath();
+    g.moveTo(150, 40);
+    g.bezierCurveTo(90, 60, 60, 120, 80, 190);
+    g.bezierCurveTo(95, 250, 120, 270, 150, 275);
+    g.bezierCurveTo(180, 270, 205, 250, 220, 190);
+    g.bezierCurveTo(240, 120, 210, 60, 150, 40);
+    g.closePath();
+    g.fill();
+    // cuello
+    g.fillStyle = '#8F3A29';
+    g.fillRect(130, 20, 40, 30);
+    // franjas decorativas
+    g.strokeStyle = '#2A231D';
+    g.lineWidth = 4;
+    for(let y=100;y<230;y+=35){
+      g.beginPath();
+      g.moveTo(80, y);
+      g.lineTo(220, y);
+      g.stroke();
+    }
+    imgURL = c.toDataURL();
+  }
+
+  function solvedBoard(){
+    return [0,1,2,3,4,5,6,7,8];
+  }
+
+  function shuffleBoard(){
+    board = solvedBoard();
+    let blank = 8;
+    for(let i=0;i<200;i++){
+      const moves2 = validMoves(blank);
+      const m = moves2[Math.floor(Math.random()*moves2.length)];
+      [board[blank], board[m]] = [board[m], board[blank]];
+      blank = m;
+    }
+    moves = 0;
+    document.getElementById('puzzle-moves').textContent = 0;
+    document.getElementById('puzzle-status').textContent = 'En progreso';
+  }
+
+  function validMoves(blankIndex){
+    const r = Math.floor(blankIndex/SIZE), c = blankIndex%SIZE;
+    const res = [];
+    if(r>0) res.push(blankIndex-SIZE);
+    if(r<SIZE-1) res.push(blankIndex+SIZE);
+    if(c>0) res.push(blankIndex-1);
+    if(c<SIZE-1) res.push(blankIndex+1);
+    return res;
+  }
+
+  function render(){
+    const grid = document.getElementById('puzzle-grid');
+    grid.innerHTML = '';
+    board.forEach((val, idx)=>{
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+      if(val === 8){
+        tile.classList.add('blank');
+      } else {
+        const sr = Math.floor(val/SIZE), sc = val%SIZE;
+        tile.style.backgroundImage = `url(${imgURL})`;
+        tile.style.backgroundSize = `${SIZE*TILE}px ${SIZE*TILE}px`;
+        tile.style.backgroundPosition = `-${sc*TILE}px -${sr*TILE}px`;
+      }
+      tile.addEventListener('click', ()=>tryMove(idx));
+      grid.appendChild(tile);
+    });
+  }
+
+  function tryMove(idx){
+    const blank = board.indexOf(8);
+    if(validMoves(blank).includes(idx)){
+      [board[blank], board[idx]] = [board[idx], board[blank]];
+      moves++;
+      document.getElementById('puzzle-moves').textContent = moves;
+      render();
+      if(board.every((v,i)=>v===i)){
+        document.getElementById('puzzle-status').textContent = '¡Completado! 🏺';
+      }
+    }
+  }
+
+  document.getElementById('puzzle-shuffle').addEventListener('click', ()=>{
+    shuffleBoard(); render();
+  });
+
+  drawVasija();
+  shuffleBoard();
+  render();
+})();
+</script>
+
+<script src="/nav.js"></script>
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
+<script src="/a11y.js"></script>
+</body>
+</html>
