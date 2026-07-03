@@ -33,26 +33,91 @@
 </head>
 <body>
 
-<div class="sub-topbar">
-  <a class="sub-brand" href="/">🏺 Pomaire 360</a>
-  <div style="display:flex;align-items:center;gap:.8rem;">
-    <a href="/#mapa">🗺️ <span data-t="sub_seemap">Ver en el mapa</span></a>
-    <div class="lang-selector" id="langSelector">
-      <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
-        <span id="langCurrentFlag">🇨🇱</span><span id="langCurrentName">Español</span><span class="lang-arrow">▼</span>
-      </button>
-      <div class="lang-dropdown" role="listbox">
-        <button class="lang-option lang-active" data-lang="es" onclick="selectLang('es')"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="en" onclick="selectLang('en')"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="pt" onclick="selectLang('pt')"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="fr" onclick="selectLang('fr')"><span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="ru" onclick="selectLang('ru')"><span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="ja" onclick="selectLang('ja')"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></button>
-        <button class="lang-option" data-lang="zh" onclick="selectLang('zh')"><span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span></button>
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/">🏺 Pomaire 360</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
+        <a href="/seguridad/">🚔 <span data-t="nav_security">Seguridad</span></a>
+        <a href="/comercio/">🛒 <span data-t="nav_commerce">Servicios</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
       </div>
     </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+        <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">Qué ver</span></a>
+        <a href="/plaza/">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Alrededores</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
+        <a href="/plaza/#banos">🚽 <span data-t="nav_banos">Baños</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
+        <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="/#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="/#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+        <a href="/#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="/#resenas">⭐ <span data-t="nav_reviews">Reseñas</span></a>
+        <a href="/anunciate/">📣 <span data-t="nav_advertise">Anúnciate</span></a>
+        <a href="/sugerencias/">💬 <span data-t="nav_suggest">Sugerencias</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+    <a class="nav-cta" href="/apoyar/">💛 <span data-t="nav_donate">Apoyar</span></a>
   </div>
-</div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇨🇱</span>
+      <span id="langCurrentName">Español</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <button type="button" role="option" class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="en" onclick="selectLang('en')">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="pt" onclick="selectLang('pt')">
+        <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+      </button>
+    </div>
+  </div>
+</nav>
 
 <section id="comercio">
   <div class="section-inner">
@@ -125,6 +190,7 @@
   <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
 </div>
 
+<script src="/nav.js"></script>
 <script src="/langs.js"></script>
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>

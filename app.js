@@ -1576,59 +1576,7 @@ document.addEventListener('click', () => {
 });
 
 // ── NAV DROPDOWN MENUS ───────────────────────────────────────────────────
-function closeAllGroups() {
-  document.querySelectorAll('.nav-group.open').forEach(g => {
-    g.classList.remove('open');
-    const b = g.querySelector('.nav-group-btn');
-    if (b) b.setAttribute('aria-expanded', 'false');
-  });
-}
-function toggleGroup(e, btn) {
-  e.stopPropagation();
-  const group = btn.parentElement;
-  const wasOpen = group.classList.contains('open');
-  closeAllGroups();
-  if (!wasOpen) {
-    group.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-}
-function toggleNav(e) {
-  e.stopPropagation();
-  const wrap = document.getElementById('navGroups');
-  const burger = document.getElementById('navBurger');
-  const open = wrap.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open);
-  if (!open) closeAllGroups();
-}
-// Close groups when clicking outside; close mobile nav + groups when a link is chosen
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.nav-group')) closeAllGroups();
-});
-document.addEventListener('DOMContentLoaded', () => {
-  function closeMobileNav() {
-    closeAllGroups();
-    const wrap = document.getElementById('navGroups');
-    const burger = document.getElementById('navBurger');
-    if (wrap && wrap.classList.contains('open')) {
-      wrap.classList.remove('open');
-      if (burger) burger.setAttribute('aria-expanded', 'false');
-    }
-  }
-  // Cerrar el menú móvil al elegir cualquier opción (incluye botones Mapa y Apoyar)
-  document.querySelectorAll('.nav-menu a, .nav-cta, .nav-map-btn').forEach(a => {
-    a.addEventListener('click', closeMobileNav);
-  });
-  // Cerrar el menú móvil al hacer scroll (subir o bajar)
-  let lastY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const wrap = document.getElementById('navGroups');
-    if (wrap && wrap.classList.contains('open') && Math.abs(window.scrollY - lastY) > 10) {
-      closeMobileNav();
-    }
-    lastY = window.scrollY;
-  }, { passive: true });
-});
+// Movido a nav.js (compartido con todas las subpáginas). Ver /nav.js
 
 /* ===== */
 
