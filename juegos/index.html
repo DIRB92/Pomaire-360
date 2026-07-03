@@ -321,7 +321,28 @@
   @keyframes clayShine{ to{ transform: rotate(360deg); } }
   #pomaire-arcade #clay-lump:hover{ transform: scale(1.04); box-shadow: 0 20px 36px -12px rgba(42,35,29,0.6), inset 0 -8px 16px rgba(0,0,0,0.15), inset 0 8px 16px rgba(255,255,255,0.15); }
   #pomaire-arcade #clay-lump:active,
-  #pomaire-arcade #clay-lump.is-pressed{ transform: scale(0.88); }
+  #pomaire-arcade #clay-lump.is-pressed{ transform: scale(0.86) rotate(-3deg); }
+  #pomaire-arcade #clay-icon{
+    display:inline-block;
+    position: relative;
+    z-index: 1;
+    animation: clayBreathe 2.6s ease-in-out infinite;
+    transform-origin: center 70%;
+  }
+  @keyframes clayBreathe{
+    0%, 100%{ transform: scale(1) rotate(0deg); }
+    50%{ transform: scale(1.06) rotate(-2deg); }
+  }
+  #pomaire-arcade #clay-icon.wobble{
+    animation: clayWobble .45s ease;
+  }
+  @keyframes clayWobble{
+    0%{ transform: scale(1) rotate(0deg); }
+    20%{ transform: scale(0.82) rotate(-10deg); }
+    45%{ transform: scale(1.18) rotate(8deg); }
+    70%{ transform: scale(0.94) rotate(-4deg); }
+    100%{ transform: scale(1) rotate(0deg); }
+  }
   #pomaire-arcade .clay-float{
     position:absolute;
     left:50%;
@@ -668,7 +689,7 @@
       <span class="hud-pill"><span class="ico">⚡</span>Por segundo: <b id="click-cps">0</b></span>
     </div>
     <div id="clay-wrap">
-      <div id="clay-lump" role="button" tabindex="0" aria-label="Moldear greda">🏺</div>
+      <div id="clay-lump" role="button" tabindex="0" aria-label="Moldear greda"><span id="clay-icon">🏺</span></div>
     </div>
     <div class="clay-progress-wrap">
       <div class="clay-progress-label"><span>Siguiente mejora</span><span id="clay-progress-text">0 / 15</span></div>
@@ -904,6 +925,8 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     }
   }
 
+  const clayIcon = document.getElementById('clay-icon');
+
   function moldear(){
     score += 1;
     render();
@@ -911,6 +934,10 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
     burstParticles();
     lump.classList.add('is-pressed');
     setTimeout(()=>lump.classList.remove('is-pressed'), 90);
+    // sacudida real de la vasija al golpearla (se reinicia si ya estaba animando)
+    clayIcon.classList.remove('wobble');
+    void clayIcon.offsetWidth; // fuerza reflow para poder repetir la animación
+    clayIcon.classList.add('wobble');
   }
 
   lump.addEventListener('click', moldear);
