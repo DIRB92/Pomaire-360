@@ -75,6 +75,49 @@
 })();
 
 /* ══════════════════════════════════════════════════════════════════════════
+   BOTÓN FLOTANTE — Pomaire Arcade (/juegos/)
+   Vive dentro de .social-fab, arriba del botón de TikTok, en TODAS las
+   páginas del sitio (home y subpáginas, ya que nav.js se carga en todas).
+   Se puede cerrar con la X y se recuerda esa preferencia por unos días.
+   ══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  var STORE_KEY = 'p360_games_float';
+  var REVISIT_DAYS = 7;
+
+  function isDismissed() {
+    try {
+      var v = localStorage.getItem(STORE_KEY);
+      if (!v) return false;
+      var ts = parseInt(v, 10);
+      if (isNaN(ts)) return true;
+      return (Date.now() - ts) < REVISIT_DAYS * 86400000;
+    } catch (e) { return false; }
+  }
+
+  function init() {
+    var wrap = document.getElementById('gamesFloatWrap');
+    if (!wrap) return;
+    if (isDismissed()) { wrap.remove(); return; }
+
+    var closeBtn = wrap.querySelector('.games-float-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        try { localStorage.setItem(STORE_KEY, String(Date.now())); } catch (err) {}
+        if (wrap && wrap.parentNode) wrap.remove();
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════════════════════
    Hero slideshow — rota las fotos de fondo del hero cada pocos segundos.
    Respeta prefers-reduced-motion (deja fija la primera foto sin animar).
    ══════════════════════════════════════════════════════════════════════════ */
