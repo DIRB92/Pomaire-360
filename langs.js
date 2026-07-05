@@ -63,10 +63,10 @@ Object.assign(window.LANGS.zh,{"he1_hours":"🕒 营业时间：8:29至17:29"});
 
 
 /* ══ POMAIRE ARCADE · sección Juegos (multiidioma) ══ */
-Object.assign(window.LANGS.es,{"nav_games":"Juegos"});
-Object.assign(window.LANGS.en,{"nav_games":"Games"});
-Object.assign(window.LANGS.pt,{"nav_games":"Jogos"});
-Object.assign(window.LANGS.fr,{"nav_games":"Jeux"});
-Object.assign(window.LANGS.ru,{"nav_games":"Игры"});
-Object.assign(window.LANGS.ja,{"nav_games":"ゲーム"});
-Object.assign(window.LANGS.zh,{"nav_games":"游戏"});
+Object.assign(window.LANGS.es,{"nav_games":"Juegos","gf_cta":"¡Juega!"});
+Object.assign(window.LANGS.en,{"nav_games":"Games","gf_cta":"Play!"});
+Object.assign(window.LANGS.pt,{"nav_games":"Jogos","gf_cta":"Jogue!"});
+Object.assign(window.LANGS.fr,{"nav_games":"Jeux","gf_cta":"Jouer !"});
+Object.assign(window.LANGS.ru,{"nav_games":"Игры","gf_cta":"Играть!"});
+Object.assign(window.LANGS.ja,{"nav_games":"ゲーム","gf_cta":"プレイ！"});
+Object.assign(window.LANGS.zh,{"nav_games":"游戏","gf_cta":"来玩！"});
