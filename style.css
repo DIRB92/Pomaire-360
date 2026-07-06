@@ -1048,7 +1048,6 @@
   .wf-day .wf-temp span { color:var(--muted); }
   .weather-note { text-align:center; color:var(--muted); font-size:.78rem; margin-top:.75rem; }
   .weather-loading { text-align:center; padding:2rem; color:var(--muted); font-size:1rem; }
-  .review-local-note { font-size:.78rem; color:var(--muted); margin-top:.6rem; text-align:center; }
 
   /* ── TOUR TIMELINE ───────────────────────────────── */
   .tour-timeline { position:relative; padding-left:0; }
@@ -1259,69 +1258,6 @@
     background:var(--clay-light); color:#fff;
     padding:.15rem .55rem; border-radius:10px;
   }
-
-  /* ── REVIEWS ─────────────────────────────────────── */
-  .reviews-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-    gap:1rem;
-    margin-bottom:2rem;
-  }
-  .review-card {
-    background:var(--white);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    padding:1.3rem;
-    display:flex; flex-direction:column; gap:.6rem;
-    border-top:3px solid var(--clay-light);
-  }
-  .review-stars { font-size:1rem; letter-spacing:.1em; }
-  .review-text { font-size:.87rem; color:var(--muted); font-style:italic; flex:1; }
-  .review-author { display:flex; align-items:center; gap:.6rem; margin-top:auto; }
-  .review-avatar { font-size:1.6rem; }
-  .review-author strong { font-size:.88rem; color:var(--text); display:block; }
-  .review-author span  { font-size:.78rem; color:var(--muted); }
-
-  /* review form */
-  .review-form {
-    background:var(--smoke);
-    border-radius:var(--radius);
-    padding:1.5rem;
-    margin-top:1.5rem;
-  }
-  .review-form h3 { font-size:1.05rem; font-weight:600; color:var(--clay-dark); margin-bottom:1rem; }
-  .review-form-inner { display:flex; flex-direction:column; gap:.75rem; }
-  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
-  .review-form input, .review-form textarea {
-    border:1.5px solid rgba(184,92,44,.2);
-    border-radius:8px; padding:.6rem .9rem;
-    font-family:inherit; font-size:.87rem;
-    background:#fff; color:var(--text);
-    width:100%; outline:none;
-    transition:border-color .15s;
-  }
-  .review-form input:focus, .review-form textarea:focus { border-color:var(--clay); }
-  .star-picker { font-size:1.8rem; cursor:pointer; letter-spacing:.15rem; color:#ddd; }
-  .star-picker span.active { color:#F5A623; }
-  .review-form button {
-    background:var(--clay);
-    color:#fff; border:none;
-    padding:.7rem 1.5rem;
-    border-radius:22px;
-    font-size:.9rem; font-weight:700;
-    cursor:pointer; width:fit-content;
-    transition:background .15s;
-  }
-  .review-form button:hover { background:var(--clay-dark); }
-  .user-reviews-list { margin-top:1rem; display:flex; flex-direction:column; gap:.6rem; }
-  .user-review-item {
-    background:#fff; border-radius:10px;
-    padding:.8rem 1rem; font-size:.85rem;
-    border-left:3px solid var(--clay-light);
-  }
-  .user-review-item strong { color:var(--clay-dark); }
-  @media(max-width:500px){ .form-row { grid-template-columns:1fr; } }
-
 
   /* ── INTERACTIVE MAP ─────────────────────────────── */
   .map-controls {
