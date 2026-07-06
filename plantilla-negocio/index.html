@@ -1,0 +1,328 @@
+<!--
+  ══════════════════════════════════════════════════════════════════
+  PLANTILLA DE MICROSITIO — Plan Premium Pomaire 360
+  ══════════════════════════════════════════════════════════════════
+  Cómo usar esta plantilla para un nuevo cliente Premium:
+
+  1. Copia esta carpeta completa "/plantilla-negocio/" y renómbrala
+     con el slug del negocio, ej: "/taller-maria-greda/".
+  2. Busca y reemplaza todos los textos entre [CORCHETES] por los
+     datos reales del negocio (nombre, dueño, dirección, teléfono, etc.)
+  3. Elige UNA de las dos secciones de contenido según el rubro:
+       - Artesanos / atractivos → deja la sección "HISTORIA / PROCESO"
+         (timeline) y borra la sección "MENÚ / PLATOS".
+       - Restaurantes → deja la sección "MENÚ / PLATOS" y borra la
+         sección "HISTORIA / PROCESO" (o usa ambas si aplica).
+  4. Sube las fotos reales a esa misma carpeta y actualiza los <img src>
+     y el fondo del hero (ver comentario dentro de .biz-hero).
+  5. Actualiza en /app.js la entrada del negocio en el arreglo
+     correspondiente (pottery/food/etc.) agregando:
+       plan: 'premium', page: '/su-slug/'
+     Esto activa automáticamente su insignia 💎 y prioridad en el
+     mapa, en /que-ver/, en /links/ y en los directorios.
+  6. Actualiza <link rel="canonical">, todas las URLs en meta OG/Twitter,
+     el JSON-LD (schema.org) y el <title> con los datos reales.
+  7. Elimina este bloque de instrucciones antes de publicar.
+  ══════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>[NOMBRE DEL NEGOCIO] — Pomaire | Pomaire 360</title>
+<meta name="description" content="[Descripción corta y atractiva del negocio, 1-2 frases, para buscadores y redes sociales.]">
+<!-- IMPORTANTE: esta plantilla lleva "noindex" para no aparecer en buscadores.
+     Cuando copies esta carpeta para un negocio real, cambia esta línea a:
+     <meta name="robots" content="index, follow, max-image-preview:large"> -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://pomaire360.cl/[slug-del-negocio]/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="business.business">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="[NOMBRE DEL NEGOCIO] — Pomaire">
+<meta property="og:description" content="[Descripción corta para compartir en redes.]">
+<meta property="og:url" content="https://pomaire360.cl/[slug-del-negocio]/">
+<meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="[NOMBRE DEL NEGOCIO] en Pomaire">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="[NOMBRE DEL NEGOCIO] — Pomaire">
+<meta name="twitter:description" content="[Descripción corta para compartir en redes.]">
+<meta name="twitter:image" content="https://pomaire360.cl/og-image.jpg">
+
+<link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://pomaire360.cl/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/business.css">
+
+<!-- Reemplaza este JSON-LD con los datos reales. Usa "LocalBusiness" para
+     comercios/restaurantes o "TouristAttraction" para atractivos. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "[NOMBRE DEL NEGOCIO]",
+  "description": "[Descripción del negocio.]",
+  "image": "https://pomaire360.cl/og-image.jpg",
+  "url": "https://pomaire360.cl/[slug-del-negocio]/",
+  "telephone": "+56900000000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[Dirección]",
+    "addressLocality": "Pomaire",
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -33.6524, "longitude": -71.15 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "10:00", "closes": "19:00" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/">🏺 Pomaire 360</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
+        <a href="/seguridad/">🚔 <span data-t="nav_security">Seguridad</span></a>
+        <a href="/comercio/">🛒 <span data-t="nav_commerce">Servicios</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Locomoción</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+        <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">Qué ver</span></a>
+        <a href="/plaza/">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Alrededores</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
+        <a href="/plaza/#banos">🚽 <span data-t="nav_banos">Baños</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
+        <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="/#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="/#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+        <a href="/#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="/#resenas">⭐ <span data-t="nav_reviews">Reseñas</span></a>
+        <a href="/juegos/">🎮 <span data-t="nav_games">Juegos</span></a>
+        <a href="/anunciate/">📣 <span data-t="nav_advertise">Anúnciate</span></a>
+        <a href="/sugerencias/">💬 <span data-t="nav_suggest">Sugerencias</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+    <a class="nav-cta" href="/apoyar/">💛 <span data-t="nav_donate">Apoyar</span></a>
+  </div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇨🇱</span>
+      <span id="langCurrentName">Español</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <button type="button" role="option" class="lang-option lang-active" data-lang="es" onclick="selectLang('es')">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="en" onclick="selectLang('en')">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="pt" onclick="selectLang('pt')">
+        <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ANUNCIO LLAMATIVO opcional (ej. horario de temporada, promo). Borra si no se usa. -->
+<div class="biz-promo" style="display:none;" role="status">
+  <span class="biz-promo-ico">✨</span>
+  <span>[Mensaje de anuncio, ej: horario especial de temporada]</span>
+  <span class="biz-promo-ico">✨</span>
+</div>
+
+<!-- HERO -->
+<header class="biz-hero" data-emoji="🏺">
+  <div class="biz-hero-content">
+    <span class="biz-kicker">🏺 [Categoría, ej: Taller de alfarería / Restaurante típico]</span>
+    <h1>[NOMBRE DEL NEGOCIO]</h1>
+    <p class="biz-author">Por <strong>[Nombre del dueño/a o artesano/a]</strong></p>
+    <div class="biz-hero-btns">
+      <a href="#historia" class="biz-btn biz-btn-primary">Ver más</a>
+      <a href="#visitar" class="biz-btn biz-btn-ghost">Cómo Visitar</a>
+      <button type="button" class="biz-btn biz-btn-ghost" onclick="sharePage()">📤 Compartir</button>
+    </div>
+  </div>
+</header>
+
+<div class="biz-wrap">
+
+  <!-- SECCIÓN 1: DUEÑO / ARTESANO -->
+  <section class="biz-bio" id="autor">
+    <div class="biz-photo">
+      <img src="/[slug-del-negocio]/foto-dueno.jpg" alt="[Nombre del dueño/a], [rol] en Pomaire" loading="lazy" width="700" height="525">
+    </div>
+    <div class="biz-bio-text">
+      <h2>[Nombre del dueño/a]</h2>
+      <p class="biz-bio-role">[Rol / oficio] · Pomaire, Chile</p>
+      <p>[Historia breve del dueño/a o del negocio: quién es, hace cuánto trabaja en esto, qué lo hace especial.]</p>
+      <div class="biz-social">
+        <a class="biz-soc maps" href="[Link de Google Maps]" target="_blank" rel="noopener">🗺️ Cómo llegar</a>
+        <a class="biz-soc dark" href="tel:+56900000000">📞 Llamar</a>
+        <a class="biz-soc wa" href="https://wa.me/56900000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN 2A: HISTORIA / PROCESO (timeline)
+       Recomendada para ARTESANOS y ATRACTIVOS. Bórrala si es un
+       restaurante y usa la sección de MENÚ (2B) en su lugar.
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="biz-historia" id="historia">
+    <h2>[Título de la historia, ej: "La historia de nuestro oficio"]</h2>
+    <ol class="biz-timeline">
+      <li class="bt-step"><span class="bt-ico">💡</span><h3>[Paso 1]</h3><p>[Descripción breve del paso 1 del proceso.]</p></li>
+      <li class="bt-step"><span class="bt-ico">✏️</span><h3>[Paso 2]</h3><p>[Descripción breve del paso 2.]</p></li>
+      <li class="bt-step"><span class="bt-ico">🤲</span><h3>[Paso 3]</h3><p>[Descripción breve del paso 3.]</p></li>
+      <li class="bt-step bt-final"><span class="bt-ico">🏆</span><h3>[Resultado final]</h3><p>[Descripción del resultado / orgullo del trabajo.]</p></li>
+    </ol>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       SECCIÓN 2B: MENÚ / PLATOS DESTACADOS
+       Recomendada para RESTAURANTES. Bórrala si no aplica.
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="biz-menu-section" id="menu">
+    <h2>Nuestros platos</h2>
+    <p class="biz-menu-sub">[Frase corta sobre la cocina/especialidad del lugar]</p>
+    <div class="biz-menu-grid">
+      <div class="biz-dish">
+        <div class="biz-dish-photo"><img src="/[slug-del-negocio]/plato1.jpg" alt="[Nombre del plato 1]" loading="lazy"></div>
+        <div class="biz-dish-body">
+          <div class="biz-dish-top"><span class="biz-dish-name">[Nombre del plato 1]</span><span class="biz-dish-price">$[Precio]</span></div>
+          <p class="biz-dish-desc">[Descripción breve del plato.]</p>
+        </div>
+      </div>
+      <div class="biz-dish">
+        <div class="biz-dish-photo"><img src="/[slug-del-negocio]/plato2.jpg" alt="[Nombre del plato 2]" loading="lazy"></div>
+        <div class="biz-dish-body">
+          <div class="biz-dish-top"><span class="biz-dish-name">[Nombre del plato 2]</span><span class="biz-dish-price">$[Precio]</span></div>
+          <p class="biz-dish-desc">[Descripción breve del plato.]</p>
+        </div>
+      </div>
+      <div class="biz-dish">
+        <div class="biz-dish-photo"><img src="/[slug-del-negocio]/plato3.jpg" alt="[Nombre del plato 3]" loading="lazy"></div>
+        <div class="biz-dish-body">
+          <div class="biz-dish-top"><span class="biz-dish-name">[Nombre del plato 3]</span><span class="biz-dish-price">$[Precio]</span></div>
+          <p class="biz-dish-desc">[Descripción breve del plato.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA opcional: fotos del taller, local o platos. Borra si no se usa. -->
+  <section class="biz-gallery" id="galeria">
+    <h2>Galería</h2>
+    <div class="biz-gallery-grid">
+      <img src="/[slug-del-negocio]/foto1.jpg" alt="[Descripción foto 1]" loading="lazy">
+      <img src="/[slug-del-negocio]/foto2.jpg" alt="[Descripción foto 2]" loading="lazy">
+      <img src="/[slug-del-negocio]/foto3.jpg" alt="[Descripción foto 3]" loading="lazy">
+      <img src="/[slug-del-negocio]/foto4.jpg" alt="[Descripción foto 4]" loading="lazy">
+    </div>
+  </section>
+
+  <!-- VISITAR / CONTACTO -->
+  <section class="biz-visit" id="visitar">
+    <h2>Cómo visitar</h2>
+    <div class="biz-visit-row">📍 <span><strong>Dirección:</strong> [Dirección completa], Pomaire</span></div>
+    <div class="biz-visit-row">🕒 <span><strong>Horario:</strong> [Días y horario de atención]</span></div>
+    <div class="biz-visit-row">📞 <span><strong>Teléfono:</strong> [Teléfono de contacto]</span></div>
+    <!-- Fila destacada opcional para anuncios de temporada. Borra si no se usa. -->
+    <div class="biz-visit-row biz-note" style="display:none;">❄️ <span><strong>Aviso:</strong> [Mensaje de temporada]</span></div>
+    <div class="biz-visit-btns">
+      <a class="biz-soc maps" href="[Link de Google Maps]" target="_blank" rel="noopener">🗺️ Cómo llegar</a>
+      <a class="biz-soc dark" href="/#lugar=[id-en-app.js]">📍 Ver en el mapa interactivo</a>
+      <button type="button" class="biz-soc wa" onclick="sharePage()">📤 Compartir</button>
+    </div>
+  </section>
+
+</div>
+
+<div class="biz-foot">
+  <a href="/">🏺 <span data-t="sub_back">Volver a la guía completa de Pomaire 360</span> →</a>
+</div>
+
+<!-- Botones flotantes de redes (idénticos al resto del sitio) -->
+<div class="social-fab">
+  <a class="wa-float" href="https://wa.me/56900000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01c-1.52 0-3.01-.41-4.31-1.18l-.31-.18-3.2.84.85-3.12-.2-.32a8.21 8.21 0 0 1-1.26-4.39c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+    <span class="wa-text">WhatsApp</span>
+  </a>
+</div>
+
+<script src="/nav.js"></script>
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
+<script src="/a11y.js"></script>
+<script>
+  function sharePage() {
+    var url = 'https://pomaire360.cl/[slug-del-negocio]/';
+    var text = document.title;
+    if (navigator.share) {
+      navigator.share({ title: text, url: url }).catch(function(){});
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text + ' ' + url).then(function(){
+        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+      });
+    } else {
+      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
+    }
+  }
+</script>
+<script src="/share.js"></script>
+</body>
+</html>
