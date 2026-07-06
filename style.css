@@ -1421,36 +1421,43 @@
   }
   .route-clear:hover { background: var(--clay); color: #fff; }
 
-  /* Places list with distance */
+  /* Places list with distance — grid en escritorio, columna en movil */
   .places-list {
     margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .6rem;
   }
   .place-row {
     background: var(--white);
     border-radius: 10px;
-    padding: .7rem 1rem;
+    padding: .55rem .75rem;
     display: flex;
     align-items: center;
-    gap: .8rem;
+    gap: .6rem;
     box-shadow: var(--shadow);
     cursor: pointer;
     transition: background .15s;
     border-left: 3px solid var(--clay-light);
+    min-width: 0;
   }
   .place-row:hover { background: #FFF8F3; }
-  .place-row .place-icon { font-size: 1.3rem; flex-shrink:0; }
+  .place-row .place-icon { font-size: 1.1rem; flex-shrink:0; }
   .place-row .place-info { flex: 1; min-width:0; }
-  .place-row .place-name { font-size: .87rem; font-weight: 600; color: var(--text); }
-  .place-row .place-cat { font-size: .73rem; color: var(--muted); }
+  .place-row .place-name {
+    font-size: .82rem; font-weight: 600; color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .place-row .place-cat {
+    font-size: .7rem; color: var(--muted);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
   .place-row .place-dist {
-    font-size: .78rem;
+    font-size: .72rem;
     font-weight: 700;
     color: var(--green);
     background: #EAF5EC;
-    padding: .2rem .55rem;
+    padding: .15rem .45rem;
     border-radius: 10px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -1458,6 +1465,7 @@
   @media (max-width: 600px) {
     .map-controls { flex-direction: column; align-items: stretch; }
     .leaflet-wrap { height: 340px; }
+    .places-list { grid-template-columns: 1fr; }
   }
 
   /* ── DIRECTORIES (datos PDF) ─────────────────────── */
