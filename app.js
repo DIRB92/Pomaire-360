@@ -1253,6 +1253,18 @@ const GRUAS_I18N = {
 };
 Object.keys(GRUAS_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], GRUAS_I18N[l]); });
 
+/* ══ LOCOMOCIÓN (multiidioma) ══ */
+const LOCOMOCION_I18N = {
+  es: { nav_locomocion:"Locomoción" },
+  en: { nav_locomocion:"Transport" },
+  pt: { nav_locomocion:"Transporte" },
+  fr: { nav_locomocion:"Transports" },
+  ru: { nav_locomocion:"Транспорт" },
+  ja: { nav_locomocion:"交通" },
+  zh: { nav_locomocion:"交通" }
+};
+Object.keys(LOCOMOCION_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], LOCOMOCION_I18N[l]); });
+
 const KEYS = {
   '[data-t="nav_park"]':      t => t.nav_park,
   '[data-t="nav_health"]':    t => t.nav_health,

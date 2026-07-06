@@ -70,3 +70,14 @@ Object.assign(window.LANGS.fr,{"nav_games":"Jeux","gf_cta":"Jouer !"});
 Object.assign(window.LANGS.ru,{"nav_games":"Игры","gf_cta":"Играть!"});
 Object.assign(window.LANGS.ja,{"nav_games":"ゲーム","gf_cta":"プレイ！"});
 Object.assign(window.LANGS.zh,{"nav_games":"游戏","gf_cta":"来玩！"});
+
+
+
+/* ══ LOCOMOCIÓN · nav + sección /locomocion/ (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"nav_locomocion":"Locomoción"});
+Object.assign(window.LANGS.en,{"nav_locomocion":"Transport"});
+Object.assign(window.LANGS.pt,{"nav_locomocion":"Transporte"});
+Object.assign(window.LANGS.fr,{"nav_locomocion":"Transports"});
+Object.assign(window.LANGS.ru,{"nav_locomocion":"Транспорт"});
+Object.assign(window.LANGS.ja,{"nav_locomocion":"交通"});
+Object.assign(window.LANGS.zh,{"nav_locomocion":"交通"});
