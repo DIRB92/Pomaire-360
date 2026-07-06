@@ -1997,7 +1997,7 @@ const DIRECTORY = {
     { n:'Restaurante Los Naranjos', a:'Roberto Bravo 29', p:'+56 9 45606393', d:'Miércoles a domingo', map:'https://maps.app.goo.gl/r3L9McHKqche7NTV7' },
     { n:'La Cañada', a:'Roberto Bravo 307', p:'+56 9 76768309', d:'Sábado y domingo', map:'https://maps.app.goo.gl/FQvXzcwckKkUEpSt5' },
     { n:'La Pica del Artesano', a:'Roberto Bravo 114', p:'+56 9 92812141', d:'Lunes a domingo' },
-    { n:'El Boliche de Pomaire', a:'San Antonio 17', p:'+56 9 32734479', d:'Lunes a domingo', map:'https://maps.app.goo.gl/BNSQEnYq7sKi7dQE7' },
+    { n:'El Boliche de Pomaire', a:'San Antonio 17', p:'+56 9 32734479', d:'Lunes a domingo · 10:00 a 18:00 hrs', map:'https://maps.app.goo.gl/BNSQEnYq7sKi7dQE7' },
     { n:'La Normita (Tenedor libre)', a:'Manuel Rodríguez 325', p:'+56 9 46609599', d:'Lunes a domingo', map:'https://maps.app.goo.gl/7bK3t8Bw9wyV73qw6' },
     { n:'Emporio Doña Tránsito', a:'San Antonio 321', p:'+56 9 54461130', d:'Sábado y domingo' },
     { n:'San Sebastián', a:'Roberto Bravo 50', p:'+56 9 90440988', d:'Lunes a domingo' },
@@ -2152,6 +2152,7 @@ function telHref(p) {
 const DIR_MAP_LABEL = { es:'Mapa', en:'Map', pt:'Mapa', fr:'Carte', ru:'Карта', ja:'地図', zh:'地图' };
 const DIR_TAGS = {
   'Lunes a domingo':{en:'Monday to Sunday',pt:'Segunda a domingo',fr:'Lundi au dimanche',ru:'Пн–Вс',ja:'月〜日',zh:'周一至周日'},
+  'Lunes a domingo · 10:00 a 18:00 hrs':{en:'Monday to Sunday · 10:00 to 18:00',pt:'Segunda a domingo · 10:00 às 18:00',fr:'Lundi au dimanche · 10h00 à 18h00',ru:'Пн–Вс · 10:00–18:00',ja:'月〜日 · 10:00〜18:00',zh:'周一至周日 · 10:00至18:00'},
   'Miércoles a domingo':{en:'Wednesday to Sunday',pt:'Quarta a domingo',fr:'Mercredi au dimanche',ru:'Ср–Вс',ja:'水〜日',zh:'周三至周日'},
   'Sábado y domingo':{en:'Saturday and Sunday',pt:'Sábado e domingo',fr:'Samedi et dimanche',ru:'Сб и Вс',ja:'土・日',zh:'周六与周日'},
   'Viernes a domingo':{en:'Friday to Sunday',pt:'Sexta a domingo',fr:'Vendredi au dimanche',ru:'Пт–Вс',ja:'金〜日',zh:'周五至周日'},
