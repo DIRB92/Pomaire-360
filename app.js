@@ -2044,7 +2044,7 @@ const DIRECTORY = {
     { n:'Cabañas Glamen 2', a:'Pomaire', p:'+56 9 54109214', web:'https://hostaldelcentro.cl/', map:'https://maps.app.goo.gl/r3KcbQDNxX9DhY7E7' },
   ],
   interes: [
-    { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 36515838', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', slug:'chancho-greda', page:'/elchanchoalcanciamasgrandedelmundo/', hours:'Sáb 12:00–18:00 · Dom 12:00–19:30 · Lun a Vie cerrado', desc:'El chancho-alcancía de greda más grande del mundo: un atractivo imperdible de Pomaire. Un espacio con figuras gigantes de greda, ideal para fotografiarte y conocer la tradición alfarera del pueblo en gran formato.' },
+    { n:'El Chancho alcancia de greda más grande del mundo', a:'Los Paltos 323', p:'+56 9 33566057', tag:'Atractivo', map:'https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7', plan:'premium', slug:'chancho-greda', page:'/elchanchoalcanciamasgrandedelmundo/', hours:'Sáb 12:00–18:00 · Dom 12:00–19:30 · Lun a Vie cerrado', desc:'El chancho-alcancía de greda más grande del mundo: un atractivo imperdible de Pomaire. Un espacio con figuras gigantes de greda, ideal para fotografiarte y conocer la tradición alfarera del pueblo en gran formato.' },
     { n:'Cervecería Pomaire', a:'Roberto Bravo 307', p:'+56 9 93979689', ig:'cerveceriapomaire_', tag:'Cerveza artesanal', map:'https://maps.app.goo.gl/EN1vfiMMvNPJrueU7' },
     { n:'Tienda Calafate Austral', a:'Roberto Bravo 77B', p:'+56 9 36572068', ig:'calafateaustral.cl', tag:'Tienda', map:'https://maps.app.goo.gl/2rxHFCHtfKKTJ7wx6' },
     { n:'La Chakana', a:'Roberto Bravo 195', p:'+56 9 91162709', tag:'Tienda' },

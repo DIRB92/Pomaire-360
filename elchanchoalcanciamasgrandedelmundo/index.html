@@ -39,7 +39,7 @@
   "description": "El chancho-alcancía de greda más grande del mundo, creado por el maestro alfarero César Silva Rojo en Pomaire.",
   "image": "https://pomaire360.cl/og-image.jpg",
   "url": "https://pomaire360.cl/elchanchoalcanciamasgrandedelmundo/",
-  "telephone": "+56936515838",
+  "telephone": "+56933566057",
   "creator": { "@type": "Person", "name": "César Silva Rojo", "jobTitle": "Maestro Alfarero" },
   "address": {
     "@type": "PostalAddress",
@@ -182,9 +182,46 @@
   .ch-foot { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
   .ch-foot a { color: var(--clay-dark); font-weight: 700; text-decoration: none; }
 
+  /* RESERVAR (agendamiento online) */
+  .ch-book { margin-top: 2rem; background: var(--white); border-radius: 18px; padding: 1.8rem; box-shadow: 0 4px 16px rgba(90,40,10,.08); scroll-margin-top: 70px; }
+  .ch-book h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--clay-dark); margin-bottom: .4rem; }
+  .ch-book-sub { color: var(--muted); font-size: .92rem; margin-bottom: 1.3rem; }
+  .ch-cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; }
+  .ch-cal-nav button { background: var(--clay); color: #fff; border: none; border-radius: 50%; width: 34px; height: 34px; font-size: 1.1rem; cursor: pointer; line-height: 1; }
+  .ch-cal-nav button:disabled { opacity: .3; cursor: not-allowed; }
+  .ch-cal-month { font-weight: 800; color: var(--clay-dark); text-transform: capitalize; }
+  .ch-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem; text-align: center; }
+  .ch-cal-dow { font-size: .7rem; font-weight: 700; color: var(--muted); padding-bottom: .3rem; }
+  .ch-cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: .85rem; font-weight: 600; color: var(--text); background: transparent; border: none; }
+  .ch-cal-day.avail { background: var(--smoke); cursor: pointer; color: var(--clay-dark); }
+  .ch-cal-day.avail:hover { background: #f0d7bf; }
+  .ch-cal-day.sel { background: var(--clay); color: #fff; }
+  .ch-cal-day.today:not(.sel) { box-shadow: inset 0 0 0 2px var(--clay-light); }
+  .ch-cal-day:disabled { opacity: .35; }
+  .ch-book-legend { font-size: .78rem; color: var(--muted); margin-top: .6rem; }
+  .ch-slots { margin-top: 1.4rem; }
+  .ch-slots h3 { font-size: .95rem; color: var(--clay-dark); margin-bottom: .6rem; }
+  .ch-slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(74px, 1fr)); gap: .5rem; }
+  .ch-slot-btn { padding: .5rem .4rem; border-radius: 10px; border: 1.5px solid var(--clay-light); background: #fff; color: var(--clay-dark); font-weight: 700; font-size: .85rem; cursor: pointer; transition: transform .1s; font-family: inherit; }
+  .ch-slot-btn:hover { transform: translateY(-1px); background: #FFF4E6; }
+  .ch-slot-btn.sel { background: var(--clay); color: #fff; border-color: var(--clay); }
+  .ch-book-form { margin-top: 1.4rem; display: none; }
+  .ch-book-form.show { display: block; }
+  .ch-book-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-bottom: .8rem; }
+  .ch-book-field label { display: block; font-size: .82rem; font-weight: 700; color: var(--clay-dark); margin-bottom: .3rem; }
+  .ch-book-field input, .ch-book-field select { width: 100%; padding: .6rem .7rem; border: 1.5px solid #E8D9C7; border-radius: 10px; font-family: inherit; font-size: .92rem; color: var(--text); background: #fff; }
+  .ch-book-summary { background: #FFF4E6; border: 1px solid #F0C98A; border-radius: 12px; padding: .8rem 1rem; margin-bottom: 1rem; font-size: .9rem; color: #8C3D16; font-weight: 700; }
+  .ch-book-err { color: #B3261E; font-size: .85rem; display: none; margin-bottom: .8rem; }
+  .ch-book-submit { display: inline-flex; align-items: center; gap: .5rem; background: #25D366; color: #fff; font-weight: 800; border: none; border-radius: 30px; padding: .85rem 1.7rem; font-size: 1rem; cursor: pointer; font-family: inherit; transition: transform .15s; }
+  .ch-book-submit:hover { transform: translateY(-2px); }
+  .ch-book-hint { margin-top: 1rem; font-size: .8rem; color: var(--muted); }
+
   @media (max-width: 680px) {
     .ch-bio { grid-template-columns: 1fr; }
     .ch-photo { max-width: 260px; margin: 0 auto; aspect-ratio: 4/3; }
+  }
+  @media (max-width: 520px) {
+    .ch-book-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -292,7 +329,8 @@
     <h1 data-t="ch_h1">El Chancho alcancía de greda más grande del mundo</h1>
     <p class="ch-author" data-t="ch_author">Creado por <strong>César Silva Rojo</strong></p>
     <div class="ch-hero-btns">
-      <a href="#autor" class="ch-btn ch-btn-primary" data-t="ch_btn_hist">Ver Historia</a>
+      <a href="#reservar" class="ch-btn ch-btn-primary" data-t="ch_btn_book">📅 Reservar visita</a>
+      <a href="#autor" class="ch-btn ch-btn-ghost" data-t="ch_btn_hist">Ver Historia</a>
       <a href="#visitar" class="ch-btn ch-btn-ghost" data-t="ch_btn_visit">Cómo Visitar</a>
       <button type="button" class="ch-btn ch-btn-ghost" style="font-family:inherit;cursor:pointer;" onclick="sharePage()" data-t="ch_share">📤 Compartir</button>
     </div>
@@ -312,7 +350,7 @@
       <p data-t="ch_bio">Maestro alfarero pomairino y autor del chancho-alcancía de greda más grande del mundo. Con años de oficio dando forma a la greda de Pomaire, transformó una idea imposible en una obra única que hoy es atractivo del pueblo.</p>
       <div class="ch-social">
         <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Cómo llegar</a>
-        <a class="ch-soc wa" href="tel:+56936515838" data-t="ch_call">📞 Llamar</a>
+        <a class="ch-soc wa" href="tel:+56933566057" data-t="ch_call">📞 Llamar</a>
       </div>
     </div>
   </section>
@@ -335,13 +373,69 @@
     <h2 data-t="ch_visit_title">Cómo visitar</h2>
     <div class="ch-visit-row">📍 <span data-t="ch_addr"><strong>Dirección:</strong> Los Paltos 323, Pomaire, Melipilla</span></div>
     <div class="ch-visit-row">🕒 <span data-t="ch_hours"><strong>Horario:</strong> Sábado 12:00–18:00 · Domingo 12:00–19:30 · Lunes a Viernes cerrado</span></div>
-    <div class="ch-visit-row">📞 <span data-t="ch_phone"><strong>Teléfono:</strong> +56 9 3651 5838</span></div>
+    <div class="ch-visit-row">📞 <span data-t="ch_phone"><strong>Teléfono:</strong> +56 9 3356 6057</span></div>
     <div class="ch-visit-row" data-winter style="display:none;background:#FFF4E6;border:1px solid #F0C98A;border-radius:12px;padding:.7rem .9rem;margin-top:.8rem;color:#8C3D16;font-weight:700;">❄️ <span data-t="ch_winter"><strong>Vacaciones de invierno:</strong> abierto de lunes a domingo</span></div>
     <div class="ch-visit-btns">
       <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Cómo llegar</a>
       <a class="ch-soc" style="background:var(--clay-dark)" href="/#lugar=po6" data-t="ch_seemap_btn">📍 Ver en el mapa interactivo</a>
       <button type="button" class="ch-soc" style="background:#25D366;font-family:inherit;cursor:pointer;border:none;" onclick="sharePage()" data-t="ch_share">📤 Compartir</button>
     </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section class="ch-book" id="reservar">
+    <h2 data-t="ch_book_title">📅 Reserva tu visita</h2>
+    <p class="ch-book-sub" data-t="ch_book_sub">Elige un día disponible (sábado o domingo) y la hora que prefieras. Te confirmaremos por WhatsApp.</p>
+
+    <div class="ch-cal-nav">
+      <button type="button" id="chCalPrev" aria-label="Mes anterior">‹</button>
+      <span class="ch-cal-month" id="chCalMonth">—</span>
+      <button type="button" id="chCalNext" aria-label="Mes siguiente">›</button>
+    </div>
+    <div class="ch-cal-grid" id="chCalGrid"></div>
+    <p class="ch-book-legend" data-t="ch_book_legend">🟤 Días disponibles: sábado y domingo</p>
+
+    <div class="ch-slots" id="chSlotsWrap" style="display:none;">
+      <h3 id="chSlotsTitle" data-t="ch_book_slots_h">Horas disponibles</h3>
+      <div class="ch-slots-grid" id="chSlotsGrid"></div>
+    </div>
+
+    <form class="ch-book-form" id="chBookForm" onsubmit="return false;">
+      <div class="ch-book-summary" id="chBookSummary"></div>
+      <div class="ch-book-row">
+        <div class="ch-book-field">
+          <label for="chb-name" data-t="ch_book_lbl_name">Tu nombre</label>
+          <input type="text" id="chb-name" name="name" autocomplete="name" placeholder="Ej: Camila" data-ph-t="ch_book_ph_name" required>
+        </div>
+        <div class="ch-book-field">
+          <label for="chb-phone" data-t="ch_book_lbl_phone">Tu teléfono</label>
+          <input type="tel" id="chb-phone" name="phone" autocomplete="tel" placeholder="+56 9 1234 5678" data-ph-t="ch_book_ph_phone" required>
+        </div>
+      </div>
+      <div class="ch-book-row">
+        <div class="ch-book-field">
+          <label for="chb-people" data-t="ch_book_lbl_people">Cantidad de personas</label>
+          <select id="chb-people" name="people">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        </div>
+        <div class="ch-book-field">
+          <label for="chb-note" data-t="ch_book_lbl_note">Comentario <span data-t="ch_book_optional">(opcional)</span></label>
+          <input type="text" id="chb-note" name="note" placeholder="Ej: viajamos con niños" data-ph-t="ch_book_ph_note">
+        </div>
+      </div>
+      <p class="ch-book-err" id="chBookErr" data-t="ch_book_err">Por favor completa tu nombre y teléfono.</p>
+      <button type="button" class="ch-book-submit" id="chBookSubmit">
+        <span aria-hidden="true">💬</span> <span data-t="ch_book_submit">Confirmar por WhatsApp</span>
+      </button>
+      <p class="ch-book-hint" data-t="ch_book_hint">🔒 Se abrirá WhatsApp con tu reserva ya redactada, lista para enviar. El dueño confirmará la disponibilidad final.</p>
+    </form>
   </section>
 
 </div>
@@ -409,6 +503,218 @@
   window.addEventListener('resize', syncPromoOffset);
   window.addEventListener('load', syncPromoOffset);
 </script>
+
+<!-- ── RESERVAS: calendario + horas + envío por WhatsApp (sin mostrar el número) ── -->
+<script>
+(function(){
+  'use strict';
+
+  var CH_WA_NUMBER = '56933566057'; // WhatsApp del dueño (no se muestra en la página)
+  // Horario de atención: sábado y domingo únicamente. Franjas cada 30 min.
+  var CH_HOURS = {
+    6: { open: '12:00', close: '18:00' },  // sábado
+    0: { open: '12:00', close: '19:30' }   // domingo
+  };
+
+  var CH_MONTHS = {
+    es:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+    en:['January','February','March','April','May','June','July','August','September','October','November','December'],
+    pt:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+    fr:['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+    ru:['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'],
+    ja:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+    zh:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+  };
+  var CH_DOW = {
+    es:['D','L','M','M','J','V','S'], en:['S','M','T','W','T','F','S'], pt:['D','S','T','Q','Q','S','S'],
+    fr:['D','L','M','M','J','V','S'], ru:['Вс','Пн','Вт','Ср','Чт','Пт','Сб'], ja:['日','月','火','水','木','金','土'], zh:['日','一','二','三','四','五','六']
+  };
+  var CH_DOW_FULL = {
+    es:['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
+    en:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    pt:['domingo','segunda','terça','quarta','quinta','sexta','sábado'],
+    fr:['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'],
+    ru:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+    ja:['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
+    zh:['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+  };
+
+  var chCalViewYear, chCalViewMonth, chSelectedDate = null, chSelectedSlot = null;
+
+  function chPad(n){ return String(n).padStart(2,'0'); }
+  function chYmd(d){ return d.getFullYear()+'-'+chPad(d.getMonth()+1)+'-'+chPad(d.getDate()); }
+  function chLang(){ return document.documentElement.lang || 'es'; }
+  function chTxt(key, fallback){
+    var L = window.LANGS || {}, lang = chLang();
+    var v = (L[lang] && L[lang][key] !== undefined) ? L[lang][key] : (L.es && L.es[key] !== undefined ? L.es[key] : undefined);
+    return v !== undefined ? v : fallback;
+  }
+
+  function chRenderCalendar(){
+    var grid = document.getElementById('chCalGrid');
+    var monthLabel = document.getElementById('chCalMonth');
+    if (!grid || !monthLabel) return;
+    var lang = chLang();
+    var months = CH_MONTHS[lang] || CH_MONTHS.es;
+    var dows = CH_DOW[lang] || CH_DOW.es;
+    monthLabel.textContent = months[chCalViewMonth] + ' ' + chCalViewYear;
+
+    grid.innerHTML = '';
+    dows.forEach(function(d){
+      var el = document.createElement('div');
+      el.className = 'ch-cal-dow';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    var firstDay = new Date(chCalViewYear, chCalViewMonth, 1);
+    var startOffset = firstDay.getDay();
+    var daysInMonth = new Date(chCalViewYear, chCalViewMonth + 1, 0).getDate();
+    var today = new Date(); today.setHours(0,0,0,0);
+
+    for (var i = 0; i < startOffset; i++) grid.appendChild(document.createElement('div'));
+
+    for (var day = 1; day <= daysInMonth; day++) {
+      var date = new Date(chCalViewYear, chCalViewMonth, day);
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ch-cal-day';
+      btn.textContent = day;
+      var dow = date.getDay();
+      var isWeekend = (dow === 0 || dow === 6);
+      var isPast = date < today;
+      if (isWeekend && !isPast) {
+        btn.classList.add('avail');
+        btn.addEventListener('click', (function(d){ return function(){ chSelectDate(d); }; })(date));
+      } else {
+        btn.disabled = true;
+      }
+      if (chYmd(date) === chYmd(today)) btn.classList.add('today');
+      if (chSelectedDate && chYmd(date) === chYmd(chSelectedDate)) btn.classList.add('sel');
+      grid.appendChild(btn);
+    }
+
+    var prevBtn = document.getElementById('chCalPrev');
+    if (prevBtn) {
+      var isCurrentOrPast = (chCalViewYear === today.getFullYear() && chCalViewMonth <= today.getMonth()) || (chCalViewYear < today.getFullYear());
+      prevBtn.disabled = isCurrentOrPast;
+    }
+  }
+
+  function chGenerateSlots(date){
+    var hours = CH_HOURS[date.getDay()];
+    if (!hours) return [];
+    function toMin(t){ var p = t.split(':'); return parseInt(p[0],10)*60 + parseInt(p[1],10); }
+    var openMin = toMin(hours.open), closeMin = toMin(hours.close);
+    var slots = [];
+    for (var m = openMin; m < closeMin; m += 30) {
+      slots.push(chPad(Math.floor(m/60)) + ':' + chPad(m%60));
+    }
+    return slots;
+  }
+
+  function chRenderSlots(){
+    var wrap = document.getElementById('chSlotsWrap');
+    var grid = document.getElementById('chSlotsGrid');
+    if (!wrap || !grid) return;
+    if (!chSelectedDate) { wrap.style.display = 'none'; return; }
+    wrap.style.display = '';
+    grid.innerHTML = '';
+    chGenerateSlots(chSelectedDate).forEach(function(s){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ch-slot-btn' + (chSelectedSlot === s ? ' sel' : '');
+      b.textContent = s;
+      b.addEventListener('click', function(){ chSelectSlot(s); });
+      grid.appendChild(b);
+    });
+  }
+
+  function chSelectDate(date){
+    chSelectedDate = date;
+    chSelectedSlot = null;
+    chRenderCalendar();
+    chRenderSlots();
+    var form = document.getElementById('chBookForm');
+    if (form) form.classList.remove('show');
+  }
+
+  function chSelectSlot(slot){
+    chSelectedSlot = slot;
+    chRenderSlots();
+    chShowForm();
+  }
+
+  function chDateLabel(date){
+    var lang = chLang();
+    var months = CH_MONTHS[lang] || CH_MONTHS.es;
+    var dowNames = CH_DOW_FULL[lang] || CH_DOW_FULL.es;
+    return dowNames[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+  }
+
+  function chShowForm(){
+    var form = document.getElementById('chBookForm');
+    var summary = document.getElementById('chBookSummary');
+    if (!form || !summary || !chSelectedDate || !chSelectedSlot) return;
+    form.classList.add('show');
+    summary.textContent = '📅 ' + chTxt('ch_book_summary_prefix','Reserva seleccionada:') + ' ' + chDateLabel(chSelectedDate) + ' · 🕒 ' + chSelectedSlot;
+    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function chSubmitBooking(){
+    var nameEl = document.getElementById('chb-name');
+    var phoneEl = document.getElementById('chb-phone');
+    var peopleEl = document.getElementById('chb-people');
+    var noteEl = document.getElementById('chb-note');
+    var errEl = document.getElementById('chBookErr');
+    var name = (nameEl.value || '').trim();
+    var phone = (phoneEl.value || '').trim();
+    if (!name || !phone) { errEl.style.display = 'block'; return; }
+    errEl.style.display = 'none';
+    if (!chSelectedDate || !chSelectedSlot) return;
+
+    var lines = [];
+    lines.push('🐷 ' + chTxt('ch_book_msg_title', "Nueva reserva — El Chancho alcancía de greda"));
+    lines.push(chTxt('ch_book_msg_date','Fecha') + ': ' + chDateLabel(chSelectedDate));
+    lines.push(chTxt('ch_book_msg_time','Hora') + ': ' + chSelectedSlot);
+    lines.push(chTxt('ch_book_msg_people','Personas') + ': ' + peopleEl.value);
+    lines.push(chTxt('ch_book_msg_name','Nombre') + ': ' + name);
+    lines.push(chTxt('ch_book_msg_phone','Teléfono') + ': ' + phone);
+    var note = (noteEl.value || '').trim();
+    if (note) lines.push(chTxt('ch_book_msg_note','Comentario') + ': ' + note);
+
+    window.open('https://wa.me/' + CH_WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+  }
+
+  function chInit(){
+    var now = new Date();
+    chCalViewYear = now.getFullYear();
+    chCalViewMonth = now.getMonth();
+    chRenderCalendar();
+
+    var prevBtn = document.getElementById('chCalPrev');
+    var nextBtn = document.getElementById('chCalNext');
+    var submitBtn = document.getElementById('chBookSubmit');
+    if (prevBtn) prevBtn.addEventListener('click', function(){
+      chCalViewMonth--; if (chCalViewMonth < 0) { chCalViewMonth = 11; chCalViewYear--; }
+      chRenderCalendar();
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function(){
+      chCalViewMonth++; if (chCalViewMonth > 11) { chCalViewMonth = 0; chCalViewYear++; }
+      chRenderCalendar();
+    });
+    if (submitBtn) submitBtn.addEventListener('click', chSubmitBooking);
+
+    // Vuelve a dibujar el calendario/slots si el visitante cambia de idioma
+    var observer = new MutationObserver(function(){ chRenderCalendar(); chRenderSlots(); });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', chInit);
+  else chInit();
+})();
+</script>
+
 <script src="/share.js"></script>
 </body>
 </html>
