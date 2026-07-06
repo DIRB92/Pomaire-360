@@ -1,7 +1,6 @@
 # robots.txt — Pomaire 360
-# ⚠️ Reemplaza www.pomaire360.cl con tu dominio real
 
 User-agent: *
 Allow: /
 
-Sitemap: https://www.pomaire360.cl/sitemap.xml
+Sitemap: https://pomaire360.cl/sitemap.xml
