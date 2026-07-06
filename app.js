@@ -43,7 +43,7 @@ const LANGS = {
     footer_disc:"Información de carácter orientativo. Verifica horarios y datos directamente con cada institución.",
     footer_date:"Última revisión: junio 2026 · Pomaire, Melipilla, Región Metropolitana",
 
-    nav_weather:"Clima", nav_tour:"Recorrido", nav_gallery:"Galería", nav_events:"Eventos", nav_reviews:"Reseñas", nav_advertise:"Anúnciate", nav_suggest:"Sugerencias",
+    nav_weather:"Clima", nav_tour:"Recorrido", nav_gallery:"Galería", nav_events:"Eventos", nav_advertise:"Anúnciate", nav_suggest:"Sugerencias",
     s_weather_title:"Clima en Pomaire ahora", s_weather_sub:"Condiciones actuales para planificar tu visita",
     weather_note:"Datos en tiempo real · Open-Meteo · Coordenadas Pomaire",
     s_tour_title:"Recorrido turístico paso a paso", s_tour_sub:"La ruta perfecta para aprovechar tu día en Pomaire",
@@ -64,19 +64,6 @@ const LANGS = {
     ev_3_title:"Fiestas Patrias", ev_3_desc:"18 de septiembre — fondas, chicha artesanal, cueca y artesanía festiva.",
     ev_4_title:"Feria de artesanía navideña", ev_4_desc:"Nacimientos en greda, adornos y regalos únicos hechos a mano.",
     ev_tag_busy:"Alta demanda", ev_tag_fest:"Fiesta patronal", ev_tag_nat:"Fiestas patrias", ev_tag_xmas:"Navidad",
-    s_reviews_title:"Lo que dicen los visitantes", s_reviews_sub:"Experiencias de quienes ya conocen Pomaire",
-    rev_1_text:"\"Un lugar mágico. Los artesanos son increíblemente talentosos y la comida en cazuela de greda es algo que no se olvida.\"",
-    rev_1_name:"María G.", rev_1_origin:" · Santiago",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · Brasil",
-    rev_3_text:"\"Llegamos con niños y fue perfecto. Ver cómo hacen las piezas en vivo los dejó fascinados.\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · Valparaíso",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · China",
-    review_form_title:"¿Ya visitaste Pomaire? ¡Cuéntanos!",
-    rev_ph_name:"Tu nombre", rev_ph_origin:"Tu ciudad / país", rev_ph_text:"Cuéntanos tu experiencia...",
-    review_btn:"⭐ Publicar reseña",
-    rev_local_note:"📝 Tu reseña se guarda solo en este navegador (aún no se comparten públicamente).",
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Salud", filter_security:"Seguridad",
     filter_pottery:"Alfarería", filter_food:"Comer", filter_services:"Servicios", filter_around:"Alrededores",
     locate_btn:"Usar mi ubicación", map_hint:"📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias",
@@ -118,7 +105,7 @@ const LANGS = {
     footer_disc:"Information is for guidance only. Please verify hours and details directly with each institution.",
     footer_date:"Last updated: June 2026 · Pomaire, Melipilla, Metropolitan Region",
 
-    nav_weather:"Weather", nav_tour:"Tour", nav_gallery:"Gallery", nav_events:"Events", nav_reviews:"Reviews", nav_advertise:"Advertise", nav_suggest:"Feedback",
+    nav_weather:"Weather", nav_tour:"Tour", nav_gallery:"Gallery", nav_events:"Events", nav_advertise:"Advertise", nav_suggest:"Feedback",
     s_weather_title:"Current Weather in Pomaire", s_weather_sub:"Real-time conditions to plan your visit",
     weather_note:"Live data · Open-Meteo · Pomaire coordinates",
     s_tour_title:"Step-by-step tourist route", s_tour_sub:"The perfect itinerary to make the most of your day in Pomaire",
@@ -139,19 +126,6 @@ const LANGS = {
     ev_3_title:"National Holidays (Fiestas Patrias)", ev_3_desc:"September 18th — traditional food stalls, artisan chicha, cueca dancing.",
     ev_4_title:"Christmas craft fair", ev_4_desc:"Special seasonal pieces: clay nativity scenes, ornaments and handmade unique gifts.",
     ev_tag_busy:"High demand", ev_tag_fest:"Patron feast", ev_tag_nat:"National holidays", ev_tag_xmas:"Christmas",
-    s_reviews_title:"What visitors say", s_reviews_sub:"Experiences from people who have already visited Pomaire",
-    rev_1_text:"\"A magical place. The artisans are incredibly talented and the food in a clay pot is something you won't forget.\"",
-    rev_1_name:"María G.", rev_1_origin:" · Santiago",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · Brazil",
-    rev_3_text:"\"We came with kids and it was perfect. Watching the clay pieces being made live left them fascinated.\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · Valparaíso",
-    rev_4_text:"\"Beautiful pottery village! The artisans were very friendly and the food was delicious. Highly recommended!\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · China",
-    review_form_title:"Already visited Pomaire? Tell us!",
-    rev_ph_name:"Your name", rev_ph_origin:"Your city / country", rev_ph_text:"Share your experience...",
-    review_btn:"⭐ Post review",
-    rev_local_note:"📝 Your review is saved only in this browser (reviews are not shared publicly yet).",
     filter_all:"All", filter_parking:"Parking", filter_health:"Health", filter_security:"Safety",
     filter_pottery:"Pottery", filter_food:"Eat", filter_services:"Services", filter_around:"Around",
     locate_btn:"Use my location", map_hint:"📍 Enable your location or click a starting point on the map to calculate distances",
@@ -192,7 +166,7 @@ const LANGS = {
     footer_emer:"Emergências:",
     footer_disc:"As informações são apenas orientativas. Verifique horários e dados diretamente com cada instituição.",
     footer_date:"Última atualização: junho 2026 · Pomaire, Melipilla, Região Metropolitana",
-    nav_weather:"Clima", nav_tour:"Roteiro", nav_gallery:"Galeria", nav_events:"Eventos", nav_reviews:"Avaliações", nav_advertise:"Anuncie", nav_suggest:"Sugestões",
+    nav_weather:"Clima", nav_tour:"Roteiro", nav_gallery:"Galeria", nav_events:"Eventos", nav_advertise:"Anuncie", nav_suggest:"Sugestões",
     s_weather_title:"Clima em Pomaire agora", s_weather_sub:"Condições atuais para planejar sua visita",
     weather_note:"Dados em tempo real · Open-Meteo · Coordenadas de Pomaire",
     s_tour_title:"Roteiro turístico passo a passo", s_tour_sub:"O itinerário perfeito para aproveitar seu dia em Pomaire",
@@ -213,19 +187,6 @@ const LANGS = {
     ev_3_title:"Fiestas Patrias (Independência)", ev_3_desc:"18 de setembro — barracas tradicionais, chicha artesanal, dança cueca.",
     ev_4_title:"Feira de artesanato de Natal", ev_4_desc:"Peças sazonais especiais: presépios de barro, ornamentos e presentes únicos feitos à mão.",
     ev_tag_busy:"Alta demanda", ev_tag_fest:"Festa padroeira", ev_tag_nat:"Fiestas Patrias", ev_tag_xmas:"Natal",
-    s_reviews_title:"O que dizem os visitantes", s_reviews_sub:"Experiências de quem já visitou Pomaire",
-    rev_1_text:"\"Um lugar mágico. Os artesãos são incrivelmente talentosos e a comida na cazuela de barro é algo inesquecível.\"",
-    rev_1_name:"María G.", rev_1_origin:" · Santiago",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · Brasil",
-    rev_3_text:"\"Viemos com crianças e foi perfeito. Ver as peças de barro sendo feitas ao vivo as deixou fascinadas.\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · Valparaíso",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · China",
-    review_form_title:"Já visitou Pomaire? Conte para nós!",
-    rev_ph_name:"Seu nome", rev_ph_origin:"Sua cidade / país", rev_ph_text:"Conte sua experiência...",
-    review_btn:"⭐ Publicar avaliação",
-    rev_local_note:"📝 Sua avaliação fica salva apenas neste navegador (ainda não são compartilhadas publicamente).",
     filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Saúde", filter_security:"Segurança",
     filter_pottery:"Olaria", filter_food:"Comer", filter_services:"Serviços", filter_around:"Arredores",
     locate_btn:"Usar minha localização", map_hint:"📍 Ative sua localização ou clique em um ponto de partida no mapa para calcular distâncias",
@@ -266,7 +227,7 @@ const LANGS = {
     footer_emer:"Urgences :",
     footer_disc:"Les informations sont indicatives. Vérifiez les horaires et détails directement avec chaque institution.",
     footer_date:"Dernière mise à jour : juin 2026 · Pomaire, Melipilla, Région Métropolitaine",
-    nav_weather:"Météo", nav_tour:"Itinéraire", nav_gallery:"Galerie", nav_events:"Événements", nav_reviews:"Avis", nav_advertise:"Annoncez", nav_suggest:"Suggestions",
+    nav_weather:"Météo", nav_tour:"Itinéraire", nav_gallery:"Galerie", nav_events:"Événements", nav_advertise:"Annoncez", nav_suggest:"Suggestions",
     s_weather_title:"Météo à Pomaire en direct", s_weather_sub:"Conditions actuelles pour planifier votre visite",
     weather_note:"Données en direct · Open-Meteo · Coordonnées de Pomaire",
     s_tour_title:"Itinéraire touristique étape par étape", s_tour_sub:"Le parcours parfait pour profiter de votre journée à Pomaire",
@@ -287,19 +248,6 @@ const LANGS = {
     ev_3_title:"Fêtes nationales (Fiestas Patrias)", ev_3_desc:"18 septembre — stands traditionnels, chicha artisanale, danse cueca.",
     ev_4_title:"Foire artisanale de Noël", ev_4_desc:"Pièces saisonnières spéciales : crèches en argile, ornements et cadeaux uniques faits à la main.",
     ev_tag_busy:"Forte demande", ev_tag_fest:"Fête patronale", ev_tag_nat:"Fêtes nationales", ev_tag_xmas:"Noël",
-    s_reviews_title:"Ce que disent les visiteurs", s_reviews_sub:"Expériences de ceux qui ont déjà visité Pomaire",
-    rev_1_text:"\"Un endroit magique. Les artisans sont incroyablement talentueux et la nourriture dans un plat en argile est inoubliable.\"",
-    rev_1_name:"María G.", rev_1_origin:" · Santiago",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · Brésil",
-    rev_3_text:"\"Nous sommes venus avec des enfants et c'était parfait. Les voir fabriquer les pièces en direct les a fascinés.\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · Valparaíso",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · Chine",
-    review_form_title:"Vous avez déjà visité Pomaire ? Dites-nous tout !",
-    rev_ph_name:"Votre nom", rev_ph_origin:"Votre ville / pays", rev_ph_text:"Partagez votre expérience...",
-    review_btn:"⭐ Publier un avis",
-    rev_local_note:"📝 Votre avis est enregistré uniquement dans ce navigateur (pas encore partagé publiquement).",
     filter_all:"Tous", filter_parking:"Parking", filter_health:"Santé", filter_security:"Sécurité",
     filter_pottery:"Poterie", filter_food:"Manger", filter_services:"Services", filter_around:"Alentours",
     locate_btn:"Utiliser ma position", map_hint:"📍 Activez votre position ou cliquez sur un point de départ sur la carte pour calculer les distances",
@@ -340,7 +288,7 @@ const LANGS = {
     footer_emer:"Экстренные службы:",
     footer_disc:"Информация носит ориентировочный характер. Уточняйте расписание непосредственно в учреждениях.",
     footer_date:"Последнее обновление: июнь 2026 · Помайре, Мелипилья, Столичный регион",
-    nav_weather:"Погода", nav_tour:"Маршрут", nav_gallery:"Галерея", nav_events:"События", nav_reviews:"Отзывы", nav_advertise:"Реклама", nav_suggest:"Отзывы",
+    nav_weather:"Погода", nav_tour:"Маршрут", nav_gallery:"Галерея", nav_events:"События", nav_advertise:"Реклама", nav_suggest:"Отзывы",
     s_weather_title:"Погода в Помайре сейчас", s_weather_sub:"Текущие условия для планирования визита",
     weather_note:"Данные в реальном времени · Open-Meteo · Координаты Помайре",
     s_tour_title:"Туристический маршрут по шагам", s_tour_sub:"Идеальный маршрут, чтобы провести день в Помайре",
@@ -361,19 +309,6 @@ const LANGS = {
     ev_3_title:"Национальные праздники (Fiestas Patrias)", ev_3_desc:"18 сентября — традиционные палатки, чича, танец куэка.",
     ev_4_title:"Рождественская ярмарка ремёсел", ev_4_desc:"Особые сезонные изделия: глиняные рождественские сцены, украшения и подарки.",
     ev_tag_busy:"Высокий спрос", ev_tag_fest:"Праздник покровителя", ev_tag_nat:"Национальные праздники", ev_tag_xmas:"Рождество",
-    s_reviews_title:"Что говорят посетители", s_reviews_sub:"Впечатления тех, кто уже посетил Помайре",
-    rev_1_text:"\"Волшебное место. Мастера невероятно талантливы, а еда в глиняной посуде незабываема.\"",
-    rev_1_name:"María G.", rev_1_origin:" · Сантьяго",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · Бразилия",
-    rev_3_text:"\"Мы приехали с детьми, и это было идеально. Им было интересно наблюдать за изготовлением изделий.\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · Вальпараисо",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · Китай",
-    review_form_title:"Уже посетили Помайре? Расскажите нам!",
-    rev_ph_name:"Ваше имя", rev_ph_origin:"Ваш город / страна", rev_ph_text:"Поделитесь своими впечатлениями...",
-    review_btn:"⭐ Опубликовать отзыв",
-    rev_local_note:"📝 Ваш отзыв сохраняется только в этом браузере (пока не публикуется для всех).",
     filter_all:"Все", filter_parking:"Парковка", filter_health:"Здоровье", filter_security:"Безопасность",
     filter_pottery:"Керамика", filter_food:"Еда", filter_services:"Услуги", filter_around:"Окрестности",
     locate_btn:"Использовать моё местоположение", map_hint:"📍 Включите геолокацию или нажмите на карту, чтобы задать точку отправления",
@@ -414,7 +349,7 @@ const LANGS = {
     footer_emer:"緊急連絡先：",
     footer_disc:"情報は目安です。時間や詳細は各機関に直接ご確認ください。",
     footer_date:"最終更新：2026年6月 · ポマイレ、メリピジャ、首都圏",
-    nav_weather:"天気", nav_tour:"観光ルート", nav_gallery:"ギャラリー", nav_events:"イベント", nav_reviews:"レビュー", nav_advertise:"広告掲載", nav_suggest:"ご意見",
+    nav_weather:"天気", nav_tour:"観光ルート", nav_gallery:"ギャラリー", nav_events:"イベント", nav_advertise:"広告掲載", nav_suggest:"ご意見",
     s_weather_title:"ポマイレの現在の天気", s_weather_sub:"訪問を計画するための現在の状況",
     weather_note:"リアルタイムデータ · Open-Meteo · ポマイレの座標",
     s_tour_title:"観光ルートをステップごとに", s_tour_sub:"ポマイレでの1日を最大限に楽しむための完璧な行程",
@@ -435,19 +370,6 @@ const LANGS = {
     ev_3_title:"独立記念日（フィエスタス・パトリアス）", ev_3_desc:"9月18日 — 伝統的な屋台、職人のチチャ、クエカダンス。",
     ev_4_title:"クリスマス工芸フェア", ev_4_desc:"季節限定の特別な作品：陶器のキリスト降誕シーン、装飾品、手作りのギフト。",
     ev_tag_busy:"需要が高い", ev_tag_fest:"守護聖人祭", ev_tag_nat:"独立記念日", ev_tag_xmas:"クリスマス",
-    s_reviews_title:"訪問者の声", s_reviews_sub:"すでにポマイレを訪れた人々の体験談",
-    rev_1_text:"\"魔法のような場所です。職人たちは信じられないほど才能があり、陶器で食べる料理は忘れられません。\"",
-    rev_1_name:"María G.", rev_1_origin:" · サンティアゴ",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · ブラジル",
-    rev_3_text:"\"子供たちと一緒に来て完璧でした。陶器が作られる様子を見て子供たちは魅了されていました。\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · バルパライソ",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · 中国",
-    review_form_title:"もうポマイレを訪れましたか？教えてください！",
-    rev_ph_name:"お名前", rev_ph_origin:"お住まいの都市/国", rev_ph_text:"体験を共有してください...",
-    review_btn:"⭐ レビューを投稿",
-    rev_local_note:"📝 レビューはこのブラウザにのみ保存されます（まだ公開共有されません）。",
     filter_all:"すべて", filter_parking:"駐車場", filter_health:"医療", filter_security:"安全",
     filter_pottery:"陶芸", filter_food:"グルメ", filter_services:"サービス", filter_around:"周辺",
     locate_btn:"現在地を使用", map_hint:"📍 位置情報を有効にするか、地図上の出発点をクリックして距離を計算してください",
@@ -488,7 +410,7 @@ const LANGS = {
     footer_emer:"紧急联系：",
     footer_disc:"信息仅供参考，请直接向各机构核实时间及详情。",
     footer_date:"最后更新：2026年6月 · 波马伊雷，梅利皮利亚，首都大区",
-    nav_weather:"天气", nav_tour:"行程", nav_gallery:"画廊", nav_events:"活动", nav_reviews:"评价", nav_advertise:"刊登广告", nav_suggest:"反馈",
+    nav_weather:"天气", nav_tour:"行程", nav_gallery:"画廊", nav_events:"活动", nav_advertise:"刊登广告", nav_suggest:"反馈",
     s_weather_title:"波马伊雷实时天气", s_weather_sub:"实时状况，助您规划行程",
     weather_note:"实时数据 · Open-Meteo · 波马伊雷坐标",
     s_tour_title:"逐步旅游路线", s_tour_sub:"充分享受波马伊雷一天的完美行程",
@@ -509,19 +431,6 @@ const LANGS = {
     ev_3_title:"国庆节（Fiestas Patrias）", ev_3_desc:"9月18日 — 传统小摊、手工奇恰酒、传统库埃卡舞。",
     ev_4_title:"圣诞手工艺集市", ev_4_desc:"特别的季节性作品：陶土圣诞场景、装饰品和独特的手工礼物。",
     ev_tag_busy:"高需求", ev_tag_fest:"守护神节", ev_tag_nat:"国庆节", ev_tag_xmas:"圣诞节",
-    s_reviews_title:"游客评价", s_reviews_sub:"已经到访波马伊雷的人们的体验",
-    rev_1_text:"\"一个神奇的地方。工匠们才华横溢，用陶罐盛装的食物令人难忘。\"",
-    rev_1_name:"María G.", rev_1_origin:" · 圣地亚哥",
-    rev_2_text:"\"We came from Brazil and were amazed by the pottery tradition. The giant empanadas were delicious!\"",
-    rev_2_name:"Carlos M.", rev_2_origin:" · 巴西",
-    rev_3_text:"\"我们带着孩子来，非常完美。看到陶器现场制作让他们着迷。\"",
-    rev_3_name:"Valentina R.", rev_3_origin:" · 瓦尔帕莱索",
-    rev_4_text:"\"美丽的陶艺村！陶艺师傅非常友好，食物也很美味。强烈推荐！\"",
-    rev_4_name:"Wei L.", rev_4_origin:" · 中国",
-    review_form_title:"已经去过波马伊雷？告诉我们吧！",
-    rev_ph_name:"您的姓名", rev_ph_origin:"您的城市/国家", rev_ph_text:"分享您的体验...",
-    review_btn:"⭐ 发布评价",
-    rev_local_note:"📝 您的评价仅保存在此浏览器中（暂不公开共享）。",
     filter_all:"全部", filter_parking:"停车场", filter_health:"医疗", filter_security:"安全",
     filter_pottery:"陶艺", filter_food:"美食", filter_services:"服务", filter_around:"周边",
     locate_btn:"使用我的位置", map_hint:"📍 启用您的位置或点击地图上的起点以计算距离",
@@ -1316,7 +1225,6 @@ const KEYS = {
   '[data-t="nav_tour"]':      t => t.nav_tour,
   '[data-t="nav_gallery"]':   t => t.nav_gallery,
   '[data-t="nav_events"]':    t => t.nav_events,
-  '[data-t="nav_reviews"]':   t => t.nav_reviews,
 
   '[data-t="s_weather_title"]': t => t.s_weather_title,
   '[data-t="s_weather_sub"]':   t => t.s_weather_sub,
@@ -1344,15 +1252,6 @@ const KEYS = {
   '[data-t="ev_4_title"]': t => t.ev_4_title, '[data-t="ev_4_desc"]': t => t.ev_4_desc,
   '[data-t="ev_tag_busy"]': t => t.ev_tag_busy, '[data-t="ev_tag_fest"]': t => t.ev_tag_fest,
   '[data-t="ev_tag_nat"]':  t => t.ev_tag_nat,  '[data-t="ev_tag_xmas"]': t => t.ev_tag_xmas,
-
-  '[data-t="s_reviews_title"]': t => t.s_reviews_title,
-  '[data-t="s_reviews_sub"]':   t => t.s_reviews_sub,
-  '[data-t="rev_1_text"]': t => t.rev_1_text, '[data-t="rev_1_name"]': t => t.rev_1_name, '[data-t="rev_1_origin"]': t => t.rev_1_origin,
-  '[data-t="rev_2_text"]': t => t.rev_2_text, '[data-t="rev_2_name"]': t => t.rev_2_name, '[data-t="rev_2_origin"]': t => t.rev_2_origin,
-  '[data-t="rev_3_text"]': t => t.rev_3_text, '[data-t="rev_3_name"]': t => t.rev_3_name, '[data-t="rev_3_origin"]': t => t.rev_3_origin,
-  '[data-t="rev_4_text"]': t => t.rev_4_text, '[data-t="rev_4_name"]': t => t.rev_4_name, '[data-t="rev_4_origin"]': t => t.rev_4_origin,
-  '[data-t="review_form_title"]': t => t.review_form_title,
-  '[data-t="review_btn"]':        t => t.review_btn,
 
   '[data-t="filter_all"]': t => t.filter_all,
   '[data-t="filter_parking"]': t => t.filter_parking,
@@ -1499,75 +1398,6 @@ async function loadWeather() {
   }
 }
 loadWeather();
-
-// ── STAR PICKER ──────────────────────────────────────────────────────────────
-let selectedStars = 5;
-document.addEventListener('DOMContentLoaded', () => {
-  const stars = document.querySelectorAll('#star-picker span');
-  stars.forEach(s => {
-    s.addEventListener('click', () => {
-      selectedStars = parseInt(s.dataset.val);
-      stars.forEach(x => x.classList.toggle('active', parseInt(x.dataset.val) <= selectedStars));
-    });
-    s.addEventListener('mouseover', () => {
-      stars.forEach(x => x.classList.toggle('active', parseInt(x.dataset.val) <= parseInt(s.dataset.val)));
-    });
-  });
-  document.getElementById('star-picker').addEventListener('mouseleave', () => {
-    stars.forEach(x => x.classList.toggle('active', parseInt(x.dataset.val) <= selectedStars));
-  });
-  // init 5 stars
-  stars.forEach(x => x.classList.toggle('active', parseInt(x.dataset.val) <= 5));
-  loadUserReviews();
-});
-
-// ── REVIEWS ──────────────────────────────────────────────────────────────────
-function submitReview() {
-  const name   = document.getElementById('rev-name').value.trim();
-  const origin = document.getElementById('rev-origin').value.trim();
-  const text   = document.getElementById('rev-text').value.trim();
-  if (!name || !text) { alert('Por favor ingresa tu nombre y comentario.'); return; }
-  const reviews = getReviews();
-  const review = { name, origin, text, stars: selectedStars, date: new Date().toLocaleDateString('es-CL') };
-  reviews.unshift(review);
-  try { localStorage.setItem('p360reviews', JSON.stringify(reviews.slice(0,20))); } catch(e){}
-
-  /* ── Enviar reseña a Formspree (email notification) ── */
-  var formData = new FormData();
-  formData.append('name', name);
-  formData.append('origin', origin || 'No indicado');
-  formData.append('stars', selectedStars + '/5');
-  formData.append('review', text);
-  formData.append('_subject', '⭐ Nueva reseña en Pomaire 360 — ' + name);
-  fetch('https://formspree.io/f/xlgypgrl', {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  }).catch(function(){/* silently fail — review saved locally anyway */});
-
-  document.getElementById('rev-name').value = '';
-  document.getElementById('rev-origin').value = '';
-  document.getElementById('rev-text').value = '';
-  loadUserReviews();
-}
-
-function getReviews() {
-  try { return JSON.parse(localStorage.getItem('p360reviews') || '[]'); } catch(e){ return []; }
-}
-
-function loadUserReviews() {
-  const list = document.getElementById('reviews-user');
-  const reviews = getReviews();
-  if (!reviews.length) { list.innerHTML = ''; return; }
-  list.innerHTML = reviews.map(r => `
-    <div class="user-review-item">
-      <strong>${r.name}${r.origin ? ' · ' + r.origin : ''}</strong>
-      <span style="color:#F5A623;margin-left:.4rem">${'★'.repeat(r.stars)}</span>
-      <span style="color:var(--muted);font-size:.75rem;margin-left:.4rem">${r.date}</span>
-      <p style="margin-top:.3rem">${r.text}</p>
-    </div>
-  `).join('');
-}
 
 /* ===== */
 
@@ -2400,7 +2230,7 @@ function toggleReadMode() {
 document.addEventListener('click', (e) => {
   if (!readingMode) return;
   if (e.target.closest('.a11y')) return;          // no leer los propios controles
-  const el = e.target.closest('p, h1, h2, h3, h4, li, span, a, strong, .card, .dir-item, .or-txt, .tour-content, .event-info, .review-card');
+  const el = e.target.closest('p, h1, h2, h3, h4, li, span, a, strong, .card, .dir-item, .or-txt, .tour-content, .event-info');
   if (!el) return;
   const txt = el.innerText || el.textContent;
   if (!txt || !txt.trim()) return;
