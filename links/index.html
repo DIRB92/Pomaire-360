@@ -89,6 +89,29 @@ body{
   width:100%;
   text-align:center;
 }
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  width:100%;
+  padding:0.9rem 1.5rem;
+  border-radius:50px;
+  background:linear-gradient(135deg,#F5C24A,#E8A020);
+  color:#3a2218;
+  text-decoration:none;
+  font-weight:700;
+  font-size:1rem;
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.cta-btn:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 8px 22px rgba(0,0,0,0.2);
+}
+.cta-btn .icon{
+  font-size:1.2rem;
+}
 .social-links{
   display:flex;
   gap:0.75rem;
@@ -170,6 +193,11 @@ body{
     <h1>Pomaire 360</h1>
     <p class="tagline">Guia completa del pueblo alfarero de Chile</p>
   </div>
+
+  <!-- CTA: Agregar negocio -->
+  <a href="https://www.pomaire360.cl/anunciate/" class="cta-btn" target="_blank" rel="noopener noreferrer">
+    <span class="icon">📣</span> Agregar tu negocio
+  </a>
 
   <!-- Social Media -->
   <p class="section-title">Siguenos en redes</p>
