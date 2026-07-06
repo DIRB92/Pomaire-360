@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
-<title>Pomaire Arcade — Juegos de greda y alfarería | Pomaire 360</title>
-<meta name="description" content="Cuatro juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire: memorama, moldeado, recolector y rompecabezas. Juega gratis, sin descargas.">
+<title>Pomaire Arcade — Tetris Pomairino y juegos de greda | Pomaire 360</title>
+<meta name="description" content="Cinco juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire: Tetris Pomairino, memorama, moldeado, recolector y rompecabezas. Juega gratis, sin descargas.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pomaire360.cl/juegos/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pomaire 360">
-<meta property="og:title" content="Pomaire Arcade — Juegos de greda y alfarería">
-<meta property="og:description" content="Cuatro juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire. Juega gratis, sin descargas.">
+<meta property="og:title" content="Pomaire Arcade — Tetris Pomairino y juegos de greda">
+<meta property="og:description" content="Cinco juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire, incluyendo Tetris Pomairino. Juega gratis, sin descargas.">
 <meta property="og:url" content="https://pomaire360.cl/juegos/">
 <meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -19,8 +19,8 @@
 <meta property="og:image:alt" content="Juegos arcade inspirados en la alfareria de Pomaire">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pomaire Arcade — Juegos de greda y alfarería">
-<meta name="twitter:description" content="Cuatro juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire. Juega gratis, sin descargas.">
+<meta name="twitter:title" content="Pomaire Arcade — Tetris Pomairino y juegos de greda">
+<meta name="twitter:description" content="Cinco juegos clásicos inspirados en la greda, la arcilla y las vasijas de Pomaire, incluyendo Tetris Pomairino. Juega gratis, sin descargas.">
 <meta name="twitter:image" content="https://pomaire360.cl/og-image.jpg">
 <link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://pomaire360.cl/apple-touch-icon.png">
@@ -542,6 +542,99 @@
     font-size:16px;
   }
 
+  /* ---- Tetris Pomairino ---- */
+  #pomaire-arcade .tetris-wrap{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  #pomaire-arcade #tetris-canvas{
+    display:block;
+    border-radius:10px;
+    border:2px solid var(--arc-dark);
+    background: var(--arc-dark);
+    box-shadow: 0 10px 24px -12px rgba(42,35,29,0.5);
+    touch-action:none;
+  }
+  #pomaire-arcade .tetris-side{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    min-width:120px;
+  }
+  #pomaire-arcade .tetris-panel{
+    background: var(--arc-raw);
+    border-radius:12px;
+    padding:10px 14px;
+    box-shadow: inset 0 0 0 1px var(--arc-line);
+    text-align:center;
+  }
+  #pomaire-arcade .tetris-panel .tp-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color: rgba(42,35,29,0.6);
+    margin-bottom:4px;
+  }
+  #pomaire-arcade .tetris-panel .tp-val{
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:22px;
+    color: var(--arc-fired-dark);
+  }
+  #pomaire-arcade #tetris-next{
+    display:block;
+    margin:0 auto;
+    background: var(--arc-dark);
+    border-radius:8px;
+  }
+  #pomaire-arcade .tetris-controls{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:8px;
+    max-width:320px;
+    margin:14px auto 0;
+  }
+  #pomaire-arcade .tetris-controls button{
+    font-size:18px;
+    padding:12px;
+    border-radius:11px;
+    border:none;
+    background: linear-gradient(135deg, #fff, var(--arc-raw));
+    box-shadow: 0 3px 8px -2px rgba(42,35,29,0.25), inset 0 0 0 1px var(--arc-line);
+    cursor:pointer;
+    transition: transform .12s ease;
+    user-select:none;
+  }
+  #pomaire-arcade .tetris-controls button:active{ transform: scale(.92); }
+  #pomaire-arcade .tetris-controls .tc-rotate{
+    background: linear-gradient(135deg, var(--arc-gold-light), var(--arc-gold));
+    color:#fff; font-weight:700;
+  }
+  #pomaire-arcade .tetris-controls .tc-drop{
+    grid-column: span 3;
+    background: linear-gradient(135deg, var(--arc-fired-light), var(--arc-fired));
+    color:#fff; font-weight:700; font-size:14px;
+  }
+  #pomaire-arcade .tetris-overlay-note{
+    font-size:12px;
+    color: rgba(42,35,29,0.6);
+    text-align:center;
+    margin-top:10px;
+  }
+  #pomaire-arcade #tetris-status{
+    text-align:center;
+    font-family:'Zilla Slab', serif;
+    font-weight:700;
+    font-size:16px;
+    color: var(--arc-fired-dark);
+    min-height:22px;
+    margin-top:4px;
+  }
+
   #pomaire-arcade footer.arc-footer{
     margin-top: 30px;
     font-size:12px;
@@ -661,11 +754,12 @@
 <header class="arc-header">
   <div class="eyebrow">Pomaire360.cl</div>
   <h1>Pomaire Arcade</h1>
-  <p>Cuatro juegos clásicos, hechos con greda. Elige uno y a jugar.</p>
+  <p>Cinco juegos clásicos, hechos con greda. Elige uno y a jugar.</p>
 </header>
 
 <nav class="arc-tabs">
-  <button class="tab active" data-game="memo"><span class="tab-ico">🧠</span><span class="tab-label">Memorama</span></button>
+  <button class="tab active" data-game="tetris"><span class="tab-ico">🧱</span><span class="tab-label">Tetris Pomairino</span></button>
+  <button class="tab" data-game="memo"><span class="tab-ico">🧠</span><span class="tab-label">Memorama</span></button>
   <button class="tab" data-game="click"><span class="tab-ico">🏺</span><span class="tab-label">Moldeado</span></button>
   <button class="tab" data-game="plat"><span class="tab-ico">🏃</span><span class="tab-label">Recolector</span></button>
   <button class="tab" data-game="puzzle"><span class="tab-ico">🧩</span><span class="tab-label">Rompecabezas</span></button>
@@ -673,8 +767,38 @@
 
 <main class="arc-main">
 
+  <!-- TETRIS POMAIRINO -->
+  <section class="game active" id="game-tetris">
+    <h2><span>🧱</span> Tetris Pomairino</h2>
+    <p class="sub">Apila las piezas de greda cocida y completa filas para sumar puntos. ¡Un clásico con sabor a Pomaire!</p>
+    <div class="hud">
+      <span class="hud-pill"><span class="ico">⭐</span>Puntos: <b id="tetris-score">0</b></span>
+      <span class="hud-pill"><span class="ico">📶</span>Nivel: <b id="tetris-level">1</b></span>
+      <span class="hud-pill"><span class="ico">🔥</span>Filas: <b id="tetris-lines">0</b></span>
+    </div>
+    <div class="tetris-wrap">
+      <canvas id="tetris-canvas" width="240" height="480"></canvas>
+      <div class="tetris-side">
+        <div class="tetris-panel">
+          <div class="tp-label">Siguiente pieza</div>
+          <canvas id="tetris-next" width="88" height="88"></canvas>
+        </div>
+        <button class="action" id="tetris-pause">⏸ Pausar</button>
+        <button class="action" id="tetris-restart">↻ Reiniciar</button>
+      </div>
+    </div>
+    <p id="tetris-status"></p>
+    <div class="tetris-controls">
+      <button id="tetris-left" aria-label="Mover a la izquierda">◀</button>
+      <button class="tc-rotate" id="tetris-rotate" aria-label="Rotar pieza">⟳</button>
+      <button id="tetris-right" aria-label="Mover a la derecha">▶</button>
+      <button class="tc-drop" id="tetris-drop">⤓ Caída rápida</button>
+    </div>
+    <p class="tetris-overlay-note">En computador: flechas ◀ ▶ para moverte, ▲ para rotar, ▼ para caída rápida, espacio para caída instantánea.</p>
+  </section>
+
   <!-- MEMORAMA -->
-  <section class="game active" id="game-memo">
+  <section class="game" id="game-memo">
     <h2><span>🧠</span> Memorama de greda</h2>
     <p class="sub">Encuentra las 8 parejas de piezas de alfarería.</p>
     <div class="hud">
@@ -1318,6 +1442,330 @@ document.querySelectorAll('#pomaire-arcade .tab').forEach(tab=>{
   drawVasija();
   shuffleBoard();
   render();
+})();
+
+/* ================= TETRIS POMAIRINO ================= */
+(function(){
+  const COLS = 10, ROWS = 20;
+  const canvas = document.getElementById('tetris-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const CELL = canvas.width / COLS; // 24px
+  const nextCanvas = document.getElementById('tetris-next');
+  const nctx = nextCanvas.getContext('2d');
+
+  // Paleta "greda de Pomaire": tonos de arcilla, horno y esmalte
+  const COLORS = [
+    null,
+    '#B24A34', // I - greda cocida
+    '#C88A3D', // O - arena/oro
+    '#8F3A29', // T - greda oscura
+    '#4A7C59', // S - verde esmalte
+    '#D9694A', // Z - greda clara
+    '#2A231D', // J - carbón/horno
+    '#E6B246'  // L - dorado
+  ];
+
+  const SHAPES = {
+    I: [[1,1,1,1]],
+    O: [[2,2],[2,2]],
+    T: [[0,3,0],[3,3,3]],
+    S: [[0,4,4],[4,4,0]],
+    Z: [[5,5,0],[0,5,5]],
+    J: [[6,0,0],[6,6,6]],
+    L: [[0,0,7],[7,7,7]]
+  };
+  const KEYS = Object.keys(SHAPES);
+
+  let board, current, next, pos, score, level, lines, dropInterval, dropTimer, lastTime, running, paused, gameOver;
+
+  function emptyBoard(){
+    return Array.from({length: ROWS}, () => Array(COLS).fill(0));
+  }
+
+  function randomPiece(){
+    const key = KEYS[Math.floor(Math.random() * KEYS.length)];
+    return { key, shape: SHAPES[key].map(row => row.slice()) };
+  }
+
+  function rotate(shape){
+    const rows = shape.length, cols = shape[0].length;
+    const out = Array.from({length: cols}, () => Array(rows).fill(0));
+    for (let r = 0; r < rows; r++){
+      for (let c = 0; c < cols; c++){
+        out[c][rows - 1 - r] = shape[r][c];
+      }
+    }
+    return out;
+  }
+
+  function collides(shape, px, py){
+    for (let r = 0; r < shape.length; r++){
+      for (let c = 0; c < shape[r].length; c++){
+        if (!shape[r][c]) continue;
+        const x = px + c, y = py + r;
+        if (x < 0 || x >= COLS || y >= ROWS) return true;
+        if (y >= 0 && board[y][x]) return true;
+      }
+    }
+    return false;
+  }
+
+  function merge(){
+    current.shape.forEach((row, r) => {
+      row.forEach((val, c) => {
+        if (val){
+          const y = pos.y + r, x = pos.x + c;
+          if (y >= 0) board[y][x] = val;
+        }
+      });
+    });
+  }
+
+  function clearLines(){
+    let cleared = 0;
+    for (let y = ROWS - 1; y >= 0; y--){
+      if (board[y].every(cell => cell !== 0)){
+        board.splice(y, 1);
+        board.unshift(Array(COLS).fill(0));
+        cleared++;
+        y++; // re-check same index after shift
+      }
+    }
+    if (cleared > 0){
+      const points = [0, 100, 300, 500, 800][cleared] || cleared * 200;
+      score += points * level;
+      lines += cleared;
+      const newLevel = Math.floor(lines / 10) + 1;
+      if (newLevel !== level){
+        level = newLevel;
+        dropInterval = Math.max(100, 800 - (level - 1) * 70);
+      }
+      updateHUD();
+    }
+  }
+
+  function spawn(){
+    current = next;
+    next = randomPiece();
+    pos = { x: Math.floor((COLS - current.shape[0].length) / 2), y: -getTopOffset(current.shape) };
+    drawNext();
+    if (collides(current.shape, pos.x, pos.y)){
+      endGame();
+    }
+  }
+
+  function getTopOffset(shape){
+    // ensures piece starts fully above/at row 0 visually; simple approach: start at row 0
+    return 0;
+  }
+
+  function hardDrop(){
+    if (!running || paused || gameOver) return;
+    while (!collides(current.shape, pos.x, pos.y + 1)) pos.y++;
+    lockPiece();
+  }
+
+  function lockPiece(){
+    merge();
+    clearLines();
+    spawn();
+    draw();
+  }
+
+  function move(dx){
+    if (!running || paused || gameOver) return;
+    if (!collides(current.shape, pos.x + dx, pos.y)){
+      pos.x += dx;
+      draw();
+    }
+  }
+
+  function softDrop(){
+    if (!running || paused || gameOver) return;
+    if (!collides(current.shape, pos.x, pos.y + 1)){
+      pos.y++;
+    } else {
+      lockPiece();
+      return;
+    }
+    draw();
+  }
+
+  function rotatePiece(){
+    if (!running || paused || gameOver) return;
+    const rotated = rotate(current.shape);
+    // simple wall-kick attempts
+    const kicks = [0, -1, 1, -2, 2];
+    for (const k of kicks){
+      if (!collides(rotated, pos.x + k, pos.y)){
+        current.shape = rotated;
+        pos.x += k;
+        draw();
+        return;
+      }
+    }
+  }
+
+  function updateHUD(){
+    document.getElementById('tetris-score').textContent = score;
+    document.getElementById('tetris-level').textContent = level;
+    document.getElementById('tetris-lines').textContent = lines;
+  }
+
+  function drawCell(context, x, y, size, color){
+    context.fillStyle = color;
+    context.fillRect(x*size, y*size, size, size);
+    context.strokeStyle = 'rgba(0,0,0,0.35)';
+    context.lineWidth = 1;
+    context.strokeRect(x*size+0.5, y*size+0.5, size-1, size-1);
+    // brillo tipo cerámica esmaltada
+    context.fillStyle = 'rgba(255,255,255,0.18)';
+    context.fillRect(x*size+2, y*size+2, size-4, Math.max(2, size*0.22));
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // tablero
+    for (let y = 0; y < ROWS; y++){
+      for (let x = 0; x < COLS; x++){
+        if (board[y][x]) drawCell(ctx, x, y, CELL, COLORS[board[y][x]]);
+      }
+    }
+    // pieza actual
+    if (current){
+      current.shape.forEach((row, r) => {
+        row.forEach((val, c) => {
+          if (val){
+            const y = pos.y + r;
+            if (y >= 0) drawCell(ctx, pos.x + c, y, CELL, COLORS[val]);
+          }
+        });
+      });
+    }
+    // grid sutil
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    for (let x = 1; x < COLS; x++){
+      ctx.beginPath(); ctx.moveTo(x*CELL, 0); ctx.lineTo(x*CELL, canvas.height); ctx.stroke();
+    }
+    for (let y = 1; y < ROWS; y++){
+      ctx.beginPath(); ctx.moveTo(0, y*CELL), ctx.lineTo(canvas.width, y*CELL); ctx.stroke();
+    }
+  }
+
+  function drawNext(){
+    nctx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
+    const shape = next.shape;
+    const size = 20;
+    const offX = (nextCanvas.width - shape[0].length * size) / 2 / size;
+    const offY = (nextCanvas.height - shape.length * size) / 2 / size;
+    shape.forEach((row, r) => {
+      row.forEach((val, c) => {
+        if (val) drawCell(nctx, c + offX, r + offY, size, COLORS[val]);
+      });
+    });
+  }
+
+  function endGame(){
+    running = false;
+    gameOver = true;
+    document.getElementById('tetris-status').textContent = '🏺 ¡Juego terminado! Puntos: ' + score;
+    document.getElementById('tetris-pause').textContent = '⏸ Pausar';
+  }
+
+  function resetGame(){
+    board = emptyBoard();
+    score = 0; level = 1; lines = 0;
+    dropInterval = 800;
+    running = true; paused = false; gameOver = false;
+    next = randomPiece();
+    spawn();
+    updateHUD();
+    document.getElementById('tetris-status').textContent = '';
+    document.getElementById('tetris-pause').textContent = '⏸ Pausar';
+    draw();
+    lastTime = performance.now();
+    dropTimer = 0;
+  }
+
+  function loop(time){
+    if (running && !paused && !gameOver){
+      const delta = time - lastTime;
+      dropTimer += delta;
+      if (dropTimer > dropInterval){
+        dropTimer = 0;
+        if (!collides(current.shape, pos.x, pos.y + 1)){
+          pos.y++;
+        } else {
+          lockPiece();
+        }
+        draw();
+      }
+    }
+    lastTime = time;
+    requestAnimationFrame(loop);
+  }
+
+  function togglePause(){
+    if (gameOver) return;
+    paused = !paused;
+    document.getElementById('tetris-pause').textContent = paused ? '▶ Reanudar' : '⏸ Pausar';
+    document.getElementById('tetris-status').textContent = paused ? '⏸ En pausa' : '';
+  }
+
+  // Controles de botones
+  document.getElementById('tetris-left').addEventListener('click', () => move(-1));
+  document.getElementById('tetris-right').addEventListener('click', () => move(1));
+  document.getElementById('tetris-rotate').addEventListener('click', rotatePiece);
+  document.getElementById('tetris-drop').addEventListener('click', softDrop);
+  document.getElementById('tetris-pause').addEventListener('click', togglePause);
+  document.getElementById('tetris-restart').addEventListener('click', resetGame);
+
+  // Controles de teclado (solo cuando el juego está visible/activo)
+  function isTetrisActive(){
+    const section = document.getElementById('game-tetris');
+    return section && section.classList.contains('active');
+  }
+  window.addEventListener('keydown', (e) => {
+    if (!isTetrisActive()) return;
+    switch(e.key){
+      case 'ArrowLeft': e.preventDefault(); move(-1); break;
+      case 'ArrowRight': e.preventDefault(); move(1); break;
+      case 'ArrowDown': e.preventDefault(); softDrop(); break;
+      case 'ArrowUp': e.preventDefault(); rotatePiece(); break;
+      case ' ': e.preventDefault(); hardDrop(); break;
+      case 'p': case 'P': togglePause(); break;
+    }
+  });
+
+  // Soporte táctil simple: swipe / tap sobre el canvas
+  let touchStartX = null, touchStartY = null, touchMoved = false;
+  canvas.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    touchStartX = t.clientX; touchStartY = t.clientY; touchMoved = false;
+  }, {passive:true});
+  canvas.addEventListener('touchmove', (e) => {
+    if (touchStartX === null) return;
+    const t = e.touches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.abs(dx) > 24){
+      move(dx > 0 ? 1 : -1);
+      touchStartX = t.clientX;
+      touchMoved = true;
+    } else if (dy > 24){
+      softDrop();
+      touchStartY = t.clientY;
+      touchMoved = true;
+    }
+  }, {passive:true});
+  canvas.addEventListener('touchend', () => {
+    if (!touchMoved) rotatePiece();
+    touchStartX = null; touchStartY = null;
+  });
+
+  resetGame();
+  requestAnimationFrame(loop);
 })();
 </script>
 
