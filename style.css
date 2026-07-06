@@ -481,7 +481,7 @@
     align-items: flex-end;
     gap: .6rem;
   }
-  .games-float, .wa-float, .ig-float, .tt-float {
+  .games-float, .wa-float, .ig-float, .tt-float, .an-float {
     display: inline-flex;
     align-items: center;
     gap: .55rem;
@@ -498,14 +498,15 @@
   .ig-float { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
   .tt-float { background: #010101; }
   .games-float { background: linear-gradient(135deg, #E6B246, #B85C2C); }
-  .games-float:hover, .wa-float:hover, .ig-float:hover, .tt-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+  .an-float { background: linear-gradient(135deg, #F5C24A, #E8A020); color: #3a2218; }
+  .games-float:hover, .wa-float:hover, .ig-float:hover, .tt-float:hover, .an-float:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
   .wa-float svg, .ig-float svg, .tt-float svg { width: 26px; height: 26px; flex-shrink: 0; }
-  .games-float-emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
-  .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text, .games-text { white-space: nowrap; }
+  .games-float-emoji, .an-float-emoji { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+  .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text, .games-text, .an-text { white-space: nowrap; }
   @media (max-width: 600px) {
     .social-fab { right: 16px; bottom: 16px; }
-    .games-float, .wa-float, .ig-float, .tt-float { padding: .85rem; border-radius: 50%; }
-    .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text, .games-text { display: none; }
+    .games-float, .wa-float, .ig-float, .tt-float, .an-float { padding: .85rem; border-radius: 50%; }
+    .wa-float .wa-text, .ig-float .ig-text, .tt-float .tt-text, .games-text, .an-text { display: none; }
   }
   /* Animación flotante (movimiento suave) de los botones de redes */
   @keyframes fab-bob {
@@ -513,12 +514,13 @@
     50%      { transform: translateY(-7px); }
   }
   .social-fab .games-float { animation: fab-bob 2.6s ease-in-out infinite; }
+  .social-fab .an-float { animation: fab-bob 2.6s ease-in-out infinite .1s; }
   .social-fab .tt-float { animation: fab-bob 2.6s ease-in-out infinite .15s; }
   .social-fab .ig-float { animation: fab-bob 2.6s ease-in-out infinite .3s; }
   .social-fab .wa-float { animation: fab-bob 2.6s ease-in-out infinite .6s; }
-  .social-fab .games-float:hover, .social-fab .tt-float:hover, .social-fab .ig-float:hover, .social-fab .wa-float:hover { animation: none; }
+  .social-fab .games-float:hover, .social-fab .an-float:hover, .social-fab .tt-float:hover, .social-fab .ig-float:hover, .social-fab .wa-float:hover { animation: none; }
   @media (prefers-reduced-motion: reduce) {
-    .social-fab .games-float, .social-fab .tt-float, .social-fab .ig-float, .social-fab .wa-float { animation: none; }
+    .social-fab .games-float, .social-fab .an-float, .social-fab .tt-float, .social-fab .ig-float, .social-fab .wa-float { animation: none; }
   }
 
   /* ── Botón flotante de Juegos: pieza extra sobre el TikTok, con X para cerrar ── */

@@ -81,3 +81,13 @@ Object.assign(window.LANGS.fr,{"nav_locomocion":"Transports"});
 Object.assign(window.LANGS.ru,{"nav_locomocion":"Транспорт"});
 Object.assign(window.LANGS.ja,{"nav_locomocion":"交通"});
 Object.assign(window.LANGS.zh,{"nav_locomocion":"交通"});
+
+
+/* ══ Botón flotante "Agregar tu negocio" (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"an_cta":"Agregar tu negocio"});
+Object.assign(window.LANGS.en,{"an_cta":"Add your business"});
+Object.assign(window.LANGS.pt,{"an_cta":"Adicionar seu negócio"});
+Object.assign(window.LANGS.fr,{"an_cta":"Ajouter votre commerce"});
+Object.assign(window.LANGS.ru,{"an_cta":"Добавить бизнес"});
+Object.assign(window.LANGS.ja,{"an_cta":"ビジネスを追加"});
+Object.assign(window.LANGS.zh,{"an_cta":"添加您的商家"});
