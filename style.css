@@ -2644,18 +2644,18 @@
 /* ── SHARE BAR (compartir en redes) ───────────────── */
 .share-bar {
   position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 900;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: .65rem;
   background: rgba(255, 255, 255, .92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: .5rem .9rem;
+  padding: .9rem .5rem;
   border-radius: 50px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, .15);
 }
@@ -2682,9 +2682,9 @@
 
 .share-btn-tip {
   position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
   background: #333;
   color: #fff;
   font-size: .72rem;
@@ -2696,12 +2696,12 @@
   animation: share-tip-in .2s ease;
 }
 @keyframes share-tip-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateY(-50%) translateX(-4px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
 }
 
 @media (max-width: 768px) {
-  .share-bar { gap: .45rem; padding: .4rem .7rem; }
+  .share-bar { gap: .45rem; padding: .6rem .4rem; left: 8px; }
   .share-btn { width: 38px; height: 38px; }
   .share-btn svg { width: 18px; height: 18px; }
 }
