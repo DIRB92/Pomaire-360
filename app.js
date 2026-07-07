@@ -1103,6 +1103,7 @@ const GRUAS_I18N = {
     gm2_badge:"Grúa · Asistencia en ruta", gm2_title:"Grúas y remolque", gm2_detail:"Para fallas o panne en la Ruta 78 (Autopista del Sol) o dentro del pueblo. Si un accidente bloquea la vía o hay personas heridas, llama primero a emergencias.", gm2_link1:"📞 Emergencias 133", gm2_link2:"📍 Buscar grúas",
     gm3_badge:"Vulcanización · Neumáticos", gm3_title:"Vulcanizaciones", gm3_detail:"Para pinchazos y cambio de neumáticos. Hay vulcanizaciones en la ruta hacia Melipilla. Útil si viajas con la rueda de repuesto sin aire.", gm3_link:"📍 Buscar vulcanización",
     gm4_badge:"¿Tienes una grúa o taller?", gm4_title:"Suma tu servicio aquí", gm4_detail:"Si ofreces grúa, mecánica o asistencia en ruta en Pomaire o Melipilla, publícate gratis en Pomaire 360 y aparece en esta guía para quienes lo necesiten.", gm4_link:"📣 Anúnciate",
+    gm5_badge:"Vulcanización · Mantenimiento", gm5_title:"Vulcanización y Mantenimiento Automotriz", gm5_detail:"Servicio de vulcanización, neumáticos y mantenimiento automotriz en San Antonio 1, Pomaire. Contacto directo por WhatsApp para consultar disponibilidad y horarios.", gm5_hours:"🕒 Miércoles 09:00-13:00 y 14:30-18:00 · Jueves y viernes 02:30-18:00 y 09:00-13:00 · Sábado 10:00-13:00 y 14:30-18:00 · Lunes 09:00-13:00 y 14:30-18:00 · Domingo cerrado", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 Ver en mapa",
     gm_note:"🛟 Información de carácter orientativo. Confirma cobertura, tarifas y horarios directamente con cada prestador antes de contratar."
   },
   en: {
@@ -1112,6 +1113,7 @@ const GRUAS_I18N = {
     gm2_badge:"Tow truck · Roadside help", gm2_title:"Towing & breakdown", gm2_detail:"For breakdowns on Route 78 (Autopista del Sol) or within the town. If a crash blocks the road or there are injured people, call emergencies first.", gm2_link1:"📞 Emergencies 133", gm2_link2:"📍 Find tow trucks",
     gm3_badge:"Tire repair · Tyres", gm3_title:"Tire repair shops", gm3_detail:"For punctures and tyre changes. There are tire repair shops on the road toward Melipilla. Handy if you travel with a flat spare.", gm3_link:"📍 Find tire repair",
     gm4_badge:"Do you run a tow truck or workshop?", gm4_title:"Add your service here", gm4_detail:"If you offer towing, mechanics or roadside assistance in Pomaire or Melipilla, list your business for free on Pomaire 360 and appear in this guide for those who need it.", gm4_link:"📣 Advertise",
+    gm5_badge:"Tire repair · Maintenance", gm5_title:"Tire Repair & Automotive Maintenance", gm5_detail:"Tire repair, tyre and automotive maintenance service at San Antonio 1, Pomaire. Contact directly via WhatsApp to check availability and hours.", gm5_hours:"🕒 Wednesday 09:00-13:00 and 14:30-18:00 · Thursday and Friday 02:30-18:00 and 09:00-13:00 · Saturday 10:00-13:00 and 14:30-18:00 · Monday 09:00-13:00 and 14:30-18:00 · Sunday closed", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 View on map",
     gm_note:"🛟 Information is for guidance only. Confirm coverage, prices and hours directly with each provider before hiring."
   },
   pt: {
@@ -1121,6 +1123,7 @@ const GRUAS_I18N = {
     gm2_badge:"Guincho · Assistência na estrada", gm2_title:"Guincho e reboque", gm2_detail:"Para falhas ou pane na Rota 78 (Autopista del Sol) ou dentro do povoado. Se um acidente bloquear a via ou houver feridos, ligue primeiro para a emergência.", gm2_link1:"📞 Emergências 133", gm2_link2:"📍 Buscar guinchos",
     gm3_badge:"Borracharia · Pneus", gm3_title:"Borracharias", gm3_detail:"Para furos e troca de pneus. Há borracharias na estrada para Melipilla. Útil se você viaja com o estepe sem ar.", gm3_link:"📍 Buscar borracharia",
     gm4_badge:"Tem um guincho ou oficina?", gm4_title:"Adicione seu serviço aqui", gm4_detail:"Se você oferece guincho, mecânica ou assistência na estrada em Pomaire ou Melipilla, anuncie-se grátis no Pomaire 360 e apareça neste guia para quem precisar.", gm4_link:"📣 Anuncie",
+    gm5_badge:"Borracharia · Manutenção", gm5_title:"Borracharia e Manutenção Automotiva", gm5_detail:"Serviço de borracharia, pneus e manutenção automotiva na San Antonio 1, Pomaire. Contato direto pelo WhatsApp para consultar disponibilidade e horários.", gm5_hours:"🕒 Quarta 09:00-13:00 e 14:30-18:00 · Quinta e sexta 02:30-18:00 e 09:00-13:00 · Sábado 10:00-13:00 e 14:30-18:00 · Segunda 09:00-13:00 e 14:30-18:00 · Domingo fechado", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 Ver no mapa",
     gm_note:"🛟 Informação de caráter orientativo. Confirme cobertura, preços e horários diretamente com cada prestador antes de contratar."
   },
   fr: {
@@ -1130,6 +1133,7 @@ const GRUAS_I18N = {
     gm2_badge:"Dépanneuse · Assistance routière", gm2_title:"Dépannage et remorquage", gm2_detail:"Pour une panne sur la Route 78 (Autopista del Sol) ou dans le village. Si un accident bloque la voie ou s'il y a des blessés, appelez d'abord les urgences.", gm2_link1:"📞 Urgences 133", gm2_link2:"📍 Chercher des dépanneuses",
     gm3_badge:"Vulcanisation · Pneus", gm3_title:"Réparation de pneus", gm3_detail:"Pour les crevaisons et le changement de pneus. Il y a des ateliers de pneus sur la route vers Melipilla. Utile si vous roulez avec une roue de secours à plat.", gm3_link:"📍 Chercher un atelier de pneus",
     gm4_badge:"Vous avez une dépanneuse ou un garage ?", gm4_title:"Ajoutez votre service ici", gm4_detail:"Si vous proposez dépannage, mécanique ou assistance routière à Pomaire ou Melipilla, référencez-vous gratuitement sur Pomaire 360 et apparaissez dans ce guide pour ceux qui en ont besoin.", gm4_link:"📣 Annoncez",
+    gm5_badge:"Vulcanisation · Entretien", gm5_title:"Vulcanisation et Entretien Automobile", gm5_detail:"Service de vulcanisation, pneus et entretien automobile au San Antonio 1, Pomaire. Contact direct par WhatsApp pour vérifier la disponibilité et les horaires.", gm5_hours:"🕒 Mercredi 09h00-13h00 et 14h30-18h00 · Jeudi et vendredi 02h30-18h00 et 09h00-13h00 · Samedi 10h00-13h00 et 14h30-18h00 · Lundi 09h00-13h00 et 14h30-18h00 · Dimanche fermé", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 Voir sur la carte",
     gm_note:"🛟 Informations à titre indicatif. Confirmez la couverture, les tarifs et les horaires directement avec chaque prestataire avant de réserver."
   },
   ru: {
@@ -1139,6 +1143,7 @@ const GRUAS_I18N = {
     gm2_badge:"Эвакуатор · Помощь на дороге", gm2_title:"Эвакуатор и буксировка", gm2_detail:"При поломке на трассе 78 (Autopista del Sol) или в посёлке. Если авария блокирует дорогу или есть пострадавшие, сначала звоните в экстренные службы.", gm2_link1:"📞 Экстренный 133", gm2_link2:"📍 Найти эвакуатор",
     gm3_badge:"Шиномонтаж · Шины", gm3_title:"Шиномонтаж", gm3_detail:"Для проколов и замены шин. Шиномонтаж есть на дороге в сторону Мелипильи. Полезно, если вы едете со спущенной запаской.", gm3_link:"📍 Найти шиномонтаж",
     gm4_badge:"У вас есть эвакуатор или мастерская?", gm4_title:"Добавьте свою услугу", gm4_detail:"Если вы предлагаете эвакуатор, ремонт или помощь на дороге в Помайре или Мелипилье, разместитесь бесплатно на Pomaire 360 и появитесь в этом гиде для тех, кому это нужно.", gm4_link:"📣 Реклама",
+    gm5_badge:"Шиномонтаж · Обслуживание", gm5_title:"Шиномонтаж и автосервис", gm5_detail:"Шиномонтаж, шины и техническое обслуживание автомобилей по адресу San Antonio 1, Помайре. Свяжитесь напрямую через WhatsApp, чтобы уточнить доступность и часы работы.", gm5_hours:"🕒 Среда 09:00-13:00 и 14:30-18:00 · Четверг и пятница 02:30-18:00 и 09:00-13:00 · Субота 10:00-13:00 и 14:30-18:00 · Понедельник 09:00-13:00 и 14:30-18:00 · Воскресенье закрыто", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 Смотреть на карте",
     gm_note:"🛟 Информация носит ориентировочный характер. Уточняйте зону обслуживания, цены и часы работы у каждого поставщика перед заказом."
   },
   ja: {
@@ -1148,6 +1153,7 @@ const GRUAS_I18N = {
     gm2_badge:"レッカー · ロードサービス", gm2_title:"レッカー・牽引", gm2_detail:"ルート78（Autopista del Sol）や村内での故障時に。事故で道路がふさがれている、または負傷者がいる場合は、まず緊急に連絡してください。", gm2_link1:"📞 緊急 133", gm2_link2:"📍 レッカーを探す",
     gm3_badge:"タイヤ修理 · タイヤ", gm3_title:"タイヤ修理（パンク）", gm3_detail:"パンクやタイヤ交換に。メリピージャ方面の道沿いにタイヤ修理店があります。スペアタイヤの空気が抜けているときに便利です。", gm3_link:"📍 タイヤ修理を探す",
     gm4_badge:"レッカーや整備工場をお持ちですか？", gm4_title:"あなたのサービスを掲載", gm4_detail:"ポマイレやメリピージャでレッカー・整備・ロードサービスを提供しているなら、Pomaire 360 に無料で掲載し、必要とする人のためにこのガイドに載せましょう。", gm4_link:"📣 広告掲載",
+    gm5_badge:"タイヤ修理 · メンテナンス", gm5_title:"タイヤ修理と自動車整備", gm5_detail:"ポマイレ San Antonio 1 でのタイヤ修理、タイヤ交換、自動車整備サービス。営業状況や時間の確認はWhatsAppで直接お問い合わせください。", gm5_hours:"🕒 水曜 09:00-13:00・14:30-18:00 · 木・金 02:30-18:00・09:00-13:00 · 土曜 10:00-13:00・14:30-18:00 · 月曜 09:00-13:00・14:30-18:00 · 日曜休業", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 地図で見る",
     gm_note:"🛟 情報は目安です。契約前に、対応範囲・料金・営業時間を各業者に直接ご確認ください。"
   },
   zh: {
@@ -1157,6 +1163,7 @@ const GRUAS_I18N = {
     gm2_badge:"拖车 · 道路救援", gm2_title:"拖车与拖吊", gm2_detail:"用于78号公路（Autopista del Sol）或镇内的故障抛锚。如果事故堵塞道路或有人受伤，请先拨打急救电话。", gm2_link1:"📞 急救 133", gm2_link2:"📍 寻找拖车",
     gm3_badge:"补胎 · 轮胎", gm3_title:"补胎/轮胎店", gm3_detail:"用于扎胎和更换轮胎。前往梅利皮利亚的路上有补胎店。如果备胎没气，这很有用。", gm3_link:"📍 寻找补胎店",
     gm4_badge:"您有拖车或修理厂吗？", gm4_title:"在此添加您的服务", gm4_detail:"如果您在波马伊雷或梅利皮利亚提供拖车、修理或道路救援服务，可免费在 Pomaire 360 登记，出现在本指南中供有需要的人查找。", gm4_link:"📣 刊登广告",
+    gm5_badge:"补胎 · 维护保养", gm5_title:"补胎与汽车维护保养", gm5_detail:"位于波马伊雷 San Antonio 1 的补胎、轮胎和汽车维护保养服务。请直接通过WhatsApp联系确认营业情况和时间。", gm5_hours:"🕒 周三 09:00-13:00、14:30-18:00 · 周四、周五 02:30-18:00、09:00-13:00 · 周六 10:00-13:00、14:30-18:00 · 周一 09:00-13:00、14:30-18:00 · 周日休息", gm5_link1:"💬 WhatsApp +56 9 8547 8591", gm5_link2:"📍 在地图上查看",
     gm_note:"🛟 信息仅供参考。在预订前请直接向各服务商确认服务范围、价格和营业时间。"
   }
 };
@@ -1449,6 +1456,7 @@ const PLACES = [
   { id:'sv5', cat:'services', icon:'✝️', lat:-33.6563274403623, lng:-71.15040862537278, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire', gmap:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9' },
   { id:'sv6', cat:'services', icon:'⚽', lat:-33.65447017901263, lng:-71.15242874012448, name:'Cancha de Pomaire', desc:'Cam. La Cruz, Pomaire', addr:'Cam. La Cruz, Pomaire, Melipilla', gmap:'https://www.google.com/maps/search/?api=1&query=-33.65447017901263,-71.15242874012448' },
   { id:'sv7', cat:'services', icon:'🏛️', lat:-33.65266285604718, lng:-71.15463474076532, name:'Templo Salón del Reino · Testigos de Jehová', desc:'Salón del Reino de los Testigos de Jehová', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7' },
+  { id:'sv8', cat:'services', icon:'🔧', lat:-33.656554689337824, lng:-71.15054911577195, name:'Vulcanización y Mantenimiento Automotriz', desc:'Vulcanización, neumáticos y mantenimiento automotriz', addr:'San Antonio 1, Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/eTYRKr7PNGqomA277', wsp:'56985478591', hours:'Mié 09:00-13:00 y 14:30-18:00 · Jue y Vie 02:30-18:00 y 09:00-13:00 · Sáb 10:00-13:00 y 14:30-18:00 · Lun 09:00-13:00 y 14:30-18:00 · Dom cerrado' },
   // ── POTTERY ──
   { id:'po1', cat:'pottery', icon:'🏺', lat:-33.65119135971276, lng:-71.15284938597316, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire', gmap:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
   { id:'po2', cat:'pottery', icon:'🎨', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl', fb:'https://www.facebook.com/EspacioGreda/' },
