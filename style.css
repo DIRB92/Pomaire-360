@@ -635,6 +635,46 @@
   .card.priority { border-left-color: var(--clay-dark); background: #FFF8F3; }
   .card.priority .card-badge { background: var(--clay-light); color: #fff; }
 
+  /* ── CARD SHARE BUTTON (compartir una tarjeta individual) ────────── */
+  .card, .card-v2, .wine-card, .event-card { position: relative; }
+  .card-share-btn {
+    position: absolute;
+    top: .7rem;
+    right: .7rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(184,92,44,.1);
+    color: var(--clay-dark);
+    cursor: pointer;
+    transition: background .15s, color .15s, transform .15s;
+    z-index: 2;
+  }
+  .card-share-btn:hover { background: var(--clay); color: #fff; transform: scale(1.08); }
+  .card-v2 .card-share-btn { background: rgba(255,255,255,.65); color: var(--card-accent-dark, var(--clay-dark)); }
+  .card-v2 .card-share-btn:hover { background: var(--card-accent, var(--clay)); color: #fff; }
+  .wine-card .card-share-btn { background: rgba(255,255,255,.14); color: #fff; }
+  .wine-card .card-share-btn:hover { background: rgba(255,255,255,.32); }
+  .event-card .card-share-btn { top: .8rem; right: .8rem; }
+  .card-share-tip {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #333;
+    color: #fff;
+    font-size: .68rem;
+    font-weight: 700;
+    padding: .22rem .5rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: share-tip-in .2s ease;
+  }
+
   /* ── EMERGENCY NUMBERS BLOCK ─────────────────────── */
   .emergency-grid {
     display: grid;
@@ -1234,12 +1274,13 @@
   /* ── EVENTS ──────────────────────────────────────── */
   .events-list { display:flex; flex-direction:column; gap:.85rem; }
   .event-card {
+    position:relative;
     background:var(--white);
     border-radius:var(--radius);
     box-shadow:var(--shadow);
     display:flex;
     gap:1.2rem;
-    padding:1.2rem 1.3rem;
+    padding:1.2rem 2.6rem 1.2rem 1.3rem;
     align-items:flex-start;
     border-left:4px solid var(--clay-light);
     transition:transform .18s;
