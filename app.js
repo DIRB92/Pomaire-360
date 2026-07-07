@@ -1492,6 +1492,7 @@ const PLACES = [
   { id:'hl4', cat:'highlight', icon:'🍦', lat:-33.651768302417416, lng:-71.14981400869864, name:'Panadería y Heladería ALSA', desc:'Roberto Bravo 1606', addr:'Roberto Bravo 1606, Pomaire', gmap:'https://maps.app.goo.gl/m6g2m7SAkA74wqGR9' },
   { id:'hl5', cat:'highlight', icon:'🏺', lat:-33.6475116, lng:-71.1503954, name:'Los Ceramistas', desc:'General Baquedano 350', addr:'General Baquedano 350, Pomaire', gmap:'https://maps.app.goo.gl/Hae5UCCkPmBnMSHPA' },
   { id:'hl6', cat:'highlight', icon:'🌿', lat:-33.653664329289256, lng:-71.15135912053388, name:'Vivero Luchín', desc:'Jardín y vivero · San Antonio 191', addr:'San Antonio 191, Pomaire', gmap:'https://maps.app.goo.gl/QXyw95D16H72fiTH9', ig:'viveroluchin' },
+  { id:'hl7', cat:'highlight', icon:'🧵', lat:-33.64808726960897, lng:-71.14915833045953, name:'Taller de costura J.E.M.E "Dándole vida a tu Ropa"', desc:'Costura y arreglos de ropa · General Baquedano 241', addr:'Gral. Baquedano 241, Pomaire, Melipilla, Región Metropolitana', gmap:'https://maps.app.goo.gl/MeYgE8ftdphq19rt6' },
   // ── AROUND ──
   { id:'ar1', cat:'around', icon:'🌾', lat:-33.665, lng:-71.17, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas', addr:'Los Chiñihues, Melipilla' },
 ];
