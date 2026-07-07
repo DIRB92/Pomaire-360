@@ -102,3 +102,12 @@ Object.assign(window.LANGS.fr,{"tab_gruas_cat":"Dépannage & mécaniciens","tab_
 Object.assign(window.LANGS.ru,{"tab_gruas_cat":"Эвакуатор и механики","tab_gruas_sub":"Мастерские, эвакуаторы, шиномонтаж и помощь на дороге в Помайре и на трассе","gc_taller_name":"Авторемонтные мастерские","gc_taller_addr":"📍 Подъездная дорога и путь в Мелипилью","gc_grua_name":"Эвакуатор и буксировка","gc_grua_addr":"📍 Трасса 78 (Autopista del Sol) и Мелипилья","gc_vulc_name":"Шиномонтаж (дорога в Мелипилью)","gc_vulc_addr":"📍 Дорога в сторону Мелипильи"});
 Object.assign(window.LANGS.ja,{"tab_gruas_cat":"レッカー・整備","tab_gruas_sub":"ポマイレと道中での整備工場、レッカー、タイヤ修理、ロードサービス","gc_taller_name":"自動車整備工場","gc_taller_addr":"📍 アクセス道路とメリピージャへの道","gc_grua_name":"レッカー・牽引","gc_grua_addr":"📍 ルート78（Autopista del Sol）とメリピージャ","gc_vulc_name":"タイヤ修理店（メリピージャへの道）","gc_vulc_addr":"📍 メリピージャ方面の道"});
 Object.assign(window.LANGS.zh,{"tab_gruas_cat":"拖车与修理","tab_gruas_sub":"波马伊雷及沿途的修理厂、拖车、补胎与道路救援服务","gc_taller_name":"汽车修理厂","gc_taller_addr":"📍 进镇公路及前往梅利皮利亚的路","gc_grua_name":"拖车与拖吊","gc_grua_addr":"📍 78号公路（Autopista del Sol）及梅利皮利亚","gc_vulc_name":"补胎店（前往梅利皮利亚的路）","gc_vulc_addr":"📍 前往梅利皮利亚的路"});
+
+/* ══ Catálogo "Todas las tiendas" · pestaña Taller de costura (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"tab_costura_cat":"Taller de costura","tab_costura_sub":"Costura, arreglos y confección a la medida en Pomaire"});
+Object.assign(window.LANGS.en,{"tab_costura_cat":"Sewing workshop","tab_costura_sub":"Sewing, alterations and custom tailoring in Pomaire"});
+Object.assign(window.LANGS.pt,{"tab_costura_cat":"Ateliê de costura","tab_costura_sub":"Costura, ajustes e confecção sob medida em Pomaire"});
+Object.assign(window.LANGS.fr,{"tab_costura_cat":"Atelier de couture","tab_costura_sub":"Couture, retouches et confection sur mesure à Pomaire"});
+Object.assign(window.LANGS.ru,{"tab_costura_cat":"Швейная мастерская","tab_costura_sub":"Шитьё, переделка одежды и индивидуальный крой в Помайре"});
+Object.assign(window.LANGS.ja,{"tab_costura_cat":"仕立て工房","tab_costura_sub":"ポマイレでの縫製、お直し、オーダーメイド仕立て"});
+Object.assign(window.LANGS.zh,{"tab_costura_cat":"裁缝工坊","tab_costura_sub":"波马伊雷的缝纫、修改与定制裁缝服务"});
