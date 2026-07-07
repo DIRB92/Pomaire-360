@@ -18,7 +18,7 @@ const LANGS = {
     nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
     nav_around:"Alrededores", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar",
     hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
-    hero_h1:"Bienvenido/a a <em>Pomaire</em>",
+    hero_h1:"Bienvenido a <em>Pomaire</em>",
     hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
     cta_plan:"Planifica tu visita", cta_directions:"Cómo llegar", cta_eat:"Dónde comer",
     wa_text:"Compartir", wa_aria:"Compartir Pomaire 360 por WhatsApp",
