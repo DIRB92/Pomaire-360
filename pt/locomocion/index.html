@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="pt"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360</title>
+<meta name="description" content="Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire. Como chegar sem carro.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://pomaire360.cl/pt/locomocion/">
+<link rel="alternate" hreflang="es" href="https://pomaire360.cl/locomocion/">
+<link rel="alternate" hreflang="en" href="https://pomaire360.cl/en/locomocion/">
+<link rel="alternate" hreflang="pt" href="https://pomaire360.cl/pt/locomocion/">
+<link rel="alternate" hreflang="x-default" href="https://pomaire360.cl/locomocion/">
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360">
+<meta property="og:description" content="Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire.">
+<meta property="og:url" content="https://pomaire360.cl/pt/locomocion/">
+<meta property="og:image" content="https://pomaire360.cl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Como chegar a Pomaire de transporte público">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360">
+<meta name="twitter:description" content="Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire.">
+<meta name="twitter:image" content="https://pomaire360.cl/og-image.jpg">
+<link rel="icon" href="https://pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://pomaire360.cl/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Pomaire 360",
+      "item": "https://pomaire360.cl/pt/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Transporte",
+      "item": "https://pomaire360.cl/pt/locomocion/"
+    }
+  ]
+}</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/pt/">🏺 Pomaire 360</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Essenciais</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/pt/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="/pt/salud/">🏥 <span data-t="nav_health">Saúde</span></a>
+        <a href="/pt/seguridad/">🚔 <span data-t="nav_security">Segurança</span></a>
+        <a href="/pt/comercio/">🛒 <span data-t="nav_commerce">Serviços</span></a>
+        <a href="/pt/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
+        <a href="/pt/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">O que fazer</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/pt/alfareria/">🏺 <span data-t="nav_pottery">Olaria</span></a>
+        <a href="/pt/ruta-del-vino/">🍷 <span data-t="nav_winery">Rota do Vinho</span></a>
+        <a href="/pt/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
+        <a href="/pt/plaza/">🌳 <span data-t="nav_plaza">Praça</span></a>
+        <a href="/pt/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer e dormir</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/pt/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/pt/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
+        <a href="/pt/plaza/#banos">🚽 <span data-t="nav_banos">Banheiros</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planeje</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/pt/#recorrido">🧭 <span data-t="nav_tour">Roteiro</span></a>
+        <a href="/pt/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="/pt/#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="/pt/#galeria">📸 <span data-t="nav_gallery">Galeria</span></a>
+        <a href="/pt/#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="/pt/juegos/">🎮 <span data-t="nav_games">Jogos</span></a>
+        <a href="/pt/anunciate/">📣 <span data-t="nav_advertise">Anuncie</span></a>
+        <a href="/pt/sugerencias/">💬 <span data-t="nav_suggest">Sugestões</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/pt/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+    <a class="nav-cta" href="/pt/apoyar/">💛 <span data-t="nav_donate">Apoiar</span></a>
+  </div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇧🇷</span>
+      <span id="langCurrentName">Português</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <a role="option" class="lang-option" data-lang="es" href="/locomocion/"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></a>
+      <a role="option" class="lang-option" data-lang="en" href="/en/locomocion/"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></a>
+      <a role="option" class="lang-option lang-active" data-lang="pt" href="/pt/locomocion/"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></a>
+      <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+      </button>
+      <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section id="locomocion">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-icon">🚌</span>
+      <div>
+        <h2 data-t="loc_title">Transporte — como chegar de ônibus ou van compartilhada</h2>
+        <p data-t="loc_sub">Mapa de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire</p>
+      </div>
+    </div>
+
+    <p class="map-hint" data-t="loc_intro" style="margin-bottom:1.2rem;">🚏 Este guia é apenas orientativo: horários e frequências dos ônibus rurais podem variar. Confirme sempre no ponto de parada ou com o motorista.</p>
+
+    <!-- Mapa Leaflet propio -->
+    <div class="leaflet-wrap">
+      <div id="locoMap"></div>
+    </div>
+    <p class="map-hint" data-t="loc_map_hint">📍 Toque em cada ponto do mapa para ver o detalhe do ponto de parada ou terminal</p>
+
+    <!-- Rutas principales -->
+    <div class="cards" style="margin-top:1.8rem;">
+      <div class="card priority">
+        <div class="card-icon">🚌</div>
+        <span class="card-badge" data-t="loc_r1_badge">Rota 1 · De Santiago</span>
+        <h3 data-t="loc_r1_title">Santiago → Melipilla → Pomaire</h3>
+        <p class="card-detail" data-t="loc_r1_detail">Pegue um ônibus intermunicipal no Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Santiago) com destino a Melipilla. Frequência muito alta, saídas a cada poucos minutos. A viagem leva cerca de 1 hora até o terminal de Melipilla.</p>
+        <a class="card-link" href="https://maps.google.com/?q=Terminal+San+Borja+Santiago" target="_blank" rel="noopener" data-t="lnk_map">📍 Ver no mapa</a>
+      </div>
+      <div class="card priority">
+        <div class="card-icon">🚐</div>
+        <span class="card-badge" data-t="loc_r2_badge">Rota 2 · De Melipilla</span>
+        <h3 data-t="loc_r2_title">Melipilla → Pomaire (ônibus rural)</h3>
+        <p class="card-detail" data-t="loc_r2_detail">Do Terminal de Ônibus de Melipilla (Av. Ortúzar 1371) saem ônibus e vans rurais para Pomaire regularmente durante o dia. O trajeto é de apenas 10 km e leva entre 15 e 20 minutos.</p>
+        <a class="card-link" href="https://maps.google.com/?q=Terminal+de+Buses+de+Melipilla" target="_blank" rel="noopener" data-t="lnk_map">📍 Ver no mapa</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚕</div>
+        <span class="card-badge" data-t="loc_r3_badge">Vans compartilhadas</span>
+        <h3 data-t="loc_r3_title">Vans rurais compartilhadas Melipilla–Pomaire</h3>
+        <p class="card-detail" data-t="loc_r3_detail">As vans compartilhadas (taxis coletivos de rota fixa) são outra opção comum entre Melipilla e Pomaire, com paradas informais no caminho. Costumam partir quando completam os passageiros, sem horário fixo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚏</div>
+        <span class="card-badge" data-t="loc_r4_badge">Chegada a Pomaire</span>
+        <h3 data-t="loc_r4_title">Ponto de parada em Pomaire</h3>
+        <p class="card-detail" data-t="loc_r4_detail">Os ônibus e vans rurais deixam e recolhem passageiros perto da praça de Pomaire e da entrada principal pela rua Rafael Morandé, a poucos passos das oficinas de artesãos.</p>
+        <a class="card-link" href="https://maps.app.goo.gl/q4opxzkj7DVq5Z8U6" target="_blank" rel="noopener" data-t="lnk_map">📍 Ver no mapa</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚗</div>
+        <span class="card-badge" data-t="loc_r5_badge">De carro</span>
+        <h3 data-t="loc_r5_title">De Santiago de carro</h3>
+        <p class="card-detail" data-t="loc_r5_detail">Autopista del Sol (Rota 78) em direção a Melipilla. Saída no km 51 com sinalização para Pomaire. Aproximadamente 50 minutos de Santiago.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <span class="card-badge" data-t="loc_r6_badge">Custos de referência</span>
+        <h3 data-t="loc_r6_title">Tarifas aproximadas</h3>
+        <p class="card-detail" data-t="loc_r6_detail">Santiago–Melipilla de ônibus: entre $3.000 e $7.000 CLP aprox. Melipilla–Pomaire de ônibus rural ou van: tarifa local, mais econômica. Confirme o valor exato ao embarcar, pois pode variar.</p>
+      </div>
+    </div>
+
+    <p class="map-hint" data-t="loc_note" style="margin-top:1.5rem;">🛟 Informação de caráter orientativo, coletada de fontes públicas. Horários, frequências e tarifas do transporte rural podem mudar sem aviso prévio — confirme diretamente nos terminais ou com a Municipalidade de Melipilla.</p>
+  </div>
+</section>
+
+<div class="sub-cross">
+  <h2 data-t="sub_more">Mais em Pomaire 360</h2>
+  <div class="sub-cross-links">
+    <a href="/pt/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+    <a href="/pt/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
+    <a href="/pt/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
+    <a href="/pt/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+  </div>
+</div>
+
+<div class="sub-foot">
+  <a href="/pt/">🏺 <span data-t="sub_back">Voltar ao guia completo de Pomaire 360</span> →</a>
+</div>
+
+<script src="/nav.js"></script>
+<script src="/langs.js"></script>
+<script>
+/* Claves de traducción exclusivas de esta página, fusionadas en LANGS
+   antes de que subi18n.js aplique el idioma (sin tocar langs.js). */
+(function(){
+  var X = {
+    es:{
+      loc_title:"Locomoción — cómo llegar en micro o colectivo",
+      loc_sub:"Mapa de paraderos, recorridos y horarios desde Santiago y Melipilla a Pomaire",
+      loc_intro:"🚏 Esta guía es orientativa: los horarios y frecuencias de las micros rurales pueden variar. Confirma siempre en el paradero o con el conductor.",
+      loc_map_hint:"📍 Toca cada punto del mapa para ver el detalle del paradero o terminal",
+      loc_r1_badge:"Ruta 1 · Desde Santiago", loc_r1_title:"Santiago → Melipilla → Pomaire",
+      loc_r1_detail:"Toma un bus interurbano desde el Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Santiago) con destino a Melipilla. Frecuencia muy alta, salidas cada pocos minutos. El viaje toma aprox. 1 hora hasta el Terminal de Buses de Melipilla.",
+      loc_r2_badge:"Ruta 2 · Desde Melipilla", loc_r2_title:"Melipilla → Pomaire (micro rural)",
+      loc_r2_detail:"Desde el Terminal de Buses de Melipilla (Av. Ortúzar 1371) salen micros y colectivos rurales hacia Pomaire de forma regular durante el día. El trayecto son solo 10 km y toma entre 15 y 20 minutos.",
+      loc_r3_badge:"Colectivos", loc_r3_title:"Colectivos rurales Melipilla–Pomaire",
+      loc_r3_detail:"Los colectivos (taxis compartidos de recorrido fijo) son otra alternativa habitual entre Melipilla y Pomaire, con paradas informales en la ruta. Suelen salir cuando completan pasajeros, sin horario fijo.",
+      loc_r4_badge:"Llegada a Pomaire", loc_r4_title:"Paradero en Pomaire",
+      loc_r4_detail:"Las micros y colectivos rurales dejan y recogen pasajeros en el sector de la Plaza de Pomaire y la entrada principal por calle Rafael Morandé, a pasos de los talleres de artesanos.",
+      loc_r5_badge:"En auto", loc_r5_title:"Desde Santiago en auto",
+      loc_r5_detail:"Autopista del Sol (Ruta 78) hacia Melipilla. Salida en el km 51 con señalética a Pomaire. Aproximadamente 50 minutos desde Santiago.",
+      loc_r6_badge:"Costos referenciales", loc_r6_title:"Tarifas aproximadas",
+      loc_r6_detail:"Santiago–Melipilla en bus: entre $3.000 y $7.000 aprox. Melipilla–Pomaire en micro rural o colectivo: tarifa local, más económica. Confirma el valor exacto al subir, ya que puede variar.",
+      loc_note:"🛟 Información de carácter orientativo, recopilada de fuentes públicas. Horarios, frecuencias y tarifas de transporte rural pueden cambiar sin previo aviso — confirma directamente en los terminales o con la Municipalidad de Melipilla.",
+      loc_p1:"Terminal San Borja", loc_p1_d:"Terminal de buses interurbanos · salidas hacia Melipilla",
+      loc_p2:"Terminal de Buses de Melipilla", loc_p2_d:"Av. Ortúzar 1371 · conexión con micros y colectivos rurales a Pomaire",
+      loc_p3:"Paradero / Plaza de Pomaire", loc_p3_d:"Punto de llegada y salida de micros y colectivos rurales",
+      loc_p4:"Entrada Pomaire · Rafael Morandé", loc_p4_d:"Acceso principal al pueblo, cerca de talleres de artesanos",
+      loc_open_map:"Abrir en Google Maps →"
+    },
+    en:{
+      loc_title:"Getting around — how to arrive by bus or shared taxi",
+      loc_sub:"Map of bus stops, routes and schedules from Santiago and Melipilla to Pomaire",
+      loc_intro:"🚏 This guide is for general reference: rural bus schedules and frequencies may vary. Always confirm at the bus stop or with the driver.",
+      loc_map_hint:"📍 Tap each map point to see details of the stop or terminal",
+      loc_r1_badge:"Route 1 · From Santiago", loc_r1_title:"Santiago → Melipilla → Pomaire",
+      loc_r1_detail:"Take an intercity bus from Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Santiago) heading to Melipilla. Very high frequency, departures every few minutes. The trip takes about 1 hour to the Melipilla bus terminal.",
+      loc_r2_badge:"Route 2 · From Melipilla", loc_r2_title:"Melipilla → Pomaire (rural bus)",
+      loc_r2_detail:"From the Melipilla Bus Terminal (Av. Ortúzar 1371), rural buses and shared taxis to Pomaire depart regularly throughout the day. The trip is only 10 km and takes 15–20 minutes.",
+      loc_r3_badge:"Shared taxis (colectivos)", loc_r3_title:"Rural shared taxis Melipilla–Pomaire",
+      loc_r3_detail:"Shared taxis with a fixed route are another common option between Melipilla and Pomaire, with informal stops along the way. They usually leave once full, with no fixed schedule.",
+      loc_r4_badge:"Arrival in Pomaire", loc_r4_title:"Bus stop in Pomaire",
+      loc_r4_detail:"Rural buses and shared taxis drop off and pick up passengers around Pomaire's main square and the main entrance on Rafael Morandé street, steps from the artisan workshops.",
+      loc_r5_badge:"By car", loc_r5_title:"From Santiago by car",
+      loc_r5_detail:"Autopista del Sol (Route 78) toward Melipilla. Exit at km 51 with signage to Pomaire. About 50 minutes from Santiago.",
+      loc_r6_badge:"Reference costs", loc_r6_title:"Approximate fares",
+      loc_r6_detail:"Santiago–Melipilla by bus: about $3,000–$7,000 CLP. Melipilla–Pomaire by rural bus or shared taxi: a cheaper local fare. Confirm the exact price when boarding, as it may vary.",
+      loc_note:"🛟 Information is for guidance only, gathered from public sources. Rural transport schedules, frequencies and fares may change without notice — confirm directly at the terminals or with the Melipilla Municipality.",
+      loc_p1:"Terminal San Borja", loc_p1_d:"Intercity bus terminal · departures to Melipilla",
+      loc_p2:"Melipilla Bus Terminal", loc_p2_d:"Av. Ortúzar 1371 · connection with rural buses and shared taxis to Pomaire",
+      loc_p3:"Pomaire bus stop / main square", loc_p3_d:"Arrival and departure point for rural buses and shared taxis",
+      loc_p4:"Pomaire entrance · Rafael Morandé", loc_p4_d:"Main access to the village, near the artisan workshops",
+      loc_open_map:"Open in Google Maps →"
+    },
+    pt:{
+      loc_title:"Transporte — como chegar de ônibus ou van compartilhada",
+      loc_sub:"Mapa de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire",
+      loc_intro:"🚏 Este guia é apenas orientativo: horários e frequências dos ônibus rurais podem variar. Confirme sempre no ponto de parada ou com o motorista.",
+      loc_map_hint:"📍 Toque em cada ponto do mapa para ver o detalhe do ponto de parada ou terminal",
+      loc_r1_badge:"Rota 1 · De Santiago", loc_r1_title:"Santiago → Melipilla → Pomaire",
+      loc_r1_detail:"Pegue um ônibus intermunicipal no Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Santiago) com destino a Melipilla. Frequência muito alta, saídas a cada poucos minutos. A viagem leva cerca de 1 hora até o terminal de Melipilla.",
+      loc_r2_badge:"Rota 2 · De Melipilla", loc_r2_title:"Melipilla → Pomaire (ônibus rural)",
+      loc_r2_detail:"Do Terminal de Ônibus de Melipilla (Av. Ortúzar 1371) saem ônibus e vans rurais para Pomaire regularmente durante o dia. O trajeto é de apenas 10 km e leva entre 15 e 20 minutos.",
+      loc_r3_badge:"Vans compartilhadas", loc_r3_title:"Vans rurais compartilhadas Melipilla–Pomaire",
+      loc_r3_detail:"As vans compartilhadas (taxis coletivos de rota fixa) são outra opção comum entre Melipilla e Pomaire, com paradas informais no caminho. Costumam partir quando completam os passageiros, sem horário fixo.",
+      loc_r4_badge:"Chegada a Pomaire", loc_r4_title:"Ponto de parada em Pomaire",
+      loc_r4_detail:"Os ônibus e vans rurais deixam e recolhem passageiros perto da praça de Pomaire e da entrada principal pela rua Rafael Morandé, a poucos passos das oficinas de artesãos.",
+      loc_r5_badge:"De carro", loc_r5_title:"De Santiago de carro",
+      loc_r5_detail:"Autopista del Sol (Rota 78) em direção a Melipilla. Saída no km 51 com sinalização para Pomaire. Aproximadamente 50 minutos de Santiago.",
+      loc_r6_badge:"Custos de referência", loc_r6_title:"Tarifas aproximadas",
+      loc_r6_detail:"Santiago–Melipilla de ônibus: entre $3.000 e $7.000 CLP aprox. Melipilla–Pomaire de ônibus rural ou van: tarifa local, mais econômica. Confirme o valor exato ao embarcar, pois pode variar.",
+      loc_note:"🛟 Informação de caráter orientativo, coletada de fontes públicas. Horários, frequências e tarifas do transporte rural podem mudar sem aviso prévio — confirme diretamente nos terminais ou com a Municipalidade de Melipilla.",
+      loc_p1:"Terminal San Borja", loc_p1_d:"Terminal de ônibus intermunicipais · saídas para Melipilla",
+      loc_p2:"Terminal de Ônibus de Melipilla", loc_p2_d:"Av. Ortúzar 1371 · conexão com ônibus e vans rurais para Pomaire",
+      loc_p3:"Ponto de parada / Praça de Pomaire", loc_p3_d:"Ponto de chegada e saída de ônibus e vans rurais",
+      loc_p4:"Entrada de Pomaire · Rafael Morandé", loc_p4_d:"Acesso principal ao vilarejo, perto das oficinas de artesãos",
+      loc_open_map:"Abrir no Google Maps →"
+    },
+    fr:{
+      loc_title:"Transports — comment venir en bus ou taxi collectif",
+      loc_sub:"Carte des arrêts, itinéraires et horaires depuis Santiago et Melipilla vers Pomaire",
+      loc_intro:"🚏 Ce guide est indicatif : les horaires et fréquences des bus ruraux peuvent varier. Vérifiez toujours à l'arrêt ou avec le chauffeur.",
+      loc_map_hint:"📍 Touchez chaque point de la carte pour voir le détail de l'arrêt ou du terminal",
+      loc_r1_badge:"Itinéraire 1 · Depuis Santiago", loc_r1_title:"Santiago → Melipilla → Pomaire",
+      loc_r1_detail:"Prenez un bus interurbain depuis le Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Santiago) en direction de Melipilla. Fréquence très élevée, départs toutes les quelques minutes. Le trajet dure environ 1 heure jusqu'au terminal de Melipilla.",
+      loc_r2_badge:"Itinéraire 2 · Depuis Melipilla", loc_r2_title:"Melipilla → Pomaire (bus rural)",
+      loc_r2_detail:"Depuis le Terminal de bus de Melipilla (Av. Ortúzar 1371), des bus et taxis collectifs ruraux partent régulièrement vers Pomaire pendant la journée. Le trajet ne fait que 10 km et dure 15 à 20 minutes.",
+      loc_r3_badge:"Taxis collectifs", loc_r3_title:"Taxis collectifs ruraux Melipilla–Pomaire",
+      loc_r3_detail:"Les taxis collectifs (à itinéraire fixe) sont une autre option courante entre Melipilla et Pomaire, avec des arrêts informels en chemin. Ils partent généralement une fois pleins, sans horaire fixe.",
+      loc_r4_badge:"Arrivée à Pomaire", loc_r4_title:"Arrêt à Pomaire",
+      loc_r4_detail:"Les bus et taxis collectifs ruraux déposent et prennent des passagers près de la place de Pomaire et de l'entrée principale rue Rafael Morandé, à deux pas des ateliers d'artisans.",
+      loc_r5_badge:"En voiture", loc_r5_title:"Depuis Santiago en voiture",
+      loc_r5_detail:"Autopista del Sol (Route 78) vers Melipilla. Sortie au km 51 avec signalétique vers Pomaire. Environ 50 minutes depuis Santiago.",
+      loc_r6_badge:"Coûts de référence", loc_r6_title:"Tarifs approximatifs",
+      loc_r6_detail:"Santiago–Melipilla en bus : environ 3 000 à 7 000 CLP. Melipilla–Pomaire en bus rural ou taxi collectif : tarif local, plus économique. Confirmez le prix exact en montant, car il peut varier.",
+      loc_note:"🛟 Informations à titre indicatif, recueillies auprès de sources publiques. Les horaires, fréquences et tarifs des transports ruraux peuvent changer sans préavis — vérifiez directement aux terminaux ou auprès de la Municipalité de Melipilla.",
+      loc_p1:"Terminal San Borja", loc_p1_d:"Terminal de bus interurbains · départs vers Melipilla",
+      loc_p2:"Terminal de bus de Melipilla", loc_p2_d:"Av. Ortúzar 1371 · connexion avec les bus et taxis collectifs ruraux vers Pomaire",
+      loc_p3:"Arrêt / place de Pomaire", loc_p3_d:"Point d'arrivée et de départ des bus et taxis collectifs ruraux",
+      loc_p4:"Entrée de Pomaire · Rafael Morandé", loc_p4_d:"Accès principal au village, près des ateliers d'artisans",
+      loc_open_map:"Ouvrir dans Google Maps →"
+    },
+    ru:{
+      loc_title:"Транспорт — как добраться на автобусе или коллективо",
+      loc_sub:"Карта остановок, маршрутов и расписания из Сантьяго и Мелипильи в Помайре",
+      loc_intro:"🚏 Этот гид носит ориентировочный характер: расписание и частота сельских автобусов могут меняться. Уточняйте на остановке или у водителя.",
+      loc_map_hint:"📍 Нажмите на точку на карте, чтобы увидеть детали остановки или терминала",
+      loc_r1_badge:"Маршрут 1 · Из Сантьяго", loc_r1_title:"Сантьяго → Мелипилья → Помайре",
+      loc_r1_detail:"Сядьте на междугородний автобус от Terminal San Borja (Av. Libertador Bernardo O'Higgins 3250, Сантьяго) в сторону Мелипильи. Очень высокая частота, отправление каждые несколько минут. Поездка занимает около 1 часа до автовокзала Мелипильи.",
+      loc_r2_badge:"Маршрут 2 · Из Мелипильи", loc_r2_title:"Мелипилья → Помайре (сельский автобус)",
+      loc_r2_detail:"От автовокзала Мелипильи (Av. Ortúzar 1371) регулярно в течение дня отправляются сельские автобусы и маршрутки в Помайре. Расстояние всего 10 км, поездка занимает 15–20 минут.",
+      loc_r3_badge:"Коллективо (маршрутки)", loc_r3_title:"Сельские маршрутки Мелипилья–Помайре",
+      loc_r3_detail:"Коллективо (маршрутные такси с фиксированным маршрутом) — другой распространённый вариант между Мелипильей и Помайре, с неформальными остановками по пути. Обычно отправляются по заполнению, без фиксированного расписания.",
+      loc_r4_badge:"Прибытие в Помайре", loc_r4_title:"Остановка в Помайре",
+      loc_r4_detail:"Сельские автобусы и маршрутки высаживают и подбирают пассажиров возле главной площади Помайре и главного въезда по улице Rafael Morandé, рядом с мастерскими ремесленников.",
+      loc_r5_badge:"На машине", loc_r5_title:"Из Сантьяго на машине",
+      loc_r5_detail:"Autopista del Sol (трасса 78) в сторону Мелипильи. Съезд на 51-м км с указателями на Помайре. Около 50 минут от Сантьяго.",
+      loc_r6_badge:"Ориентировочная стоимость", loc_r6_title:"Примерные тарифы",
+      loc_r6_detail:"Сантьяго–Мелипилья на автобусе: примерно 3000–7000 CLP. Мелипилья–Помайре на сельском автобусе или маршрутке: более дешёвый местный тариф. Уточняйте точную цену при посадке — она может меняться.",
+      loc_note:"🛟 Информация носит ориентировочный характер и собрана из открытых источников. Расписание, частота и тарифы сельского транспорта могут меняться без предупреждения — уточняйте непосредственно на терминалах или в муниципалитете Мелипильи.",
+      loc_p1:"Terminal San Borja", loc_p1_d:"Междугородний автовокзал · отправление в Мелипилью",
+      loc_p2:"Автовокзал Мелипильи", loc_p2_d:"Av. Ortúzar 1371 · связь с сельскими автобусами и маршрутками в Помайре",
+      loc_p3:"Остановка / главная площадь Помайре", loc_p3_d:"Точка прибытия и отправления сельских автобусов и маршруток",
+      loc_p4:"Въезд в Помайре · Rafael Morandé", loc_p4_d:"Главный въезд в посёлок, рядом с мастерскими ремесленников",
+      loc_open_map:"Открыть в Google Maps →"
+    },
+    ja:{
+      loc_title:"交通アクセス — バスや乗合タクシーでの行き方",
+      loc_sub:"サンティアゴとメリピージャからポマイレへのバス停・路線・時刻表の地図",
+      loc_intro:"🚏 このガイドは目安です。農村バスの時刻表や運行頻度は変わることがあります。バス停または運転手に必ずご確認ください。",
+      loc_map_hint:"📍 地図上の各ポイントをタップすると、バス停やターミナルの詳細が表示されます",
+      loc_r1_badge:"ルート1 · サンティアゴから", loc_r1_title:"サンティアゴ → メリピージャ → ポマイレ",
+      loc_r1_detail:"Terminal San Borja（Av. Libertador Bernardo O'Higgins 3250, サンティアゴ）からメリピージャ行きの都市間バスに乗車してください。運行頻度が非常に高く、数分おきに出発します。メリピージャのバスターミナルまで約1時間かかります。",
+      loc_r2_badge:"ルート2 · メリピージャから", loc_r2_title:"メリピージャ → ポマイレ（農村バス）",
+      loc_r2_detail:"メリピージャバスターミナル（Av. Ortúzar 1371）からは、日中定期的にポマイレ行きの農村バスや乗合タクシーが出発します。距離はわずか10kmで、15〜20分かかります。",
+      loc_r3_badge:"乗合タクシー（コレクティボ）", loc_r3_title:"メリピージャ–ポマイレの農村乗合タクシー",
+      loc_r3_detail:"固定路線の乗合タクシー（コレクティボ）も、メリピージャとポマイレ間の一般的な選択肢で、途中に非公式の停車地があります。定員になったら出発することが多く、固定時刻表はありません。",
+      loc_r4_badge:"ポマイレへの到着", loc_r4_title:"ポマイレのバス停",
+      loc_r4_detail:"農村バスや乗合タクシーは、ポマイレの中央広場付近と、Rafael Morandé通りのメイン入口で乗客の乗降を行います。職人の工房からすぐの場所です。",
+      loc_r5_badge:"車で", loc_r5_title:"サンティアゴから車で",
+      loc_r5_detail:"Autopista del Sol（ルート78）をメリピージャ方面へ。51km地点でポマイレ方面の標識のある出口へ。サンティアゴから約50分。",
+      loc_r6_badge:"参考料金", loc_r6_title:"おおよその料金",
+      loc_r6_detail:"サンティアゴ–メリピージャ間のバス：約3,000〜7,000チリペソ。メリピージャ–ポマイレ間の農村バスまたは乗合タクシー：より安い地元料金。乗車時に正確な料金をご確認ください（変動する場合があります）。",
+      loc_note:"🛟 情報は目安であり、公的な情報源から収集したものです。農村交通の時刻表、運行頻度、料金は予告なく変更される場合があります。ターミナルまたはメリピージャ市役所で直接ご確認ください。",
+      loc_p1:"Terminal San Borja", loc_p1_d:"都市間バスターミナル · メリピージャ行き出発地点",
+      loc_p2:"メリピージャバスターミナル", loc_p2_d:"Av. Ortúzar 1371 · ポマイレ行きの農村バス・乗合タクシーとの接続",
+      loc_p3:"ポマイレのバス停／中央広場", loc_p3_d:"農村バスと乗合タクシーの発着地点",
+      loc_p4:"ポマイレ入口 · Rafael Morandé", loc_p4_d:"職人の工房近くの村へのメインアクセス",
+      loc_open_map:"Google マップで開く →"
+    },
+    zh:{
+      loc_title:"交通出行 — 如何乘坐大巴或合乘出租车前往",
+      loc_sub:"从圣地亚哥和梅利皮利亚前往波马伊雷的车站、路线与时间表地图",
+      loc_intro:"🚏 本指南仅供参考：乡村巴士的时间表和班次可能会有变化。请务必在车站或向司机确认。",
+      loc_map_hint:"📍 点击地图上的每个点，查看车站或客运站的详细信息",
+      loc_r1_badge:"路线1 · 从圣地亚哥出发", loc_r1_title:"圣地亚哥 → 梅利皮利亚 → 波马伊雷",
+      loc_r1_detail:"从Terminal San Borja（Av. Libertador Bernardo O'Higgins 3250，圣地亚哥）乘坐开往梅利皮利亚的城际巴士。班次非常密集，每隔几分钟一班。到梅利皮利亚客运站大约需要1小时。",
+      loc_r2_badge:"路线2 · 从梅利皮利亚出发", loc_r2_title:"梅利皮利亚 → 波马伊雷（乡村巴士）",
+      loc_r2_detail:"从梅利皮利亚客运站（Av. Ortúzar 1371）白天有乡村巴士和合乘出租车定期发往波马伊雷。路程仅10公里，需15至20分钟。",
+      loc_r3_badge:"合乘出租车（colectivo）", loc_r3_title:"梅利皮利亚–波马伊雷乡村合乘出租车",
+      loc_r3_detail:"固定路线的合乘出租车（colectivo）是梅利皮利亚和波马伊雷之间另一种常见选择，途中有非正式停靠点。通常载满乘客后即发车，没有固定时间表。",
+      loc_r4_badge:"抵达波马伊雷", loc_r4_title:"波马伊雷的车站",
+      loc_r4_detail:"乡村巴士和合乘出租车在波马伊雷主广场附近及Rafael Morandé街的主入口处接送乘客，距离工匠工坊仅几步之遥。",
+      loc_r5_badge:"自驾", loc_r5_title:"从圣地亚哥自驾前往",
+      loc_r5_detail:"走Autopista del Sol（78号公路）前往梅利皮利亚。在51公里处有通往波马伊雷的指示牌出口。从圣地亚哥约需50分钟。",
+      loc_r6_badge:"参考费用", loc_r6_title:"大致票价",
+      loc_r6_detail:"圣地亚哥–梅利皮利亚大巴：约3,000至7,000智利比索。梅利皮利亚–波马伊雷乡村巴士或合乘出租车：本地票价更便宜。上车时请确认具体价格，因为可能会有变动。",
+      loc_note:"🛟 信息仅供参考，来源于公开资料。乡村交通的时间表、班次和票价可能随时变更，请直接向客运站或梅利皮利亚市政府确认。",
+      loc_p1:"Terminal San Borja", loc_p1_d:"城际客运站 · 发往梅利皮利亚",
+      loc_p2:"梅利皮利亚客运站", loc_p2_d:"Av. Ortúzar 1371 · 与发往波马伊雷的乡村巴士及合乘出租车相连",
+      loc_p3:"波马伊雷车站／主广场", loc_p3_d:"乡村巴士和合乘出租车的到达与出发点",
+      loc_p4:"波马伊雷入口 · Rafael Morandé", loc_p4_d:"通往村庄的主要入口，靠近工匠工坊",
+      loc_open_map:"在 Google 地图中打开 →"
+    }
+  };
+  if (window.LANGS) { for (var l in X) { if (window.LANGS[l]) { for (var k in X[l]) window.LANGS[l][k] = X[l][k]; } } }
+})();
+</script>
+<script src="/subi18n.js"></script>
+<script src="/a11y.js"></script>
+<script>
+/* Mapa Leaflet propio de esta página: paraderos y terminales de locomoción */
+(function () {
+  var LOCO_POINTS = [
+    { id:'p1', lat:-33.45890, lng:-70.67720, icon:'🚌', nameKey:'loc_p1', descKey:'loc_p1_d', gmap:'https://maps.google.com/?q=Terminal+San+Borja+Santiago' },
+    { id:'p2', lat:-33.68633, lng:-71.21486, icon:'🚏', nameKey:'loc_p2', descKey:'loc_p2_d', gmap:'https://maps.google.com/?q=Terminal+de+Buses+de+Melipilla' },
+    { id:'p3', lat:-33.65033, lng:-71.15093, icon:'🚐', nameKey:'loc_p3', descKey:'loc_p3_d', gmap:'https://maps.google.com/?q=Plaza+de+Pomaire' },
+    { id:'p4', lat:-33.65324, lng:-71.14842, icon:'🚩', nameKey:'loc_p4', descKey:'loc_p4_d', gmap:'https://maps.app.goo.gl/q4opxzkj7DVq5Z8U6' }
+  ];
+  var ROUTE_LATLNGS = LOCO_POINTS.map(function (p) { return [p.lat, p.lng]; });
+
+  function t(key) {
+    try {
+      var lang = document.documentElement.lang || 'es';
+      var L = window.LANGS || {};
+      if (L[lang] && L[lang][key] !== undefined) return L[lang][key];
+      if (L.es && L.es[key] !== undefined) return L.es[key];
+    } catch (e) {}
+    return key;
+  }
+
+  function buildPopup(p) {
+    return '<div class="map-popup"><strong>' + p.icon + ' ' + t(p.nameKey) + '</strong><p>' + t(p.descKey) + '</p>' +
+      '<a href="' + p.gmap + '" target="_blank" rel="noopener">' + t('loc_open_map') + '</a></div>';
+  }
+
+  var map, markers = [], line;
+
+  function init() {
+    var el = document.getElementById('locoMap');
+    if (!el || typeof L === 'undefined') return;
+    map = L.map('locoMap', { zoomControl: true }).setView([-33.62, -70.95], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap',
+      maxZoom: 19
+    }).addTo(map);
+
+    line = L.polyline(ROUTE_LATLNGS, { color: '#B85C2C', weight: 3, opacity: 0.7, dashArray: '8,6' }).addTo(map);
+
+    LOCO_POINTS.forEach(function (p) {
+      var marker = L.marker([p.lat, p.lng], {
+        icon: L.divIcon({
+          className: 'custom-marker',
+          html: '<div style="background:#B85C2C;border:2px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.3);">' + p.icon + '</div>',
+          iconSize: [34, 34],
+          iconAnchor: [17, 17]
+        })
+      });
+      marker.bindPopup(buildPopup(p));
+      marker.addTo(map);
+      marker.placeData = p;
+      markers.push(marker);
+    });
+
+    map.fitBounds(line.getBounds(), { padding: [30, 30] });
+  }
+
+  // Re-renderizar los popups abiertos cuando cambia el idioma
+  // subi18n.js expone window.selectLang (no applyLang), así que envolvemos esa función.
+  function hookSelectLang() {
+    if (window.__locoSelectLangHooked) return;
+    var origSelectLang = window.selectLang;
+    if (typeof origSelectLang !== 'function') return;
+    window.__locoSelectLangHooked = true;
+    window.selectLang = function (lang) {
+      origSelectLang(lang);
+      markers.forEach(function (m) { m.setPopupContent(buildPopup(m.placeData)); });
+    };
+  }
+  var hookTries = 0;
+  (function waitSelectLang() {
+    if (typeof window.selectLang === 'function') { hookSelectLang(); return; }
+    if (hookTries++ > 50) return;
+    setTimeout(waitSelectLang, 100);
+  })();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      // Esperar a que Leaflet (script defer) esté disponible
+      var tries = 0;
+      (function waitLeaflet() {
+        if (typeof L !== 'undefined') { init(); return; }
+        if (tries++ > 50) return;
+        setTimeout(waitLeaflet, 100);
+      })();
+    });
+  } else {
+    var tries2 = 0;
+    (function waitLeaflet2() {
+      if (typeof L !== 'undefined') { init(); return; }
+      if (tries2++ > 50) return;
+      setTimeout(waitLeaflet2, 100);
+    })();
+  }
+})();
+</script>
+<script src="/card-share.js"></script>
+
+
+</body></html>

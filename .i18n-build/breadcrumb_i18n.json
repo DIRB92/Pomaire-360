@@ -1,0 +1,17 @@
+{
+  "alfareria": { "en": "Pottery", "pt": "Olaria" },
+  "alojamientos": { "en": "Lodging", "pt": "Hospedagem" },
+  "alrededores": { "en": "Around Pomaire", "pt": "Arredores" },
+  "comercio": { "en": "Shops & Services", "pt": "Comércio e Serviços" },
+  "estacionamientos": { "en": "Parking", "pt": "Estacionamento" },
+  "gastronomia": { "en": "Food", "pt": "Gastronomia" },
+  "gruas": { "en": "Towing & Mechanics", "pt": "Guincho e Mecânicos" },
+  "juegos": { "en": "Games", "pt": "Jogos" },
+  "links": { "en": "Links", "pt": "Links" },
+  "locomocion": { "en": "Transport", "pt": "Transporte" },
+  "plaza": { "en": "Town Square", "pt": "Praça" },
+  "que-ver": { "en": "What to See", "pt": "O que Ver" },
+  "ruta-del-vino": { "en": "Wine Route", "pt": "Rota do Vinho" },
+  "salud": { "en": "Health", "pt": "Saúde" },
+  "seguridad": { "en": "Safety", "pt": "Segurança" }
+}
