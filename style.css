@@ -560,6 +560,7 @@
     margin-bottom: 2rem;
   }
   .section-icon { font-size: 2rem; }
+  .section-header h1,
   .section-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.75rem;
@@ -816,6 +817,7 @@
     .map-featured-btn { flex-wrap: wrap; }
     .map-featured-btn .mfb-go { width: 100%; text-align: center; }
   }  #donaciones .section-header { justify-content: center; }
+  #donaciones .section-header h1,
   #donaciones .section-header h2 { color: #fff; }
   #donaciones .section-header p { color: rgba(255,255,255,.7); }
 
