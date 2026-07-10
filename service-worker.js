@@ -5,12 +5,16 @@
    - Recursos estáticos: cache-first con actualización en segundo plano.
    - Tiles del mapa y API de clima: siempre red (no se interceptan). */
 
-const CACHE = 'pomaire360-v12';
+const CACHE = 'pomaire360-v13';
 
 // Solo recursos del mismo origen (cross-origin como Leaflet se cachea en runtime).
+// Incluye el home en los 3 idiomas con página estática (es/en/pt) para que el
+// respaldo offline funcione en el idioma correcto, no solo en español.
 const CORE = [
   '/',
   '/index.html',
+  '/en/',
+  '/pt/',
   '/apoyar/',
   '/sugerencias/',
   '/style.css',
@@ -23,6 +27,15 @@ const CORE = [
   '/apple-touch-icon.png',
   '/mapa-oficial-pomaire.webp'
 ];
+
+// Home de respaldo por idioma: si una navegación falla y no hay copia en
+// caché de la URL exacta, se ofrece el home cacheado del mismo idioma en
+// vez de forzar siempre la versión en español.
+function fallbackHomeFor(pathname) {
+  if (pathname.indexOf('/en/') === 0) return '/en/';
+  if (pathname.indexOf('/pt/') === 0) return '/pt/';
+  return '/index.html';
+}
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
@@ -55,15 +68,20 @@ self.addEventListener('fetch', (e) => {
   }
 
   // Navegaciones (abrir el sitio): red primero, respaldo en caché si no hay conexión.
+  // Cada página se guarda bajo su propia URL (antes se guardaba siempre bajo
+  // '/index.html', lo que hacía que el respaldo offline de /en/ o /pt/
+  // mostrara por error el home en español).
   if (req.mode === 'navigate') {
     e.respondWith(
       fetch(req)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put('/index.html', copy)).catch(() => {});
+          caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
           return res;
         })
-        .catch(() => caches.match(req).then((r) => r || caches.match('/index.html')))
+        .catch(() =>
+          caches.match(req).then((r) => r || caches.match(fallbackHomeFor(url.pathname)))
+        )
     );
     return;
   }
