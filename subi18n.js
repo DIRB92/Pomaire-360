@@ -22,6 +22,19 @@
   function selectLang(l){ applyLang(l); var s=document.getElementById('langSelector'); if(s)s.classList.remove('open'); }
   document.addEventListener('click',function(e){ var s=document.getElementById('langSelector'); if(s&&!e.target.closest('#langSelector')) s.classList.remove('open'); });
   window.toggleLangMenu=toggleLangMenu; window.selectLang=selectLang;
-  function init(){ var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){} var lang=saved||((navigator.language||'es').slice(0,2)); if(!window.LANGS||!window.LANGS[lang]) lang='es'; applyLang(lang); }
+  function init(){
+    // Páginas estáticas por idioma (/en/, /pt/): el idioma real de la
+    // página es el que ya viene fijado en <html lang="...">, no el que
+    // haya quedado guardado en localStorage de una visita anterior a
+    // otra sección del sitio. Sin esto, entrar a /en/alfareria/ con
+    // 'es' guardado en localStorage revertía todo el contenido ya
+    // traducido de vuelta a español (o mezclaba idiomas).
+    var htmlLang = document.documentElement.lang;
+    if (htmlLang && htmlLang !== 'es' && window.LANGS && window.LANGS[htmlLang]) {
+      applyLang(htmlLang);
+      return;
+    }
+    var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){} var lang=saved||((navigator.language||'es').slice(0,2)); if(!window.LANGS||!window.LANGS[lang]) lang='es'; applyLang(lang);
+  }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
