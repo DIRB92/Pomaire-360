@@ -1,0 +1,402 @@
+{
+  "index": {
+    "en": {
+      "title": "Pomaire 360 — Services, Tourism & Emergency Guide in Pomaire, Chile",
+      "description": "Free, complete guide to visiting or living in Pomaire (Melipilla). Parking, health, police, fire department, pottery, food and Los Chiñihues. Updated 2025.",
+      "ogTitle": "Pomaire 360 — Complete Guide to Chile's Pottery Village",
+      "ogDescription": "Everything you need to visit or live in Pomaire: parking, health, emergencies, handmade pottery, traditional food and Los Chiñihues.",
+      "ogImageAlt": "Clay crafts in Pomaire — Pomaire 360, tourist guide",
+      "twitterTitle": "Pomaire 360 — Guide to Chile's Pottery Village",
+      "twitterDescription": "Free guide to services, tourism and emergencies for Pomaire and Los Chiñihues."
+    },
+    "pt": {
+      "title": "Pomaire 360 — Guia de serviços, turismo e emergências em Pomaire, Chile",
+      "description": "Guia gratuito e completo para visitar ou morar em Pomaire (Melipilla). Estacionamento, saúde, polícia, bombeiros, olaria, gastronomia e Los Chiñihues. Atualizado em 2025.",
+      "ogTitle": "Pomaire 360 — Guia completo do povoado dos oleiros do Chile",
+      "ogDescription": "Tudo o que você precisa para visitar ou morar em Pomaire: estacionamento, saúde, emergências, olaria artesanal, gastronomia típica e Los Chiñihues.",
+      "ogImageAlt": "Artesanato de barro em Pomaire — Pomaire 360, guia turístico",
+      "twitterTitle": "Pomaire 360 — Guia do povoado dos oleiros do Chile",
+      "twitterDescription": "Guia gratuito de serviços, turismo e emergências para Pomaire e Los Chiñihues."
+    }
+  },
+  "alfareria": {
+    "en": {
+      "title": "Pottery in Pomaire — Clay Workshops & Artisans | Pomaire 360",
+      "description": "Workshops, live demonstrations and the full directory of Pomaire's clay artisans.",
+      "ogTitle": "Pottery in Pomaire — Clay Workshops & Artisans | Pomaire 360",
+      "ogDescription": "Workshops, live demonstrations and the full directory of Pomaire's clay artisans.",
+      "ogImageAlt": "Pottery workshops and clay artisans in Pomaire",
+      "twitterTitle": "Pottery in Pomaire — Clay Workshops & Artisans | Pomaire 360",
+      "twitterDescription": "Workshops, live demonstrations and the full directory of Pomaire's clay artisans."
+    },
+    "pt": {
+      "title": "Olaria em Pomaire — Ateliês e Artesãos de Barro | Pomaire 360",
+      "description": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire.",
+      "ogTitle": "Olaria em Pomaire — Ateliês e Artesãos de Barro | Pomaire 360",
+      "ogDescription": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire.",
+      "ogImageAlt": "Ateliês de olaria e artesãos de barro em Pomaire",
+      "twitterTitle": "Olaria em Pomaire — Ateliês e Artesãos de Barro | Pomaire 360",
+      "twitterDescription": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire."
+    }
+  },
+  "alojamientos": {
+    "en": {
+      "title": "Where to Stay in Pomaire — Hostels, Cabins & Suites | Pomaire 360",
+      "description": "Where to stay in Pomaire: hostels, cabins and suites with address, phone and map. Updated guide for your stay in Chile's pottery village.",
+      "ogTitle": "Where to Stay in Pomaire — Hostels, Cabins & Suites | Pomaire 360",
+      "ogDescription": "Where to stay in Pomaire: hostels, cabins and suites with address, phone and map. Updated guide for your stay in Chile's pottery village.",
+      "ogImageAlt": "Lodging and accommodation in Pomaire",
+      "twitterTitle": "Where to Stay in Pomaire — Hostels, Cabins & Suites | Pomaire 360",
+      "twitterDescription": "Where to stay in Pomaire: hostels, cabins and suites with address, phone and map. Updated guide for your stay in Chile's pottery village."
+    },
+    "pt": {
+      "title": "Onde Ficar em Pomaire — Hostels, Cabanas e Suítes | Pomaire 360",
+      "description": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile.",
+      "ogTitle": "Onde Ficar em Pomaire — Hostels, Cabanas e Suítes | Pomaire 360",
+      "ogDescription": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile.",
+      "ogImageAlt": "Hospedagem e acomodações em Pomaire",
+      "twitterTitle": "Onde Ficar em Pomaire — Hostels, Cabanas e Suítes | Pomaire 360",
+      "twitterDescription": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile."
+    }
+  },
+  "alrededores": {
+    "en": {
+      "title": "Around Pomaire — Los Chiñihues & How to Get There | Pomaire 360",
+      "description": "Los Chiñihues, dryland roads and how to get to Pomaire.",
+      "ogTitle": "Around Pomaire — Los Chiñihues & How to Get There | Pomaire 360",
+      "ogDescription": "Los Chiñihues, dryland roads and how to get to Pomaire.",
+      "ogImageAlt": "Surroundings of Pomaire and rural roads",
+      "twitterTitle": "Around Pomaire — Los Chiñihues & How to Get There | Pomaire 360",
+      "twitterDescription": "Los Chiñihues, dryland roads and how to get to Pomaire."
+    },
+    "pt": {
+      "title": "Arredores de Pomaire — Los Chiñihues e Como Chegar | Pomaire 360",
+      "description": "Los Chiñihues, estradas rurais do sequeiro e como chegar a Pomaire.",
+      "ogTitle": "Arredores de Pomaire — Los Chiñihues e Como Chegar | Pomaire 360",
+      "ogDescription": "Los Chiñihues, estradas rurais do sequeiro e como chegar a Pomaire.",
+      "ogImageAlt": "Arredores de Pomaire e estradas rurais",
+      "twitterTitle": "Arredores de Pomaire — Los Chiñihues e Como Chegar | Pomaire 360",
+      "twitterDescription": "Los Chiñihues, estradas rurais do sequeiro e como chegar a Pomaire."
+    }
+  },
+  "anunciate": {
+    "en": {
+      "title": "Advertise on Pomaire 360 — Plans for Your Business | Pomaire 360",
+      "description": "Do you have a business in Pomaire? Appear in the guide visitors use. Free, Featured and Premium plans with profile, map, photos and more.",
+      "ogTitle": "Advertise on Pomaire 360 — Plans for Your Business",
+      "ogDescription": "Appear in the Pomaire guide. Free, Featured and Premium plans.",
+      "ogImageAlt": "Advertise your business on the Pomaire 360 guide",
+      "twitterTitle": "Advertise on Pomaire 360 — Plans for Your Business",
+      "twitterDescription": "Appear in the Pomaire guide. Free, Featured and Premium plans."
+    },
+    "pt": {
+      "title": "Anuncie no Pomaire 360 — Planos para seu Negócio | Pomaire 360",
+      "description": "Tem um negócio em Pomaire? Apareça no guia que os visitantes usam. Planos Gratuito, Destaque e Premium com perfil, mapa, fotos e mais.",
+      "ogTitle": "Anuncie no Pomaire 360 — Planos para seu Negócio",
+      "ogDescription": "Apareça no guia de Pomaire. Planos Gratuito, Destaque e Premium.",
+      "ogImageAlt": "Anuncie seu negócio no guia Pomaire 360",
+      "twitterTitle": "Anuncie no Pomaire 360 — Planos para seu Negócio",
+      "twitterDescription": "Apareça no guia de Pomaire. Planos Gratuito, Destaque e Premium."
+    }
+  },
+  "apoyar": {
+    "en": {
+      "title": "Support Pomaire 360 — Voluntary Contribution | Pomaire 360",
+      "description": "Pomaire 360 is an independent, ad-free guide. Support it with a voluntary contribution and help us keep the pottery village's information always up to date.",
+      "ogTitle": "Support Pomaire 360 — Voluntary Contribution",
+      "ogDescription": "Independent, ad-free guide to the pottery village. A voluntary contribution helps keep it updated.",
+      "ogImageAlt": "Support the independent Pomaire 360 guide",
+      "twitterTitle": "Support Pomaire 360 — Voluntary Contribution",
+      "twitterDescription": "Independent, ad-free guide to the pottery village. A voluntary contribution helps keep it updated."
+    },
+    "pt": {
+      "title": "Apoiar o Pomaire 360 — Contribuição Voluntária | Pomaire 360",
+      "description": "Pomaire 360 é um guia independente e sem publicidade. Apoie com uma contribuição voluntária e ajude-nos a manter as informações do povoado dos oleiros sempre atualizadas.",
+      "ogTitle": "Apoiar o Pomaire 360 — Contribuição Voluntária",
+      "ogDescription": "Guia independente e sem publicidade do povoado dos oleiros. Uma contribuição voluntária ajuda a mantê-lo atualizado.",
+      "ogImageAlt": "Apoie o guia independente Pomaire 360",
+      "twitterTitle": "Apoiar o Pomaire 360 — Contribuição Voluntária",
+      "twitterDescription": "Guia independente e sem publicidade do povoado dos oleiros. Uma contribuição voluntária ajuda a mantê-lo atualizado."
+    }
+  },
+  "comercio": {
+    "en": {
+      "title": "Shops & Services in Pomaire — Groceries, ATM, Gas | Pomaire 360",
+      "description": "Grocery shops, minimarkets, gas stations and car workshops in Pomaire. Everything you need for everyday life or your visit to the pottery village.",
+      "ogTitle": "Shops & Services in Pomaire — Groceries, ATM, Gas | Pomaire 360",
+      "ogDescription": "Grocery shops, minimarkets, gas stations and car workshops in Pomaire. Everything you need for everyday life or your visit to the pottery village.",
+      "ogImageAlt": "Shops and services in the town of Pomaire",
+      "twitterTitle": "Shops & Services in Pomaire — Groceries, ATM, Gas | Pomaire 360",
+      "twitterDescription": "Grocery shops, minimarkets, gas stations and car workshops in Pomaire. Everything you need for everyday life or your visit to the pottery village."
+    },
+    "pt": {
+      "title": "Comércio e Serviços em Pomaire — Mercados, Caixa, Combustível | Pomaire 360",
+      "description": "Mercearias, minimercados, postos de gasolina e oficinas mecânicas em Pomaire. Tudo o que você precisa para o dia a dia ou sua visita ao povoado dos oleiros.",
+      "ogTitle": "Comércio e Serviços em Pomaire — Mercados, Caixa, Combustível | Pomaire 360",
+      "ogDescription": "Mercearias, minimercados, postos de gasolina e oficinas mecânicas em Pomaire. Tudo o que você precisa para o dia a dia ou sua visita ao povoado dos oleiros.",
+      "ogImageAlt": "Comércio e serviços no povoado de Pomaire",
+      "twitterTitle": "Comércio e Serviços em Pomaire — Mercados, Caixa, Combustível | Pomaire 360",
+      "twitterDescription": "Mercearias, minimercados, postos de gasolina e oficinas mecânicas em Pomaire. Tudo o que você precisa para o dia a dia ou sua visita ao povoado dos oleiros."
+    }
+  },
+  "elchanchoalcanciamasgrandedelmundo": {
+    "en": {
+      "title": "The World's Largest Clay Piggy Bank — Pomaire | Pomaire 360",
+      "description": "The world's largest clay piggy bank, created by master potter César Silva Rojo in Pomaire. Discover its story, how to visit and how to get there.",
+      "ogTitle": "The World's Largest Clay Piggy Bank — Pomaire",
+      "ogDescription": "Created by master potter César Silva Rojo. Discover its story and how to visit it in Pomaire.",
+      "ogImageAlt": "The world's largest clay piggy bank in Pomaire",
+      "twitterTitle": "The World's Largest Clay Piggy Bank — Pomaire",
+      "twitterDescription": "Created by master potter César Silva Rojo. Discover its story."
+    },
+    "pt": {
+      "title": "O Maior Cofrinho de Barro do Mundo — Pomaire | Pomaire 360",
+      "description": "O maior cofrinho de barro do mundo, criado pelo mestre oleiro César Silva Rojo em Pomaire. Conheça sua história, como visitá-lo e como chegar.",
+      "ogTitle": "O Maior Cofrinho de Barro do Mundo — Pomaire",
+      "ogDescription": "Criado pelo mestre oleiro César Silva Rojo. Conheça sua história e como visitá-lo em Pomaire.",
+      "ogImageAlt": "O maior cofrinho de barro do mundo em Pomaire",
+      "twitterTitle": "O Maior Cofrinho de Barro do Mundo — Pomaire",
+      "twitterDescription": "Criado pelo mestre oleiro César Silva Rojo. Conheça sua história."
+    }
+  },
+  "estacionamientos": {
+    "en": {
+      "title": "Parking in Pomaire — Where to Park | Pomaire 360",
+      "description": "Where to park when visiting Pomaire: north entrance, 18 de Septiembre street and tips.",
+      "ogTitle": "Parking in Pomaire — Where to Park | Pomaire 360",
+      "ogDescription": "Where to park when visiting Pomaire: north entrance, 18 de Septiembre street and tips.",
+      "ogImageAlt": "Parking spots in Pomaire",
+      "twitterTitle": "Parking in Pomaire — Where to Park | Pomaire 360",
+      "twitterDescription": "Where to park when visiting Pomaire: north entrance, 18 de Septiembre street and tips."
+    },
+    "pt": {
+      "title": "Estacionamento em Pomaire — Onde Estacionar | Pomaire 360",
+      "description": "Onde estacionar ao visitar Pomaire: entrada norte, rua 18 de Septiembre e dicas.",
+      "ogTitle": "Estacionamento em Pomaire — Onde Estacionar | Pomaire 360",
+      "ogDescription": "Onde estacionar ao visitar Pomaire: entrada norte, rua 18 de Septiembre e dicas.",
+      "ogImageAlt": "Locais para estacionar em Pomaire",
+      "twitterTitle": "Estacionamento em Pomaire — Onde Estacionar | Pomaire 360",
+      "twitterDescription": "Onde estacionar ao visitar Pomaire: entrada norte, rua 18 de Septiembre e dicas."
+    }
+  },
+  "gastronomia": {
+    "en": {
+      "title": "Where to Eat in Pomaire — Restaurants & Local Food | Pomaire 360",
+      "description": "Clay-pot cazuela, giant empanadas and the full directory of restaurants in Pomaire.",
+      "ogTitle": "Where to Eat in Pomaire — Restaurants & Local Food | Pomaire 360",
+      "ogDescription": "Clay-pot cazuela, giant empanadas and the full directory of restaurants in Pomaire.",
+      "ogImageAlt": "Restaurants and traditional food in Pomaire",
+      "twitterTitle": "Where to Eat in Pomaire — Restaurants & Local Food | Pomaire 360",
+      "twitterDescription": "Clay-pot cazuela, giant empanadas and the full directory of restaurants in Pomaire."
+    },
+    "pt": {
+      "title": "Onde Comer em Pomaire — Restaurantes e Gastronomia | Pomaire 360",
+      "description": "Cazuela de barro, empanadas gigantes e o diretório completo de restaurantes de Pomaire.",
+      "ogTitle": "Onde Comer em Pomaire — Restaurantes e Gastronomia | Pomaire 360",
+      "ogDescription": "Cazuela de barro, empanadas gigantes e o diretório completo de restaurantes de Pomaire.",
+      "ogImageAlt": "Restaurantes e gastronomia típica de Pomaire",
+      "twitterTitle": "Onde Comer em Pomaire — Restaurantes e Gastronomia | Pomaire 360",
+      "twitterDescription": "Cazuela de barro, empanadas gigantes e o diretório completo de restaurantes de Pomaire."
+    }
+  },
+  "gruas": {
+    "en": {
+      "title": "Towing & Mechanics in Pomaire & Melipilla — Roadside Help | Pomaire 360",
+      "description": "Car workshops, tow trucks, roadside assistance and tire repair for Pomaire and Melipilla. What to do if your vehicle breaks down during your visit.",
+      "ogTitle": "Towing & Mechanics in Pomaire & Melipilla — Roadside Help | Pomaire 360",
+      "ogDescription": "Car workshops, tow trucks, roadside assistance and tire repair for Pomaire and Melipilla.",
+      "ogImageAlt": "Tow trucks and car workshops near Pomaire",
+      "twitterTitle": "Towing & Mechanics in Pomaire & Melipilla — Roadside Help | Pomaire 360",
+      "twitterDescription": "Car workshops, tow trucks, roadside assistance and tire repair for Pomaire and Melipilla."
+    },
+    "pt": {
+      "title": "Guincho e Mecânicos em Pomaire e Melipilla — Assistência na Estrada | Pomaire 360",
+      "description": "Oficinas mecânicas, guincho, assistência na estrada e borracharia para Pomaire e Melipilla. O que fazer se seu veículo quebrar durante a visita.",
+      "ogTitle": "Guincho e Mecânicos em Pomaire e Melipilla — Assistência na Estrada | Pomaire 360",
+      "ogDescription": "Oficinas mecânicas, guincho, assistência na estrada e borracharia para Pomaire e Melipilla.",
+      "ogImageAlt": "Guinchos e oficinas mecânicas perto de Pomaire",
+      "twitterTitle": "Guincho e Mecânicos em Pomaire e Melipilla — Assistência na Estrada | Pomaire 360",
+      "twitterDescription": "Oficinas mecânicas, guincho, assistência na estrada e borracharia para Pomaire e Melipilla."
+    }
+  },
+  "juegos": {
+    "en": {
+      "title": "Pomaire Arcade — Pottery Tetris & Clay Games | Pomaire 360",
+      "description": "Five classic games inspired by clay, pottery and Pomaire's vessels: Pottery Tetris, memory match, molding, collector and puzzle. Play free, no downloads.",
+      "ogTitle": "Pomaire Arcade — Pottery Tetris & Clay Games",
+      "ogDescription": "Five classic games inspired by clay, pottery and Pomaire's vessels, including Pottery Tetris. Play free, no downloads.",
+      "ogImageAlt": "Arcade games inspired by Pomaire's pottery",
+      "twitterTitle": "Pomaire Arcade — Pottery Tetris & Clay Games",
+      "twitterDescription": "Five classic games inspired by clay, pottery and Pomaire's vessels, including Pottery Tetris. Play free, no downloads."
+    },
+    "pt": {
+      "title": "Pomaire Arcade — Tetris da Olaria e Jogos de Barro | Pomaire 360",
+      "description": "Cinco jogos clássicos inspirados no barro, na argila e nas vasilhas de Pomaire: Tetris da Olaria, jogo da memória, modelagem, coletor e quebra-cabeça. Jogue grátis, sem downloads.",
+      "ogTitle": "Pomaire Arcade — Tetris da Olaria e Jogos de Barro",
+      "ogDescription": "Cinco jogos clássicos inspirados no barro, na argila e nas vasilhas de Pomaire, incluindo o Tetris da Olaria. Jogue grátis, sem downloads.",
+      "ogImageAlt": "Jogos arcade inspirados na olaria de Pomaire",
+      "twitterTitle": "Pomaire Arcade — Tetris da Olaria e Jogos de Barro",
+      "twitterDescription": "Cinco jogos clássicos inspirados no barro, na argila e nas vasilhas de Pomaire, incluindo o Tetris da Olaria. Jogue grátis, sem downloads."
+    }
+  },
+  "links": {
+    "en": {
+      "title": "Links — Pomaire 360 | All Our Links",
+      "description": "All Pomaire 360 links: social media, site sections and more. Your complete guide to Chile's pottery village.",
+      "ogTitle": "Links — Pomaire 360 | All Our Links",
+      "ogDescription": "All Pomaire 360 links: social media, site sections and more. Your complete guide to Chile's pottery village.",
+      "ogImageAlt": "Pomaire 360 - complete guide to Chile's pottery village",
+      "twitterTitle": "Links — Pomaire 360 | All Our Links",
+      "twitterDescription": "All Pomaire 360 links: social media, site sections and more. Your complete guide to Chile's pottery village."
+    },
+    "pt": {
+      "title": "Links — Pomaire 360 | Todos os Nossos Links",
+      "description": "Todos os links do Pomaire 360: redes sociais, seções do site e mais. Seu guia completo do povoado dos oleiros do Chile.",
+      "ogTitle": "Links — Pomaire 360 | Todos os Nossos Links",
+      "ogDescription": "Todos os links do Pomaire 360: redes sociais, seções do site e mais. Seu guia completo do povoado dos oleiros do Chile.",
+      "ogImageAlt": "Pomaire 360 - guia completo do povoado dos oleiros do Chile",
+      "twitterTitle": "Links — Pomaire 360 | Todos os Nossos Links",
+      "twitterDescription": "Todos os links do Pomaire 360: redes sociais, seções do site e mais. Seu guia completo do povoado dos oleiros do Chile."
+    }
+  },
+  "locomocion": {
+    "en": {
+      "title": "Transport in Pomaire — How to Get There by Bus | Pomaire 360",
+      "description": "Interactive map of bus stops, routes and schedules from Santiago and Melipilla to Pomaire. How to get there without a car.",
+      "ogTitle": "Transport in Pomaire — How to Get There by Bus | Pomaire 360",
+      "ogDescription": "Interactive map of bus stops, routes and schedules from Santiago and Melipilla to Pomaire.",
+      "ogImageAlt": "How to get to Pomaire by public transport",
+      "twitterTitle": "Transport in Pomaire — How to Get There by Bus | Pomaire 360",
+      "twitterDescription": "Interactive map of bus stops, routes and schedules from Santiago and Melipilla to Pomaire."
+    },
+    "pt": {
+      "title": "Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360",
+      "description": "Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire. Como chegar sem carro.",
+      "ogTitle": "Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360",
+      "ogDescription": "Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire.",
+      "ogImageAlt": "Como chegar a Pomaire de transporte público",
+      "twitterTitle": "Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360",
+      "twitterDescription": "Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire."
+    }
+  },
+  "plaza": {
+    "en": {
+      "title": "Pomaire's Town Square & Public Spaces | Pomaire 360",
+      "description": "Pomaire's main square, the San Antonio de Padua Church and the public restrooms: the pottery village's meeting point, surrounded by crafts and food.",
+      "ogTitle": "Pomaire's Town Square & Public Spaces | Pomaire 360",
+      "ogDescription": "Pomaire's main square, the San Antonio de Padua Church and the public restrooms: the pottery village's meeting point, surrounded by crafts and food.",
+      "ogImageAlt": "Public square and spaces in Pomaire",
+      "twitterTitle": "Pomaire's Town Square & Public Spaces | Pomaire 360",
+      "twitterDescription": "Pomaire's main square, the San Antonio de Padua Church and the public restrooms: the pottery village's meeting point, surrounded by crafts and food."
+    },
+    "pt": {
+      "title": "Praça e Espaços Públicos de Pomaire | Pomaire 360",
+      "description": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia.",
+      "ogTitle": "Praça e Espaços Públicos de Pomaire | Pomaire 360",
+      "ogDescription": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia.",
+      "ogImageAlt": "Praça pública e espaços de Pomaire",
+      "twitterTitle": "Praça e Espaços Públicos de Pomaire | Pomaire 360",
+      "twitterDescription": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia."
+    }
+  },
+  "que-ver": {
+    "en": {
+      "title": "What to See in Pomaire — Attractions & Points of Interest | Pomaire 360",
+      "description": "Attractions, charming shops, gardening and key spots in Pomaire.",
+      "ogTitle": "What to See in Pomaire — Attractions & Points of Interest | Pomaire 360",
+      "ogDescription": "Attractions, charming shops, gardening and key spots in Pomaire.",
+      "ogImageAlt": "Tourist attractions and points of interest in Pomaire",
+      "twitterTitle": "What to See in Pomaire — Attractions & Points of Interest | Pomaire 360",
+      "twitterDescription": "Attractions, charming shops, gardening and key spots in Pomaire."
+    },
+    "pt": {
+      "title": "O que Ver em Pomaire — Atrações e Pontos de Interesse | Pomaire 360",
+      "description": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire.",
+      "ogTitle": "O que Ver em Pomaire — Atrações e Pontos de Interesse | Pomaire 360",
+      "ogDescription": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire.",
+      "ogImageAlt": "Atrações turísticas e pontos de interesse em Pomaire",
+      "twitterTitle": "O que Ver em Pomaire — Atrações e Pontos de Interesse | Pomaire 360",
+      "twitterDescription": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire."
+    }
+  },
+  "ruta-del-vino": {
+    "en": {
+      "title": "Wine & Chicha Route in Pomaire & Los Chiñihues | Pomaire 360",
+      "description": "The wine and chicha route of the coastal dryland of Pomaire and Los Chiñihues.",
+      "ogTitle": "Wine & Chicha Route in Pomaire & Los Chiñihues | Pomaire 360",
+      "ogDescription": "The wine and chicha route of the coastal dryland of Pomaire and Los Chiñihues.",
+      "ogImageAlt": "Wine and chicha route in Pomaire",
+      "twitterTitle": "Wine & Chicha Route in Pomaire & Los Chiñihues | Pomaire 360",
+      "twitterDescription": "The wine and chicha route of the coastal dryland of Pomaire and Los Chiñihues."
+    },
+    "pt": {
+      "title": "Rota do Vinho e da Chicha em Pomaire e Los Chiñihues | Pomaire 360",
+      "description": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues.",
+      "ogTitle": "Rota do Vinho e da Chicha em Pomaire e Los Chiñihues | Pomaire 360",
+      "ogDescription": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues.",
+      "ogImageAlt": "Rota do vinho e da chicha em Pomaire",
+      "twitterTitle": "Rota do Vinho e da Chicha em Pomaire e Los Chiñihues | Pomaire 360",
+      "twitterDescription": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues."
+    }
+  },
+  "salud": {
+    "en": {
+      "title": "Health & Emergencies in Pomaire — Clinic, Hospital, Ambulance | Pomaire 360",
+      "description": "CESFAM clinic, Melipilla Hospital, SAMU ambulance (131) and pharmacies for Pomaire.",
+      "ogTitle": "Health & Emergencies in Pomaire — Clinic, Hospital, Ambulance | Pomaire 360",
+      "ogDescription": "CESFAM clinic, Melipilla Hospital, SAMU ambulance (131) and pharmacies for Pomaire.",
+      "ogImageAlt": "Health services and emergencies near Pomaire",
+      "twitterTitle": "Health & Emergencies in Pomaire — Clinic, Hospital, Ambulance | Pomaire 360",
+      "twitterDescription": "CESFAM clinic, Melipilla Hospital, SAMU ambulance (131) and pharmacies for Pomaire."
+    },
+    "pt": {
+      "title": "Saúde e Urgências em Pomaire — Posto de Saúde, Hospital, SAMU | Pomaire 360",
+      "description": "Posto de saúde CESFAM, Hospital de Melipilla, ambulância SAMU (131) e farmácias para Pomaire.",
+      "ogTitle": "Saúde e Urgências em Pomaire — Posto de Saúde, Hospital, SAMU | Pomaire 360",
+      "ogDescription": "Posto de saúde CESFAM, Hospital de Melipilla, ambulância SAMU (131) e farmácias para Pomaire.",
+      "ogImageAlt": "Serviços de saúde e urgências perto de Pomaire",
+      "twitterTitle": "Saúde e Urgências em Pomaire — Posto de Saúde, Hospital, SAMU | Pomaire 360",
+      "twitterDescription": "Posto de saúde CESFAM, Hospital de Melipilla, ambulância SAMU (131) e farmácias para Pomaire."
+    }
+  },
+  "seguridad": {
+    "en": {
+      "title": "Safety & Emergencies in Pomaire — Police, Fire Department | Pomaire 360",
+      "description": "Police, fire department, SAMU and other emergency numbers for Pomaire. Contacts and addresses for your safety during your visit to the pottery village.",
+      "ogTitle": "Safety & Emergencies in Pomaire — Police, Fire Department | Pomaire 360",
+      "ogDescription": "Police, fire department, SAMU and other emergency numbers for Pomaire. Contacts and addresses for your safety during your visit to the pottery village.",
+      "ogImageAlt": "Safety and emergency services in Pomaire",
+      "twitterTitle": "Safety & Emergencies in Pomaire — Police, Fire Department | Pomaire 360",
+      "twitterDescription": "Police, fire department, SAMU and other emergency numbers for Pomaire. Contacts and addresses for your safety during your visit to the pottery village."
+    },
+    "pt": {
+      "title": "Segurança e Emergências em Pomaire — Polícia, Bombeiros | Pomaire 360",
+      "description": "Polícia, bombeiros, SAMU e outros números de emergência para Pomaire. Contatos e endereços para sua segurança durante a visita ao povoado dos oleiros.",
+      "ogTitle": "Segurança e Emergências em Pomaire — Polícia, Bombeiros | Pomaire 360",
+      "ogDescription": "Polícia, bombeiros, SAMU e outros números de emergência para Pomaire. Contatos e endereços para sua segurança durante a visita ao povoado dos oleiros.",
+      "ogImageAlt": "Serviços de segurança e emergência em Pomaire",
+      "twitterTitle": "Segurança e Emergências em Pomaire — Polícia, Bombeiros | Pomaire 360",
+      "twitterDescription": "Polícia, bombeiros, SAMU e outros números de emergência para Pomaire. Contatos e endereços para sua segurança durante a visita ao povoado dos oleiros."
+    }
+  },
+  "sugerencias": {
+    "en": {
+      "title": "Suggestions & Feedback — Help Us Improve | Pomaire 360",
+      "description": "Have an idea, comment or correction to improve Pomaire 360? Send us your suggestion by email or WhatsApp. Your feedback helps us keep the Pomaire guide up to date.",
+      "ogTitle": "Suggestions & Feedback — Pomaire 360",
+      "ogDescription": "Send us your comment or suggestion to improve the Pomaire guide. It goes straight to our email or WhatsApp.",
+      "ogImageAlt": "Send suggestions to improve the Pomaire guide",
+      "twitterTitle": "Suggestions & Feedback — Pomaire 360",
+      "twitterDescription": "Send us your comment or suggestion to improve the Pomaire guide. It goes straight to our email or WhatsApp."
+    },
+    "pt": {
+      "title": "Sugestões e Comentários — Ajude-nos a Melhorar | Pomaire 360",
+      "description": "Tem uma ideia, comentário ou correção para melhorar o Pomaire 360? Envie sua sugestão por e-mail ou WhatsApp. Sua opinião nos ajuda a manter o guia de Pomaire atualizado.",
+      "ogTitle": "Sugestões e Comentários — Pomaire 360",
+      "ogDescription": "Envie seu comentário ou sugestão para melhorar o guia de Pomaire. Chega direto por e-mail ou WhatsApp.",
+      "ogImageAlt": "Envie sugestões para melhorar o guia de Pomaire",
+      "twitterTitle": "Sugestões e Comentários — Pomaire 360",
+      "twitterDescription": "Envie seu comentário ou sugestão para melhorar o guia de Pomaire. Chega direto por e-mail ou WhatsApp."
+    }
+  }
+}

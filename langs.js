@@ -111,3 +111,28 @@ Object.assign(window.LANGS.fr,{"tab_costura_cat":"Atelier de couture","tab_costu
 Object.assign(window.LANGS.ru,{"tab_costura_cat":"Швейная мастерская","tab_costura_sub":"Шитьё, переделка одежды и индивидуальный крой в Помайре"});
 Object.assign(window.LANGS.ja,{"tab_costura_cat":"仕立て工房","tab_costura_sub":"ポマイレでの縫製、お直し、オーダーメイド仕立て"});
 Object.assign(window.LANGS.zh,{"tab_costura_cat":"裁缝工坊","tab_costura_sub":"波马伊雷的缝纫、修改与定制裁缝服务"});
+
+
+
+/* ══ Banner "El Chancho" en el mapa y banner flotante · Home (multiidioma) ══ */
+Object.assign(window.LANGS.es,{"mfb_text":"Conoce <strong>El Chancho alcancía de greda más grande del mundo</strong>","mfb_go":"Ver página →","fpb_tag":"💎 Imperdible","fpb_text":"El chancho alcancía de greda <strong>más grande del mundo</strong>","fpb_cta":"Conócelo →"});
+Object.assign(window.LANGS.en,{"mfb_text":"Discover <strong>the world's largest clay piggy bank</strong>","mfb_go":"View page →","fpb_tag":"💎 Don't miss it","fpb_text":"The <strong>world's largest</strong> clay piggy bank","fpb_cta":"Discover it →"});
+Object.assign(window.LANGS.pt,{"mfb_text":"Conheça <strong>o maior cofrinho de barro do mundo</strong>","mfb_go":"Ver página →","fpb_tag":"💎 Imperdível","fpb_text":"O cofrinho de barro <strong>maior do mundo</strong>","fpb_cta":"Conheça →"});
+Object.assign(window.LANGS.fr,{"mfb_text":"Découvrez <strong>la plus grande tirelire en argile du monde</strong>","mfb_go":"Voir la page →","fpb_tag":"💎 À ne pas manquer","fpb_text":"La tirelire en argile <strong>la plus grande du monde</strong>","fpb_cta":"Découvrir →"});
+Object.assign(window.LANGS.ru,{"mfb_text":"Узнайте о <strong>самой большой глиняной копилке-свинке в мире</strong>","mfb_go":"Смотреть страницу →","fpb_tag":"💎 Обязательно к посещению","fpb_text":"Самая большая в мире <strong>глиняная копилка-свинка</strong>","fpb_cta":"Узнать больше →"});
+Object.assign(window.LANGS.ja,{"mfb_text":"<strong>世界最大の陶器の貯金箱の豚</strong>をチェック","mfb_go":"ページを見る →","fpb_tag":"💎 必見","fpb_text":"<strong>世界最大</strong>の陶器の貯金箱の豚","fpb_cta":"詳しく見る →"});
+Object.assign(window.LANGS.zh,{"mfb_text":"了解<strong>世界最大的陶土小猪存钱罐</strong>","mfb_go":"查看页面 →","fpb_tag":"💎 不容错过","fpb_text":"<strong>世界最大</strong>的陶土小猪存钱罐","fpb_cta":"了解详情 →"});
+
+
+/* ══ nav_suggest — faltaba en langs.js (ya existía en app.js para el home) ══ */
+Object.assign(window.LANGS.es,{"nav_suggest":"Sugerencias"});
+Object.assign(window.LANGS.en,{"nav_suggest":"Feedback"});
+Object.assign(window.LANGS.pt,{"nav_suggest":"Sugestões"});
+Object.assign(window.LANGS.fr,{"nav_suggest":"Suggestions"});
+Object.assign(window.LANGS.ru,{"nav_suggest":"Отзывы"});
+Object.assign(window.LANGS.ja,{"nav_suggest":"ご意見"});
+Object.assign(window.LANGS.zh,{"nav_suggest":"反馈"});
+
+
+/* ══ DIR_TAGS — 2 etiquetas faltantes detectadas en auditoría i18n ══ */
+Object.assign(window.DIR_TAGS,{"Cabañas Alojamiento":{"en":"Cabins & Lodging","pt":"Cabanas e Hospedagem","fr":"Cabanes et hébergement","ru":"Домики и жильё","ja":"キャビン・宿泊","zh":"小屋与住宿"},"Restaurante":{"en":"Restaurant","pt":"Restaurante","fr":"Restaurant","ru":"Ресторан","ja":"レストラン","zh":"餐厅"}});

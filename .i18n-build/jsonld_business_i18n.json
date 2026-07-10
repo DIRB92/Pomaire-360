@@ -1,0 +1,26 @@
+{
+  "alfareria": {
+    "en": { "name": "Pottery Workshops in Pomaire", "description": "Workshops, live demonstrations and the full directory of Pomaire's clay artisans." },
+    "pt": { "name": "Ateliês de Olaria em Pomaire", "description": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire." }
+  },
+  "alojamientos": {
+    "en": { "name": "Lodging in Pomaire", "description": "Where to stay in Pomaire: hostels, cabins and suites with address, phone and map. Updated guide for your stay in Chile's pottery village." },
+    "pt": { "name": "Hospedagem em Pomaire", "description": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile." }
+  },
+  "elchanchoalcanciamasgrandedelmundo": {
+    "en": { "name": "The World's Largest Clay Piggy Bank", "description": "The world's largest clay piggy bank, created by master potter César Silva Rojo in Pomaire." },
+    "pt": { "name": "O Maior Cofrinho de Barro do Mundo", "description": "O maior cofrinho de barro do mundo, criado pelo mestre oleiro César Silva Rojo em Pomaire." }
+  },
+  "plaza": {
+    "en": { "name": "Pomaire's Town Square", "description": "Pomaire's main square, the San Antonio de Padua Church and the public restrooms: the pottery village's meeting point, surrounded by crafts and food." },
+    "pt": { "name": "Praça de Pomaire", "description": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia." }
+  },
+  "que-ver": {
+    "en": { "name": "Tourist Attractions in Pomaire", "description": "Attractions, charming shops, gardening and key spots in Pomaire." },
+    "pt": { "name": "Atrações Turísticas de Pomaire", "description": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire." }
+  },
+  "ruta-del-vino": {
+    "en": { "name": "Wine & Chicha Route - Pomaire", "description": "The wine and chicha route of the coastal dryland of Pomaire and Los Chiñihues." },
+    "pt": { "name": "Rota do Vinho e da Chicha - Pomaire", "description": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues." }
+  }
+}
