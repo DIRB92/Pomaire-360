@@ -622,7 +622,13 @@ const LANG_EXTRA = {
     or_f3:"More than 30 years of tradition. Don Víctor Larraín turned the old family adobe house into a gastronomic landmark, birthplace of the world's largest empanada and of three generations of home cooking.",
     or_f4:"A small, charming nursery that combines the rural, the botanical and the artisanal. Ideal for a quiet pause after touring workshops and restaurants, and to take home a living memory of Pomaire.",
     free_tour_label:"💡 Free tour · explore at your own pace",
-    filter_lodging:"Stay", filter_highlight:"See", route_oficial_name:"Official Route", route_oficial_meta:"5 stops · full day"
+    filter_lodging:"Stay", filter_highlight:"See", route_oficial_name:"Official Route", route_oficial_meta:"5 stops · full day",
+    shops_all_h:"All shops in Pomaire", shops_all_sub:"Explore local commerce by category: pottery, food, boutiques, lodging and gardening",
+    tab_pottery:"Pottery & ceramics", tab_pottery_sub:"Buy directly from the artisan · complete list of Pomaire potters",
+    tab_food:"Restaurants", tab_food_sub:"Pomaire restaurants with address, phone and opening days",
+    tab_boutique:"Shops & boutiques", tab_boutique_sub:"Clothing, cured meats, craft beer, wellness and other charming shops",
+    tab_lodging:"Lodging", tab_lodging_sub:"Hostels, cabins and suites to stay in Pomaire",
+    tab_garden:"Gardening"
   },
   pt: {
     nav_lodging:"Hospedagem", nav_banos:"Banheiros", nav_seewhat:"O que ver",
@@ -707,7 +713,13 @@ const LANG_EXTRA = {
     or_f3:"Mais de 30 anos de tradição. Don Víctor Larraín transformou a antiga casa de adobe da família em uma referência gastronômica, berço da maior empanada do mundo e de três gerações de cozinha caseira.",
     or_f4:"Pequeno e encantador viveiro que combina o rural, o botânico e o artesanal. Ideal para uma pausa tranquila depois de percorrer oficinas e restaurantes, e para levar uma lembrança viva de Pomaire.",
     free_tour_label:"💡 Passeio livre · explore no seu ritmo",
-    filter_lodging:"Dormir", filter_highlight:"Ver", route_oficial_name:"Rota Oficial", route_oficial_meta:"5 paradas · dia completo"
+    filter_lodging:"Dormir", filter_highlight:"Ver", route_oficial_name:"Rota Oficial", route_oficial_meta:"5 paradas · dia completo",
+    shops_all_h:"Todas as lojas de Pomaire", shops_all_sub:"Explore o comércio local por categoria: olaria, gastronomia, boutiques, hospedagem e jardinagem",
+    tab_pottery:"Olaria e cerâmica", tab_pottery_sub:"Compre diretamente do artesão · lista completa dos oleiros de Pomaire",
+    tab_food:"Restaurantes", tab_food_sub:"Restaurantes de Pomaire com endereço, telefone e dias de atendimento",
+    tab_boutique:"Lojas e boutiques", tab_boutique_sub:"Roupas, embutidos, cerveja artesanal, bem-estar e outros comércios charmosos",
+    tab_lodging:"Hospedagem", tab_lodging_sub:"Hostels, cabanas e suítes para ficar em Pomaire",
+    tab_garden:"Jardinagem"
   },
   fr: {
     nav_lodging:"Hébergements", nav_banos:"Toilettes", nav_seewhat:"À voir",
@@ -792,7 +804,13 @@ const LANG_EXTRA = {
     or_f3:"Plus de 30 ans de tradition. Don Víctor Larraín a transformé l'ancienne maison familiale en adobe en une référence gastronomique, berceau de la plus grande empanada du monde et de trois générations de cuisine créole.",
     or_f4:"Petite pépinière charmante qui combine le rural, le botanique et l'artisanal. Idéale pour une pause tranquille après avoir parcouru ateliers et restaurants, et pour emporter un souvenir vivant de Pomaire.",
     free_tour_label:"💡 Parcours libre · explorez à votre rythme",
-    filter_lodging:"Dormir", filter_highlight:"À voir", route_oficial_name:"Itinéraire Officiel", route_oficial_meta:"5 arrêts · journée complète"
+    filter_lodging:"Dormir", filter_highlight:"À voir", route_oficial_name:"Itinéraire Officiel", route_oficial_meta:"5 arrêts · journée complète",
+    shops_all_h:"Tous les commerces de Pomaire", shops_all_sub:"Explorez le commerce local par catégorie : poterie, gastronomie, boutiques, hébergement et jardinage",
+    tab_pottery:"Poterie et céramique", tab_pottery_sub:"Achetez directement auprès de l'artisan · liste complète des potiers de Pomaire",
+    tab_food:"Restaurants", tab_food_sub:"Restaurants de Pomaire avec adresse, téléphone et jours d'ouverture",
+    tab_boutique:"Boutiques", tab_boutique_sub:"Vêtements, charcuterie, bière artisanale, bien-être et autres commerces de charme",
+    tab_lodging:"Hébergement", tab_lodging_sub:"Auberges, cabanes et suites pour séjourner à Pomaire",
+    tab_garden:"Jardinage"
   },
   ru: {
     nav_lodging:"Жильё", nav_banos:"Туалеты", nav_seewhat:"Что посмотреть",
@@ -877,7 +895,13 @@ const LANG_EXTRA = {
     or_f3:"Более 30 лет традиции. Don Víctor Larraín превратил старый семейный дом из самана в гастрономический ориентир, родину самой большой эмпанады в мире и трёх поколений домашней кухни.",
     or_f4:"Небольшой и очаровательный питомник, сочетающий сельское, ботаническое и ремесленное. Идеален для спокойной паузы после мастерских и ресторанов и чтобы увезти живую память о Помайре.",
     free_tour_label:"💡 Свободный маршрут · исследуйте в своём темпе",
-    filter_lodging:"Ночлег", filter_highlight:"Посмотреть", route_oficial_name:"Официальный маршрут", route_oficial_meta:"5 остановок · полный день"
+    filter_lodging:"Ночлег", filter_highlight:"Посмотреть", route_oficial_name:"Официальный маршрут", route_oficial_meta:"5 остановок · полный день",
+    shops_all_h:"Все магазины Помайре", shops_all_sub:"Изучите местную торговлю по категориям: керамика, гастрономия, бутики, жильё и садоводство",
+    tab_pottery:"Керамика и гончарные изделия", tab_pottery_sub:"Покупайте прямо у мастера · полный список гончаров Помайре",
+    tab_food:"Рестораны", tab_food_sub:"Рестораны Помайре с адресом, телефоном и днями работы",
+    tab_boutique:"Магазины и бутики", tab_boutique_sub:"Одежда, колбасы, крафтовое пиво, велнес и другие уютные магазины",
+    tab_lodging:"Жильё", tab_lodging_sub:"Хостелы, домики и сьюты для ночёвки в Помайре",
+    tab_garden:"Садоводство"
   },
   ja: {
     nav_lodging:"宿泊", nav_banos:"トイレ", nav_seewhat:"見どころ",
@@ -920,7 +944,7 @@ const LANG_EXTRA = {
     ga1_badge:"看板料理", ga1_title:"土鍋のカスエラ", ga1_detail:"ポマイレで最も象徴的な料理。カスエラ、エンパナーダ、pastel de chocloが村で作られた粘土の器で提供されます。",
     ga2_badge:"定番", ga2_title:"巨大エンパナーダ", ga2_detail:"ポマイレは大きなエンパナーダで有名です。メインストリート沿いにエンパナーダの店が並びます。",
     ga3_badge:"飲み物", ga3_title:"チチャと伝統的な飲み物", ga3_detail:"リンゴとぶどうのチチャ、mote con huesillo、手作りの飲み物。地元料理によく合います。",
-    ga4_badge:"食事処", ga4_title:"レストランと食堂", ga4_detail:"メインストリートと脇道に多数のレストラン。週末は待ち時間が出ることがあります。正午前の来店がおすすめです。", ga4_link:"📍 レストランを探す",
+    ga4_badge:"食事処", ga4_title:"レストランと食堂", ga4_detail:"メインストリートと脇道に多数のレストラン。週末は待ち時間が出ることがあります。正午前の来店がおすすめです。", ga4_link:"📍 レストランを探す", ga4_map:"🗺️ 地図で見る",
     dir_rest_h:"🍴 レストラン一覧", dir_rest_sub:"住所・電話・営業日付きのポマイレのレストラン · <em>Restaurants directory</em>",
     lodging_note:"💡 泊まれば、観光バスの混雑なしでポマイレを楽しみ、夜の村を体験できます。",
     dir_jardin_h:"🌱 園芸と苗木店", dir_jardin_sub:"植物、花、そして緑のひと休み · <em>Gardening &amp; plants</em>",
@@ -962,7 +986,13 @@ const LANG_EXTRA = {
     or_f3:"30年以上の伝統。Don Víctor Larraínは古い家族の日干しレンガの家を、世界最大のエンパナーダと三世代の家庭料理の発祥地である美食の名所に変えました。",
     or_f4:"田舎、植物、工芸を組み合わせた小さく魅力的な苗木店。工房やレストランを巡った後の静かな休憩に最適で、ポマイレの生きた思い出を持ち帰れます。",
     free_tour_label:"💡 自由散策 · 自分のペースで",
-    filter_lodging:"宿泊", filter_highlight:"見る", route_oficial_name:"公式ルート", route_oficial_meta:"5か所 · 終日"
+    filter_lodging:"宿泊", filter_highlight:"見る", route_oficial_name:"公式ルート", route_oficial_meta:"5か所 · 終日",
+    shops_all_h:"ポマイレの全ての店舗", shops_all_sub:"陶器、グルメ、ブティック、宿泊、園芸などカテゴリー別に地元の店を探索",
+    tab_pottery:"陶器・セラミック", tab_pottery_sub:"職人から直接購入 · ポマイレの陶芸家の完全なリスト",
+    tab_food:"レストラン", tab_food_sub:"住所、電話番号、営業日付きのポマイレのレストラン",
+    tab_boutique:"店舗・ブティック", tab_boutique_sub:"衣料品、燻製肉、クラフトビール、ウェルネスなど魅力的な店舗",
+    tab_lodging:"宿泊施設", tab_lodging_sub:"ポマイレに泊まるためのホステル・コテージ・スイート",
+    tab_garden:"園芸"
   },
   zh: {
     nav_lodging:"住宿", nav_banos:"洗手间", nav_seewhat:"看点",
@@ -1005,7 +1035,7 @@ const LANG_EXTRA = {
     ga1_badge:"招牌菜", ga1_title:"陶锅炖菜（cazuela）", ga1_detail:"波迈雷最具代表性的菜肴。Cazuela、empanada和pastel de choclo盛在本镇制作的陶器中上桌。",
     ga2_badge:"经典", ga2_title:"巨型empanada", ga2_detail:"波迈雷以其超大empanada闻名。主街沿线遍布empanada店铺。",
     ga3_badge:"饮品", ga3_title:"Chicha与传统饮品", ga3_detail:"苹果与葡萄chicha、mote con huesillo以及手工饮品。是搭配本地美食的绝佳之选。",
-    ga4_badge:"哪里吃", ga4_title:"餐厅与小馆", ga4_detail:"主街及其支街有众多餐厅。周末可能需要等位。建议中午前到达。", ga4_link:"📍 寻找餐厅",
+    ga4_badge:"哪里吃", ga4_title:"餐厅与小馆", ga4_detail:"主街及其支街有众多餐厅。周末可能需要等位。建议中午前到达。", ga4_link:"📍 寻找餐厅", ga4_map:"🗺️ 在地图上查看",
     dir_rest_h:"🍴 餐厅目录", dir_rest_sub:"含地址、电话和营业日的波迈雷餐厅 · <em>Restaurants directory</em>",
     lodging_note:"💡 住下来过夜可让你避开旅游大巴的人潮，体验夜晚的波迈雷。",
     dir_jardin_h:"🌱 园艺与苗圃", dir_jardin_sub:"植物、花卉与一片绿色的歇息 · <em>Gardening &amp; plants</em>",
@@ -1047,7 +1077,13 @@ const LANG_EXTRA = {
     or_f3:"30多年的传统。Don Víctor Larraín将古老的家族土坯房改造成美食标杆，是世界最大empanada和三代家常菜的发源地。",
     or_f4:"一个融合乡村、植物与手工的小巧迷人苗圃。适合在逛完工坊和餐厅后安静歇脚，并带走一份波迈雷的鲜活记忆。",
     free_tour_label:"💡 自由游览 · 按你的节奏探索",
-    filter_lodging:"住宿", filter_highlight:"看点", route_oficial_name:"官方路线", route_oficial_meta:"5个站点 · 全天"
+    filter_lodging:"住宿", filter_highlight:"看点", route_oficial_name:"官方路线", route_oficial_meta:"5个站点 · 全天",
+    shops_all_h:"波马伊雷的所有商店", shops_all_sub:"按类别探索当地商业：陶艺、美食、精品店、住宿和园艺",
+    tab_pottery:"陶艺与陶瓷", tab_pottery_sub:"直接向工匠购买 · 波马伊雷陶艺家完整名录",
+    tab_food:"餐厅", tab_food_sub:"波马伊雷餐厅，含地址、电话和营业日",
+    tab_boutique:"商店与精品店", tab_boutique_sub:"服装、腌肉、精酿啤酒、养生及其他特色商店",
+    tab_lodging:"住宿", tab_lodging_sub:"在波迈雷过夜的旅舍、小屋和套房",
+    tab_garden:"园艺"
   }
 };
 
@@ -1334,6 +1370,18 @@ function applyLang(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Páginas estáticas por idioma (/en/, /pt/): el idioma real de la página
+  // es el que ya viene fijado en <html lang="...">, no el que haya quedado
+  // guardado en localStorage de una visita anterior a otra sección del
+  // sitio, ni el idioma del navegador. Sin esto, entrar a /pt/ con 'es'
+  // guardado en localStorage (o navegador en español) revertía todo el
+  // contenido ya traducido de vuelta a español, y de paso "pegaba" el
+  // selector de idioma en ese idioma guardado en cada carga.
+  const htmlLang = document.documentElement.lang;
+  if (htmlLang && htmlLang !== 'es' && LANGS[htmlLang]) {
+    applyLang(htmlLang);
+    return;
+  }
   const saved = (() => { try { return localStorage.getItem('p360lang'); } catch(e){ return null; } })();
   const browser = (navigator.language || 'es').slice(0,2);
   const auto = saved || (['es','en','pt','fr','ru','ja','zh'].includes(browser) ? browser : 'es');
