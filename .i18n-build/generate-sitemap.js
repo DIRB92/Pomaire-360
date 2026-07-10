@@ -16,7 +16,7 @@ const path = require('path');
 const pageMap = require('./page-map');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
-const SITE = 'https://pomaire360.cl';
+const SITE = 'https://www.pomaire360.cl';
 
 // Metadata original por slug, tomada del sitemap.xml previo a este cambio.
 const SITEMAP_META = {

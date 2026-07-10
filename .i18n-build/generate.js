@@ -168,26 +168,28 @@ function patchJsonLd($, lang, slug) {
       if (node['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
         node.itemListElement.forEach(item => {
           if (item.name === 'Pomaire 360') {
-            item.item = 'https://pomaire360.cl' + pageMap.langPath('index', lang);
+            item.item = 'https://www.pomaire360.cl' + pageMap.langPath('index', lang);
           } else if (breadcrumbI18n[slug] && breadcrumbI18n[slug][lang]) {
             item.name = breadcrumbI18n[slug][lang];
           }
-          if (typeof item.item === 'string' && item.item.startsWith('https://pomaire360.cl')) {
-            const p = item.item.replace('https://pomaire360.cl', '');
+          if (typeof item.item === 'string' && item.item.startsWith('https://www.pomaire360.cl')) {
+            const p = item.item.replace('https://www.pomaire360.cl', '');
             const known = KNOWN_SLUGS.find(s => pageMap[s].esPath === p);
-            if (known) item.item = 'https://pomaire360.cl' + pageMap.langPath(known, lang);
+            if (known) item.item = 'https://www.pomaire360.cl' + pageMap.langPath(known, lang);
           }
         });
       }
-      if (node.url && typeof node.url === 'string' && node.url.startsWith('https://pomaire360.cl')) {
-        const p = node.url.replace('https://pomaire360.cl', '');
-        if (KNOWN_PATHS.has(p)) node.url = 'https://pomaire360.cl' + pageMap.langPath(slug, lang);
+      if (node.url && typeof node.url === 'string' && node.url.startsWith('https://www.pomaire360.cl')) {
+        const p = node.url.replace('https://www.pomaire360.cl', '');
+        if (KNOWN_PATHS.has(p)) node.url = 'https://www.pomaire360.cl' + pageMap.langPath(slug, lang);
       }
       // Traduce el nombre/descripción del negocio principal de la página
       // (TouristAttraction / LodgingBusiness / FoodEstablishment / etc.)
-      if (node['@type'] && node['@type'] !== 'BreadcrumbList' && node['@type'] !== 'PostalAddress' &&
-          node['@type'] !== 'GeoCoordinates' && node['@type'] !== 'Person' &&
-          node['@type'] !== 'OpeningHoursSpecification' &&
+      // Se restringe a una lista explícita de tipos "de negocio" (en vez de
+      // una lista de exclusión) para no pisar por accidente el "name" de
+      // otros nodos con forma similar, como los ListItem del breadcrumb.
+      const BUSINESS_TYPES = ['TouristAttraction', 'LodgingBusiness', 'FoodEstablishment', 'LocalBusiness', 'Restaurant'];
+      if (node['@type'] && BUSINESS_TYPES.includes(node['@type']) &&
           jsonldBusinessI18n[slug] && jsonldBusinessI18n[slug][lang] &&
           typeof node.name === 'string') {
         node.name = jsonldBusinessI18n[slug][lang].name;

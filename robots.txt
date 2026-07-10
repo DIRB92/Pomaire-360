@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pomaire360.cl/sitemap.xml
+Sitemap: https://www.pomaire360.cl/sitemap.xml

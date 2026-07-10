@@ -1,6 +1,6 @@
 const pageMap = require('./page-map');
 
-const SITE = 'https://pomaire360.cl';
+const SITE = 'https://www.pomaire360.cl';
 const LOCALE_MAP = { es: 'es_CL', en: 'en_US', pt: 'pt_BR' };
 
 // Construye el bloque <link rel="alternate" hreflang="..."> para el clúster
