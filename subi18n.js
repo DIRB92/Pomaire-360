@@ -22,6 +22,20 @@
   function selectLang(l){ applyLang(l); var s=document.getElementById('langSelector'); if(s)s.classList.remove('open'); }
   document.addEventListener('click',function(e){ var s=document.getElementById('langSelector'); if(s&&!e.target.closest('#langSelector')) s.classList.remove('open'); });
   window.toggleLangMenu=toggleLangMenu; window.selectLang=selectLang;
+  // Los botones es/en/pt son <a href> de navegación real (llevan a la página
+  // estática de ese idioma), a diferencia de fr/ru/ja/zh que solo cambian el
+  // texto en la misma página vía JS. Sin esto, si el usuario habia elegido
+  // antes ru/fr/ja/zh (quedando guardado en localStorage), al hacer clic en
+  // "Español" para volver, la pagina en español recien cargada leia ese
+  // idioma viejo del localStorage y volvia a aplicarlo, deshaciendo el clic.
+  // Se guarda el idioma elegido ANTES de navegar, para que coincida con la
+  // pagina de destino real.
+  document.querySelectorAll('.lang-option[href]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var l = a.dataset.lang;
+      if (l) { try { localStorage.setItem('p360lang', l); } catch(e){} }
+    });
+  });
   function init(){
     // Páginas estáticas por idioma (/en/, /pt/): el idioma real de la
     // página es el que ya viene fijado en <html lang="...">, no el que

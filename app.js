@@ -1468,6 +1468,19 @@ function selectLang(lang) {
   document.getElementById('langSelector').classList.remove('open');
   document.getElementById('langToggleBtn').setAttribute('aria-expanded', 'false');
 }
+// Los botones es/en/pt son <a href> de navegación real (llevan al home
+// estático de ese idioma), a diferencia de fr/ru/ja/zh que solo cambian el
+// texto en la misma página vía JS. Sin esto, si el usuario habia elegido
+// antes ru/fr/ja/zh (quedando guardado en localStorage), al hacer clic en
+// "Español" para volver, el home recien cargado leia ese idioma viejo del
+// localStorage y volvia a aplicarlo, deshaciendo el clic. Se guarda el
+// idioma elegido ANTES de navegar, para que coincida con la pagina destino.
+document.querySelectorAll('.lang-option[href]').forEach((a) => {
+  a.addEventListener('click', () => {
+    const l = a.dataset.lang;
+    if (l) { try { localStorage.setItem('p360lang', l); } catch (e) {} }
+  });
+});
 document.addEventListener('click', () => {
   const sel = document.getElementById('langSelector');
   if (sel) {
