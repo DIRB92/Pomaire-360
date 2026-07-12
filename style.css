@@ -1857,6 +1857,66 @@
   }
   .shops-all-head p { color: var(--muted); font-size: .87rem; margin-top: .3rem; }
 
+  /* ── BUSCADOR DE NEGOCIOS ─────────────────────────── */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .shop-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: .6rem;
+  }
+  .shop-search-icon {
+    position: absolute;
+    left: 1rem;
+    font-size: 1rem;
+    opacity: .55;
+    pointer-events: none;
+  }
+  .shop-search-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: .95rem;
+    color: var(--text);
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.22);
+    border-radius: 26px;
+    padding: .8rem 2.8rem .8rem 2.6rem;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .shop-search-input::placeholder { color: var(--muted); opacity: .8; }
+  .shop-search-input:focus {
+    outline: none;
+    border-color: var(--clay);
+    box-shadow: 0 0 0 3px rgba(184,92,44,.14);
+  }
+  .shop-search-clear {
+    position: absolute;
+    right: .6rem;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: var(--smoke);
+    color: var(--clay-dark);
+    font-size: .85rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  .shop-search-clear:hover { background: var(--clay); color: #fff; }
+  .shop-search-count {
+    font-size: .82rem;
+    color: var(--muted);
+    font-weight: 600;
+    min-height: 1.2em;
+    margin: 0 0 1rem .3rem;
+  }
+
   .shop-cat-tabs {
     display: flex;
     flex-wrap: wrap;

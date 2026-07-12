@@ -218,6 +218,14 @@
         <p data-t="shops_all_sub">Explora el comercio local por categoría: alfarería, gastronomía, boutiques, alojamiento y jardinería · <em>All shops, by category</em></p>
       </div>
 
+      <div class="shop-search-wrap">
+        <span class="shop-search-icon" aria-hidden="true">🔍</span>
+        <label for="shopSearchInput" class="sr-only">Buscar tienda o negocio en Pomaire</label>
+        <input type="text" id="shopSearchInput" class="shop-search-input" placeholder="Buscar por nombre o dirección… (ej. Cerámicas Tania)" autocomplete="off">
+        <button type="button" id="shopSearchClear" class="shop-search-clear" aria-label="Limpiar búsqueda" hidden>✕</button>
+      </div>
+      <p class="shop-search-count" id="shopSearchCount" aria-live="polite"></p>
+
       <div class="shop-cat-tabs" role="tablist" aria-label="Categorías de tiendas">
         <button type="button" class="shop-cat-tab active" data-cat="pottery" role="tab" aria-selected="true">🏺 <span data-t="tab_pottery">Alfarería y cerámica</span> <span class="sct-count">64</span></button>
         <button type="button" class="shop-cat-tab" data-cat="food" role="tab" aria-selected="false">🍽️ <span data-t="tab_food">Restaurantes</span> <span class="sct-count">29</span></button>
@@ -420,6 +428,74 @@
       tabs.forEach(function(t){ t.classList.toggle('active', t===tab); t.setAttribute('aria-selected', t===tab ? 'true':'false'); });
       panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel===cat); });
     });
+  });
+})();
+
+/* Buscador de negocios: filtra por nombre o dirección en todas las categorías,
+   y salta a la primera pestaña con resultados para no dejar al usuario
+   mirando un panel vacío. */
+(function(){
+  var input   = document.getElementById('shopSearchInput');
+  var clearBt = document.getElementById('shopSearchClear');
+  var countEl = document.getElementById('shopSearchCount');
+  var tabs    = document.querySelectorAll('.shop-cat-tab');
+  var panels  = document.querySelectorAll('.shop-cat-panel');
+  if(!input) return;
+
+  function norm(str){
+    return (str || '').toString().toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // quita tildes
+  }
+
+  function activateTab(cat){
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.cat===cat); t.setAttribute('aria-selected', t.dataset.cat===cat ? 'true':'false'); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel===cat); });
+  }
+
+  function runSearch(){
+    var q = norm(input.value.trim());
+    clearBt.hidden = q.length === 0;
+
+    if(q.length === 0){
+      panels.forEach(function(panel){
+        panel.querySelectorAll('.dir-item').forEach(function(item){ item.style.display = ''; });
+      });
+      countEl.textContent = '';
+      return;
+    }
+
+    var totalMatches = 0;
+    var firstMatchCat = null;
+
+    panels.forEach(function(panel){
+      var matchesInPanel = 0;
+      panel.querySelectorAll('.dir-item').forEach(function(item){
+        var name = norm(item.querySelector('.dir-name') ? item.querySelector('.dir-name').textContent : '');
+        var addr = norm(item.querySelector('.dir-addr') ? item.querySelector('.dir-addr').textContent : '');
+        var tag  = norm(item.querySelector('.dir-tag')  ? item.querySelector('.dir-tag').textContent  : '');
+        var match = name.indexOf(q) !== -1 || addr.indexOf(q) !== -1 || tag.indexOf(q) !== -1;
+        item.style.display = match ? '' : 'none';
+        if(match){ matchesInPanel++; totalMatches++; }
+      });
+      if(matchesInPanel > 0 && firstMatchCat === null){
+        firstMatchCat = panel.dataset.panel;
+      }
+    });
+
+    if(firstMatchCat){
+      activateTab(firstMatchCat);
+    }
+
+    countEl.textContent = totalMatches === 0
+      ? '😕 Sin resultados para "' + input.value.trim() + '"'
+      : totalMatches + (totalMatches === 1 ? ' resultado encontrado' : ' resultados encontrados');
+  }
+
+  input.addEventListener('input', runSearch);
+  clearBt.addEventListener('click', function(){
+    input.value = '';
+    input.focus();
+    runSearch();
   });
 })();
 </script>
