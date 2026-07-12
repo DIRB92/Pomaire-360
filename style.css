@@ -330,7 +330,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(145deg, rgba(140,61,22,.86) 0%, rgba(184,92,44,.82) 55%, rgba(232,132,90,.78) 100%);
+    background: linear-gradient(145deg, rgba(140,61,22,.72) 0%, rgba(184,92,44,.66) 55%, rgba(232,132,90,.60) 100%);
     z-index: 1;
     pointer-events: none;
   }
