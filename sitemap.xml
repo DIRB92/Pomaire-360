@@ -153,7 +153,7 @@
   </url>
   <url>
     <loc>https://www.pomaire360.cl/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
@@ -163,7 +163,7 @@
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
@@ -173,13 +173,43 @@
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/comercio/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/comercio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/servicios/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/servicios/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/en/servicios/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/servicios/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/pt/servicios/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/servicios/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/servicios/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/gruas/</loc>
