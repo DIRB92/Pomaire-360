@@ -1,14 +1,14 @@
 /* card-share.js - Pomaire 360
    Agrega un botón de "Compartir" individual a cada tarjeta de contenido
-   (.card, .card-v2, .wine-card) para que los visitantes puedan compartir
-   un atractivo, servicio o dato puntual — no solo la página completa.
-   Usa la Web Share API nativa cuando está disponible y cae a WhatsApp
-   como respaldo, igual que el resto de los botones de compartir del sitio. */
+   (.card, .card-v2, .wine-card, .dir-item) para que los visitantes puedan
+   compartir un atractivo, servicio o negocio puntual — no solo la página
+   completa. Usa la Web Share API nativa cuando está disponible y cae a
+   WhatsApp como respaldo, igual que el resto de los botones del sitio. */
 
 (function () {
   'use strict';
 
-  var CARD_SELECTOR = '.card, .card-v2, .wine-card, .event-card';
+  var CARD_SELECTOR = '.card, .card-v2, .wine-card, .event-card, .dir-item';
   var DETAIL_SELECTOR = '.card-detail, .cv2-detail, .event-info p, p';
 
   function getText(card, selector) {
@@ -21,10 +21,23 @@
   }
 
   function buildShareData(card) {
-    var title = getText(card, 'h3') || document.title;
-    var detail = getText(card, DETAIL_SELECTOR);
+    var isDirItem = card.classList.contains('dir-item');
+    var title = getText(card, 'h3') || getText(card, '.dir-name') || document.title;
     var url = pageUrl();
-    var text = detail ? (title + ' — ' + detail) : title;
+    var text;
+
+    if (isDirItem) {
+      var addr = getText(card, '.dir-addr');
+      var tag = getText(card, '.dir-tag');
+      var parts = [title];
+      if (tag) parts.push(tag);
+      if (addr) parts.push(addr);
+      text = parts.join(' — ');
+    } else {
+      var detail = getText(card, DETAIL_SELECTOR);
+      text = detail ? (title + ' — ' + detail) : title;
+    }
+
     return { title: title, text: text, url: url };
   }
 
