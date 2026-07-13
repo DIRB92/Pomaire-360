@@ -1382,9 +1382,17 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLang(htmlLang);
     return;
   }
+  // IMPORTANTE (SEO): en la página por defecto (español) NO se debe usar
+  // navigator.language para elegir el idioma automáticamente. Googlebot (y
+  // muchos navegadores/CDNs) reportan "en-US" por defecto al renderizar la
+  // página, lo que hacía que este script reescribiera con innerHTML todo el
+  // contenido visible a inglés ANTES de que Google capturara el snippet —
+  // resultando en la home en español indexada con títulos y descripciones
+  // en inglés en los resultados de búsqueda. Solo se respeta una elección
+  // explícita previa del usuario (guardada en localStorage); si no hay
+  // ninguna, se mantiene el español servido por el servidor.
   const saved = (() => { try { return localStorage.getItem('p360lang'); } catch(e){ return null; } })();
-  const browser = (navigator.language || 'es').slice(0,2);
-  const auto = saved || (['es','en','pt','fr','ru','ja','zh'].includes(browser) ? browser : 'es');
+  const auto = (saved && ['es','en','pt','fr','ru','ja','zh'].includes(saved)) ? saved : 'es';
   applyLang(auto);
 });
 

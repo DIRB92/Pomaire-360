@@ -16,11 +16,14 @@
   var lastSpoken = null;
 
   function curLang(){
+    // SEO: el idioma real de la página es <html lang="...">. No se recurre a
+    // navigator.language como último fallback (Googlebot reporta "en-US" por
+    // defecto), para no traducir el panel de accesibilidad a un idioma
+    // distinto del que realmente sirve la página estática.
     var l = document.documentElement.lang;
     if (l && window.LANGS && window.LANGS[l]) return l;
     try { var s = localStorage.getItem('p360lang'); if (s && window.LANGS && window.LANGS[s]) return s; } catch(e){}
-    var b = (navigator.language || 'es').slice(0,2);
-    return (window.LANGS && window.LANGS[b]) ? b : 'es';
+    return 'es';
   }
   function a11yT(k){
     var L = window.LANGS || {};

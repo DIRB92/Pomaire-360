@@ -48,7 +48,17 @@
       applyLang(htmlLang);
       return;
     }
-    var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){} var lang=saved||((navigator.language||'es').slice(0,2)); if(!window.LANGS||!window.LANGS[lang]) lang='es'; applyLang(lang);
+    // IMPORTANTE (SEO): en las páginas por defecto (español) NO se debe usar
+    // navigator.language para elegir el idioma automáticamente. Googlebot
+    // reporta "en-US" por defecto al renderizar, lo que hacía que este script
+    // reescribiera con innerHTML todo el contenido visible a inglés antes de
+    // que Google capturara el snippet — resultando en subpáginas en español
+    // indexadas con títulos y descripciones en inglés. Solo se respeta una
+    // elección explícita previa del usuario (guardada en localStorage); si no
+    // hay ninguna, se mantiene el español servido por el servidor.
+    var saved=null; try{saved=localStorage.getItem('p360lang');}catch(e){}
+    var lang=(saved && window.LANGS && window.LANGS[saved]) ? saved : 'es';
+    applyLang(lang);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
