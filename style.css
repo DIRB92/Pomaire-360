@@ -1724,6 +1724,7 @@
   .dir-scroll {
     max-height: 560px;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: .25rem .4rem .25rem 0;
     margin-right: -.4rem;
   }
@@ -1960,9 +1961,42 @@
   .shop-cat-tab.active .sct-count { background: rgba(255,255,255,.25); color: #fff; }
 
   .shop-cat-panel { display: none; }
-  .shop-cat-panel.active { display: block; animation: navDrop .2s ease; }
+  .shop-cat-panel.active { display: block; overflow-x: hidden; }
 
   .shop-cat-panel .dir-sub { color: var(--muted); font-size: .83rem; margin-bottom: 1rem; }
+
+  /* Entrada de las tarjetas como ventanas que se deslizan desde los costados,
+     alternando izquierda/derecha, en vez de caer desde arriba. */
+  .shop-cat-panel.active .dir-item {
+    animation: dirSlideInLeft .5s cubic-bezier(.25,.8,.25,1) both;
+  }
+  .shop-cat-panel.active .dir-item:nth-child(even) {
+    animation-name: dirSlideInRight;
+  }
+  @keyframes dirSlideInLeft {
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes dirSlideInRight {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  /* Efecto en cascada: cada tarjeta entra un poco despues que la anterior */
+  .shop-cat-panel.active .dir-item:nth-child(1)  { animation-delay: 0s;    }
+  .shop-cat-panel.active .dir-item:nth-child(2)  { animation-delay: .04s; }
+  .shop-cat-panel.active .dir-item:nth-child(3)  { animation-delay: .08s; }
+  .shop-cat-panel.active .dir-item:nth-child(4)  { animation-delay: .12s; }
+  .shop-cat-panel.active .dir-item:nth-child(5)  { animation-delay: .16s; }
+  .shop-cat-panel.active .dir-item:nth-child(6)  { animation-delay: .20s; }
+  .shop-cat-panel.active .dir-item:nth-child(7)  { animation-delay: .24s; }
+  .shop-cat-panel.active .dir-item:nth-child(8)  { animation-delay: .28s; }
+  .shop-cat-panel.active .dir-item:nth-child(9)  { animation-delay: .32s; }
+  .shop-cat-panel.active .dir-item:nth-child(10) { animation-delay: .36s; }
+  .shop-cat-panel.active .dir-item:nth-child(n+11) { animation-delay: .4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shop-cat-panel.active .dir-item { animation: none; }
+  }
 
   @media (max-width: 600px) {
     .shop-cat-tabs { gap: .4rem; }
