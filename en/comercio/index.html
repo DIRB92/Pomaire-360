@@ -184,6 +184,7 @@
         <button type="button" class="shop-cat-tab" data-cat="costura" role="tab" aria-selected="false">🧵 <span data-t="tab_costura_cat">Sewing workshop</span> <span class="sct-count">1</span></button>
       </div>
 
+      <div class="shop-cat-panels">
       <!-- PANEL: ALFARERÍA Y CERÁMICA -->
       <div class="shop-cat-panel active" data-panel="pottery" role="tabpanel">
         <p class="dir-sub" data-t="tab_pottery_sub">Buy directly from the artisan · full list of Pomaire potters</p>
@@ -342,6 +343,7 @@
 <div class="dir-item"><span class="dir-name" data-t="gc_vulc_name">Tire repair shops (road to Melipilla)</span><span class="dir-addr" data-t="gc_vulc_addr">📍 Road toward Melipilla</span><div class="dir-links"><a href="https://www.google.com/maps/search/vulcanizaci%C3%B3n+Pomaire+Melipilla" target="_blank" rel="noopener">🗺️ <span data-t="lnk_map">📍 View on map</span></a></div></div></div>
         <div class="cv2-links" style="margin-top:.6rem;"><a class="cv2-link cv2-link-ghost" href="/en/gruas/" data-t="dir_more">View profile ▸</a></div>
       </div>
+      </div>
 
     </div>
   </div>
@@ -367,17 +369,58 @@
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>
 <script>
-/* Pestañas del directorio "Todas las tiendas de Pomaire" */
-(function(){
+/* Category tabs of the "All shops of Pomaire" directory:
+   each category is a window that slides sideways, entering from the
+   right when moving forward and from the left when moving back in
+   the tab order. */
+var pomaireSlideToCat = (function(){
   var tabs = document.querySelectorAll('.shop-cat-tab');
-  var panels = document.querySelectorAll('.shop-cat-panel');
+  var catOrder = Array.prototype.map.call(tabs, function(t){ return t.dataset.cat; });
+  var current = catOrder[0];
+
+  function slideTo(cat){
+    if(cat === current) return;
+    var oldPanel = document.querySelector('.shop-cat-panel[data-panel="'+current+'"]');
+    var newPanel = document.querySelector('.shop-cat-panel[data-panel="'+cat+'"]');
+    if(!newPanel) return;
+    var forward = catOrder.indexOf(cat) > catOrder.indexOf(current);
+    current = cat;
+
+    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.cat===cat); t.setAttribute('aria-selected', t.dataset.cat===cat ? 'true':'false'); });
+
+    function showNew(){
+      newPanel.classList.add('active');
+      newPanel.classList.add(forward ? 'win-in-right' : 'win-in-left');
+      newPanel.addEventListener('animationend', function handler(){
+        newPanel.classList.remove('win-in-right','win-in-left');
+        newPanel.removeEventListener('animationend', handler);
+      });
+    }
+
+    if(oldPanel && oldPanel !== newPanel){
+      var done = false;
+      oldPanel.classList.add(forward ? 'win-out-left' : 'win-out-right');
+      oldPanel.addEventListener('animationend', function handler(){
+        if(done) return; done = true;
+        oldPanel.classList.remove('active','win-out-left','win-out-right');
+        showNew();
+        oldPanel.removeEventListener('animationend', handler);
+      });
+      setTimeout(function(){
+        if(done) return; done = true;
+        oldPanel.classList.remove('active','win-out-left','win-out-right');
+        showNew();
+      }, 260);
+    } else {
+      showNew();
+    }
+  }
+
   tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      var cat = tab.dataset.cat;
-      tabs.forEach(function(t){ t.classList.toggle('active', t===tab); t.setAttribute('aria-selected', t===tab ? 'true':'false'); });
-      panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel===cat); });
-    });
+    tab.addEventListener('click', function(){ slideTo(tab.dataset.cat); });
   });
+
+  return slideTo;
 })();
 
 /* Business search: filters by name or address across all categories,
@@ -386,7 +429,6 @@
   var input   = document.getElementById('shopSearchInput');
   var clearBt = document.getElementById('shopSearchClear');
   var countEl = document.getElementById('shopSearchCount');
-  var tabs    = document.querySelectorAll('.shop-cat-tab');
   var panels  = document.querySelectorAll('.shop-cat-panel');
   if(!input) return;
 
@@ -396,8 +438,7 @@
   }
 
   function activateTab(cat){
-    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.cat===cat); t.setAttribute('aria-selected', t.dataset.cat===cat ? 'true':'false'); });
-    panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel===cat); });
+    pomaireSlideToCat(cat);
   }
 
   function runSearch(){
