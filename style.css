@@ -51,31 +51,45 @@
 
   .nav-brand {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: .5rem;
+    background: var(--cream);
+    border-radius: 10px;
+    padding: .3rem .75rem;
     line-height: 1.15;
     text-decoration: none;
     margin-right: .4rem;
     flex-shrink: 0;
+    box-shadow: 0 1px 5px rgba(45,26,10,.15);
+  }
+
+  .nav-brand-icon {
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
   }
 
   .nav-brand-main {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    color: var(--white);
-    font-size: 1.35rem;
+    color: var(--clay-dark);
+    font-size: 1.2rem;
     white-space: nowrap;
-    letter-spacing: .02em;
+    letter-spacing: .01em;
   }
 
   .nav-tagline {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: .62rem;
-    color: rgba(255,255,255,.78);
+    font-size: .66rem;
+    color: var(--muted);
     white-space: nowrap;
-    letter-spacing: .06em;
-    text-transform: uppercase;
+    letter-spacing: .02em;
     margin-top: -.05rem;
   }
 
@@ -220,7 +234,10 @@
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; padding: .55rem 1rem; }
 
-    .nav-tagline { font-size: .56rem; }
+    .nav-brand { padding: .25rem .6rem; gap: .4rem; }
+    .nav-brand-icon { font-size: 1.1rem; }
+    .nav-brand-main { font-size: 1.05rem; }
+    .nav-tagline { font-size: .58rem; }
 
     /* El menú YA NO se colapsa: la hamburguesa desaparece y las píldoras
        quedan SIEMPRE visibles, repartidas en filas (wrap) y centradas. */
