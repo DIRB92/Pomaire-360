@@ -16,7 +16,7 @@ const LANGS = {
   es: {
     nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
     nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
-    nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar",
+    nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar", nav_tagline:"Turismo & Cultura",
     hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
     hero_h1:"Bienvenido a <em>Pomaire</em>",
     hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
@@ -78,7 +78,7 @@ const LANGS = {
   en: {
     nav_park:"Parking", nav_health:"Health", nav_security:"Safety", nav_commerce:"Services",
     nav_pottery:"Pottery", nav_food:"Eat", nav_around:"Around", nav_shops_g:"Shops", nav_plaza:"Town Square",
-    nav_map:"Map", nav_donate:"Support",
+    nav_map:"Map", nav_donate:"Support", nav_tagline:"Tourism & Culture",
     hero_tag:"📍 Pomaire · Melipilla · Metropolitan Region",
     hero_h1:"Welcome to <em>Pomaire</em>",
     hero_sub:"Everything you need to know if you're visiting or just moved to the most famous pottery village in Chile. Services, emergencies, parking and much more.",
@@ -140,7 +140,7 @@ const LANGS = {
   pt: {
     nav_park:"Estacionar", nav_health:"Saúde", nav_security:"Segurança", nav_commerce:"Serviços",
     nav_pottery:"Olaria", nav_food:"Comer", nav_around:"Arredores", nav_shops_g:"Comércio", nav_plaza:"Praça",
-    nav_map:"Mapa", nav_donate:"Apoiar",
+    nav_map:"Mapa", nav_donate:"Apoiar", nav_tagline:"Turismo & Cultura",
     hero_tag:"📍 Pomaire · Melipilla · Região Metropolitana",
     hero_h1:"Bem-vindo/a a <em>Pomaire</em>",
     hero_sub:"Tudo o que você precisa saber se está visitando ou acabou de chegar à vila de cerâmica mais famosa do Chile. Serviços, emergências, estacionamento e muito mais.",
@@ -201,7 +201,7 @@ const LANGS = {
   fr: {
     nav_park:"Parking", nav_health:"Santé", nav_security:"Sécurité", nav_commerce:"Services",
     nav_pottery:"Poterie", nav_food:"Manger", nav_around:"Alentours", nav_shops_g:"Commerces", nav_plaza:"Place",
-    nav_map:"Carte", nav_donate:"Soutenir",
+    nav_map:"Carte", nav_donate:"Soutenir", nav_tagline:"Tourisme & Culture",
     hero_tag:"📍 Pomaire · Melipilla · Région Métropolitaine",
     hero_h1:"Bienvenue à <em>Pomaire</em>",
     hero_sub:"Tout ce que vous devez savoir si vous visitez ou venez d'arriver dans le village de poterie le plus célèbre du Chili. Services, urgences, parking et bien plus.",
@@ -262,7 +262,7 @@ const LANGS = {
   ru: {
     nav_park:"Парковка", nav_health:"Здоровье", nav_security:"Безопасность", nav_commerce:"Услуги",
     nav_pottery:"Керамика", nav_food:"Еда", nav_around:"Окрестности", nav_shops_g:"Магазины", nav_plaza:"Площадь",
-    nav_map:"Карта", nav_donate:"Поддержать",
+    nav_map:"Карта", nav_donate:"Поддержать", nav_tagline:"Туризм и культура",
     hero_tag:"📍 Помайре · Мелипилья · Столичный регион",
     hero_h1:"Добро пожаловать в <em>Помайре</em>",
     hero_sub:"Всё, что нужно знать при посещении или переезде в самую известную гончарную деревню Чили. Услуги, экстренные службы, парковка и многое другое.",
@@ -323,7 +323,7 @@ const LANGS = {
   ja: {
     nav_park:"駐車場", nav_health:"医療", nav_security:"安全", nav_commerce:"サービス",
     nav_pottery:"陶芸", nav_food:"グルメ", nav_around:"周辺", nav_shops_g:"商店", nav_plaza:"広場",
-    nav_map:"地図", nav_donate:"サポート",
+    nav_map:"地図", nav_donate:"サポート", nav_tagline:"観光と文化",
     hero_tag:"📍 ポマイレ · メリピジャ · 首都圏",
     hero_h1:"<em>ポマイレ</em>へようこそ",
     hero_sub:"チレで最も有名な陶芸の村を訪れる方、または新たに住み始めた方に必要な情報をすべてご案内します。サービス、緊急連絡先、駐車場など。",
@@ -384,7 +384,7 @@ const LANGS = {
   zh: {
     nav_park:"停车场", nav_health:"医疗", nav_security:"安全", nav_commerce:"服务",
     nav_pottery:"陶艺", nav_food:"美食", nav_around:"周边", nav_shops_g:"商店", nav_plaza:"广场",
-    nav_map:"地图", nav_donate:"支持",
+    nav_map:"地图", nav_donate:"支持", nav_tagline:"旅游与文化",
     hero_tag:"📍 波马伊雷 · 梅利皮利亚 · 首都大区",
     hero_h1:"欢迎来到<em>波马伊雷</em>",
     hero_sub:"无论您是游客还是刚搬来的新居民，这里提供您在智利最著名陶艺村所需的一切信息：服务、紧急联系、停车场等。",
@@ -1228,6 +1228,7 @@ const KEYS = {
   '[data-t="nav_plaza"]':     t => t.nav_plaza,
   '[data-t="nav_map"]':       t => t.nav_map,
   '[data-t="nav_donate"]':    t => t.nav_donate,
+  '[data-t="nav_tagline"]':   t => t.nav_tagline,
   '[data-t="hero_tag"]':      t => t.hero_tag,
   '[data-t="hero_h1"]':       t => t.hero_h1,
   '[data-t="hero_sub"]':      t => t.hero_sub,
