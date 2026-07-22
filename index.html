@@ -35,8 +35,7 @@
 
 <!-- ══ SEO PRIMARIO ══════════════════════════════════════════ -->
 <title>Pomaire 360 — Guía de servicios, turismo y emergencias en Pomaire, Chile</title>
-<meta name="description" content="Guía gratuita y completa para visitar o vivir en Pomaire (Melipilla). Estacionamientos, salud, Carabineros, Bomberos, alfarería, gastronomía, Los Chiñihues y más. Actualizado 2025.">
-<meta name="keywords" content="Pomaire, Pomaire turismo, que hacer en Pomaire, alfarería Pomaire, cerámica Pomaire, como llegar a Pomaire, Pomaire Chile, servicios Pomaire, Los Chiñihues, Melipilla turismo, guía Pomaire, estacionamiento Pomaire, restaurantes Pomaire, emergencias Pomaire">
+<meta name="description" content="Guía gratuita y completa para visitar o vivir en Pomaire (Melipilla). Estacionamientos, salud, Carabineros, Bomberos, alfarería, gastronomía, Los Chiñihues y más. Actualizado 2026.">
 <meta name="author" content="Pomaire 360">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="language" content="es-CL">
@@ -277,6 +276,13 @@
     <a class="hero-cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pomaire%2C+Melipilla%2C+Chile" target="_blank" rel="noopener"><span aria-hidden="true">🗺️</span><span data-t="cta_directions">Cómo llegar</span></a>
     <a class="hero-cta" href="/gastronomia/"><span aria-hidden="true">🍽️</span><span data-t="cta_eat">Dónde comer</span></a>
   </div>
+
+  <!-- Búsqueda instantánea del directorio -->
+  <div class="dir-search-wrap" id="dirSearchWrap">
+    <input type="text" id="dirSearchInput" placeholder="Buscar artesano, restaurante, servicio…" maxlength="50" autocomplete="off">
+    <div class="dir-search-results" id="dirSearchResults"></div>
+  </div>
+
 </section>
 
 <!-- MAPA INTERACTIVO -->
@@ -1018,5 +1024,57 @@
 </div>
 
 <script src="/card-share.js"></script>
+<script>
+/* ══ BÚSQUEDA INSTANTÁNEA DEL DIRECTORIO ══ */
+(function(){
+  const input = document.getElementById('dirSearchInput');
+  const results = document.getElementById('dirSearchResults');
+  if(!input || !results) return;
+
+  // Esperar a que DIRECTORY esté disponible (cargado por app.js)
+  function getAllItems(){
+    if(typeof DIRECTORY === 'undefined') return [];
+    const items = [];
+    const cats = {restaurants:'🍽️',talleres:'🎨',demos:'🌀',artesanos:'🏺',alojamientos:'🛏️',interes:'✨',jardin:'🌱',servicios:'📌'};
+    const labels = {restaurants:'Restaurante',talleres:'Taller',demos:'Demostración',artesanos:'Artesano',alojamientos:'Alojamiento',interes:'Punto de interés',jardin:'Jardín',servicios:'Servicio'};
+    Object.keys(cats).forEach(function(key){
+      if(!DIRECTORY[key]) return;
+      DIRECTORY[key].forEach(function(it){
+        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null});
+      });
+    });
+    return items;
+  }
+
+  let debounce = null;
+  input.addEventListener('input', function(){
+    clearTimeout(debounce);
+    debounce = setTimeout(doSearch, 150);
+  });
+  input.addEventListener('focus', function(){ if(input.value.trim().length >= 2) doSearch(); });
+  document.addEventListener('click', function(e){ if(!e.target.closest('.dir-search-wrap')) results.classList.remove('open'); });
+
+  function doSearch(){
+    const q = input.value.trim().toLowerCase();
+    if(q.length < 2){ results.classList.remove('open'); results.innerHTML=''; return; }
+    const all = getAllItems();
+    const matches = all.filter(function(it){
+      return it.name.toLowerCase().includes(q) || it.addr.toLowerCase().includes(q) || it.cat.toLowerCase().includes(q);
+    }).slice(0, 8);
+
+    if(!matches.length){ results.classList.remove('open'); results.innerHTML=''; return; }
+
+    results.innerHTML = matches.map(function(it){
+      const href = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.name + ' Pomaire Chile');
+      return '<a class="dir-search-item" href="'+href+'" target="_blank" rel="noopener">' +
+        '<span class="dsi-icon">'+it.icon+'</span>' +
+        '<div><div class="dsi-name">'+escHtml(it.name)+'</div><div class="dsi-cat">'+escHtml(it.cat)+' · '+escHtml(it.addr)+'</div></div></a>';
+    }).join('');
+    results.classList.add('open');
+  }
+
+  function escHtml(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+})();
+</script>
 </body>
 </html>
