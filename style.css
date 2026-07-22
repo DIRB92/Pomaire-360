@@ -2791,3 +2791,86 @@
   .float-pig-link, .float-pig-link::after, .float-pig-emoji { animation: none; }
 }
 
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   BREADCRUMBS VISUALES (subpáginas)
+   ════════════════════════════════════════════════════════════════ */
+.breadcrumb{
+  padding:10px 20px;
+  font-size:0.82rem;
+  font-family:'Inter',sans-serif;
+  color:#8a7e72;
+  background:rgba(255,255,255,0.03);
+  border-bottom:1px solid rgba(184,92,44,0.12);
+}
+.breadcrumb a{
+  color:var(--clay-dark,#6b3520);
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.breadcrumb a:hover{color:var(--clay-red,#B85C2C);}
+.breadcrumb .sep{margin:0 6px;opacity:0.5;}
+
+/* ════════════════════════════════════════════════════════════════
+   BÚSQUEDA INSTANTÁNEA DEL DIRECTORIO (home)
+   ════════════════════════════════════════════════════════════════ */
+.dir-search-wrap{
+  max-width:480px;
+  margin:0 auto 20px;
+  position:relative;
+}
+.dir-search-wrap input{
+  width:100%;
+  padding:12px 16px 12px 42px;
+  border:2px solid rgba(184,92,44,0.25);
+  border-radius:28px;
+  background:rgba(255,255,255,0.95);
+  font-family:'Inter',sans-serif;
+  font-size:0.95rem;
+  color:#2b2622;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.dir-search-wrap input:focus{
+  outline:none;
+  border-color:var(--clay-red,#B85C2C);
+  box-shadow:0 0 0 3px rgba(184,92,44,0.12);
+}
+.dir-search-wrap input::placeholder{color:#9c8a76;}
+.dir-search-wrap::before{
+  content:'🔍';
+  position:absolute;
+  left:15px;top:50%;
+  transform:translateY(-50%);
+  font-size:1rem;
+  pointer-events:none;
+}
+.dir-search-results{
+  position:absolute;
+  top:calc(100% + 6px);
+  left:0;right:0;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.15);
+  max-height:320px;
+  overflow-y:auto;
+  z-index:25;
+  display:none;
+}
+.dir-search-results.open{display:block;}
+.dir-search-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  text-decoration:none;
+  color:#2b2622;
+  border-bottom:1px solid #f0e8dd;
+  transition:background 0.1s;
+}
+.dir-search-item:last-child{border-bottom:none;}
+.dir-search-item:hover{background:#faf6f0;}
+.dir-search-item .dsi-icon{font-size:1.1rem;flex-shrink:0;}
+.dir-search-item .dsi-name{font-weight:600;font-size:0.88rem;}
+.dir-search-item .dsi-cat{font-size:0.72rem;color:#8a7e72;}
