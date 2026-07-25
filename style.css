@@ -2874,3 +2874,22 @@
 .dir-search-item .dsi-icon{font-size:1.1rem;flex-shrink:0;}
 .dir-search-item .dsi-name{font-weight:600;font-size:0.88rem;}
 .dir-search-item .dsi-cat{font-size:0.72rem;color:#8a7e72;}
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   CROSS-LINKS A app.pomaire360.cl
+   ════════════════════════════════════════════════════════════════ */
+.dir-link-app{color:#c98a34 !important;font-weight:600;}
+.dir-link-app:hover{color:#B85C2C !important;}
+.popup-review{display:inline-block;margin-top:4px;color:#c98a34;font-weight:600;font-size:0.85rem;}
+.popup-review:hover{color:#B85C2C;}
+.cta-app-banner{background:linear-gradient(135deg,#6b3520 0%,#B85C2C 50%,#c98a34 100%);padding:2.5rem 1.5rem;margin:2rem 0 0;}
+.cta-app-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center;text-align:center;}
+.cta-app-icon{font-size:2.5rem;flex-shrink:0;}
+.cta-app-text{flex:1;min-width:240px;color:#fff;}
+.cta-app-text strong{font-family:'Playfair Display',serif;font-size:1.3rem;display:block;margin-bottom:0.4rem;}
+.cta-app-text p{font-size:0.9rem;margin:0;opacity:0.9;line-height:1.5;}
+.cta-app-btn{display:inline-block;background:#fff;color:#6b3520;font-weight:700;padding:0.8rem 1.8rem;border-radius:8px;text-decoration:none;font-size:0.95rem;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;}
+.cta-app-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+@media(max-width:600px){.cta-app-inner{flex-direction:column;}.cta-app-text{text-align:center;}}
