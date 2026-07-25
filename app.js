@@ -1704,7 +1704,7 @@ function buildPopup(p, distKm) {
   const contactHtml = contacts.length ? `<div class="popup-contacts">${contacts.join(' · ')}</div>` : '';
   const noteHtml = (p.note && (typeof window.isPomaireWinter !== 'function' || window.isPomaireWinter())) ? `<p style="margin:.35rem 0;color:#8C3D16;font-weight:700;">${p.note}</p>` : '';
   const hoursHtml = p.hours ? `<p style="margin:.25rem 0;color:#444;">🕒 ${p.hours}</p>` : '';
-  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${hoursHtml}${noteHtml}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
+  return `<div class="map-popup"><strong>${p.icon} ${p.name}</strong>${badge ? '<div class="popup-badge-row">' + badge + '</div>' : ''}<p>${p.desc}</p>${hoursHtml}${noteHtml}${distHtml}${contactHtml}<a href="${gmaps}" target="_blank">Abrir en Google Maps →</a>${p.page ? `<a href="${p.page}" class="popup-page">📄 Ver página →</a>` : ''}<a href="https://app.pomaire360.cl/negocios?q=${encodeURIComponent(p.name)}" target="_blank" class="popup-review">⭐ Ver reseñas</a><a href="#lugar=${p.id}" class="popup-share" onclick="copyPlaceLink(event,'${p.id}');return false;">🔗 Copiar enlace</a></div>`;
 }
 
 function setUserLocation(lat, lng, fromGPS) {
@@ -2126,6 +2126,8 @@ function dirItemHTML(it) {
   if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
   if (it.web) links += `<a href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
   if (it.fb) links += `<a href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
+  // Enlace a app.pomaire360.cl para reseñas
+  links += `<a href="https://app.pomaire360.cl/negocios?q=${encodeURIComponent(it.n)}" target="_blank" rel="noopener" class="dir-link-app">⭐ Reseñas</a>`;
   const featured = it.plan === 'destacado' || it.plan === 'premium';
   let moreBtn = '';
   if (it.page) {
