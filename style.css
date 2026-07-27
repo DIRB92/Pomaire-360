@@ -2895,3 +2895,15 @@
 .cta-app-btn{display:inline-block;background:#fff;color:#6b3520;font-weight:700;padding:0.8rem 1.8rem;border-radius:8px;text-decoration:none;font-size:0.95rem;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;}
 .cta-app-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
 @media(max-width:600px){.cta-app-inner{flex-direction:column;}.cta-app-text{text-align:center;}}
+
+
+
+/* ════════════════════════════════════════════════════════════════
+   RATINGS DINÁMICOS (desde Supabase)
+   ════════════════════════════════════════════════════════════════ */
+.dir-rating{display:inline-flex;align-items:center;gap:4px;margin-left:8px;padding:2px 8px;background:rgba(201,138,52,0.1);border-radius:12px;text-decoration:none;font-size:0.75rem;vertical-align:middle;transition:background 0.15s;}
+.dir-rating:hover{background:rgba(201,138,52,0.2);}
+.dir-rating-stars{color:#c98a34;font-size:0.8rem;letter-spacing:-1px;}
+.dir-rating-num{font-weight:700;color:#6b3520;}
+.dir-rating-count{color:#8a7e72;}
+.popup-rating-badge{margin:6px 0;font-size:0.82rem;color:#4a3c30;}
