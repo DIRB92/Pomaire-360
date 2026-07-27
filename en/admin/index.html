@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR4KWKER0B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZR4KWKER0B', {
+    'anonymize_ip': true,
+    'allow_google_signals': false
+  });
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>Merchant Access — Admin Panel | Pomaire 360</title>
+<meta name="description" content="Access the admin panel for your business on Pomaire 360. Manage your profile, photos, hours and more from your merchant account.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.pomaire360.cl/en/admin/">
+<link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/admin/">
+<link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/admin/">
+<link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/admin/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Merchant Access — Admin Panel">
+<meta property="og:description" content="Log in to your Pomaire 360 merchant account and manage your business.">
+<meta property="og:url" content="https://www.pomaire360.cl/en/admin/">
+<meta property="og:image" content="https://www.pomaire360.cl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Admin panel for Pomaire 360 merchants">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Merchant Access — Admin Panel">
+<meta name="twitter:description" content="Log in to your Pomaire 360 merchant account and manage your business.">
+<meta name="twitter:image" content="https://www.pomaire360.cl/og-image.jpg">
+<link rel="icon" href="https://www.pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://www.pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://www.pomaire360.cl/site.webmanifest">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style.css">
+<style>
+  /* ── ADMIN LOGIN PAGE ──────────────────────────────────── */
+  .admin-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 1.3rem 4.5rem;
+    text-align: center;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(184,92,44,.12), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(107,66,38,.10), transparent 50%),
+      linear-gradient(160deg, #FAF5EE 0%, #F0E8DC 100%);
+  }
+  .admin-hero::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(184,92,44,.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .admin-hero::after {
+    content: "";
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(230,178,70,.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .admin-card {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.14);
+    border-radius: 24px;
+    padding: 2.8rem 2.2rem 2.4rem;
+    box-shadow: 0 16px 48px rgba(90,40,10,.10), 0 4px 12px rgba(90,40,10,.06);
+  }
+
+  .admin-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, var(--clay), var(--clay-dark));
+    border-radius: 50%;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 8px 24px rgba(184,92,44,.25);
+  }
+
+  .admin-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--clay-dark);
+    margin-bottom: .5rem;
+    line-height: 1.15;
+  }
+
+  .admin-card p {
+    color: var(--muted);
+    font-size: .95rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.5;
+  }
+
+  .admin-login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(135deg, var(--clay), var(--clay-dark));
+    color: #fff;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 800;
+    padding: 1rem 1.8rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(184,92,44,.30);
+    transition: transform .18s, box-shadow .18s, background .2s;
+  }
+  .admin-login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(184,92,44,.40);
+  }
+  .admin-login-btn:active {
+    transform: translateY(-1px);
+  }
+  .admin-login-btn svg {
+    width: 20px; height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .admin-divider {
+    margin: 2rem 0 1.5rem;
+    border: none;
+    border-top: 1px solid rgba(184,92,44,.12);
+  }
+
+  .admin-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .8rem;
+    text-align: left;
+  }
+  .admin-feat {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+    font-size: .82rem;
+    color: var(--text);
+    line-height: 1.35;
+  }
+  .admin-feat-icon {
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+    margin-top: .1rem;
+  }
+
+  .admin-help {
+    margin-top: 1.8rem;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  .admin-help a {
+    color: var(--clay);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .admin-help a:hover { color: var(--clay-dark); }
+
+  /* ── APP BADGE (reference to app.pomaire360.cl) ─── */
+  .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: var(--smoke);
+    border: 1px solid rgba(184,92,44,.12);
+    border-radius: 20px;
+    padding: .35rem .9rem;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .app-badge-dot {
+    width: 7px; height: 7px;
+    background: #4A7C59;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(.8); }
+  }
+
+  /* ── PLATFORM PREVIEW ──────────────────────────────── */
+  .platform-preview {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem;
+  }
+  .platform-preview h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--clay-dark);
+    text-align: center;
+    margin-bottom: .5rem;
+  }
+  .platform-preview > p {
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
+    margin-bottom: 1.8rem;
+  }
+  .platform-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+  .platform-step {
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.10);
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(90,40,10,.06);
+    transition: transform .18s, box-shadow .18s;
+  }
+  .platform-step:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(90,40,10,.12);
+  }
+  .platform-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--clay-light), var(--clay));
+    color: #fff;
+    font-weight: 800;
+    font-size: .9rem;
+    border-radius: 50%;
+    margin-bottom: .7rem;
+  }
+  .platform-step h3 {
+    font-size: .95rem;
+    font-weight: 800;
+    color: var(--clay-dark);
+    margin-bottom: .3rem;
+  }
+  .platform-step p {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 520px) {
+    .admin-card { padding: 2rem 1.4rem 1.8rem; }
+    .admin-features { grid-template-columns: 1fr; }
+    .platform-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/en/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Tourism & Culture</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Essentials</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/en/estacionamientos/">🅿️ <span data-t="nav_park">Parking</span></a>
+        <a href="/en/salud/">🏥 <span data-t="nav_health">Health</span></a>
+        <a href="/en/seguridad/">🚔 <span data-t="nav_security">Safety</span></a>
+        <a href="/en/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
+        <a href="/en/gruas/">🔧 <span data-t="nav_gruas">Tow trucks</span></a>
+        <a href="/en/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Things to do</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/en/alfareria/">🏺 <span data-t="nav_pottery">Pottery</span></a>
+        <a href="/en/ruta-del-vino/">🍷 <span data-t="nav_winery">Wine Route</span></a>
+        <a href="/en/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
+        <a href="/en/plaza/">🌳 <span data-t="nav_plaza">Public Square</span></a>
+        <a href="/en/alrededores/">🌄 <span data-t="nav_around">Surroundings</span></a>
+        <a href="/en/comercio/">🛒 <span data-t="nav_shops_g">Shops</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Eat & Sleep</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/en/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
+        <a href="/en/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
+        <a href="/en/plaza/#banos">🚽 <span data-t="nav_banos">Restrooms</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Plan</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/en/#recorrido">🧭 <span data-t="nav_tour">Tour</span></a>
+        <a href="/en/#mapa">🗺️ <span data-t="nav_map">Map</span></a>
+        <a href="/en/#clima">🌤️ <span data-t="nav_weather">Weather</span></a>
+        <a href="/en/#galeria">📸 <span data-t="nav_gallery">Gallery</span></a>
+        <a href="/en/#eventos">📅 <span data-t="nav_events">Events</span></a>
+        <a href="/en/juegos/">🎮 <span data-t="nav_games">Games</span></a>
+        <a href="/en/anunciate/">📣 <span data-t="nav_advertise">Advertise</span></a>
+        <a href="/en/sugerencias/">💬 <span data-t="nav_suggest">Feedback</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/en/#mapa">🗺️ <span data-t="nav_map">Map</span></a>
+    <a class="nav-cta" href="/en/apoyar/">💛 <span data-t="nav_donate">Support</span></a>
+  </div>
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
+      <span id="langCurrentFlag">🇬🇧</span>
+      <span id="langCurrentName">English</span>
+      <span class="lang-arrow">▼</span>
+    </button>
+    <div class="lang-dropdown" role="listbox">
+      <a role="option" class="lang-option" data-lang="es" href="/admin/">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span>
+      </a>
+      <a role="option" class="lang-option lang-active" data-lang="en" href="/en/admin/">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/en/">🏺 Pomaire 360</a><span class="sep">›</span><span>Merchant Access</span></div>
+
+<!-- HERO LOGIN CARD -->
+<section class="admin-hero">
+  <div class="admin-card">
+    <div class="admin-icon">🔐</div>
+    <div class="app-badge">
+      <span class="app-badge-dot"></span>
+      app.pomaire360.cl
+    </div>
+    <h1>Merchant Panel</h1>
+    <p>Manage your business on the Pomaire 360 guide. Update your profile, upload photos, set your hours, and connect with more visitors.</p>
+
+    <a class="admin-login-btn" href="https://app.pomaire360.cl/auth/login" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12H12v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/></svg>
+      Log in to Panel
+    </a>
+
+    <hr class="admin-divider">
+
+    <div class="admin-features">
+      <div class="admin-feat">
+        <span class="admin-feat-icon">📝</span>
+        <span>Edit your profile & description</span>
+      </div>
+      <div class="admin-feat">
+        <span class="admin-feat-icon">📸</span>
+        <span>Upload photos of your business</span>
+      </div>
+      <div class="admin-feat">
+        <span class="admin-feat-icon">🕐</span>
+        <span>Manage your opening hours</span>
+      </div>
+      <div class="admin-feat">
+        <span class="admin-feat-icon">📊</span>
+        <span>View your statistics</span>
+      </div>
+      <div class="admin-feat">
+        <span class="admin-feat-icon">🗺️</span>
+        <span>Location on the map</span>
+      </div>
+      <div class="admin-feat">
+        <span class="admin-feat-icon">🔗</span>
+        <span>Links & social media</span>
+      </div>
+    </div>
+
+    <p class="admin-help">
+      Don't have an account? <a href="/en/anunciate/">Sign up for free</a> · Need help? <a href="https://wa.me/56957517166?text=Hello%2C%20I%20need%20help%20with%20my%20merchant%20account" target="_blank" rel="noopener">Contact us</a>
+    </p>
+  </div>
+</section>
+
+<!-- PLATFORM PREVIEW / STEPS -->
+<section class="platform-preview">
+  <h2>Your business on app.pomaire360.cl</h2>
+  <p>The exclusive platform for Pomaire merchants. Here's how it works:</p>
+
+  <div class="platform-steps">
+    <div class="platform-step">
+      <div class="platform-step-num">1</div>
+      <h3>Create your account</h3>
+      <p>Sign up for free in just a few steps with your email or phone.</p>
+    </div>
+    <div class="platform-step">
+      <div class="platform-step-num">2</div>
+      <h3>Complete your profile</h3>
+      <p>Add photos, hours, a description, and your contact details.</p>
+    </div>
+    <div class="platform-step">
+      <div class="platform-step-num">3</div>
+      <h3>Appear in the guide</h3>
+      <p>Visitors to Pomaire will find you on the map and directory.</p>
+    </div>
+    <div class="platform-step">
+      <div class="platform-step-num">4</div>
+      <h3>Manage & grow</h3>
+      <p>Check your stats, respond to inquiries, and highlight your business.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sub-foot">
+  <a href="/en/">🏺 <span data-t="sub_back">Back to the full Pomaire 360 guide</span> →</a>
+</div>
+
+<script src="/nav.js"></script>
+<script src="/langs.js"></script>
+<script src="/subi18n.js"></script>
+<script src="/a11y.js"></script>
+</body>
+</html>
