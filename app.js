@@ -2195,13 +2195,12 @@ window.closeProfile = closeProfile;
 
 /* ── Selección de plan → WhatsApp ───────────────────────────────────────── */
 function selectPlan(plan) {
-  const msgs = {
-    gratis:    'Hola, quiero sumar mi negocio al plan GRATIS de Pomaire 360 🏺',
-    destacado: 'Hola, quiero contratar el plan DESTACADO ($4.990/mes) para mi negocio en Pomaire 360 ⭐',
-    premium:   'Hola, quiero contratar el plan PREMIUM ($9.990/mes) para mi negocio en Pomaire 360 💎'
-  };
-  const msg = msgs[plan] || 'Hola, quiero que mi negocio aparezca en Pomaire 360';
-  window.open('https://wa.me/56957517166?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  // Redirigir a la plataforma app.pomaire360.cl
+  if (plan === 'gratis') {
+    window.open('https://app.pomaire360.cl/auth/login', '_blank', 'noopener');
+  } else {
+    window.open('https://app.pomaire360.cl/planes', '_blank', 'noopener');
+  }
 }
 window.selectPlan = selectPlan;
 
