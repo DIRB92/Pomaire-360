@@ -5,7 +5,7 @@
 (function () {
   // Configuración — Supabase public API (anon key es segura para el frontend)
   var SUPABASE_URL = 'https://uuskvqtbsvtfsocvjazf.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvY3ZqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMxOTcyMDcsImV4cCI6MjA2ODc3MzIwN30.placeholder';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var APP_URL = 'https://app.pomaire360.cl';
 
   // Cache de ratings (evita múltiples fetches)
