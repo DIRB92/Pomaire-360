@@ -208,6 +208,28 @@
   }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.28); }
 
+  .nav-admin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(255,255,255,.10);
+    color: rgba(255,255,255,.88);
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 600;
+    padding: .4rem .9rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.22);
+    white-space: nowrap;
+    transition: background .15s, color .15s, border-color .15s, transform .12s;
+  }
+  .nav-admin-btn:hover {
+    background: rgba(255,255,255,.92);
+    color: var(--clay-dark);
+    border-color: rgba(255,255,255,.9);
+    transform: translateY(-1px);
+  }
+
   .nav-map-btn {
     display: inline-flex;
     align-items: center;
