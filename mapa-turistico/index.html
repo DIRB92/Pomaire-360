@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#B85C2C">
+<title>Mapa Turístico de Pomaire — Atracciones, restaurantes, alfarería y más</title>
+<meta name="description" content="Mapa turístico interactivo de Pomaire con todas las atracciones: alfarería, restaurantes, alojamientos, estacionamientos, servicios y más. Planifica tu visita al pueblo alfarero de Chile.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.pomaire360.cl/mapa-turistico/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Fonts & Styles -->
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="/mapa-turistico/mapa-turistico.css">
+
+<!-- Scripts -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script defer src="/nav.js"></script>
+<script defer src="/mapa-turistico/mapa-turistico.js"></script>
+</head>
+<body>
+
+<!-- NAV (misma estructura del sitio) -->
+<nav>
+  <a class="nav-brand" href="/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline">Turismo & Cultura</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 Esenciales <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/estacionamientos/">🅿️ Estacionar</a>
+        <a href="/salud/">🏥 Salud</a>
+        <a href="/seguridad/">🚔 Seguridad</a>
+        <a href="/servicios/">🛒 Servicios</a>
+        <a href="/gruas/">🔧 Grúas y mecánicos</a>
+        <a href="/locomocion/">🚌 Locomoción</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 Qué hacer <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/alfareria/">🏺 Alfarería</a>
+        <a href="/ruta-del-vino/">🍷 Ruta del Vino</a>
+        <a href="/que-ver/">✨ Qué ver</a>
+        <a href="/plaza/">🌳 Plaza Pública</a>
+        <a href="/alrededores/">🌄 Alrededores</a>
+        <a href="/comercio/">🛒 Comercio</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Comer y dormir <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/gastronomia/">🍽️ Comer</a>
+        <a href="/alojamientos/">🛏️ Alojamientos</a>
+        <a href="/plaza/#banos">🚽 Baños</a>
+      </div>
+    </div>
+    <a class="nav-map-btn" href="/mapa-turistico/" aria-current="page">🗺️ Mapa Turístico</a>
+    <a class="nav-cta" href="/apoyar/">💛 Apoyar</a>
+  </div>
+</nav>
+
+<!-- HERO HEADER -->
+<header class="map-hero">
+  <div class="map-hero-inner">
+    <h1>🗺️ Mapa Turístico de Pomaire</h1>
+    <p>Explora todas las atracciones del pueblo alfarero. Haz clic en las categorías para filtrar o en los marcadores para ver detalles.</p>
+  </div>
+</header>
+
+<!-- MAP CONTAINER -->
+<main class="map-page">
+
+  <!-- Category Filter Bar -->
+  <div class="map-category-bar">
+    <button class="cat-btn active" data-category="all" onclick="filterCategory('all')">
+      <span class="cat-icon cat-icon-all">✦</span>
+      <span class="cat-label">Todos</span>
+    </button>
+    <button class="cat-btn" data-category="pottery" onclick="filterCategory('pottery')">
+      <span class="cat-icon cat-icon-pottery">🏺</span>
+      <span class="cat-label">Alfarería</span>
+    </button>
+    <button class="cat-btn" data-category="food" onclick="filterCategory('food')">
+      <span class="cat-icon cat-icon-food">🍽️</span>
+      <span class="cat-label">Restaurantes</span>
+    </button>
+    <button class="cat-btn" data-category="lodging" onclick="filterCategory('lodging')">
+      <span class="cat-icon cat-icon-lodging">🛏️</span>
+      <span class="cat-label">Alojamiento</span>
+    </button>
+    <button class="cat-btn" data-category="parking" onclick="filterCategory('parking')">
+      <span class="cat-icon cat-icon-parking">🅿️</span>
+      <span class="cat-label">Estacionar</span>
+    </button>
+    <button class="cat-btn" data-category="health" onclick="filterCategory('health')">
+      <span class="cat-icon cat-icon-health">🏥</span>
+      <span class="cat-label">Salud</span>
+    </button>
+    <button class="cat-btn" data-category="security" onclick="filterCategory('security')">
+      <span class="cat-icon cat-icon-security">🚔</span>
+      <span class="cat-label">Seguridad</span>
+    </button>
+    <button class="cat-btn" data-category="services" onclick="filterCategory('services')">
+      <span class="cat-icon cat-icon-services">⛪</span>
+      <span class="cat-label">Servicios</span>
+    </button>
+    <button class="cat-btn" data-category="highlight" onclick="filterCategory('highlight')">
+      <span class="cat-icon cat-icon-highlight">⭐</span>
+      <span class="cat-label">Destacados</span>
+    </button>
+    <button class="cat-btn" data-category="around" onclick="filterCategory('around')">
+      <span class="cat-icon cat-icon-around">🌾</span>
+      <span class="cat-label">Alrededores</span>
+    </button>
+  </div>
+
+  <!-- Map + Legend wrapper -->
+  <div class="map-wrapper">
+    <div id="touristMap" class="tourist-map"></div>
+
+    <!-- Floating Legend (like the image) -->
+    <div class="map-legend" id="mapLegend">
+      <div class="legend-header">
+        <h3>Atracciones turísticas</h3>
+        <button class="legend-toggle" id="legendToggle" onclick="toggleLegend()" aria-label="Minimizar leyenda">−</button>
+      </div>
+      <div class="legend-body" id="legendBody">
+        <div class="legend-item" data-category="pottery" onclick="filterCategory('pottery')">
+          <span class="legend-marker legend-pottery"></span>
+          <span class="legend-text">Alfarería y talleres</span>
+          <span class="legend-count" id="count-pottery">0</span>
+        </div>
+        <div class="legend-item" data-category="food" onclick="filterCategory('food')">
+          <span class="legend-marker legend-food"></span>
+          <span class="legend-text">Restaurantes</span>
+          <span class="legend-count" id="count-food">0</span>
+        </div>
+        <div class="legend-item" data-category="lodging" onclick="filterCategory('lodging')">
+          <span class="legend-marker legend-lodging"></span>
+          <span class="legend-text">Alojamiento</span>
+          <span class="legend-count" id="count-lodging">0</span>
+        </div>
+        <div class="legend-item" data-category="parking" onclick="filterCategory('parking')">
+          <span class="legend-marker legend-parking"></span>
+          <span class="legend-text">Estacionamientos</span>
+          <span class="legend-count" id="count-parking">0</span>
+        </div>
+        <div class="legend-item" data-category="health" onclick="filterCategory('health')">
+          <span class="legend-marker legend-health"></span>
+          <span class="legend-text">Salud</span>
+          <span class="legend-count" id="count-health">0</span>
+        </div>
+        <div class="legend-item" data-category="security" onclick="filterCategory('security')">
+          <span class="legend-marker legend-security"></span>
+          <span class="legend-text">Seguridad</span>
+          <span class="legend-count" id="count-security">0</span>
+        </div>
+        <div class="legend-item" data-category="services" onclick="filterCategory('services')">
+          <span class="legend-marker legend-services"></span>
+          <span class="legend-text">Servicios</span>
+          <span class="legend-count" id="count-services">0</span>
+        </div>
+        <div class="legend-item" data-category="highlight" onclick="filterCategory('highlight')">
+          <span class="legend-marker legend-highlight"></span>
+          <span class="legend-text">Destacados</span>
+          <span class="legend-count" id="count-highlight">0</span>
+        </div>
+        <div class="legend-item" data-category="around" onclick="filterCategory('around')">
+          <span class="legend-marker legend-around"></span>
+          <span class="legend-text">Alrededores</span>
+          <span class="legend-count" id="count-around">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Locate button -->
+    <button class="map-locate-btn" id="locateBtn" onclick="locateUser()" title="Mi ubicación">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+    </button>
+
+    <!-- Map style toggle -->
+    <div class="map-style-toggle">
+      <button class="style-btn active" data-style="streets" onclick="changeMapStyle('streets')" title="Calles">🗺️</button>
+      <button class="style-btn" data-style="satellite" onclick="changeMapStyle('satellite')" title="Satélite">🛰️</button>
+    </div>
+  </div>
+
+  <!-- Places list below map -->
+  <section class="places-section">
+    <h2>📍 Lugares en el mapa <span class="places-count" id="placesCount"></span></h2>
+    <div class="places-grid" id="placesGrid"></div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="map-footer">
+  <p>🏺 <a href="/">Pomaire 360</a> — Guía turística del pueblo alfarero de Chile</p>
+  <p><a href="/#mapa">← Volver al mapa principal</a></p>
+</footer>
+
+</body>
+</html>

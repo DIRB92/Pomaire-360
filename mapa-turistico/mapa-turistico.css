@@ -1,0 +1,540 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   MAPA TURÍSTICO DE POMAIRE — Estilos dedicados
+   Diseño visual inspirado en mapas turísticos ilustrados con iconos de
+   categorías estilizados y leyenda flotante.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ── HERO ──────────────────────────────────────────────── */
+.map-hero {
+  background: linear-gradient(135deg, #B85C2C 0%, #8C3D16 60%, #6B4226 100%);
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.map-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L35 15 L30 25 L25 15Z' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat;
+  pointer-events: none;
+}
+.map-hero-inner {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.map-hero h1 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: .5rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.map-hero p {
+  color: rgba(255,255,255,.88);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── MAP PAGE ─────────────────────────────────────────── */
+.map-page {
+  max-width: 100%;
+  min-height: 100vh;
+  background: var(--cream, #FAF5EE);
+}
+
+/* ── CATEGORY FILTER BAR ──────────────────────────────── */
+.map-category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(184,92,44,.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  position: sticky;
+  top: 0;
+  z-index: 800;
+}
+.cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .5rem 1rem;
+  border-radius: 24px;
+  border: 2px solid rgba(184,92,44,.15);
+  background: #fff;
+  color: var(--text, #2D1A0A);
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+  white-space: nowrap;
+}
+.cat-btn:hover {
+  border-color: var(--clay, #B85C2C);
+  background: rgba(184,92,44,.06);
+  transform: translateY(-1px);
+}
+.cat-btn.active {
+  background: var(--clay, #B85C2C);
+  border-color: var(--clay, #B85C2C);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(184,92,44,.35);
+  transform: translateY(-1px);
+}
+.cat-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ── MAP WRAPPER ──────────────────────────────────────── */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 450px;
+  max-height: 750px;
+}
+.tourist-map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ── FLOATING LEGEND ──────────────────────────────────── */
+.map-legend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.08);
+  min-width: 220px;
+  max-width: 280px;
+  overflow: hidden;
+  transition: all .25s ease;
+  border: 1px solid rgba(184,92,44,.1);
+}
+.map-legend.collapsed {
+  min-width: auto;
+}
+.map-legend.collapsed .legend-body {
+  display: none;
+}
+.legend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 1rem .7rem;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.legend-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--clay-dark, #8C3D16);
+  margin: 0;
+}
+.legend-toggle {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: rgba(184,92,44,.1);
+  color: var(--clay-dark, #8C3D16);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+}
+.legend-toggle:hover {
+  background: rgba(184,92,44,.2);
+}
+.legend-body {
+  padding: .6rem .8rem .9rem;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .45rem .5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.legend-item:hover {
+  background: rgba(184,92,44,.06);
+}
+.legend-marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  border: 2px solid #fff;
+}
+.legend-text {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text, #2D1A0A);
+  flex: 1;
+}
+.legend-count {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--muted, #7A5C40);
+  background: rgba(0,0,0,.05);
+  padding: .15rem .45rem;
+  border-radius: 10px;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* Legend marker colors per category */
+.legend-pottery   { background: #B85C2C; }
+.legend-food      { background: #D4622A; }
+.legend-lodging   { background: #2F7A6B; }
+.legend-parking   { background: #3B7DD8; }
+.legend-health    { background: #E25555; }
+.legend-security  { background: #5B6ABF; }
+.legend-services  { background: #7A5C40; }
+.legend-highlight { background: #E6B246; }
+.legend-around    { background: #4A7C59; }
+
+/* Legend marker inner icons (via ::after pseudo) */
+.legend-pottery::after   { content: '🏺'; font-size: .85rem; }
+.legend-food::after      { content: '🍽️'; font-size: .85rem; }
+.legend-lodging::after   { content: '🛏️'; font-size: .85rem; }
+.legend-parking::after   { content: '🅿️'; font-size: .85rem; }
+.legend-health::after    { content: '🏥'; font-size: .8rem; }
+.legend-security::after  { content: '🚔'; font-size: .8rem; }
+.legend-services::after  { content: '⛪'; font-size: .85rem; }
+.legend-highlight::after { content: '⭐'; font-size: .8rem; }
+.legend-around::after    { content: '🌾'; font-size: .85rem; }
+
+/* ── MAP MARKERS (Leaflet divIcon) ────────────────────── */
+.marker-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,.3), 0 0 0 1px rgba(0,0,0,.05);
+  font-size: 1rem;
+  transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+  cursor: pointer;
+}
+.marker-icon:hover {
+  transform: scale(1.25);
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+  z-index: 9999 !important;
+}
+.marker-icon.is-featured {
+  border-color: #E6B246;
+  box-shadow: 0 0 0 3px rgba(230,178,70,.4), 0 4px 14px rgba(0,0,0,.35);
+}
+
+/* Category colors for markers */
+.marker-pottery   { background: #B85C2C; }
+.marker-food      { background: #D4622A; }
+.marker-lodging   { background: #2F7A6B; }
+.marker-parking   { background: #3B7DD8; }
+.marker-health    { background: #E25555; }
+.marker-security  { background: #5B6ABF; }
+.marker-services  { background: #7A5C40; }
+.marker-highlight { background: #E6B246; }
+.marker-around    { background: #4A7C59; }
+
+/* Marker pulse animation for user location */
+.user-marker {
+  width: 18px;
+  height: 18px;
+  background: #3B82F6;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(59,130,246,.5);
+  animation: pulse-loc 2s ease infinite;
+}
+@keyframes pulse-loc {
+  0% { box-shadow: 0 0 0 0 rgba(59,130,246,.5); }
+  70% { box-shadow: 0 0 0 14px rgba(59,130,246,0); }
+  100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+}
+
+/* ── LOCATE BUTTON ────────────────────────────────────── */
+.map-locate-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--clay-dark, #8C3D16);
+  transition: transform .15s, box-shadow .15s;
+}
+.map-locate-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+}
+
+/* ── MAP STYLE TOGGLE ─────────────────────────────────── */
+.map-style-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+.style-btn {
+  border: none;
+  background: #fff;
+  padding: .5rem .75rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.style-btn.active {
+  background: var(--clay, #B85C2C);
+}
+.style-btn:hover:not(.active) {
+  background: #f0e8dc;
+}
+
+/* ── POPUP STYLES ─────────────────────────────────────── */
+.leaflet-popup-content-wrapper {
+  border-radius: 14px !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.2) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.leaflet-popup-content {
+  margin: 0 !important;
+  min-width: 220px;
+}
+.popup-card {
+  padding: 1rem 1.1rem;
+}
+.popup-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--clay-dark, #8C3D16);
+  margin: 0 0 .3rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.popup-card .popup-cat-badge {
+  font-size: .7rem;
+  padding: .15rem .5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  display: inline-block;
+  margin-bottom: .4rem;
+}
+.popup-card p {
+  font-size: .85rem;
+  color: #555;
+  margin: .2rem 0;
+  line-height: 1.4;
+}
+.popup-card .popup-addr {
+  font-size: .8rem;
+  color: var(--muted, #7A5C40);
+}
+.popup-card .popup-links {
+  margin-top: .6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.popup-card .popup-links a {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--clay, #B85C2C);
+  text-decoration: none;
+  padding: .25rem .55rem;
+  border-radius: 8px;
+  background: rgba(184,92,44,.08);
+  transition: background .15s, color .15s;
+}
+.popup-card .popup-links a:hover {
+  background: var(--clay, #B85C2C);
+  color: #fff;
+}
+
+/* ── PLACES SECTION ───────────────────────────────────── */
+.places-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+.places-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clay-dark, #8C3D16);
+  margin-bottom: 1.2rem;
+}
+.places-count {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--muted, #7A5C40);
+}
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.place-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.04);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+}
+.place-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.place-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.place-card-info {
+  flex: 1;
+  min-width: 0;
+}
+.place-card-info h4 {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text, #2D1A0A);
+  margin: 0 0 .2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.place-card-info p {
+  font-size: .78rem;
+  color: var(--muted, #7A5C40);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ── FOOTER ───────────────────────────────────────────── */
+.map-footer {
+  background: var(--earth, #6B4226);
+  color: rgba(255,255,255,.85);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: .85rem;
+}
+.map-footer a {
+  color: #FFDDAA;
+  text-decoration: none;
+  font-weight: 600;
+}
+.map-footer a:hover { text-decoration: underline; }
+.map-footer p { margin: .3rem 0; }
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .map-hero h1 { font-size: 1.5rem; }
+  .map-hero p { font-size: .88rem; }
+
+  .map-category-bar {
+    gap: .35rem;
+    padding: .75rem 1rem;
+  }
+  .cat-btn {
+    padding: .4rem .7rem;
+    font-size: .78rem;
+    gap: .3rem;
+  }
+  .cat-icon { font-size: .95rem; }
+
+  .map-wrapper {
+    height: 60vh;
+    min-height: 350px;
+  }
+
+  .map-legend {
+    top: auto;
+    bottom: 5rem;
+    right: .5rem;
+    left: auto;
+    min-width: 180px;
+    max-width: 200px;
+  }
+  .legend-header h3 { font-size: .82rem; }
+  .legend-marker { width: 26px; height: 26px; }
+  .legend-marker::after { font-size: .7rem !important; }
+  .legend-text { font-size: .78rem; }
+
+  .map-locate-btn { bottom: 5.5rem; left: .5rem; }
+  .map-style-toggle { bottom: 5.5rem; right: .5rem; }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-hero { padding: 1.5rem 1rem 1.2rem; }
+  .map-hero h1 { font-size: 1.25rem; }
+
+  .cat-label { display: none; }
+  .cat-btn { padding: .45rem .6rem; }
+  .cat-icon { font-size: 1.2rem; }
+
+  .map-legend {
+    min-width: 160px;
+    max-width: 170px;
+  }
+}
