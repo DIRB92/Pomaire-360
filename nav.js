@@ -120,6 +120,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    Hero slideshow — rota las fotos de fondo del hero cada pocos segundos.
    Respeta prefers-reduced-motion (deja fija la primera foto sin animar).
+   Lazy-loads background images from data-bg on first activation.
    ══════════════════════════════════════════════════════════════════════════ */
 (function () {
   function initHeroSlideshow() {
@@ -129,10 +130,25 @@
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return; // deja solo la primera foto (is-active), sin rotar
 
+    // Preload next slide after a short delay to not block initial render
+    setTimeout(function() {
+      slides.forEach(function(slide) {
+        var bg = slide.getAttribute('data-bg');
+        if (bg && !slide.style.backgroundImage) {
+          slide.style.backgroundImage = 'url(' + bg + ')';
+        }
+      });
+    }, 1500);
+
     var current = 0;
     setInterval(function () {
       slides[current].classList.remove('is-active');
       current = (current + 1) % slides.length;
+      // Ensure background is loaded before showing
+      var bg = slides[current].getAttribute('data-bg');
+      if (bg && !slides[current].style.backgroundImage) {
+        slides[current].style.backgroundImage = 'url(' + bg + ')';
+      }
       slides[current].classList.add('is-active');
     }, 5000);
   }
