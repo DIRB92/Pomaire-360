@@ -143,3 +143,42 @@
     initHeroSlideshow();
   }
 })();
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BOTÓN "ACCESO COMERCIANTES" — Inyectado dinámicamente en la nav.
+   Se muestra como un enlace discreto al lado del CTA "Apoyar", que lleva
+   a /admin/ (la página puente hacia app.pomaire360.cl/auth/login).
+   ══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  function injectAdminLink() {
+    var navWrap = document.getElementById('navGroups');
+    if (!navWrap) return;
+
+    // Evitar doble inyección
+    if (navWrap.querySelector('.nav-admin-btn')) return;
+
+    // No inyectar en la propia página /admin/ (ya está implícito)
+    if (window.location.pathname.indexOf('/admin') === 0) return;
+
+    var link = document.createElement('a');
+    link.className = 'nav-admin-btn';
+    link.href = '/admin/';
+    link.innerHTML = '🔐 <span data-t="nav_admin">Comerciantes</span>';
+    link.title = 'Acceso al panel de comerciantes';
+
+    // Insertar después del CTA de Apoyar
+    var cta = navWrap.querySelector('.nav-cta');
+    if (cta && cta.nextSibling) {
+      navWrap.insertBefore(link, cta.nextSibling);
+    } else {
+      navWrap.appendChild(link);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectAdminLink);
+  } else {
+    injectAdminLink();
+  }
+})();
