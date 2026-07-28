@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fichas de Contacto - Pomaire 360</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; padding: 20px; }
+.header { text-align: center; margin-bottom: 30px; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.header h1 { color: #2c3e50; margin-bottom: 10px; }
+.header p { color: #666; }
+.stats { display: flex; gap: 15px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+.stat { background: #ecf0f1; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+.filters { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+.filter-btn { padding: 8px 16px; border: none; border-radius: 20px; cursor: pointer; font-size: 13px; background: #ddd; transition: all 0.2s; }
+.filter-btn.active, .filter-btn:hover { background: #3498db; color: #fff; }
+.fichas-grid { max-width: 900px; margin: 0 auto; }
+.ficha { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); transition: transform 0.2s; }
+.ficha:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.ficha-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ficha-num { background: #2c3e50; color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 700; }
+.ficha-cat { font-size: 13px; color: #666; }
+.ficha-status { margin-left: auto; font-size: 13px; }
+.ficha-name { font-size: 18px; color: #2c3e50; margin-bottom: 8px; }
+.ficha-addr, .ficha-tel, .ficha-ig, .ficha-tag { font-size: 14px; color: #555; margin-bottom: 4px; }
+.ficha-actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+.btn-wa { display: inline-block; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s; }
+.btn-wa:hover { background: #128C7E; }
+.btn-done { background: #27ae60; color: #fff; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 13px; }
+.btn-skip { background: #95a5a6; color: #fff; border: none; padding: 10px 16px; border-radius: 25px; cursor: pointer; font-size: 13px; }
+.no-tel { color: #e74c3c; font-style: italic; font-size: 13px; }
+.ig-link { color: #c13584; text-decoration: none; font-weight: 500; }
+.ig-link:hover { text-decoration: underline; }
+.done { opacity: 0.5; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📋 Fichas de Contacto - Pomaire 360</h1>
+  <p>Haz clic en "Enviar WhatsApp" para abrir la conversación con el mensaje pre-escrito</p>
+  <div class="stats">
+    <span class="stat">📊 Total: 97</span>
+    <span class="stat">📞 Con teléfono: 92</span>
+    <span class="stat" id="stat-done">✅ Contactados: 0</span>
+    <span class="stat" id="stat-pending">⏳ Pendientes: 92</span>
+  </div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterBy('all')">Todos</button>
+  <button class="filter-btn" onclick="filterBy('Taller de greda')">🎨 Talleres</button>
+  <button class="filter-btn" onclick="filterBy('Demostración en torno')">🌀 Demos</button>
+  <button class="filter-btn" onclick="filterBy('Artesano/Tienda de greda')">🏺 Artesanos</button>
+  <button class="filter-btn" onclick="filterBy('Restaurante')">🍽️ Restaurantes</button>
+  <button class="filter-btn" onclick="filterBy('done')">✅ Contactados</button>
+  <button class="filter-btn" onclick="filterBy('pending')">⏳ Pendientes</button>
+</div>
+
+<div class="fichas-grid">
+
+    <div class="ficha" style="border-left: 4px solid #e67e22">
+      <div class="ficha-header">
+        <span class="ficha-num">#1</span>
+        <span class="ficha-cat">🎨 Taller de greda</span>
+        <span class="ficha-status" id="status-0">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Granja Educativa Alfarera Greda</h3>
+      <p class="ficha-addr">📍 Bernardo O'Higgins 260</p>
+      <p class="ficha-tel">📞 +56998793533</p>
+      <p class="ficha-ig"><a href="https://instagram.com/granjaalfarera" target="_blank" class="ig-link">📷 @granjaalfarera</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56998793533?text=%C2%A1Hola%20Granja%20Educativa%20Alfarera%20Greda!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(0)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(0)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #e67e22">
+      <div class="ficha-header">
+        <span class="ficha-num">#2</span>
+        <span class="ficha-cat">🎨 Taller de greda</span>
+        <span class="ficha-status" id="status-1">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Espacio Greda</h3>
+      <p class="ficha-addr">📍 Arturo Prat 352</p>
+      <p class="ficha-tel">📞 +56920854538</p>
+      <p class="ficha-ig"><a href="https://instagram.com/espaciogreda.cl" target="_blank" class="ig-link">📷 @espaciogreda.cl</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56920854538?text=%C2%A1Hola%20Espacio%20Greda!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(1)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(1)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #e67e22">
+      <div class="ficha-header">
+        <span class="ficha-num">#3</span>
+        <span class="ficha-cat">🎨 Taller de greda</span>
+        <span class="ficha-status" id="status-2">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Taller del Sol</h3>
+      <p class="ficha-addr">📍 Arturo Prat 237 B</p>
+      <p class="ficha-tel">📞 +56945203264</p>
+      <p class="ficha-ig"><a href="https://instagram.com/tallerdelsol_pomaire" target="_blank" class="ig-link">📷 @tallerdelsol_pomaire</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56945203264?text=%C2%A1Hola%20Taller%20del%20Sol!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(2)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(2)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #e67e22">
+      <div class="ficha-header">
+        <span class="ficha-num">#4</span>
+        <span class="ficha-cat">🎨 Taller de greda</span>
+        <span class="ficha-status" id="status-3">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Taller Barros</h3>
+      <p class="ficha-addr">📍 Guillermo Barros 150</p>
+      <p class="ficha-tel">📞 +56950432417</p>
+      <p class="ficha-ig"><a href="https://instagram.com/taller.barros.pomaire" target="_blank" class="ig-link">📷 @taller.barros.pomaire</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56950432417?text=%C2%A1Hola%20Taller%20Barros!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(3)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(3)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #8e44ad">
+      <div class="ficha-header">
+        <span class="ficha-num">#5</span>
+        <span class="ficha-cat">🌀 Demostración en torno</span>
+        <span class="ficha-status" id="status-4">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Juan Pablo Muñoz</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 164</p>
+      <p class="ficha-tel">📞 +56950821246</p>
+      <p class="ficha-ig"><a href="https://instagram.com/pablo.artesanodepomaire" target="_blank" class="ig-link">📷 @pablo.artesanodepomaire</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56950821246?text=%C2%A1Hola%20Juan%20Pablo%20Mu%C3%B1oz!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(4)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(4)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #8e44ad">
+      <div class="ficha-header">
+        <span class="ficha-num">#6</span>
+        <span class="ficha-cat">🌀 Demostración en torno</span>
+        <span class="ficha-status" id="status-5">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Pascual Gómez</h3>
+      <p class="ficha-addr">📍 Arturo Prat 352</p>
+      <p class="ficha-tel">📞 +56989075630</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56989075630?text=%C2%A1Hola%20Pascual%20G%C3%B3mez!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(5)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(5)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #8e44ad">
+      <div class="ficha-header">
+        <span class="ficha-num">#7</span>
+        <span class="ficha-cat">🌀 Demostración en torno</span>
+        <span class="ficha-status" id="status-6">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Jorge Garrido</h3>
+      <p class="ficha-addr">📍 Bernardo O'Higgins 260</p>
+      <p class="ficha-tel">📞 +56984144279</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56984144279?text=%C2%A1Hola%20Jorge%20Garrido!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(6)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(6)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #8e44ad">
+      <div class="ficha-header">
+        <span class="ficha-num">#8</span>
+        <span class="ficha-cat">🌀 Demostración en torno</span>
+        <span class="ficha-status" id="status-7">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Pericote Artesanía</h3>
+      <p class="ficha-addr">📍 Guillermo Barros 150</p>
+      <p class="ficha-tel">📞 +56940869289</p>
+      <p class="ficha-ig"><a href="https://instagram.com/el.rinconcito.alfarero" target="_blank" class="ig-link">📷 @el.rinconcito.alfarero</a></p>
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56940869289?text=%C2%A1Hola%20El%20Pericote%20Artesan%C3%ADa!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(7)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(7)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#9</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-8">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Camila y Diego</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 29</p>
+      <p class="ficha-tel">📞 +56961277310</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56961277310?text=%C2%A1Hola%20Camila%20y%20Diego!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(8)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(8)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#10</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-9">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Isolina Guzmán Araya</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 59</p>
+      <p class="ficha-tel">📞 +56987667822</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56987667822?text=%C2%A1Hola%20Isolina%20Guzm%C3%A1n%20Araya!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(9)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(9)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#11</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-10">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Los Gemelos</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 455</p>
+      <p class="ficha-tel">📞 +56962759986</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56962759986?text=%C2%A1Hola%20Cer%C3%A1micas%20Los%20Gemelos!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(10)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(10)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#12</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-11">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Juana García</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 347</p>
+      <p class="ficha-tel">📞 +56992174717</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56992174717?text=%C2%A1Hola%20Juana%20Garc%C3%ADa!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(11)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(11)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#13</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-12">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Familia Gatica Catalán</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 252, Galería Catalán Local 26</p>
+      <p class="ficha-tel">📞 +56982814690</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56982814690?text=%C2%A1Hola%20Familia%20Gatica%20Catal%C3%A1n!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(12)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(12)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#14</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-13">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Isabel R. & Eduardo G.</h3>
+      <p class="ficha-addr">📍 Roberto Bravo esq. 18 de Septiembre</p>
+      <p class="ficha-tel">📞 +56966055530</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56966055530?text=%C2%A1Hola%20Isabel%20R.%20%26%20Eduardo%20G.!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(13)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(13)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#15</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-14">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Gredas Nene La Ruca</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 44B</p>
+      <p class="ficha-tel">📞 +56988291191</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56988291191?text=%C2%A1Hola%20Gredas%20Nene%20La%20Ruca!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(14)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(14)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#16</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-15">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Valentina</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 88-A</p>
+      <p class="ficha-tel">📞 +56973887858</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56973887858?text=%C2%A1Hola%20Cer%C3%A1micas%20Valentina!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(15)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(15)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#17</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-16">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Larita</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 465</p>
+      <p class="ficha-tel">📞 +56997335365</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56997335365?text=%C2%A1Hola%20El%20Larita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(16)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(16)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#18</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-17">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Pachamama Taller</h3>
+      <p class="ficha-addr">📍 Arturo Prat 338 B</p>
+      <p class="ficha-tel">📞 +56954042248</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56954042248?text=%C2%A1Hola%20Pachamama%20Taller!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(17)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(17)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#19</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-18">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Eduardo Pardo Z.</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 272</p>
+      <p class="ficha-tel">📞 +56999498024</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56999498024?text=%C2%A1Hola%20Eduardo%20Pardo%20Z.!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(18)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(18)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#20</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-19">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Nano Santibáñez</h3>
+      <p class="ficha-addr">📍 San Antonio 39</p>
+      <p class="ficha-tel">📞 +56996212055</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56996212055?text=%C2%A1Hola%20Nano%20Santib%C3%A1%C3%B1ez!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(19)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(19)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#21</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-20">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Roberto Bravo</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 447</p>
+      <p class="ficha-tel">📞 +56977750106</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56977750106?text=%C2%A1Hola%20Roberto%20Bravo!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(20)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(20)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#22</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-21">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Aracely</h3>
+      <p class="ficha-addr">📍 General Baquedano esq. San Antonio</p>
+      <p class="ficha-tel">📞 +56983342757</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56983342757?text=%C2%A1Hola%20Aracely!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(21)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(21)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#23</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-22">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Lámparas Irarrazaval Diseños</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 53 A</p>
+      <p class="ficha-tel">📞 +56982851797</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56982851797?text=%C2%A1Hola%20L%C3%A1mparas%20Irarrazaval%20Dise%C3%B1os!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(22)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(22)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#24</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-23">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Jesús Mi Alfarero</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 221</p>
+      <p class="ficha-tel">📞 +56997568575</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56997568575?text=%C2%A1Hola%20Jes%C3%BAs%20Mi%20Alfarero!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(23)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(23)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#25</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-24">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámica El Arbolito</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 510</p>
+      <p class="ficha-tel">📞 +56993733512</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56993733512?text=%C2%A1Hola%20Cer%C3%A1mica%20El%20Arbolito!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(24)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(24)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#26</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-25">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Taller Edi Art</h3>
+      <p class="ficha-addr">📍 General Baquedano 316</p>
+      <p class="ficha-tel">📞 +56979340584</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56979340584?text=%C2%A1Hola%20Taller%20Edi%20Art!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(25)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(25)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#27</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-26">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Miguel Salinas Baeza</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 13B</p>
+      <p class="ficha-tel">📞 +56994560850</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56994560850?text=%C2%A1Hola%20Miguel%20Salinas%20Baeza!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(26)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(26)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#28</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-27">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Raquelita</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 88</p>
+      <p class="ficha-tel">📞 +56995169386</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56995169386?text=%C2%A1Hola%20La%20Raquelita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(27)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(27)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#29</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-28">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Taller San José</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 460</p>
+      <p class="ficha-tel">📞 +56982117144</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56982117144?text=%C2%A1Hola%20Taller%20San%20Jos%C3%A9!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(28)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(28)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#30</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-29">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámica y Decoración Inelia</h3>
+      <p class="ficha-addr">📍 Arturo Prat 338</p>
+      <p class="ficha-tel">📞 +56975182329</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56975182329?text=%C2%A1Hola%20Cer%C3%A1mica%20y%20Decoraci%C3%B3n%20Inelia!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(29)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(29)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#31</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-30">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">San Marcos</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 267</p>
+      <p class="ficha-tel">📞 +56953160316</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56953160316?text=%C2%A1Hola%20San%20Marcos!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(30)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(30)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#32</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-31">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Segundo Enrique Trujillo S.</h3>
+      <p class="ficha-addr">📍 San Antonio 10</p>
+      <p class="ficha-tel">📞 +56985669982</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56985669982?text=%C2%A1Hola%20Segundo%20Enrique%20Trujillo%20S.!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(31)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(31)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#33</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-32">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Rosa y Marcela</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 414</p>
+      <p class="ficha-tel">📞 +56985039992</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56985039992?text=%C2%A1Hola%20Rosa%20y%20Marcela!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(32)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(32)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#34</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-33">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Gredas Ximena</h3>
+      <p class="ficha-addr">📍 San Antonio esq. Arturo Prat</p>
+      <p class="ficha-tel">📞 +56996687585</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56996687585?text=%C2%A1Hola%20Gredas%20Ximena!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(33)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(33)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#35</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-34">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámica Badi</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 49</p>
+      <p class="ficha-tel">📞 +56987584538</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56987584538?text=%C2%A1Hola%20Cer%C3%A1mica%20Badi!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(34)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(34)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#36</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-35">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Fonola</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 185</p>
+      <p class="ficha-tel">📞 +56992467532</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56992467532?text=%C2%A1Hola%20Cer%C3%A1micas%20Fonola!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(35)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(35)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#37</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-36">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Palmera</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 502</p>
+      <p class="ficha-tel">📞 +56987854529</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56987854529?text=%C2%A1Hola%20La%20Palmera!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(36)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(36)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#38</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-37">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Doña Laurita</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 407</p>
+      <p class="ficha-tel">📞 +56961651455</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56961651455?text=%C2%A1Hola%20Do%C3%B1a%20Laurita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(37)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(37)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#39</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-38">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Gredas Flores</h3>
+      <p class="ficha-addr">📍 San Antonio 335</p>
+      <p class="ficha-tel">📞 +56951123005</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56951123005?text=%C2%A1Hola%20Gredas%20Flores!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(38)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(38)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#40</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-39">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas El Cheo</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 56 A</p>
+      <p class="ficha-tel">📞 +56991661194</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56991661194?text=%C2%A1Hola%20Cer%C3%A1micas%20El%20Cheo!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(39)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(39)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#41</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-40">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Tania</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 454</p>
+      <p class="ficha-tel">📞 +56962577048</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56962577048?text=%C2%A1Hola%20Cer%C3%A1micas%20Tania!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(40)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(40)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#42</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-41">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Enrique Garrido</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 345</p>
+      <p class="ficha-tel">📞 +56973165446</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56973165446?text=%C2%A1Hola%20Enrique%20Garrido!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(41)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(41)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#43</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-42">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Artesanías Bernarda Hernández</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 248, Galería Serruchos</p>
+      <p class="ficha-tel">📞 +56990225433</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56990225433?text=%C2%A1Hola%20Artesan%C3%ADas%20Bernarda%20Hern%C3%A1ndez!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(42)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(42)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#44</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-43">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Robertito</h3>
+      <p class="ficha-addr">📍 Roberto Bravo esq. 18 de Septiembre</p>
+      <p class="ficha-tel">📞 +56946497460</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56946497460?text=%C2%A1Hola%20Robertito!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(43)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(43)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#45</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-44">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Fresia Castillo Romero</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 13A</p>
+      <p class="ficha-tel">📞 +56994511658</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56994511658?text=%C2%A1Hola%20Fresia%20Castillo%20Romero!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(44)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(44)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#46</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-45">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Artesanía Tradicional El Gomero</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 80</p>
+      <p class="ficha-tel">📞 +56991606574</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56991606574?text=%C2%A1Hola%20Artesan%C3%ADa%20Tradicional%20El%20Gomero!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(45)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(45)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#47</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-46">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Rosa Mora</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 457</p>
+      <p class="ficha-tel">📞 +56995580575</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56995580575?text=%C2%A1Hola%20Rosa%20Mora!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(46)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(46)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#48</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-47">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Octavio Fernando Silva R.</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez con San Antonio</p>
+      <p class="ficha-tel">📞 +56931471192</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56931471192?text=%C2%A1Hola%20Octavio%20Fernando%20Silva%20R.!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(47)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(47)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#49</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-48">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Mami Inés</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 252, Galería Catalán Local 1</p>
+      <p class="ficha-tel">📞 +56983290566</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56983290566?text=%C2%A1Hola%20Mami%20In%C3%A9s!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(48)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(48)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#50</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-49">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Artesanía Tradicional Loza de Greda</h3>
+      <p class="ficha-addr">📍 Roberto Bravo con Morandé</p>
+      <p class="ficha-tel">📞 +56998781143</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56998781143?text=%C2%A1Hola%20Artesan%C3%ADa%20Tradicional%20Loza%20de%20Greda!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(49)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(49)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#51</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-50">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Gredas La Mamy</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 44C</p>
+      <p class="ficha-tel">📞 +56997225185</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56997225185?text=%C2%A1Hola%20Gredas%20La%20Mamy!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(50)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(50)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#52</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-51">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Miguel Ángel</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 97</p>
+      <p class="ficha-tel">📞 Sin teléfono</p>
+      
+      
+      <div class="ficha-actions">
+        <span class="no-tel">Sin teléfono</span>
+        <button class="btn-done" onclick="markDone(51)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(51)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#53</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-52">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">María Elisa Salinas Aguilera</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 469</p>
+      <p class="ficha-tel">📞 +56992320964</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56992320964?text=%C2%A1Hola%20Mar%C3%ADa%20Elisa%20Salinas%20Aguilera!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(52)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(52)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#54</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-53">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Donde Miguel</h3>
+      <p class="ficha-addr">📍 Arturo Prat 380</p>
+      <p class="ficha-tel">📞 +56992682046</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56992682046?text=%C2%A1Hola%20Donde%20Miguel!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(53)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(53)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#55</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-54">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Poza</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 311</p>
+      <p class="ficha-tel">📞 +56993617561</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56993617561?text=%C2%A1Hola%20La%20Poza!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(54)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(54)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#56</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-55">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Artesanía Utilitaria El Cone</h3>
+      <p class="ficha-addr">📍 San Antonio 215</p>
+      <p class="ficha-tel">📞 +56984730313</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56984730313?text=%C2%A1Hola%20Artesan%C3%ADa%20Utilitaria%20El%20Cone!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(55)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(55)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#57</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-56">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Mi Chanchita</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 453</p>
+      <p class="ficha-tel">📞 +56996721752</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56996721752?text=%C2%A1Hola%20Mi%20Chanchita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(56)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(56)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#58</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-57">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Rosa Ester</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 15</p>
+      <p class="ficha-tel">📞 +56977751558</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56977751558?text=%C2%A1Hola%20Cer%C3%A1micas%20Rosa%20Ester!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(57)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(57)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#59</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-58">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Don Francisco</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 56 B</p>
+      <p class="ficha-tel">📞 +56968089602</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56968089602?text=%C2%A1Hola%20Don%20Francisco!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(58)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(58)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#60</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-59">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Taller Tierra Arte</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 221</p>
+      <p class="ficha-tel">📞 +56977877784</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56977877784?text=%C2%A1Hola%20Taller%20Tierra%20Arte!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(59)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(59)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#61</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-60">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">María</h3>
+      <p class="ficha-addr">📍 El Carmen 275</p>
+      <p class="ficha-tel">📞 +56989909036</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56989909036?text=%C2%A1Hola%20Mar%C3%ADa!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(60)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(60)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#62</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-61">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Oscar Alejandro Durán</h3>
+      <p class="ficha-addr">📍 El Carmen 690</p>
+      <p class="ficha-tel">📞 +56983527207</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56983527207?text=%C2%A1Hola%20Oscar%20Alejandro%20Dur%C3%A1n!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(61)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(61)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#63</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-62">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Marisol Quiróz Abarca</h3>
+      <p class="ficha-addr">📍 Lautaro 752</p>
+      <p class="ficha-tel">📞 +56999745542</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56999745542?text=%C2%A1Hola%20Marisol%20Quir%C3%B3z%20Abarca!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(62)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(62)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#64</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-63">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Dami</h3>
+      <p class="ficha-addr">📍 El Carmen 479</p>
+      <p class="ficha-tel">📞 +56968007192</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56968007192?text=%C2%A1Hola%20Cer%C3%A1micas%20Dami!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(63)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(63)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#65</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-64">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámica Carolina</h3>
+      <p class="ficha-addr">📍 El Limonal 722</p>
+      <p class="ficha-tel">📞 +56971031885</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56971031885?text=%C2%A1Hola%20Cer%C3%A1mica%20Carolina!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(64)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(64)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#66</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-65">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Amelia Rojas Quiróz</h3>
+      <p class="ficha-addr">📍 Bernardo O'Higgins 315</p>
+      <p class="ficha-tel">📞 +56978316925</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56978316925?text=%C2%A1Hola%20Amelia%20Rojas%20Quir%C3%B3z!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(65)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(65)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#67</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-66">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Cerámicas Anaís</h3>
+      <p class="ficha-addr">📍 El Carmen 329</p>
+      <p class="ficha-tel">📞 +56967749664</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56967749664?text=%C2%A1Hola%20Cer%C3%A1micas%20Ana%C3%ADs!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(66)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(66)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#68</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-67">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Elías Veliz</h3>
+      <p class="ficha-addr">📍 Rafael Morandé 480 B</p>
+      <p class="ficha-tel">📞 +56990325852</p>
+      
+      
+      <div class="ficha-actions">
+        <a href="https://wa.me/56990325852?text=%C2%A1Hola%20El%C3%ADas%20Veliz!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20taller%2Ftienda%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20trabajando%20en%20algo%20especial%3A%20queremos%20*contar%20la%20historia%20de%20cada%20artesano*%20de%20Pomaire%20%F0%9F%8F%BA%E2%9C%A8%0A%0A%C2%BFTe%20gustar%C3%ADa%20participar%3F%20Es%20totalmente%20gratuito%20e%20incluye%3A%0A%0A%E2%9C%85%20Tu%20ficha%20destacada%20en%20pomaire360.cl%20con%20fotos%0A%E2%9C%85%20Tu%20historia%20como%20artesano%2Fa%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20que%20los%20turistas%20te%20contacten%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22artesanos%20en%20Pomaire%22%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%0ASolo%20necesitamos%20una%20breve%20conversaci%C3%B3n%20para%20conocer%20tu%20historia%20y%20unas%20fotos%20de%20tu%20trabajo.%0A%0A%C2%BFTe%20interesa%3F%20%C2%A1Resp%C3%B3ndeme%20y%20coordinamos!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(67)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(67)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #c0392b">
+      <div class="ficha-header">
+        <span class="ficha-num">#69</span>
+        <span class="ficha-cat">🏺 Artesano/Tienda de greda</span>
+        <span class="ficha-status" id="status-68">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Fábrica de maceteros y vasijas de greda Don Petro</h3>
+      <p class="ficha-addr">📍 El Carmen, Pomaire</p>
+      <p class="ficha-tel">📞 Sin teléfono</p>
+      
+      
+      <div class="ficha-actions">
+        <span class="no-tel">Sin teléfono</span>
+        <button class="btn-done" onclick="markDone(68)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(68)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#70</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-69">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Imperio Pomaire</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 78</p>
+      <p class="ficha-tel">📞 +56973421189</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56973421189?text=%C2%A1Hola%20Imperio%20Pomaire!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(69)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(69)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#71</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-70">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Pomaire Restaurant</h3>
+      <p class="ficha-addr">📍 Pomaire</p>
+      <p class="ficha-tel">📞 Sin teléfono</p>
+      <p class="ficha-ig"><a href="https://instagram.com/pomaire_restaurant" target="_blank" class="ig-link">📷 @pomaire_restaurant</a></p>
+      <p class="ficha-tag">🏷️ Restaurante</p>
+      <div class="ficha-actions">
+        <span class="no-tel">Sin teléfono</span>
+        <button class="btn-done" onclick="markDone(70)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(70)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#72</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-71">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurant La Greda</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 251</p>
+      <p class="ficha-tel">📞 Sin teléfono</p>
+      
+      <p class="ficha-tag">🏷️ 30+ años · empanada más grande del mundo</p>
+      <div class="ficha-actions">
+        <span class="no-tel">Sin teléfono</span>
+        <button class="btn-done" onclick="markDone(71)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(71)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#73</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-72">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurante Los Naranjos</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 29</p>
+      <p class="ficha-tel">📞 +56945606393</p>
+      
+      <p class="ficha-tag">🏷️ Miércoles a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56945606393?text=%C2%A1Hola%20Restaurante%20Los%20Naranjos!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(72)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(72)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#74</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-73">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Cañada</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 307</p>
+      <p class="ficha-tel">📞 +56976768309</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56976768309?text=%C2%A1Hola%20La%20Ca%C3%B1ada!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(73)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(73)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#75</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-74">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Pica del Artesano</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 114</p>
+      <p class="ficha-tel">📞 +56992812141</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56992812141?text=%C2%A1Hola%20La%20Pica%20del%20Artesano!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(74)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(74)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#76</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-75">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Boliche de Pomaire</h3>
+      <p class="ficha-addr">📍 San Antonio 17</p>
+      <p class="ficha-tel">📞 +56932734479</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo · 10:00 a 18:00 hrs</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56932734479?text=%C2%A1Hola%20El%20Boliche%20de%20Pomaire!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(75)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(75)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#77</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-76">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Normita (Tenedor libre)</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 325</p>
+      <p class="ficha-tel">📞 +56946609599</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56946609599?text=%C2%A1Hola%20La%20Normita%20(Tenedor%20libre)!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(76)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(76)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#78</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-77">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Emporio Doña Tránsito</h3>
+      <p class="ficha-addr">📍 San Antonio 321</p>
+      <p class="ficha-tel">📞 +56954461130</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56954461130?text=%C2%A1Hola%20Emporio%20Do%C3%B1a%20Tr%C3%A1nsito!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(77)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(77)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#79</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-78">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">San Sebastián</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 50</p>
+      <p class="ficha-tel">📞 +56990440988</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56990440988?text=%C2%A1Hola%20San%20Sebasti%C3%A1n!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(78)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(78)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#80</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-79">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Pica de la Mireya</h3>
+      <p class="ficha-addr">📍 Roto Chileno 249</p>
+      <p class="ficha-tel">📞 +56953387756</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56953387756?text=%C2%A1Hola%20La%20Pica%20de%20la%20Mireya!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(79)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(79)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#81</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-80">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Nico</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 397</p>
+      <p class="ficha-tel">📞 +56961629311</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56961629311?text=%C2%A1Hola%20El%20Nico!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(80)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(80)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#82</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-81">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Las Delicias de Patricia</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 321</p>
+      <p class="ficha-tel">📞 +56959296110</p>
+      
+      <p class="ficha-tag">🏷️ Miércoles a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56959296110?text=%C2%A1Hola%20Las%20Delicias%20de%20Patricia!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(81)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(81)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#83</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-82">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">San Antonio</h3>
+      <p class="ficha-addr">📍 San Antonio 298</p>
+      <p class="ficha-tel">📞 +56965707019</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56965707019?text=%C2%A1Hola%20San%20Antonio!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(82)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(82)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#84</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-83">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurant Chilper</h3>
+      <p class="ficha-addr">📍 Camino La Cruz 454</p>
+      <p class="ficha-tel">📞 +56976256505</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56976256505?text=%C2%A1Hola%20Restaurant%20Chilper!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(83)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(83)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#85</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-84">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Casa del Costillar</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 324</p>
+      <p class="ficha-tel">📞 +56954153360</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56954153360?text=%C2%A1Hola%20La%20Casa%20del%20Costillar!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(84)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(84)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#86</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-85">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Rincón de las Brujas</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 302</p>
+      <p class="ficha-tel">📞 +56935410406</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56935410406?text=%C2%A1Hola%20El%20Rinc%C3%B3n%20de%20las%20Brujas!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(85)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(85)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#87</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-86">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Quinta Los Naranjos</h3>
+      <p class="ficha-addr">📍 San Antonio 279</p>
+      <p class="ficha-tel">📞 +56959579197</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56959579197?text=%C2%A1Hola%20Quinta%20Los%20Naranjos!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(86)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(86)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#88</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-87">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurant El Cototudo</h3>
+      <p class="ficha-addr">📍 Roto Chileno 340</p>
+      <p class="ficha-tel">📞 +56942419789</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56942419789?text=%C2%A1Hola%20Restaurant%20El%20Cototudo!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(87)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(87)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#89</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-88">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Coyita</h3>
+      <p class="ficha-addr">📍 San Antonio 615</p>
+      <p class="ficha-tel">📞 +56949772557</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56949772557?text=%C2%A1Hola%20La%20Coyita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(88)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(88)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#90</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-89">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Fuente de mi Tierra</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 49</p>
+      <p class="ficha-tel">📞 +56984753494</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56984753494?text=%C2%A1Hola%20La%20Fuente%20de%20mi%20Tierra!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(89)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(89)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#91</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-90">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurante San Pedro - Pomaire</h3>
+      <p class="ficha-addr">📍 Roto Chileno 332</p>
+      <p class="ficha-tel">📞 +56985285787</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56985285787?text=%C2%A1Hola%20Restaurante%20San%20Pedro%20-%20Pomaire!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(90)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(90)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#92</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-91">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">El Ranchito de Amalia</h3>
+      <p class="ficha-addr">📍 Manuel Rodríguez 204</p>
+      <p class="ficha-tel">📞 +56991843195</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56991843195?text=%C2%A1Hola%20El%20Ranchito%20de%20Amalia!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(91)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(91)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#93</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-92">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Los Secretos de Anita</h3>
+      <p class="ficha-addr">📍 San Antonio 213</p>
+      <p class="ficha-tel">📞 +56974906024</p>
+      
+      <p class="ficha-tag">🏷️ Viernes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56974906024?text=%C2%A1Hola%20Los%20Secretos%20de%20Anita!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(92)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(92)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#94</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-93">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Restaurant El Parrón de Pomaire</h3>
+      <p class="ficha-addr">📍 Arturo Prat 210</p>
+      <p class="ficha-tel">📞 +56952433979</p>
+      
+      <p class="ficha-tag">🏷️ Lunes a domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56952433979?text=%C2%A1Hola%20Restaurant%20El%20Parr%C3%B3n%20de%20Pomaire!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(93)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(93)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#95</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-94">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Las Tinajas de Pomaire</h3>
+      <p class="ficha-addr">📍 San Antonio 402</p>
+      <p class="ficha-tel">📞 +56990177467</p>
+      
+      <p class="ficha-tag">🏷️ Sábado y domingo</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56990177467?text=%C2%A1Hola%20Las%20Tinajas%20de%20Pomaire!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(94)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(94)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#96</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-95">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">La Escondida</h3>
+      <p class="ficha-addr">📍 Pomaire, Melipilla</p>
+      <p class="ficha-tel">📞 Sin teléfono</p>
+      
+      <p class="ficha-tag">🏷️ Restaurante</p>
+      <div class="ficha-actions">
+        <span class="no-tel">Sin teléfono</span>
+        <button class="btn-done" onclick="markDone(95)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(95)">⏭️ Saltar</button>
+      </div>
+    </div>
+
+    <div class="ficha" style="border-left: 4px solid #27ae60">
+      <div class="ficha-header">
+        <span class="ficha-num">#97</span>
+        <span class="ficha-cat">🍽️ Restaurante</span>
+        <span class="ficha-status" id="status-96">⬜ Pendiente</span>
+      </div>
+      <h3 class="ficha-name">Glamen</h3>
+      <p class="ficha-addr">📍 Roberto Bravo 289</p>
+      <p class="ficha-tel">📞 +56954109214</p>
+      
+      <p class="ficha-tag">🏷️ Cabañas Alojamiento</p>
+      <div class="ficha-actions">
+        <a href="https://wa.me/56954109214?text=%C2%A1Hola%20Glamen!%20%F0%9F%91%8B%0A%0ASoy%20del%20equipo%20de%20*Pomaire%20360*%20(pomaire360.cl)%2C%20la%20gu%C3%ADa%20digital%20gratuita%20m%C3%A1s%20completa%20de%20Pomaire.%0A%0ATu%20restaurante%20ya%20aparece%20en%20nuestro%20directorio.%20Ahora%20estamos%20mejorando%20las%20fichas%20de%20cada%20local%20gastron%C3%B3mico%20para%20que%20los%20visitantes%20los%20encuentren%20m%C3%A1s%20f%C3%A1cil%20%F0%9F%8D%BD%EF%B8%8F%0A%0A%C2%BFTe%20gustar%C3%ADa%20tener%20tu%20ficha%20completa%3F%20Es%20*gratuito*%20e%20incluye%3A%0A%0A%E2%9C%85%20Ficha%20destacada%20con%20fotos%20de%20tus%20platos%20y%20local%0A%E2%9C%85%20Men%C3%BA%20o%20especialidades%20visibles%20para%20los%20turistas%0A%E2%9C%85%20Link%20directo%20a%20tu%20WhatsApp%20para%20reservas%0A%E2%9C%85%20Horarios%20actualizados%20y%20d%C3%ADas%20de%20atenci%C3%B3n%0A%E2%9C%85%20Rese%C3%B1as%20y%20valoraciones%20en%20app.pomaire360.cl%0A%E2%9C%85%20Aparecer%20en%20Google%20cuando%20busquen%20%22d%C3%B3nde%20comer%20en%20Pomaire%22%0A%0ASolo%20necesito%20unas%20fotos%20de%20tu%20local%2Fplatos%20y%20confirmar%20tus%20horarios.%0A%0A%C2%BFTe%20interesa%20participar%3F%20%C2%A1Resp%C3%B3ndeme!%20%F0%9F%99%8C%0A%0ASaludos%2C%0AEquipo%20Pomaire%20360%0A%F0%9F%8C%90%20pomaire360.cl" target="_blank" class="btn-wa">💬 Enviar WhatsApp</a>
+        <button class="btn-done" onclick="markDone(96)">✅ Marcar contactado</button>
+        <button class="btn-skip" onclick="markSkip(96)">⏭️ Saltar</button>
+      </div>
+    </div>
+</div>
+
+<script>
+const state = JSON.parse(localStorage.getItem('pomaire360_contacts') || '{}');
+const cats = ["Taller de greda","Taller de greda","Taller de greda","Taller de greda","Demostración en torno","Demostración en torno","Demostración en torno","Demostración en torno","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Artesano/Tienda de greda","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante","Restaurante"];
+
+// Restore state
+Object.keys(state).forEach(i => {
+  const el = document.getElementById('status-' + i);
+  const ficha = el?.closest('.ficha');
+  if (state[i] === 'done') {
+    el.textContent = '✅ Contactado';
+    ficha?.classList.add('done');
+  } else if (state[i] === 'skip') {
+    el.textContent = '⏭️ Saltado';
+    ficha?.classList.add('done');
+  }
+});
+updateStats();
+
+function markDone(i) {
+  state[i] = 'done';
+  localStorage.setItem('pomaire360_contacts', JSON.stringify(state));
+  document.getElementById('status-' + i).textContent = '✅ Contactado';
+  document.getElementById('status-' + i).closest('.ficha').classList.add('done');
+  updateStats();
+}
+
+function markSkip(i) {
+  state[i] = 'skip';
+  localStorage.setItem('pomaire360_contacts', JSON.stringify(state));
+  document.getElementById('status-' + i).textContent = '⏭️ Saltado';
+  document.getElementById('status-' + i).closest('.ficha').classList.add('done');
+  updateStats();
+}
+
+function updateStats() {
+  const done = Object.values(state).filter(v => v === 'done').length;
+  const total = 92;
+  document.getElementById('stat-done').textContent = '✅ Contactados: ' + done;
+  document.getElementById('stat-pending').textContent = '⏳ Pendientes: ' + (total - done);
+}
+
+function filterBy(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.ficha').forEach((f, i) => {
+    if (cat === 'all') { f.classList.remove('hidden'); }
+    else if (cat === 'done') { f.classList.toggle('hidden', state[i] !== 'done'); }
+    else if (cat === 'pending') { f.classList.toggle('hidden', !!state[i]); }
+    else { f.classList.toggle('hidden', cats[i] !== cat); }
+  });
+}
+</script>
+</body>
+</html>

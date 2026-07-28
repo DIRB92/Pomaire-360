@@ -1,0 +1,778 @@
+[
+  {
+    "nombre": "Granja Educativa Alfarera Greda",
+    "direccion": "Bernardo O'Higgins 260",
+    "telefono": "+56998793533",
+    "instagram": "@granjaalfarera",
+    "tag": "",
+    "categoria": "Taller de greda"
+  },
+  {
+    "nombre": "Espacio Greda",
+    "direccion": "Arturo Prat 352",
+    "telefono": "+56920854538",
+    "instagram": "@espaciogreda.cl",
+    "tag": "",
+    "categoria": "Taller de greda"
+  },
+  {
+    "nombre": "Taller del Sol",
+    "direccion": "Arturo Prat 237 B",
+    "telefono": "+56945203264",
+    "instagram": "@tallerdelsol_pomaire",
+    "tag": "",
+    "categoria": "Taller de greda"
+  },
+  {
+    "nombre": "Taller Barros",
+    "direccion": "Guillermo Barros 150",
+    "telefono": "+56950432417",
+    "instagram": "@taller.barros.pomaire",
+    "tag": "",
+    "categoria": "Taller de greda"
+  },
+  {
+    "nombre": "Juan Pablo Muñoz",
+    "direccion": "Roberto Bravo 164",
+    "telefono": "+56950821246",
+    "instagram": "@pablo.artesanodepomaire",
+    "tag": "",
+    "categoria": "Demostración en torno"
+  },
+  {
+    "nombre": "Pascual Gómez",
+    "direccion": "Arturo Prat 352",
+    "telefono": "+56989075630",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Demostración en torno"
+  },
+  {
+    "nombre": "Jorge Garrido",
+    "direccion": "Bernardo O'Higgins 260",
+    "telefono": "+56984144279",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Demostración en torno"
+  },
+  {
+    "nombre": "El Pericote Artesanía",
+    "direccion": "Guillermo Barros 150",
+    "telefono": "+56940869289",
+    "instagram": "@el.rinconcito.alfarero",
+    "tag": "",
+    "categoria": "Demostración en torno"
+  },
+  {
+    "nombre": "Camila y Diego",
+    "direccion": "Roberto Bravo 29",
+    "telefono": "+56961277310",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Isolina Guzmán Araya",
+    "direccion": "Roberto Bravo 59",
+    "telefono": "+56987667822",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Los Gemelos",
+    "direccion": "Roberto Bravo 455",
+    "telefono": "+56962759986",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Juana García",
+    "direccion": "Manuel Rodríguez 347",
+    "telefono": "+56992174717",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Familia Gatica Catalán",
+    "direccion": "Roberto Bravo 252, Galería Catalán Local 26",
+    "telefono": "+56982814690",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Isabel R. & Eduardo G.",
+    "direccion": "Roberto Bravo esq. 18 de Septiembre",
+    "telefono": "+56966055530",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Gredas Nene La Ruca",
+    "direccion": "Roberto Bravo 44B",
+    "telefono": "+56988291191",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Valentina",
+    "direccion": "Roberto Bravo 88-A",
+    "telefono": "+56973887858",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "El Larita",
+    "direccion": "Roberto Bravo 465",
+    "telefono": "+56997335365",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Pachamama Taller",
+    "direccion": "Arturo Prat 338 B",
+    "telefono": "+56954042248",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Eduardo Pardo Z.",
+    "direccion": "Roberto Bravo 272",
+    "telefono": "+56999498024",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Nano Santibáñez",
+    "direccion": "San Antonio 39",
+    "telefono": "+56996212055",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Roberto Bravo",
+    "direccion": "Roberto Bravo 447",
+    "telefono": "+56977750106",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Aracely",
+    "direccion": "General Baquedano esq. San Antonio",
+    "telefono": "+56983342757",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Lámparas Irarrazaval Diseños",
+    "direccion": "Roberto Bravo 53 A",
+    "telefono": "+56982851797",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Jesús Mi Alfarero",
+    "direccion": "Roberto Bravo 221",
+    "telefono": "+56997568575",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámica El Arbolito",
+    "direccion": "Roberto Bravo 510",
+    "telefono": "+56993733512",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Taller Edi Art",
+    "direccion": "General Baquedano 316",
+    "telefono": "+56979340584",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Miguel Salinas Baeza",
+    "direccion": "Roberto Bravo 13B",
+    "telefono": "+56994560850",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "La Raquelita",
+    "direccion": "Roberto Bravo 88",
+    "telefono": "+56995169386",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Taller San José",
+    "direccion": "Roberto Bravo 460",
+    "telefono": "+56982117144",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámica y Decoración Inelia",
+    "direccion": "Arturo Prat 338",
+    "telefono": "+56975182329",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "San Marcos",
+    "direccion": "Roberto Bravo 267",
+    "telefono": "+56953160316",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Segundo Enrique Trujillo S.",
+    "direccion": "San Antonio 10",
+    "telefono": "+56985669982",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Rosa y Marcela",
+    "direccion": "Roberto Bravo 414",
+    "telefono": "+56985039992",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Gredas Ximena",
+    "direccion": "San Antonio esq. Arturo Prat",
+    "telefono": "+56996687585",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámica Badi",
+    "direccion": "Roberto Bravo 49",
+    "telefono": "+56987584538",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Fonola",
+    "direccion": "Roberto Bravo 185",
+    "telefono": "+56992467532",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "La Palmera",
+    "direccion": "Roberto Bravo 502",
+    "telefono": "+56987854529",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Doña Laurita",
+    "direccion": "Roberto Bravo 407",
+    "telefono": "+56961651455",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Gredas Flores",
+    "direccion": "San Antonio 335",
+    "telefono": "+56951123005",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas El Cheo",
+    "direccion": "Roberto Bravo 56 A",
+    "telefono": "+56991661194",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Tania",
+    "direccion": "Roberto Bravo 454",
+    "telefono": "+56962577048",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Enrique Garrido",
+    "direccion": "Manuel Rodríguez 345",
+    "telefono": "+56973165446",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Artesanías Bernarda Hernández",
+    "direccion": "Roberto Bravo 248, Galería Serruchos",
+    "telefono": "+56990225433",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Robertito",
+    "direccion": "Roberto Bravo esq. 18 de Septiembre",
+    "telefono": "+56946497460",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Fresia Castillo Romero",
+    "direccion": "Roberto Bravo 13A",
+    "telefono": "+56994511658",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Artesanía Tradicional El Gomero",
+    "direccion": "Roberto Bravo 80",
+    "telefono": "+56991606574",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Rosa Mora",
+    "direccion": "Roberto Bravo 457",
+    "telefono": "+56995580575",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Octavio Fernando Silva R.",
+    "direccion": "Manuel Rodríguez con San Antonio",
+    "telefono": "+56931471192",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Mami Inés",
+    "direccion": "Roberto Bravo 252, Galería Catalán Local 1",
+    "telefono": "+56983290566",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Artesanía Tradicional Loza de Greda",
+    "direccion": "Roberto Bravo con Morandé",
+    "telefono": "+56998781143",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Gredas La Mamy",
+    "direccion": "Roberto Bravo 44C",
+    "telefono": "+56997225185",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Miguel Ángel",
+    "direccion": "Roberto Bravo 97",
+    "telefono": "",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "María Elisa Salinas Aguilera",
+    "direccion": "Roberto Bravo 469",
+    "telefono": "+56992320964",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Donde Miguel",
+    "direccion": "Arturo Prat 380",
+    "telefono": "+56992682046",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "La Poza",
+    "direccion": "Roberto Bravo 311",
+    "telefono": "+56993617561",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Artesanía Utilitaria El Cone",
+    "direccion": "San Antonio 215",
+    "telefono": "+56984730313",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Mi Chanchita",
+    "direccion": "Roberto Bravo 453",
+    "telefono": "+56996721752",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Rosa Ester",
+    "direccion": "Manuel Rodríguez 15",
+    "telefono": "+56977751558",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Don Francisco",
+    "direccion": "Roberto Bravo 56 B",
+    "telefono": "+56968089602",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Taller Tierra Arte",
+    "direccion": "Roberto Bravo 221",
+    "telefono": "+56977877784",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "María",
+    "direccion": "El Carmen 275",
+    "telefono": "+56989909036",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Oscar Alejandro Durán",
+    "direccion": "El Carmen 690",
+    "telefono": "+56983527207",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Marisol Quiróz Abarca",
+    "direccion": "Lautaro 752",
+    "telefono": "+56999745542",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Dami",
+    "direccion": "El Carmen 479",
+    "telefono": "+56968007192",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámica Carolina",
+    "direccion": "El Limonal 722",
+    "telefono": "+56971031885",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Amelia Rojas Quiróz",
+    "direccion": "Bernardo O'Higgins 315",
+    "telefono": "+56978316925",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Cerámicas Anaís",
+    "direccion": "El Carmen 329",
+    "telefono": "+56967749664",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Elías Veliz",
+    "direccion": "Rafael Morandé 480 B",
+    "telefono": "+56990325852",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Fábrica de maceteros y vasijas de greda Don Petro",
+    "direccion": "El Carmen, Pomaire",
+    "telefono": "",
+    "instagram": "",
+    "tag": "",
+    "categoria": "Artesano/Tienda de greda"
+  },
+  {
+    "nombre": "Imperio Pomaire",
+    "direccion": "Roberto Bravo 78",
+    "telefono": "+56973421189",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Pomaire Restaurant",
+    "direccion": "Pomaire",
+    "telefono": "",
+    "instagram": "@pomaire_restaurant",
+    "tag": "Restaurante",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurant La Greda",
+    "direccion": "Manuel Rodríguez 251",
+    "telefono": "",
+    "instagram": "",
+    "tag": "30+ años · empanada más grande del mundo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurante Los Naranjos",
+    "direccion": "Roberto Bravo 29",
+    "telefono": "+56945606393",
+    "instagram": "",
+    "tag": "Miércoles a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Cañada",
+    "direccion": "Roberto Bravo 307",
+    "telefono": "+56976768309",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Pica del Artesano",
+    "direccion": "Roberto Bravo 114",
+    "telefono": "+56992812141",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "El Boliche de Pomaire",
+    "direccion": "San Antonio 17",
+    "telefono": "+56932734479",
+    "instagram": "",
+    "tag": "Lunes a domingo · 10:00 a 18:00 hrs",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Normita (Tenedor libre)",
+    "direccion": "Manuel Rodríguez 325",
+    "telefono": "+56946609599",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Emporio Doña Tránsito",
+    "direccion": "San Antonio 321",
+    "telefono": "+56954461130",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "San Sebastián",
+    "direccion": "Roberto Bravo 50",
+    "telefono": "+56990440988",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Pica de la Mireya",
+    "direccion": "Roto Chileno 249",
+    "telefono": "+56953387756",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "El Nico",
+    "direccion": "Roberto Bravo 397",
+    "telefono": "+56961629311",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Las Delicias de Patricia",
+    "direccion": "Manuel Rodríguez 321",
+    "telefono": "+56959296110",
+    "instagram": "",
+    "tag": "Miércoles a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "San Antonio",
+    "direccion": "San Antonio 298",
+    "telefono": "+56965707019",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurant Chilper",
+    "direccion": "Camino La Cruz 454",
+    "telefono": "+56976256505",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Casa del Costillar",
+    "direccion": "Roberto Bravo 324",
+    "telefono": "+56954153360",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "El Rincón de las Brujas",
+    "direccion": "Roberto Bravo 302",
+    "telefono": "+56935410406",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Quinta Los Naranjos",
+    "direccion": "San Antonio 279",
+    "telefono": "+56959579197",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurant El Cototudo",
+    "direccion": "Roto Chileno 340",
+    "telefono": "+56942419789",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Coyita",
+    "direccion": "San Antonio 615",
+    "telefono": "+56949772557",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Fuente de mi Tierra",
+    "direccion": "Roberto Bravo 49",
+    "telefono": "+56984753494",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurante San Pedro - Pomaire",
+    "direccion": "Roto Chileno 332",
+    "telefono": "+56985285787",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "El Ranchito de Amalia",
+    "direccion": "Manuel Rodríguez 204",
+    "telefono": "+56991843195",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Los Secretos de Anita",
+    "direccion": "San Antonio 213",
+    "telefono": "+56974906024",
+    "instagram": "",
+    "tag": "Viernes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Restaurant El Parrón de Pomaire",
+    "direccion": "Arturo Prat 210",
+    "telefono": "+56952433979",
+    "instagram": "",
+    "tag": "Lunes a domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Las Tinajas de Pomaire",
+    "direccion": "San Antonio 402",
+    "telefono": "+56990177467",
+    "instagram": "",
+    "tag": "Sábado y domingo",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "La Escondida",
+    "direccion": "Pomaire, Melipilla",
+    "telefono": "",
+    "instagram": "",
+    "tag": "Restaurante",
+    "categoria": "Restaurante"
+  },
+  {
+    "nombre": "Glamen",
+    "direccion": "Roberto Bravo 289",
+    "telefono": "+56954109214",
+    "instagram": "",
+    "tag": "Cabañas Alojamiento",
+    "categoria": "Restaurante"
+  }
+]
