@@ -20,7 +20,7 @@ const SITE = 'https://www.pomaire360.cl';
 
 // Metadata original por slug, tomada del sitemap.xml previo a este cambio.
 const SITEMAP_META = {
-  index: { lastmod: '2025-06-01', changefreq: 'monthly', priority: '1.0' },
+  index: { lastmod: '2026-07-28', changefreq: 'weekly', priority: '1.0' },
   elchanchoalcanciamasgrandedelmundo: { lastmod: '2026-06-24', changefreq: 'monthly', priority: '0.8' },
   estacionamientos: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },
   salud: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },

@@ -47,8 +47,9 @@
 <!-- ══ HREFLANG MULTIIDIOMA ════════════════════════════════ -->
 
 <!-- ══ SEO PRIMARIO ══════════════════════════════════════════ -->
-<title>Pomaire 360 — Guía de servicios, turismo y emergencias en Pomaire, Chile</title>
-<meta name="description" content="Guía gratuita y completa para visitar o vivir en Pomaire (Melipilla). Estacionamientos, salud, Carabineros, Bomberos, alfarería, gastronomía, Los Chiñihues y más. Actualizado 2026.">
+<title>Pomaire 360 — Guía de servicios, turismo y emergencias en Pomaire, Chile | Pueblo alfarero</title>
+<meta name="description" content="Guía gratuita y completa de Pomaire, pueblo alfarero de Chile (Melipilla, Región Metropolitana). Artesanía en greda, alfarería, empanadas gigantes, cómo llegar, estacionamientos, salud, Carabineros, Bomberos, gastronomía típica, talleres y Los Chiñihues. Actualizado julio 2026.">
+<meta name="keywords" content="Pomaire, pomaire chile, pueblo alfarero, greda pomaire, artesanía pomaire, alfarería pomaire, empanadas pomaire, como llegar a pomaire, estacionamiento pomaire, restaurantes pomaire, que hacer en pomaire, turismo pomaire, pomaire360, pomaire 360, talleres alfarería, cazuela de greda, chanchito alcancía, melipilla, artesanos pomaire">
 <meta name="author" content="Pomaire 360">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="language" content="es-CL">
@@ -109,14 +110,21 @@
       "@id": "https://www.pomaire360.cl/#website",
       "url": "https://www.pomaire360.cl/",
       "name": "Pomaire 360",
-      "description": "Guía completa de servicios y turismo para Pomaire, Chile",
-      "inLanguage": ["es-CL","en","pt","fr","ru","ja","zh"]
+      "alternateName": ["Pomaire360", "Pomaire 360 Chile", "Guía Pomaire"],
+      "description": "Guía completa de servicios, turismo, alfarería y gastronomía para Pomaire, pueblo alfarero de Chile",
+      "inLanguage": ["es-CL","en","pt","fr","ru","ja","zh"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.pomaire360.cl/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
       "@type": "TouristDestination",
       "@id": "https://www.pomaire360.cl/#destination",
       "name": "Pomaire",
-      "description": "Pueblo alfarero en la comuna de Melipilla, Región Metropolitana de Chile.",
+      "alternateName": ["Pomaire Chile", "Pueblo Alfarero Pomaire", "Pomaire Melipilla"],
+      "description": "Pomaire es el pueblo alfarero más famoso de Chile, ubicado en la comuna de Melipilla, Región Metropolitana. Reconocido por su artesanía en greda, gastronomía típica chilena (empanadas gigantes, cazuela en olla de greda) y sus talleres de alfarería artesanal.",
       "url": "https://www.pomaire360.cl/",
       "geo": { "@type": "GeoCoordinates", "latitude": -33.642, "longitude": -71.145 },
       "address": {
@@ -125,21 +133,66 @@
         "addressRegion": "Región Metropolitana",
         "addressCountry": "CL"
       },
-      "touristType": ["Cultural tourism","Gastronomic tourism","Crafts","Family"]
+      "touristType": ["Cultural tourism","Gastronomic tourism","Crafts","Family","Day trip from Santiago"],
+      "containsPlace": [
+        {"@type": "TouristAttraction", "name": "Talleres de Alfarería de Pomaire", "description": "Talleres artesanales donde se trabaja la greda a mano y al torno"},
+        {"@type": "TouristAttraction", "name": "El Chancho Alcancía Más Grande del Mundo", "description": "Escultura de greda gigante creada por el maestro alfarero César Silva Rojo"},
+        {"@type": "TouristAttraction", "name": "Plaza de Pomaire", "description": "Plaza principal con la Iglesia San Antonio de Padua y puestos de artesanía"}
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.pomaire360.cl/#localbusiness",
+      "name": "Pomaire 360 — Guía del Pueblo Alfarero",
+      "alternateName": "Pomaire360",
+      "description": "Portal web gratuito con toda la información para visitar Pomaire: alfarería, gastronomía, estacionamientos, salud, emergencias, transporte y alojamientos en el pueblo alfarero más famoso de Chile.",
+      "url": "https://www.pomaire360.cl/",
+      "logo": "https://www.pomaire360.cl/android-chrome-512x512.png",
+      "image": "https://www.pomaire360.cl/og-image.jpg",
+      "telephone": "",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pomaire, Melipilla, Región Metropolitana, Chile"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -33.642, "longitude": -71.145 },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pomaire",
+        "addressLocality": "Melipilla",
+        "addressRegion": "Región Metropolitana",
+        "postalCode": "9630000",
+        "addressCountry": "CL"
+      },
+      "sameAs": [
+        "https://www.instagram.com/pomaire360",
+        "https://www.facebook.com/pomaire360"
+      ],
+      "knowsAbout": ["Alfarería en greda", "Artesanía Pomaire", "Gastronomía típica chilena", "Turismo Pomaire", "Pueblo alfarero Chile"]
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.pomaire360.cl/#faq",
       "mainEntity": [
         {"@type":"Question","name":"¿Cómo llegar a Pomaire desde Santiago?",
-         "acceptedAnswer":{"@type":"Answer","text":"Autopista del Sol (Ruta 78), salida km 51. Aproximadamente 50 minutos desde Santiago."}},
+         "acceptedAnswer":{"@type":"Answer","text":"Toma la Autopista del Sol (Ruta 78) hasta la salida km 51 hacia Pomaire. El trayecto dura aproximadamente 50 minutos desde Santiago. También puedes llegar en bus desde el terminal San Borja o desde Melipilla."}},
         {"@type":"Question","name":"¿Hay estacionamiento en Pomaire?",
-         "acceptedAnswer":{"@type":"Answer","text":"Sí, en calle Rafael Morandé. Los fines de semana se llena antes de las 11:00."}},
+         "acceptedAnswer":{"@type":"Answer","text":"Sí, hay estacionamiento en calle Rafael Morandé y en la entrada norte del pueblo. Los fines de semana se llena antes de las 11:00, así que recomendamos llegar temprano."}},
         {"@type":"Question","name":"¿Qué número llamar en emergencias en Pomaire?",
-         "acceptedAnswer":{"@type":"Answer","text":"Carabineros: 133. SAMU: 131. Bomberos: 132."}},
+         "acceptedAnswer":{"@type":"Answer","text":"Carabineros: 133. SAMU (ambulancia): 131. Bomberos: 132. Paz Ciudadana: 149."}},
         {"@type":"Question","name":"¿Hay hospital en Pomaire?",
-         "acceptedAnswer":{"@type":"Answer","text":"CESFAM en Pomaire (+56 2 2568 8849). Hospital de Melipilla a 15 minutos con urgencias 24 hrs."}},
+         "acceptedAnswer":{"@type":"Answer","text":"Pomaire cuenta con un CESFAM (Centro de Salud Familiar) con teléfono +56 2 2568 8849. El Hospital de Melipilla está a 15 minutos y tiene urgencias 24 horas."}},
         {"@type":"Question","name":"¿Qué comer en Pomaire?",
-         "acceptedAnswer":{"@type":"Answer","text":"Pomaire es famoso por sus empanadas gigantes, la cazuela en olla de greda, el pastel de choclo y la chicha artesanal."}}
+         "acceptedAnswer":{"@type":"Answer","text":"Pomaire es famoso por sus empanadas gigantes de horno de barro, la cazuela de vacuno servida en olla de greda, el pastel de choclo, las humitas y la chicha artesanal. Hay más de 20 restaurantes en el pueblo."}},
+        {"@type":"Question","name":"¿Qué es Pomaire y por qué es famoso?",
+         "acceptedAnswer":{"@type":"Answer","text":"Pomaire es un pequeño pueblo alfarero ubicado en la comuna de Melipilla, Región Metropolitana de Chile, a 50 km de Santiago. Es famoso mundialmente por su tradición alfarera de más de 300 años, donde artesanos trabajan la greda (arcilla) a mano para crear vasijas, platos, ollas y el icónico chanchito alcancía."}},
+        {"@type":"Question","name":"¿Cuánto cuesta la artesanía en Pomaire?",
+         "acceptedAnswer":{"@type":"Answer","text":"Los precios de la artesanía en greda van desde $1.000 CLP por piezas pequeñas hasta $50.000 o más por obras grandes. Los chanchitos alcancía cuestan entre $2.000 y $15.000 según el tamaño. Puedes comprar directamente a los artesanos en sus talleres."}},
+        {"@type":"Question","name":"¿Qué días conviene visitar Pomaire?",
+         "acceptedAnswer":{"@type":"Answer","text":"Pomaire se puede visitar cualquier día, pero los fines de semana y feriados hay más ambiente y todos los locales están abiertos. Si prefieres tranquilidad y estacionamiento fácil, los días de semana (martes a viernes) son ideales. Los lunes algunos locales cierran."}},
+        {"@type":"Question","name":"¿Pomaire tiene alojamiento?",
+         "acceptedAnswer":{"@type":"Answer","text":"Sí, Pomaire cuenta con hostales, cabañas y suites para quienes desean quedarse más de un día. Las opciones incluyen alojamiento rural con vista al campo y cabañas familiares equipadas."}},
+        {"@type":"Question","name":"¿Se puede ir a Pomaire en transporte público?",
+         "acceptedAnswer":{"@type":"Answer","text":"Sí. Desde Santiago puedes tomar un bus en el Terminal San Borja hasta Melipilla y luego un colectivo o micro local hasta Pomaire. También hay buses directos desde Melipilla con frecuencia cada 20 minutos."}}
       ]
     }
   ]
@@ -1102,6 +1155,16 @@
     </div>
   </div>
 </footer>
+
+<!-- ══ SECCIÓN SEO: CONTENIDO SEMÁNTICO RICO EN PALABRAS CLAVE ══ -->
+<section class="seo-about" aria-label="Sobre Pomaire" style="padding:2.5rem 1.25rem;max-width:900px;margin:0 auto;font-size:.95rem;line-height:1.7;color:var(--muted,#555)">
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--clay-dark,#5a2d0c);margin-bottom:1rem">Pomaire: El pueblo alfarero más famoso de Chile</h2>
+  <p><strong>Pomaire</strong> es una localidad alfarera ubicada en la <strong>comuna de Melipilla</strong>, <strong>Región Metropolitana de Chile</strong>, a solo 50 km al suroeste de Santiago. Conocido también como el <em>pueblo de la greda</em>, Pomaire es el destino turístico ideal para quienes buscan <strong>artesanía chilena</strong>, <strong>gastronomía típica</strong> y una experiencia cultural auténtica a menos de una hora de la capital.</p>
+  <p>La tradición alfarera de Pomaire tiene más de <strong>300 años de historia</strong>. Los artesanos del pueblo trabajan la <strong>greda</strong> (arcilla roja) de forma artesanal, creando piezas únicas como ollas, cazuelas, jarros, tinajas, maceteros y el icónico <strong>chanchito alcancía de greda</strong>, símbolo de buena suerte en Chile. Visitar los <strong>talleres de alfarería</strong> es la actividad principal del pueblo, donde puedes ver a los maestros alfareros trabajando en el torno y comprar directamente.</p>
+  <p>En gastronomía, Pomaire es famoso por sus <strong>empanadas gigantes</strong> horneadas en horno de barro, la <strong>cazuela de vacuno en olla de greda</strong>, el <strong>pastel de choclo</strong>, las humitas y la <strong>chicha artesanal</strong>. Hay más de 20 restaurantes y picadas donde disfrutar de la cocina tradicional chilena.</p>
+  <p>Para llegar a Pomaire desde Santiago, toma la <strong>Autopista del Sol (Ruta 78)</strong>, salida kilómetro 51. También puedes ir en <strong>bus desde el Terminal San Borja</strong> hasta Melipilla y luego tomar locomoción local. Pomaire cuenta con <strong>estacionamientos</strong>, servicios de salud (CESFAM), Carabineros, Bomberos y comercio local.</p>
+  <p>Pomaire 360 es la <strong>guía gratuita más completa</strong> para planificar tu visita o informarte sobre los servicios del pueblo. Información actualizada de <strong>alojamientos</strong>, <strong>ruta del vino y la chicha</strong>, <strong>mapa interactivo</strong>, eventos, transporte público y emergencias.</p>
+</section>
 
 <!-- Lightbox mapa oficial -->
 <div class="map-lightbox" id="officialMapLightbox" onclick="closeOfficialMap(event)">
