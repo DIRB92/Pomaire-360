@@ -978,7 +978,8 @@
     color: #fff;
     transform: translateY(-2px);
   }
-  .footer-social-row svg { width: 18px; height: 18px; }
+  .footer-social-row svg { width: 18px; height: 18px; fill: currentColor; }
+  .footer-social-row svg[fill="none"] { fill: none; }
 
   .footer-links-col {
     display: flex;
