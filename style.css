@@ -850,6 +850,77 @@
   .plans-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,.45); }
   .plans-note { font-size: .8rem; color: var(--muted); margin-top: .9rem; }
   .plans-note a { color: var(--clay); font-weight: 600; }
+
+  /* ── FAQ SECTION ─────────────────────────────────── */
+  .plans-faq {
+    margin-top: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plans-faq h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--clay-dark);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .faq-item {
+    background: var(--white);
+    border: 1.5px solid rgba(184,92,44,.10);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: .7rem;
+    cursor: pointer;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  .faq-item:hover { border-color: rgba(184,92,44,.25); box-shadow: 0 4px 12px rgba(90,40,10,.06); }
+  .faq-item[open] { border-color: var(--clay-light); }
+  .faq-item summary {
+    font-size: .92rem;
+    font-weight: 700;
+    color: var(--clay-dark);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '▾';
+    font-size: .8rem;
+    color: var(--muted);
+    transition: transform .2s;
+  }
+  .faq-item[open] summary::after { transform: rotate(180deg); }
+  .faq-item p {
+    margin-top: .8rem;
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── PLANS CTA BOX ──────────────────────────────── */
+  .plans-cta-box {
+    background: var(--smoke);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .plans-cta-emoji { font-size: 2.5rem; display: block; margin-bottom: .5rem; }
+  .plans-cta-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--clay-dark);
+    margin-bottom: .4rem;
+  }
+  .plans-cta-box p {
+    font-size: .92rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
   @media (max-width: 760px) {
     .plans-grid { grid-template-columns: 1fr; }
     .plan-card.plan-prem { transform: none; }
