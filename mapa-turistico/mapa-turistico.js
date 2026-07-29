@@ -19,14 +19,15 @@
     { id:'se1', cat:'security', lat:-33.650798492760984, lng:-71.1512808846173, name:'Carabineros Policía', desc:'San Antonio 361', addr:'San Antonio 361, Pomaire', gmap:'https://maps.app.goo.gl/c555fkuX9t6jcMZs7' },
     { id:'se2', cat:'security', lat:-33.64977969139366, lng:-71.15086677981947, name:'Bomberos de Pomaire', desc:'San Antonio 362', addr:'San Antonio 362, Pomaire', gmap:'https://maps.app.goo.gl/MaJDFK4cwLwf9VZz5' },
     // ── SERVICES ──
-    { id:'sv1', cat:'services', lat:-33.65033, lng:-71.15093, name:'Plaza de Pomaire · OIT', desc:'Oficina de Información Turística', addr:'Plaza de Pomaire, San Antonio 140' },
-    { id:'sv2', cat:'services', lat:-33.646214708973325, lng:-71.15097954893574, name:'Iglesia de Pomaire', desc:'Templo histórico del pueblo', addr:'Iglesia de Pomaire' },
+    { id:'sv1', cat:'services', lat:-33.65033, lng:-71.15093, name:'Plaza de Pomaire · OIT', desc:'Oficina de Información Turística', addr:'Plaza de Pomaire, San Antonio 140', customIcon:'ℹ️' },
+    { id:'sv2', cat:'services', lat:-33.646214708973325, lng:-71.15097954893574, name:'Iglesia de Pomaire', desc:'Templo histórico del pueblo', addr:'Iglesia de Pomaire', customIcon:'⛪' },
     { id:'sv3', cat:'services', lat:-33.65029994302147, lng:-71.1496768882763, name:'Cajero Automático (ATM)', desc:'Banco de Chile · Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire', gmap:'https://maps.app.goo.gl/HcGUyYo8DQq94NBj9', customIcon:'🏧', customColor:'#0033A0' },
-    { id:'sv4', cat:'services', lat:-33.6500313951976, lng:-71.15053295001364, name:'Colegio de Pomaire', desc:'Colegio y Jardín · Enseñanza Básica', addr:'Pomaire', gmap:'https://maps.app.goo.gl/3JLo3RHEu7yPhsMw6' },
-    { id:'sv5', cat:'services', lat:-33.6563274403623, lng:-71.15040862537278, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire', gmap:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9' },
-    { id:'sv6', cat:'services', lat:-33.65447017901263, lng:-71.15242874012448, name:'Cancha de Pomaire', desc:'Cam. La Cruz, Pomaire', addr:'Cam. La Cruz, Pomaire, Melipilla' },
-    { id:'sv8', cat:'services', lat:-33.656554689337824, lng:-71.15054911577195, name:'Vulcanización y Mantenimiento', desc:'Vulcanización y neumáticos', addr:'San Antonio 1, Pomaire' },
-    { id:'sv9', cat:'services', lat:-33.64808726960897, lng:-71.14915833045953, name:'Taller de costura J.E.M.E', desc:'Costura y arreglos de ropa', addr:'Gral. Baquedano 241, Pomaire' },
+    { id:'sv4', cat:'services', lat:-33.6500313951976, lng:-71.15053295001364, name:'Colegio de Pomaire', desc:'Colegio y Jardín · Enseñanza Básica', addr:'Pomaire', gmap:'https://maps.app.goo.gl/3JLo3RHEu7yPhsMw6', customIcon:'🏫' },
+    { id:'sv5', cat:'services', lat:-33.6563274403623, lng:-71.15040862537278, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire', gmap:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9', customIcon:'✝️' },
+    { id:'sv6', cat:'services', lat:-33.65447017901263, lng:-71.15242874012448, name:'Cancha de Pomaire', desc:'Cam. La Cruz, Pomaire', addr:'Cam. La Cruz, Pomaire, Melipilla', customIcon:'⚽' },
+    { id:'sv7', cat:'services', lat:-33.65266285604718, lng:-71.15463474076532, name:'Templo Salón del Reino', desc:'Testigos de Jehová', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/q2WCFmKxVuEp5Ggn7', customIcon:'⛪' },
+    { id:'sv8', cat:'services', lat:-33.656554689337824, lng:-71.15054911577195, name:'Vulcanización y Mantenimiento', desc:'Vulcanización y neumáticos', addr:'San Antonio 1, Pomaire', customIcon:'🔧' },
+    { id:'sv9', cat:'services', lat:-33.64808726960897, lng:-71.14915833045953, name:'Taller de costura J.E.M.E', desc:'Costura y arreglos de ropa', addr:'Gral. Baquedano 241, Pomaire', customIcon:'🧵' },
     // ── POTTERY ──
     { id:'po1', cat:'pottery', lat:-33.65119135971276, lng:-71.15284938597316, name:'Granja Educativa Alfarera', desc:'Talleres de greda · Bernardo O\'Higgins 260', addr:'Bernardo O\'Higgins 260, Pomaire', gmap:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
     { id:'po2', cat:'pottery', lat:-33.65176286310916, lng:-71.15033526947308, name:'Espacio Greda', desc:'Taller de greda · Arturo Prat 352', addr:'Arturo Prat 352, Pomaire', gmap:'https://maps.app.goo.gl/KbNfbMZKQpyjkFwk8', ig:'espaciogreda.cl' },
@@ -74,7 +75,7 @@
     parking:   { label: 'Estacionamientos',  color: '#3B7DD8', icon: '🅿️' },
     health:    { label: 'Salud',             color: '#E25555', icon: '🏥' },
     security:  { label: 'Seguridad',         color: '#5B6ABF', icon: '🚔' },
-    services:  { label: 'Servicios',         color: '#7A5C40', icon: '⛪' },
+    services:  { label: 'Servicios',         color: '#7A5C40', icon: '🛒' },
     highlight: { label: 'Destacados',        color: '#E6B246', icon: '⭐' },
     around:    { label: 'Alrededores',       color: '#4A7C59', icon: '🌾' }
   };

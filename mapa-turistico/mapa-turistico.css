@@ -227,7 +227,7 @@
 .legend-parking::after   { content: '🅿️'; font-size: .85rem; }
 .legend-health::after    { content: '🏥'; font-size: .8rem; }
 .legend-security::after  { content: '🚔'; font-size: .8rem; }
-.legend-services::after  { content: '⛪'; font-size: .85rem; }
+.legend-services::after  { content: '🛒'; font-size: .85rem; }
 .legend-highlight::after { content: '⭐'; font-size: .8rem; }
 .legend-around::after    { content: '🌾'; font-size: .85rem; }
 
