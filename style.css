@@ -3276,3 +3276,92 @@ html.dark-mode .event-card { background: #2a2018; }
 html.dark-mode input,
 html.dark-mode textarea,
 html.dark-mode select { background: #1a1410; color: #f0e8dc; border-color: rgba(184,92,44,.25); }
+
+
+
+/* ══ SEO ABOUT — GRID DE COLUMNAS ════════════════════════════ */
+.seo-about {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: .93rem;
+  line-height: 1.7;
+  color: var(--muted, #555);
+}
+.seo-about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--clay-dark, #5a2d0c);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.seo-about-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.seo-about-col {
+  background: rgba(184, 92, 44, .04);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  border-top: 3px solid var(--clay, #B85C2C);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.seo-about-col:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(184, 92, 44, .1);
+}
+.seo-about-icon {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: .75rem;
+}
+.seo-about-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--clay-dark, #5a2d0c);
+  margin: 0 0 .75rem;
+}
+.seo-about-col p {
+  margin: 0;
+  font-size: .88rem;
+  line-height: 1.7;
+}
+.seo-about-footer {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(184, 92, 44, .15);
+  font-size: .88rem;
+  color: var(--muted, #666);
+}
+
+/* Responsive: 2 columnas en tablet */
+@media (max-width: 900px) {
+  .seo-about-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+/* Responsive: 1 columna en móvil */
+@media (max-width: 540px) {
+  .seo-about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .seo-about {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Dark mode */
+html.dark-mode .seo-about { color: #b8a894; }
+html.dark-mode .seo-about-title { color: #f0e8dc; }
+html.dark-mode .seo-about-col {
+  background: rgba(42, 32, 24, .8);
+  border-top-color: var(--clay-light, #d4915c);
+}
+html.dark-mode .seo-about-col h3 { color: #f0e8dc; }
+html.dark-mode .seo-about-footer { border-top-color: rgba(184, 92, 44, .2); color: #b8a894; }
