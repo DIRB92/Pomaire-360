@@ -17,6 +17,7 @@
 <link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/mapa-turistico/mapa-turistico.css">
 
@@ -27,7 +28,7 @@
 </head>
 <body>
 
-<!-- NAV (misma estructura del sitio) -->
+<!-- NAV -->
 <nav>
   <a class="nav-brand" href="/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline">Turismo & Cultura</span></span></a>
   <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
@@ -54,6 +55,7 @@
         <a href="/comercio/">🛒 Comercio</a>
       </div>
     </div>
+
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Comer y dormir <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
@@ -71,7 +73,7 @@
 <header class="map-hero">
   <div class="map-hero-inner">
     <h1>🗺️ Mapa Turístico de Pomaire</h1>
-    <p>Explora todas las atracciones del pueblo alfarero. Haz clic en las categorías para filtrar o en los marcadores para ver detalles.</p>
+    <p>Explora todas las atracciones del pueblo alfarero. Filtra por categoría, calcula distancias, sigue una ruta sugerida o comparte un lugar con tus amigos.</p>
   </div>
 </header>
 
@@ -81,52 +83,43 @@
   <!-- Category Filter Bar -->
   <div class="map-category-bar">
     <button class="cat-btn active" data-category="all" onclick="filterCategory('all')">
-      <span class="cat-icon cat-icon-all">✦</span>
-      <span class="cat-label">Todos</span>
+      <span class="cat-icon">✦</span> <span class="cat-label">Todos</span>
     </button>
     <button class="cat-btn" data-category="pottery" onclick="filterCategory('pottery')">
-      <span class="cat-icon cat-icon-pottery">🏺</span>
-      <span class="cat-label">Alfarería</span>
+      <span class="cat-icon">🏺</span> <span class="cat-label">Alfarería</span>
     </button>
     <button class="cat-btn" data-category="food" onclick="filterCategory('food')">
-      <span class="cat-icon cat-icon-food">🍽️</span>
-      <span class="cat-label">Restaurantes</span>
+      <span class="cat-icon">🍽️</span> <span class="cat-label">Restaurantes</span>
     </button>
     <button class="cat-btn" data-category="lodging" onclick="filterCategory('lodging')">
-      <span class="cat-icon cat-icon-lodging">🛏️</span>
-      <span class="cat-label">Alojamiento</span>
+      <span class="cat-icon">🛏️</span> <span class="cat-label">Alojamiento</span>
     </button>
     <button class="cat-btn" data-category="parking" onclick="filterCategory('parking')">
-      <span class="cat-icon cat-icon-parking">🅿️</span>
-      <span class="cat-label">Estacionar</span>
+      <span class="cat-icon">🅿️</span> <span class="cat-label">Estacionar</span>
     </button>
     <button class="cat-btn" data-category="health" onclick="filterCategory('health')">
-      <span class="cat-icon cat-icon-health">🏥</span>
-      <span class="cat-label">Salud</span>
+      <span class="cat-icon">🏥</span> <span class="cat-label">Salud</span>
     </button>
     <button class="cat-btn" data-category="security" onclick="filterCategory('security')">
-      <span class="cat-icon cat-icon-security">🚔</span>
-      <span class="cat-label">Seguridad</span>
+      <span class="cat-icon">🚔</span> <span class="cat-label">Seguridad</span>
     </button>
     <button class="cat-btn" data-category="services" onclick="filterCategory('services')">
-      <span class="cat-icon cat-icon-services">⛪</span>
-      <span class="cat-label">Servicios</span>
+      <span class="cat-icon">⛪</span> <span class="cat-label">Servicios</span>
     </button>
     <button class="cat-btn" data-category="highlight" onclick="filterCategory('highlight')">
-      <span class="cat-icon cat-icon-highlight">⭐</span>
-      <span class="cat-label">Destacados</span>
+      <span class="cat-icon">⭐</span> <span class="cat-label">Destacados</span>
     </button>
     <button class="cat-btn" data-category="around" onclick="filterCategory('around')">
-      <span class="cat-icon cat-icon-around">🌾</span>
-      <span class="cat-label">Alrededores</span>
+      <span class="cat-icon">🌾</span> <span class="cat-label">Alrededores</span>
     </button>
   </div>
+
 
   <!-- Map + Legend wrapper -->
   <div class="map-wrapper">
     <div id="touristMap" class="tourist-map"></div>
 
-    <!-- Floating Legend (like the image) -->
+    <!-- Floating Legend -->
     <div class="map-legend" id="mapLegend">
       <div class="legend-header">
         <h3>Atracciones turísticas</h3>
@@ -193,6 +186,59 @@
     </div>
   </div>
 
+  <!-- Hint de distancias -->
+  <p class="map-hint" id="mapHint">📍 Activa tu ubicación o haz clic en un punto del mapa para calcular distancias a cada lugar</p>
+
+
+  <!-- Destacado Premium: El Chancho -->
+  <a class="map-featured-btn" href="/elchanchoalcanciamasgrandedelmundo/">
+    <span class="mfb-ico">🐷</span>
+    <span class="mfb-txt"><span class="mfb-badge">💎 Premium</span> Conoce <strong>El Chancho alcancía de greda más grande del mundo</strong></span>
+    <span class="mfb-go">Ver página →</span>
+  </a>
+
+  <!-- Mapa oficial ilustrado -->
+  <div class="official-map-section">
+    <button class="official-map-btn" onclick="openOfficialMap()" type="button">
+      🗺️ Ver mapa oficial ilustrado de Pomaire
+    </button>
+    <p class="official-map-note">Plano turístico oficial con el directorio numerado de talleres de artesanos.</p>
+  </div>
+
+  <!-- Rutas sugeridas -->
+  <section class="routes-section">
+    <h2>🧭 Recorridos sugeridos</h2>
+    <p class="routes-subtitle">Sigue una ruta temática dibujada en el mapa para aprovechar tu visita</p>
+    <div class="routes-grid">
+      <button type="button" class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
+        <span class="route-icon">🧳</span>
+        <strong>Ruta Oficial</strong>
+        <span class="route-meta">5 paradas · día completo</span>
+      </button>
+      <button type="button" class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
+        <span class="route-icon">🏺</span>
+        <strong>Ruta del Artesano</strong>
+        <span class="route-meta">5 paradas · ~1.5 hrs</span>
+      </button>
+      <button type="button" class="route-card" data-route="family" onclick="loadRoute('family')">
+        <span class="route-icon">👨‍👩‍👧</span>
+        <strong>Ruta Familiar</strong>
+        <span class="route-meta">4 paradas · ~2.5 hrs</span>
+      </button>
+      <button type="button" class="route-card" data-route="food" onclick="loadRoute('food')">
+        <span class="route-icon">🍽️</span>
+        <strong>Ruta Gastronómica</strong>
+        <span class="route-meta">4 paradas · ~1 hr</span>
+      </button>
+      <button type="button" class="route-card" data-route="nature" onclick="loadRoute('nature')">
+        <span class="route-icon">🌄</span>
+        <strong>Ruta Naturaleza</strong>
+        <span class="route-meta">3 paradas · ~3 hrs</span>
+      </button>
+    </div>
+    <button type="button" class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ Quitar ruta</button>
+  </section>
+
   <!-- Places list below map -->
   <section class="places-section">
     <h2>📍 Lugares en el mapa <span class="places-count" id="placesCount"></span></h2>
@@ -201,10 +247,20 @@
 
 </main>
 
+
+<!-- Lightbox mapa oficial ilustrado -->
+<div class="map-lightbox" id="officialMapLightbox" onclick="closeOfficialMap(event)">
+  <div class="map-lightbox-inner">
+    <button class="map-lightbox-close" onclick="closeOfficialMap()" aria-label="Cerrar">✕</button>
+    <img src="/Mapa-Pomaire.pdf" alt="Mapa turístico oficial ilustrado de Pomaire" loading="lazy">
+    <a class="map-lightbox-dl" href="/Mapa-Pomaire.pdf" download>📥 Descargar mapa PDF</a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="map-footer">
   <p>🏺 <a href="/">Pomaire 360</a> — Guía turística del pueblo alfarero de Chile</p>
-  <p><a href="/#mapa">← Volver al mapa principal</a></p>
+  <p><a href="/">← Volver al inicio</a></p>
 </footer>
 
 </body>
