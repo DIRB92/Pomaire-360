@@ -55,6 +55,7 @@
     { id:'fo11', cat:'food', icon:'🍽️', lat:-33.65435582442494, lng:-71.150266197532, name:'Restaurante San Pedro', desc:'Roto Chileno 332', addr:'Roto Chileno 332, Pomaire', gmap:'https://maps.app.goo.gl/UM7eCtd4QQAMXpwK7' },
     { id:'fo12', cat:'food', icon:'🍽️', lat:-33.667105, lng:-71.114189, name:'La Escondida', desc:'Restaurante · Pomaire', addr:'Pomaire, Melipilla', gmap:'https://maps.app.goo.gl/yUXuFcNrwCdLx2UU8' },
     { id:'fo13', cat:'food', icon:'🍽️', lat:-33.65448789758149, lng:-71.15011214056202, name:'Pomaire Restaurant', desc:'Restaurante · Pomaire', addr:'Pomaire', gmap:'https://maps.app.goo.gl/gcRuzNC98i3Nxpyv5', ig:'pomaire_restaurant' },
+    { id:'fo14', cat:'food', icon:'🍽️', lat:-33.65298, lng:-71.15065, name:'Restaurante y Centro de Eventos Barro Vivo', desc:'Restaurante y centro de eventos', addr:'Manuel Rodríguez 350, Melipilla', gmap:'https://maps.google.com/?q=Manuel%20Rodr%C3%ADguez%20350%2C%20Pomaire%2C%20Melipilla%2C%20Chile', phone:'+56959335948', wsp:'56959335948', web:'https://barrosvivo.cl/' },
 
     // ── LODGING ──
     { id:'lo1', cat:'lodging', icon:'🛏️', lat:-33.65198924949971, lng:-71.15296875422749, name:'Hostal Pomaire', desc:'Bernardo O\'Higgins 219', addr:'Bernardo O\'Higgins 219, Pomaire', gmap:'https://maps.app.goo.gl/x98TVQ53oSQwUmNX6' },
