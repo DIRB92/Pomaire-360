@@ -1564,7 +1564,7 @@ const PLACES = [
   { id:'hl5', cat:'highlight', icon:'🏺', lat:-33.6475116, lng:-71.1503954, name:'Los Ceramistas', desc:'General Baquedano 350', addr:'General Baquedano 350, Pomaire', gmap:'https://maps.app.goo.gl/Hae5UCCkPmBnMSHPA' },
   { id:'hl6', cat:'highlight', icon:'🌿', lat:-33.653664329289256, lng:-71.15135912053388, name:'Vivero Luchín', desc:'Jardín y vivero · San Antonio 191', addr:'San Antonio 191, Pomaire', gmap:'https://maps.app.goo.gl/QXyw95D16H72fiTH9', ig:'viveroluchin' },
   // ── AROUND ──
-  { id:'ar1', cat:'around', icon:'🌾', lat:-33.665, lng:-71.17, name:'Los Chiñihues', desc:'Paisaje rural, viñedos y quebradas', addr:'Los Chiñihues, Melipilla' },
+  { id:'ar1', cat:'around', icon:'🌾', lat:-33.6378, lng:-71.1265, name:'Chiñihue Las Rosas', desc:'Paisaje rural, viñedos y quebradas', addr:'Chiñihue Las Rosas, Melipilla', gmap:'https://maps.app.goo.gl/SQiBTkLiGaVWMRyeA' },
 ];
 
 const ROUTES = {
