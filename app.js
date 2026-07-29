@@ -1521,7 +1521,7 @@ const PLACES = [
   // ── SERVICES ──
   { id:'sv1', cat:'services', icon:'ℹ️', lat:-33.65033, lng:-71.15093, name:'Plaza de Pomaire · OIT', desc:'Oficina de Información Turística · punto de encuentro', addr:'Plaza de Pomaire, San Antonio 140' },
   { id:'sv2', cat:'services', icon:'⛪', lat:-33.646214708973325, lng:-71.15097954893574, name:'Iglesia de Pomaire', desc:'Templo histórico del pueblo', addr:'Iglesia de Pomaire' },
-  { id:'sv3', cat:'services', icon:'🏧', lat:-33.65029994302147, lng:-71.1496768882763, name:'Cajero Automático (ATM)', desc:'Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire', gmap:'https://maps.app.goo.gl/HcGUyYo8DQq94NBj9' },
+  { id:'sv3', cat:'services', icon:'🏧', lat:-33.65029994302147, lng:-71.1496768882763, name:'Cajero Automático (ATM)', desc:'Banco de Chile · Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire', gmap:'https://maps.app.goo.gl/HcGUyYo8DQq94NBj9' },
   { id:'sv4', cat:'services', icon:'🏫', lat:-33.6500313951976, lng:-71.15053295001364, name:'Colegio de Pomaire', desc:'Colegio y Jardín · Enseñanza Básica', addr:'Pomaire', gmap:'https://maps.app.goo.gl/3JLo3RHEu7yPhsMw6', ig:'colegiopomaire_' },
   { id:'sv5', cat:'services', icon:'✝️', lat:-33.6563274403623, lng:-71.15040862537278, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire', gmap:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9' },
   { id:'sv6', cat:'services', icon:'⚽', lat:-33.65447017901263, lng:-71.15242874012448, name:'Cancha de Pomaire', desc:'Cam. La Cruz, Pomaire', addr:'Cam. La Cruz, Pomaire, Melipilla', gmap:'https://www.google.com/maps/search/?api=1&query=-33.65447017901263,-71.15242874012448' },

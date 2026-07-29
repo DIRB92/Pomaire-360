@@ -21,7 +21,7 @@
     // ── SERVICES ──
     { id:'sv1', cat:'services', lat:-33.65033, lng:-71.15093, name:'Plaza de Pomaire · OIT', desc:'Oficina de Información Turística', addr:'Plaza de Pomaire, San Antonio 140' },
     { id:'sv2', cat:'services', lat:-33.646214708973325, lng:-71.15097954893574, name:'Iglesia de Pomaire', desc:'Templo histórico del pueblo', addr:'Iglesia de Pomaire' },
-    { id:'sv3', cat:'services', lat:-33.65029994302147, lng:-71.1496768882763, name:'Cajero Automático (ATM)', desc:'Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire', gmap:'https://maps.app.goo.gl/HcGUyYo8DQq94NBj9' },
+    { id:'sv3', cat:'services', lat:-33.65029994302147, lng:-71.1496768882763, name:'Cajero Automático (ATM)', desc:'Banco de Chile · Roberto Bravo 445', addr:'Roberto Bravo 445, Pomaire', gmap:'https://maps.app.goo.gl/HcGUyYo8DQq94NBj9', customIcon:'🏧', customColor:'#0033A0' },
     { id:'sv4', cat:'services', lat:-33.6500313951976, lng:-71.15053295001364, name:'Colegio de Pomaire', desc:'Colegio y Jardín · Enseñanza Básica', addr:'Pomaire', gmap:'https://maps.app.goo.gl/3JLo3RHEu7yPhsMw6' },
     { id:'sv5', cat:'services', lat:-33.6563274403623, lng:-71.15040862537278, name:'El Cristo', desc:'Roberto Bravo 1', addr:'Roberto Bravo 1, Pomaire', gmap:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9' },
     { id:'sv6', cat:'services', lat:-33.65447017901263, lng:-71.15242874012448, name:'Cancha de Pomaire', desc:'Cam. La Cruz, Pomaire', addr:'Cam. La Cruz, Pomaire, Melipilla' },
@@ -135,10 +135,12 @@
     var cat = CATEGORIES[place.cat] || { color: '#888', icon: '📍' };
     var isFeatured = place.plan === 'premium' || place.plan === 'destacado';
     var size = isFeatured ? 44 : 36;
+    var displayIcon = place.customIcon || cat.icon;
+    var markerColor = place.customColor || cat.color;
 
     var icon = L.divIcon({
       className: 'marker-wrapper',
-      html: '<div class="marker-icon marker-' + place.cat + (isFeatured ? ' is-featured' : '') + '" style="width:' + size + 'px;height:' + size + 'px;font-size:' + (isFeatured ? '1.2rem' : '1rem') + ';">' + cat.icon + '</div>',
+      html: '<div class="marker-icon' + (isFeatured ? ' is-featured' : '') + '" style="background:' + markerColor + ';width:' + size + 'px;height:' + size + 'px;font-size:' + (isFeatured ? '1.2rem' : '1rem') + ';">' + displayIcon + '</div>',
       iconSize: [size, size],
       iconAnchor: [size / 2, size / 2],
       popupAnchor: [0, -(size / 2 + 4)]
