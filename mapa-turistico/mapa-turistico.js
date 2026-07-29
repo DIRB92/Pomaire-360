@@ -482,4 +482,125 @@
   };
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') window.closeOfficialMap(); });
 
+  /* ── BÚSQUEDA INSTANTÁNEA ───────────────────────────── */
+  window.searchPlaces = function () {
+    var input = document.getElementById('mapSearchInput');
+    var resultsEl = document.getElementById('mapSearchResults');
+    if (!input || !resultsEl) return;
+
+    var query = input.value.trim().toLowerCase();
+    if (query.length < 2) {
+      resultsEl.innerHTML = '';
+      resultsEl.classList.remove('open');
+      return;
+    }
+
+    var results = PLACES.filter(function (p) {
+      return p.name.toLowerCase().indexOf(query) >= 0 ||
+             p.desc.toLowerCase().indexOf(query) >= 0 ||
+             p.addr.toLowerCase().indexOf(query) >= 0 ||
+             (CATEGORIES[p.cat] && CATEGORIES[p.cat].label.toLowerCase().indexOf(query) >= 0);
+    }).slice(0, 8);
+
+    if (results.length === 0) {
+      resultsEl.innerHTML = '<div class="search-no-results">No se encontraron lugares</div>';
+      resultsEl.classList.add('open');
+      return;
+    }
+
+    resultsEl.innerHTML = results.map(function (p) {
+      var cat = CATEGORIES[p.cat] || { color: '#888', icon: '📍' };
+      var distHtml = '';
+      if (userLatLng) {
+        var d = haversine(userLatLng.lat, userLatLng.lng, p.lat, p.lng);
+        distHtml = '<span class="search-dist">' + fmtDist(d) + '</span>';
+      }
+      return '<div class="search-result" onclick="window.focusPlace(\'' + p.id + '\');document.getElementById(\'mapSearchResults\').classList.remove(\'open\');">' +
+        '<span class="search-icon" style="background:' + cat.color + ';">' + (p.icon || cat.icon) + '</span>' +
+        '<div class="search-info"><strong>' + p.name + '</strong><span>' + p.desc + '</span></div>' +
+        distHtml +
+      '</div>';
+    }).join('');
+    resultsEl.classList.add('open');
+  };
+
+  // Cerrar resultados al hacer clic fuera
+  document.addEventListener('click', function (e) {
+    var searchWrap = document.getElementById('mapSearchWrap');
+    var resultsEl = document.getElementById('mapSearchResults');
+    if (searchWrap && resultsEl && !searchWrap.contains(e.target)) {
+      resultsEl.classList.remove('open');
+    }
+  });
+
+  // Limpiar búsqueda
+  window.clearSearch = function () {
+    var input = document.getElementById('mapSearchInput');
+    var resultsEl = document.getElementById('mapSearchResults');
+    if (input) input.value = '';
+    if (resultsEl) { resultsEl.innerHTML = ''; resultsEl.classList.remove('open'); }
+  };
+
+  /* ── TOOLTIPS EN MARCADORES (hover) ─────────────────── */
+  function addTooltips() {
+    Object.keys(markers).forEach(function (id) {
+      var m = markers[id];
+      var p = m._placeData;
+      m.bindTooltip(p.name, {
+        direction: 'top',
+        offset: [0, -20],
+        opacity: 0.95,
+        className: 'marker-tooltip'
+      });
+    });
+  }
+
+  /* ── STATS EN HERO ──────────────────────────────────── */
+  function updateHeroStats() {
+    var statsEl = document.getElementById('heroStats');
+    if (!statsEl) return;
+    var totalPlaces = PLACES.length;
+    var totalCats = Object.keys(CATEGORIES).length;
+    statsEl.innerHTML = '<span class="hero-stat">' + totalPlaces + ' lugares</span>' +
+      '<span class="hero-stat-sep">·</span>' +
+      '<span class="hero-stat">' + totalCats + ' categorías</span>' +
+      '<span class="hero-stat-sep">·</span>' +
+      '<span class="hero-stat">' + Object.keys(ROUTES).length + ' rutas</span>';
+  }
+
+  /* ── ANIMACIÓN DE ENTRADA DE MARCADORES ─────────────── */
+  function animateMarkersIn() {
+    var delay = 0;
+    Object.keys(markers).forEach(function (id) {
+      var el = markers[id].getElement();
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'scale(0.3)';
+        el.style.transition = 'opacity .3s ease ' + delay + 'ms, transform .3s cubic-bezier(.34,1.56,.64,1) ' + delay + 'ms';
+        setTimeout(function () {
+          el.style.opacity = '1';
+          el.style.transform = 'scale(1)';
+        }, 50);
+        delay += 15;
+      }
+    });
+  }
+
+  /* ── RESET ALL (reiniciar vista) ────────────────────── */
+  window.resetMapView = function () {
+    window.clearRoute(true);
+    window.filterCategory('all');
+    map.setView([-33.6512, -71.1505], 16, { animate: true });
+    window.clearSearch();
+  };
+
+  /* ── OVERRIDE INIT PARA AGREGAR TOOLTIPS Y STATS ────── */
+  var _origInit = init;
+  init = function () {
+    _origInit();
+    addTooltips();
+    updateHeroStats();
+    setTimeout(animateMarkersIn, 200);
+  };
+
 })();
