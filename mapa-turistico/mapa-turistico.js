@@ -126,9 +126,7 @@
   }
 
   /* ── INICIALIZACIÓN ─────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded', init);
-
-  function init() {
+  document.addEventListener('DOMContentLoaded', function () {
     map = L.map('touristMap', {
       center: [-33.6512, -71.1505],
       zoom: 16,
@@ -162,7 +160,12 @@
       if (e.originalEvent.target.closest && e.originalEvent.target.closest('.leaflet-marker-icon')) return;
       setUserLocation(e.latlng.lat, e.latlng.lng, false);
     });
-  }
+
+    // Tooltips, stats y animación
+    addTooltips();
+    updateHeroStats();
+    setTimeout(animateMarkersIn, 200);
+  });
 
 
   /* ── MARCADORES ─────────────────────────────────────── */
@@ -592,15 +595,6 @@
     window.filterCategory('all');
     map.setView([-33.6512, -71.1505], 16, { animate: true });
     window.clearSearch();
-  };
-
-  /* ── OVERRIDE INIT PARA AGREGAR TOOLTIPS Y STATS ────── */
-  var _origInit = init;
-  init = function () {
-    _origInit();
-    addTooltips();
-    updateHeroStats();
-    setTimeout(animateMarkersIn, 200);
   };
 
 })();
