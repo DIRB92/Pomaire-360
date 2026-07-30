@@ -1645,6 +1645,16 @@
   }
   #leafletMap, #locoMap { width: 100%; height: 100%; z-index: 1; }
 
+  /* Mapa más grande en escritorio */
+  @media (min-width: 861px) {
+    #mapa .section-inner {
+      max-width: 1200px;
+    }
+    #mapa .leaflet-wrap {
+      height: 600px;
+    }
+  }
+
   .map-hint {
     text-align: center;
     color: var(--muted);
