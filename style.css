@@ -230,6 +230,86 @@
     transform: translateY(-1px);
   }
 
+  /* ── Dark Mode Toggle (NAV) ──────────────────────── */
+  .nav-dark-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,.25);
+    border-radius: 22px;
+    padding: .45rem .9rem;
+    font-size: .85rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s, transform .12s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-dark-toggle .dm-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .nav-dark-toggle:hover {
+    background: rgba(255,255,255,.92);
+    color: var(--clay-dark);
+    border-color: rgba(255,255,255,.9);
+    transform: translateY(-1px);
+  }
+  html.dark-mode .nav-dark-toggle {
+    background: rgba(230,178,70,.15);
+    border-color: rgba(230,178,70,.35);
+    color: #f0e8dc;
+  }
+  html.dark-mode .nav-dark-toggle:hover {
+    background: rgba(230,178,70,.3);
+    border-color: rgba(230,178,70,.6);
+    color: #fff;
+  }
+
+  /* ── Dark Mode Toggle (FOOTER) ──────────────────── */
+  .footer-dark-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.7);
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: .4rem .85rem;
+    font-size: .78rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s, transform .12s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .footer-dark-toggle .dm-icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .footer-dark-toggle:hover {
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    border-color: rgba(255,255,255,.4);
+    transform: translateY(-1px);
+  }
+  html.dark-mode .footer-dark-toggle {
+    background: rgba(230,178,70,.12);
+    border-color: rgba(230,178,70,.3);
+    color: rgba(240,232,220,.7);
+  }
+  html.dark-mode .footer-dark-toggle:hover {
+    background: rgba(230,178,70,.25);
+    border-color: rgba(230,178,70,.5);
+    color: #f0e8dc;
+  }
+
   .nav-map-btn {
     display: inline-flex;
     align-items: center;
