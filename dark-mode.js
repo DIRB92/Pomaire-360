@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    dark-mode.js — Botón flotante de modo oscuro para Pomaire 360
-   Inyecta un toggle sol/luna en la esquina superior izquierda.
+   Inyecta un toggle sol/luna en la esquina inferior derecha.
    Persiste la preferencia en localStorage.
    ═══════════════════════════════════════════════════════════════ */
 (function() {
@@ -28,6 +28,7 @@
       btn.setAttribute('aria-label', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
       btn.setAttribute('title', dark ? 'Modo claro' : 'Modo oscuro');
     }
+    updateBtnStyle(dark);
   }
 
   function init() {
@@ -44,24 +45,26 @@
     btn.setAttribute('title', dark ? 'Modo claro' : 'Modo oscuro');
     btn.style.cssText = [
       'position:fixed',
-      'top:80px',
-      'left:16px',
-      'z-index:800',
-      'width:44px',
-      'height:44px',
+      'bottom:24px',
+      'right:24px',
+      'z-index:1100',
+      'width:48px',
+      'height:48px',
       'border-radius:50%',
       'border:2px solid rgba(184,92,44,.3)',
       'background:rgba(255,255,255,.92)',
       'color:#2D1A0A',
-      'font-size:1.3rem',
+      'font-size:1.4rem',
       'cursor:pointer',
       'display:flex',
       'align-items:center',
       'justify-content:center',
-      'box-shadow:0 4px 14px rgba(0,0,0,.15)',
+      'box-shadow:0 4px 14px rgba(0,0,0,.18)',
       'transition:transform .15s,box-shadow .15s,background .2s,border-color .2s',
       'backdrop-filter:blur(6px)',
-      '-webkit-backdrop-filter:blur(6px)'
+      '-webkit-backdrop-filter:blur(6px)',
+      'touch-action:manipulation',
+      '-webkit-tap-highlight-color:transparent'
     ].join(';');
 
     btn.addEventListener('mouseenter', function() {
@@ -70,10 +73,11 @@
     });
     btn.addEventListener('mouseleave', function() {
       btn.style.transform = 'scale(1)';
-      btn.style.boxShadow = '0 4px 14px rgba(0,0,0,.15)';
+      btn.style.boxShadow = '0 4px 14px rgba(0,0,0,.18)';
     });
 
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       var nowDark = !document.documentElement.classList.contains('dark-mode');
       applyTheme(nowDark);
     });
@@ -91,7 +95,6 @@
         // Only follow system if user hasn't manually chosen
         if (!stored) {
           applyTheme(e.matches);
-          updateBtnStyle(e.matches);
         }
       });
     }
