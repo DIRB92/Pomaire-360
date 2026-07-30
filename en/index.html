@@ -217,53 +217,141 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Essentials</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/en/estacionamientos/">🅿️ <span data-t="nav_park">Parking</span></a>
-        <a href="/en/salud/">🏥 <span data-t="nav_health">Health</span></a>
-        <a href="/en/seguridad/">🚔 <span data-t="nav_security">Safety</span></a>
-        <a href="/en/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
-        <a href="/en/gruas/">🔧 <span data-t="nav_gruas">Towing &amp; mechanics</span></a>
-        <a href="/en/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
+        <a href="/en/estacionamientos/" data-keywords="parking car park lot">
+          <span class="nav-menu-icon">🅿️</span>
+          <span class="nav-menu-text"><span data-t="nav_park">Parking</span><span class="nav-menu-desc">Where to park your car</span></span>
+        </a>
+        <a href="/en/salud/" data-keywords="health hospital pharmacy doctor clinic">
+          <span class="nav-menu-icon">🏥</span>
+          <span class="nav-menu-text"><span data-t="nav_health">Health</span><span class="nav-menu-desc">Clinic, pharmacy &amp; emergencies</span></span>
+        </a>
+        <a href="/en/seguridad/" data-keywords="safety security police fire emergency">
+          <span class="nav-menu-icon">🚔</span>
+          <span class="nav-menu-text"><span data-t="nav_security">Safety</span><span class="nav-menu-desc">Police, Fire Dept, emergencies</span></span>
+        </a>
+        <a href="/en/servicios/" data-keywords="services shops store atm bank">
+          <span class="nav-menu-icon">🛒</span>
+          <span class="nav-menu-text"><span data-t="nav_commerce">Services</span><span class="nav-menu-desc">Shops &amp; everyday services</span></span>
+        </a>
+        <a href="/en/gruas/" data-keywords="towing mechanic tire car breakdown">
+          <span class="nav-menu-icon">🔧</span>
+          <span class="nav-menu-text"><span data-t="nav_gruas">Towing &amp; mechanics</span><span class="nav-menu-desc">Vehicle assistance</span></span>
+        </a>
+        <a href="/en/locomocion/" data-keywords="bus transport public transit">
+          <span class="nav-menu-icon">🚌</span>
+          <span class="nav-menu-text"><span data-t="nav_locomocion">Transport</span><span class="nav-menu-desc">Buses &amp; public transport</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
-      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">What to do</span> <span class="ng-arrow">▾</span></button>
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Visit</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/en/alfareria/">🏺 <span data-t="nav_pottery">Pottery</span></a>
-        <a href="/en/ruta-del-vino/">🍷 <span data-t="nav_winery">Wine Route</span></a>
-        <a href="/en/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
-        <a href="/en/plaza/">🌳 <span data-t="nav_plaza">Town Square</span></a>
-        <a href="/en/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
-        <a href="/en/comercio/">🛒 <span data-t="nav_shops_g">Shops</span></a>
+        <a href="/en/alfareria/" data-keywords="pottery clay ceramics workshop artisan">
+          <span class="nav-menu-icon">🏺</span>
+          <span class="nav-menu-text"><span data-t="nav_pottery">Pottery</span><span class="nav-menu-desc">Workshops &amp; craft tradition</span></span>
+        </a>
+        <a href="/en/ruta-del-vino/" data-keywords="wine route vineyard winery">
+          <span class="nav-menu-icon">🍷</span>
+          <span class="nav-menu-text"><span data-t="nav_winery">Wine Route</span><span class="nav-menu-desc">Nearby vineyards &amp; wineries</span></span>
+        </a>
+        <a href="/en/que-ver/" data-keywords="sights attractions church monument what to see">
+          <span class="nav-menu-icon">✨</span>
+          <span class="nav-menu-text"><span data-t="nav_seewhat">What to see</span><span class="nav-menu-desc">Attractions &amp; points of interest</span></span>
+        </a>
+        <a href="/en/plaza/" data-keywords="square plaza park center church">
+          <span class="nav-menu-icon">🌳</span>
+          <span class="nav-menu-text"><span data-t="nav_plaza">Town Square</span><span class="nav-menu-desc">Heart of the village</span></span>
+        </a>
+        <a href="/en/alrededores/" data-keywords="around surroundings countryside nature rural">
+          <span class="nav-menu-icon">🌄</span>
+          <span class="nav-menu-text"><span data-t="nav_around">Around</span><span class="nav-menu-desc">Los Chiñihues &amp; surroundings</span></span>
+        </a>
+        <a href="/en/comercio/" data-keywords="shops shopping souvenirs gifts">
+          <span class="nav-menu-icon">🛍️</span>
+          <span class="nav-menu-text"><span data-t="nav_shops_g">Shops</span><span class="nav-menu-desc">Souvenirs &amp; gift shops</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Eat &amp; sleep</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/en/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
-        <a href="/en/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
-        <a href="/en/plaza/#banos">🚽 <span data-t="nav_banos">Restrooms</span></a>
+        <a href="/en/gastronomia/" data-keywords="eat restaurant food empanada traditional">
+          <span class="nav-menu-icon">🍽️</span>
+          <span class="nav-menu-text"><span data-t="nav_food">Eat</span><span class="nav-menu-desc">Restaurants &amp; traditional cuisine</span></span>
+        </a>
+        <a href="/en/alojamientos/" data-keywords="sleep hotel hostel cabin lodging accommodation">
+          <span class="nav-menu-icon">🛏️</span>
+          <span class="nav-menu-text"><span data-t="nav_lodging">Lodging</span><span class="nav-menu-desc">Hotels, cabins &amp; suites</span></span>
+        </a>
+        <a href="/en/plaza/#banos" data-keywords="restroom bathroom toilet wc">
+          <span class="nav-menu-icon">🚽</span>
+          <span class="nav-menu-text"><span data-t="nav_banos">Restrooms</span><span class="nav-menu-desc">Public restrooms available</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Plan</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="#recorrido">🧭 <span data-t="nav_tour">Tour</span></a>
-        <a href="#mapa">🗺️ <span data-t="nav_map">Map</span></a>
-        <a href="#clima">🌤️ <span data-t="nav_weather">Weather</span></a>
-        <a href="#galeria">📸 <span data-t="nav_gallery">Gallery</span></a>
-        <a href="#eventos">📅 <span data-t="nav_events">Events</span></a>
-        <a href="/en/juegos/">🎮 <span data-t="nav_games">Games</span></a>
-        <a href="/en/anunciate/">📣 <span data-t="nav_advertise">Advertise</span></a>
-        <a href="/en/sugerencias/">💬 <span data-t="nav_suggest">Feedback</span></a>
+        <a href="#recorrido" data-keywords="tour route itinerary step by step">
+          <span class="nav-menu-icon">🧭</span>
+          <span class="nav-menu-text"><span data-t="nav_tour">Tour</span><span class="nav-menu-desc">Step-by-step tourist route</span></span>
+        </a>
+        <a href="#mapa" data-keywords="map interactive location">
+          <span class="nav-menu-icon">🗺️</span>
+          <span class="nav-menu-text"><span data-t="nav_map">Map</span><span class="nav-menu-desc">Interactive village map</span></span>
+        </a>
+        <a href="#clima" data-keywords="weather temperature rain sun forecast">
+          <span class="nav-menu-icon">🌤️</span>
+          <span class="nav-menu-text"><span data-t="nav_weather">Weather</span><span class="nav-menu-desc">Current conditions</span></span>
+        </a>
+        <a href="#galeria" data-keywords="gallery photos images pictures">
+          <span class="nav-menu-icon">📸</span>
+          <span class="nav-menu-text"><span data-t="nav_gallery">Gallery</span><span class="nav-menu-desc">Village photos</span></span>
+        </a>
+        <a href="#eventos" data-keywords="events festivals holidays celebrations">
+          <span class="nav-menu-icon">📅</span>
+          <span class="nav-menu-text"><span data-t="nav_events">Events</span><span class="nav-menu-desc">Dates &amp; festivities</span></span>
+        </a>
       </div>
     </div>
 
-    <a class="nav-map-btn" href="#mapa">🗺️ <span data-t="nav_map">Map</span></a>
-    <a class="nav-cta" href="/en/apoyar/">💛 <span data-t="nav_donate">Support</span></a>
+    <a class="nav-map-btn" href="/en/mapa-turistico/" data-keywords="tourist map illustrated plan">🗺️ <span data-t="nav_map_full">Tourist Map</span></a>
+    <a class="nav-cta" href="/en/apoyar/" data-keywords="support donate help contribute">💛 <span data-t="nav_donate">Support</span></a>
   </div>
+
+  <!-- Quick search -->
+  <div class="nav-search" id="navSearchWrap">
+    <button type="button" class="nav-search-btn" onclick="toggleSearch(event)" aria-label="Search the site">🔍</button>
+    <div class="nav-search-panel">
+      <input type="text" class="nav-search-input" placeholder="Search Pomaire 360..." aria-label="Search sections" data-ph-t="search_placeholder">
+      <div class="nav-search-results" id="navSearchResults">
+        <a class="nav-search-item" href="/en/estacionamientos/" data-keywords="parking car park">🅿️ Parking</a>
+        <a class="nav-search-item" href="/en/salud/" data-keywords="health hospital pharmacy doctor">🏥 Health</a>
+        <a class="nav-search-item" href="/en/seguridad/" data-keywords="safety police fire emergency 133 131 132">🚔 Safety</a>
+        <a class="nav-search-item" href="/en/servicios/" data-keywords="services shops store atm">🛒 Services</a>
+        <a class="nav-search-item" href="/en/gruas/" data-keywords="towing mechanic tire car">🔧 Towing</a>
+        <a class="nav-search-item" href="/en/locomocion/" data-keywords="bus transport public transit">🚌 Transport</a>
+        <a class="nav-search-item" href="/en/alfareria/" data-keywords="pottery clay ceramics workshop artisan">🏺 Pottery</a>
+        <a class="nav-search-item" href="/en/ruta-del-vino/" data-keywords="wine vineyard winery">🍷 Wine Route</a>
+        <a class="nav-search-item" href="/en/que-ver/" data-keywords="attractions sights what to see church">✨ What to see</a>
+        <a class="nav-search-item" href="/en/plaza/" data-keywords="square plaza park center">🌳 Town Square</a>
+        <a class="nav-search-item" href="/en/alrededores/" data-keywords="around surroundings countryside nature">🌄 Around</a>
+        <a class="nav-search-item" href="/en/comercio/" data-keywords="shops shopping souvenirs">🛍️ Shops</a>
+        <a class="nav-search-item" href="/en/gastronomia/" data-keywords="eat restaurant food empanada">🍽️ Food</a>
+        <a class="nav-search-item" href="/en/alojamientos/" data-keywords="sleep hotel hostel cabin lodging">🛏️ Lodging</a>
+        <a class="nav-search-item" href="/en/mapa-turistico/" data-keywords="tourist map illustrated plan">🗺️ Tourist Map</a>
+        <a class="nav-search-item" href="/en/juegos/" data-keywords="games arcade trivia play">🎮 Games</a>
+        <a class="nav-search-item" href="/en/anunciate/" data-keywords="advertise business promote">📣 Advertise</a>
+        <a class="nav-search-item" href="/en/sugerencias/" data-keywords="feedback suggestions contact">💬 Feedback</a>
+        <a class="nav-search-item" href="/en/apoyar/" data-keywords="support donate contribute">💛 Support</a>
+        <span class="nav-search-empty" data-t="search_empty">No results found</span>
+      </div>
+    </div>
+  </div>
+
   <div class="lang-selector" id="langSelector">
     <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
       <span id="langCurrentFlag">🇬🇧</span>
@@ -271,24 +359,33 @@
       <span class="lang-arrow">▼</span>
     </button>
     <div class="lang-dropdown" role="listbox">
-      <a role="option" class="lang-option" data-lang="es" href="/"><span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-check">✓</span></a>
-      <a role="option" class="lang-option lang-active" data-lang="en" href="/en/"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></a>
-      <a role="option" class="lang-option" data-lang="pt" href="/pt/"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></a>
+      <a role="option" class="lang-option" data-lang="es" href="/">
+        <span class="lang-flag">🇨🇱</span><span class="lang-name">Español</span><span class="lang-badge lang-badge-full">Full</span><span class="lang-check">✓</span>
+      </a>
+      <a role="option" class="lang-option lang-active" data-lang="en" href="/en/">
+        <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-badge lang-badge-full">Full</span><span class="lang-check">✓</span>
+      </a>
+      <a role="option" class="lang-option" data-lang="pt" href="/pt/">
+        <span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-badge lang-badge-full">Full</span><span class="lang-check">✓</span>
+      </a>
       <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
-        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
-        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
       <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
-        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
     </div>
   </div>
 </nav>
+
+<!-- BREADCRUMB -->
+<div class="nav-breadcrumb" id="navBreadcrumb" aria-label="Breadcrumb"></div>
 
 <!-- BARRA DE CLIMA (debajo del menú) -->
 <a id="weather-bar" class="weather-bar" href="#clima" aria-label="Clima actual en Pomaire">

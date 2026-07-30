@@ -253,6 +253,175 @@
     transform: translateY(-1px);
   }
 
+  /* ── ACTIVE PAGE INDICATOR ─────────────────────────── */
+  .nav-menu a.nav-active {
+    background: linear-gradient(135deg, #FFF3EC 0%, #FFE8D6 100%);
+    color: var(--clay-dark);
+    font-weight: 700;
+    border-left: 3px solid var(--clay);
+    padding-left: 1rem;
+  }
+  .nav-menu a.nav-active:hover {
+    background: linear-gradient(135deg, #FFE8D6 0%, #FFDCBE 100%);
+    padding-left: 1.15rem;
+  }
+
+  /* ── MEGA-MENU (desktop enhancements) ────────────── */
+  .nav-menu-desc {
+    display: block;
+    font-size: .72rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: .1rem;
+    white-space: normal;
+    line-height: 1.3;
+  }
+  .nav-menu a .nav-menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--smoke);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: background .15s, transform .15s;
+  }
+  .nav-menu a:hover .nav-menu-icon {
+    background: #FFE8D6;
+    transform: scale(1.08);
+  }
+  .nav-menu-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV SEARCH ──────────────────────────────────── */
+  .nav-search {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav-search-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,.22);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background .15s, transform .12s;
+    font-family: inherit;
+  }
+  .nav-search-btn:hover {
+    background: rgba(255,255,255,.25);
+    transform: scale(1.08);
+  }
+  .nav-search-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + .6rem);
+    right: 0;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 14px 36px rgba(0,0,0,.25);
+    min-width: 300px;
+    max-width: min(380px, 92vw);
+    z-index: 300;
+    border: 1px solid rgba(184,92,44,.12);
+    padding: .6rem;
+    animation: navDrop .18s ease;
+  }
+  .nav-search.open .nav-search-panel { display: block; }
+  .nav-search-input {
+    width: 100%;
+    padding: .65rem 1rem;
+    border: 1.5px solid var(--smoke);
+    border-radius: 10px;
+    font-size: .92rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s;
+    background: var(--cream);
+  }
+  .nav-search-input:focus { border-color: var(--clay-light); }
+  .nav-search-input::placeholder { color: var(--muted); }
+  .nav-search-results {
+    max-height: 280px;
+    overflow-y: auto;
+    margin-top: .4rem;
+  }
+  .nav-search-item {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .55rem .75rem;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background .12s;
+    cursor: pointer;
+  }
+  .nav-search-item:hover { background: var(--smoke); color: var(--clay-dark); }
+  .nav-search-empty {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: .85rem;
+  }
+
+  /* ── BREADCRUMB ──────────────────────────────────── */
+  .nav-breadcrumb {
+    display: none;
+    align-items: center;
+    gap: .4rem;
+    padding: .45rem 1.4rem;
+    background: var(--smoke);
+    font-size: .78rem;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(184,92,44,.08);
+  }
+  .nav-breadcrumb a {
+    color: var(--clay);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color .15s;
+  }
+  .nav-breadcrumb a:hover { color: var(--clay-dark); text-decoration: underline; }
+  .nav-breadcrumb .bc-sep { color: var(--clay-light); font-weight: 300; }
+  .nav-breadcrumb .bc-group { font-weight: 500; }
+  .nav-breadcrumb .bc-current { font-weight: 700; color: var(--text); }
+
+  /* ── LANG SELECTOR IMPROVEMENTS ──────────────────── */
+  .lang-option .lang-badge {
+    font-size: .58rem;
+    font-weight: 700;
+    padding: .1rem .35rem;
+    border-radius: 4px;
+    margin-left: auto;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+  }
+  .lang-badge-full {
+    background: #E8F5E9;
+    color: #2E7D32;
+  }
+  .lang-badge-auto {
+    background: #FFF3E0;
+    color: #E65100;
+  }
+
+  /* ── BODY LOCK (mobile nav open) ─────────────────── */
+  body.nav-open { overflow: hidden; }
+
   @media (max-width: 860px) {
     nav { gap: .4rem .5rem; padding: .55rem 1rem; }
 
@@ -261,8 +430,6 @@
     .nav-brand-main { font-size: 1.05rem; }
     .nav-tagline { font-size: .58rem; }
 
-    /* El menú YA NO se colapsa: la hamburguesa desaparece y las píldoras
-       quedan SIEMPRE visibles, repartidas en filas (wrap) y centradas. */
     .nav-burger { display: none !important; }
 
     .lang-selector { order: 2; margin-left: auto; }
@@ -279,14 +446,15 @@
       order: 3;
     }
 
-    /* Píldoras compactas pero táctiles (ancho automático, no a pantalla completa) */
+    /* Píldoras con touch targets mejorados (mínimo 44px) */
     .nav-group { width: auto; position: relative; }
     .nav-group-btn,
     .nav-map-btn,
     .nav-cta {
       width: auto;
-      padding: .45rem .9rem;
-      font-size: .82rem;
+      min-height: 44px;
+      padding: .55rem 1rem;
+      font-size: .84rem;
       border-radius: 22px;
       box-shadow: 0 2px 8px rgba(0,0,0,.14);
       transition: transform .18s cubic-bezier(.34,1.56,.64,1),
@@ -320,7 +488,7 @@
       box-shadow: 0 8px 22px rgba(255,170,60,.6);
     }
 
-    /* Dropdowns como popover centrado bajo su botón (no empujan la fila) */
+    /* Dropdowns como popover centrado bajo su botón */
     .nav-menu {
       position: absolute;
       top: calc(100% + .5rem);
@@ -337,13 +505,99 @@
     }
     .nav-group.open .nav-menu { display: block; animation: navDropM .18s ease; }
     @keyframes navDropM { from { opacity: 0; } to { opacity: 1; } }
-    .nav-menu a { color: var(--text); padding: .6rem .85rem; font-size: .9rem; gap: .6rem; }
+    .nav-menu a { color: var(--text); padding: .7rem .85rem; font-size: .9rem; gap: .6rem; min-height: 44px; }
     .nav-menu a:hover { background: var(--smoke); color: var(--clay-dark); padding-left: 1.1rem; }
+
+    /* Hide mega-menu descriptions on tablet */
+    .nav-menu-desc { display: none; }
+    .nav-menu a .nav-menu-icon { width: 30px; height: 30px; font-size: .95rem; }
+  }
+
+  /* ── MOBILE HAMBURGER (< 600px) ──────────────────── */
+  @media (max-width: 600px) {
+    .nav-burger {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      font-size: 1.4rem;
+      border-radius: 12px;
+      margin-left: auto;
+      order: 1;
+    }
+
+    .lang-selector { order: 2; margin-left: .3rem; }
+
+    .nav-links-wrap {
+      display: none !important;
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: .35rem;
+      margin-top: .6rem;
+      order: 3;
+      max-height: 75vh;
+      overflow-y: auto;
+      padding-bottom: 1rem;
+    }
+    .nav-links-wrap.open {
+      display: flex !important;
+      animation: navSlideDown .22s ease;
+    }
+    @keyframes navSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Full-width pills in mobile */
+    .nav-group { width: 100%; }
+    .nav-group-btn,
+    .nav-map-btn,
+    .nav-cta {
+      width: 100%;
+      justify-content: center;
+      min-height: 48px;
+      padding: .65rem 1.2rem;
+      font-size: .9rem;
+    }
+
+    /* Dropdowns go full-width below their button */
+    .nav-menu {
+      position: relative;
+      top: .3rem;
+      left: 0;
+      transform: none;
+      min-width: 100%;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+    .nav-menu a {
+      min-height: 48px;
+      padding: .75rem 1rem;
+      font-size: .92rem;
+    }
+
+    /* Search panel full width */
+    .nav-search-panel {
+      position: fixed;
+      top: 60px;
+      left: .5rem;
+      right: .5rem;
+      min-width: auto;
+      max-width: none;
+    }
+
+    /* Breadcrumb compact */
+    .nav-breadcrumb { padding: .4rem 1rem; font-size: .72rem; }
   }
 
   /* Respeta la preferencia de menos animación */
   @media (prefers-reduced-motion: reduce) {
     .nav-group.open .nav-menu { animation: none !important; }
+    .nav-links-wrap.open { animation: none !important; }
   }
 
   /* ── HERO ────────────────────────────────────────── */

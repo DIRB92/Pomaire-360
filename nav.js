@@ -2,6 +2,8 @@
    nav.js — Menú de navegación compartido · Pomaire 360
    Usado en la home Y en todas las subpáginas para que el menú completo
    (con categorías desplegables) se vea siempre, sin importar la página.
+   Mejoras UX 2026: hamburguesa móvil, Escape key, página activa,
+   búsqueda rápida, breadcrumbs, mega-menú.
    ══════════════════════════════════════════════════════════════════════════ */
 (function () {
   function closeAllGroups() {
@@ -29,8 +31,13 @@
     var burger = document.getElementById('navBurger');
     if (!wrap) return;
     var open = wrap.classList.toggle('open');
-    if (burger) burger.setAttribute('aria-expanded', open);
+    if (burger) {
+      burger.setAttribute('aria-expanded', open);
+      burger.innerHTML = open ? '✕' : '☰';
+    }
     if (!open) closeAllGroups();
+    // Prevent body scroll when mobile nav is open
+    document.body.classList.toggle('nav-open', open);
   }
 
   window.closeAllGroups = closeAllGroups;
@@ -40,7 +47,152 @@
   // Cerrar los desplegables al hacer clic fuera de ellos
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.nav-group')) closeAllGroups();
+    // Close search if clicking outside
+    if (!e.target.closest('.nav-search')) closeSearch();
   });
+
+  // ── ESCAPE KEY — cierra dropdowns, menú móvil y búsqueda ──
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeAllGroups();
+      closeSearch();
+      // Close mobile nav
+      var wrap = document.getElementById('navGroups');
+      var burger = document.getElementById('navBurger');
+      if (wrap && wrap.classList.contains('open')) {
+        wrap.classList.remove('open');
+        document.body.classList.remove('nav-open');
+        if (burger) {
+          burger.setAttribute('aria-expanded', 'false');
+          burger.innerHTML = '☰';
+        }
+      }
+      // Close lang selector
+      var sel = document.getElementById('langSelector');
+      if (sel && sel.classList.contains('open')) {
+        sel.classList.remove('open');
+        var btn = document.getElementById('langToggleBtn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+
+  // ── BÚSQUEDA RÁPIDA ──
+  function closeSearch() {
+    var searchWrap = document.getElementById('navSearchWrap');
+    if (searchWrap) searchWrap.classList.remove('open');
+  }
+
+  function toggleSearch(e) {
+    e.stopPropagation();
+    var searchWrap = document.getElementById('navSearchWrap');
+    if (!searchWrap) return;
+    var isOpen = searchWrap.classList.toggle('open');
+    if (isOpen) {
+      var input = searchWrap.querySelector('.nav-search-input');
+      if (input) {
+        input.value = '';
+        input.focus();
+        filterSearchResults('');
+      }
+    }
+  }
+
+  function filterSearchResults(query) {
+    var results = document.getElementById('navSearchResults');
+    if (!results) return;
+    var items = results.querySelectorAll('.nav-search-item');
+    var q = query.toLowerCase().trim();
+    var visibleCount = 0;
+    items.forEach(function (item) {
+      var text = (item.getAttribute('data-keywords') || '') + ' ' + item.textContent;
+      var match = !q || text.toLowerCase().indexOf(q) !== -1;
+      item.style.display = match ? 'flex' : 'none';
+      if (match) visibleCount++;
+    });
+    var empty = results.querySelector('.nav-search-empty');
+    if (empty) empty.style.display = (q && visibleCount === 0) ? 'block' : 'none';
+  }
+
+  window.toggleSearch = toggleSearch;
+  window.filterSearchResults = filterSearchResults;
+  window.closeSearch = closeSearch;
+
+  // ── INDICADOR DE PÁGINA ACTIVA ──
+  function markActivePage() {
+    var path = window.location.pathname;
+    document.querySelectorAll('.nav-menu a').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (!href) return;
+      // Match exact path or path without trailing slash
+      var isActive = (href === path) ||
+                     (href === path + '/') ||
+                     (path === href.replace(/\/$/, ''));
+      a.classList.toggle('nav-active', isActive);
+    });
+  }
+
+  // ── BREADCRUMBS ──
+  function initBreadcrumbs() {
+    var container = document.getElementById('navBreadcrumb');
+    if (!container) return;
+    var path = window.location.pathname;
+    // Don't show breadcrumb on home
+    if (path === '/' || path === '/en/' || path === '/pt/') {
+      container.style.display = 'none';
+      return;
+    }
+
+    var langPrefix = '';
+    if (path.startsWith('/en/')) langPrefix = '/en';
+    else if (path.startsWith('/pt/')) langPrefix = '/pt';
+
+    // Map of paths to labels
+    var labels = {
+      '/estacionamientos/': { es: 'Estacionamientos', en: 'Parking', group: 'Esenciales' },
+      '/salud/': { es: 'Salud', en: 'Health', group: 'Esenciales' },
+      '/seguridad/': { es: 'Seguridad', en: 'Safety', group: 'Esenciales' },
+      '/servicios/': { es: 'Servicios', en: 'Services', group: 'Esenciales' },
+      '/gruas/': { es: 'Grúas', en: 'Towing', group: 'Esenciales' },
+      '/locomocion/': { es: 'Locomoción', en: 'Transport', group: 'Esenciales' },
+      '/alfareria/': { es: 'Alfarería', en: 'Pottery', group: 'Visitar' },
+      '/ruta-del-vino/': { es: 'Ruta del Vino', en: 'Wine Route', group: 'Visitar' },
+      '/que-ver/': { es: 'Qué ver', en: 'What to see', group: 'Visitar' },
+      '/plaza/': { es: 'Plaza', en: 'Town Square', group: 'Visitar' },
+      '/alrededores/': { es: 'Alrededores', en: 'Around', group: 'Visitar' },
+      '/comercio/': { es: 'Comercio', en: 'Shops', group: 'Visitar' },
+      '/gastronomia/': { es: 'Gastronomía', en: 'Food', group: 'Comer y dormir' },
+      '/alojamientos/': { es: 'Alojamientos', en: 'Lodging', group: 'Comer y dormir' },
+      '/juegos/': { es: 'Juegos', en: 'Games', group: 'Planifica' },
+      '/anunciate/': { es: 'Anúnciate', en: 'Advertise', group: 'Planifica' },
+      '/sugerencias/': { es: 'Sugerencias', en: 'Feedback', group: 'Planifica' },
+      '/apoyar/': { es: 'Apoyar', en: 'Support', group: '' },
+      '/admin/': { es: 'Comerciantes', en: 'Merchants', group: '' },
+      '/mapa-turistico/': { es: 'Mapa Turístico', en: 'Tourist Map', group: 'Planifica' },
+      '/links/': { es: 'Enlaces', en: 'Links', group: '' },
+      '/elchanchoalcanciamasgrandedelmundo/': { es: 'El Chancho Alcancía', en: 'Giant Piggy Bank', group: 'Visitar' }
+    };
+
+    var cleanPath = path.replace(langPrefix, '');
+    var info = labels[cleanPath];
+    if (!info) {
+      container.style.display = 'none';
+      return;
+    }
+
+    var lang = langPrefix === '/en' ? 'en' : 'es';
+    var homeLabel = lang === 'en' ? 'Home' : 'Inicio';
+    var homeHref = langPrefix ? langPrefix + '/' : '/';
+
+    var html = '<a href="' + homeHref + '">' + homeLabel + '</a>';
+    if (info.group) {
+      html += ' <span class="bc-sep">›</span> <span class="bc-group">' + info.group + '</span>';
+    }
+    html += ' <span class="bc-sep">›</span> <span class="bc-current">' + info[lang] + '</span>';
+
+    container.innerHTML = html;
+    container.style.display = 'flex';
+  }
 
   function init() {
     function closeMobileNav() {
@@ -49,7 +201,11 @@
       var burger = document.getElementById('navBurger');
       if (wrap && wrap.classList.contains('open')) {
         wrap.classList.remove('open');
-        if (burger) burger.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-open');
+        if (burger) {
+          burger.setAttribute('aria-expanded', 'false');
+          burger.innerHTML = '☰';
+        }
       }
     }
     // Cerrar el menú móvil al elegir cualquier opción
@@ -65,6 +221,33 @@
       }
       lastY = window.scrollY;
     }, { passive: true });
+
+    // Marcar página activa
+    markActivePage();
+
+    // Iniciar breadcrumbs
+    initBreadcrumbs();
+
+    // Search input listener
+    var searchInput = document.querySelector('.nav-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        filterSearchResults(this.value);
+      });
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var results = document.getElementById('navSearchResults');
+          if (results) {
+            var first = results.querySelector('.nav-search-item[style="display: flex"], .nav-search-item:not([style*="none"])');
+            if (!first) first = results.querySelector('.nav-search-item');
+            if (first && first.style.display !== 'none') {
+              first.click();
+            }
+          }
+        }
+      });
+    }
   }
 
   if (document.readyState === 'loading') {
