@@ -540,6 +540,8 @@
       order: 3;
       max-height: 75vh;
       overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
       padding-bottom: 1rem;
     }
     .nav-links-wrap.open {

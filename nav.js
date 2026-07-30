@@ -212,11 +212,24 @@
     document.querySelectorAll('.nav-menu a, .nav-cta, .nav-map-btn').forEach(function (a) {
       a.addEventListener('click', closeMobileNav);
     });
-    // Cerrar el menú móvil al hacer scroll (subir o bajar)
+    // Cerrar el menú móvil al hacer scroll — SOLO en modo tablet (>600px)
+    // donde las píldoras están siempre visibles. En modo hamburguesa (<600px)
+    // el usuario necesita poder scrollear dentro del menú desplegado sin que
+    // se cierre involuntariamente.
     var lastY = window.scrollY;
     window.addEventListener('scroll', function () {
       var wrap = document.getElementById('navGroups');
-      if (wrap && wrap.classList.contains('open') && Math.abs(window.scrollY - lastY) > 10) {
+      if (!wrap || !wrap.classList.contains('open')) {
+        lastY = window.scrollY;
+        return;
+      }
+      // No cerrar por scroll en modo hamburguesa (< 600px)
+      if (window.innerWidth <= 600) {
+        lastY = window.scrollY;
+        return;
+      }
+      // En tablet/desktop, cerrar con umbral de 40px
+      if (Math.abs(window.scrollY - lastY) > 40) {
         closeMobileNav();
       }
       lastY = window.scrollY;
