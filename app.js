@@ -2207,6 +2207,12 @@ function selectPlan(plan) {
 window.selectPlan = selectPlan;
 
 function renderAllDirs() {
+  // Si directory-loader.js ya está activo, delegar a él
+  if (typeof window.directoryLoaderRefresh === 'function') {
+    window.directoryLoaderRefresh();
+    return;
+  }
+  // Fallback: renderizado legacy con datos hardcoded
   renderDir('restaurantDir', DIRECTORY.restaurants, 'restCount');
   renderDir('tallerDir',     DIRECTORY.talleres,    'tallerCount');
   renderDir('demoDir',       DIRECTORY.demos,       'demoCount');
@@ -2218,7 +2224,14 @@ function renderAllDirs() {
 }
 
 // Permite a applyLang() re-renderizar los directorios en el idioma actual
-window.translateContent = function(lang) { renderAllDirs(); if (typeof window.refreshTourPicks === 'function') window.refreshTourPicks(lang); };
+window.translateContent = function(lang) {
+  if (typeof window.directoryLoaderRefresh === 'function') {
+    window.directoryLoaderRefresh();
+  } else {
+    renderAllDirs();
+  }
+  if (typeof window.refreshTourPicks === 'function') window.refreshTourPicks(lang);
+};
 
 document.addEventListener('DOMContentLoaded', renderAllDirs);
 
