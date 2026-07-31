@@ -200,16 +200,7 @@
   color: #2D1A0A;
 }
 
-.dir-card .dir-link-app {
-  background: var(--app-link-bg, #e8f5e9);
-  color: #2e7d32;
-}
-
-.dir-card .dir-link-app:hover {
-  background: #66bb6a;
-  color: #fff;
-}
-
+/* ─── WhatsApp link ────────────────────────────────────────────────────── */
 .dir-card .dir-link-wsp {
   background: #e8f5e9;
   color: #25d366;
@@ -255,7 +246,7 @@
   font-style: italic;
 }
 
-/* ─── Indicador de fuente API ──────────────────────────────────────────── */
+/* ─── Indicador de fuente API (punto verde = datos frescos de Supabase) ── */
 .dir-from-api::after {
   content: '';
   position: absolute;
@@ -266,6 +257,24 @@
   border-radius: 50%;
   background: #27ae60;
   box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
+  animation: pulse-dot 2s ease-in-out 1;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+/* ─── Link a ficha en app.pomaire360.cl ────────────────────────────────── */
+.dir-card .dir-link-app {
+  background: var(--app-link-bg, #e8f5e9);
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.dir-card .dir-link-app:hover {
+  background: #43a047;
+  color: #fff;
 }
 
 /* ─── Responsive ───────────────────────────────────────────────────────── */

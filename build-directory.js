@@ -1,68 +1,82 @@
 #!/usr/bin/env node
 /**
- * build-directory.js — Genera directory-data.json desde Supabase
+ * build-directory.js — Genera directory-data.json desde Supabase (pomaire-app)
  *
  * Se ejecuta en build-time (CI/CD, deploy hook, o manualmente):
  *   node build-directory.js
  *
- * Genera /directory-data.json con los datos frescos de Supabase,
- * que luego se sirve estáticamente para SEO y carga inicial rápida.
+ * Lee la tabla "negocios" de app.pomaire360.cl vía la API REST de Supabase
+ * y genera un JSON estático agrupado por categoría para SEO y carga rápida.
  *
  * Variables de entorno requeridas:
- *   SUPABASE_URL       — URL del proyecto Supabase
- *   SUPABASE_SERVICE_KEY — Service role key (tiene acceso total)
+ *   SUPABASE_URL         — https://uuskvqtbsvtfsovqjar7.supabase.co
+ *   SUPABASE_SERVICE_KEY — Service role key (acceso total, NUNCA exponer)
+ *
+ * Si no hay service key, usa la anon key (solo lee negocios activos via RLS).
  */
 const fs = require('fs');
 const path = require('path');
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://uuskvqtbsvtfsovqjar7.supabase.co';
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_ANON_KEY || '';
 
-if (!SUPABASE_URL || !SUPABASE_KEY) {
-  console.error('❌ Faltan variables de entorno:');
-  console.error('   SUPABASE_URL y SUPABASE_SERVICE_KEY');
+if (!SUPABASE_KEY) {
+  console.error('❌ Falta variable de entorno: SUPABASE_SERVICE_KEY o SUPABASE_ANON_KEY');
+  console.error('   Configúrala en tu plataforma de deploy (Cloudflare Pages, Vercel, etc.)');
   process.exit(1);
 }
 
-const TABLE = 'negocios_publicos';
+const SELECT_COLS = [
+  'id', 'nombre', 'slug', 'categoria', 'descripcion', 'direccion',
+  'telefono', 'whatsapp', 'instagram', 'sitio_web', 'horarios',
+  'latitud', 'longitud', 'imagen_principal', 'imagenes', 'verificado',
+  'rating_promedio', 'total_resenas', 'plan', 'updated_at'
+].join(',');
+
 const OUTPUT = path.resolve(__dirname, 'directory-data.json');
 
+// Categorías válidas en la app
+const CATEGORIES = [
+  'artesania', 'gastronomia', 'hospedaje',
+  'turismo', 'comercio', 'servicios', 'otro'
+];
 
-const CATEGORY_MAP = {
-  gastronomia: 'gastronomia',
-  talleres: 'talleres',
-  demos: 'demos',
-  artesanos: 'artesanos',
-  alojamientos: 'alojamientos',
-  interes: 'interes',
-  servicios: 'servicios',
-  jardin: 'jardin'
-};
+/** Formatea horarios JSONB a string */
+function formatHorarios(horarios) {
+  if (!horarios || typeof horarios !== 'object') return '';
+  if (typeof horarios === 'string') return horarios;
+  var keys = Object.keys(horarios);
+  if (keys.length === 0) return '';
+  return keys.map(function(dia) {
+    return horarios[dia] ? dia + ': ' + horarios[dia] : '';
+  }).filter(Boolean).join(' · ');
+}
 
-/** Convierte registro de Supabase al formato del directory-loader */
+/** Convierte registro Supabase al formato del loader */
 function mapRow(row) {
   return {
     n: row.nombre,
-    a: row.direccion,
+    a: row.direccion || 'Pomaire',
     p: row.telefono || '',
-    d: row.horario || '',
-    tag: row.tag || '',
-    map: row.google_maps || '',
+    d: formatHorarios(row.horarios),
+    tag: '',
+    map: (row.latitud && row.longitud)
+      ? 'https://maps.google.com/?q=' + row.latitud + ',' + row.longitud
+      : '',
     ig: row.instagram || '',
-    fb: row.facebook || '',
-    web: row.web || '',
+    fb: '',
+    web: row.sitio_web || '',
     wsp: row.whatsapp || '',
     plan: (row.plan && row.plan !== 'gratis') ? row.plan : undefined,
     slug: row.slug || '',
-    page: row.pagina_url || '',
-    hours: row.horario || '',
+    page: '',
+    hours: formatHorarios(row.horarios),
     desc: row.descripcion || '',
-    photos: row.fotos || [],
-    foto_portada: row.foto_portada || '',
-    rating_avg: row.rating_avg || 0,
-    rating_count: row.rating_count || 0,
+    photos: row.imagenes || [],
+    foto_portada: row.imagen_principal || '',
+    rating_avg: parseFloat(row.rating_promedio) || 0,
+    rating_count: row.total_resenas || 0,
     verificado: row.verificado || false,
-    tiktok: row.tiktok || '',
     updated_at: row.updated_at || '',
     lat: row.latitud,
     lng: row.longitud,
@@ -71,11 +85,12 @@ function mapRow(row) {
   };
 }
 
-
 async function main() {
-  console.log('🔄 Descargando negocios desde Supabase...');
+  console.log('🔄 Descargando negocios desde Supabase (pomaire-app)...');
+  console.log('   URL:', SUPABASE_URL);
 
-  const url = `${SUPABASE_URL}/rest/v1/${TABLE}?select=*&order=updated_at.desc`;
+  const url = `${SUPABASE_URL}/rest/v1/negocios?select=${SELECT_COLS}&activo=eq.true&order=rating_promedio.desc`;
+
   const res = await fetch(url, {
     headers: {
       'apikey': SUPABASE_KEY,
@@ -96,32 +111,37 @@ async function main() {
 
   // Agrupar por categoría
   const grouped = {};
-  Object.keys(CATEGORY_MAP).forEach(cat => { grouped[cat] = []; });
+  CATEGORIES.forEach(cat => { grouped[cat] = []; });
 
   rows.forEach(row => {
     const mapped = mapRow(row);
     const cat = row.categoria;
     if (grouped[cat]) {
       grouped[cat].push(mapped);
+    } else {
+      grouped.otro.push(mapped);
     }
   });
 
   // Estadísticas
-  Object.keys(grouped).forEach(cat => {
+  console.log('');
+  CATEGORIES.forEach(cat => {
     if (grouped[cat].length > 0) {
       console.log(`  📂 ${cat}: ${grouped[cat].length} negocios`);
     }
   });
 
-  // Metadata
+  // Output con metadata
   const output = {
     _generated: new Date().toISOString(),
+    _source: 'supabase/pomaire-app',
     _count: rows.length,
     ...grouped
   };
 
   fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2), 'utf-8');
   console.log(`\n📁 Archivo generado: ${OUTPUT}`);
+  console.log(`   Tamaño: ${(fs.statSync(OUTPUT).size / 1024).toFixed(1)} KB`);
   console.log('🚀 Listo para deploy');
 }
 

@@ -1,142 +1,142 @@
-# 🏺 Pomaire 360 — Integración Supabase
+# 🏺 Pomaire 360 — Integración con Supabase (pomaire-app)
 
 ## Arquitectura
 
+`pomaire360.cl` consume la **misma base de datos** que `app.pomaire360.cl`.
+No se crea una tabla nueva — se lee la tabla `negocios` existente.
+
 ```
-┌──────────────────────────────┐
-│   app.pomaire360.cl          │
-│   (Panel de comerciantes)    │
-│                              │
-│   Comerciante edita ficha →  │
-│   INSERT/UPDATE en tabla     │
-│   "negocios" de Supabase     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│   Supabase (PostgreSQL)      │
-│                              │
-│   Tabla: negocios            │
-│   Vista: negocios_publicos   │
-│   RLS: lectura pública       │
-└──────────────┬───────────────┘
-               │
-       ┌───────┴────────┐
-       ▼                ▼
-┌─────────────┐  ┌──────────────┐
-│ Build-time  │  │ Client-side  │
-│             │  │              │
-│ build-      │  │ directory-   │
-│ directory   │  │ loader.js    │
-│ .js         │  │              │
-│             │  │ Fetch →      │
-│ Genera      │  │ Supabase     │
-│ directory-  │  │ REST API     │
-│ data.json   │  │              │
-└─────────────┘  └──────────────┘
-```
-
-
-## Configuración Paso a Paso
-
-### 1. Crear la tabla en Supabase
-
-1. Ve al [Dashboard de Supabase](https://supabase.com/dashboard)
-2. Abre el **SQL Editor**
-3. Ejecuta el contenido de `schema.sql`
-
-### 2. Configurar credenciales en el frontend
-
-Edita `directory-loader.js` y reemplaza:
-
-```javascript
-var SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
-var SUPABASE_ANON_KEY = 'TU_ANON_KEY_PUBLICA';
+┌──────────────────────────────────────────┐
+│        app.pomaire360.cl                 │
+│        (Panel de comerciantes)           │
+│        Next.js + Supabase SSR            │
+│                                          │
+│  Comerciante → crea/edita ficha          │
+│  INSERT/UPDATE en tabla "negocios"       │
+└─────────────────┬────────────────────────┘
+                  │
+                  ▼
+┌──────────────────────────────────────────┐
+│  Supabase (pomaire-app)                  │
+│  https://uuskvqtbsvtfsovqjar7.supabase.co│
+│                                          │
+│  Tabla: negocios                         │
+│  RLS: lectura pública (activo = true)    │
+│  Vista: negocios_ranking (plan + rating) │
+└─────────────────┬────────────────────────┘
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+┌───────────────┐   ┌───────────────────┐
+│ Build-time    │   │ Client-side       │
+│               │   │                   │
+│ build-        │   │ directory-        │
+│ directory.js  │   │ loader.js         │
+│               │   │                   │
+│ Genera        │   │ fetch() →         │
+│ directory-    │   │ Supabase REST API │
+│ data.json     │   │ (anon key)        │
+│ (SEO)         │   │                   │
+└───────────────┘   └───────────────────┘
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+┌──────────────────────────────────────────┐
+│          pomaire360.cl                   │
+│   Muestra fichas enriquecidas:           │
+│   foto, rating, verificado, plan badge   │
+│   Link a ficha completa en la app        │
+└──────────────────────────────────────────┘
 ```
 
-Encuentra estos valores en:
-- Supabase Dashboard → Settings → API → URL
-- Supabase Dashboard → Settings → API → anon public key
+## Tabla `negocios` (ya existente en pomaire-app)
 
-### 3. Configurar el build script
+| Columna | Tipo | Uso en pomaire360.cl |
+|---------|------|----------------------|
+| nombre | TEXT | Nombre mostrado |
+| slug | TEXT | Link a app.pomaire360.cl/negocios/{slug} |
+| categoria | ENUM | Agrupa en secciones (gastronomia, artesania, etc.) |
+| descripcion | TEXT | Texto breve en tarjetas destacadas |
+| direccion | TEXT | Dirección con icono 📍 |
+| telefono | TEXT | Link tel: |
+| whatsapp | TEXT | Link wa.me/ |
+| instagram | TEXT | Link Instagram |
+| sitio_web | TEXT | Link web |
+| horarios | JSONB | Texto de horarios |
+| latitud/longitud | FLOAT | Link a Google Maps |
+| imagen_principal | TEXT | Cover en tarjetas premium/destacadas |
+| imagenes | TEXT[] | Galería en modal |
+| verificado | BOOLEAN | Badge ✓ verde |
+| rating_promedio | NUMERIC | Estrellas ★ |
+| total_resenas | INT | Contador "(N)" |
+| plan | TEXT | gratis/destacado/premium → orden + badge |
+| activo | BOOLEAN | RLS filtra: solo activos visibles |
+| updated_at | TIMESTAMPTZ | "hace X días" en footer |
 
-Agrega estas variables de entorno en tu plataforma de deploy:
+## Credenciales
+
+### Frontend (directory-loader.js) — YA CONFIGURADO
+- **URL**: `https://uuskvqtbsvtfsovqjar7.supabase.co`
+- **Key**: anon public key (segura, protegida por RLS)
+
+### Build-time (build-directory.js) — Variables de entorno
+```bash
+SUPABASE_URL=https://uuskvqtbsvtfsovqjar7.supabase.co
+SUPABASE_SERVICE_KEY=<tu service_role key>  # O SUPABASE_ANON_KEY
+```
+
+## Cómo funciona
+
+### 1. En producción (con build)
 
 ```bash
-SUPABASE_URL=https://tu-proyecto.supabase.co
-SUPABASE_SERVICE_KEY=tu_service_role_key
+# En el build command de Cloudflare Pages:
+node build-directory.js && <tu-build-actual>
 ```
 
-### 4. Ejecutar el build
+Esto genera `directory-data.json` que se sirve estáticamente.
+El browser carga ese JSON primero (rápido, SEO) y luego
+actualiza con datos frescos de Supabase.
 
-```bash
-node build-directory.js
+### 2. Sin build configurado (solo client-side)
+
+El `directory-loader.js` hace fetch directo a Supabase desde
+el browser del visitante. Funciona sin configuración adicional.
+Si Supabase no responde, usa el DIRECTORY hardcoded de app.js.
+
+### 3. Auto-rebuild al editar una ficha
+
+Para que pomaire360.cl se actualice automáticamente:
+
+**Cloudflare Pages:**
+1. Settings → Builds → Deploy Hooks → crear hook
+2. Supabase Dashboard → Database → Webhooks:
+   - Table: `negocios`
+   - Events: INSERT, UPDATE, DELETE
+   - URL: el deploy hook de Cloudflare
+   - Method: POST
+
+## Mapeo de categorías
+
+| Supabase (app) | Contenedor en pomaire360.cl |
+|----------------|----------------------------|
+| gastronomia | #restaurantDir |
+| artesania | #artesanoDir |
+| hospedaje | #alojamientoDir |
+| turismo | #interesDir |
+| comercio | #servicioDir |
+| servicios | #servicioDir |
+| otro | #interesDir |
+
+## Fallback (resiliencia)
+
+```
+Supabase disponible?
+  ├─ SÍ → Renderiza datos frescos de la API
+  └─ NO → ¿Hay directory-data.json?
+            ├─ SÍ → Usa JSON estático (último build)
+            └─ NO → Usa DIRECTORY hardcoded de app.js
 ```
 
-Esto genera `directory-data.json` que se incluye en el deploy.
-
-### 5. Deploy hook (auto-rebuild)
-
-Para que pomaire360.cl se actualice cuando un comerciante
-edita su ficha en app.pomaire360.cl:
-
-**Opción A: Cloudflare Pages**
-1. Crea un Deploy Hook en Cloudflare Pages
-2. En Supabase → Database → Webhooks, crea uno que
-   dispare POST al deploy hook URL cuando haya INSERT/UPDATE
-   en la tabla `negocios`
-
-**Opción B: GitHub Actions**
-Agrega el workflow `.github/workflows/build-directory.yml`
-(ver ejemplo en este repo)
-
-
-## Schema de la tabla `negocios`
-
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| `id` | UUID | ID único autogenerado |
-| `nombre` | TEXT | Nombre del negocio |
-| `slug` | TEXT | URL-friendly identifier (único) |
-| `direccion` | TEXT | Dirección física |
-| `telefono` | TEXT | Teléfono principal |
-| `whatsapp` | TEXT | Número WhatsApp (formato: 56XXXXXXXXX) |
-| `descripcion` | TEXT | Descripción del negocio |
-| `categoria` | ENUM | gastronomia, talleres, demos, artesanos, alojamientos, interes, servicios, jardin |
-| `plan` | ENUM | gratis, destacado, premium |
-| `tag` | TEXT | Etiqueta libre (ej: "Cerveza artesanal") |
-| `horario` | TEXT | Horario en texto libre |
-| `horario_json` | JSONB | Horario estructurado por día |
-| `latitud` | FLOAT | Coordenada GPS |
-| `longitud` | FLOAT | Coordenada GPS |
-| `google_maps` | TEXT | URL directa a Google Maps |
-| `instagram` | TEXT | Handle sin @ |
-| `facebook` | TEXT | URL de Facebook |
-| `web` | TEXT | URL del sitio web |
-| `tiktok` | TEXT | URL de TikTok |
-| `foto_portada` | TEXT | URL de imagen principal |
-| `fotos` | TEXT[] | Array de URLs de galería |
-| `rating_avg` | NUMERIC | Promedio de rating (0-5) |
-| `rating_count` | INT | Cantidad de reseñas |
-| `pagina_url` | TEXT | Ruta interna si tiene página |
-| `publicado` | BOOLEAN | Visible al público |
-| `verificado` | BOOLEAN | Negocio verificado |
-| `owner_id` | UUID | FK a auth.users |
-
-## Flujo de datos
-
-1. **Comerciante** → Edita ficha en `app.pomaire360.cl`
-2. **app.pomaire360.cl** → INSERT/UPDATE en tabla `negocios`
-3. **Supabase** → Webhook dispara rebuild de pomaire360.cl
-4. **Build** → `node build-directory.js` genera JSON estático
-5. **Deploy** → Se sirve `directory-data.json` (SEO-friendly)
-6. **Browser** → `directory-loader.js` carga JSON estático primero
-7. **Browser** → Luego fetcha Supabase para datos en tiempo real
-8. **Resultado** → Ficha visible en ambas web simultáneamente
-
-## Seguridad (RLS)
-
-- **Lectura**: Cualquier usuario anónimo puede leer negocios publicados
-- **Escritura**: Solo el owner autenticado puede editar su negocio
-- **Build**: Usa `service_role_key` (nunca exponerla en frontend)
-- **Frontend**: Usa `anon_key` (segura para exponer, limitada por RLS)
+El sitio NUNCA se queda sin datos, incluso si Supabase
+está caído o no se ha configurado el build.
