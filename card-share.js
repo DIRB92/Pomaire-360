@@ -23,7 +23,8 @@
   function buildShareData(card) {
     var isDirItem = card.classList.contains('dir-item');
     var title = getText(card, 'h3') || getText(card, '.dir-name') || document.title;
-    var url = pageUrl();
+    var cardId = card.getAttribute('id');
+    var url = pageUrl() + (cardId ? '#' + cardId : '');
     var text;
 
     if (isDirItem) {

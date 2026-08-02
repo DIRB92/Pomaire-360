@@ -164,6 +164,14 @@
 
   // ─── NUEVO dirItemHTML enriquecido ──────────────────────────────────────
 
+  /** Genera un slug a partir de un nombre (para anclas en la URL) */
+  function slugifyLocal(str) {
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
   function dirItemHTMLEnriched(it) {
     // Registrar en PROFILES si tiene plan
     if (it.plan && it.slug && typeof window.PROFILES !== 'undefined') {
@@ -245,7 +253,9 @@
     if (it._source === 'supabase') classes += ' dir-from-api';
     if (it.foto_portada && featured) classes += ' dir-has-cover';
 
-    return '<div class="' + classes + '">' +
+    var cardId = it.slug || slugifyLocal(it.n);
+
+    return '<div class="' + classes + '" id="' + cardId + '">' +
       coverHTML +
       '<div class="dir-card-body">' +
         '<div class="dir-card-header">' +

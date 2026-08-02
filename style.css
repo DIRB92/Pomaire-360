@@ -2088,6 +2088,18 @@
     transition: transform .24s cubic-bezier(.25,.8,.25,1), box-shadow .24s, border-color .24s;
     border: 1px solid rgba(0,0,0,.06);
     height: 100%;
+    scroll-margin-top: 5rem;
+  }
+
+  /* Highlight al navegar por ancla */
+  .dir-item:target {
+    animation: dir-item-highlight 1.8s ease;
+    box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.45), 0 8px 24px rgba(45, 26, 10, 0.15);
+  }
+  @keyframes dir-item-highlight {
+    0%   { box-shadow: 0 0 0 5px rgba(184, 92, 44, 0.6), 0 8px 30px rgba(45, 26, 10, 0.2); transform: scale(1.01); }
+    50%  { box-shadow: 0 0 0 4px rgba(184, 92, 44, 0.4), 0 6px 20px rgba(45, 26, 10, 0.12); }
+    100% { box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.45), 0 8px 24px rgba(45, 26, 10, 0.15); transform: scale(1); }
   }
 
   /* Área visual superior (imagen simulada con gradiente) */

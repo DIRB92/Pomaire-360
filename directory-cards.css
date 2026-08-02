@@ -12,6 +12,19 @@
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 1rem;
+  scroll-margin-top: 5rem;
+}
+
+/* Highlight cuando se navega por ancla (#slug) */
+.dir-card:target {
+  animation: card-highlight 1.8s ease;
+  box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.45), 0 8px 24px rgba(45, 26, 10, 0.15);
+}
+
+@keyframes card-highlight {
+  0%   { box-shadow: 0 0 0 5px rgba(184, 92, 44, 0.6), 0 8px 30px rgba(45, 26, 10, 0.2); transform: scale(1.01); }
+  50%  { box-shadow: 0 0 0 4px rgba(184, 92, 44, 0.4), 0 6px 20px rgba(45, 26, 10, 0.12); }
+  100% { box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.45), 0 8px 24px rgba(45, 26, 10, 0.15); transform: scale(1); }
 }
 
 .dir-card:hover {

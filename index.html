@@ -1390,6 +1390,14 @@
     'Servicio': '/servicios/'
   };
 
+  // Genera slug para anclas
+  function slugify(str){
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]+/g,'-')
+      .replace(/(^-|-$)/g,'');
+  }
+
   // Esperar a que DIRECTORY esté disponible (cargado por app.js)
   function getAllItems(){
     if(typeof DIRECTORY === 'undefined') return [];
@@ -1399,7 +1407,7 @@
     Object.keys(cats).forEach(function(key){
       if(!DIRECTORY[key]) return;
       DIRECTORY[key].forEach(function(it){
-        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||''});
+        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||'', slug:it.slug||''});
       });
     });
     return items;
@@ -1424,8 +1432,10 @@
     if(!matches.length){ results.classList.remove('open'); results.innerHTML=''; return; }
 
     results.innerHTML = matches.map(function(it){
-      // Prioridad: página propia del negocio > página de la categoría
-      const href = it.page ? it.page : (catPages[it.cat] || '/');
+      // Prioridad: página propia del negocio > página de la categoría + ancla
+      const anchor = it.slug || slugify(it.name);
+      const basePage = it.page ? it.page : (catPages[it.cat] || '/');
+      const href = basePage + '#' + anchor;
       return '<a class="dir-search-item" href="'+href+'">' +
         '<span class="dsi-icon">'+it.icon+'</span>' +
         '<div><div class="dsi-name">'+escHtml(it.name)+'</div><div class="dsi-cat">'+escHtml(it.cat)+' · '+escHtml(it.addr)+'</div></div></a>';
@@ -1436,6 +1446,29 @@
   function escHtml(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 })();
 </script>
+
+<!-- Auto-scroll al ancla cuando la URL tiene un #hash (espera a que el directorio cargue) -->
+<script>
+(function(){
+  if(!window.location.hash) return;
+  var hash = window.location.hash.substring(1);
+  var attempts = 0;
+  var maxAttempts = 20; // 20 x 250ms = 5s máximo de espera
+
+  function tryScroll(){
+    var el = document.getElementById(hash);
+    if(el){
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    attempts++;
+    if(attempts < maxAttempts) setTimeout(tryScroll, 250);
+  }
+  // Esperar un poco para que el directorio se renderice
+  setTimeout(tryScroll, 300);
+})();
+</script>
+
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>

@@ -2115,8 +2115,18 @@ function planBadge(plan) {
   return `<span class="dir-badge badge-${plan}">${icon} ${planLabel(plan)}</span>`;
 }
 
+// Genera un slug único a partir del nombre del negocio (para anclas en la URL)
+function slugify(str) {
+  return str.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // quitar acentos
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+window.slugify = slugify;
+
 function dirItemHTML(it) {
   if (it.plan && it.slug) PROFILES[it.slug] = it;
+  const cardId = it.slug || slugify(it.n);
   const mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
   const rawTag = it.tag || it.d;
   const tag = rawTag ? `<span class="dir-tag">${dirT(rawTag)}</span>` : '';
@@ -2135,7 +2145,7 @@ function dirItemHTML(it) {
   } else if (featured && it.slug) {
     moreBtn = `<button class="dir-more" onclick="openProfile('${it.slug}')">${profileT('see')}</button>`;
   }
-  return `<div class="dir-item${featured ? ' dir-featured plan-' + it.plan : ''}">
+  return `<div class="dir-item${featured ? ' dir-featured plan-' + it.plan : ''}" id="${cardId}">
       <span class="dir-name">${it.n}</span>
       ${planBadge(it.plan)}
       ${tag}
