@@ -1390,6 +1390,14 @@
     'Servicio': '/servicios/'
   };
 
+  // Genera slug único para el ancla (id de la ficha)
+  function slugify(str){
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]+/g,'-')
+      .replace(/(^-|-$)/g,'');
+  }
+
   // Esperar a que DIRECTORY esté disponible (cargado por app.js)
   function getAllItems(){
     if(typeof DIRECTORY === 'undefined') return [];
@@ -1399,7 +1407,7 @@
     Object.keys(cats).forEach(function(key){
       if(!DIRECTORY[key]) return;
       DIRECTORY[key].forEach(function(it){
-        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||''});
+        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||'', slug:it.slug||''});
       });
     });
     return items;
@@ -1424,8 +1432,12 @@
     if(!matches.length){ results.classList.remove('open'); results.innerHTML=''; return; }
 
     results.innerHTML = matches.map(function(it){
-      // Prioridad: página propia del negocio > página de la categoría
-      const href = it.page ? it.page : (catPages[it.cat] || '/');
+      // Generar el ID único de la ficha (mismo que card-share.js usa)
+      const cardId = it.slug || slugify(it.name);
+      // Página base: propia del negocio o la de su categoría
+      const basePage = it.page ? it.page : (catPages[it.cat] || '/');
+      // URL final apunta directo a la ficha: /gastronomia/#imperio-pomaire
+      const href = basePage + '#' + cardId;
       return '<a class="dir-search-item" href="'+href+'">' +
         '<span class="dsi-icon">'+it.icon+'</span>' +
         '<div><div class="dsi-name">'+escHtml(it.name)+'</div><div class="dsi-cat">'+escHtml(it.cat)+' · '+escHtml(it.addr)+'</div></div></a>';
