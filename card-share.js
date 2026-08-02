@@ -96,8 +96,25 @@
   var ICON = '<svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true">' +
     '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>';
 
+  /** Genera un slug a partir de un texto */
+  function slugify(str) {
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
   function injectButton(card) {
     if (card.querySelector('.card-share-btn')) return;
+
+    // Si la ficha no tiene id, generarlo a partir del nombre del negocio
+    if (!card.getAttribute('id')) {
+      var nameEl = card.querySelector('.dir-name') || card.querySelector('h3');
+      if (nameEl) {
+        card.setAttribute('id', slugify(nameEl.textContent));
+      }
+    }
+
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'card-share-btn';
@@ -150,9 +167,32 @@
     document.addEventListener('DOMContentLoaded', function () {
       injectButtons();
       observeNewCards();
+      scrollToHash();
     });
   } else {
     injectButtons();
     observeNewCards();
+    scrollToHash();
+  }
+
+  // ─── Auto-scroll al ancla si la URL tiene #hash ─────────────────────────
+  // Como los IDs se asignan dinámicamente, el navegador no pudo scrollear
+  // al cargar la página. Lo hacemos aquí después de inyectar los IDs.
+  function scrollToHash() {
+    if (!window.location.hash) return;
+    var hash = window.location.hash.substring(1);
+    var attempts = 0;
+    var maxAttempts = 15; // 15 x 200ms = 3s
+
+    function tryScroll() {
+      var el = document.getElementById(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      attempts++;
+      if (attempts < maxAttempts) setTimeout(tryScroll, 200);
+    }
+    setTimeout(tryScroll, 100);
   }
 })();

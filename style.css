@@ -952,7 +952,7 @@
   .card.priority .card-badge { background: var(--clay-light); color: #fff; }
 
   /* ── CARD SHARE BUTTON (compartir una tarjeta individual) ────────── */
-  .card, .card-v2, .wine-card, .event-card { position: relative; }
+  .card, .card-v2, .wine-card, .event-card, .dir-item { position: relative; }
   .card-share-btn {
     position: absolute;
     top: .7rem;
@@ -977,10 +977,11 @@
   .wine-card .card-share-btn:hover { background: rgba(255,255,255,.32); }
   .event-card .card-share-btn { top: .8rem; right: .8rem; }
   .dir-item .card-share-btn {
-    width: 26px; height: 26px;
-    top: .65rem; right: .65rem;
-    background: var(--smoke);
+    width: 28px; height: 28px;
+    top: .5rem; right: .5rem;
+    background: rgba(255,255,255,.85);
     color: var(--clay-dark);
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
   }
   .dir-item .card-share-btn:hover { background: var(--clay); color: #fff; }
   .dir-item .card-share-btn svg { width: 13px; height: 13px; }
@@ -2088,6 +2089,19 @@
     transition: transform .24s cubic-bezier(.25,.8,.25,1), box-shadow .24s, border-color .24s;
     border: 1px solid rgba(0,0,0,.06);
     height: 100%;
+    scroll-margin-top: 5rem;
+  }
+
+  /* Highlight al navegar por ancla (#slug) */
+  .dir-item:target {
+    animation: dir-item-highlight 1.8s ease;
+    box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.5), 0 8px 24px rgba(45, 26, 10, 0.18);
+    border-color: rgba(184, 92, 44, 0.6);
+  }
+  @keyframes dir-item-highlight {
+    0%   { box-shadow: 0 0 0 5px rgba(184, 92, 44, 0.7), 0 8px 30px rgba(45, 26, 10, 0.25); transform: scale(1.02); }
+    50%  { box-shadow: 0 0 0 4px rgba(184, 92, 44, 0.4), 0 6px 20px rgba(45, 26, 10, 0.12); }
+    100% { box-shadow: 0 0 0 3px rgba(184, 92, 44, 0.5), 0 8px 24px rgba(45, 26, 10, 0.18); transform: scale(1); }
   }
 
   /* Área visual superior (imagen simulada con gradiente) */
