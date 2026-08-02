@@ -1,16 +1,7 @@
 <!DOCTYPE html><html lang="pt"><head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ZR4KWKER0B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZR4KWKER0B', {
-    'anonymize_ip': true,
-    'allow_google_signals': false
-  });
-</script>
+<!-- Google Analytics (deferred, respects cookie consent) -->
+<script src="/ga-loader.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
 <title>Comércio de Pomaire — cerâmica, restaurantes, boutiques e mais | Pomaire 360</title>
@@ -46,6 +37,7 @@
 <link rel="manifest" href="https://www.pomaire360.cl/site.webmanifest">
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/components.css">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -66,6 +58,7 @@
 }</script>
 </head>
 <body>
+<a href="#navBurger" class="skip-to-content">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -368,130 +361,12 @@
 <script src="/langs.js"></script>
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>
-<script>
-/* Abas de categoria do diretório "Todas as lojas de Pomaire":
-   cada categoria é uma janela que deslisa para o lado, entrando
-   pela direita ao avançar e pela esquerda ao voltar na ordem das
-   abas. */
-var pomaireSlideToCat = (function(){
-  var tabs = document.querySelectorAll('.shop-cat-tab');
-  var catOrder = Array.prototype.map.call(tabs, function(t){ return t.dataset.cat; });
-  var current = catOrder[0];
-
-  function slideTo(cat){
-    if(cat === current) return;
-    var oldPanel = document.querySelector('.shop-cat-panel[data-panel="'+current+'"]');
-    var newPanel = document.querySelector('.shop-cat-panel[data-panel="'+cat+'"]');
-    if(!newPanel) return;
-    var forward = catOrder.indexOf(cat) > catOrder.indexOf(current);
-    current = cat;
-
-    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.cat===cat); t.setAttribute('aria-selected', t.dataset.cat===cat ? 'true':'false'); });
-
-    function showNew(){
-      newPanel.classList.add('active');
-      newPanel.classList.add(forward ? 'win-in-right' : 'win-in-left');
-      newPanel.addEventListener('animationend', function handler(){
-        newPanel.classList.remove('win-in-right','win-in-left');
-        newPanel.removeEventListener('animationend', handler);
-      });
-    }
-
-    if(oldPanel && oldPanel !== newPanel){
-      var done = false;
-      oldPanel.classList.add(forward ? 'win-out-left' : 'win-out-right');
-      oldPanel.addEventListener('animationend', function handler(){
-        if(done) return; done = true;
-        oldPanel.classList.remove('active','win-out-left','win-out-right');
-        showNew();
-        oldPanel.removeEventListener('animationend', handler);
-      });
-      setTimeout(function(){
-        if(done) return; done = true;
-        oldPanel.classList.remove('active','win-out-left','win-out-right');
-        showNew();
-      }, 260);
-    } else {
-      showNew();
-    }
-  }
-
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){ slideTo(tab.dataset.cat); });
-  });
-
-  return slideTo;
-})();
-
-/* Buscador de negócios: filtra por nome ou endereço em todas as categorias,
-   e pula para a primeira aba com resultados. */
-(function(){
-  var input   = document.getElementById('shopSearchInput');
-  var clearBt = document.getElementById('shopSearchClear');
-  var countEl = document.getElementById('shopSearchCount');
-  var panels  = document.querySelectorAll('.shop-cat-panel');
-  if(!input) return;
-
-  function norm(str){
-    return (str || '').toString().toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  }
-
-  function activateTab(cat){
-    pomaireSlideToCat(cat);
-  }
-
-  function runSearch(){
-    var q = norm(input.value.trim());
-    clearBt.hidden = q.length === 0;
-
-    if(q.length === 0){
-      panels.forEach(function(panel){
-        panel.querySelectorAll('.dir-item').forEach(function(item){ item.style.display = ''; });
-      });
-      countEl.textContent = '';
-      return;
-    }
-
-    var totalMatches = 0;
-    var firstMatchCat = null;
-
-    panels.forEach(function(panel){
-      var matchesInPanel = 0;
-      panel.querySelectorAll('.dir-item').forEach(function(item){
-        var name = norm(item.querySelector('.dir-name') ? item.querySelector('.dir-name').textContent : '');
-        var addr = norm(item.querySelector('.dir-addr') ? item.querySelector('.dir-addr').textContent : '');
-        var tag  = norm(item.querySelector('.dir-tag')  ? item.querySelector('.dir-tag').textContent  : '');
-        var match = name.indexOf(q) !== -1 || addr.indexOf(q) !== -1 || tag.indexOf(q) !== -1;
-        item.style.display = match ? '' : 'none';
-        if(match){ matchesInPanel++; totalMatches++; }
-      });
-      if(matchesInPanel > 0 && firstMatchCat === null){
-        firstMatchCat = panel.dataset.panel;
-      }
-    });
-
-    if(firstMatchCat){
-      activateTab(firstMatchCat);
-    }
-
-    countEl.textContent = totalMatches === 0
-      ? '😕 Nenhum resultado para "' + input.value.trim() + '"'
-      : totalMatches + (totalMatches === 1 ? ' resultado encontrado' : ' resultados encontrados');
-  }
-
-  input.addEventListener('input', runSearch);
-  clearBt.addEventListener('click', function(){
-    input.value = '';
-    input.focus();
-    runSearch();
-  });
-})();
-</script>
+<script defer src="/comercio/page-script.js"></script>
 <script src="/card-share.js"></script>
 
 
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
+<script src="/a11y-enhancements.js" defer></script>
 </body></html>
