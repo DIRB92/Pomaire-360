@@ -647,7 +647,7 @@
     z-index: 1;
     pointer-events: none;
   }
-  .hero-pottery, .hero-tag, #inicio h1, .hero-sub, .hero-cta-row {
+  .hero-pottery, .hero-tag, #inicio h1, .hero-sub, .hero-cta-row, .dir-search-wrap {
     position: relative;
     z-index: 3;
   }
@@ -3318,7 +3318,7 @@
    ════════════════════════════════════════════════════════════════ */
 .dir-search-wrap{
   max-width:480px;
-  margin:0 auto 20px;
+  margin:0.5rem auto 1.2rem;
   position:relative;
   z-index:30;
 }
