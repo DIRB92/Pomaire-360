@@ -430,6 +430,13 @@
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
   </div>
   <span class="hero-pottery">🏺</span>
+
+  <!-- Búsqueda instantánea del directorio -->
+  <div class="dir-search-wrap" id="dirSearchWrap">
+    <input type="text" id="dirSearchInput" placeholder="Buscar artesano, restaurante, servicio…" maxlength="50" autocomplete="off">
+    <div class="dir-search-results" id="dirSearchResults"></div>
+  </div>
+
   <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
   <h1 data-t="hero_h1">Bienvenido a <em>Pomaire</em></h1>
   <p class="hero-sub">
@@ -439,12 +446,6 @@
     <a class="hero-cta primary" href="#recorrido"><span aria-hidden="true">🧭</span><span data-t="cta_plan">Planifica tu visita</span></a>
     <a class="hero-cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pomaire%2C+Melipilla%2C+Chile" target="_blank" rel="noopener"><span aria-hidden="true">🗺️</span><span data-t="cta_directions">Cómo llegar</span></a>
     <a class="hero-cta" href="/gastronomia/"><span aria-hidden="true">🍽️</span><span data-t="cta_eat">Dónde comer</span></a>
-  </div>
-
-  <!-- Búsqueda instantánea del directorio -->
-  <div class="dir-search-wrap" id="dirSearchWrap">
-    <input type="text" id="dirSearchInput" placeholder="Buscar artesano, restaurante, servicio…" maxlength="50" autocomplete="off">
-    <div class="dir-search-results" id="dirSearchResults"></div>
   </div>
 
 </section>
@@ -1377,6 +1378,18 @@
   const results = document.getElementById('dirSearchResults');
   if(!input || !results) return;
 
+  // Mapeo de categoría a página interna del sitio
+  const catPages = {
+    'Restaurante': '/gastronomia/',
+    'Taller': '/alfareria/',
+    'Demostración': '/alfareria/',
+    'Artesano': '/alfareria/',
+    'Alojamiento': '/alojamientos/',
+    'Punto de interés': '/que-ver/',
+    'Jardín': '/servicios/',
+    'Servicio': '/servicios/'
+  };
+
   // Esperar a que DIRECTORY esté disponible (cargado por app.js)
   function getAllItems(){
     if(typeof DIRECTORY === 'undefined') return [];
@@ -1386,7 +1399,7 @@
     Object.keys(cats).forEach(function(key){
       if(!DIRECTORY[key]) return;
       DIRECTORY[key].forEach(function(it){
-        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null});
+        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||''});
       });
     });
     return items;
@@ -1411,8 +1424,9 @@
     if(!matches.length){ results.classList.remove('open'); results.innerHTML=''; return; }
 
     results.innerHTML = matches.map(function(it){
-      const href = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.name + ' Pomaire Chile');
-      return '<a class="dir-search-item" href="'+href+'" target="_blank" rel="noopener">' +
+      // Prioridad: página propia del negocio > página de la categoría
+      const href = it.page ? it.page : (catPages[it.cat] || '/');
+      return '<a class="dir-search-item" href="'+href+'">' +
         '<span class="dsi-icon">'+it.icon+'</span>' +
         '<div><div class="dsi-name">'+escHtml(it.name)+'</div><div class="dsi-cat">'+escHtml(it.cat)+' · '+escHtml(it.addr)+'</div></div></a>';
     }).join('');
