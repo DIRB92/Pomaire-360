@@ -1,14 +1,15 @@
-/* ═══════════════════════════════════════════════════════════════
-   dark-mode.js — Botón flotante de modo oscuro para Pomaire 360
-   Inyecta un toggle sol/luna en la esquina inferior derecha.
-   Persiste la preferencia en localStorage.
-   ═══════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════════
+   dark-mode.js — Floating dark mode toggle for Pomaire 360
+   Injects a sun/moon button at bottom-right.
+   Persists preference in localStorage.
+   Styles now in /components.css (no more inline style.cssText).
+   ═══════════════════════════════════════════════════════════════════════════ */
 (function() {
   'use strict';
 
   var STORAGE_KEY = 'p360_dark_mode';
-  var icon_sun = '\u2600\uFE0F'; // ☀️
-  var icon_moon = '\uD83C\uDF19'; // 🌙
+  var icon_sun = '\u2600\uFE0F'; // sun
+  var icon_moon = '\uD83C\uDF19'; // moon
 
   function isDark() {
     var stored = null;
@@ -28,7 +29,6 @@
       btn.setAttribute('aria-label', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
       btn.setAttribute('title', dark ? 'Modo claro' : 'Modo oscuro');
     }
-    updateBtnStyle(dark);
   }
 
   function init() {
@@ -36,45 +36,13 @@
     var dark = isDark();
     document.documentElement.classList.toggle('dark-mode', dark);
 
-    // Create the floating button
+    // Create the floating button (styled via #darkModeBtn in components.css)
     var btn = document.createElement('button');
     btn.id = 'darkModeBtn';
     btn.type = 'button';
     btn.textContent = dark ? icon_sun : icon_moon;
     btn.setAttribute('aria-label', dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
     btn.setAttribute('title', dark ? 'Modo claro' : 'Modo oscuro');
-    btn.style.cssText = [
-      'position:fixed',
-      'bottom:24px',
-      'right:24px',
-      'z-index:1100',
-      'width:48px',
-      'height:48px',
-      'border-radius:50%',
-      'border:2px solid rgba(184,92,44,.3)',
-      'background:rgba(255,255,255,.92)',
-      'color:#2D1A0A',
-      'font-size:1.4rem',
-      'cursor:pointer',
-      'display:flex',
-      'align-items:center',
-      'justify-content:center',
-      'box-shadow:0 4px 14px rgba(0,0,0,.18)',
-      'transition:transform .15s,box-shadow .15s,background .2s,border-color .2s',
-      'backdrop-filter:blur(6px)',
-      '-webkit-backdrop-filter:blur(6px)',
-      'touch-action:manipulation',
-      '-webkit-tap-highlight-color:transparent'
-    ].join(';');
-
-    btn.addEventListener('mouseenter', function() {
-      btn.style.transform = 'scale(1.1)';
-      btn.style.boxShadow = '0 6px 20px rgba(0,0,0,.25)';
-    });
-    btn.addEventListener('mouseleave', function() {
-      btn.style.transform = 'scale(1)';
-      btn.style.boxShadow = '0 4px 14px rgba(0,0,0,.18)';
-    });
 
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -83,9 +51,6 @@
     });
 
     document.body.appendChild(btn);
-
-    // Update button style for dark mode
-    updateBtnStyle(dark);
 
     // Watch for system preference changes
     if (window.matchMedia) {
@@ -97,20 +62,6 @@
           applyTheme(e.matches);
         }
       });
-    }
-  }
-
-  function updateBtnStyle(dark) {
-    var btn = document.getElementById('darkModeBtn');
-    if (!btn) return;
-    if (dark) {
-      btn.style.background = 'rgba(43,38,34,.92)';
-      btn.style.color = '#f0e8dc';
-      btn.style.borderColor = 'rgba(230,178,70,.4)';
-    } else {
-      btn.style.background = 'rgba(255,255,255,.92)';
-      btn.style.color = '#2D1A0A';
-      btn.style.borderColor = 'rgba(184,92,44,.3)';
     }
   }
 

@@ -1,1 +1,8 @@
 node_modules/
+
+# ─── Datos sensibles ──────────────────────────────────────────────────────
+# Contiene nombres reales, teléfonos e Instagram de negocios locales.
+# No debe estar en un repositorio público (riesgo de scraping/spam).
+contactos/contactos.json
+contactos/contactos-pomaire360.csv
+contactos/fichas-contacto.html
