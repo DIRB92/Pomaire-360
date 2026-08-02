@@ -16,6 +16,21 @@
 /* ══ TRADUCCIONES: movidas a /langs.js (cargado antes con defer) ══ */
 // window.LANGS, window.currentLang definidos en langs.js
 
+/* ── Utilidades de sanitización (prevención XSS) ────────────────────────── */
+function escapeHTML(str) {
+  if (!str) return '';
+  if (typeof str !== 'string') return String(str);
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function sanitizeURL(url) {
+  if (!url) return '';
+  url = String(url).trim();
+  if (/^(https?:\/\/|tel:|mailto:)/i.test(url)) return url;
+  if (/^\/[^\/]/.test(url)) return url;
+  if (/^[a-z]+:/i.test(url)) return '';
+  return url;
+}
+
 
 const KEYS = {
   '[data-t="nav_park"]':      t => t.nav_park,
@@ -917,29 +932,38 @@ function planBadge(plan) {
 
 function dirItemHTML(it) {
   if (it.plan && it.slug) PROFILES[it.slug] = it;
-  const mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
+  const safeName = escapeHTML(it.n);
+  const safeAddr = escapeHTML(it.a);
+  const safePhone = escapeHTML(it.p);
+  const safeIg = escapeHTML((it.ig || '').replace(/^@/,''));
+  const safeWeb = sanitizeURL(it.web);
+  const safeFb = sanitizeURL(it.fb);
+  const safePage = sanitizeURL(it.page);
+  const safeSlug = escapeHTML(it.slug);
+  const safeMap = sanitizeURL(it.map);
+  const mapsUrl = safeMap ? safeMap : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
   const rawTag = it.tag || it.d;
-  const tag = rawTag ? `<span class="dir-tag">${dirT(rawTag)}</span>` : '';
+  const tag = rawTag ? `<span class="dir-tag">${escapeHTML(dirT(rawTag))}</span>` : '';
   const mapLabel = DIR_MAP_LABEL[currentLang] || DIR_MAP_LABEL.es;
   let links = `<a href="${mapsUrl}" target="_blank" rel="noopener">🗺️ ${mapLabel}</a>`;
-  if (it.p) links += `<a href="${telHref(it.p)}">📞 ${it.p}</a>`;
-  if (it.ig) links += `<a class="ig" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 @${it.ig.replace(/^@/,'')}</a>`;
-  if (it.web) links += `<a href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
-  if (it.fb) links += `<a href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
+  if (safePhone) links += `<a href="${telHref(it.p)}">📞 ${safePhone}</a>`;
+  if (safeIg) links += `<a class="ig" href="https://instagram.com/${encodeURIComponent(safeIg)}" target="_blank" rel="noopener">📷 @${safeIg}</a>`;
+  if (safeWeb) links += `<a href="${safeWeb}" target="_blank" rel="noopener">🌐 Web</a>`;
+  if (safeFb) links += `<a href="${safeFb}" target="_blank" rel="noopener">📘 Facebook</a>`;
   // Enlace a app.pomaire360.cl para reseñas
   links += `<a href="https://app.pomaire360.cl/negocios?q=${encodeURIComponent(it.n)}" target="_blank" rel="noopener" class="dir-link-app">⭐ Reseñas</a>`;
   const featured = it.plan === 'destacado' || it.plan === 'premium';
   let moreBtn = '';
-  if (it.page) {
-    moreBtn = `<a class="dir-more" href="${it.page}">${profileT('see')}</a>`;
-  } else if (featured && it.slug) {
-    moreBtn = `<button class="dir-more" onclick="openProfile('${it.slug}')">${profileT('see')}</button>`;
+  if (safePage) {
+    moreBtn = `<a class="dir-more" href="${safePage}">${escapeHTML(profileT('see'))}</a>`;
+  } else if (featured && safeSlug) {
+    moreBtn = `<button class="dir-more" onclick="openProfile('${safeSlug}')">${escapeHTML(profileT('see'))}</button>`;
   }
-  return `<div class="dir-item${featured ? ' dir-featured plan-' + it.plan : ''}">
-      <span class="dir-name">${it.n}</span>
+  return `<div class="dir-item${featured ? ' dir-featured plan-' + escapeHTML(it.plan) : ''}">
+      <span class="dir-name">${safeName}</span>
       ${planBadge(it.plan)}
       ${tag}
-      <span class="dir-addr">📍 ${it.a}</span>
+      <span class="dir-addr">📍 ${safeAddr}</span>
       <div class="dir-links">${links}</div>
       ${moreBtn}
     </div>`;
@@ -962,25 +986,35 @@ function openProfile(slug) {
   const modal = document.getElementById('profileModal');
   const body = document.getElementById('profileBody');
   if (!it || !modal || !body) return;
-  const mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
+  const safeName = escapeHTML(it.n);
+  const safeAddr = escapeHTML(it.a);
+  const safeDesc = escapeHTML(it.desc);
+  const safeHours = escapeHTML(it.hours);
+  const safePhone = escapeHTML(it.p);
+  const safeIg = escapeHTML((it.ig || '').replace(/^@/,''));
+  const safeWeb = sanitizeURL(it.web);
+  const safeFb = sanitizeURL(it.fb);
+  const safeWsp = (it.wsp || '').replace(/[^0-9]/g, '');
+  const safeMap = sanitizeURL(it.map);
+  const mapsUrl = safeMap ? safeMap : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
   const mapLabel = DIR_MAP_LABEL[currentLang] || DIR_MAP_LABEL.es;
   let links = `<a class="pf-link" href="${mapsUrl}" target="_blank" rel="noopener">🗺️ ${mapLabel}</a>`;
-  if (it.p)  links += `<a class="pf-link" href="${telHref(it.p)}">📞 ${it.p}</a>`;
-  if (it.wsp) links += `<a class="pf-link" href="https://wa.me/${it.wsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`;
-  if (it.ig) links += `<a class="pf-link" href="https://instagram.com/${it.ig.replace(/^@/,'')}" target="_blank" rel="noopener">📷 Instagram</a>`;
-  if (it.web) links += `<a class="pf-link" href="${it.web}" target="_blank" rel="noopener">🌐 Web</a>`;
-  if (it.fb) links += `<a class="pf-link" href="${it.fb}" target="_blank" rel="noopener">📘 Facebook</a>`;
+  if (safePhone) links += `<a class="pf-link" href="${telHref(it.p)}">📞 ${safePhone}</a>`;
+  if (safeWsp) links += `<a class="pf-link" href="https://wa.me/${safeWsp}" target="_blank" rel="noopener">💬 WhatsApp</a>`;
+  if (safeIg) links += `<a class="pf-link" href="https://instagram.com/${encodeURIComponent(safeIg)}" target="_blank" rel="noopener">📷 Instagram</a>`;
+  if (safeWeb) links += `<a class="pf-link" href="${safeWeb}" target="_blank" rel="noopener">🌐 Web</a>`;
+  if (safeFb) links += `<a class="pf-link" href="${safeFb}" target="_blank" rel="noopener">📘 Facebook</a>`;
   let gallery = '';
   if (it.photos && it.photos.length) {
-    gallery = '<div class="pf-gallery">' + it.photos.map((u) => `<img src="${u}" alt="${it.n}" loading="lazy">`).join('') + '</div>';
+    gallery = '<div class="pf-gallery">' + it.photos.map((u) => `<img src="${sanitizeURL(u)}" alt="${safeName}" loading="lazy">`).join('') + '</div>';
   }
   body.innerHTML = `
     ${gallery}
-    <div class="pf-head">${planBadge(it.plan)}<h3>${it.n}</h3></div>
-    ${it.desc ? `<p class="pf-desc">${it.desc}</p>` : ''}
+    <div class="pf-head">${planBadge(it.plan)}<h3>${safeName}</h3></div>
+    ${safeDesc ? `<p class="pf-desc">${safeDesc}</p>` : ''}
     <div class="pf-meta">
-      <div>📍 ${it.a}</div>
-      ${it.hours ? `<div>🕒 <strong>${profileT('hours')}:</strong> ${it.hours}</div>` : ''}
+      <div>📍 ${safeAddr}</div>
+      ${safeHours ? `<div>🕒 <strong>${escapeHTML(profileT('hours'))}:</strong> ${safeHours}</div>` : ''}
     </div>
     <div class="pf-links">${links}</div>
   `;
