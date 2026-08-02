@@ -37,6 +37,31 @@
 
   // ─── Helpers ────────────────────────────────────────────────────────────
 
+  /** Escapa HTML para prevenir XSS en datos provenientes de Supabase/JSON */
+  function escapeHTML(str) {
+    if (!str) return '';
+    if (typeof str !== 'string') return String(str);
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  /** Valida que una URL sea segura (http/https/tel/mailto) */
+  function sanitizeURL(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    // Solo permitir protocolos seguros
+    if (/^(https?:\/\/|tel:|mailto:)/i.test(url)) return url;
+    // URLs relativas permitidas
+    if (/^\/[^\/]/.test(url)) return url;
+    // Bloquear javascript:, data:, vbscript:, etc.
+    if (/^[a-z]+:/i.test(url)) return '';
+    return url;
+  }
+
   /** Convierte un registro de Supabase al formato legacy del DIRECTORY */
   function mapToLegacy(row) {
     return {
@@ -170,26 +195,41 @@
       window.PROFILES[it.slug] = it;
     }
 
+    // Sanitizar todos los datos de entrada
+    var safeName = escapeHTML(it.n);
+    var safeAddr = escapeHTML(it.a);
+    var safeDesc = escapeHTML(it.desc);
+    var safePhone = escapeHTML(it.p);
+    var safeIg = escapeHTML((it.ig || '').replace(/^@/, ''));
+    var safeFotoPortada = sanitizeURL(it.foto_portada);
+    var safeWeb = sanitizeURL(it.web);
+    var safeFb = sanitizeURL(it.fb);
+    var safeTiktok = sanitizeURL(it.tiktok);
+    var safeMap = sanitizeURL(it.map);
+    var safePage = sanitizeURL(it.page);
+    var safeSlug = escapeHTML(it.slug);
+    var safeWsp = (it.wsp || '').replace(/[^0-9]/g, '');
+
     var featured = (it.plan === 'destacado' || it.plan === 'premium');
-    var mapsUrl = it.map ? it.map : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
+    var mapsUrl = safeMap ? safeMap : 'https://maps.google.com/?q=' + encodeURIComponent(it.a + ', Pomaire, Chile');
     var mapLabel = getMapLabel();
 
     // Badge del plan
     var badge = '';
     if (it.plan && it.plan !== 'gratis') {
       var icon = it.plan === 'premium' ? '💎' : '⭐';
-      badge = '<span class="dir-badge badge-' + it.plan + '">' + icon + ' ' + getPlanLabel(it.plan) + '</span>';
+      badge = '<span class="dir-badge badge-' + escapeHTML(it.plan) + '">' + icon + ' ' + escapeHTML(getPlanLabel(it.plan)) + '</span>';
     }
 
     // Tag
     var rawTag = it.tag || it.d || '';
-    var tag = rawTag ? '<span class="dir-tag">' + dirTagTranslate(rawTag) + '</span>' : '';
+    var tag = rawTag ? '<span class="dir-tag">' + escapeHTML(dirTagTranslate(rawTag)) + '</span>' : '';
 
     // Foto de portada (solo para destacados/premium o si tiene foto)
     var coverHTML = '';
-    if (it.foto_portada && featured) {
+    if (safeFotoPortada && featured) {
       coverHTML = '<div class="dir-card-cover">' +
-        '<img src="' + it.foto_portada + '" alt="' + it.n + '" loading="lazy">' +
+        '<img src="' + safeFotoPortada + '" alt="' + safeName + '" loading="lazy">' +
         (badge ? '<div class="dir-card-badge-overlay">' + badge + '</div>' : '') +
         '</div>';
     }
@@ -197,64 +237,66 @@
     // Rating
     var ratingHTML = '';
     if (it.rating_avg && it.rating_avg > 0) {
+      var safeRating = parseFloat(it.rating_avg) || 0;
+      var safeCount = parseInt(it.rating_count, 10) || 0;
       ratingHTML = '<div class="dir-rating">' +
-        '<span class="dir-rating-stars">' + ratingStars(it.rating_avg) + '</span>' +
-        '<span class="dir-rating-num">' + it.rating_avg.toFixed(1) + '</span>' +
-        (it.rating_count ? '<span class="dir-rating-count">(' + it.rating_count + ')</span>' : '') +
+        '<span class="dir-rating-stars">' + ratingStars(safeRating) + '</span>' +
+        '<span class="dir-rating-num">' + safeRating.toFixed(1) + '</span>' +
+        (safeCount ? '<span class="dir-rating-count">(' + safeCount + ')</span>' : '') +
         '</div>';
     }
 
     // Verificado
-    var verifiedHTML = it.verificado ? '<span class="dir-verified" title="Verificado">✓</span>' : '';
+    var verifiedHTML = it.verificado ? '<span class="dir-verified" title="Verificado">&#10003;</span>' : '';
 
     // Descripción breve (solo para destacados)
     var descHTML = '';
-    if (it.desc && featured) {
-      var shortDesc = it.desc.length > 120 ? it.desc.substring(0, 120) + '…' : it.desc;
+    if (safeDesc && featured) {
+      var shortDesc = safeDesc.length > 120 ? safeDesc.substring(0, 120) + '&hellip;' : safeDesc;
       descHTML = '<p class="dir-desc">' + shortDesc + '</p>';
     }
 
-    // Links
-    var links = '<a href="' + mapsUrl + '" target="_blank" rel="noopener" class="dir-link-map">🗺️ ' + mapLabel + '</a>';
-    if (it.p) links += '<a href="' + telHref(it.p) + '" class="dir-link-phone">📞 ' + it.p + '</a>';
-    if (it.ig) links += '<a class="dir-link-ig" href="https://instagram.com/' + it.ig.replace(/^@/, '') + '" target="_blank" rel="noopener">📷 @' + it.ig.replace(/^@/, '') + '</a>';
-    if (it.web) links += '<a href="' + it.web + '" target="_blank" rel="noopener" class="dir-link-web">🌐 Web</a>';
-    if (it.fb) links += '<a href="' + it.fb + '" target="_blank" rel="noopener" class="dir-link-fb">📘 Facebook</a>';
-    if (it.tiktok) links += '<a href="' + it.tiktok + '" target="_blank" rel="noopener" class="dir-link-tk">🎵 TikTok</a>';
-    if (it.wsp) links += '<a href="https://wa.me/' + it.wsp.replace(/[^0-9]/g, '') + '" target="_blank" rel="noopener" class="dir-link-wsp">💬 WhatsApp</a>';
+    // Links — todas las URLs sanitizadas
+    var links = '<a href="' + mapsUrl + '" target="_blank" rel="noopener" class="dir-link-map">&#x1F5FA;&#xFE0F; ' + mapLabel + '</a>';
+    if (safePhone) links += '<a href="' + telHref(it.p) + '" class="dir-link-phone">&#x1F4DE; ' + safePhone + '</a>';
+    if (safeIg) links += '<a class="dir-link-ig" href="https://instagram.com/' + encodeURIComponent(safeIg) + '" target="_blank" rel="noopener">&#x1F4F7; @' + safeIg + '</a>';
+    if (safeWeb) links += '<a href="' + safeWeb + '" target="_blank" rel="noopener" class="dir-link-web">&#x1F310; Web</a>';
+    if (safeFb) links += '<a href="' + safeFb + '" target="_blank" rel="noopener" class="dir-link-fb">&#x1F4D8; Facebook</a>';
+    if (safeTiktok) links += '<a href="' + safeTiktok + '" target="_blank" rel="noopener" class="dir-link-tk">&#x1F3B5; TikTok</a>';
+    if (safeWsp) links += '<a href="https://wa.me/' + safeWsp + '" target="_blank" rel="noopener" class="dir-link-wsp">&#x1F4AC; WhatsApp</a>';
     // Enlace a reseñas en app
-    links += '<a href="https://app.pomaire360.cl/negocios?q=' + encodeURIComponent(it.n) + '" target="_blank" rel="noopener" class="dir-link-app">⭐ Reseñas</a>';
+    links += '<a href="https://app.pomaire360.cl/negocios?q=' + encodeURIComponent(it.n) + '" target="_blank" rel="noopener" class="dir-link-app">&#x2B50; Reseñas</a>';
 
     // Botón "Ver perfil"
     var moreBtn = '';
-    if (it.page) {
-      moreBtn = '<a class="dir-more" href="' + it.page + '">' + getProfileT('see') + '</a>';
-    } else if (featured && it.slug) {
-      moreBtn = '<button class="dir-more" onclick="openProfile(\'' + it.slug + '\')">' + getProfileT('see') + '</button>';
+    if (safePage) {
+      moreBtn = '<a class="dir-more" href="' + safePage + '">' + escapeHTML(getProfileT('see')) + '</a>';
+    } else if (featured && safeSlug) {
+      moreBtn = '<button class="dir-more" onclick="openProfile(\'' + safeSlug.replace(/'/g, '\\&#39;') + '\')">' + escapeHTML(getProfileT('see')) + '</button>';
     }
 
     // Updated at (solo si viene de supabase)
     var updatedHTML = '';
     if (it._source === 'supabase' && it.updated_at) {
-      updatedHTML = '<span class="dir-updated" title="Última actualización">' + timeAgo(it.updated_at) + '</span>';
+      updatedHTML = '<span class="dir-updated" title="&Uacute;ltima actualizaci&oacute;n">' + escapeHTML(timeAgo(it.updated_at)) + '</span>';
     }
 
-    // Clases del contenedor
+    // Clases del contenedor (solo valores seguros predefinidos)
     var classes = 'dir-item dir-card';
-    if (featured) classes += ' dir-featured plan-' + it.plan;
+    if (featured) classes += ' dir-featured plan-' + escapeHTML(it.plan);
     if (it._source === 'supabase') classes += ' dir-from-api';
-    if (it.foto_portada && featured) classes += ' dir-has-cover';
+    if (safeFotoPortada && featured) classes += ' dir-has-cover';
 
     return '<div class="' + classes + '">' +
       coverHTML +
       '<div class="dir-card-body">' +
         '<div class="dir-card-header">' +
-          '<span class="dir-name">' + it.n + verifiedHTML + '</span>' +
+          '<span class="dir-name">' + safeName + verifiedHTML + '</span>' +
           (!coverHTML && badge ? badge : '') +
           tag +
         '</div>' +
         ratingHTML +
-        '<span class="dir-addr">📍 ' + it.a + '</span>' +
+        '<span class="dir-addr">&#x1F4CD; ' + safeAddr + '</span>' +
         descHTML +
         '<div class="dir-links">' + links + '</div>' +
         '<div class="dir-card-footer">' +

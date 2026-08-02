@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <!-- Google tag (gtag.js) — deferred: loads after interaction or 3s -->
 <script>
+  // Respetar la elección de cookies del usuario
+  (function(){
+    try {
+      if (localStorage.getItem('p360_cookie_consent') === 'essential') {
+        window['ga-disable-G-ZR4KWKER0B'] = true;
+      }
+    } catch(e){}
+  })();
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -15,6 +23,8 @@
     var loaded = false;
     function loadGA(){
       if (loaded) return;
+      // No cargar GA si el usuario rechazó cookies de análisis
+      if (window['ga-disable-G-ZR4KWKER0B']) return;
       loaded = true;
       var s = document.createElement('script');
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZR4KWKER0B';
@@ -43,6 +53,18 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
+
+<!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
+<link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
+<link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://api.open-meteo.com">
+<link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
+<link rel="preload" href="/style.css" as="style">
+<link rel="preload" href="/langs.js" as="script">
+<link rel="preload" href="/app.js" as="script">
 
 <!-- ══ HREFLANG MULTIIDIOMA ════════════════════════════════ -->
 
@@ -209,15 +231,21 @@
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/directory-cards.css">
+<link rel="stylesheet" href="/components.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="/nav.js"></script>
 <script defer src="/seasonal.js"></script>
+<script defer src="/langs.js"></script>
 <script defer src="/app.js"></script>
 <script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
+<script defer src="/a11y-enhancements.js"></script>
 </head>
 <body>
+
+<!-- Skip to content (accesibilidad para usuarios de teclado) -->
+<a href="#inicio" class="skip-to-content">Saltar al contenido</a>
 
 <!-- NAV -->
 <nav>

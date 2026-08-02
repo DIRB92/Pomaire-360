@@ -1,0 +1,206 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   a11y-enhancements.js — Skip-to-content styling + focus trapping
+   Mejoras de accesibilidad para pomaire360.cl
+
+   1. Estilos del enlace "Saltar al contenido" (visible solo con teclado)
+   2. Focus trapping en modales/paneles abiertos (cookie consent, a11y panel)
+   3. Soporte para prefers-reduced-motion
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  // ─── 1. Inyectar estilos del skip-to-content ───────────────────────────
+  var style = document.createElement('style');
+  style.id = 'a11yEnhancementsCSS';
+  style.textContent = [
+    '.skip-to-content {',
+    '  position: absolute;',
+    '  top: -100%;',
+    '  left: 50%;',
+    '  transform: translateX(-50%);',
+    '  z-index: 99999;',
+    '  background: #2D1A0A;',
+    '  color: #E6B246;',
+    '  padding: .8rem 1.5rem;',
+    '  border-radius: 0 0 8px 8px;',
+    '  font-weight: 700;',
+    '  font-size: .95rem;',
+    '  text-decoration: none;',
+    '  box-shadow: 0 4px 12px rgba(0,0,0,.3);',
+    '  transition: top .2s ease;',
+    '}',
+    '.skip-to-content:focus {',
+    '  top: 0;',
+    '  outline: 3px solid #E6B246;',
+    '  outline-offset: 2px;',
+    '}',
+    '',
+    '/* Reducción de movimiento */',
+    '@media (prefers-reduced-motion: reduce) {',
+    '  *, *::before, *::after {',
+    '    animation-duration: 0.01ms !important;',
+    '    animation-iteration-count: 1 !important;',
+    '    transition-duration: 0.01ms !important;',
+    '    scroll-behavior: auto !important;',
+    '  }',
+    '}'
+  ].join('\n');
+  document.head.appendChild(style);
+
+  // ─── 2. Focus trapping para modales ─────────────────────────────────────
+
+  var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  /**
+   * Atrapa el foco dentro de un contenedor mientras esté abierto.
+   * Retorna una función para desactivar el trap.
+   */
+  function trapFocus(container) {
+    var focusableEls = container.querySelectorAll(FOCUSABLE);
+    if (!focusableEls.length) return function () {};
+
+    var firstEl = focusableEls[0];
+    var lastEl = focusableEls[focusableEls.length - 1];
+
+    function handleKeydown(e) {
+      if (e.key !== 'Tab') return;
+
+      // Refrescar elementos focusables (por si el DOM cambió)
+      var currentFocusable = container.querySelectorAll(FOCUSABLE);
+      if (!currentFocusable.length) return;
+      var first = currentFocusable[0];
+      var last = currentFocusable[currentFocusable.length - 1];
+
+      if (e.shiftKey) {
+        // Shift+Tab: si estamos en el primer elemento, ir al último
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        // Tab: si estamos en el último elemento, ir al primero
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+
+    container.addEventListener('keydown', handleKeydown);
+    // Focus the first element
+    firstEl.focus();
+
+    return function deactivate() {
+      container.removeEventListener('keydown', handleKeydown);
+    };
+  }
+
+  // Exponer globalmente para que otros scripts puedan usarlo
+  window.p360TrapFocus = trapFocus;
+
+  // ─── 3. Auto-trap en cookie consent cuando aparece ──────────────────────
+
+  function observeCookieConsent() {
+    if (!window.MutationObserver) return;
+    var deactivate = null;
+
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          // Cookie consent
+          if (node.id === 'cookieConsent') {
+            deactivate = trapFocus(node);
+          }
+        });
+        mutation.removedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          if (node.id === 'cookieConsent' && deactivate) {
+            deactivate();
+            deactivate = null;
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: false });
+  }
+
+  // ─── 4. Focus trap en panel a11y al abrirse ────────────────────────────
+
+  function observeA11yPanel() {
+    var deactivate = null;
+
+    // Observar cambios de clase en el panel
+    var checkPanel = function () {
+      var panel = document.getElementById('a11yPanel');
+      if (!panel) return;
+
+      var panelObserver = new MutationObserver(function () {
+        if (panel.classList.contains('open')) {
+          var menu = panel.querySelector('.a11y-menu');
+          if (menu && !deactivate) {
+            deactivate = trapFocus(menu);
+          }
+        } else {
+          if (deactivate) {
+            deactivate();
+            deactivate = null;
+          }
+        }
+      });
+
+      panelObserver.observe(panel, { attributes: true, attributeFilter: ['class'] });
+    };
+
+    // El panel se inyecta dinámicamente, esperar a que exista
+    var attempts = 0;
+    var interval = setInterval(function () {
+      if (document.getElementById('a11yPanel') || attempts > 20) {
+        clearInterval(interval);
+        checkPanel();
+      }
+      attempts++;
+    }, 200);
+  }
+
+  // ─── 5. Escape para cerrar modales ──────────────────────────────────────
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+
+    // Cerrar panel a11y
+    var a11yPanel = document.getElementById('a11yPanel');
+    if (a11yPanel && a11yPanel.classList.contains('open')) {
+      a11yPanel.classList.remove('open');
+      var toggle = document.getElementById('a11yToggle');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+      return;
+    }
+
+    // Cerrar cookie consent (equivale a rechazar)
+    var cookie = document.getElementById('cookieConsent');
+    if (cookie) {
+      try { localStorage.setItem('p360_cookie_consent', 'essential'); } catch (ex) {}
+      window['ga-disable-G-ZR4KWKER0B'] = true;
+      cookie.style.animation = 'cookieSlideDown .3s ease forwards';
+      setTimeout(function () { cookie.parentNode && cookie.parentNode.removeChild(cookie); }, 350);
+    }
+  });
+
+  // ─── Inicialización ─────────────────────────────────────────────────────
+
+  function init() {
+    observeCookieConsent();
+    observeA11yPanel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
