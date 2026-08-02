@@ -2,55 +2,10 @@
 <html lang="es-CL" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) — deferred: loads after interaction or 3s -->
-<script>
-  // Respetar la elección de cookies del usuario
-  (function(){
-    try {
-      if (localStorage.getItem('p360_cookie_consent') === 'essential') {
-        window['ga-disable-G-ZR4KWKER0B'] = true;
-      }
-    } catch(e){}
-  })();
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZR4KWKER0B', {
-    'anonymize_ip': true,
-    'allow_google_signals': false
-  });
-  (function(){
-    var loaded = false;
-    function loadGA(){
-      if (loaded) return;
-      // No cargar GA si el usuario rechazó cookies de análisis
-      if (window['ga-disable-G-ZR4KWKER0B']) return;
-      loaded = true;
-      var s = document.createElement('script');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZR4KWKER0B';
-      s.async = true;
-      document.head.appendChild(s);
-    }
-    var events = ['scroll','click','touchstart','keydown'];
-    events.forEach(function(e){ document.addEventListener(e, loadGA, {once:true, passive:true}); });
-    setTimeout(loadGA, 3000);
-  })();
-</script>
-<script>
-/* Redirección de enlaces antiguos (#seccion) a las nuevas subpáginas */
-(function () {
-  var map = {
-    '#estacionamientos': '/estacionamientos/', '#salud': '/salud/', '#seguridad': '/seguridad/',
-    '#comercio': '/comercio/', '#alfareria': '/alfareria/', '#ruta-vino': '/ruta-del-vino/',
-    '#interes': '/que-ver/', '#plaza': '/plaza/', '#alrededores': '/alrededores/',
-    '#gastronomia': '/gastronomia/', '#alojamientos': '/alojamientos/', '#anunciate': '/anunciate/',
-    '#banos': '/plaza/#banos', '#gruas': '/gruas/'
-  };
-  function go() { var d = map[location.hash]; if (d) location.replace(d); }
-  go();
-  window.addEventListener('hashchange', go);
-})();
-</script>
+<!-- Google Analytics (deferred, respects cookie consent) -->
+<script src="/ga-loader.js"></script>
+<!-- Legacy hash → subpage redirects -->
+<script src="/legacy-redirect.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#B85C2C">
 
@@ -971,76 +926,7 @@
   <div class="glb-counter" id="glbCounter"></div>
 </div>
 
-<script>
-/* ── Gallery Lightbox ─────────────────────────────── */
-(function(){
-  var lb = document.getElementById('galleryLightbox');
-  var lbImg = document.getElementById('glbImg');
-  var lbCap = document.getElementById('glbCaption');
-  var lbCount = document.getElementById('glbCounter');
-  var items = document.querySelectorAll('.bento-item');
-  var current = 0;
-
-  function openLightbox(idx){
-    current = idx;
-    showSlide();
-    lb.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function showSlide(){
-    var item = items[current];
-    var img = item.querySelector('img');
-    var cap = item.querySelector('.bento-caption');
-    var fullSrc = img.getAttribute('data-full') || img.getAttribute('data-full-jpg') || img.src;
-    lbImg.src = fullSrc;
-    lbImg.alt = img.alt;
-    lbCap.textContent = cap ? cap.textContent : '';
-    lbCount.textContent = (current+1) + ' / ' + items.length;
-  }
-
-  window.closeGalleryLightbox = function(e){
-    if(e.target === lb || e.target.classList.contains('glb-close')){
-      lb.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-      lbImg.src = '';
-    }
-  };
-
-  window.navGallery = function(dir){
-    current = (current + dir + items.length) % items.length;
-    showSlide();
-  };
-
-  items.forEach(function(item, i){
-    item.addEventListener('click', function(){ openLightbox(i); });
-    item.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLightbox(i); }
-    });
-  });
-
-  document.addEventListener('keydown', function(e){
-    if(lb.getAttribute('aria-hidden') === 'false'){
-      if(e.key === 'Escape'){ lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; lbImg.src=''; }
-      if(e.key === 'ArrowRight') navGallery(1);
-      if(e.key === 'ArrowLeft') navGallery(-1);
-    }
-  });
-
-  /* Lazy-load full images on hover (preload) */
-  items.forEach(function(item){
-    item.addEventListener('mouseenter', function(){
-      var img = item.querySelector('img');
-      var full = img.getAttribute('data-full');
-      if(full && !item._preloaded){
-        var pre = new Image();
-        pre.src = full;
-        item._preloaded = true;
-      }
-    }, {once:true});
-  });
-})();
-</script>
+<script defer src="/gallery-lightbox.js"></script>
 
 <!-- EVENTOS -->
 <section id="eventos">
@@ -1398,83 +1284,7 @@
 
 <script src="/card-share.js"></script>
 <script defer src="/ratings.js"></script>
-<script>
-/* ══ BÚSQUEDA INSTANTÁNEA DEL DIRECTORIO ══ */
-(function(){
-  const input = document.getElementById('dirSearchInput');
-  const results = document.getElementById('dirSearchResults');
-  if(!input || !results) return;
-
-  // Mapeo de categoría a página interna del sitio
-  const catPages = {
-    'Restaurante': '/gastronomia/',
-    'Taller': '/alfareria/',
-    'Demostración': '/alfareria/',
-    'Artesano': '/alfareria/',
-    'Alojamiento': '/alojamientos/',
-    'Punto de interés': '/que-ver/',
-    'Jardín': '/servicios/',
-    'Servicio': '/servicios/'
-  };
-
-  // Genera slug único para el ancla (id de la ficha)
-  function slugify(str){
-    return str.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-      .replace(/[^a-z0-9]+/g,'-')
-      .replace(/(^-|-$)/g,'');
-  }
-
-  // Esperar a que DIRECTORY esté disponible (cargado por app.js)
-  function getAllItems(){
-    if(typeof DIRECTORY === 'undefined') return [];
-    const items = [];
-    const cats = {restaurants:'🍽️',talleres:'🎨',demos:'🌀',artesanos:'🏺',alojamientos:'🛏️',interes:'✨',jardin:'🌱',servicios:'📌'};
-    const labels = {restaurants:'Restaurante',talleres:'Taller',demos:'Demostración',artesanos:'Artesano',alojamientos:'Alojamiento',interes:'Punto de interés',jardin:'Jardín',servicios:'Servicio'};
-    Object.keys(cats).forEach(function(key){
-      if(!DIRECTORY[key]) return;
-      DIRECTORY[key].forEach(function(it){
-        items.push({name:it.n, addr:it.a||'', icon:cats[key], cat:labels[key], phone:it.p||'', map:it.map||null, page:it.page||'', slug:it.slug||''});
-      });
-    });
-    return items;
-  }
-
-  let debounce = null;
-  input.addEventListener('input', function(){
-    clearTimeout(debounce);
-    debounce = setTimeout(doSearch, 150);
-  });
-  input.addEventListener('focus', function(){ if(input.value.trim().length >= 2) doSearch(); });
-  document.addEventListener('click', function(e){ if(!e.target.closest('.dir-search-wrap')) results.classList.remove('open'); });
-
-  function doSearch(){
-    const q = input.value.trim().toLowerCase();
-    if(q.length < 2){ results.classList.remove('open'); results.innerHTML=''; return; }
-    const all = getAllItems();
-    const matches = all.filter(function(it){
-      return it.name.toLowerCase().includes(q) || it.addr.toLowerCase().includes(q) || it.cat.toLowerCase().includes(q);
-    }).slice(0, 8);
-
-    if(!matches.length){ results.classList.remove('open'); results.innerHTML=''; return; }
-
-    results.innerHTML = matches.map(function(it){
-      // Generar el ID único de la ficha (mismo que card-share.js usa)
-      const cardId = it.slug || slugify(it.name);
-      // Página base: propia del negocio o la de su categoría
-      const basePage = it.page ? it.page : (catPages[it.cat] || '/');
-      // URL final apunta directo a la ficha: /gastronomia/#imperio-pomaire
-      const href = basePage + '#' + cardId;
-      return '<a class="dir-search-item" href="'+href+'">' +
-        '<span class="dsi-icon">'+it.icon+'</span>' +
-        '<div><div class="dsi-name">'+escHtml(it.name)+'</div><div class="dsi-cat">'+escHtml(it.cat)+' · '+escHtml(it.addr)+'</div></div></a>';
-    }).join('');
-    results.classList.add('open');
-  }
-
-  function escHtml(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
-})();
-</script>
+<script defer src="/dir-search.js"></script>
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>

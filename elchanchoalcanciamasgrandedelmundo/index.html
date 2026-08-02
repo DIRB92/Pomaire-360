@@ -2,18 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script>try{if(localStorage.getItem("p360_cookie_consent")==="essential"){window["ga-disable-G-ZR4KWKER0B"]=true;}}catch(e){}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR4KWKER0B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZR4KWKER0B', {
-    'anonymize_ip': true,
-    'allow_google_signals': false
-  });
-</script>
+<!-- Google Analytics (deferred, respects cookie consent) -->
+<script src="/ga-loader.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#8C3D16">
 <title>El Chancho alcancía de greda más grande del mundo — Pomaire | Pomaire 360</title>
@@ -404,37 +394,7 @@
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>
 <script src="/seasonal.js"></script>
-<script>
-  function sharePage() {
-    var lang = document.documentElement.lang || 'es';
-    var L = (window.LANGS && (window.LANGS[lang] || window.LANGS.es)) || {};
-    var url = 'https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/';
-    var text = L.ch_share_msg || 'El Chancho alcancía de greda más grande del mundo — Pomaire';
-    var title = document.title;
-    if (navigator.share) {
-      navigator.share({ title: title, text: text, url: url }).catch(function(){});
-    } else if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text + ' ' + url).then(function(){
-        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
-      }).catch(function(){
-        window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
-      });
-    } else {
-      window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener');
-    }
-  }
-  // Fija la barra de anuncio justo debajo del menú de navegación (sticky apilado)
-  function syncPromoOffset(){
-    var promo = document.querySelector('.ch-promo');
-    var topbar = document.querySelector('nav');
-    if (!promo || !topbar) return;
-    var visible = getComputedStyle(promo).display !== 'none';
-    promo.style.top = visible ? topbar.offsetHeight + 'px' : '0px';
-  }
-  syncPromoOffset();
-  window.addEventListener('resize', syncPromoOffset);
-  window.addEventListener('load', syncPromoOffset);
-</script>
+<script defer src="/elchanchoalcanciamasgrandedelmundo/page-script.js"></script>
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
