@@ -1,7 +1,9 @@
 -- ═══════════════════════════════════════════════════════════════════════════
--- Vista de compatibilidad: negocios_directorio360
--- Traduce el esquema de app.pomaire360.cl al formato que espera
+-- Vista de compatibilidad: negocios_directorio360 (v2 — Categorías Unificadas)
+-- Expone los negocios de Supabase con el formato que espera
 -- directory-loader.js de pomaire360.cl
+--
+-- AHORA: Mapeo 1:1 directo (mismas categorías en ambos sistemas)
 --
 -- INSTRUCCIONES:
 -- 1. Abre Supabase Dashboard → SQL Editor
@@ -12,7 +14,7 @@
 -- Primero eliminamos la vista anterior si existe
 DROP VIEW IF EXISTS public.negocios_directorio360;
 
--- Crear la vista que traduce nombres de columna y categorías
+-- Crear la vista — ahora con mapeo 1:1 (las categorías son las mismas)
 CREATE OR REPLACE VIEW public.negocios_directorio360 AS
 SELECT
   id,
@@ -23,30 +25,26 @@ SELECT
   whatsapp,
   descripcion,
 
-  -- Mapeo de categorías: app → directorio del sitio principal
-  CASE categoria::text
-    WHEN 'artesania'   THEN 'artesanos'
-    WHEN 'gastronomia' THEN 'gastronomia'
-    WHEN 'hospedaje'   THEN 'alojamientos'
-    WHEN 'turismo'     THEN 'interes'
-    WHEN 'comercio'    THEN 'interes'
-    WHEN 'servicios'   THEN 'servicios'
-    WHEN 'otro'        THEN 'interes'
-    ELSE 'interes'
-  END AS categoria,
+  -- Mapeo directo 1:1 — las categorías ya son las mismas en ambos sistemas
+  categoria::text AS categoria,
 
-  -- Plan (ya existe por la migración)
+  -- Plan
   COALESCE(plan, 'gratis') AS plan,
 
-  -- Tag (texto libre descriptivo)
+  -- Tag descriptivo basado en categoría
   CASE categoria::text
-    WHEN 'artesania'   THEN 'Artesanía'
-    WHEN 'gastronomia' THEN 'Restaurante'
-    WHEN 'hospedaje'   THEN 'Alojamiento'
-    WHEN 'turismo'     THEN 'Atractivo'
-    WHEN 'comercio'    THEN 'Tienda'
-    WHEN 'servicios'   THEN 'Servicios'
-    WHEN 'otro'        THEN 'Otro'
+    WHEN 'alfareria'        THEN 'Alfarería'
+    WHEN 'talleres'         THEN 'Taller'
+    WHEN 'restaurantes'     THEN 'Restaurante'
+    WHEN 'alojamiento'      THEN 'Alojamiento'
+    WHEN 'comercio'         THEN 'Comercio'
+    WHEN 'servicios'        THEN 'Servicios'
+    WHEN 'estacionamientos' THEN 'Estacionamiento'
+    WHEN 'salud'            THEN 'Salud'
+    WHEN 'seguridad'        THEN 'Seguridad'
+    WHEN 'banos'            THEN 'Baños'
+    WHEN 'transporte'       THEN 'Transporte'
+    WHEN 'turismo'          THEN 'Turismo'
     ELSE ''
   END AS tag,
 
@@ -61,19 +59,19 @@ SELECT
   -- Ubicación
   latitud,
   longitud,
-  '' AS google_maps,  -- La app no almacena URL de Google Maps
+  '' AS google_maps,
 
-  -- Redes sociales (traducción de nombres de columna)
+  -- Redes sociales
   COALESCE(instagram, '') AS instagram,
-  '' AS facebook,     -- La app no tiene campo facebook
+  '' AS facebook,
   COALESCE(sitio_web, '') AS web,
-  '' AS tiktok,       -- La app no tiene campo tiktok
+  '' AS tiktok,
 
-  -- Media (traducción de nombres)
+  -- Media
   COALESCE(imagen_principal, '') AS foto_portada,
   COALESCE(imagenes, '{}') AS fotos,
 
-  -- Rating (traducción de nombres)
+  -- Rating
   COALESCE(rating_promedio, 0) AS rating_avg,
   COALESCE(total_resenas, 0) AS rating_count,
 
@@ -90,7 +88,7 @@ GRANT SELECT ON public.negocios_directorio360 TO anon;
 GRANT SELECT ON public.negocios_directorio360 TO authenticated;
 
 -- ═══════════════════════════════════════════════════════════════════════════
--- NOTA: Si la vista da error por la columna "plan", asegúrate de haber
--- ejecutado primero la migración de planes:
---   ALTER TABLE public.negocios ADD COLUMN IF NOT EXISTS plan TEXT NOT NULL DEFAULT 'gratis';
+-- NOTA: Esta vista v2 usa mapeo 1:1 porque ambos sistemas (app y sitio
+-- estático) ahora comparten las mismas 12 categorías estándar.
+-- Ya no se necesita traducir entre sistemas.
 -- ═══════════════════════════════════════════════════════════════════════════

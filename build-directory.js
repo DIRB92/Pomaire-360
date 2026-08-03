@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * build-directory.js — Genera directory-data.json desde Supabase
+ * v2: 12 categorías estándar unificadas
  *
  * Se ejecuta en build-time (CI/CD, deploy hook, o manualmente):
  *   node build-directory.js
@@ -27,17 +28,21 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
 const TABLE = 'negocios_directorio360';
 const OUTPUT = path.resolve(__dirname, 'directory-data.json');
 
-
-const CATEGORY_MAP = {
-  gastronomia: 'gastronomia',
-  talleres: 'talleres',
-  demos: 'demos',
-  artesanos: 'artesanos',
-  alojamientos: 'alojamientos',
-  interes: 'interes',
-  servicios: 'servicios',
-  jardin: 'jardin'
-};
+// 12 categorías estándar unificadas (v2)
+const CATEGORIES = [
+  'alfareria',
+  'talleres',
+  'restaurantes',
+  'alojamiento',
+  'comercio',
+  'servicios',
+  'estacionamientos',
+  'salud',
+  'seguridad',
+  'banos',
+  'transporte',
+  'turismo'
+];
 
 /** Convierte registro de Supabase al formato del directory-loader */
 function mapRow(row) {
@@ -94,29 +99,38 @@ async function main() {
   const rows = await res.json();
   console.log(`✅ ${rows.length} negocios descargados`);
 
-  // Agrupar por categoría
+  // Agrupar por categoría (12 categorías estándar)
   const grouped = {};
-  Object.keys(CATEGORY_MAP).forEach(cat => { grouped[cat] = []; });
+  CATEGORIES.forEach(cat => { grouped[cat] = []; });
 
   rows.forEach(row => {
     const mapped = mapRow(row);
     const cat = row.categoria;
     if (grouped[cat]) {
       grouped[cat].push(mapped);
+    } else {
+      // Categoría desconocida → servicios como fallback
+      console.warn(`  ⚠️  Categoría desconocida "${cat}" para "${row.nombre}" → asignada a servicios`);
+      grouped['servicios'].push(mapped);
     }
   });
 
   // Estadísticas
-  Object.keys(grouped).forEach(cat => {
+  let totalMapped = 0;
+  CATEGORIES.forEach(cat => {
     if (grouped[cat].length > 0) {
       console.log(`  📂 ${cat}: ${grouped[cat].length} negocios`);
+      totalMapped += grouped[cat].length;
     }
   });
+  console.log(`  ─── Total mapeado: ${totalMapped} negocios`);
 
   // Metadata
   const output = {
     _generated: new Date().toISOString(),
     _count: rows.length,
+    _version: 2,
+    _categories: CATEGORIES,
     ...grouped
   };
 
