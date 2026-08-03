@@ -3368,7 +3368,7 @@
   background:#fff;
   border-radius:12px;
   box-shadow:0 8px 30px rgba(0,0,0,0.15);
-  max-height:320px;
+  max-height:420px;
   overflow-y:auto;
   z-index:25;
   display:none;
@@ -3382,13 +3382,31 @@
   text-decoration:none;
   color:#2b2622;
   border-bottom:1px solid #f0e8dd;
-  transition:background 0.1s;
+  transition:background 0.15s;
 }
 .dir-search-item:last-child{border-bottom:none;}
-.dir-search-item:hover{background:#faf6f0;}
-.dir-search-item .dsi-icon{font-size:1.1rem;flex-shrink:0;}
-.dir-search-item .dsi-name{font-weight:600;font-size:0.88rem;}
-.dir-search-item .dsi-cat{font-size:0.72rem;color:#8a7e72;}
+.dir-search-item:hover,.dir-search-item.active{background:#faf6f0;}
+.dir-search-item .dsi-icon{font-size:1.2rem;flex-shrink:0;width:28px;text-align:center;}
+.dir-search-item .dsi-content{flex:1;min-width:0;}
+.dir-search-item .dsi-name{font-weight:600;font-size:0.9rem;display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+.dir-search-item .dsi-name mark{background:rgba(184,92,44,0.15);color:#6b3520;border-radius:2px;padding:0 1px;}
+.dir-search-item .dsi-meta{font-size:0.75rem;color:#8a7e72;margin-top:2px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;}
+.dir-search-item .dsi-cat{color:#6b3520;font-weight:500;}
+.dir-search-item .dsi-addr{color:#8a7e72;}
+.dir-search-item .dsi-ig{color:#c98a34;font-size:0.7rem;}
+.dsi-badge{font-size:0.65rem;padding:1px 4px;border-radius:4px;line-height:1;}
+.dsi-premium{background:linear-gradient(135deg,#f3e8ff,#ede0ff);color:#7c3aed;}
+.dsi-destacado{background:linear-gradient(135deg,#fffdf5,#fff9e6);color:#b8860b;}
+.dsi-verified{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:#27ae60;color:#fff;font-size:0.55rem;font-weight:800;flex-shrink:0;}
+.dsi-live{color:#27ae60;font-size:0.5rem;line-height:1;}
+/* Empty state */
+.dir-search-empty{padding:1.2rem 1rem;text-align:center;color:#6b5e52;}
+.dir-search-empty .dse-icon{display:block;font-size:1.5rem;margin-bottom:0.4rem;}
+.dir-search-empty .dse-text{font-size:0.85rem;line-height:1.4;}
+.dir-search-empty .dse-link{display:inline-block;margin-top:0.6rem;font-size:0.8rem;color:#B85C2C;font-weight:600;text-decoration:none;}
+.dir-search-empty .dse-link:hover{text-decoration:underline;}
+/* Footer */
+.dir-search-footer{padding:8px 16px;text-align:center;font-size:0.7rem;color:#a89a8e;border-top:1px solid #f0e8dd;}
 
 
 

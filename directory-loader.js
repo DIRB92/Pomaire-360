@@ -686,6 +686,55 @@
     }
   };
 
+  // ─── Exposer: datos completos para el buscador ──────────────────────────
+  // Devuelve un array plano con TODOS los negocios (merged) para búsqueda
+  window.directoryGetAllItems = function () {
+    var data = supabaseData || staticData || legacyToGrouped(window.DIRECTORY);
+    if (!data) return [];
+
+    var LABELS = {
+      gastronomia:  { icon: '🍽️', label: 'Restaurante', page: '/gastronomia/' },
+      talleres:     { icon: '🎨', label: 'Taller', page: '/alfareria/' },
+      demos:        { icon: '🌀', label: 'Demostración', page: '/alfareria/' },
+      artesanos:    { icon: '🏺', label: 'Artesano', page: '/alfareria/' },
+      alojamientos: { icon: '🛏️', label: 'Alojamiento', page: '/alojamientos/' },
+      interes:      { icon: '✨', label: 'Punto de interés', page: '/que-ver/' },
+      jardin:       { icon: '🌱', label: 'Jardín', page: '/comercio/' },
+      servicios:    { icon: '📌', label: 'Servicio', page: '/que-ver/' }
+    };
+
+    var items = [];
+    Object.keys(LABELS).forEach(function (cat) {
+      var catItems = data[cat] || [];
+      var info = LABELS[cat];
+      catItems.forEach(function (it) {
+        items.push({
+          name: it.n || '',
+          addr: it.a || '',
+          phone: it.p || '',
+          tag: it.tag || it.d || '',
+          desc: it.desc || '',
+          ig: it.ig || '',
+          web: it.web || '',
+          map: it.map || '',
+          wsp: it.wsp || '',
+          slug: it.slug || '',
+          page: it.page || '',
+          plan: it.plan || '',
+          foto_portada: it.foto_portada || '',
+          rating_avg: it.rating_avg || 0,
+          verificado: it.verificado || false,
+          _source: it._source || 'legacy',
+          icon: info.icon,
+          cat: info.label,
+          catPage: info.page,
+          catKey: cat
+        });
+      });
+    });
+    return items;
+  };
+
   // ─── Ejecutar ───────────────────────────────────────────────────────────
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
