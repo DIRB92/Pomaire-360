@@ -13,10 +13,9 @@
   'use strict';
 
   // ─── Configuración Supabase ─────────────────────────────────────────────
-  // IMPORTANTE: Reemplaza estos valores con los de tu proyecto Supabase
-  var SUPABASE_URL = 'https://TU_PROYECTO.supabase.co';
-  var SUPABASE_ANON_KEY = 'TU_ANON_KEY_PUBLICA';
-  var TABLE = 'negocios_publicos'; // vista pública
+  var SUPABASE_URL = 'https://uuskvqtbsvtfsovcjazf.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
+  var TABLE = 'negocios_directorio360'; // vista de compatibilidad
 
   // ─── Mapeo de categorías Supabase → IDs de contenedores en el DOM ───────
   var CATEGORY_MAP = {
