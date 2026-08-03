@@ -24,7 +24,7 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   process.exit(1);
 }
 
-const TABLE = 'negocios_publicos';
+const TABLE = 'negocios_directorio360';
 const OUTPUT = path.resolve(__dirname, 'directory-data.json');
 
 
