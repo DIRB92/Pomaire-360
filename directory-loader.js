@@ -18,15 +18,20 @@
   var TABLE = 'negocios_directorio360'; // vista de compatibilidad
 
   // ─── Mapeo de categorías Supabase → IDs de contenedores en el DOM ───────
+  // v2: 12 categorías estándar unificadas (mapeo 1:1 con app.pomaire360.cl)
   var CATEGORY_MAP = {
-    gastronomia: { containerId: 'restaurantDir', countId: 'restCount' },
-    talleres:    { containerId: 'tallerDir',     countId: 'tallerCount' },
-    demos:       { containerId: 'demoDir',       countId: 'demoCount' },
-    artesanos:   { containerId: 'artesanoDir',   countId: 'artesanoCount' },
-    alojamientos:{ containerId: 'alojamientoDir', countId: null },
-    interes:     { containerId: 'interesDir',    countId: null },
-    jardin:      { containerId: 'jardinDir',     countId: 'jardinCount' },
-    servicios:   { containerId: 'servicioDir',   countId: 'servicioCount' }
+    alfareria:        { containerId: 'alfareriaDir',        countId: 'alfareriaCount' },
+    talleres:         { containerId: 'tallerDir',           countId: 'tallerCount' },
+    restaurantes:     { containerId: 'restauranteDir',      countId: 'restauranteCount' },
+    alojamiento:      { containerId: 'alojamientoDir',      countId: 'alojamientoCount' },
+    comercio:         { containerId: 'comercioDir',         countId: 'comercioCount' },
+    servicios:        { containerId: 'servicioDir',         countId: 'servicioCount' },
+    estacionamientos: { containerId: 'estacionamientoDir',  countId: 'estacionamientoCount' },
+    salud:            { containerId: 'saludDir',            countId: 'saludCount' },
+    seguridad:        { containerId: 'seguridadDir',        countId: 'seguridadCount' },
+    banos:            { containerId: 'banosDir',            countId: 'banosCount' },
+    transporte:       { containerId: 'transporteDir',       countId: 'transporteCount' },
+    turismo:          { containerId: 'turismoDir',          countId: 'turismoCount' }
   };
 
   // ─── Estado ─────────────────────────────────────────────────────────────
@@ -346,26 +351,43 @@
   // ═══════════════════════════════════════════════════════════════════════════
 
   // ─── Mapeo de ruta URL → categorías de Supabase ─────────────────────────
+  // v2: Mapeo 1:1 directo + retrocompatibilidad con URLs antiguas
   var SUBPAGE_CATEGORY_MAP = {
-    'gastronomia': ['gastronomia'],
-    'alfareria':   ['talleres', 'demos', 'artesanos'],
-    'alojamientos':['alojamientos'],
-    'comercio':    ['artesanos', 'gastronomia', 'servicios', 'jardin', 'alojamientos'],
-    'servicios':   ['servicios'],
-    'alrededores': ['interes'],
-    'jardin':      ['jardin']
+    // Nuevas URLs (1:1 con categorías)
+    'alfareria':        ['alfareria'],
+    'talleres':         ['talleres'],
+    'restaurantes':     ['restaurantes'],
+    'alojamiento':      ['alojamiento'],
+    'comercio':         ['comercio'],
+    'servicios':        ['servicios'],
+    'estacionamientos': ['estacionamientos'],
+    'salud':            ['salud'],
+    'seguridad':        ['seguridad'],
+    'banos':            ['banos'],
+    'transporte':       ['transporte'],
+    'turismo':          ['turismo'],
+    // Retrocompatibilidad: URLs antiguas redirigen a nuevas categorías
+    'gastronomia':      ['restaurantes'],
+    'alojamientos':     ['alojamiento'],
+    'alrededores':      ['turismo'],
+    'jardin':           ['comercio']
   };
 
   // ─── Mapeo de categoría Supabase → heading keywords para matchear grids ─
+  // v2: 12 categorías estándar
   var CATEGORY_HEADING_HINTS = {
-    gastronomia: ['restaurante', 'restaurant', 'gastronom', 'comer', 'eat', 'food'],
-    talleres:    ['taller', 'workshop', 'greda', 'pottery workshop'],
-    demos:       ['demostraci', 'torno', 'demonstration', 'wheel'],
-    artesanos:   ['artesano', 'tienda', 'alfarero', 'artisan', 'shop', 'pottery shop', 'cerami', 'ceramic'],
-    alojamientos:['alojamiento', 'dormir', 'hosped', 'lodging', 'stay', 'hospedagem'],
-    interes:     ['inter', 'alrededor', 'surrounding', 'interest', 'atractivo'],
-    servicios:   ['servicio', 'service', 'mecanic', 'grua', 'costura'],
-    jardin:      ['jardin', 'vivero', 'garden', 'plant', 'nursery']
+    alfareria:        ['alfareri', 'alfarer', 'greda', 'ceramica', 'pottery', 'clay'],
+    talleres:         ['taller', 'workshop', 'clase', 'torno', 'demostraci', 'demonstration'],
+    restaurantes:     ['restaurante', 'restaurant', 'gastronom', 'comer', 'eat', 'food', 'cociner'],
+    alojamiento:      ['alojamiento', 'dormir', 'hosped', 'lodging', 'stay', 'hospedagem', 'cabin'],
+    comercio:         ['comercio', 'tienda', 'shop', 'minimarket', 'vivero', 'jardin', 'garden'],
+    servicios:        ['servicio', 'service', 'mecanic', 'costura', 'reparaci'],
+    estacionamientos: ['estacionamiento', 'parking', 'estacionar', 'aparcar'],
+    salud:            ['salud', 'health', 'cesfam', 'hospital', 'farmacia', 'samu', 'urgencia'],
+    seguridad:        ['seguridad', 'security', 'carabinero', 'bombero', 'emergencia', 'policia'],
+    banos:            ['bano', 'restroom', 'toilet', 'sanitario', 'wc'],
+    transporte:       ['transporte', 'transport', 'bus', 'colectivo', 'grua', 'locomoci'],
+    turismo:          ['turismo', 'tourism', 'interes', 'atractivo', 'alrededor', 'ruta', 'que ver']
   };
 
   /** Detecta la subpágina actual a partir de la URL */
@@ -595,26 +617,26 @@
 
   function legacyToGrouped(directory) {
     if (!directory) return null;
-    // Mapear nombres legacy a categorías
+    // Mapear nombres legacy a nuevas categorías v2
     var map = {
-      restaurants: 'gastronomia',
+      restaurants: 'restaurantes',
       talleres: 'talleres',
-      demos: 'demos',
-      artesanos: 'artesanos',
-      alojamientos: 'alojamientos',
-      interes: 'interes',
+      demos: 'talleres',
+      artesanos: 'alfareria',
+      alojamientos: 'alojamiento',
+      interes: 'turismo',
       servicios: 'servicios',
-      jardin: 'jardin'
+      jardin: 'comercio'
     };
     var grouped = {};
     Object.keys(CATEGORY_MAP).forEach(function (cat) { grouped[cat] = []; });
     Object.keys(map).forEach(function (legacyKey) {
       var cat = map[legacyKey];
       if (directory[legacyKey]) {
-        grouped[cat] = directory[legacyKey].map(function (it) {
+        directory[legacyKey].forEach(function (it) {
           it._source = 'legacy';
           it._categoria = cat;
-          return it;
+          grouped[cat].push(it);
         });
       }
     });
