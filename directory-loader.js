@@ -306,7 +306,7 @@
     '</div>';
   }
 
-  // ─── Render por categoría ───────────────────────────────────────────────
+  // ─── Render por categoría (página principal — contenedores por ID) ─────
 
   function renderCategory(catKey, items) {
     var config = CATEGORY_MAP[catKey];
@@ -338,6 +338,208 @@
       }
     });
     rendered = true;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // OPCIÓN B: Inyección en subpáginas — detecta .dir-grid existentes y
+  // agrega negocios de Supabase sin reemplazar el contenido estático (SEO).
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ─── Mapeo de ruta URL → categorías de Supabase ─────────────────────────
+  var SUBPAGE_CATEGORY_MAP = {
+    'gastronomia': ['gastronomia'],
+    'alfareria':   ['talleres', 'demos', 'artesanos'],
+    'alojamientos':['alojamientos'],
+    'comercio':    ['artesanos', 'gastronomia', 'servicios', 'jardin', 'alojamientos'],
+    'servicios':   ['servicios'],
+    'alrededores': ['interes'],
+    'jardin':      ['jardin']
+  };
+
+  // ─── Mapeo de categoría Supabase → heading keywords para matchear grids ─
+  var CATEGORY_HEADING_HINTS = {
+    gastronomia: ['restaurante', 'restaurant', 'gastronom', 'comer', 'eat', 'food'],
+    talleres:    ['taller', 'workshop', 'greda', 'pottery workshop'],
+    demos:       ['demostraci', 'torno', 'demonstration', 'wheel'],
+    artesanos:   ['artesano', 'tienda', 'alfarero', 'artisan', 'shop', 'pottery shop', 'cerami', 'ceramic'],
+    alojamientos:['alojamiento', 'dormir', 'hosped', 'lodging', 'stay', 'hospedagem'],
+    interes:     ['inter', 'alrededor', 'surrounding', 'interest', 'atractivo'],
+    servicios:   ['servicio', 'service', 'mecanic', 'grua', 'costura'],
+    jardin:      ['jardin', 'vivero', 'garden', 'plant', 'nursery']
+  };
+
+  /** Detecta la subpágina actual a partir de la URL */
+  function detectSubpage() {
+    var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    // Quitar prefijos de idioma (en/, pt/, fr/, etc.)
+    path = path.replace(/^[a-z]{2}\//, '');
+    // Tomar solo el primer segmento
+    var segment = path.split('/')[0];
+    return segment || '';
+  }
+
+  /** Verifica si estamos en una subpágina con .dir-grid existentes */
+  function isSubpage() {
+    var page = detectSubpage();
+    return !!(page && SUBPAGE_CATEGORY_MAP[page]);
+  }
+
+  /** Obtiene las categorías relevantes para la subpágina actual */
+  function getSubpageCategories() {
+    var page = detectSubpage();
+    return SUBPAGE_CATEGORY_MAP[page] || [];
+  }
+
+  /** Busca todos los .dir-grid en la página y devuelve un array de objetos
+   *  { grid: DOMElement, category: string|null, block: DOMElement } */
+  function findDirGrids() {
+    var grids = document.querySelectorAll('.dir-grid');
+    var results = [];
+    grids.forEach(function (grid) {
+      var block = grid.closest('.dir-block') || grid.parentElement;
+      var heading = block ? block.querySelector('h3, h2') : null;
+      var headingText = heading ? heading.textContent.toLowerCase() : '';
+      var matchedCat = guessGridCategory(headingText);
+      results.push({ grid: grid, category: matchedCat, block: block, heading: heading });
+    });
+    return results;
+  }
+
+  /** Intenta adivinar la categoría de un .dir-grid basándose en su heading */
+  function guessGridCategory(headingText) {
+    if (!headingText) return null;
+    var bestMatch = null;
+    var bestScore = 0;
+    Object.keys(CATEGORY_HEADING_HINTS).forEach(function (cat) {
+      var hints = CATEGORY_HEADING_HINTS[cat];
+      var score = 0;
+      hints.forEach(function (hint) {
+        if (headingText.indexOf(hint) !== -1) score++;
+      });
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = cat;
+      }
+    });
+    return bestMatch;
+  }
+
+  /** Normaliza un nombre para comparación (lowercase, sin acentos, sin espacios extra) */
+  function normalizeName(name) {
+    if (!name) return '';
+    return name.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '')
+      .trim();
+  }
+
+  /** Obtiene los nombres ya existentes en un .dir-grid (para deduplicar) */
+  function getExistingNames(grid) {
+    var names = {};
+    grid.querySelectorAll('.dir-item .dir-name, .dir-item h3').forEach(function (el) {
+      var n = normalizeName(el.textContent);
+      if (n) names[n] = true;
+    });
+    return names;
+  }
+
+  /** Inyecta negocios de Supabase en un .dir-grid existente, sin duplicar */
+  function injectIntoGrid(grid, items, block) {
+    if (!items || items.length === 0) return 0;
+
+    // Obtener nombres ya presentes para deduplicar
+    var existing = getExistingNames(grid);
+
+    // Filtrar items que no están ya en el DOM
+    var newItems = items.filter(function (it) {
+      var normalized = normalizeName(it.n);
+      return !existing[normalized];
+    });
+
+    if (newItems.length === 0) return 0;
+
+    // Ordenar: premium > destacado > gratis
+    var rank = function (it) {
+      if (it.plan === 'premium') return 0;
+      if (it.plan === 'destacado') return 1;
+      return 2;
+    };
+    newItems.sort(function (a, b) { return rank(a) - rank(b); });
+
+    // Generar HTML de los nuevos items
+    var html = newItems.map(dirItemHTMLEnriched).join('');
+
+    // Insertar: los destacados/premium al inicio, gratis al final
+    var premiumItems = newItems.filter(function (it) { return it.plan === 'premium' || it.plan === 'destacado'; });
+    var regularItems = newItems.filter(function (it) { return !it.plan || it.plan === 'gratis'; });
+
+    // Insertar premium/destacados al inicio del grid
+    if (premiumItems.length > 0) {
+      var premiumHTML = premiumItems.map(dirItemHTMLEnriched).join('');
+      grid.insertAdjacentHTML('afterbegin', premiumHTML);
+    }
+
+    // Insertar regulares al final del grid
+    if (regularItems.length > 0) {
+      var regularHTML = regularItems.map(dirItemHTMLEnriched).join('');
+      grid.insertAdjacentHTML('beforeend', regularHTML);
+    }
+
+    // Actualizar contador .dir-count si existe en el bloque
+    if (block) {
+      var countEl = block.querySelector('.dir-count');
+      if (countEl) {
+        var currentCount = parseInt(countEl.textContent, 10) || 0;
+        countEl.textContent = currentCount + newItems.length;
+      }
+    }
+
+    return newItems.length;
+  }
+
+  /** Lógica principal de inyección para subpáginas */
+  function injectSubpage(grouped) {
+    if (!grouped) return;
+    var categories = getSubpageCategories();
+    if (categories.length === 0) return;
+
+    var dirGrids = findDirGrids();
+    if (dirGrids.length === 0) return;
+
+    var totalInjected = 0;
+
+    // Caso 1: Solo una categoría para la página (e.g., /gastronomia/ → gastronomia)
+    if (categories.length === 1) {
+      var cat = categories[0];
+      var items = grouped[cat] || [];
+      dirGrids.forEach(function (info) {
+        // Si hay un solo grid o si el heading coincide con la categoría
+        if (dirGrids.length === 1 || info.category === cat || !info.category) {
+          totalInjected += injectIntoGrid(info.grid, items, info.block);
+        }
+      });
+    } else {
+      // Caso 2: Múltiples categorías (e.g., /alfareria/ → talleres, demos, artesanos)
+      dirGrids.forEach(function (info) {
+        if (info.category && grouped[info.category]) {
+          totalInjected += injectIntoGrid(info.grid, grouped[info.category], info.block);
+        } else {
+          // Si no se pudo detectar la categoría, intentar con todas las de la página
+          // (menos probable, pero como fallback inyectamos la primera no-vacía)
+          for (var i = 0; i < categories.length; i++) {
+            var catItems = grouped[categories[i]] || [];
+            if (catItems.length > 0) {
+              totalInjected += injectIntoGrid(info.grid, catItems, info.block);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    if (totalInjected > 0) {
+      console.log('[Pomaire360] Subpágina: ' + totalInjected + ' negocios inyectados desde Supabase');
+    }
   }
 
   // ─── Carga de datos estáticos (build-time JSON) ─────────────────────────
@@ -422,7 +624,10 @@
   // ─── Inicialización principal ───────────────────────────────────────────
 
   function init() {
+    var onSubpage = isSubpage();
+
     // Paso 1: Renderizar con datos estáticos o legacy INMEDIATAMENTE
+    // (solo para la página principal — en subpáginas el HTML ya está)
     var legacyGrouped = null;
     if (typeof window.DIRECTORY !== 'undefined') {
       legacyGrouped = legacyToGrouped(window.DIRECTORY);
@@ -431,8 +636,15 @@
     // Intentar cargar static JSON (más fresco que legacy)
     loadStaticJSON().then(function (staticGrouped) {
       var initialData = staticGrouped || legacyGrouped;
-      if (initialData && !rendered) {
+
+      // Página principal: renderizar todo normalmente
+      if (!onSubpage && initialData && !rendered) {
         renderAll(initialData);
+      }
+
+      // Subpáginas: inyectar datos estáticos (si hay nuevos no presentes en HTML)
+      if (onSubpage && initialData) {
+        injectSubpage(initialData);
       }
 
       // Paso 2: Intentar Supabase para datos en tiempo real
@@ -440,16 +652,24 @@
       if (SUPABASE_URL.indexOf('TU_PROYECTO') === -1) {
         loadFromSupabase().then(function (freshData) {
           if (freshData) {
-            var merged = mergeData(freshData, initialData);
-            renderAll(merged);
+            if (onSubpage) {
+              // En subpáginas: inyectar negocios nuevos de Supabase
+              injectSubpage(freshData);
+            } else {
+              // Página principal: merge y re-render
+              var merged = mergeData(freshData, initialData);
+              renderAll(merged);
+            }
           }
         });
       } else {
         // Credenciales no configuradas: usar datos iniciales
-        if (!rendered && initialData) {
-          renderAll(initialData);
-        } else if (!rendered && legacyGrouped) {
-          renderAll(legacyGrouped);
+        if (!onSubpage) {
+          if (!rendered && initialData) {
+            renderAll(initialData);
+          } else if (!rendered && legacyGrouped) {
+            renderAll(legacyGrouped);
+          }
         }
       }
     });
@@ -458,7 +678,12 @@
   // ─── Exposer para re-render en cambio de idioma ─────────────────────────
   window.directoryLoaderRefresh = function () {
     var data = supabaseData || staticData || legacyToGrouped(window.DIRECTORY);
-    if (data) renderAll(data);
+    if (!data) return;
+    if (isSubpage()) {
+      injectSubpage(data);
+    } else {
+      renderAll(data);
+    }
   };
 
   // ─── Ejecutar ───────────────────────────────────────────────────────────
