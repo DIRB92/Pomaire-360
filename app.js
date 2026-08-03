@@ -743,6 +743,9 @@ const DIRECTORY = {
     { n:'Restaurant El Parrón de Pomaire', a:'Arturo Prat 210', p:'+56 9 52433979', d:'Lunes a domingo', map:'https://maps.app.goo.gl/k5VjUyrJFg8koTB2A' },
     { n:'Las Tinajas de Pomaire', a:'San Antonio 402', p:'+56 9 90177467', d:'Sábado y domingo' },
     { n:'Glamen', a:'Roberto Bravo 289', p:'+56 9 54109214', tag:'Cabañas Alojamiento', web:'https://hostaldelcentro.cl/' },
+    { n:'Pomaire Restaurant', a:'Pomaire', d:'Restaurante', ig:'pomaire_restaurant', map:'https://maps.app.goo.gl/gcRuzNC98i3Nxpyv5' },
+    { n:'La Escondida', a:'Pomaire, Melipilla', d:'Restaurante', map:'https://maps.app.goo.gl/yUXuFcNrwCdLx2UU8' },
+    { n:'Restaurante y Centro de Eventos Barro Vivo', a:'Manuel Rodríguez 350, Melipilla', p:'+56 9 59335948', d:'Restaurante · Centro de Eventos', wsp:'56959335948', web:'https://barrosvivo.cl/', map:'https://maps.google.com/?q=Manuel%20Rodr%C3%ADguez%20350%2C%20Pomaire%2C%20Melipilla%2C%20Chile' },
   ],
   talleres: [
     { n:'Granja Educativa Alfarera Greda', a:'Bernardo O\'Higgins 260', p:'+56 9 98793533', ig:'granjaalfarera', map:'https://maps.app.goo.gl/Vgm2CgChUHYWCSg47' },
@@ -795,6 +798,8 @@ const DIRECTORY = {
     { n:'Colegio de Pomaire', a:'Colegio y Jardín · Enseñanza Básica', p:'', ig:'colegiopomaire_', tag:'Educación', map:'https://maps.app.goo.gl/3JLo3RHEu7yPhsMw6' },
     { n:'El Cristo', a:'Roberto Bravo 1', p:'', tag:'Mirador', map:'https://maps.app.goo.gl/Y6MUWpDbiqaSCjUz9' },
     { n:'Futuros Estacionamiento y baños públicos', a:'Guillermo Barros con Diego de Almagro', p:'', tag:'Servicios', map:'https://www.google.com/maps/search/?api=1&query=-33.65027186391058,-71.15430268749077' },
+    { n:'Taller de costura J.E.M.E "Dándole vida a tu Ropa"', a:'Gral. Baquedano 241', p:'+56 9 55822650', tag:'Costura', wsp:'56955822650', map:'https://maps.app.goo.gl/MeYgE8ftdphq19rt6' },
+    { n:'Vulcanización y Mantenimiento Automotriz', a:'San Antonio 1, Pomaire', tag:'Vulcanización', wsp:'56985478591', map:'https://maps.app.goo.gl/eTYRKr7PNGqomA277' },
   ],
   artesanos: [
     { n:'Camila y Diego', a:'Roberto Bravo 29', p:'+56 9 61277310' },
@@ -860,6 +865,7 @@ const DIRECTORY = {
     { n:'Rosa Rojas', a:'General Baquedano 448', p:'+56 9 77877784' },
     { n:'Cerámicas Anaís', a:'El Carmen 329', p:'+56 9 67749664' },
     { n:'Elías Veliz', a:'Rafael Morandé 480 B', p:'+56 9 90325852' },
+    { n:'Fábrica de maceteros y vasijas de greda Don Petro', a:'El Carmen, Pomaire', map:'https://maps.app.goo.gl/R2Zgnzcvm3sWY7H4A' },
   ],
 };
 
