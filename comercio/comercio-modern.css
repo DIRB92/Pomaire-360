@@ -218,17 +218,20 @@
   background: var(--p360-white);
   box-shadow: var(--p360-shadow-sm);
   cursor: pointer;
-  transition: all var(--p360-transition);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
   font-family: var(--p360-font-body);
   position: relative;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 .mod-cat-btn::before {
   content: '';
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity var(--p360-transition);
+  transition: opacity .15s ease;
   border-radius: inherit;
 }
 .mod-cat-btn:hover {
@@ -238,10 +241,18 @@
 .mod-cat-btn:hover::before {
   opacity: .06;
 }
+.mod-cat-btn:active {
+  transform: scale(.93);
+  box-shadow: var(--p360-shadow-sm);
+  transition-duration: .05s;
+}
 .mod-cat-btn.active {
   border-color: var(--cat-color, var(--p360-primary));
   box-shadow: 0 0 0 3px rgba(var(--cat-rgb, 212,101,74), .15), var(--p360-shadow-md);
   transform: translateY(-2px);
+}
+.mod-cat-btn.active:active {
+  transform: scale(.95);
 }
 .mod-cat-btn.active::before {
   opacity: .08;
@@ -436,36 +447,51 @@
 .mod-card-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: .45rem;
+  gap: .6rem;
   margin-top: auto;
-  padding-top: .8rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--p360-smoke);
 }
 .mod-card-actions a {
   display: inline-flex;
   align-items: center;
-  gap: .3rem;
-  font-size: .75rem;
+  gap: .35rem;
+  font-size: .78rem;
   font-weight: 700;
   text-decoration: none;
   color: var(--p360-warm-gray);
   background: var(--p360-smoke);
   border-radius: var(--p360-radius-sm);
-  padding: .45rem .7rem;
-  transition: all var(--p360-transition);
-  flex: 1;
-  min-width: 0;
+  padding: .6rem .9rem;
+  transition: background .15s ease, color .15s ease, transform .15s ease, box-shadow .15s ease;
+  min-height: 40px;
   justify-content: center;
-  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 .mod-card-actions a:hover {
   background: var(--p360-primary);
   color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(212,101,74,.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212,101,74,.25);
+}
+.mod-card-actions a:active {
+  transform: scale(.95);
+  box-shadow: none;
+  transition-duration: .05s;
+}
+.mod-card-actions a.mod-action-map {
+  background: rgba(123,158,135,.12);
+  color: var(--p360-sage-dark);
 }
 .mod-card-actions a.mod-action-map:hover {
   background: var(--p360-sage);
+  color: #fff;
+}
+.mod-card-actions a.mod-action-map:active {
+  background: var(--p360-sage-dark);
+  color: #fff;
 }
 .mod-card-actions a.mod-action-ig {
   background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
@@ -473,7 +499,11 @@
 }
 .mod-card-actions a.mod-action-ig:hover {
   filter: brightness(1.1);
-  box-shadow: 0 3px 10px rgba(220,39,67,.3);
+  box-shadow: 0 4px 12px rgba(220,39,67,.3);
+}
+.mod-card-actions a.mod-action-ig:active {
+  filter: brightness(.9);
+  transform: scale(.95);
 }
 .mod-card-actions a.mod-action-wsp {
   background: #25D366;
@@ -481,11 +511,38 @@
 }
 .mod-card-actions a.mod-action-wsp:hover {
   background: #1DA851;
-  box-shadow: 0 3px 10px rgba(37,211,102,.3);
+  box-shadow: 0 4px 12px rgba(37,211,102,.3);
+}
+.mod-card-actions a.mod-action-wsp:active {
+  background: #128C3A;
+  transform: scale(.95);
+}
+.mod-card-actions a.mod-action-web {
+  background: rgba(232,168,56,.12);
+  color: #8B6914;
 }
 .mod-card-actions a.mod-action-web:hover {
   background: var(--p360-amber);
   color: #fff;
+}
+.mod-card-actions a.mod-action-web:active {
+  background: #C48A20;
+  color: #fff;
+  transform: scale(.95);
+}
+
+/* Mobile: bigger touch targets, no flex stretch */
+@media (max-width: 680px) {
+  .mod-card-actions {
+    gap: .5rem;
+  }
+  .mod-card-actions a {
+    padding: .7rem 1rem;
+    font-size: .8rem;
+    min-height: 44px;
+    flex: 1 1 auto;
+    min-width: calc(50% - .25rem);
+  }
 }
 
 /* Featured / Premium Cards */
@@ -568,11 +625,16 @@
   text-decoration: none;
   padding: .45rem .8rem;
   border-radius: var(--p360-radius-sm);
-  transition: all var(--p360-transition);
+  transition: color .15s ease, background .15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .mod-nav-link:hover {
   color: var(--p360-primary);
   background: rgba(212,101,74,.06);
+}
+.mod-nav-link:active {
+  background: rgba(212,101,74,.15);
+  transition-duration: .05s;
 }
 .mod-nav-link.active {
   color: var(--p360-primary);
@@ -587,12 +649,18 @@
   text-decoration: none;
   padding: .5rem 1rem;
   border-radius: var(--p360-radius-pill);
-  transition: all var(--p360-transition);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .mod-nav-cta:hover {
   background: var(--p360-primary-dark);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(212,101,74,.3);
+}
+.mod-nav-cta:active {
+  transform: scale(.95);
+  box-shadow: none;
+  transition-duration: .05s;
 }
 
 @media (max-width: 768px) {
