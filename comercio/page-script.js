@@ -1,119 +1,395 @@
-/* Pestañas del directorio "Todas las tiendas de Pomaire":
-   cada categoría es una ventana que se desliza hacia el costado,
-   entrando desde la derecha al avanzar y desde la izquierda al
-   retroceder en el orden de las pestañas. */
-var pomaireSlideToCat = (function(){
-  var tabs = document.querySelectorAll('.shop-cat-tab');
-  var catOrder = Array.prototype.map.call(tabs, function(t){ return t.dataset.cat; });
-  var current = catOrder[0];
+/* ═══════════════════════════════════════════════════════════════════════════
+   page-script.js — Pomaire 360 Directorio Unificado (2026 Modern)
+   Handles: category filtering, search, dynamic card rendering from
+   directory-data.json / Supabase, scroll-to-top, and URL hash navigation.
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
 
-  function slideTo(cat){
-    if(cat === current) return;
-    var oldPanel = document.querySelector('.shop-cat-panel[data-panel="'+current+'"]');
-    var newPanel = document.querySelector('.shop-cat-panel[data-panel="'+cat+'"]');
-    if(!newPanel) return;
-    var forward = catOrder.indexOf(cat) > catOrder.indexOf(current);
-    current = cat;
+  // ─── Config ─────────────────────────────────────────────────────────────
+  var SUPABASE_URL = 'https://uuskvqtbsvtfsovcjazf.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
+  var TABLE = 'negocios_directorio360';
 
-    tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.cat===cat); t.setAttribute('aria-selected', t.dataset.cat===cat ? 'true':'false'); });
+  var CATEGORY_LABELS = {
+    alfareria: 'Alfareria',
+    talleres: 'Taller',
+    restaurantes: 'Restaurante',
+    alojamiento: 'Alojamiento',
+    comercio: 'Comercio',
+    servicios: 'Servicios',
+    estacionamientos: 'Estacionar',
+    salud: 'Salud',
+    seguridad: 'Seguridad',
+    banos: 'Banos',
+    transporte: 'Transporte',
+    turismo: 'Turismo'
+  };
 
-    function showNew(){
-      newPanel.classList.add('active');
-      newPanel.classList.add(forward ? 'win-in-right' : 'win-in-left');
-      newPanel.addEventListener('animationend', function handler(){
-        newPanel.classList.remove('win-in-right','win-in-left');
-        newPanel.removeEventListener('animationend', handler);
-      });
-    }
+  // ─── State ──────────────────────────────────────────────────────────────
+  var allCards = [];
+  var currentCat = 'todos';
+  var currentQuery = '';
+  var dataLoaded = false;
 
-    if(oldPanel && oldPanel !== newPanel){
-      var done = false;
-      oldPanel.classList.add(forward ? 'win-out-left' : 'win-out-right');
-      oldPanel.addEventListener('animationend', function handler(){
-        if(done) return; done = true;
-        oldPanel.classList.remove('active','win-out-left','win-out-right');
-        showNew();
-        oldPanel.removeEventListener('animationend', handler);
-      });
-      setTimeout(function(){
-        if(done) return; done = true;
-        oldPanel.classList.remove('active','win-out-left','win-out-right');
-        showNew();
-      }, 260);
-    } else {
-      showNew();
-    }
-  }
 
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){ slideTo(tab.dataset.cat); });
-  });
+  // ─── DOM References ─────────────────────────────────────────────────────
+  var grid = document.getElementById('modGrid');
+  var searchInput = document.getElementById('modSearchInput');
+  var searchClear = document.getElementById('modSearchClear');
+  var searchCount = document.getElementById('modSearchCount');
+  var dirTitle = document.getElementById('modDirTitle');
+  var dirCount = document.getElementById('modDirCount');
+  var emptyState = document.getElementById('modEmpty');
+  var scrollTopBtn = document.getElementById('modScrollTop');
+  var catButtons = document.querySelectorAll('.mod-cat-btn');
 
-  return slideTo;
-})();
-
-/* Buscador de negocios: filtra por nombre o dirección en todas las categorías,
-   y salta a la primera pestaña con resultados para no dejar al usuario
-   mirando un panel vacío. */
-(function(){
-  var input   = document.getElementById('shopSearchInput');
-  var clearBt = document.getElementById('shopSearchClear');
-  var countEl = document.getElementById('shopSearchCount');
-  var panels  = document.querySelectorAll('.shop-cat-panel');
-  if(!input) return;
-
-  function norm(str){
+  // ─── Helpers ────────────────────────────────────────────────────────────
+  function norm(str) {
     return (str || '').toString().toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // quita tildes
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
-  function activateTab(cat){
-    pomaireSlideToCat(cat);
+  function slugify(str) {
+    return norm(str).replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   }
 
-  function runSearch(){
-    var q = norm(input.value.trim());
-    clearBt.hidden = q.length === 0;
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
 
-    if(q.length === 0){
-      panels.forEach(function(panel){
-        panel.querySelectorAll('.dir-item').forEach(function(item){ item.style.display = ''; });
-      });
-      countEl.textContent = '';
+  // ─── Card Renderer ──────────────────────────────────────────────────────
+  function renderCard(item) {
+    var cat = item._categoria || item.cat || 'servicios';
+    var name = item.n || item.nombre || '';
+    var addr = item.a || item.direccion || '';
+    var phone = item.p || item.telefono || '';
+    var wsp = item.wsp || item.whatsapp || '';
+    var ig = item.ig || item.instagram || '';
+    var web = item.web || item.sitio_web || '';
+    var map = item.map || item.google_maps || '';
+    var tag = item.tag || item.horario || '';
+    var slug = item.slug || slugify(name);
+    var plan = item.plan || '';
+    var label = CATEGORY_LABELS[cat] || cat;
+
+    var cardClass = 'mod-card';
+    if (plan === 'destacado') cardClass += ' mod-featured';
+    if (plan === 'premium') cardClass += ' mod-premium';
+
+    var html = '<article class="' + cardClass + '" data-cat="' + escapeHTML(cat) + '" '
+      + 'id="' + escapeHTML(slug) + '" '
+      + 'style="--cat-color:var(--cat-' + escapeHTML(cat) + ')">'
+      + '<div class="mod-card-header"></div>'
+      + '<div class="mod-card-body">'
+      + '<div class="mod-card-top">'
+      + '<h3 class="mod-card-name">' + escapeHTML(name) + '</h3>'
+      + '<span class="mod-card-badge">' + escapeHTML(label) + '</span>'
+      + '</div>';
+
+    if (addr) {
+      html += '<p class="mod-card-addr">📍 ' + escapeHTML(addr) + '</p>';
+    }
+    if (tag) {
+      html += '<span class="mod-card-tag">' + escapeHTML(tag) + '</span>';
+    }
+
+    // Actions
+    html += '<div class="mod-card-actions">';
+    if (map) {
+      html += '<a class="mod-action-map" href="' + escapeHTML(map) + '" target="_blank" rel="noopener">🗺️ Mapa</a>';
+    }
+    if (phone) {
+      html += '<a href="tel:' + escapeHTML(phone) + '">📞 Llamar</a>';
+    }
+    if (wsp) {
+      var wspNum = wsp.replace(/\D/g, '');
+      html += '<a class="mod-action-wsp" href="https://wa.me/' + wspNum + '" target="_blank" rel="noopener">💬 WhatsApp</a>';
+    }
+    if (ig) {
+      var igHandle = ig.replace('@', '');
+      html += '<a class="mod-action-ig" href="https://instagram.com/' + escapeHTML(igHandle) + '" target="_blank" rel="noopener">📷 IG</a>';
+    }
+    if (web) {
+      html += '<a class="mod-action-web" href="' + escapeHTML(web) + '" target="_blank" rel="noopener">🌐 Web</a>';
+    }
+    html += '</div></div></article>';
+
+    return html;
+  }
+
+
+  // ─── Render All Cards ───────────────────────────────────────────────────
+  function renderGrid(items) {
+    if (!items || items.length === 0) {
+      grid.innerHTML = '';
+      emptyState.classList.remove('mod-hidden');
+      dirCount.textContent = '0 negocios';
       return;
     }
+    emptyState.classList.add('mod-hidden');
+    grid.innerHTML = items.map(renderCard).join('');
+    dirCount.textContent = items.length + (items.length === 1 ? ' negocio' : ' negocios');
+  }
 
-    var totalMatches = 0;
-    var firstMatchCat = null;
+  // ─── Filter Logic ───────────────────────────────────────────────────────
+  function applyFilters() {
+    var q = norm(currentQuery);
+    var filtered = allCards.filter(function (item) {
+      // Category filter
+      if (currentCat !== 'todos') {
+        var cat = item._categoria || item.cat || 'servicios';
+        if (cat !== currentCat) return false;
+      }
+      // Search filter
+      if (q) {
+        var name = norm(item.n || item.nombre || '');
+        var addr = norm(item.a || item.direccion || '');
+        var tag = norm(item.tag || item.horario || '');
+        var cat2 = norm(item._categoria || item.cat || '');
+        if (name.indexOf(q) === -1 && addr.indexOf(q) === -1
+            && tag.indexOf(q) === -1 && cat2.indexOf(q) === -1) {
+          return false;
+        }
+      }
+      return true;
+    });
 
-    panels.forEach(function(panel){
-      var matchesInPanel = 0;
-      panel.querySelectorAll('.dir-item').forEach(function(item){
-        var name = norm(item.querySelector('.dir-name') ? item.querySelector('.dir-name').textContent : '');
-        var addr = norm(item.querySelector('.dir-addr') ? item.querySelector('.dir-addr').textContent : '');
-        var tag  = norm(item.querySelector('.dir-tag')  ? item.querySelector('.dir-tag').textContent  : '');
-        var match = name.indexOf(q) !== -1 || addr.indexOf(q) !== -1 || tag.indexOf(q) !== -1;
-        item.style.display = match ? '' : 'none';
-        if(match){ matchesInPanel++; totalMatches++; }
-      });
-      if(matchesInPanel > 0 && firstMatchCat === null){
-        firstMatchCat = panel.dataset.panel;
+    renderGrid(filtered);
+
+    // Update search count
+    if (q) {
+      searchCount.textContent = filtered.length === 0
+        ? 'Sin resultados para "' + currentQuery + '"'
+        : filtered.length + (filtered.length === 1 ? ' resultado' : ' resultados');
+    } else {
+      searchCount.textContent = '';
+    }
+
+    // Update title
+    if (currentCat === 'todos') {
+      dirTitle.textContent = q ? 'Resultados de busqueda' : 'Todos los negocios';
+    } else {
+      var catLabel = CATEGORY_LABELS[currentCat] || currentCat;
+      dirTitle.textContent = q ? catLabel + ' — resultados' : catLabel;
+    }
+  }
+
+
+  // ─── Update Category Counts ─────────────────────────────────────────────
+  function updateCounts() {
+    var counts = { todos: allCards.length };
+    allCards.forEach(function (item) {
+      var cat = item._categoria || item.cat || 'servicios';
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+
+    catButtons.forEach(function (btn) {
+      var cat = btn.dataset.cat;
+      var countEl = btn.querySelector('.mod-cat-count');
+      if (countEl) {
+        countEl.textContent = counts[cat] || 0;
       }
     });
 
-    if(firstMatchCat){
-      activateTab(firstMatchCat);
-    }
-
-    countEl.textContent = totalMatches === 0
-      ? '😕 Sin resultados para "' + input.value.trim() + '"'
-      : totalMatches + (totalMatches === 1 ? ' resultado encontrado' : ' resultados encontrados');
+    // Update hero stat
+    var statTotal = document.getElementById('statTotal');
+    if (statTotal) statTotal.textContent = allCards.length;
   }
 
-  input.addEventListener('input', runSearch);
-  clearBt.addEventListener('click', function(){
-    input.value = '';
-    input.focus();
-    runSearch();
+  // ─── Category Click Handlers ────────────────────────────────────────────
+  catButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentCat = btn.dataset.cat;
+      catButtons.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      applyFilters();
+      // Smooth scroll to grid
+      document.getElementById('directorio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
+
+  // ─── Search Handlers ────────────────────────────────────────────────────
+  var searchTimeout;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(function () {
+      currentQuery = searchInput.value.trim();
+      searchClear.hidden = currentQuery.length === 0;
+      applyFilters();
+    }, 200);
+  });
+
+  searchClear.addEventListener('click', function () {
+    searchInput.value = '';
+    currentQuery = '';
+    searchClear.hidden = true;
+    searchInput.focus();
+    applyFilters();
+  });
+
+
+  // ─── Data Loading ───────────────────────────────────────────────────────
+  function processData(rows) {
+    allCards = rows.map(function (row) {
+      return {
+        n: row.nombre || row.n || '',
+        a: row.direccion || row.a || '',
+        p: row.telefono || row.p || '',
+        tag: row.horario || row.tag || '',
+        map: row.google_maps || row.map || '',
+        ig: row.instagram || row.ig || '',
+        web: row.web || row.sitio_web || '',
+        wsp: row.whatsapp || row.wsp || '',
+        plan: row.plan || '',
+        slug: row.slug || slugify(row.nombre || row.n || ''),
+        _categoria: row.categoria || row._categoria || row.cat || 'servicios'
+      };
+    });
+    dataLoaded = true;
+    updateCounts();
+    applyFilters();
+    handleHashNavigation();
+  }
+
+  // Try loading static JSON first, then Supabase as backup
+  function loadStaticData() {
+    return fetch('/directory-data.json')
+      .then(function (res) {
+        if (!res.ok) throw new Error('No static data');
+        return res.json();
+      })
+      .then(function (data) {
+        // directory-data.json is grouped by category
+        var flat = [];
+        Object.keys(data).forEach(function (key) {
+          if (key === '_meta') return;
+          var items = data[key];
+          if (Array.isArray(items)) {
+            items.forEach(function (item) {
+              item._categoria = item._categoria || key;
+              flat.push(item);
+            });
+          }
+        });
+        return flat;
+      });
+  }
+
+  function loadSupabaseData() {
+    var url = SUPABASE_URL + '/rest/v1/' + TABLE + '?select=*&order=updated_at.desc';
+    return fetch(url, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Accept': 'application/json'
+      }
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Supabase error');
+      return res.json();
+    });
+  }
+
+  // Load data: static first, then try live update
+  loadStaticData()
+    .then(function (data) {
+      if (data && data.length > 0) processData(data);
+      // Also try Supabase for fresher data
+      return loadSupabaseData();
+    })
+    .then(function (rows) {
+      if (rows && rows.length > 0) processData(rows);
+    })
+    .catch(function () {
+      // If static failed, try Supabase directly
+      if (!dataLoaded) {
+        loadSupabaseData()
+          .then(function (rows) {
+            if (rows && rows.length > 0) processData(rows);
+          })
+          .catch(function () {
+            // Keep static HTML cards as fallback
+            initFromDOM();
+          });
+      }
+    });
+
+
+  // ─── Fallback: Init from existing DOM cards ─────────────────────────────
+  function initFromDOM() {
+    var cards = grid.querySelectorAll('.mod-card');
+    allCards = Array.prototype.map.call(cards, function (card) {
+      var nameEl = card.querySelector('.mod-card-name');
+      var addrEl = card.querySelector('.mod-card-addr');
+      var tagEl = card.querySelector('.mod-card-tag');
+      return {
+        n: nameEl ? nameEl.textContent : '',
+        a: addrEl ? addrEl.textContent.replace('📍 ', '') : '',
+        tag: tagEl ? tagEl.textContent : '',
+        _categoria: card.dataset.cat || 'servicios',
+        slug: card.id || slugify(nameEl ? nameEl.textContent : ''),
+        map: '', p: '', ig: '', web: '', wsp: '', plan: ''
+      };
+    });
+    dataLoaded = true;
+    updateCounts();
+  }
+
+  // ─── Hash Navigation ────────────────────────────────────────────────────
+  function handleHashNavigation() {
+    var hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    // Wait for DOM to settle
+    setTimeout(function () {
+      var target = document.getElementById(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 300);
+  }
+
+  window.addEventListener('hashchange', handleHashNavigation);
+
+  // ─── Scroll to Top Button ───────────────────────────────────────────────
+  function toggleScrollTop() {
+    if (window.scrollY > 600) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleScrollTop, { passive: true });
+  scrollTopBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ─── Keyboard Navigation for Categories ─────────────────────────────────
+  var catGrid = document.querySelector('.mod-cat-grid');
+  if (catGrid) {
+    catGrid.addEventListener('keydown', function (e) {
+      var btns = Array.prototype.slice.call(catButtons);
+      var idx = btns.indexOf(document.activeElement);
+      if (idx === -1) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        var next = btns[(idx + 1) % btns.length];
+        next.focus();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        var prev = btns[(idx - 1 + btns.length) % btns.length];
+        prev.focus();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        document.activeElement.click();
+      }
+    });
+  }
+
 })();
