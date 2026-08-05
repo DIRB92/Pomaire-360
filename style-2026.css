@@ -1783,20 +1783,22 @@ html.reveal-ready .stagger-children > * {
   .lang-selector { order: 2; margin-left: .3rem; }
 
   .nav-links-wrap {
-    display: none !important;
+    display: flex !important;
     flex-basis: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: .35rem;
-    margin-top: .6rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: .3rem;
+    margin-top: .4rem;
     order: 3;
-    max-height: 75vh;
-    overflow-y: auto;
-    padding-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: .2rem;
   }
+  .nav-links-wrap::-webkit-scrollbar { display: none; }
   .nav-links-wrap.open {
     display: flex !important;
-    animation: navSlideDown .22s ease;
   }
   @keyframes navSlideDown {
     from { opacity: 0; transform: translateY(-8px); }
