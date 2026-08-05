@@ -583,9 +583,9 @@ nav.scrolled {
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  background: var(--p-glass-bg);
+  background: rgba(26,22,20,.65);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--p-glass-border);
+  border: 1px solid rgba(255,255,255,.2);
   border-radius: var(--p-radius-pill);
   padding: .5rem 1.2rem;
   font-size: .82rem;
@@ -645,9 +645,9 @@ nav.scrolled {
   border-radius: var(--p-radius-pill);
   font-size: .95rem;
   font-weight: 700;
-  background: var(--p-glass-bg);
+  background: rgba(26,22,20,.55);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--p-glass-border);
+  border: 1.5px solid rgba(255,255,255,.3);
   color: #fff;
   transition: all var(--p-normal);
   text-decoration: none;
@@ -655,8 +655,9 @@ nav.scrolled {
 .hero-cta:hover {
   transform: translateY(-3px);
   box-shadow: var(--p-shadow-lg);
-  background: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.95);
   color: var(--p-primary-dark);
+  border-color: transparent;
 }
 .hero-cta.primary {
   background: linear-gradient(135deg, var(--p-primary) 0%, var(--p-primary-dark) 100%);
@@ -746,17 +747,17 @@ nav.scrolled {
 .dir-search-wrap input {
   width: 100%;
   padding: .9rem 1.4rem;
-  border: 2px solid transparent;
+  border: 2px solid rgba(255,255,255,.25);
   border-radius: var(--p-radius-pill);
   font-size: .95rem;
   font-family: inherit;
-  background: var(--p-glass-bg);
+  background: rgba(26,22,20,.55);
   backdrop-filter: blur(12px);
   color: #fff;
   box-shadow: var(--p-shadow-md);
   transition: all var(--p-normal);
 }
-.dir-search-wrap input::placeholder { color: rgba(255,255,255,.6); }
+.dir-search-wrap input::placeholder { color: rgba(255,255,255,.75); }
 .dir-search-wrap input:focus {
   outline: none;
   border-color: var(--p-primary);
