@@ -1,0 +1,297 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   bottom-nav.css — Pomaire 360 · Bottom Navigation Bar 2026
+   Mobile-first thumb-friendly navigation, glassmorphism, scroll-aware
+   Only visible on screens < 768px
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Bottom Nav Container ─────────────────────────────────────────────── */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 950;
+  padding: .4rem .5rem calc(.4rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-top: 1px solid rgba(61,53,48,.06);
+  box-shadow: 0 -4px 24px rgba(0,0,0,.06);
+  transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .bottom-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  /* Add bottom padding to body so content isn't hidden behind nav */
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Hide top nav burger on mobile when bottom nav is active */
+  .nav-burger {
+    display: none !important;
+  }
+
+  /* Adjust social FABs position */
+  .social-fab {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Adjust dark mode button */
+  .dark-mode-btn {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Adjust a11y panel */
+  .a11y {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Hide on scroll down, show on scroll up */
+.bottom-nav.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark mode */
+.dark-mode .bottom-nav {
+  background: rgba(26,22,20,.92);
+  border-top-color: rgba(255,255,255,.06);
+  box-shadow: 0 -4px 24px rgba(0,0,0,.2);
+}
+
+/* ─── Nav Items ────────────────────────────────────────────────────────── */
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  padding: .4rem .6rem;
+  min-width: 56px;
+  min-height: 48px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--p-muted, #8A7E76);
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  position: relative;
+  transition: all .25s cubic-bezier(.4,0,.2,1);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.bottom-nav-item:active {
+  transform: scale(.9);
+}
+
+/* Icon */
+.bottom-nav-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* Label */
+.bottom-nav-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60px;
+  transition: color .2s ease, font-weight .2s ease;
+}
+
+/* ─── Active State ─────────────────────────────────────────────────────── */
+.bottom-nav-item.active {
+  color: var(--p-primary, #D4654A);
+}
+
+.bottom-nav-item.active .bottom-nav-icon {
+  transform: scale(1.15) translateY(-2px);
+}
+
+.bottom-nav-item.active .bottom-nav-label {
+  font-weight: 800;
+  color: var(--p-primary, #D4654A);
+}
+
+/* Active indicator dot */
+.bottom-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--p-primary, #D4654A);
+  animation: bnDotAppear .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes bnDotAppear {
+  from { transform: translateX(-50%) scale(0); }
+  to { transform: translateX(-50%) scale(1); }
+}
+
+/* Hover / focus (for accessibility) */
+.bottom-nav-item:hover:not(.active),
+.bottom-nav-item:focus-visible:not(.active) {
+  color: var(--p-primary-dark, #B84A32);
+  background: var(--p-primary-glow, rgba(212,101,74,.1));
+}
+
+.bottom-nav-item:focus-visible {
+  outline: 2px solid var(--p-primary, #D4654A);
+  outline-offset: 2px;
+}
+
+/* ─── Ripple Effect on Tap ─────────────────────────────────────────────── */
+.bottom-nav-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--p-primary, #D4654A);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .4s ease, transform .4s ease;
+  pointer-events: none;
+}
+
+.bottom-nav-item.ripple::before {
+  opacity: .12;
+  transform: scale(1);
+}
+
+/* ─── "More" Button Expanded State ─────────────────────────────────────── */
+.bottom-nav-more-menu {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + .6rem);
+  right: .5rem;
+  background: var(--p-white, #fff);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.15);
+  border: 1px solid rgba(61,53,48,.06);
+  padding: .5rem;
+  min-width: 180px;
+  animation: bnMenuUp .2s cubic-bezier(.4,0,.2,1);
+  z-index: 960;
+}
+
+.dark-mode .bottom-nav-more-menu {
+  background: #2A2420;
+  border-color: rgba(255,255,255,.08);
+}
+
+.bottom-nav-more-menu.open {
+  display: block;
+}
+
+@keyframes bnMenuUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bottom-nav-more-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .65rem .8rem;
+  border-radius: 10px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--p-text, #2D1A0A);
+  text-decoration: none;
+  transition: background .15s ease;
+}
+
+.bottom-nav-more-item:hover,
+.bottom-nav-more-item:focus-visible {
+  background: var(--p-smoke, #F5F0EB);
+}
+
+.dark-mode .bottom-nav-more-item {
+  color: #F0EBE6;
+}
+.dark-mode .bottom-nav-more-item:hover {
+  background: rgba(255,255,255,.06);
+}
+
+.bottom-nav-more-item .bottom-nav-icon {
+  font-size: 1.2rem;
+}
+
+/* ─── Badge (notification dot) ─────────────────────────────────────────── */
+.bottom-nav-badge {
+  position: absolute;
+  top: 4px;
+  right: calc(50% - 16px);
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: var(--p-primary, #D4654A);
+  color: #fff;
+  font-size: .55rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid var(--p-white, #fff);
+  animation: bnBadgePop .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+@keyframes bnBadgePop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.dark-mode .bottom-nav-badge {
+  border-color: #1A1614;
+}
+
+/* ─── Landscape orientation adjustment ─────────────────────────────────── */
+@media (max-width: 768px) and (orientation: landscape) {
+  .bottom-nav {
+    padding: .3rem .5rem;
+  }
+  .bottom-nav-item {
+    min-height: 40px;
+    padding: .3rem .5rem;
+  }
+  .bottom-nav-icon {
+    font-size: 1.15rem;
+  }
+  .bottom-nav-label {
+    font-size: .58rem;
+  }
+}
+
+/* ─── Print: hide ──────────────────────────────────────────────────────── */
+@media print {
+  .bottom-nav { display: none !important; }
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .bottom-nav-item,
+  .bottom-nav-icon,
+  .bottom-nav-item::before,
+  .bottom-nav-item::after,
+  .bottom-nav-more-menu {
+    animation: none !important;
+    transition: none !important;
+  }
+}
