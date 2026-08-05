@@ -2184,9 +2184,9 @@ footer img,
 @media (max-width: 768px) {
   /* Ensure hero section is visible and properly sized */
   #inicio {
-    min-height: auto;
-    padding-top: 3rem;
-    padding-bottom: 2.5rem;
+    min-height: 70vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   /* Bottom nav: ensure all items show, not just 3 */

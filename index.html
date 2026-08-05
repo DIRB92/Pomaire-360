@@ -9,6 +9,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#D4654A">
 
+<!-- Critical inline styles to prevent blank hero on mobile -->
+<style>
+#inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%)}
+#inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .dir-search-wrap,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:950;background:rgba(255,255,255,.92)}
+</style>
+
 <!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
