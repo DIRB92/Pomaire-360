@@ -263,6 +263,7 @@
     updateCounts();
     applyFilters();
     handleHashNavigation();
+    handleUrlCatParam();
   }
 
   // Try loading static JSON first, then Supabase as backup
@@ -359,6 +360,44 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 300);
+  }
+
+  // ─── URL Parameter Navigation (?cat=X) ─────────────────────────────────
+  function handleUrlCatParam() {
+    var params = new URLSearchParams(window.location.search);
+    var cat = params.get('cat');
+    if (!cat) return;
+    // Normalize: map common aliases
+    var aliases = {
+      'alfareria': 'alfareria', 'pottery': 'alfareria',
+      'talleres': 'talleres', 'workshops': 'talleres',
+      'restaurantes': 'restaurantes', 'food': 'restaurantes', 'gastronomia': 'restaurantes',
+      'alojamiento': 'alojamiento', 'lodging': 'alojamiento', 'alojamientos': 'alojamiento',
+      'comercio': 'comercio', 'shops': 'comercio',
+      'servicios': 'servicios', 'services': 'servicios',
+      'estacionamientos': 'estacionamientos', 'parking': 'estacionamientos',
+      'salud': 'salud', 'health': 'salud',
+      'seguridad': 'seguridad', 'security': 'seguridad',
+      'banos': 'banos', 'bathrooms': 'banos',
+      'transporte': 'transporte', 'transport': 'transporte',
+      'turismo': 'turismo', 'tourism': 'turismo'
+    };
+    var resolved = aliases[cat.toLowerCase()] || cat.toLowerCase();
+    // Check if it's a valid category
+    if (!CATEGORY_LABELS[resolved] && resolved !== 'todos') return;
+    // Apply filter
+    currentCat = resolved;
+    catButtons.forEach(function (btn) {
+      var isActive = btn.dataset.cat === resolved;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    applyFilters();
+    // Scroll to directory section
+    setTimeout(function () {
+      var dir = document.getElementById('directorio');
+      if (dir) dir.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
   }
 
   window.addEventListener('hashchange', handleHashNavigation);
