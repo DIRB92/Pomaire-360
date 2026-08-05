@@ -251,6 +251,13 @@
         slug: row.slug || slugify(row.nombre || row.n || ''),
         _categoria: row.categoria || row._categoria || row.cat || 'servicios'
       };
+    }).filter(function (item) {
+      // Excluir "El Chancho Alcancía" — tiene su propia página dedicada
+      var slug = item.slug || '';
+      if (slug.indexOf('chancho-alcancia') !== -1) return false;
+      var name = norm(item.n);
+      if (name.indexOf('chancho alcancia') !== -1) return false;
+      return true;
     });
     dataLoaded = true;
     updateCounts();
