@@ -7,7 +7,7 @@
 <!-- Legacy hash → subpage redirects -->
 <script src="/legacy-redirect.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#B85C2C">
+<meta name="theme-color" content="#D4654A">
 
 <!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
@@ -17,7 +17,7 @@
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
-<link rel="preload" href="/style.css" as="style">
+<link rel="preload" href="/style-2026.css" as="style">
 <link rel="preload" href="/langs.js" as="script">
 <link rel="preload" href="/app.js" as="script">
 
@@ -184,7 +184,7 @@
 <link rel="dns-prefetch" href="https://b.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style-2026.css">
 <link rel="stylesheet" href="/directory-cards.css">
 <link rel="stylesheet" href="/components.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
@@ -197,8 +197,12 @@
 <script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
+<script defer src="/app-2026.js"></script>
 </head>
 <body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- Skip to content (accesibilidad para usuarios de teclado) -->
 <a href="#inicio" class="skip-to-content">Saltar al contenido</a>
@@ -431,11 +435,17 @@
     <a class="hero-cta" href="/gastronomia/"><span aria-hidden="true">🍽️</span><span data-t="cta_eat">Dónde comer</span></a>
   </div>
 
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span data-t="hero_scroll">Descubre</span>
+  </div>
+
 </section>
 
 <!-- MAPA INTERACTIVO -->
 <section id="mapa">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_explore">Capítulo 1 — Explora el pueblo</div>
     <div class="section-header reveal">
       <span class="section-icon">🗺️</span>
       <div>
@@ -535,6 +545,7 @@
 <!-- RECORRIDO TURÍSTICO -->
 <section id="recorrido">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_plan">Capítulo 2 — Planifica tu ruta</div>
     <div class="section-header reveal">
       <span class="section-icon">🧭</span>
       <div>
@@ -695,6 +706,7 @@
 <!-- CLIMA -->
 <section id="clima">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_prepare">Capítulo 3 — Prepárate para el viaje</div>
     <div class="section-header reveal">
       <span class="section-icon">🌤️</span>
       <div>
@@ -712,6 +724,7 @@
 <!-- GALERÍA -->
 <section id="galeria">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_remember">Capítulo 4 — Llévate un recuerdo</div>
     <div class="section-header reveal">
       <span class="section-icon">📸</span>
       <div>
@@ -932,6 +945,7 @@
 <!-- EVENTOS -->
 <section id="eventos">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_comeback">Capítulo 5 — Planifica tu regreso</div>
     <div class="section-header reveal">
       <span class="section-icon">📅</span>
       <div>
