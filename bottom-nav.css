@@ -12,12 +12,12 @@
   left: 0;
   right: 0;
   z-index: 950;
-  padding: .4rem .5rem calc(.4rem + env(safe-area-inset-bottom, 0px));
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(20px) saturate(1.6);
-  -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  border-top: 1px solid rgba(61,53,48,.06);
-  box-shadow: 0 -4px 24px rgba(0,0,0,.06);
+  padding: .25rem .5rem calc(.25rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-top: 1px solid rgba(61,53,48,.08);
+  box-shadow: 0 -2px 12px rgba(0,0,0,.04);
   transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s ease;
 }
 
@@ -29,9 +29,9 @@
     justify-content: space-around;
   }
 
-  /* Add bottom padding to body so content isn't hidden behind nav */
+  /* Small padding so content isn't behind nav */
   body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Hide top nav burger on mobile when bottom nav is active */
@@ -54,17 +54,17 @@
 
   /* Adjust social FABs position */
   .social-fab {
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Adjust dark mode button */
   .dark-mode-btn {
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Adjust a11y panel */
   .a11y {
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -88,31 +88,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: .15rem;
-  padding: .4rem .6rem;
-  min-width: 56px;
-  min-height: 48px;
-  border-radius: 14px;
+  gap: .1rem;
+  padding: .2rem .4rem;
+  min-width: 44px;
+  min-height: 36px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--p-muted, #8A7E76);
-  font-size: .65rem;
+  font-size: .6rem;
   font-weight: 600;
   letter-spacing: .01em;
   position: relative;
-  transition: all .25s cubic-bezier(.4,0,.2,1);
+  transition: all .2s cubic-bezier(.4,0,.2,1);
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
 
 .bottom-nav-item:active {
-  transform: scale(.9);
+  transform: scale(.92);
 }
 
 /* Icon */
 .bottom-nav-icon {
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   line-height: 1;
-  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+  transition: transform .2s cubic-bezier(.34,1.56,.64,1);
 }
 
 /* Label */
@@ -120,8 +120,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 60px;
-  transition: color .2s ease, font-weight .2s ease;
+  max-width: 50px;
+  font-size: .58rem;
+  transition: color .2s ease;
 }
 
 /* ─── Active State ─────────────────────────────────────────────────────── */
@@ -130,7 +131,7 @@
 }
 
 .bottom-nav-item.active .bottom-nav-icon {
-  transform: scale(1.15) translateY(-2px);
+  transform: scale(1.08) translateY(-1px);
 }
 
 .bottom-nav-item.active .bottom-nav-label {
@@ -142,14 +143,13 @@
 .bottom-nav-item.active::after {
   content: '';
   position: absolute;
-  bottom: 2px;
+  bottom: 1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--p-primary, #D4654A);
-  animation: bnDotAppear .3s cubic-bezier(.34,1.56,.64,1);
 }
 
 @keyframes bnDotAppear {
