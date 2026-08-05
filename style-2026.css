@@ -2187,3 +2187,98 @@ footer img,
     padding-bottom: 2rem;
   }
 }
+
+
+/* ─── SUBPAGE DIRECTORY ITEMS (fix deformed cards) ─────────── */
+.dir-block .dir-sub {
+  font-size: .85rem;
+  color: var(--p-muted);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.dir-count {
+  font-size: .72rem;
+  font-weight: 800;
+  background: var(--p-primary-glow);
+  color: var(--p-primary-dark);
+  padding: .15rem .5rem;
+  border-radius: 10px;
+  margin-left: .4rem;
+}
+.dir-item .dir-name {
+  display: block;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--p-text);
+  margin-bottom: .25rem;
+}
+.dir-item .dir-addr {
+  display: block;
+  font-size: .8rem;
+  color: var(--p-muted);
+  margin-bottom: .5rem;
+}
+.dir-item .dir-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-top: .4rem;
+}
+.dir-item .dir-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--p-primary-dark);
+  background: var(--p-primary-glow);
+  padding: .25rem .55rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all var(--p-fast);
+  white-space: nowrap;
+}
+.dir-item .dir-links a:hover {
+  background: var(--p-primary);
+  color: #fff;
+}
+.dir-item .dir-links a.ig { background: linear-gradient(135deg, rgba(240,148,51,.12), rgba(220,39,67,.12)); color: #C13584; }
+.dir-item .dir-links a.ig:hover { background: linear-gradient(135deg, #f09433, #dc2743); color: #fff; }
+
+/* Card variants */
+.card.priority { border-left: 4px solid var(--p-primary); }
+.card-badge { display: inline-block; font-size: .68rem; font-weight: 700; background: var(--p-primary-glow); color: var(--p-primary-dark); padding: .15rem .5rem; border-radius: 6px; margin-bottom: .5rem; }
+.card-detail { font-size: .85rem; color: var(--p-muted); line-height: 1.6; margin-bottom: .5rem; }
+.card-link { display: inline-flex; align-items: center; gap: .3rem; font-size: .82rem; font-weight: 700; color: var(--p-primary); text-decoration: none; transition: gap var(--p-fast); }
+.card-link:hover { gap: .5rem; }
+
+/* Breadcrumb (subpages) */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .6rem 1.5rem;
+  background: var(--p-smoke);
+  font-size: .8rem;
+  color: var(--p-muted);
+  border-bottom: 1px solid rgba(61,53,48,.04);
+}
+.breadcrumb a { color: var(--p-primary); font-weight: 600; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: var(--p-primary-light); }
+
+/* Share button in cards */
+.card-share, .share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .72rem;
+  color: var(--p-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: .2rem .4rem;
+  border-radius: 6px;
+  transition: background var(--p-fast);
+}
+.card-share:hover, .share-btn:hover { background: var(--p-smoke); color: var(--p-primary); }
