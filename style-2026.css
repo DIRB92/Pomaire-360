@@ -2169,26 +2169,11 @@ footer img,
 
 
 /* ─── CRITICAL FIX: Prevent invisible content on mobile ───── */
-/* Hero content must ALWAYS be visible. Animations are progressive
-   enhancement only — if CSS/JS fails, content stays visible. */
-.hero-tag,
-#inicio h1,
-.hero-sub,
-.hero-cta-row,
-.dir-search-wrap,
-.sites-bar {
-  opacity: 1 !important;
-  transform: none !important;
-}
+/* Hero content is always visible — no CSS animations that could hide it */
 
-/* Re-enable animations only when CSS animations are supported AND
-   the page has fully loaded (via .loaded class on body) */
-body.loaded .hero-tag { animation: fadeInDown .8s var(--p-ease) .1s both; }
-body.loaded #inicio h1 { animation: fadeInUp .8s var(--p-ease) .2s both; }
-body.loaded .hero-sub { animation: fadeInUp .8s var(--p-ease) .3s both; }
-body.loaded .hero-cta-row { animation: fadeInUp .8s var(--p-ease) .4s both; }
-body.loaded .dir-search-wrap { animation: fadeInUp .8s var(--p-ease) .3s both; }
-body.loaded .sites-bar { animation: fadeInDown .8s var(--p-ease) .1s both; }
+/* Hero animations removed — caused invisible content on mobile.
+   The content is always visible. Animations handled by app-2026.js
+   via JS classList manipulation instead of CSS-only approach. */
 
 /* Mobile: Never hide the nav-links-wrap by default — ensure at least
    the nav buttons are accessible even without JS */
