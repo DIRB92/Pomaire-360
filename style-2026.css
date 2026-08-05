@@ -528,6 +528,8 @@ nav.scrolled {
   text-align: center;
   padding: 6rem 1.5rem 4rem;
   overflow: hidden;
+  /* Solid dark background as fallback when slideshow images haven't loaded */
+  background: linear-gradient(160deg, #2D1A0A 0%, #5C3420 45%, #8C3D16 100%);
 }
 
 /* Video/Slideshow Background */
