@@ -190,6 +190,9 @@
 
   // ── INIT ───────────────────────────────────────────────────────────────
   function init() {
+    // Mark body as loaded so CSS animations can trigger
+    document.body.classList.add('loaded');
+
     // Scroll progress
     updateScrollProgress();
     updateNavState();

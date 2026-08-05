@@ -592,7 +592,6 @@ nav.scrolled {
   font-weight: 600;
   color: #fff;
   margin-bottom: 1.5rem;
-  animation: fadeInDown .8s var(--p-ease) .2s both;
 }
 
 
@@ -606,7 +605,6 @@ nav.scrolled {
   line-height: 1.1;
   max-width: 800px;
   margin-bottom: 1.2rem;
-  animation: fadeInUp .8s var(--p-ease) .4s both;
   text-shadow: 0 2px 20px rgba(0,0,0,.3);
 }
 #inicio h1 em {
@@ -625,7 +623,6 @@ nav.scrolled {
   max-width: 600px;
   margin-bottom: 2.5rem;
   line-height: 1.7;
-  animation: fadeInUp .8s var(--p-ease) .6s both;
 }
 
 .hero-cta-row {
@@ -635,7 +632,6 @@ nav.scrolled {
   flex-wrap: wrap;
   gap: .8rem;
   justify-content: center;
-  animation: fadeInUp .8s var(--p-ease) .8s both;
 }
 .hero-cta {
   display: inline-flex;
@@ -712,7 +708,6 @@ nav.scrolled {
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeInDown .8s var(--p-ease) .1s both;
 }
 .site-btn {
   background: rgba(255,255,255,.12);
@@ -742,7 +737,6 @@ nav.scrolled {
   max-width: 500px;
   width: 100%;
   margin-bottom: 1.5rem;
-  animation: fadeInUp .8s var(--p-ease) .5s both;
 }
 .dir-search-wrap input {
   width: 100%;
@@ -2142,3 +2136,47 @@ footer img,
 .dir-item-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
 .dir-item-links a { font-size: .75rem; font-weight: 600; color: var(--p-primary); padding: .25rem .55rem; background: var(--p-primary-glow); border-radius: 6px; text-decoration: none; transition: all var(--p-fast); }
 .dir-item-links a:hover { background: var(--p-primary); color: #fff; }
+
+
+/* ─── CRITICAL FIX: Prevent invisible content on mobile ───── */
+/* Hero content must ALWAYS be visible. Animations are progressive
+   enhancement only — if CSS/JS fails, content stays visible. */
+.hero-tag,
+#inicio h1,
+.hero-sub,
+.hero-cta-row,
+.dir-search-wrap,
+.sites-bar {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Re-enable animations only when CSS animations are supported AND
+   the page has fully loaded (via .loaded class on body) */
+body.loaded .hero-tag { animation: fadeInDown .8s var(--p-ease) .1s both; }
+body.loaded #inicio h1 { animation: fadeInUp .8s var(--p-ease) .2s both; }
+body.loaded .hero-sub { animation: fadeInUp .8s var(--p-ease) .3s both; }
+body.loaded .hero-cta-row { animation: fadeInUp .8s var(--p-ease) .4s both; }
+body.loaded .dir-search-wrap { animation: fadeInUp .8s var(--p-ease) .3s both; }
+body.loaded .sites-bar { animation: fadeInDown .8s var(--p-ease) .1s both; }
+
+/* Mobile: Never hide the nav-links-wrap by default — ensure at least
+   the nav buttons are accessible even without JS */
+@media (max-width: 768px) {
+  /* Ensure hero section is visible and properly sized */
+  #inicio {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Bottom nav: ensure all items show, not just 3 */
+  .bottom-nav {
+    overflow-x: auto;
+    justify-content: space-evenly;
+  }
+  .bottom-nav-item {
+    min-width: 48px;
+    flex-shrink: 0;
+  }
+}
