@@ -14,7 +14,6 @@
 #inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%)}
 #inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .dir-search-wrap,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
 .hero-slideshow{position:absolute;inset:0;z-index:0}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:950;background:rgba(255,255,255,.92)}
 </style>
 
 <!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
@@ -193,7 +192,6 @@
 <link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="stylesheet" href="/style-2026.css">
-<link rel="stylesheet" href="/bottom-nav.css">
 <link rel="stylesheet" href="/enhanced-cards.css">
 <link rel="stylesheet" href="/directory-cards.css">
 <link rel="stylesheet" href="/components.css">
@@ -220,6 +218,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#inicio"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Turismo & Cultura</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
   <div class="nav-links-wrap" id="navGroups">
 
     <div class="nav-group">
@@ -1312,59 +1311,6 @@
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
-<script src="/bottom-nav.js" defer></script>
-
-<!-- BOTTOM NAVIGATION (mobile only) -->
-<nav class="bottom-nav" id="bottomNav" aria-label="Navegación rápida móvil">
-  <a class="bottom-nav-item active" href="#mapa" data-section="mapa" aria-current="true" aria-label="Explorar mapa">
-    <span class="bottom-nav-icon">🗺️</span>
-    <span class="bottom-nav-label" data-t="bn_map">Mapa</span>
-  </a>
-  <a class="bottom-nav-item" href="#recorrido" data-section="recorrido" aria-label="Recorrido turístico">
-    <span class="bottom-nav-icon">🧭</span>
-    <span class="bottom-nav-label" data-t="bn_tour">Ruta</span>
-  </a>
-  <a class="bottom-nav-item" href="#clima" data-section="clima" aria-label="Clima actual">
-    <span class="bottom-nav-icon">🌤️</span>
-    <span class="bottom-nav-label" data-t="bn_weather">Clima</span>
-  </a>
-  <a class="bottom-nav-item" href="#galeria" data-section="galeria" aria-label="Galería de fotos">
-    <span class="bottom-nav-icon">📸</span>
-    <span class="bottom-nav-label" data-t="bn_gallery">Fotos</span>
-  </a>
-  <button class="bottom-nav-item bottom-nav-more-btn" type="button" aria-label="Más opciones" aria-expanded="false" aria-controls="bnMoreMenu">
-    <span class="bottom-nav-icon">⋯</span>
-    <span class="bottom-nav-label" data-t="bn_more">Más</span>
-  </button>
-
-  <!-- More menu popup -->
-  <div class="bottom-nav-more-menu" id="bnMoreMenu" role="menu">
-    <a class="bottom-nav-more-item" href="/alfareria/" role="menuitem">
-      <span class="bottom-nav-icon">🏺</span>
-      <span>Alfarería</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/gastronomia/" role="menuitem">
-      <span class="bottom-nav-icon">🍽️</span>
-      <span>Gastronomía</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/comercio/" role="menuitem">
-      <span class="bottom-nav-icon">🛍️</span>
-      <span>Comercio</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/alojamientos/" role="menuitem">
-      <span class="bottom-nav-icon">🛏️</span>
-      <span>Alojamientos</span>
-    </a>
-    <a class="bottom-nav-more-item" href="#eventos" role="menuitem">
-      <span class="bottom-nav-icon">📅</span>
-      <span>Eventos</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/apoyar/" role="menuitem">
-      <span class="bottom-nav-icon">💛</span>
-      <span>Apoyar</span>
-    </a>
-  </div>
-</nav>
 
 </body>
 </html>

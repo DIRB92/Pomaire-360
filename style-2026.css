@@ -1783,22 +1783,20 @@ html.reveal-ready .stagger-children > * {
   .lang-selector { order: 2; margin-left: .3rem; }
 
   .nav-links-wrap {
-    display: flex !important;
+    display: none !important;
     flex-basis: 100%;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: .3rem;
-    margin-top: .4rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .35rem;
+    margin-top: .6rem;
     order: 3;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: .2rem;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-bottom: 1rem;
   }
-  .nav-links-wrap::-webkit-scrollbar { display: none; }
   .nav-links-wrap.open {
     display: flex !important;
+    animation: navSlideDown .22s ease;
   }
   @keyframes navSlideDown {
     from { opacity: 0; transform: translateY(-8px); }
@@ -2187,15 +2185,5 @@ footer img,
     min-height: 70vh;
     padding-top: 2rem;
     padding-bottom: 2rem;
-  }
-
-  /* Bottom nav: ensure all items show, not just 3 */
-  .bottom-nav {
-    overflow-x: auto;
-    justify-content: space-evenly;
-  }
-  .bottom-nav-item {
-    min-width: 48px;
-    flex-shrink: 0;
   }
 }
