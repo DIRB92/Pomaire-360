@@ -360,13 +360,17 @@
   box-shadow: var(--p360-shadow-lg);
   border-color: rgba(61,53,48,.1);
 }
-.mod-card:target {
-  animation: mod-card-highlight 2s ease;
+.mod-card:target,
+.mod-card.mod-highlight {
+  animation: mod-card-highlight 2.5s ease forwards;
   box-shadow: 0 0 0 4px var(--cat-color, var(--p360-primary)), var(--p360-shadow-lg);
+  z-index: 10;
 }
 @keyframes mod-card-highlight {
-  0%   { box-shadow: 0 0 0 6px var(--cat-color, var(--p360-primary)), var(--p360-shadow-lg); transform: scale(1.01); }
-  100% { box-shadow: 0 0 0 4px var(--cat-color, var(--p360-primary)), var(--p360-shadow-lg); transform: scale(1); }
+  0%   { box-shadow: 0 0 0 8px rgba(212,101,74,.5), var(--p360-shadow-lg); transform: scale(1.02); background: #FFF8F5; }
+  25%  { box-shadow: 0 0 0 6px rgba(212,101,74,.35), var(--p360-shadow-lg); transform: scale(1.01); }
+  50%  { box-shadow: 0 0 0 5px var(--cat-color, var(--p360-primary)), var(--p360-shadow-lg); transform: scale(1.005); background: #FFFAF8; }
+  100% { box-shadow: 0 0 0 3px var(--cat-color, var(--p360-primary)), var(--p360-shadow-md); transform: scale(1); background: var(--p360-white); }
 }
 
 /* Card Header (category color bar) */

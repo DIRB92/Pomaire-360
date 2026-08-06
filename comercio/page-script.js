@@ -341,17 +341,53 @@
     updateCounts();
   }
 
-  // ─── Hash Navigation ────────────────────────────────────────────────────
+  // ─── Hash Navigation with Highlight ─────────────────────────────────────
   function handleHashNavigation() {
     var hash = window.location.hash.replace('#', '');
     if (!hash) return;
-    // Wait for DOM to settle
+
+    // Remove previous highlight
+    var prev = document.querySelector('.mod-card.mod-highlight');
+    if (prev) prev.classList.remove('mod-highlight');
+
+    // Wait for DOM to settle after data render
     setTimeout(function () {
       var target = document.getElementById(hash);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!target) {
+        // If exact slug not found, try partial match
+        var allCards = grid.querySelectorAll('.mod-card');
+        for (var i = 0; i < allCards.length; i++) {
+          if (allCards[i].id && allCards[i].id.indexOf(hash) !== -1) {
+            target = allCards[i];
+            break;
+          }
+        }
       }
-    }, 300);
+      if (target) {
+        // Reset any active category filter to show all cards
+        if (currentCat !== 'todos') {
+          currentCat = 'todos';
+          catButtons.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+            if (b.dataset.cat === 'todos') {
+              b.classList.add('active');
+              b.setAttribute('aria-selected', 'true');
+            }
+          });
+          applyFilters();
+        }
+
+        // Scroll and highlight
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('mod-highlight');
+
+        // Remove highlight after animation completes
+        setTimeout(function () {
+          target.classList.remove('mod-highlight');
+        }, 4000);
+      }
+    }, 400);
   }
 
   window.addEventListener('hashchange', handleHashNavigation);
