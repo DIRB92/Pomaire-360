@@ -2376,3 +2376,28 @@ footer img,
 .plans-wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(37,211,102,.4); background: #1DA851; }
 .plans-note { font-size: .75rem; color: var(--p-muted); margin-top: 1rem; line-height: 1.5; }
 .plans-note a { color: var(--p-primary); font-weight: 700; }
+
+
+/* ─── APOYAR PAGE ──────────────────────────────────────────── */
+.apoyar-hero { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem; }
+.apoyar-card { text-align: center; background: linear-gradient(160deg, #FFF8F0, var(--p-white)); border: 2px solid var(--p-amber); border-radius: var(--p-radius-card); padding: 3rem 2rem; margin-bottom: 2rem; box-shadow: var(--p-shadow-sm); }
+.apoyar-badge { display: inline-block; font-size: .75rem; font-weight: 700; color: var(--p-amber-dark); background: var(--p-amber-light); padding: .3rem .9rem; border-radius: var(--p-radius-pill); margin-bottom: 1rem; }
+.apoyar-emoji { font-size: 3rem; display: block; margin-bottom: .8rem; }
+.apoyar-title { font-family: var(--p-font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: var(--p-text); margin-bottom: .5rem; }
+.apoyar-subtitle { font-size: 1rem; color: var(--p-muted); margin-bottom: 1.2rem; }
+.apoyar-text { font-size: .92rem; color: var(--p-text); line-height: 1.7; max-width: 520px; margin: 0 auto 1.8rem; }
+.apoyar-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 2.2rem; border-radius: var(--p-radius-pill); font-size: 1.05rem; font-weight: 700; background: linear-gradient(135deg, var(--p-amber), #F0C060); color: var(--p-warm-gray); text-decoration: none; box-shadow: 0 4px 18px rgba(232,168,56,.35); transition: all var(--p-normal); }
+.apoyar-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(232,168,56,.5); }
+.apoyar-note { font-size: .78rem; color: var(--p-muted); margin-top: 1rem; }
+
+.apoyar-benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+.apoyar-benefit { background: var(--p-white); border-radius: var(--p-radius); padding: 1.3rem; text-align: center; border: 1px solid rgba(61,53,48,.05); box-shadow: var(--p-shadow-xs); transition: all var(--p-fast); }
+.apoyar-benefit:hover { transform: translateY(-3px); box-shadow: var(--p-shadow-sm); }
+.apoyar-benefit h3 { font-size: .92rem; font-weight: 700; margin-bottom: .3rem; color: var(--p-text); }
+.apoyar-benefit p { font-size: .82rem; color: var(--p-muted); line-height: 1.5; }
+
+.apoyar-other { max-width: 600px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; }
+.apoyar-other h2 { font-family: var(--p-font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+.apoyar-other-btns { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+.apoyar-sec-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .7rem 1.4rem; border-radius: var(--p-radius-pill); font-size: .88rem; font-weight: 700; background: var(--p-smoke); color: var(--p-text); border: 1.5px solid rgba(61,53,48,.08); text-decoration: none; cursor: pointer; font-family: inherit; transition: all var(--p-fast); }
+.apoyar-sec-btn:hover { background: var(--p-primary-glow); border-color: var(--p-primary-light); transform: translateY(-2px); }
