@@ -2401,3 +2401,44 @@ footer img,
 .apoyar-other-btns { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
 .apoyar-sec-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .7rem 1.4rem; border-radius: var(--p-radius-pill); font-size: .88rem; font-weight: 700; background: var(--p-smoke); color: var(--p-text); border: 1.5px solid rgba(61,53,48,.08); text-decoration: none; cursor: pointer; font-family: inherit; transition: all var(--p-fast); }
 .apoyar-sec-btn:hover { background: var(--p-primary-glow); border-color: var(--p-primary-light); transform: translateY(-2px); }
+
+
+/* ─── CARDS V2 (/servicios/, /seguridad/, etc.) ────────────── */
+.cards-v2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+.card-v2 { background: var(--p-white); border-radius: var(--p-radius-card); padding: 1.5rem; border: 1px solid rgba(61,53,48,.05); box-shadow: var(--p-shadow-sm); transition: all var(--p-normal); position: relative; }
+.card-v2:hover { transform: translateY(-5px); box-shadow: var(--p-shadow-lg); }
+.cv2-priority { border-left: 4px solid var(--p-primary); }
+.cv2-icon { font-size: 2rem; margin-bottom: .6rem; }
+.cv2-badge { display: inline-block; font-size: .68rem; font-weight: 700; background: var(--p-primary-glow); color: var(--p-primary-dark); padding: .15rem .55rem; border-radius: 6px; margin-bottom: .5rem; }
+.card-v2 h3 { font-family: var(--p-font-display); font-size: 1.05rem; font-weight: 700; color: var(--p-text); margin-bottom: .4rem; }
+.cv2-detail { font-size: .85rem; color: var(--p-muted); line-height: 1.6; margin-bottom: .6rem; }
+.cv2-links { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cv2-link { display: inline-flex; align-items: center; gap: .2rem; font-size: .78rem; font-weight: 600; color: var(--p-primary); background: var(--p-primary-glow); padding: .3rem .6rem; border-radius: 6px; text-decoration: none; transition: all var(--p-fast); }
+.cv2-link:hover { background: var(--p-primary); color: #fff; }
+
+/* ─── SUGERENCIAS FORM ─────────────────────────────────────── */
+.sg-form { background: var(--p-white); border-radius: var(--p-radius-card); padding: 2rem; box-shadow: var(--p-shadow-sm); border: 1px solid rgba(61,53,48,.05); margin-bottom: 2rem; }
+.sg-form h2 { font-family: var(--p-font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--p-text); }
+.sg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+@media (max-width: 560px) { .sg-row { grid-template-columns: 1fr; } }
+.sg-field { margin-bottom: 1rem; }
+.sg-field label { display: block; font-size: .85rem; font-weight: 700; color: var(--p-text); margin-bottom: .3rem; }
+.sg-opt { font-weight: 400; color: var(--p-muted); font-size: .78rem; }
+.sg-field input, .sg-field textarea, .sg-select { width: 100%; padding: .7rem 1rem; border: 1.5px solid rgba(61,53,48,.12); border-radius: var(--p-radius-sm); font-size: .9rem; font-family: inherit; color: var(--p-text); background: var(--p-cream); transition: border-color .15s, box-shadow .15s; }
+.sg-field input:focus, .sg-field textarea:focus, .sg-select:focus { outline: none; border-color: var(--p-primary); box-shadow: 0 0 0 3px var(--p-primary-glow); }
+.sg-field textarea { resize: vertical; min-height: 110px; }
+.sg-select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23D4654A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.4rem; }
+.sg-error { color: #C0392B; font-size: .85rem; font-weight: 600; margin: -.3rem 0 .8rem; }
+.sg-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .5rem; }
+.sg-btn { flex: 1 1 200px; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: none; padding: .9rem 1.4rem; border-radius: var(--p-radius-pill); font-family: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.sg-btn:hover { transform: translateY(-2px); }
+.sg-btn-wa { background: #25D366; color: #fff; box-shadow: 0 6px 18px rgba(37,211,102,.3); }
+.sg-btn-wa:hover { background: #1FB855; }
+.sg-btn-mail { background: var(--p-primary); color: #fff; box-shadow: 0 6px 18px rgba(212,101,74,.3); }
+.sg-btn-mail:hover { background: var(--p-primary-dark); }
+.sg-note { margin-top: 1rem; font-size: .8rem; color: var(--p-muted); text-align: center; }
+.sg-benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 640px; margin: 2rem auto 0; }
+.sg-benefit { background: var(--p-smoke); border-radius: var(--p-radius); padding: 1.1rem 1rem; text-align: center; }
+.sg-benefit h3 { font-size: .95rem; color: var(--p-primary-dark); margin: 0 0 .35rem; }
+.sg-benefit p { font-size: .82rem; color: var(--p-muted); margin: 0; line-height: 1.45; }
+@media (max-width: 560px) { .sg-benefits { grid-template-columns: 1fr; } .sg-btn { flex: 1 1 100%; } }
