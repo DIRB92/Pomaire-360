@@ -301,7 +301,7 @@
         plan: row.plan || '',
         slug: row.slug || slugify(row.nombre || row.n || ''),
         _categoria: row.categoria || row._categoria || row.cat || 'servicios',
-        img: row.imagen_principal || row.img || '',
+        img: row.imagen_principal || row.foto_portada || row.img || '',
         lat: row.latitud || row.lat || null,
         lng: row.longitud || row.lng || null
       };
