@@ -190,6 +190,12 @@
 
   // ── INIT ───────────────────────────────────────────────────────────────
   function init() {
+    // Mark body as loaded so CSS animations can trigger
+    document.body.classList.add('loaded');
+
+    // Enable reveal animations only after JS is confirmed working
+    document.documentElement.classList.add('reveal-ready');
+
     // Scroll progress
     updateScrollProgress();
     updateNavState();

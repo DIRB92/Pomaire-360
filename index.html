@@ -9,6 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#D4654A">
 
+<!-- Critical inline styles to prevent blank hero on mobile -->
+<style>
+#inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%)}
+#inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .dir-search-wrap,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+</style>
+
 <!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
@@ -185,7 +192,6 @@
 <link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="stylesheet" href="/style-2026.css">
-<link rel="stylesheet" href="/bottom-nav.css">
 <link rel="stylesheet" href="/enhanced-cards.css">
 <link rel="stylesheet" href="/directory-cards.css">
 <link rel="stylesheet" href="/components.css">
@@ -218,29 +224,25 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/estacionamientos/" data-keywords="parking estacionar auto car">
+        <a href="/comercio/?cat=estacionamientos" data-keywords="parking estacionar auto car">
           <span class="nav-menu-icon">🅿️</span>
           <span class="nav-menu-text"><span data-t="nav_park">Estacionar</span><span class="nav-menu-desc">Dónde dejar tu auto</span></span>
         </a>
-        <a href="/salud/" data-keywords="salud health hospital farmacia doctor">
+        <a href="/comercio/?cat=salud" data-keywords="salud health hospital farmacia doctor">
           <span class="nav-menu-icon">🏥</span>
           <span class="nav-menu-text"><span data-t="nav_health">Salud</span><span class="nav-menu-desc">CESFAM, farmacias y urgencias</span></span>
         </a>
-        <a href="/seguridad/" data-keywords="seguridad carabineros bomberos policia emergencia">
+        <a href="/comercio/?cat=seguridad" data-keywords="seguridad carabineros bomberos policia emergencia">
           <span class="nav-menu-icon">🚔</span>
           <span class="nav-menu-text"><span data-t="nav_security">Seguridad</span><span class="nav-menu-desc">Carabineros, Bomberos, emergencias</span></span>
         </a>
-        <a href="/servicios/" data-keywords="servicios almacen tienda atm cajero">
+        <a href="/comercio/?cat=servicios" data-keywords="servicios almacen tienda atm cajero">
           <span class="nav-menu-icon">🛒</span>
           <span class="nav-menu-text"><span data-t="nav_commerce">Servicios</span><span class="nav-menu-desc">Almacenes y servicios cotidianos</span></span>
         </a>
-        <a href="/gruas/" data-keywords="grua mecanico neumatico vulcanizacion auto">
-          <span class="nav-menu-icon">🔧</span>
-          <span class="nav-menu-text"><span data-t="nav_gruas">Grúas y mecánicos</span><span class="nav-menu-desc">Asistencia vehicular</span></span>
-        </a>
-        <a href="/locomocion/" data-keywords="bus micro colectivo transporte locomocion">
+        <a href="/comercio/?cat=transporte" data-keywords="grua mecanico neumatico vulcanizacion auto bus transporte">
           <span class="nav-menu-icon">🚌</span>
-          <span class="nav-menu-text"><span data-t="nav_locomocion">Locomoción</span><span class="nav-menu-desc">Buses, micros y colectivos</span></span>
+          <span class="nav-menu-text"><span data-t="nav_locomocion">Transporte</span><span class="nav-menu-desc">Grúas, buses, micros y colectivos</span></span>
         </a>
       </div>
     </div>
@@ -248,29 +250,29 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Visitar</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/alfareria/" data-keywords="alfareria pottery greda ceramica taller artesano">
+        <a href="/comercio/?cat=alfareria" data-keywords="alfareria pottery greda ceramica taller artesano">
           <span class="nav-menu-icon">🏺</span>
           <span class="nav-menu-text"><span data-t="nav_pottery">Alfarería</span><span class="nav-menu-desc">Talleres y tradición alfarera</span></span>
+        </a>
+        <a href="/comercio/?cat=turismo" data-keywords="que ver atractivos iglesia monumento vino ruta">
+          <span class="nav-menu-icon">✨</span>
+          <span class="nav-menu-text"><span data-t="nav_seewhat">Qué ver</span><span class="nav-menu-desc">Atractivos y puntos de interés</span></span>
         </a>
         <a href="/ruta-del-vino/" data-keywords="vino wine ruta viña bodega">
           <span class="nav-menu-icon">🍷</span>
           <span class="nav-menu-text"><span data-t="nav_winery">Ruta del Vino</span><span class="nav-menu-desc">Viñas y bodegas cercanas</span></span>
         </a>
-        <a href="/que-ver/" data-keywords="que ver atractivos iglesia monumento">
-          <span class="nav-menu-icon">✨</span>
-          <span class="nav-menu-text"><span data-t="nav_seewhat">Qué ver</span><span class="nav-menu-desc">Atractivos y puntos de interés</span></span>
-        </a>
-        <a href="/plaza/" data-keywords="plaza centro parque iglesia">
-          <span class="nav-menu-icon">🌳</span>
-          <span class="nav-menu-text"><span data-t="nav_plaza">Plaza Pública</span><span class="nav-menu-desc">Corazón del pueblo</span></span>
+        <a href="/comercio/?cat=comercio" data-keywords="comercio tiendas compras souvenir recuerdo">
+          <span class="nav-menu-icon">🛍️</span>
+          <span class="nav-menu-text"><span data-t="nav_shops_g">Comercio</span><span class="nav-menu-desc">Tiendas y souvenirs</span></span>
         </a>
         <a href="/alrededores/" data-keywords="alrededores chiñihues campo naturaleza rural">
           <span class="nav-menu-icon">🌄</span>
           <span class="nav-menu-text"><span data-t="nav_around">Alrededores</span><span class="nav-menu-desc">Los Chiñihues y alrededores</span></span>
         </a>
-        <a href="/comercio/" data-keywords="comercio tiendas compras souvenir recuerdo">
-          <span class="nav-menu-icon">🛍️</span>
-          <span class="nav-menu-text"><span data-t="nav_shops_g">Comercio</span><span class="nav-menu-desc">Tiendas y souvenirs</span></span>
+        <a href="/plaza/" data-keywords="plaza centro parque iglesia">
+          <span class="nav-menu-icon">🌳</span>
+          <span class="nav-menu-text"><span data-t="nav_plaza">Plaza Pública</span><span class="nav-menu-desc">Corazón del pueblo</span></span>
         </a>
       </div>
     </div>
@@ -278,11 +280,11 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/gastronomia/" data-keywords="comer restaurante empanada cazuela comida gastronomia">
+        <a href="/comercio/?cat=restaurantes" data-keywords="comer restaurante empanada cazuela comida gastronomia">
           <span class="nav-menu-icon">🍽️</span>
           <span class="nav-menu-text"><span data-t="nav_food">Comer</span><span class="nav-menu-desc">Restaurantes y cocina típica</span></span>
         </a>
-        <a href="/alojamientos/" data-keywords="dormir hotel hostal cabaña alojamiento">
+        <a href="/comercio/?cat=alojamiento" data-keywords="dormir hotel hostal cabaña alojamiento">
           <span class="nav-menu-icon">🛏️</span>
           <span class="nav-menu-text"><span data-t="nav_lodging">Alojamientos</span><span class="nav-menu-desc">Hostales, cabañas y suites</span></span>
         </a>
@@ -1189,7 +1191,7 @@
 </footer>
 
 <!-- ══ SECCIÓN SEO: CONTENIDO SEMÁNTICO RICO EN PALABRAS CLAVE ══ -->
-<section class="seo-about" aria-label="Sobre Pomaire" style="padding:2.5rem 1.25rem;max-width:900px;margin:0 auto;font-size:.95rem;line-height:1.7;color:var(--muted,#555)">
+<section class="seo-about" aria-label="Sobre Pomaire" hidden style="display:none">>
   <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--clay-dark,#5a2d0c);margin-bottom:1rem">Pomaire: El pueblo alfarero más famoso de Chile</h2>
   <p><strong>Pomaire</strong> es una localidad alfarera ubicada en la <strong>comuna de Melipilla</strong>, <strong>Región Metropolitana de Chile</strong>, a solo 50 km al suroeste de Santiago. Conocido también como el <em>pueblo de la greda</em>, Pomaire es el destino turístico ideal para quienes buscan <strong>artesanía chilena</strong>, <strong>gastronomía típica</strong> y una experiencia cultural auténtica a menos de una hora de la capital.</p>
   <p>La tradición alfarera de Pomaire tiene más de <strong>300 años de historia</strong>. Los artesanos del pueblo trabajan la <strong>greda</strong> (arcilla roja) de forma artesanal, creando piezas únicas como ollas, cazuelas, jarros, tinajas, maceteros y el icónico <strong>chanchito alcancía de greda</strong>, símbolo de buena suerte en Chile. Visitar los <strong>talleres de alfarería</strong> es la actividad principal del pueblo, donde puedes ver a los maestros alfareros trabajando en el torno y comprar directamente.</p>
@@ -1305,59 +1307,6 @@
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
-<script src="/bottom-nav.js" defer></script>
-
-<!-- BOTTOM NAVIGATION (mobile only) -->
-<nav class="bottom-nav" id="bottomNav" aria-label="Navegación rápida móvil">
-  <a class="bottom-nav-item active" href="#mapa" data-section="mapa" aria-current="true" aria-label="Explorar mapa">
-    <span class="bottom-nav-icon">🗺️</span>
-    <span class="bottom-nav-label" data-t="bn_map">Mapa</span>
-  </a>
-  <a class="bottom-nav-item" href="#recorrido" data-section="recorrido" aria-label="Recorrido turístico">
-    <span class="bottom-nav-icon">🧭</span>
-    <span class="bottom-nav-label" data-t="bn_tour">Ruta</span>
-  </a>
-  <a class="bottom-nav-item" href="#clima" data-section="clima" aria-label="Clima actual">
-    <span class="bottom-nav-icon">🌤️</span>
-    <span class="bottom-nav-label" data-t="bn_weather">Clima</span>
-  </a>
-  <a class="bottom-nav-item" href="#galeria" data-section="galeria" aria-label="Galería de fotos">
-    <span class="bottom-nav-icon">📸</span>
-    <span class="bottom-nav-label" data-t="bn_gallery">Fotos</span>
-  </a>
-  <button class="bottom-nav-item bottom-nav-more-btn" type="button" aria-label="Más opciones" aria-expanded="false" aria-controls="bnMoreMenu">
-    <span class="bottom-nav-icon">⋯</span>
-    <span class="bottom-nav-label" data-t="bn_more">Más</span>
-  </button>
-
-  <!-- More menu popup -->
-  <div class="bottom-nav-more-menu" id="bnMoreMenu" role="menu">
-    <a class="bottom-nav-more-item" href="/alfareria/" role="menuitem">
-      <span class="bottom-nav-icon">🏺</span>
-      <span>Alfarería</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/gastronomia/" role="menuitem">
-      <span class="bottom-nav-icon">🍽️</span>
-      <span>Gastronomía</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/comercio/" role="menuitem">
-      <span class="bottom-nav-icon">🛍️</span>
-      <span>Comercio</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/alojamientos/" role="menuitem">
-      <span class="bottom-nav-icon">🛏️</span>
-      <span>Alojamientos</span>
-    </a>
-    <a class="bottom-nav-more-item" href="#eventos" role="menuitem">
-      <span class="bottom-nav-icon">📅</span>
-      <span>Eventos</span>
-    </a>
-    <a class="bottom-nav-more-item" href="/apoyar/" role="menuitem">
-      <span class="bottom-nav-icon">💛</span>
-      <span>Apoyar</span>
-    </a>
-  </div>
-</nav>
 
 </body>
 </html>
