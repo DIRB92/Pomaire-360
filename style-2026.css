@@ -2298,3 +2298,32 @@ footer img,
 /* Generic subpage cards that use card-share */
 .card-share-btn, [class*="share"] button { background: var(--p-smoke); border: none; border-radius: 6px; padding: .3rem .5rem; font-size: .72rem; color: var(--p-muted); cursor: pointer; display: inline-flex; align-items: center; gap: .2rem; }
 .card-share-btn:hover { background: var(--p-primary-glow); color: var(--p-primary); }
+
+
+/* ─── WINE ROUTE STEPS ─────────────────────────────────────── */
+.wine-steps { margin-top: 2.5rem; }
+.wine-steps h3 { font-family: var(--p-font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--p-text); }
+.wine-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; padding: 1rem 1.3rem; background: var(--p-white); border-radius: var(--p-radius); border: 1px solid rgba(61,53,48,.05); box-shadow: var(--p-shadow-xs); transition: all var(--p-fast); }
+.wine-step:hover { transform: translateX(4px); box-shadow: var(--p-shadow-sm); border-color: var(--p-primary-light); }
+.ws-num { width: 36px; height: 36px; border-radius: 50%; background: var(--p-primary); color: #fff; font-weight: 800; font-size: .95rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ws-body { flex: 1; }
+.ws-body strong { display: block; font-size: .95rem; font-weight: 700; color: var(--p-text); margin-bottom: .2rem; }
+.ws-body span { font-size: .85rem; color: var(--p-muted); line-height: 1.6; }
+
+/* Wine CTA */
+.wine-cta { margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #FFF8F0, var(--p-white)); border: 2px solid var(--p-primary-light); border-radius: var(--p-radius); text-align: center; }
+.wine-cta p { font-size: .9rem; color: var(--p-text); margin-bottom: 1rem; }
+.wine-cta a { display: inline-flex; align-items: center; gap: .4rem; padding: .6rem 1.4rem; border-radius: var(--p-radius-pill); background: var(--p-sage); color: #fff; font-weight: 700; font-size: .88rem; text-decoration: none; transition: all var(--p-fast); }
+.wine-cta a:hover { background: var(--p-sage-dark); transform: translateY(-2px); }
+.wine-note { font-size: .78rem; color: var(--p-muted); margin-top: 1.5rem; text-align: center; line-height: 1.6; }
+
+/* ─── SUBPAGE CROSS-LINKS & FOOTER ────────────────────────── */
+.sub-cross { padding: 2.5rem 1.5rem; text-align: center; background: var(--p-smoke); }
+.sub-cross h2 { font-family: var(--p-font-display); font-size: 1.2rem; font-weight: 700; color: var(--p-text); margin-bottom: 1rem; }
+.sub-cross-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
+.sub-cross-links a { display: inline-flex; align-items: center; gap: .3rem; padding: .5rem 1rem; border-radius: var(--p-radius-pill); background: var(--p-white); color: var(--p-text); font-size: .85rem; font-weight: 600; text-decoration: none; box-shadow: var(--p-shadow-xs); transition: all var(--p-fast); border: 1px solid rgba(61,53,48,.06); }
+.sub-cross-links a:hover { background: var(--p-primary-glow); border-color: var(--p-primary-light); transform: translateY(-2px); box-shadow: var(--p-shadow-sm); }
+
+.sub-foot { padding: 1.5rem; text-align: center; }
+.sub-foot a { display: inline-flex; align-items: center; gap: .4rem; font-size: .9rem; font-weight: 700; color: var(--p-primary); text-decoration: none; padding: .6rem 1.2rem; border-radius: var(--p-radius-pill); transition: all var(--p-fast); }
+.sub-foot a:hover { background: var(--p-primary-glow); }
