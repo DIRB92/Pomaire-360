@@ -373,11 +373,141 @@
   100% { box-shadow: 0 0 0 3px var(--cat-color, var(--p360-primary)), var(--p360-shadow-md); transform: scale(1); background: var(--p360-white); }
 }
 
-/* Card Header (category color bar) */
+/* Card Header (category color bar) — legacy fallback */
 .mod-card-header {
   height: 6px;
   background: var(--cat-color, var(--p360-primary));
   flex-shrink: 0;
+}
+
+/* ─── Card Image ───────────────────────────────────────────────────────── */
+.mod-card-img-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--p360-smoke);
+  flex-shrink: 0;
+}
+.mod-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+.mod-card:hover .mod-card-img {
+  transform: scale(1.06);
+}
+.mod-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--p360-smoke) 0%, var(--p360-cream) 100%);
+}
+.mod-card-img-placeholder span {
+  font-size: 3.5rem;
+  opacity: .45;
+  filter: grayscale(20%);
+}
+/* Badge sobre la imagen */
+.mod-card-img-badge {
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  font-size: .68rem;
+  font-weight: 800;
+  color: var(--p360-white);
+  background: var(--cat-color, var(--p360-primary));
+  border-radius: 6px;
+  padding: .25rem .55rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+/* Plan badges sobre la imagen */
+.mod-card-plan-badge {
+  position: absolute;
+  top: .7rem;
+  right: .7rem;
+  font-size: .65rem;
+  font-weight: 800;
+  color: #fff;
+  border-radius: 6px;
+  padding: .25rem .55rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.mod-plan-premium {
+  background: linear-gradient(135deg, var(--p360-primary), var(--p360-primary-dark));
+}
+.mod-plan-destacado {
+  background: linear-gradient(135deg, var(--p360-amber), #D49520);
+}
+
+/* ─── Map Buttons ──────────────────────────────────────────────────────── */
+.mod-card-map-buttons {
+  display: flex;
+  gap: .5rem;
+  margin-top: .4rem;
+}
+.mod-card-map-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .75rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--p360-radius-sm);
+  padding: .5rem .75rem;
+  transition: all var(--p360-transition);
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap;
+}
+.mod-btn-mapa-interactivo {
+  color: var(--p360-sage-dark);
+  background: var(--p360-sage-light);
+  border: 1.5px solid var(--p360-sage);
+}
+.mod-btn-mapa-interactivo:hover {
+  background: var(--p360-sage);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(123,158,135,.3);
+}
+.mod-btn-mapa-interactivo svg {
+  flex-shrink: 0;
+}
+.mod-btn-google-maps {
+  color: #1a73e8;
+  background: #e8f0fe;
+  border: 1.5px solid #4285f4;
+}
+.mod-btn-google-maps:hover {
+  background: #4285f4;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(66,133,244,.3);
+}
+.mod-btn-google-maps svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .mod-card-map-buttons {
+    flex-direction: column;
+    gap: .35rem;
+  }
+  .mod-card-map-buttons a {
+    font-size: .72rem;
+    padding: .45rem .6rem;
+  }
 }
 
 /* Card Body */
@@ -501,6 +631,13 @@
   height: 8px;
   background: linear-gradient(90deg, var(--p360-amber), #F0C462);
 }
+.mod-card.mod-featured .mod-card-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-bottom: 3px solid var(--p360-amber);
+  pointer-events: none;
+}
 .mod-card.mod-premium {
   border: 2px solid var(--p360-primary);
   background: linear-gradient(165deg, #FFF6F0 0%, var(--p360-white) 40%);
@@ -508,6 +645,13 @@
 .mod-card.mod-premium .mod-card-header {
   height: 8px;
   background: linear-gradient(90deg, var(--p360-primary), var(--p360-primary-light));
+}
+.mod-card.mod-premium .mod-card-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-bottom: 3px solid var(--p360-primary);
+  pointer-events: none;
 }
 
 

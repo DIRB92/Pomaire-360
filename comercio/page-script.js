@@ -60,6 +60,14 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // ─── Category Emojis (placeholder when no image) ─────────────────────────
+  var CATEGORY_EMOJIS = {
+    alfareria: '🏺', talleres: '🔨', restaurantes: '🍽️',
+    alojamiento: '🏡', comercio: '🛍️', servicios: '🔧',
+    estacionamientos: '🅿️', salud: '🏥', seguridad: '🛡️',
+    banos: '🚻', transporte: '🚌', turismo: '📍'
+  };
+
   // ─── Card Renderer ──────────────────────────────────────────────────────
   function renderCard(item) {
     var cat = item._categoria || item.cat || 'servicios';
@@ -74,6 +82,9 @@
     var slug = item.slug || slugify(name);
     var plan = item.plan || '';
     var label = CATEGORY_LABELS[cat] || cat;
+    var img = item.img || '';
+    var lat = item.lat || null;
+    var lng = item.lng || null;
 
     var cardClass = 'mod-card';
     if (plan === 'destacado') cardClass += ' mod-featured';
@@ -81,26 +92,66 @@
 
     var html = '<article class="' + cardClass + '" data-cat="' + escapeHTML(cat) + '" '
       + 'id="' + escapeHTML(slug) + '" '
-      + 'style="--cat-color:var(--cat-' + escapeHTML(cat) + ')">'
-      + '<div class="mod-card-header"></div>'
-      + '<div class="mod-card-body">'
+      + 'style="--cat-color:var(--cat-' + escapeHTML(cat) + ')">';
+
+    // ─── Image Header ───────────────────────────────────────────────────
+    html += '<div class="mod-card-img-wrapper">';
+    if (img) {
+      html += '<img class="mod-card-img" src="' + escapeHTML(img) + '" alt="' + escapeHTML(name) + '" loading="lazy">';
+    } else {
+      html += '<div class="mod-card-img-placeholder"><span>' + (CATEGORY_EMOJIS[cat] || '🏪') + '</span></div>';
+    }
+    // Category badge over image
+    html += '<span class="mod-card-img-badge">' + escapeHTML(label) + '</span>';
+    if (plan === 'premium') {
+      html += '<span class="mod-card-plan-badge mod-plan-premium">Premium</span>';
+    } else if (plan === 'destacado') {
+      html += '<span class="mod-card-plan-badge mod-plan-destacado">Destacado</span>';
+    }
+    html += '</div>';
+
+    // ─── Card Body ──────────────────────────────────────────────────────
+    html += '<div class="mod-card-body">'
       + '<div class="mod-card-top">'
       + '<h3 class="mod-card-name">' + escapeHTML(name) + '</h3>'
-      + '<span class="mod-card-badge">' + escapeHTML(label) + '</span>'
       + '</div>';
 
     if (addr) {
-      html += '<p class="mod-card-addr">📍 ' + escapeHTML(addr) + '</p>';
+      html += '<p class="mod-card-addr">' + escapeHTML(addr) + '</p>';
     }
     if (tag) {
       html += '<span class="mod-card-tag">' + escapeHTML(tag) + '</span>';
     }
 
-    // Actions
-    html += '<div class="mod-card-actions">';
-    if (map) {
-      html += '<a class="mod-action-map" href="' + escapeHTML(map) + '" target="_blank" rel="noopener">🗺️ Mapa</a>';
+    // ─── Map Buttons (Mapa Interactivo + Google Maps) ───────────────────
+    var hasCoords = lat && lng;
+    var hasMap = map || hasCoords;
+    if (hasMap) {
+      html += '<div class="mod-card-map-buttons">';
+      // Mapa interactivo (link al mapa del sitio con coordenadas)
+      if (hasCoords) {
+        var mapaInteractivoUrl = '/mapa/#' + lat + ',' + lng;
+        html += '<a class="mod-btn-mapa-interactivo" href="' + mapaInteractivoUrl + '" title="Ver en mapa interactivo de Pomaire 360">'
+          + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'
+          + ' Mapa Interactivo</a>';
+      }
+      // Google Maps
+      if (hasCoords) {
+        var googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
+        html += '<a class="mod-btn-google-maps" href="' + escapeHTML(googleMapsUrl) + '" target="_blank" rel="noopener" title="Como llegar en Google Maps">'
+          + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
+          + ' Google Maps</a>';
+      } else if (map) {
+        // Fallback: usar la URL directa de Google Maps si no hay coordenadas
+        html += '<a class="mod-btn-google-maps" href="' + escapeHTML(map) + '" target="_blank" rel="noopener" title="Ver en Google Maps">'
+          + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
+          + ' Google Maps</a>';
+      }
+      html += '</div>';
     }
+
+    // ─── Actions ────────────────────────────────────────────────────────
+    html += '<div class="mod-card-actions">';
     if (phone) {
       html += '<a href="tel:' + escapeHTML(phone) + '">📞 Llamar</a>';
     }
@@ -249,15 +300,11 @@
         wsp: row.whatsapp || row.wsp || '',
         plan: row.plan || '',
         slug: row.slug || slugify(row.nombre || row.n || ''),
-        _categoria: row.categoria || row._categoria || row.cat || 'servicios'
+        _categoria: row.categoria || row._categoria || row.cat || 'servicios',
+        img: row.imagen_principal || row.foto_portada || row.img || '',
+        lat: row.latitud || row.lat || null,
+        lng: row.longitud || row.lng || null
       };
-    }).filter(function (item) {
-      // Excluir "El Chancho Alcancía" — tiene su propia página dedicada
-      var slug = item.slug || '';
-      if (slug.indexOf('chancho-alcancia') !== -1) return false;
-      var name = norm(item.n);
-      if (name.indexOf('chancho alcancia') !== -1) return false;
-      return true;
     });
     dataLoaded = true;
     updateCounts();
