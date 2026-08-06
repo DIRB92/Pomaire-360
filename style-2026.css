@@ -2282,3 +2282,19 @@ footer img,
   transition: background var(--p-fast);
 }
 .card-share:hover, .share-btn:hover { background: var(--p-smoke); color: var(--p-primary); }
+
+
+/* ─── SUBPAGE-SPECIFIC STYLES ──────────────────────────────── */
+/* Wine/Chicha route page */
+.wine-tag { display: inline-block; font-size: .82rem; font-weight: 600; color: var(--p-primary-dark); background: var(--p-primary-glow); padding: .4rem 1rem; border-radius: var(--p-radius-pill); margin-bottom: 1.2rem; }
+.wine-intro { font-size: .95rem; color: var(--p-text); line-height: 1.7; margin-bottom: 2rem; max-width: 800px; }
+.wine-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+.wine-card { background: var(--p-white); border-radius: var(--p-radius-card); padding: 1.5rem; border: 1px solid rgba(61,53,48,.05); box-shadow: var(--p-shadow-sm); transition: all var(--p-normal); }
+.wine-card:hover { transform: translateY(-4px); box-shadow: var(--p-shadow-md); }
+.wine-card .wc-icon { font-size: 2rem; display: block; margin-bottom: .6rem; }
+.wine-card h3 { font-family: var(--p-font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; color: var(--p-text); }
+.wine-card p { font-size: .85rem; color: var(--p-muted); line-height: 1.6; }
+
+/* Generic subpage cards that use card-share */
+.card-share-btn, [class*="share"] button { background: var(--p-smoke); border: none; border-radius: 6px; padding: .3rem .5rem; font-size: .72rem; color: var(--p-muted); cursor: pointer; display: inline-flex; align-items: center; gap: .2rem; }
+.card-share-btn:hover { background: var(--p-primary-glow); color: var(--p-primary); }
