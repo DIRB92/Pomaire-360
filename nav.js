@@ -237,6 +237,13 @@
       searchInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
           e.preventDefault();
+          var q = searchInput.value.trim();
+          if (q.length >= 2) {
+            // Redirigir al buscador de negocios en la app
+            window.open('https://app.pomaire360.cl/negocios?q=' + encodeURIComponent(q), '_blank');
+            closeSearch();
+            return;
+          }
           var results = document.getElementById('navSearchResults');
           if (results) {
             var first = results.querySelector('.nav-search-item[style="display: flex"], .nav-search-item:not([style*="none"])');
