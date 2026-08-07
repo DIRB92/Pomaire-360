@@ -154,6 +154,59 @@
     );
   };
 
+  // Ruta Turística Oficial — dibuja polyline entre las paradas
+  var routeLine = null;
+  var RUTA_OFICIAL_SLUGS = ['plaza-de-pomaire', 'imperio-pomaire', 'granja-educativa-alfarera', 'restaurant-la-greda', 'vivero-luchin'];
+
+  window._homeShowRoute = function () {
+    if (!map) return;
+    // Scroll al mapa
+    var el = document.getElementById('leafletMap');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Esperar a que markers estén cargados
+    setTimeout(function () {
+      if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+
+      // Buscar markers por slug parcial en nombre
+      var latlngs = [];
+      RUTA_OFICIAL_SLUGS.forEach(function (slug) {
+        for (var i = 0; i < markers.length; i++) {
+          var m = markers[i];
+          var popup = m.getPopup();
+          if (popup) {
+            var content = popup.getContent() || '';
+            if (content.includes('/' + slug) || content.includes(slug)) {
+              latlngs.push(m.getLatLng());
+              m.openPopup();
+              break;
+            }
+          }
+        }
+      });
+
+      // Fallback: usar coordenadas conocidas si no se encuentran markers
+      if (latlngs.length < 3) {
+        latlngs = [
+          L.latLng(-33.65033, -71.15093),   // Plaza/OIT
+          L.latLng(-33.65461, -71.15002),   // Imperio Pomaire
+          L.latLng(-33.65119, -71.15285),   // Granja Alfarera
+          L.latLng(-33.65318, -71.14994),   // La Greda
+          L.latLng(-33.65366, -71.15136)    // Vivero Luchín
+        ];
+      }
+
+      routeLine = L.polyline(latlngs, {
+        color: '#8C3D16',
+        weight: 4,
+        opacity: 0.85,
+        dashArray: '10,6'
+      }).addTo(map);
+
+      map.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+    }, 500);
+  };
+
   // Init when ready
   function boot() {
     var tries = 0;
