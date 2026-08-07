@@ -172,13 +172,16 @@
       results.innerHTML = matches.map(function(it){
         var icon = catEmojis[it.cat] || '📍';
         var label = catLabels[it.cat] || it.cat;
-        // Todas las fichas van a /comercio/#slug
-        var href = '/comercio/#' + it.slug;
-        return '<a class="dir-search-item" href="' + href + '">' +
+        // Link directo al negocio en la app
+        var href = 'https://app.pomaire360.cl/negocios/' + it.slug;
+        return '<a class="dir-search-item" href="' + href + '" target="_blank" rel="noopener">' +
           '<span class="dsi-icon">' + icon + '</span>' +
           '<div><div class="dsi-name">' + escHtml(it.name) + '</div>' +
           '<div class="dsi-cat">' + escHtml(label) + (it.addr ? ' · ' + escHtml(it.addr) : '') + '</div></div></a>';
       }).join('');
+      // Agregar link "Ver todos los resultados"
+      results.innerHTML += '<a class="dir-search-item dir-search-all" href="https://app.pomaire360.cl/negocios?q=' + encodeURIComponent(input.value.trim()) + '" target="_blank" rel="noopener">' +
+        '<span class="dsi-icon">🔍</span><div><div class="dsi-name">Ver todos los resultados</div><div class="dsi-cat">en app.pomaire360.cl</div></div></a>';
       results.classList.add('open');
     });
   }
