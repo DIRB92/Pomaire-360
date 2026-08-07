@@ -45,7 +45,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="/nav.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
-<script defer src="/mapa-turistico/mapa-turistico.js"></script>
+<script defer src="/mapa-turistico/mapa-turistico-v2.js"></script>
 </head>
 <body>
 
@@ -164,6 +164,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   <!-- Map + Legend wrapper -->
   <div class="map-wrapper">
     <div id="touristMap" class="tourist-map"></div>
+
+    <!-- Loading indicator -->
+    <div id="mapLoading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(250,250,247,.85);z-index:1000;">
+      <p style="font-size:1.1rem;color:#6B4226;">🔄 Cargando mapa desde Supabase...</p>
+    </div>
 
     <!-- Floating Legend -->
     <div class="map-legend" id="mapLegend">
