@@ -195,13 +195,10 @@
 <link rel="stylesheet" href="/enhanced-cards.css">
 <link rel="stylesheet" href="/directory-cards.css">
 <link rel="stylesheet" href="/components.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="/nav.js"></script>
 <script defer src="/seasonal.js"></script>
 <script defer src="/langs.js"></script>
 <script defer src="/app.js"></script>
-<script defer src="/map-supabase.js"></script>
 <script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
@@ -458,30 +455,14 @@
       </div>
     </div>
 
-    <!-- Controles: filtros + ubicación -->
-    <div class="map-controls reveal">
-      <div class="map-filters" id="mapFilters" role="group" aria-label="Filtrar lugares del mapa">
-        <button type="button" class="map-filter active" data-cat="all" aria-pressed="true">🏺 <span data-t="filter_all">Todos</span></button>
-        <button type="button" class="map-filter" data-cat="parking" aria-pressed="false">🅿️ <span data-t="filter_parking">Estacionar</span></button>
-        <button type="button" class="map-filter" data-cat="health" aria-pressed="false">🏥 <span data-t="filter_health">Salud</span></button>
-        <button type="button" class="map-filter" data-cat="security" aria-pressed="false">🚔 <span data-t="filter_security">Seguridad</span></button>
-        <button type="button" class="map-filter" data-cat="pottery" aria-pressed="false">🏺 <span data-t="filter_pottery">Alfarería</span></button>
-        <button type="button" class="map-filter" data-cat="food" aria-pressed="false">🍽️ <span data-t="filter_food">Comer</span></button>
-        <button type="button" class="map-filter" data-cat="lodging" aria-pressed="false">🛏️ <span data-t="filter_lodging">Dormir</span></button>
-        <button type="button" class="map-filter" data-cat="highlight" aria-pressed="false">✨ <span data-t="filter_highlight">Qué ver</span></button>
-        <button type="button" class="map-filter" data-cat="services" aria-pressed="false">🛒 <span data-t="filter_services">Servicios</span></button>
-        <button type="button" class="map-filter" data-cat="around" aria-pressed="false">🌾 <span data-t="filter_around">Alrededores</span></button>
-      </div>
-      <button type="button" class="locate-btn" id="locateBtn" onclick="locateUser()">
-        📍 <span data-t="locate_btn">Usar mi ubicación</span>
-      </button>
+    <!-- CTA principal al mapa turístico unificado -->
+    <div class="map-cta-hero reveal" style="text-align:center;padding:2.5rem 1rem;background:linear-gradient(135deg,#FAF3ED,#FFF8F2);border-radius:1.5rem;border:2px solid #F0A090;margin:1.5rem 0;">
+      <p style="font-size:1.2rem;color:#6B4226;margin-bottom:1rem;" data-t="map_cta_desc">Nuestro mapa turístico se actualiza en tiempo real desde la base de datos con todos los negocios registrados.</p>
+      <a href="/mapa-turistico/" style="display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;background:#B85C2C;color:#fff;font-weight:700;border-radius:1rem;text-decoration:none;font-size:1.1rem;box-shadow:0 4px 12px rgba(184,92,44,.3);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(184,92,44,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 12px rgba(184,92,44,.3)'">
+        🗺️ <span data-t="map_full_cta">Abrir Mapa Turístico</span>
+      </a>
+      <p style="color:#8C7A6B;font-size:.82rem;margin-top:.8rem;" data-t="map_cta_features">Filtros por categoría · Geolocalización · Rutas sugeridas · Vista satélite · Compartir lugares</p>
     </div>
-
-    <!-- Mapa Leaflet -->
-    <div class="leaflet-wrap reveal">
-      <div id="leafletMap"></div>
-    </div>
-    <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto de partida en el mapa para calcular distancias</p>
 
     <!-- Destacado Premium: El Chancho -->
     <a class="map-featured-btn reveal" href="/elchanchoalcanciamasgrandedelmundo/">
@@ -496,50 +477,6 @@
         🗺️ <span data-t="official_map_btn">Ver mapa oficial ilustrado de Pomaire</span>
       </button>
       <p class="official-map-note" data-t="official_map_note">Plano turístico oficial con el directorio numerado de talleres de artesanos.</p>
-    </div>
-
-    <!-- Rutas sugeridas -->
-    <div class="routes-block reveal">
-      <h3 data-t="routes_title">🧭 Recorridos sugeridos</h3>
-      <div class="routes-grid">
-        <button type="button" class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
-          <span class="route-icon">🧳</span>
-          <strong data-t="route_oficial_name">Ruta Oficial</strong>
-          <span class="route-meta" data-t="route_oficial_meta">5 paradas · día completo</span>
-        </button>
-        <button type="button" class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
-          <span class="route-icon">🏺</span>
-          <strong data-t="route_artisan_name">Ruta del Artesano</strong>
-          <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1.5 hrs</span>
-        </button>
-        <button type="button" class="route-card" data-route="family" onclick="loadRoute('family')">
-          <span class="route-icon">👨‍👩‍👧</span>
-          <strong data-t="route_family_name">Ruta Familiar</strong>
-          <span class="route-meta" data-t="route_family_meta">4 paradas · ~2.5 hrs</span>
-        </button>
-        <button type="button" class="route-card" data-route="food" onclick="loadRoute('food')">
-          <span class="route-icon">🍽️</span>
-          <strong data-t="route_food_name">Ruta Gastronómica</strong>
-          <span class="route-meta" data-t="route_food_meta">3 paradas · ~1 hr</span>
-        </button>
-        <button type="button" class="route-card" data-route="nature" onclick="loadRoute('nature')">
-          <span class="route-icon">🌄</span>
-          <strong data-t="route_nature_name">Ruta Naturaleza</strong>
-          <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3 hrs</span>
-        </button>
-      </div>
-      <button type="button" class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Quitar ruta</span></button>
-    </div>
-
-    <!-- Lista de lugares con distancia -->
-    <div class="places-list reveal" id="placesList"></div>
-
-    <!-- CTA al mapa turístico dedicado (versión completa) -->
-    <div class="map-full-cta reveal" style="text-align:center;margin-top:1.5rem;">
-      <a href="/mapa-turistico/" class="official-map-btn" style="display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;">
-        🗺️ <span data-t="map_full_cta">Abrir Mapa Turístico completo</span>
-      </a>
-      <p style="color:var(--muted);font-size:.78rem;margin-top:.5rem;" data-t="map_full_cta_note">Vista ampliada con leyenda, estilos de mapa, compartir lugares y más</p>
     </div>
   </div>
 </section>
