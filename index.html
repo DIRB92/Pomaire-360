@@ -195,10 +195,13 @@
 <link rel="stylesheet" href="/enhanced-cards.css">
 <link rel="stylesheet" href="/directory-cards.css">
 <link rel="stylesheet" href="/components.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="/nav.js"></script>
 <script defer src="/seasonal.js"></script>
 <script defer src="/langs.js"></script>
 <script defer src="/app.js"></script>
+<script defer src="/map-home.js"></script>
 <script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
@@ -455,13 +458,35 @@
       </div>
     </div>
 
-    <!-- CTA principal al mapa turístico unificado -->
-    <div class="map-cta-hero reveal" style="text-align:center;padding:2.5rem 1rem;background:linear-gradient(135deg,#FAF3ED,#FFF8F2);border-radius:1.5rem;border:2px solid #F0A090;margin:1.5rem 0;">
-      <p style="font-size:1.2rem;color:#6B4226;margin-bottom:1rem;" data-t="map_cta_desc">Nuestro mapa turístico se actualiza en tiempo real desde la base de datos con todos los negocios registrados.</p>
-      <a href="/mapa-turistico/" style="display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 2rem;background:#B85C2C;color:#fff;font-weight:700;border-radius:1rem;text-decoration:none;font-size:1.1rem;box-shadow:0 4px 12px rgba(184,92,44,.3);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(184,92,44,.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 12px rgba(184,92,44,.3)'">
-        🗺️ <span data-t="map_full_cta">Abrir Mapa Turístico</span>
+    <!-- Filtros compactos -->
+    <div class="map-controls reveal">
+      <div class="map-filters" id="mapFilters" role="group" aria-label="Filtrar lugares del mapa">
+        <button type="button" class="map-filter active" data-cat="all" aria-pressed="true">🏺 <span data-t="filter_all">Todos</span></button>
+        <button type="button" class="map-filter" data-cat="parking" aria-pressed="false">🅿️ <span data-t="filter_parking">Estacionar</span></button>
+        <button type="button" class="map-filter" data-cat="health" aria-pressed="false">🏥 <span data-t="filter_health">Salud</span></button>
+        <button type="button" class="map-filter" data-cat="security" aria-pressed="false">🚔 <span data-t="filter_security">Seguridad</span></button>
+        <button type="button" class="map-filter" data-cat="pottery" aria-pressed="false">🏺 <span data-t="filter_pottery">Alfarería</span></button>
+        <button type="button" class="map-filter" data-cat="food" aria-pressed="false">🍽️ <span data-t="filter_food">Comer</span></button>
+        <button type="button" class="map-filter" data-cat="lodging" aria-pressed="false">🛏️ <span data-t="filter_lodging">Dormir</span></button>
+        <button type="button" class="map-filter" data-cat="highlight" aria-pressed="false">✨ <span data-t="filter_highlight">Qué ver</span></button>
+        <button type="button" class="map-filter" data-cat="services" aria-pressed="false">🛒 <span data-t="filter_services">Servicios</span></button>
+      </div>
+      <button type="button" class="locate-btn" id="locateBtn" onclick="window._homeLocate && window._homeLocate()">
+        📍 <span data-t="locate_btn">Usar mi ubicación</span>
+      </button>
+    </div>
+
+    <!-- Mapa Leaflet (datos de Supabase) -->
+    <div class="leaflet-wrap reveal">
+      <div id="leafletMap"></div>
+    </div>
+    <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto del mapa para calcular distancias</p>
+
+    <!-- CTA al mapa turístico completo -->
+    <div class="reveal" style="text-align:center;margin-top:1.2rem;">
+      <a href="/mapa-turistico/" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:#B85C2C;color:#fff;font-weight:600;border-radius:.8rem;text-decoration:none;font-size:.95rem;box-shadow:0 3px 10px rgba(184,92,44,.25);">
+        🗺️ <span data-t="map_full_cta">Abrir Mapa completo</span> — búsqueda, rutas, satélite →
       </a>
-      <p style="color:#8C7A6B;font-size:.82rem;margin-top:.8rem;" data-t="map_cta_features">Filtros por categoría · Geolocalización · Rutas sugeridas · Vista satélite · Compartir lugares</p>
     </div>
 
     <!-- Destacado Premium: El Chancho -->
