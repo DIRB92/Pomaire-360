@@ -251,6 +251,22 @@ async function verifyAdminExists() {
 }
 
 async function insertNegocios(negocios) {
+  // PostgREST requiere que TODOS los objetos tengan las mismas keys (PGRST102)
+  // Normalizamos para que todos tengan el mismo set de campos
+  const ALL_KEYS = [
+    'owner_id', 'nombre', 'categoria', 'descripcion', 'direccion',
+    'telefono', 'whatsapp', 'instagram', 'sitio_web', 'verificado',
+    'activo', 'plan',
+  ];
+
+  const normalized = negocios.map(neg => {
+    const obj = {};
+    for (const key of ALL_KEYS) {
+      obj[key] = neg[key] !== undefined ? neg[key] : null;
+    }
+    return obj;
+  });
+
   const url = `${SUPABASE_URL}/rest/v1/negocios`;
   const resp = await fetch(url, {
     method: 'POST',
@@ -260,7 +276,7 @@ async function insertNegocios(negocios) {
       'Content-Type': 'application/json',
       'Prefer': 'return=representation',
     },
-    body: JSON.stringify(negocios),
+    body: JSON.stringify(normalized),
   });
 
   if (!resp.ok) {
