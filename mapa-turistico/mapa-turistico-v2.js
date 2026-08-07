@@ -278,7 +278,7 @@
   /* ── RUTAS ─────────────────────────────────────────── */
   window.showRoute = function (routeId) {
     if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
-    if (activeRoute === routeId) { activeRoute = null; return; }
+    if (activeRoute === routeId) { activeRoute = null; updateRouteUI(); return; }
     activeRoute = routeId;
     var route = ROUTES[routeId];
     if (!route) return;
@@ -289,21 +289,46 @@
     if (latlngs.length < 2) return;
     routeLine = L.polyline(latlngs, { color: route.color, weight: 4, opacity: 0.8, dashArray: '8,6' }).addTo(map);
     map.fitBounds(routeLine.getBounds(), { padding: [40, 40] });
+    updateRouteUI();
   };
 
+  // Aliases used by the HTML
+  window.loadRoute = window.showRoute;
+  window.clearRoute = function () {
+    if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+    activeRoute = null;
+    updateRouteUI();
+  };
+
+  function updateRouteUI() {
+    var btn = document.getElementById('routeClearBtn');
+    if (btn) btn.style.display = activeRoute ? '' : 'none';
+    document.querySelectorAll('.route-card').forEach(function (card) {
+      card.classList.toggle('active', card.dataset.route === activeRoute);
+    });
+  }
+
   window.resetMapView = function () {
-    if (routeLine) { map.removeLayer(routeLine); routeLine = null; activeRoute = null; }
+    window.clearRoute();
     map.setView([-33.6512, -71.1505], 16);
   };
 
   /* ── BÚSQUEDA ──────────────────────────────────────── */
   window.searchPlaces = function (query) {
-    if (!query || query.length < 2) { window.filterCategory('all'); return; }
-    var q = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var input = document.getElementById('mapSearchInput');
+    var q = (query || (input && input.value) || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (!q || q.length < 2) { window.filterCategory(currentFilter); return; }
     Object.values(markers).forEach(function (m) {
       var name = m._data.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      if (name.includes(q)) { map.addLayer(m); } else { map.removeLayer(m); }
+      var addr = (m._data.direccion || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (name.includes(q) || addr.includes(q)) { map.addLayer(m); } else { map.removeLayer(m); }
     });
+  };
+
+  window.clearSearch = function () {
+    var input = document.getElementById('mapSearchInput');
+    if (input) input.value = '';
+    window.filterCategory('all');
   };
 
   /* ── ESTILOS DE MAPA ───────────────────────────────── */
