@@ -73,6 +73,63 @@
   function escapeHTML(s) { return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : ''; }
 
 
+  /* ── DATOS ESTÁTICOS (fallback cuando Supabase no tiene suficientes datos con coordenadas) ── */
+  var STATIC_PLACES = [
+    // PARKING
+    { nombre:'Estacionamiento Entrada Pomaire', slug:'estacionamiento-entrada-pomaire', categoria:'estacionamientos', latitud:-33.653240612009675, longitud:-71.1484175855184, direccion:'Rafael Morandé, Pomaire', descripcion:'Acceso principal', plan:'gratis', verificado:false },
+    { nombre:'Futuros Estacionamiento y baños', slug:'futuros-estacionamiento', categoria:'estacionamientos', latitud:-33.65027186391058, longitud:-71.15430268749077, direccion:'Guillermo Barros con Diego de Almagro', descripcion:'', plan:'gratis', verificado:false },
+    { nombre:'Zona 18 de Septiembre', slug:'zona-18-septiembre', categoria:'estacionamientos', latitud:-33.65078, longitud:-71.14907, direccion:'18 de Septiembre, Pomaire', descripcion:'Lateral al casco principal', plan:'gratis', verificado:false },
+    // SALUD
+    { nombre:'CESFAM Alfarera Rosa Reyes Vilches', slug:'cesfam-pomaire', categoria:'salud', latitud:-33.6497, longitud:-71.15053, direccion:'Julita Vera 354, Pomaire', descripcion:'Centro de salud familiar', telefono:'+56225688849', plan:'gratis', verificado:true },
+    { nombre:'Farmacia Acua-Naser Pomaire', slug:'farmacia-acua-naser', categoria:'salud', latitud:-33.653491296625084, longitud:-71.15118860753486, direccion:'San Antonio 362, Pomaire', descripcion:'Farmacia', plan:'gratis', verificado:false },
+    // SEGURIDAD
+    { nombre:'Carabineros Policía', slug:'carabineros-pomaire', categoria:'seguridad', latitud:-33.650798492760984, longitud:-71.1512808846173, direccion:'San Antonio 361, Pomaire', descripcion:'Retén de Carabineros', plan:'gratis', verificado:true },
+    { nombre:'Bomberos de Pomaire', slug:'bomberos-pomaire', categoria:'seguridad', latitud:-33.64977969139366, longitud:-71.15086677981947, direccion:'San Antonio 362, Pomaire', descripcion:'Compañía de Bomberos', plan:'gratis', verificado:true },
+    // SERVICIOS
+    { nombre:'Plaza de Pomaire · OIT', slug:'plaza-de-pomaire', categoria:'servicios', latitud:-33.65033, longitud:-71.15093, direccion:'Plaza de Pomaire, San Antonio 140', descripcion:'Oficina de Información Turística', plan:'gratis', verificado:true },
+    { nombre:'Iglesia de Pomaire', slug:'iglesia-pomaire', categoria:'servicios', latitud:-33.646214708973325, longitud:-71.15097954893574, direccion:'Pomaire', descripcion:'Templo histórico del pueblo', plan:'gratis', verificado:false },
+    { nombre:'Cajero Automático (ATM)', slug:'cajero-automatico-pomaire', categoria:'servicios', latitud:-33.65029994302147, longitud:-71.1496768882763, direccion:'Roberto Bravo 445, Pomaire', descripcion:'ATM', plan:'gratis', verificado:false },
+    { nombre:'Colegio de Pomaire', slug:'colegio-pomaire', categoria:'servicios', latitud:-33.6500313951976, longitud:-71.15053295001364, direccion:'Pomaire', descripcion:'Colegio y Jardín', instagram:'colegiopomaire_', plan:'gratis', verificado:false },
+    { nombre:'Vulcanización y Mantenimiento', slug:'vulcanizacion-pomaire', categoria:'servicios', latitud:-33.656554689337824, longitud:-71.15054911577195, direccion:'San Antonio 1, Pomaire', descripcion:'Vulcanización y neumáticos', whatsapp:'56985478591', plan:'gratis', verificado:false },
+    { nombre:'Taller de costura J.E.M.E', slug:'taller-costura-jeme', categoria:'servicios', latitud:-33.64808726960897, longitud:-71.14915833045953, direccion:'Gral. Baquedano 241, Pomaire', descripcion:'Costura y arreglos de ropa', telefono:'+56955822650', whatsapp:'56955822650', plan:'gratis', verificado:false },
+    // ALFARERÍA
+    { nombre:'Granja Educativa Alfarera', slug:'granja-educativa-alfarera', categoria:'alfareria', latitud:-33.65119135971276, longitud:-71.15284938597316, direccion:'Bernardo O\'Higgins 260, Pomaire', descripcion:'Talleres de greda para toda la familia', plan:'gratis', verificado:false },
+    { nombre:'Espacio Greda', slug:'espacio-greda', categoria:'alfareria', latitud:-33.65176286310916, longitud:-71.15033526947308, direccion:'Arturo Prat 352, Pomaire', descripcion:'Taller de greda', instagram:'espaciogreda.cl', plan:'gratis', verificado:false },
+    { nombre:'Taller del Sol', slug:'taller-del-sol', categoria:'alfareria', latitud:-33.652051018925114, longitud:-71.14908723334928, direccion:'Arturo Prat 237 B, Pomaire', descripcion:'Taller de greda artesanal', plan:'gratis', verificado:false },
+    { nombre:'Taller Barros', slug:'taller-barros', categoria:'alfareria', latitud:-33.65435030691243, longitud:-71.15447074355414, direccion:'Guillermo Barros 150, Pomaire', descripcion:'Taller de greda', plan:'gratis', verificado:false },
+    { nombre:'Calle de los Alfareros', slug:'calle-alfareros', categoria:'alfareria', latitud:-33.6522, longitud:-71.15, direccion:'Roberto Bravo, Pomaire', descripcion:'Talleres y tiendas de alfarería', plan:'gratis', verificado:false },
+    { nombre:'El Chancho Alcancía Más Grande del Mundo', slug:'el-chancho-alcancia-de-greda-mas-grande-del-mundo', categoria:'alfareria', latitud:-33.652552962128134, longitud:-71.1534523252861, direccion:'Los Paltos 323, Pomaire', descripcion:'Figura gigante de greda', plan:'premium', verificado:true },
+    { nombre:'Fábrica Don Petro', slug:'fabrica-don-petro', categoria:'alfareria', latitud:-33.646642321720606, longitud:-71.15017194940056, direccion:'El Carmen, Pomaire', descripcion:'Maceteros y vasijas de greda', plan:'gratis', verificado:false },
+    // RESTAURANTES
+    { nombre:'Imperio Pomaire', slug:'imperio-pomaire', categoria:'restaurantes', latitud:-33.65460729825698, longitud:-71.15001597751701, direccion:'Roberto Bravo 78, Pomaire', descripcion:'Desayunos y cocina típica', plan:'gratis', verificado:false },
+    { nombre:'Restaurant La Greda', slug:'restaurant-la-greda', categoria:'restaurantes', latitud:-33.65317799731006, longitud:-71.14994054878586, direccion:'Manuel Rodríguez 251, Pomaire', descripcion:'Cocina criolla · 30+ años', plan:'gratis', verificado:false },
+    { nombre:'Restaurante Los Naranjos', slug:'restaurante-los-naranjos', categoria:'restaurantes', latitud:-33.655708576989326, longitud:-71.15010831317134, direccion:'Roberto Bravo 29, Pomaire', descripcion:'Restaurante tradicional', plan:'gratis', verificado:false },
+    { nombre:'La Casa del Costillar', slug:'la-casa-del-costillar', categoria:'restaurantes', latitud:-33.6515220531864, longitud:-71.14978770847507, direccion:'Roberto Bravo 324, Pomaire', descripcion:'Parrilla y cocina chilena', plan:'gratis', verificado:false },
+    { nombre:'El Boliche de Pomaire', slug:'el-boliche-de-pomaire', categoria:'restaurantes', latitud:-33.65600068412172, longitud:-71.15083197607485, direccion:'San Antonio 17, Pomaire', descripcion:'Restaurante', plan:'gratis', verificado:false },
+    { nombre:'La Normita — Tenedor libre', slug:'la-normita', categoria:'restaurantes', latitud:-33.65314424375147, longitud:-71.15047939144097, direccion:'Manuel Rodríguez 325, Pomaire', descripcion:'Tenedor libre', plan:'gratis', verificado:false },
+    { nombre:'Restaurant El Parrón', slug:'restaurant-el-parron', categoria:'restaurantes', latitud:-33.65178030571566, longitud:-71.14900454933903, direccion:'Arturo Prat 210, Pomaire', descripcion:'Parrilla', plan:'gratis', verificado:false },
+    { nombre:'La Pica de la Mireya', slug:'la-pica-de-la-mireya', categoria:'restaurantes', latitud:-33.654255535020724, longitud:-71.1496627003142, direccion:'Roto Chileno 249, Pomaire', descripcion:'Restaurante', plan:'gratis', verificado:false },
+    { nombre:'Restaurante La Cañada', slug:'restaurante-la-canada', categoria:'restaurantes', latitud:-33.65165080014213, longitud:-71.14996004940937, direccion:'Roberto Bravo 307, Pomaire', descripcion:'Restaurante', plan:'gratis', verificado:false },
+    { nombre:'Dulcería Heladería Dulcepo', slug:'dulcepo', categoria:'restaurantes', latitud:-33.651957, longitud:-71.149992, direccion:'Pomaire', descripcion:'Dulces, postres y helados', instagram:'dulcepo.cl', whatsapp:'56933925873', plan:'gratis', verificado:false },
+    { nombre:'Restaurante San Pedro', slug:'restaurante-san-pedro', categoria:'restaurantes', latitud:-33.65435582442494, longitud:-71.150266197532, direccion:'Roto Chileno 332, Pomaire', descripcion:'Restaurante', plan:'gratis', verificado:false },
+    { nombre:'Pomaire Restaurant', slug:'pomaire-restaurant', categoria:'restaurantes', latitud:-33.65448789758149, longitud:-71.15011214056202, direccion:'Pomaire', descripcion:'Restaurante', instagram:'pomaire_restaurant', plan:'gratis', verificado:false },
+    { nombre:'Restaurante Barro Vivo', slug:'restaurante-barro-vivo', categoria:'restaurantes', latitud:-33.65298, longitud:-71.15065, direccion:'Manuel Rodríguez 350, Pomaire', descripcion:'Restaurante y centro de eventos', telefono:'+56959335948', whatsapp:'56959335948', web:'https://barrosvivo.cl/', plan:'gratis', verificado:false },
+    // ALOJAMIENTO
+    { nombre:'Hostal Pomaire', slug:'hostal-pomaire', categoria:'alojamiento', latitud:-33.65198924949971, longitud:-71.15296875422749, direccion:'Bernardo O\'Higgins 219, Pomaire', descripcion:'Hostal', plan:'gratis', verificado:false },
+    { nombre:'La Quinta de la Plaza', slug:'la-quinta-de-la-plaza', categoria:'alojamiento', latitud:-33.64978985059087, longitud:-71.15138707552667, direccion:'San Antonio 410, Pomaire', descripcion:'Alojamiento', whatsapp:'56999598919', web:'https://laquintadelaplaza-cl.webnode.cl/', plan:'gratis', verificado:false },
+    { nombre:'Cabañas Glamen', slug:'cabanas-glamen', categoria:'alojamiento', latitud:-33.64827253156989, longitud:-71.15605889381351, direccion:'Roberto Bravo 284, Pomaire', descripcion:'Cabañas', web:'https://hostaldelcentro.cl/', plan:'gratis', verificado:false },
+    { nombre:'Pomaire Lodge & Suites', slug:'pomaire-lodge-suites', categoria:'alojamiento', latitud:-33.65136884009364, longitud:-71.15274217075873, direccion:'Bernardo O\'Higgins 219, Pomaire', descripcion:'Suites y alojamiento', instagram:'pomairesuites', plan:'gratis', verificado:false },
+    // COMERCIO (Destacados)
+    { nombre:'Cervecería Pomaire', slug:'cerveceria-pomaire', categoria:'comercio', latitud:-33.65165740947676, longitud:-71.14995842541745, direccion:'Roberto Bravo 307, Pomaire', descripcion:'Cerveza artesanal', instagram:'cerveceriapomaire_', plan:'destacado', verificado:false },
+    { nombre:'Tienda Calafate Austral', slug:'calafate-austral', categoria:'comercio', latitud:-33.65478707835062, longitud:-71.15025443200825, direccion:'Roberto Bravo 77B, Pomaire', descripcion:'Tienda con encanto', instagram:'calafateaustral.cl', plan:'destacado', verificado:false },
+    { nombre:'Panadería y Heladería ALSA', slug:'panaderia-alsa', categoria:'comercio', latitud:-33.651768302417416, longitud:-71.14981400869864, direccion:'Roberto Bravo 1606, Pomaire', descripcion:'Panadería y helados', plan:'gratis', verificado:false },
+    { nombre:'Los Ceramistas', slug:'los-ceramistas', categoria:'comercio', latitud:-33.6475116, longitud:-71.1503954, direccion:'General Baquedano 350, Pomaire', descripcion:'Tienda de cerámica', plan:'gratis', verificado:false },
+    { nombre:'Vivero Luchín', slug:'vivero-luchin', categoria:'comercio', latitud:-33.653664329289256, longitud:-71.15135912053388, direccion:'San Antonio 191, Pomaire', descripcion:'Jardín y vivero', instagram:'viveroluchin', plan:'gratis', verificado:false },
+    // TURISMO
+    { nombre:'Los Chiñihues', slug:'los-chinihues', categoria:'turismo', latitud:-33.665, longitud:-71.17, direccion:'Los Chiñihues, Melipilla', descripcion:'Paisaje rural, viñedos y quebradas', plan:'gratis', verificado:false }
+  ];
+
+
   /* ── FETCH SUPABASE ──────────────────────────────────── */
   function fetchPlaces() {
     var url = SUPABASE_URL + '/rest/v1/' + TABLE +
@@ -397,9 +454,15 @@
 
     fetchPlaces()
       .then(function (rows) {
-        places = rows;
-        console.log('[Mapa] ' + rows.length + ' negocios cargados desde Supabase');
-        rows.forEach(addMarker);
+        // Si Supabase devuelve menos de 5 lugares con coordenadas, usar fallback estático
+        if (rows.length < 5) {
+          console.warn('[Mapa] Supabase solo devolvió ' + rows.length + ' lugares, usando datos estáticos.');
+          places = STATIC_PLACES.map(function (p) { return p; });
+        } else {
+          places = rows;
+        }
+        console.log('[Mapa] ' + places.length + ' negocios cargados');
+        places.forEach(addMarker);
         updateLegendCounts();
         renderPlacesList();
         openFromHash();
@@ -407,10 +470,14 @@
         if (loadingEl) loadingEl.style.display = 'none';
       })
       .catch(function (err) {
-        console.error('[Mapa] Error al cargar datos:', err);
-        if (loadingEl) {
-          loadingEl.innerHTML = '<p style="color:#c00;">No se pudieron cargar los negocios. Recarga la página.</p>';
-        }
+        console.error('[Mapa] Error al cargar datos desde Supabase, usando fallback estático:', err);
+        places = STATIC_PLACES.map(function (p) { return p; });
+        places.forEach(addMarker);
+        updateLegendCounts();
+        renderPlacesList();
+        openFromHash();
+        window.addEventListener('hashchange', openFromHash);
+        if (loadingEl) loadingEl.style.display = 'none';
       });
 
     // Render rutas en el sidebar
