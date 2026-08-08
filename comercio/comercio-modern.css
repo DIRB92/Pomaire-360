@@ -200,6 +200,7 @@
   padding: 2rem 1.5rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: clip;
 }
 .mod-cat-grid {
   display: grid;
@@ -284,6 +285,9 @@
 
 /* ─── Mobile Category Scroll ───────────────────────────────────────────── */
 @media (max-width: 768px) {
+  #ecosystemBar {
+    padding-right: 3rem;
+  }
   .mod-cat-grid {
     display: flex;
     overflow-x: auto;
@@ -840,3 +844,25 @@
   white-space: nowrap;
 }
 .mod-hidden { display: none !important; }
+
+
+/* ─── Narrow Mobile Search Layout ──────────────────────────────────────── */
+@media (max-width: 480px) {
+  .mod-hero {
+    padding: 2.5rem 1rem 3.5rem;
+  }
+  .mod-search-input {
+    padding: .85rem 2.5rem .85rem 2.8rem;
+    font-size: .9rem;
+  }
+  .mod-search-icon {
+    left: .9rem;
+    font-size: 1rem;
+  }
+  .mod-search-clear {
+    right: .6rem;
+    width: 28px;
+    height: 28px;
+    font-size: .75rem;
+  }
+}
