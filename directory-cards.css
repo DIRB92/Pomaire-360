@@ -295,7 +295,8 @@
 
 /* ─── Dark mode support ────────────────────────────────────────────────── */
 [data-theme="dark"] .dir-card,
-.dark .dir-card {
+.dark .dir-card,
+.dark-mode .dir-card {
   --card-bg: #1e1e1e;
   --card-border: #3a3a3a;
   --text-primary: #f0e8dc;
@@ -310,38 +311,44 @@
 }
 
 [data-theme="dark"] .dir-card.dir-featured,
-.dark .dir-card.dir-featured {
+.dark .dir-card.dir-featured,
+.dark-mode .dir-card.dir-featured {
   background: linear-gradient(135deg, #2a2218 0%, #3a2c18 100%);
   border-color: #E6B246;
 }
 
 [data-theme="dark"] .dir-card.plan-premium,
-.dark .dir-card.plan-premium {
+.dark .dir-card.plan-premium,
+.dark-mode .dir-card.plan-premium {
   background: linear-gradient(135deg, #1f1a2e 0%, #2a1f3a 100%);
   border-color: #8b5cf6;
 }
 
 [data-theme="dark"] .dir-card .badge-destacado,
-.dark .dir-card .badge-destacado {
+.dark .dir-card .badge-destacado,
+.dark-mode .dir-card .badge-destacado {
   background: linear-gradient(135deg, #3a2c18, #4a3c20);
   color: #fbbf24;
   border-color: #92400e;
 }
 
 [data-theme="dark"] .dir-card .badge-premium,
-.dark .dir-card .badge-premium {
+.dark .dir-card .badge-premium,
+.dark-mode .dir-card .badge-premium {
   background: linear-gradient(135deg, #2a1f3a, #3a2f4a);
   color: #a78bfa;
   border-color: #5b21b6;
 }
 
 [data-theme="dark"] .dir-card-footer,
-.dark .dir-card-footer {
+.dark .dir-card-footer,
+.dark-mode .dir-card-footer {
   border-color: #3a3a3a;
 }
 
 [data-theme="dark"] .dir-verified,
-.dark .dir-verified {
+.dark .dir-verified,
+.dark-mode .dir-verified {
   background: #2ecc71;
 }
 
