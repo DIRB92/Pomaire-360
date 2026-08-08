@@ -20,7 +20,8 @@ module.exports = {
   'ruta-del-vino': { file: 'ruta-del-vino/index.html', esPath: '/ruta-del-vino/' },
   salud: { file: 'salud/index.html', esPath: '/salud/' },
   seguridad: { file: 'seguridad/index.html', esPath: '/seguridad/' },
-  sugerencias: { file: 'sugerencias/index.html', esPath: '/sugerencias/' }
+  sugerencias: { file: 'sugerencias/index.html', esPath: '/sugerencias/' },
+  'guia-turistica': { file: 'guia-turistica/index.html', esPath: '/guia-turistica/' }
 };
 
 // Idiomas con página estática real (SEO indexable).

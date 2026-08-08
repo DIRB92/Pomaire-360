@@ -19,36 +19,33 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 const SITE = 'https://www.pomaire360.cl';
 
 // Metadata original por slug, tomada del sitemap.xml previo a este cambio.
+// NOTA: Se excluyen slugs con 301 redirect activo en _redirects para evitar
+// señales mixtas a Google (gastronomia, alojamientos, alrededores, que-ver,
+// locomocion, gruas redirigen a URLs nuevas).
 const SITEMAP_META = {
-  index: { lastmod: '2026-07-28', changefreq: 'weekly', priority: '1.0' },
-  elchanchoalcanciamasgrandedelmundo: { lastmod: '2026-06-24', changefreq: 'monthly', priority: '0.8' },
-  estacionamientos: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },
-  salud: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },
-  seguridad: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },
-  comercio: { lastmod: '2026-06-25', changefreq: 'monthly', priority: '0.7' },
-  gruas: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.7' },
-  alfareria: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.8' },
-  'ruta-del-vino': { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.7' },
-  'que-ver': { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.7' },
-  plaza: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.6' },
-  alrededores: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.6' },
-  gastronomia: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.8' },
-  alojamientos: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.7' },
-  anunciate: { lastmod: '2026-06-26', changefreq: 'monthly', priority: '0.6' },
-  apoyar: { lastmod: '2026-06-28', changefreq: 'monthly', priority: '0.7' },
-  sugerencias: { lastmod: '2026-06-30', changefreq: 'monthly', priority: '0.6' },
-  juegos: { lastmod: '2026-07-04', changefreq: 'monthly', priority: '0.6' },
-  locomocion: { lastmod: '2026-07-05', changefreq: 'monthly', priority: '0.7' },
-  links: { lastmod: '2025-07-18', changefreq: 'monthly', priority: '0.6' }
+  index: { lastmod: '2026-08-08', changefreq: 'weekly', priority: '1.0' },
+  elchanchoalcanciamasgrandedelmundo: { lastmod: '2026-08-01', changefreq: 'monthly', priority: '0.8' },
+  estacionamientos: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
+  salud: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
+  seguridad: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
+  comercio: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
+  alfareria: { lastmod: '2026-08-01', changefreq: 'weekly', priority: '0.9' },
+  'ruta-del-vino': { lastmod: '2026-07-20', changefreq: 'monthly', priority: '0.8' },
+  'guia-turistica': { lastmod: '2026-08-08', changefreq: 'weekly', priority: '0.9' },
+  plaza: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
+  anunciate: { lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.5' },
+  apoyar: { lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.5' },
+  sugerencias: { lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.5' },
+  juegos: { lastmod: '2026-07-04', changefreq: 'monthly', priority: '0.4' },
+  links: { lastmod: '2026-07-18', changefreq: 'monthly', priority: '0.4' }
 };
 
-// Orden de aparición original (para mantener el mismo orden legible que el
-// sitemap.xml previo, con el home siempre primero).
+// Orden de aparición — excluye slugs con 301 redirect activo.
 const SLUG_ORDER = [
-  'index', 'elchanchoalcanciamasgrandedelmundo', 'estacionamientos', 'salud',
-  'seguridad', 'comercio', 'gruas', 'alfareria', 'ruta-del-vino', 'que-ver',
-  'plaza', 'alrededores', 'gastronomia', 'alojamientos', 'anunciate', 'apoyar',
-  'sugerencias', 'juegos', 'locomocion', 'links'
+  'index', 'guia-turistica', 'elchanchoalcanciamasgrandedelmundo', 'estacionamientos', 'salud',
+  'seguridad', 'comercio', 'alfareria', 'ruta-del-vino',
+  'plaza', 'anunciate', 'apoyar',
+  'sugerencias', 'juegos', 'links'
 ];
 
 const LANG_HREFLANG = { es: 'es', en: 'en', pt: 'pt' };
