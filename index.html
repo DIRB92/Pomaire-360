@@ -12,7 +12,7 @@
 <!-- Critical inline styles to prevent blank hero on mobile -->
 <style>
 #inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%)}
-#inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .dir-search-wrap,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
+#inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
 .hero-slideshow{position:absolute;inset:0;z-index:0}
 </style>
 
@@ -476,12 +476,6 @@
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
   </div>
   <span class="hero-pottery">🏺</span>
-
-  <!-- Búsqueda instantánea del directorio -->
-  <div class="dir-search-wrap" id="dirSearchWrap">
-    <input type="text" id="dirSearchInput" placeholder="Buscar artesano, restaurante, servicio…" maxlength="50" autocomplete="off">
-    <div class="dir-search-results" id="dirSearchResults"></div>
-  </div>
 
   <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Región Metropolitana</div>
   <h1 data-t="hero_h1">Guía completa de <em>Pomaire</em>, pueblo alfarero de Chile</h1>
@@ -1321,7 +1315,7 @@
 
 <script src="/card-share.js"></script>
 <script defer src="/ratings.js"></script>
-<script defer src="/dir-search.js"></script>
+
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>

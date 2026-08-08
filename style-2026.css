@@ -733,68 +733,6 @@ nav.scrolled {
   display: none;
 }
 
-.dir-search-wrap {
-  position: relative;
-  z-index: 9999;
-  max-width: 500px;
-  width: 100%;
-  margin-bottom: 1.5rem;
-}
-.dir-search-wrap input {
-  width: 100%;
-  padding: .9rem 1.4rem;
-  border: 2px solid rgba(255,255,255,.25);
-  border-radius: var(--p-radius-pill);
-  font-size: .95rem;
-  font-family: inherit;
-  background: rgba(26,22,20,.55);
-  backdrop-filter: blur(12px);
-  color: #fff;
-  box-shadow: var(--p-shadow-md);
-  transition: all var(--p-normal);
-}
-.dir-search-wrap input::placeholder { color: rgba(255,255,255,.75); }
-.dir-search-wrap input:focus {
-  outline: none;
-  border-color: var(--p-primary);
-  background: rgba(255,255,255,.95);
-  color: var(--p-text);
-  box-shadow: var(--p-shadow-glow), var(--p-shadow-lg);
-}
-.dir-search-wrap input:focus::placeholder { color: var(--p-muted); }
-.dir-search-results {
-  position: absolute;
-  top: calc(100% + .5rem);
-  left: 0; right: 0;
-  background: #ffffff;
-  border-radius: var(--p-radius);
-  box-shadow: 0 8px 30px rgba(0,0,0,.25);
-  max-height: 350px;
-  overflow-y: auto;
-  z-index: 9999;
-  display: none;
-}
-.dir-search-results.has-results { display: block; }
-.dir-search-results.open { display: block; }
-.dir-search-item {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  padding: .65rem .8rem;
-  border-bottom: 1px solid #f0ebe4;
-  text-decoration: none;
-  color: #2D1A0A;
-  transition: background 0.15s;
-}
-.dir-search-item:last-child { border-bottom: none; }
-.dir-search-item:hover { background: #faf6f0; }
-.dir-search-item .dsi-icon { font-size: 1.2rem; flex-shrink: 0; }
-.dir-search-item .dsi-name { font-weight: 600; font-size: 0.9rem; color: #2D1A0A; }
-.dir-search-item .dsi-cat { font-size: 0.75rem; color: #8a7e72; }
-.dir-search-empty { padding: .8rem; text-align: center; color: #8a7e72; font-size: .85rem; }
-.dir-search-all { border-top: 2px solid #f0ebe4; background: #fdfbf9; }
-.dir-search-all .dsi-name { color: #B85C2C; }
-
 /* ─── Animations Base ──────────────────────────────────────────────────── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
