@@ -776,6 +776,24 @@ nav.scrolled {
 }
 .dir-search-results.has-results { display: block; }
 .dir-search-results.open { display: block; }
+.dir-search-item {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .65rem .8rem;
+  border-bottom: 1px solid #f0ebe4;
+  text-decoration: none;
+  color: #2D1A0A;
+  transition: background 0.15s;
+}
+.dir-search-item:last-child { border-bottom: none; }
+.dir-search-item:hover { background: #faf6f0; }
+.dir-search-item .dsi-icon { font-size: 1.2rem; flex-shrink: 0; }
+.dir-search-item .dsi-name { font-weight: 600; font-size: 0.9rem; color: #2D1A0A; }
+.dir-search-item .dsi-cat { font-size: 0.75rem; color: #8a7e72; }
+.dir-search-empty { padding: .8rem; text-align: center; color: #8a7e72; font-size: .85rem; }
+.dir-search-all { border-top: 2px solid #f0ebe4; background: #fdfbf9; }
+.dir-search-all .dsi-name { color: #B85C2C; }
 
 /* ─── Animations Base ──────────────────────────────────────────────────── */
 @keyframes fadeInUp {
