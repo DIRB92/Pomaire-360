@@ -33,3 +33,7 @@
 /gruas/  /transporte/  301
 /en/gruas/  /en/transporte/  301
 /pt/gruas/  /pt/transporte/  301
+
+# Mapa legacy → Mapa Turístico
+/mapa    /mapa-turistico/  301
+/mapa/   /mapa-turistico/  301

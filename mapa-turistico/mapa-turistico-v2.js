@@ -398,7 +398,13 @@
   /* ── DEEP-LINK / SHARE ─────────────────────────────── */
   function openFromHash() {
     var m = location.hash.match(/^#lugar=([\w-]+)/);
-    if (m && markers[m[1]]) setTimeout(function () { window.focusPlace(m[1]); }, 300);
+    if (m && markers[m[1]]) { setTimeout(function () { window.focusPlace(m[1]); }, 300); return; }
+    // Support coordinate deep-links: #lat,lng
+    var coords = location.hash.match(/^#(-?\d+\.\d+),(-?\d+\.\d+)$/);
+    if (coords && map) {
+      var lat = parseFloat(coords[1]), lng = parseFloat(coords[2]);
+      setTimeout(function () { map.setView([lat, lng], 17); L.popup().setLatLng([lat, lng]).setContent("📍 Ubicación").openOn(map); }, 400);
+    }
   }
 
   window._copyPlaceLink = function (ev, slug) {
