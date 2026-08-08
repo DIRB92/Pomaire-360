@@ -735,7 +735,7 @@ nav.scrolled {
 
 .dir-search-wrap {
   position: relative;
-  z-index: 3;
+  z-index: 9999;
   max-width: 500px;
   width: 100%;
   margin-bottom: 1.5rem;
