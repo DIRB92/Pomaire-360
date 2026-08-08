@@ -775,6 +775,7 @@ nav.scrolled {
   display: none;
 }
 .dir-search-results.has-results { display: block; }
+.dir-search-results.open { display: block; }
 
 /* ─── Animations Base ──────────────────────────────────────────────────── */
 @keyframes fadeInUp {
