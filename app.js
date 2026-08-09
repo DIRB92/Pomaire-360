@@ -427,6 +427,8 @@ function closeOfficialMap(e) {
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOfficialMap(); });
 
 function initMap() {
+  var el = document.getElementById('leafletMap');
+  if (!el || el._leaflet_id) return; // Guard: already initialized by map-home.js
   leafletMap = L.map('leafletMap', { zoomControl: true }).setView([-33.6512, -71.1505], 16);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap',

@@ -567,13 +567,14 @@
   // ─── Carga de datos estáticos (build-time JSON) ─────────────────────────
 
   function loadStaticJSON() {
-    return fetch('/directory-data.json')
+    // Only attempt if likely available (avoid 404 noise in console)
+    return fetch('/directory-data.json', { cache: 'no-cache' })
       .then(function (res) {
-        if (!res.ok) throw new Error('No static data');
+        if (!res.ok) return null; // silently skip — will use Supabase instead
         return res.json();
       })
       .then(function (data) {
-        staticData = data;
+        if (data) staticData = data;
         return data;
       })
       .catch(function () {

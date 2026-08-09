@@ -85,6 +85,7 @@
   function initMap() {
     var el = document.getElementById('leafletMap');
     if (!el || typeof L === 'undefined') return;
+    if (el._leaflet_id) { map = window.leafletMap || null; return; } // Already initialized by app.js
 
     map = L.map('leafletMap', { zoomControl: true }).setView([-33.6512, -71.1505], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
