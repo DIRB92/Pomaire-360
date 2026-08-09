@@ -5,7 +5,7 @@
    - Recursos estáticos: cache-first con actualización en segundo plano.
    - Tiles del mapa y API de clima: siempre red (no se interceptan). */
 
-const CACHE = 'pomaire360-v14';
+const CACHE = 'pomaire360-v15';
 
 // Solo recursos del mismo origen (cross-origin como Leaflet se cachea en runtime).
 // Incluye el home en los 3 idiomas con página estática (es/en/pt) para que el
@@ -17,8 +17,11 @@ const CORE = [
   '/pt/',
   '/apoyar/',
   '/sugerencias/',
-  '/style.css',
+  '/style-2026.css',
+  '/components.css',
+  '/dark-mode-overrides.css',
   '/app.js',
+  '/dark-mode.js',
   '/site.webmanifest',
   '/favicon-32x32.png',
   '/favicon-96x96.png',
@@ -62,8 +65,14 @@ self.addEventListener('fetch', (e) => {
   try { url = new URL(req.url); } catch (_) { return; }
 
   // No interceptar: tiles del mapa (OSM) ni API de clima (Open-Meteo) → siempre red.
+  // Tampoco interceptar llamadas a Supabase (API en tiempo real) ni CDNs externos.
   if (url.hostname.indexOf('tile.openstreetmap') !== -1 ||
-      url.hostname.indexOf('api.open-meteo') !== -1) {
+      url.hostname.indexOf('api.open-meteo') !== -1 ||
+      url.hostname.indexOf('supabase.co') !== -1 ||
+      url.hostname.indexOf('cdnjs.cloudflare.com') !== -1 ||
+      url.hostname.indexOf('cloudflare.com') !== -1 ||
+      url.hostname.indexOf('googleapis.com') !== -1 ||
+      url.hostname.indexOf('googletagmanager.com') !== -1) {
     return;
   }
 
@@ -88,17 +97,19 @@ self.addEventListener('fetch', (e) => {
 
   // Recursos estáticos: caché primero, actualizando en segundo plano.
   e.respondWith(
-    caches.match(req).then((cached) => {
-      const network = fetch(req)
-        .then((res) => {
-          if (res && (res.ok || res.type === 'opaque')) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+    caches.match(req).then(function(cached) {
+      var network = fetch(req)
+        .then(function(res) {
+          if (res && res.status === 200 && res.type === 'basic') {
+            var copy = res.clone();
+            caches.open(CACHE).then(function(c) { c.put(req, copy); }).catch(function() {});
           }
           return res;
         })
-        .catch(() => cached);
+        .catch(function() { return cached; });
       return cached || network;
+    }).catch(function() {
+      return fetch(req);
     })
   );
 });
