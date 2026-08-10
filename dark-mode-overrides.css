@@ -787,3 +787,68 @@ html.dark-mode-transition *::after {
   color: #F0EBE6;
   border-color: rgba(255,255,255,.1);
 }
+
+
+/* ─── ADMIN LOGIN PAGE ─────────────────────────────────────────────────── */
+.dark-mode .admin-hero {
+  background: linear-gradient(160deg, #1A1614 0%, #2A2420 100%);
+}
+.dark-mode .admin-hero::before {
+  background: radial-gradient(circle, rgba(184,92,44,.15), transparent 70%);
+}
+.dark-mode .admin-hero::after {
+  background: radial-gradient(circle, rgba(230,178,70,.1), transparent 70%);
+}
+.dark-mode .admin-card {
+  background: #2A2420;
+  border-color: rgba(184,92,44,.25);
+  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+}
+.dark-mode .admin-card h1 {
+  color: var(--p-primary-light);
+}
+.dark-mode .admin-card p {
+  color: #D4C4B0;
+}
+.dark-mode .admin-feat {
+  color: #F0EBE6;
+}
+.dark-mode .admin-feat-icon {
+  opacity: 1;
+}
+.dark-mode .admin-divider {
+  border-top-color: rgba(255,255,255,.1);
+}
+.dark-mode .admin-help {
+  color: #A89E96;
+}
+.dark-mode .admin-help a {
+  color: var(--p-primary-light);
+}
+.dark-mode .app-badge {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.1);
+  color: #A89E96;
+}
+
+/* ─── PLATFORM PREVIEW (admin page) ───────────────────────────────────── */
+.dark-mode .platform-preview h2 {
+  color: var(--p-primary-light);
+}
+.dark-mode .platform-preview > p {
+  color: #A89E96;
+}
+.dark-mode .platform-step {
+  background: #242020;
+  border-color: rgba(184,92,44,.15);
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
+}
+.dark-mode .platform-step:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+.dark-mode .platform-step h3 {
+  color: var(--p-primary-light);
+}
+.dark-mode .platform-step p {
+  color: #A89E96;
+}
