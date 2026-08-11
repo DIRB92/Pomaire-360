@@ -15,10 +15,10 @@
   Cache-Control: public, max-age=2592000
 
 /*.css
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 /*.js
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
 /service-worker.js
   Cache-Control: no-cache, must-revalidate
