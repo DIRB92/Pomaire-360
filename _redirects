@@ -9,10 +9,10 @@
 /en/gastronomia/  /en/restaurantes/  301
 /pt/gastronomia/  /pt/restaurantes/  301
 
-# Alojamientos (plural) → Alojamiento (singular)
-/alojamientos/  /alojamiento/  301
-/en/alojamientos/  /en/alojamiento/  301
-/pt/alojamientos/  /pt/alojamiento/  301
+# Alojamiento (singular) → Alojamientos (plural, página real)
+/alojamiento/  /alojamientos/  301
+/en/alojamiento/  /en/alojamientos/  301
+/pt/alojamiento/  /pt/alojamientos/  301
 
 # Alrededores → Turismo
 /alrededores/  /turismo/  301
