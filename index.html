@@ -2,30 +2,31 @@
 <html lang="es-CL" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
-<!-- Google Analytics (deferred, respects cookie consent) -->
-<script src="/ga-loader.js"></script>
-<!-- Legacy hash → subpage redirects -->
-<script src="/legacy-redirect.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#D4654A">
+<!-- GA & legacy redirect — now deferred to unblock render -->
+<script defer src="/ga-loader.js"></script>
+<script defer src="/legacy-redirect.js"></script>
 
 <!-- Critical inline styles to prevent blank hero on mobile -->
 <style>
-#inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%)}
+#inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%);contain:layout style}
 #inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
 .hero-slideshow{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;will-change:opacity}
+.hero-slide.is-active{opacity:1}
+nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:space-between;min-height:56px}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#D4654A,#E6B246);z-index:9999;width:0;transition:width .1s}
+.bento-gallery,.cards,.bento-grid{min-height:200px}
 </style>
 
 <!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
-<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-<link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
-<link rel="preconnect" href="https://a.tile.openstreetmap.org" crossorigin>
-<link rel="preconnect" href="https://b.tile.openstreetmap.org" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
 <link rel="preload" href="/style-2026.css" as="style">
-<link rel="preload" href="/langs.js" as="script">
+<link rel="preload" href="/langs-es.js" as="script">
 <link rel="preload" href="/app.js" as="script">
 
 <!-- ══ HREFLANG MULTIIDIOMA ════════════════════════════════ -->
@@ -271,24 +272,27 @@
 <link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/img/gallery/pomaire-20240916_120821-web.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://b.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="stylesheet" href="/style-2026.css">
-<link rel="stylesheet" href="/enhanced-cards.css">
-<link rel="stylesheet" href="/directory-cards.css">
-<link rel="stylesheet" href="/components.css">
-<link rel="stylesheet" href="/dark-mode-overrides.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+<!-- Non-critical CSS loaded async via media trick -->
+<link rel="stylesheet" href="/enhanced-cards.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/directory-cards.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/components.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/dark-mode-overrides.css" media="print" onload="this.media='all'">
+<!-- Leaflet CSS deferred — map is below fold -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" media="print" onload="this.media='all'" />
+<noscript>
+  <link rel="stylesheet" href="/enhanced-cards.css">
+  <link rel="stylesheet" href="/directory-cards.css">
+  <link rel="stylesheet" href="/components.css">
+  <link rel="stylesheet" href="/dark-mode-overrides.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+</noscript>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
 <script defer src="/nav.js"></script>
 <script defer src="/seasonal.js"></script>
-<script defer src="/langs.js"></script>
+<script defer src="/langs-es.js"></script>
 <script defer src="/app.js"></script>
 <script defer src="/map-home.js"></script>
-<script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
 <script defer src="/app-2026.js"></script>
@@ -463,11 +467,6 @@
     <div class="hero-slide" data-bg="/img/gallery/pomaire-20240930_123149-web.webp"></div>
     <div class="hero-slide" data-bg="/img/gallery/pomaire-20241014_102408-web.webp"></div>
     <div class="hero-slide" data-bg="/img/gallery/pomaire-chancho-greda-web.webp"></div>
-    <div class="hero-slide" data-bg="/img/gallery/pomaire-vista-aerea-pueblo-web.webp.jpeg"></div>
-    <div class="hero-slide" data-bg="/img/gallery/pomaire-entrada-pueblo-web.webp.jpeg"></div>
-    <div class="hero-slide" data-bg="/img/gallery/pomaire-calle-artesania-web.webp.jpeg"></div>
-    <div class="hero-slide" data-bg="/img/gallery/pomaire-valle-atardecer-web.webp.jpeg"></div>
-    <div class="hero-slide" data-bg="/img/gallery/pomaire-ollas-chanchito-web.webp.jpeg"></div>
   </div>
 
   <!-- MENU OTROS SITIOS -->
@@ -1219,7 +1218,7 @@
     <button class="map-lightbox-close" onclick="closeOfficialMap(event)" aria-label="Cerrar" type="button">✕</button>
     <picture>
       <source srcset="mapa-oficial-pomaire.webp" type="image/webp">
-      <img src="mapa-oficial-pomaire.jpg" alt="Mapa oficial ilustrado de Pomaire con directorio de talleres de artesanos" id="officialMapImg" loading="lazy">
+      <img src="mapa-oficial-pomaire.jpg" alt="Mapa oficial ilustrado de Pomaire con directorio de talleres de artesanos" id="officialMapImg" loading="lazy" width="3119" height="2183">
     </picture>
     <a class="map-lightbox-dl" href="mapa-oficial-pomaire.jpg" download="mapa-oficial-pomaire.jpg">⬇️ <span data-t="official_map_dl">Descargar mapa</span></a>
   </div>
@@ -1314,7 +1313,7 @@
   </a>
 </div>
 
-<script src="/card-share.js"></script>
+<script defer src="/card-share.js"></script>
 <script defer src="/ratings.js"></script>
 
 <script src="/dark-mode.js" defer></script>
