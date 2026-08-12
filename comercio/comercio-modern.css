@@ -973,3 +973,187 @@
   background: #4285F4;
   color: #fff;
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CTA Barra para Comerciantes — Registro e Inicio de Sesión
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Banner CTA entre hero y categorías ─── */
+.comercio-cta-bar {
+  background: linear-gradient(135deg, #2D1A0A 0%, #4A2E1A 60%, #6B3F22 100%);
+  padding: 1rem 1.2rem;
+  border-bottom: 3px solid var(--p360-amber);
+}
+
+.comercio-cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.comercio-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.comercio-cta-text strong {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.comercio-cta-text span {
+  color: rgba(255,255,255,.7);
+  font-size: .82rem;
+}
+
+.comercio-cta-actions {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+}
+
+.comercio-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .6rem 1.2rem;
+  border-radius: 2rem;
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.comercio-cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+.comercio-cta-register {
+  background: linear-gradient(135deg, #E6B246 0%, #D4952A 100%);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(230,178,70,.4);
+  animation: cta-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes cta-glow {
+  0%, 100% { box-shadow: 0 3px 12px rgba(230,178,70,.4); }
+  50% { box-shadow: 0 4px 18px rgba(230,178,70,.65), 0 0 0 3px rgba(230,178,70,.12); }
+}
+
+.comercio-cta-register:hover {
+  box-shadow: 0 5px 20px rgba(230,178,70,.55);
+  animation: none;
+}
+
+.comercio-cta-login {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.3);
+  box-shadow: none;
+}
+
+.comercio-cta-login:hover {
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.6);
+}
+
+/* ─── Barra fija inferior para MOVIL ─── */
+.comercio-mobile-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: linear-gradient(135deg, #2D1A0A 0%, #3D2618 100%);
+  border-top: 2px solid var(--p360-amber);
+  padding: .6rem .8rem;
+  gap: .5rem;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cmb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .6rem 1rem;
+  border-radius: 2rem;
+  font-size: .82rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+}
+
+.cmb-register {
+  background: linear-gradient(135deg, #E6B246 0%, #D4952A 100%);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(230,178,70,.4);
+}
+
+.cmb-login {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.3);
+}
+
+.cmb-login:hover {
+  background: rgba(255,255,255,.18);
+}
+
+/* Solo visible en pantallas < 768px */
+@media (max-width: 768px) {
+  .comercio-mobile-bar {
+    display: flex;
+  }
+
+  /* Agregar padding-bottom al body para no tapar contenido */
+  body {
+    padding-bottom: 4.5rem;
+  }
+
+  /* Banner inline se compacta */
+  .comercio-cta-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: .7rem;
+  }
+
+  .comercio-cta-text {
+    align-items: center;
+  }
+
+  .comercio-cta-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .comercio-cta-btn {
+    flex: 1;
+    justify-content: center;
+    padding: .55rem .8rem;
+    font-size: .8rem;
+  }
+}
+
+/* En desktop, ocultar la barra bottom */
+@media (min-width: 769px) {
+  .comercio-mobile-bar {
+    display: none !important;
+  }
+}
