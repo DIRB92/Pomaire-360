@@ -135,7 +135,7 @@ var labels = {
 '/anunciate/': { es: 'Anúnciate', en: 'Advertise', group: 'Planifica' },
 '/sugerencias/': { es: 'Sugerencias', en: 'Feedback', group: 'Planifica' },
 '/apoyar/': { es: 'Apoyar', en: 'Support', group: '' },
-'/admin/': { es: 'Comerciantes', en: 'Merchants', group: '' },
+'/anunciate/': { es: 'Publica tu Negocio', en: 'List Your Business', group: '' },
 '/mapa-turistico/': { es: 'Mapa Turístico', en: 'Tourist Map', group: 'Planifica' },
 '/links/': { es: 'Enlaces', en: 'Links', group: '' },
 '/elchanchoalcanciamasgrandedelmundo/': { es: 'El Chancho Alcancía', en: 'Giant Piggy Bank', group: 'Visitar' }
@@ -287,9 +287,9 @@ if (navWrap.querySelector('.nav-admin-btn')) return;
 if (window.location.pathname.indexOf('/admin') === 0) return;
 var link = document.createElement('a');
 link.className = 'nav-admin-btn';
-link.href = '/admin/';
-link.innerHTML = '🔐 <span data-t="nav_admin">Comerciantes</span>';
-link.title = 'Acceso al panel de comerciantes';
+link.href = '/anunciate/';
+link.innerHTML = '\uD83D\uDCE2 <span data-t="nav_admin">Publica tu Negocio</span>';
+link.title = 'Registra y destaca tu negocio en Pomaire 360';
 var cta = navWrap.querySelector('.nav-cta');
 if (cta && cta.nextSibling) {
 navWrap.insertBefore(link, cta.nextSibling);

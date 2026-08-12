@@ -212,22 +212,30 @@
     display: inline-flex;
     align-items: center;
     gap: .4rem;
-    background: rgba(255,255,255,.10);
-    color: rgba(255,255,255,.88);
+    background: linear-gradient(135deg, #E6B246 0%, #D4952A 100%);
+    color: #fff;
     text-decoration: none;
     font-size: .82rem;
-    font-weight: 600;
-    padding: .4rem .9rem;
+    font-weight: 700;
+    padding: .5rem 1.1rem;
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.22);
+    border: 2px solid rgba(255,255,255,.35);
     white-space: nowrap;
-    transition: background .15s, color .15s, border-color .15s, transform .12s;
+    box-shadow: 0 2px 8px rgba(230,178,70,.4), inset 0 1px 0 rgba(255,255,255,.25);
+    transition: background .15s, color .15s, border-color .15s, transform .15s, box-shadow .15s;
+    animation: nav-pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes nav-pulse {
+    0%, 100% { box-shadow: 0 2px 8px rgba(230,178,70,.4); }
+    50% { box-shadow: 0 3px 14px rgba(230,178,70,.65), 0 0 0 3px rgba(230,178,70,.15); }
   }
   .nav-admin-btn:hover {
-    background: rgba(255,255,255,.92);
-    color: var(--clay-dark);
-    border-color: rgba(255,255,255,.9);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #F0C050 0%, #E6B246 100%);
+    color: #fff;
+    border-color: rgba(255,255,255,.7);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 5px 16px rgba(230,178,70,.5);
+    animation: none;
   }
 
   .nav-map-btn {
