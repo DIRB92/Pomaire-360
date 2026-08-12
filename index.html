@@ -335,7 +335,8 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <script defer src="/seasonal.js"></script>
 <script defer src="/langs-es.js"></script>
 <script defer src="/app.js"></script>
-<script defer src="/map-home.js"></script>
+<script defer src="/map-unified.js"></script>
+<script defer src="/directory-loader.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
 <script defer src="/app-2026.js"></script>
@@ -571,8 +572,12 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
     <!-- Mapa Leaflet (datos de Supabase) -->
     <div class="leaflet-wrap reveal">
       <div id="leafletMap"></div>
+      <button type="button" id="routeClearBtn" style="display:none;position:absolute;top:.8rem;right:.8rem;z-index:600;padding:.4rem .8rem;background:#fff;border:1px solid #ddd;border-radius:.5rem;font-size:.82rem;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);" onclick="window.clearRoute && window.clearRoute(true)">✕ Cerrar ruta</button>
     </div>
     <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Activa tu ubicación o haz clic en un punto del mapa para calcular distancias</p>
+
+    <!-- Lista de lugares cercanos -->
+    <div id="placesList" class="places-list reveal"></div>
 
     <!-- CTA al mapa turístico completo -->
     <div class="reveal" style="text-align:center;margin-top:1.2rem;">

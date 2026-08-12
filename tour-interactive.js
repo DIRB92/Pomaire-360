@@ -50,7 +50,7 @@ function lbl(pickId) { var m = LABELS[pickId] || {}; return m[lang()] || m.es ||
 function load() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch (e) { return {}; } }
 function save() { try { localStorage.setItem(STORE, JSON.stringify(selections)); } catch (e) {} }
 function escapeHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function getPlaces() { return (typeof PLACES !== 'undefined') ? PLACES : (window.PLACES || []); }
+function getPlaces() { return (typeof PLACES !== 'undefined' && PLACES.length > 0) ? PLACES : (window.PLACES || []); }
 function findPlace(id) { return getPlaces().filter(function (p) { return p.id === id; })[0]; }
 function placesFor(cfg) {
 var all = getPlaces();
@@ -153,5 +153,9 @@ if (typeof window.focusPlace === 'function') window.focusPlace(id);
 else location.hash = '#lugar=' + id;
 });
 window.refreshTourPicks = function () { initTourPicks(); };
+// Init on DOMContentLoaded, and also re-init when map data arrives from Supabase
 document.addEventListener('DOMContentLoaded', initTourPicks);
+document.addEventListener('mapDataReady', function () {
+setTimeout(initTourPicks, 100);
+});
 })();
