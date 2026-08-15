@@ -296,8 +296,8 @@ transporte: ['transporte', 'transport', 'bus', 'colectivo', 'grua', 'locomoci'],
 turismo: ['turismo', 'tourism', 'interes', 'atractivo', 'alrededor', 'ruta', 'que ver']
 };
 function detectSubpage() {
-var path = window.location.pathname.replace(/^\
-path = path.replace(/^[a-z]{2}\
+var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+path = path.replace(/^[a-z]{2}\//, '');
 var segment = path.split('/')[0];
 return segment || '';
 }
