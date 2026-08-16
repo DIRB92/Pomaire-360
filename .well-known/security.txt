@@ -1,0 +1,17 @@
+# Pomaire 360 — Política de Divulgación Responsable de Vulnerabilidades
+# Conforme a RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116)
+# ═══════════════════════════════════════════════════════════════════════════
+
+Contact: mailto:seguridad@pomaire360.cl
+Contact: https://pomaire360.cl/seguridad/
+Expires: 2027-08-15T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://pomaire360.cl/.well-known/security.txt
+Policy: https://pomaire360.cl/seguridad/#politica
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Agradecemos los reportes responsables de vulnerabilidades.
+# Nos comprometemos a responder en un plazo máximo de 72 horas hábiles.
+# No tomaremos acciones legales contra investigadores que actúen de buena fe
+# y respeten nuestra política de divulgación responsable.
+# ═══════════════════════════════════════════════════════════════════════════

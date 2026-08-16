@@ -21,6 +21,21 @@ if (/^\/[^\/]/.test(url)) return url;
 if (/^[a-z]+:/i.test(url)) return '';
 return url;
 }
+/**
+ * Sanitiza HTML de traducciones: solo permite tags seguros (span, strong, em, br, a con href https/mailto).
+ * Elimina cualquier tag peligroso (script, iframe, object, embed, svg, etc.) y atributos de eventos (on*).
+ */
+function sanitizeTranslationHTML(html) {
+if (!html || typeof html !== 'string') return '';
+// Eliminar tags peligrosos y su contenido
+html = html.replace(/<\s*(script|iframe|object|embed|svg|link|style|form|input|textarea|button|meta|base)[^>]*>[\s\S]*?<\/\s*\1\s*>/gi, '');
+html = html.replace(/<\s*(script|iframe|object|embed|svg|link|style|form|input|textarea|button|meta|base)[^>]*\/?>/gi, '');
+// Eliminar atributos de eventos (onclick, onerror, onload, etc.)
+html = html.replace(/\s+on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+// Eliminar javascript: y data: en atributos href/src
+html = html.replace(/(href|src|action)\s*=\s*(?:"(?:javascript|data|vbscript):[^"]*"|'(?:javascript|data|vbscript):[^']*')/gi, '');
+return html;
+}
 const KEYS = {
 '[data-t="nav_park"]': t => t.nav_park,
 '[data-t="nav_health"]': t => t.nav_health,
@@ -125,7 +140,7 @@ const base = LANGS.es;
 const val = (k) => (t[k] !== undefined ? t[k] : base[k]);
 document.querySelectorAll('[data-t]').forEach(el => {
 const v = val(el.dataset.t);
-if (v !== undefined) el.innerHTML = v;
+if (v !== undefined) el.innerHTML = sanitizeTranslationHTML(v);
 });
 document.querySelectorAll('[data-ph-t]').forEach(el => {
 const v = val(el.dataset.phT);
