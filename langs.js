@@ -5,8 +5,12 @@
 
    Idiomas: es (base), en, pt, fr, ru, ja, zh
    Se carga con <script defer> ANTES de app.js
+   Cuando se carga dinámicamente (vía _loadFullLangs) extiende el LANGS
+   existente en vez de re-declararlo para evitar "already declared" error.
    ═══════════════════════════════════════════════════════════════════════════ */
-const LANGS = {
+if (typeof LANGS === 'undefined') { var LANGS = {}; }
+(function(L) {
+Object.assign(L, {
   es: {
     nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
     nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
@@ -605,7 +609,8 @@ const LANGS = {
     filter_lodging:"住宿",filter_highlight:"景点",
     ev_m1:"1-2月",ev_m2:"6月",ev_m3:"9月",ev_m4:"11-12月"
   }
-};
+});
+})(LANGS);
 
 let currentLang = 'es';
 
