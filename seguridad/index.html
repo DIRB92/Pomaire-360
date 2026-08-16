@@ -7,6 +7,8 @@
 <meta name="description" content="Política de divulgación responsable y formulario para reportar vulnerabilidades de seguridad en Pomaire 360.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://pomaire360.cl/seguridad/">
+<!-- Cloudflare Turnstile CAPTCHA (anti-spam, invisible/managed) -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
   :root {
     --clay-red: #b5502e;
@@ -135,6 +137,20 @@
   }
   .btn-submit:hover { background: var(--clay-dark); }
   .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .captcha-wrap {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .captcha-error {
+    color: #c0392b;
+    font-size: 0.82rem;
+    font-weight: 500;
+    display: none;
+  }
+  .captcha-error.show { display: block; }
   .success-msg {
     display: none;
     text-align: center;
@@ -278,6 +294,18 @@
       <label for="solucion">Sugerencia de corrección (opcional)</label>
       <textarea id="solucion" name="solucion_sugerida" rows="2" placeholder="Ej: Sanitizar el input con DOMPurify antes de insertarlo en el DOM..."></textarea>
 
+      <!-- Cloudflare Turnstile CAPTCHA -->
+      <div class="captcha-wrap">
+        <div class="cf-turnstile"
+             data-sitekey="YOUR_TURNSTILE_SITE_KEY"
+             data-theme="light"
+             data-size="normal"
+             data-callback="onCaptchaSuccess"
+             data-expired-callback="onCaptchaExpired">
+        </div>
+        <span class="captcha-error" id="captchaError">⚠️ Completa la verificación anti-spam para enviar</span>
+      </div>
+
       <button type="submit" class="btn-submit" id="submitBtn">🔒 Enviar reporte de vulnerabilidad</button>
     </form>
 
@@ -287,7 +315,7 @@
     </div>
 
     <div class="note">
-      <strong>🔐 Privacidad:</strong> Tu reporte es confidencial. Solo el equipo de seguridad de Pomaire 360 tendrá acceso a la información que compartas. No compartiremos tus datos con terceros.
+      <strong>🔐 Privacidad:</strong> Tu reporte es confidencial. Solo el equipo de seguridad de Pomaire 360 tendrá acceso a la información que compartas. No compartiremos tus datos con terceros. La verificación anti-spam utiliza Cloudflare Turnstile (no rastrea usuarios).
     </div>
   </section>
 
@@ -316,13 +344,52 @@
 </footer>
 
 <script>
-// Mostrar mensaje de éxito si viene redirigido después de enviar
+// ─── Cloudflare Turnstile callbacks ───────────────────────────────────────
+var captchaPassed = false;
+
+function onCaptchaSuccess(token) {
+  captchaPassed = true;
+  var err = document.getElementById('captchaError');
+  if (err) err.classList.remove('show');
+}
+
+function onCaptchaExpired() {
+  captchaPassed = false;
+}
+
+// ─── Validación del formulario ────────────────────────────────────────────
+(function() {
+  var form = document.getElementById('vulnForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    // Verificar que Turnstile fue completado
+    var turnstileResponse = document.querySelector('[name="cf-turnstile-response"]');
+    var hasToken = turnstileResponse && turnstileResponse.value;
+
+    if (!captchaPassed && !hasToken) {
+      e.preventDefault();
+      var err = document.getElementById('captchaError');
+      if (err) err.classList.add('show');
+      err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+
+    // Deshabilitar botón para prevenir doble envío
+    var btn = document.getElementById('submitBtn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = '⏳ Enviando...';
+    }
+  });
+})();
+
+// ─── Mostrar éxito si viene redirigido ────────────────────────────────────
 if (window.location.search.includes('enviado=1')) {
   var form = document.getElementById('vulnForm');
   var msg = document.getElementById('successMsg');
   if (form) form.style.display = 'none';
   if (msg) msg.classList.add('show');
-  // Limpiar URL sin recargar
   history.replaceState(null, '', window.location.pathname);
 }
 </script>
