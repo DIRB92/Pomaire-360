@@ -161,6 +161,7 @@
     color: var(--text-muted);
   }
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -278,7 +279,11 @@
       <label for="solucion">Sugerencia de corrección (opcional)</label>
       <textarea id="solucion" name="solucion_sugerida" rows="2" placeholder="Ej: Sanitizar el input con DOMPurify antes de insertarlo en el DOM..."></textarea>
 
-      <button type="submit" class="btn-submit" id="submitBtn">🔒 Enviar reporte de vulnerabilidad</button>
+      <!-- Cloudflare Turnstile -->
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAERSfyf0Pns2PYFf" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-theme="light" style="margin-top:16px;"></div>
+      <p id="turnstileWarning" style="color:#c62828;font-size:0.85rem;margin-top:8px;display:none;">⚠ Completa la verificación anti-spam para enviar</p>
+
+      <button type="submit" class="btn-submit" id="submitBtn" disabled>🔒 Enviar reporte de vulnerabilidad</button>
     </form>
 
     <div class="success-msg" id="successMsg">
@@ -287,7 +292,7 @@
     </div>
 
     <div class="note">
-      <strong>🔐 Privacidad:</strong> Tu reporte es confidencial. Solo el equipo de seguridad de Pomaire 360 tendrá acceso a la información que compartas. No compartiremos tus datos con terceros.
+      <strong>🔐 Privacidad:</strong> Tu reporte es confidencial. Solo el equipo de seguridad de Pomaire 360 tendrá acceso a la información que compartas. No compartiremos tus datos con terceros. La verificación anti-spam utiliza Cloudflare Turnstile (no rastrea usuarios).
     </div>
   </section>
 
@@ -316,6 +321,26 @@
 </footer>
 
 <script>
+// Turnstile callbacks
+function onTurnstileSuccess(token) {
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('turnstileWarning').style.display = 'none';
+}
+function onTurnstileExpired() {
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('turnstileWarning').style.display = 'block';
+}
+
+// Validar antes de enviar
+document.getElementById('vulnForm').addEventListener('submit', function(e) {
+  var response = document.querySelector('[name="cf-turnstile-response"]');
+  if (!response || !response.value) {
+    e.preventDefault();
+    document.getElementById('turnstileWarning').style.display = 'block';
+    return false;
+  }
+});
+
 // Mostrar mensaje de éxito si viene redirigido después de enviar
 if (window.location.search.includes('enviado=1')) {
   var form = document.getElementById('vulnForm');
