@@ -21,10 +21,10 @@
     'BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var TABLE = 'negocios_directorio360';
 
-  // Dimensiones del canvas del mapa (imagen rotada 90° CCW para orientación vertical)
-  // Original cropped: 4652x2543 → Rotada vertical: 2543x4652
-  var MAP_W = 2543;
-  var MAP_H = 4652;
+  // Dimensiones del canvas del mapa (horizontal, sin rotación)
+  // Original 5552x3403, cropped: left 900px, bottom 860px → visible: 4652x2543
+  var MAP_W = 4652;
+  var MAP_H = 2543;
 
   // Coordenadas reales de Pomaire (para mapear lat/lng → posición en el mapa)
   // El mapa ilustrado del PDF cubre aproximadamente esta zona
@@ -119,21 +119,17 @@
   }
 
   // ─── Geo → Map position ──────────────────────────────────────────────────────
-  // The image is rotated +90° (CW), so:
-  //   Original X axis → becomes Y axis (inverted: bottom to top)
-  //   Original Y axis → becomes X axis (left to right)
+  // Mapea coordenadas geográficas a posición en pixeles del mapa ilustrado
+  // NOTA: Los valores GEO_BOUNDS deben ajustarse según la orientación real del mapa
+  // Si el norte NO está arriba, hay que intercambiar/invertir ejes
   function geoToMap(lat, lng) {
-    // Map geo to original image coordinates (pre-rotation)
-    var origX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
-    var origY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
+    // Map geo to full image pixels
+    var fullX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
+    var fullY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
 
-    // Adjust for left crop
-    origX = origX - CROP_LEFT;
-
-    // After +90° rotation (CW): new_x = (origHeight - origY), new_y = origX
-    // origHeight here is the visible height = 2543
-    var x = (2543 - origY);
-    var y = origX;
+    // Adjust for the left crop
+    var x = fullX - CROP_LEFT;
+    var y = fullY;
 
     // Clamp to visible area
     x = Math.max(20, Math.min(MAP_W - 20, x));
@@ -322,6 +318,48 @@
   function renderMarkers() {
     markersLayer.innerHTML = '';
     markers = [];
+
+    // === MARCADORES DE CALIBRACIÓN ===
+    // Puntos de referencia conocidos para verificar orientación del mapa
+    // Si estos no caen donde deberían, hay que ajustar GEO_BOUNDS
+    var calibrationPoints = [
+      { lat: -33.6512, lng: -71.1505, name: '📍 Plaza de Pomaire (CENTRO)', color: '#FF0000' },
+      { lat: -33.6480, lng: -71.1505, name: '⬆️ NORTE (arriba si mapa orientado normal)', color: '#00AA00' },
+      { lat: -33.6545, lng: -71.1505, name: '⬇️ SUR (abajo si mapa orientado normal)', color: '#0000FF' },
+      { lat: -33.6512, lng: -71.1550, name: '⬅️ OESTE (izquierda si mapa orientado normal)', color: '#FF8800' },
+      { lat: -33.6512, lng: -71.1460, name: '➡️ ESTE (derecha si mapa orientado normal)', color: '#8800FF' },
+    ];
+
+    calibrationPoints.forEach(function (pt) {
+      var pos = geoToMap(pt.lat, pt.lng);
+      var marker = document.createElement('div');
+      marker.className = 'mapa-marker featured';
+      marker.style.left = pos.x + 'px';
+      marker.style.top = pos.y + 'px';
+      marker.style.zIndex = '9999';
+
+      var dot = document.createElement('div');
+      dot.className = 'marker-dot';
+      dot.style.background = pt.color;
+      dot.style.width = '50px';
+      dot.style.height = '50px';
+      dot.style.fontSize = '20px';
+      dot.style.border = '4px solid #fff';
+      dot.innerHTML = pt.name.split(' ')[0];
+      marker.appendChild(dot);
+
+      var label = document.createElement('div');
+      label.className = 'marker-label';
+      label.style.opacity = '1';
+      label.style.fontSize = '.8rem';
+      label.style.maxWidth = '200px';
+      label.style.background = pt.color;
+      label.textContent = pt.name;
+      marker.appendChild(label);
+
+      markersLayer.appendChild(marker);
+    });
+    // === FIN CALIBRACIÓN ===
 
     allNegocios.forEach(function (neg) {
       var cat = CATS[neg.categoria] || { filter: 'servicios', color: '#888', icon: '📍', label: 'Otro' };

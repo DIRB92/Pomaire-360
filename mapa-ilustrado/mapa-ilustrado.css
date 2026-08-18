@@ -111,9 +111,9 @@
 /* The map canvas (transformable) */
 .mapa-canvas {
   position: absolute;
-  /* Image rotated 90° CCW: original 4652x2543 → vertical 2543x4652 */
-  width: 2543px;
-  height: 4652px;
+  /* Image horizontal (sin rotación): 4652x2543 */
+  width: 4652px;
+  height: 2543px;
   transform-origin: 0 0;
   will-change: transform;
   transition: none;
@@ -122,7 +122,7 @@
   transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
 
-/* Original illustrated map image (cropped from PDF, rotated vertical) */
+/* Original illustrated map image (cropped from PDF) */
 .mapa-ilustracion {
   position: absolute;
   top: 0;
@@ -134,21 +134,18 @@
   clip-path: inset(0 0 0 900px);
 }
 
-/* Alternative: use a wrapper to clip + rotate */
+/* Wrapper to clip the image (removes left panel) */
 .mapa-img-wrapper {
   position: absolute;
   inset: 0;
-  width: 2543px;
-  height: 4652px;
+  width: 4652px;
+  height: 2543px;
   overflow: hidden;
 }
 .mapa-img-wrapper img {
   position: absolute;
-  /* Rotate the image 90deg (CW) to make it vertical */
-  transform: rotate(90deg);
-  transform-origin: top left;
   top: 0;
-  left: 2543px;
+  left: -900px;
   width: 5552px;
   height: 3403px;
   max-width: none;
