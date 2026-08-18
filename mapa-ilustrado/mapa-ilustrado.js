@@ -21,9 +21,10 @@
     'BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var TABLE = 'negocios_directorio360';
 
-  // Dimensiones del canvas del mapa (imagen original 5552x3403, cropped: left 900px, bottom 860px)
-  var MAP_W = 4652;
-  var MAP_H = 2543;
+  // Dimensiones del canvas del mapa (imagen rotada 90° CCW para orientación vertical)
+  // Original cropped: 4652x2543 → Rotada vertical: 2543x4652
+  var MAP_W = 2543;
+  var MAP_H = 4652;
 
   // Coordenadas reales de Pomaire (para mapear lat/lng → posición en el mapa)
   // El mapa ilustrado del PDF cubre aproximadamente esta zona
@@ -118,14 +119,21 @@
   }
 
   // ─── Geo → Map position ──────────────────────────────────────────────────────
+  // The image is rotated -90° (CCW), so:
+  //   Original X axis → becomes Y axis (top to bottom)
+  //   Original Y axis → becomes X axis (inverted: right to left → left to right)
   function geoToMap(lat, lng) {
-    // Map geo coordinates to full image pixels, then subtract crop offset
-    var fullX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
-    var fullY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
+    // Map geo to original image coordinates (pre-rotation)
+    var origX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
+    var origY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
 
-    // Adjust for the left crop
-    var x = fullX - CROP_LEFT;
-    var y = fullY;
+    // Adjust for left crop
+    origX = origX - CROP_LEFT;
+
+    // After -90° rotation (CCW): new_x = origY, new_y = (origWidth - origX)
+    // origWidth here is MAP canvas width before rotation = 4652
+    var x = origY;
+    var y = (4652 - origX);
 
     // Clamp to visible area
     x = Math.max(20, Math.min(MAP_W - 20, x));

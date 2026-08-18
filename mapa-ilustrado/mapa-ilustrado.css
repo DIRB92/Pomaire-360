@@ -91,9 +91,9 @@
 .mapa-viewport {
   position: relative;
   width: 100%;
-  height: calc(100vh - 180px);
-  min-height: 500px;
-  max-height: 800px;
+  height: calc(100vh - 160px);
+  min-height: 600px;
+  max-height: 900px;
   overflow: hidden;
   background: #4a7c59;
   cursor: grab;
@@ -111,8 +111,9 @@
 /* The map canvas (transformable) */
 .mapa-canvas {
   position: absolute;
-  width: 4652px;
-  height: 2543px;
+  /* Image rotated 90° CCW: original 4652x2543 → vertical 2543x4652 */
+  width: 2543px;
+  height: 4652px;
   transform-origin: 0 0;
   will-change: transform;
   transition: none;
@@ -121,13 +122,9 @@
   transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
 
-/* Original illustrated map image (cropped from PDF) */
+/* Original illustrated map image (cropped from PDF, rotated vertical) */
 .mapa-ilustracion {
   position: absolute;
-  /* The original image is 5552x3403. We crop:
-     - Left 900px (side panel with business list)
-     - Bottom 860px (bottom panel with business list)
-     Resulting visible area: 4652x2543 */
   top: 0;
   left: -900px;
   width: 5552px;
@@ -137,22 +134,28 @@
   clip-path: inset(0 0 0 900px);
 }
 
-/* Alternative: use a wrapper to clip */
+/* Alternative: use a wrapper to clip + rotate */
 .mapa-img-wrapper {
   position: absolute;
   inset: 0;
-  width: 4652px;
-  height: 2543px;
+  width: 2543px;
+  height: 4652px;
   overflow: hidden;
 }
 .mapa-img-wrapper img {
   position: absolute;
-  top: 0;
+  /* Rotate the image -90deg (CCW) to make it vertical */
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  top: 4652px;
   left: -900px;
   width: 5552px;
   height: 3403px;
   max-width: none;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
   user-select: none;
   -webkit-user-select: none;
 }
