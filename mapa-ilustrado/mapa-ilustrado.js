@@ -119,9 +119,9 @@
   }
 
   // ─── Geo → Map position ──────────────────────────────────────────────────────
-  // The image is rotated -90° (CCW), so:
-  //   Original X axis → becomes Y axis (top to bottom)
-  //   Original Y axis → becomes X axis (inverted: right to left → left to right)
+  // The image is rotated +90° (CW), so:
+  //   Original X axis → becomes Y axis (inverted: bottom to top)
+  //   Original Y axis → becomes X axis (left to right)
   function geoToMap(lat, lng) {
     // Map geo to original image coordinates (pre-rotation)
     var origX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
@@ -130,10 +130,10 @@
     // Adjust for left crop
     origX = origX - CROP_LEFT;
 
-    // After -90° rotation (CCW): new_x = origY, new_y = (origWidth - origX)
-    // origWidth here is MAP canvas width before rotation = 4652
-    var x = origY;
-    var y = (4652 - origX);
+    // After +90° rotation (CW): new_x = (origHeight - origY), new_y = origX
+    // origHeight here is the visible height = 2543
+    var x = (2543 - origY);
+    var y = origX;
 
     // Clamp to visible area
     x = Math.max(20, Math.min(MAP_W - 20, x));

@@ -144,11 +144,11 @@
 }
 .mapa-img-wrapper img {
   position: absolute;
-  /* Rotate the image -90deg (CCW) to make it vertical */
-  transform: rotate(-90deg);
+  /* Rotate the image 90deg (CW) to make it vertical */
+  transform: rotate(90deg);
   transform-origin: top left;
-  top: 4652px;
-  left: -900px;
+  top: 0;
+  left: 2543px;
   width: 5552px;
   height: 3403px;
   max-width: none;
