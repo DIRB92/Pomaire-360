@@ -111,8 +111,8 @@
 /* The map canvas (transformable) */
 .mapa-canvas {
   position: absolute;
-  width: 2400px;
-  height: 1600px;
+  width: 4652px;
+  height: 2543px;
   transform-origin: 0 0;
   will-change: transform;
   transition: none;
@@ -121,12 +121,40 @@
   transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
 
-/* SVG illustrated map background */
+/* Original illustrated map image (cropped from PDF) */
 .mapa-ilustracion {
   position: absolute;
+  /* The original image is 5552x3403. We crop:
+     - Left 900px (side panel with business list)
+     - Bottom 860px (bottom panel with business list)
+     Resulting visible area: 4652x2543 */
+  top: 0;
+  left: -900px;
+  width: 5552px;
+  height: 2543px;
+  object-fit: none;
+  object-position: left top;
+  clip-path: inset(0 0 0 900px);
+}
+
+/* Alternative: use a wrapper to clip */
+.mapa-img-wrapper {
+  position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 4652px;
+  height: 2543px;
+  overflow: hidden;
+}
+.mapa-img-wrapper img {
+  position: absolute;
+  top: 0;
+  left: -900px;
+  width: 5552px;
+  height: 3403px;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Markers layer */

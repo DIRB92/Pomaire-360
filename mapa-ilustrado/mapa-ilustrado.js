@@ -21,17 +21,25 @@
     'BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var TABLE = 'negocios_directorio360';
 
-  // Dimensiones del canvas del mapa
-  var MAP_W = 2400;
-  var MAP_H = 1600;
+  // Dimensiones del canvas del mapa (imagen original 5552x3403, cropped: left 900px, bottom 860px)
+  var MAP_W = 4652;
+  var MAP_H = 2543;
 
   // Coordenadas reales de Pomaire (para mapear lat/lng → posición en el mapa)
+  // El mapa ilustrado del PDF cubre aproximadamente esta zona
+  // Ajustado para que los marcadores caigan sobre la imagen recortada
   var GEO_BOUNDS = {
-    minLat: -33.660,
-    maxLat: -33.640,
-    minLng: -71.165,
-    maxLng: -71.135
+    minLat: -33.6580,
+    maxLat: -33.6420,
+    minLng: -71.1600,
+    maxLng: -71.1380
   };
+
+  // Offset por el crop de la imagen (900px desde la izquierda)
+  var CROP_LEFT = 900;
+  var IMG_FULL_W = 5552;
+  var IMG_FULL_H = 3403;
+  var CROP_BOTTOM = 860;
 
   // Categorías → colores e iconos
   var CATS = {
@@ -111,11 +119,17 @@
 
   // ─── Geo → Map position ──────────────────────────────────────────────────────
   function geoToMap(lat, lng) {
-    var x = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * MAP_W;
-    var y = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * MAP_H;
-    // Clamp
-    x = Math.max(50, Math.min(MAP_W - 50, x));
-    y = Math.max(100, Math.min(MAP_H - 50, y));
+    // Map geo coordinates to full image pixels, then subtract crop offset
+    var fullX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
+    var fullY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
+
+    // Adjust for the left crop
+    var x = fullX - CROP_LEFT;
+    var y = fullY;
+
+    // Clamp to visible area
+    x = Math.max(20, Math.min(MAP_W - 20, x));
+    y = Math.max(20, Math.min(MAP_H - 20, y));
     return { x: x, y: y };
   }
 

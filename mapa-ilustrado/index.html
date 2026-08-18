@@ -142,8 +142,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
   <!-- Canvas (transformable) -->
   <div class="mapa-canvas" id="mapaCanvas">
-    <!-- SVG Map illustration -->
-    <img src="/mapa-ilustrado/mapa-pomaire.svg" class="mapa-ilustracion" alt="Mapa ilustrado de Pomaire" draggable="false">
+    <!-- Illustrated map from PDF (cropped: left panel + bottom panel removed) -->
+    <div class="mapa-img-wrapper">
+      <img src="/mapa-ilustrado/mapa-pomaire-original.jpg" alt="Mapa ilustrado de Pomaire" draggable="false">
+    </div>
     
     <!-- Markers layer -->
     <div class="mapa-markers" id="mapaMarkers"></div>
@@ -159,7 +161,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   <!-- Minimap -->
   <div class="mapa-minimap" id="mapaMinimap">
     <div class="minimap-inner">
-      <img src="/mapa-ilustrado/mapa-pomaire.svg" style="width:100%;height:100%;object-fit:cover;opacity:.7;" alt="" draggable="false">
+      <div style="width:100%;height:100%;overflow:hidden;position:relative;">
+        <img src="/mapa-ilustrado/mapa-pomaire-original.jpg" style="position:absolute;top:0;left:-16.2%;width:119.3%;height:134%;object-fit:cover;opacity:.7;" alt="" draggable="false">
+      </div>
       <div class="minimap-view" id="minimapView"></div>
     </div>
   </div>
@@ -210,7 +214,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     </div>
   </div>
   <p style="margin-top:2rem;font-size:.85rem;color:var(--p-muted);">
-    💡 También puedes visitar el <a href="/mapa-turistico/" style="color:var(--p-primary);font-weight:700;">mapa satelital</a> con rutas y geolocalización.
+    💡 Este mapa usa la ilustración oficial de Pomaire 360. También puedes visitar el <a href="/mapa-turistico/" style="color:var(--p-primary);font-weight:700;">mapa satelital</a> con rutas y geolocalización.
   </p>
 </section>
 
