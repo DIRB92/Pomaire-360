@@ -32,12 +32,12 @@
   //   Sur real   → DERECHA de la imagen
   //   Este real  → ARRIBA de la imagen
   //   Oeste real → ABAJO de la imagen
-  // Esto significa que el mapa está rotado 90° CW respecto a orientación geográfica estándar
+  // Bounds calibrados con la Plaza de Pomaire y cruces de calles visibles
   var GEO_BOUNDS = {
-    minLat: -33.6580,
-    maxLat: -33.6420,
-    minLng: -71.1620,
-    maxLng: -71.1380
+    maxLat: -33.6370,  // Norte — borde izquierdo del mapa
+    minLat: -33.6500,  // Sur — borde derecho del mapa
+    maxLng: -71.1430,  // Este — borde superior del mapa
+    minLng: -71.1626   // Oeste — borde inferior del mapa
   };
 
   // Offset por el crop de la imagen (900px desde la izquierda)
@@ -331,16 +331,14 @@
     markers = [];
 
     // === MARCADORES DE CALIBRACIÓN ===
-    // Puntos de referencia conocidos para verificar orientación del mapa
-    // Plaza de Pomaire: lat -33.6503, lng -71.1498 (aprox)
-    // Roberto Bravo va de Este a Oeste (arriba en el mapa, horizontal)
-    // San Antonio va paralela más abajo
+    // Puntos de referencia conocidos para verificar que calzan con el mapa
     var calibrationPoints = [
-      { lat: -33.6503, lng: -71.1498, name: '📍 Plaza de Pomaire', color: '#FF0000' },
-      { lat: -33.6503, lng: -71.1520, name: '🏺 Roberto Bravo (más Oeste/abajo)', color: '#FF8800' },
-      { lat: -33.6503, lng: -71.1470, name: '🍽️ Roberto Bravo (más Este/arriba)', color: '#8800FF' },
-      { lat: -33.6480, lng: -71.1498, name: '⬅️ Hacia Norte (izquierda)', color: '#00AA00' },
-      { lat: -33.6530, lng: -71.1498, name: '➡️ Hacia Sur (derecha)', color: '#0000FF' },
+      { lat: -33.64295, lng: -71.14985, name: '📍 Plaza de Pomaire', color: '#FF0000' },
+      { lat: -33.64235, lng: -71.14845, name: '🔴 Roberto Bravo / Arturo Prat', color: '#CC0000' },
+      { lat: -33.64465, lng: -71.15270, name: '🟠 Roberto Bravo / El Carmen', color: '#FF8800' },
+      { lat: -33.64380, lng: -71.14780, name: '🟣 San Antonio / Arturo Prat', color: '#8800FF' },
+      { lat: -33.64580, lng: -71.14920, name: '🔵 Guillermo Barros / B.O\'Higgins', color: '#0066FF' },
+      { lat: -33.6395, lng: -71.1520, name: '🟢 El Cristo (mirador)', color: '#00AA00' },
     ];
 
     calibrationPoints.forEach(function (pt) {
