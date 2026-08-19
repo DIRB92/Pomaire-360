@@ -182,36 +182,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
   </url>
   <url>
-    <loc>https://www.pomaire360.cl/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
-  </url>
-  <url>
-    <loc>https://www.pomaire360.cl/en/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
-  </url>
-  <url>
-    <loc>https://www.pomaire360.cl/pt/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
-  </url>
-  <url>
     <loc>https://www.pomaire360.cl/ruta-del-vino/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>

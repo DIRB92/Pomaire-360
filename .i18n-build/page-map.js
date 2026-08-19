@@ -2,7 +2,6 @@
 // 'index' es un caso especial que vive en la raíz del sitio.
 module.exports = {
   index: { file: 'index.html', esPath: '/' },
-  alfareria: { file: 'alfareria/index.html', esPath: '/alfareria/' },
   anunciate: { file: 'anunciate/index.html', esPath: '/anunciate/' },
   apoyar: { file: 'apoyar/index.html', esPath: '/apoyar/' },
   comercio: { file: 'comercio/index.html', esPath: '/comercio/' },

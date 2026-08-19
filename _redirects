@@ -4,6 +4,11 @@
 # Formato: /ruta-antigua /ruta-nueva código
 # ═══════════════════════════════════════════════════════════════════════════
 
+# Alfarería → Directorio Alfarería
+/alfareria/  /comercio/?cat=alfareria  301
+/en/alfareria/  /comercio/?cat=alfareria  301
+/pt/alfareria/  /comercio/?cat=alfareria  301
+
 # Gastronomía → Directorio Restaurantes
 /gastronomia/  /comercio/?cat=restaurantes  301
 /en/gastronomia/  /comercio/?cat=restaurantes  301
