@@ -37,6 +37,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <meta name="keywords" content="pomaire, pomaire chile, visitar pomaire, turismo pomaire 2026, pueblo alfarero chile, que hacer en pomaire, como llegar a pomaire, pomaire desde santiago, talleres greda pomaire, empanadas pomaire, artesanía pomaire, alfarería pomaire, restaurantes pomaire, estacionamiento pomaire, mapa pomaire, alojamiento pomaire, chanchito alcancía greda, paseo pomaire, excursion pomaire, guía pomaire, pomaire melipilla, pomaire hoy, pomaire fines de semana">
 <meta name="author" content="Pomaire 360">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="google" content="notranslate">
 <meta name="geo.region" content="CL-RM">
 <meta name="geo.placename" content="Pomaire, Melipilla, Región Metropolitana, Chile">
 <meta name="geo.position" content="-33.642;-71.145">
@@ -69,6 +70,8 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 
 <!-- ══ CANONICAL ════════════════════════════════════════════ -->
 <link rel="canonical" href="https://www.pomaire360.cl/">
+<link rel="sitemap" type="application/xml" href="https://www.pomaire360.cl/sitemap.xml">
+<meta property="article:modified_time" content="2026-07-28T00:00:00-04:00">
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/">
@@ -350,7 +353,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <a href="#inicio" class="skip-to-content">Saltar al contenido</a>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Navegación principal">
   <a class="nav-brand" href="#inicio"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Turismo & Cultura</span></span></a>
   <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
   <div class="nav-links-wrap" id="navGroups">
@@ -359,23 +362,23 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/comercio/?cat=estacionamientos" data-keywords="parking estacionar auto car">
-          <span class="nav-menu-icon">🅿️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🅿️</span>
           <span class="nav-menu-text"><span data-t="nav_park">Estacionar</span><span class="nav-menu-desc">Dónde dejar tu auto</span></span>
         </a>
         <a href="/comercio/?cat=salud" data-keywords="salud health hospital farmacia doctor">
-          <span class="nav-menu-icon">🏥</span>
+          <span class="nav-menu-icon" aria-hidden="true">🏥</span>
           <span class="nav-menu-text"><span data-t="nav_health">Salud</span><span class="nav-menu-desc">CESFAM, farmacias y urgencias</span></span>
         </a>
         <a href="/comercio/?cat=seguridad" data-keywords="seguridad carabineros bomberos policia emergencia">
-          <span class="nav-menu-icon">🚔</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚔</span>
           <span class="nav-menu-text"><span data-t="nav_security">Seguridad</span><span class="nav-menu-desc">Carabineros, Bomberos, emergencias</span></span>
         </a>
         <a href="/comercio/?cat=servicios" data-keywords="servicios almacen tienda atm cajero">
-          <span class="nav-menu-icon">🛒</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛒</span>
           <span class="nav-menu-text"><span data-t="nav_commerce">Servicios</span><span class="nav-menu-desc">Almacenes y servicios cotidianos</span></span>
         </a>
         <a href="/comercio/?cat=transporte" data-keywords="grua mecanico neumatico vulcanizacion auto bus transporte">
-          <span class="nav-menu-icon">🚌</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚌</span>
           <span class="nav-menu-text"><span data-t="nav_locomocion">Transporte</span><span class="nav-menu-desc">Grúas, buses, micros y colectivos</span></span>
         </a>
       </div>
@@ -385,27 +388,27 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Visitar</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/comercio/?cat=alfareria" data-keywords="alfareria pottery greda ceramica taller artesano">
-          <span class="nav-menu-icon">🏺</span>
+          <span class="nav-menu-icon" aria-hidden="true">🏺</span>
           <span class="nav-menu-text"><span data-t="nav_pottery">Alfarería</span><span class="nav-menu-desc">Talleres y tradición alfarera</span></span>
         </a>
         <a href="/comercio/?cat=turismo" data-keywords="que ver atractivos iglesia monumento vino ruta">
-          <span class="nav-menu-icon">✨</span>
+          <span class="nav-menu-icon" aria-hidden="true">✨</span>
           <span class="nav-menu-text"><span data-t="nav_seewhat">Qué ver</span><span class="nav-menu-desc">Atractivos y puntos de interés</span></span>
         </a>
         <a href="/ruta-del-vino/" data-keywords="vino wine ruta viña bodega">
-          <span class="nav-menu-icon">🍷</span>
+          <span class="nav-menu-icon" aria-hidden="true">🍷</span>
           <span class="nav-menu-text"><span data-t="nav_winery">Ruta del Vino</span><span class="nav-menu-desc">Viñas y bodegas cercanas</span></span>
         </a>
         <a href="/comercio/?cat=comercio" data-keywords="comercio tiendas compras souvenir recuerdo">
-          <span class="nav-menu-icon">🛍️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛍️</span>
           <span class="nav-menu-text"><span data-t="nav_shops_g">Comercio</span><span class="nav-menu-desc">Tiendas y souvenirs</span></span>
         </a>
         <a href="/alrededores/" data-keywords="alrededores chiñihues campo naturaleza rural">
-          <span class="nav-menu-icon">🌄</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌄</span>
           <span class="nav-menu-text"><span data-t="nav_around">Alrededores</span><span class="nav-menu-desc">Los Chiñihues y alrededores</span></span>
         </a>
         <a href="/plaza/" data-keywords="plaza centro parque iglesia">
-          <span class="nav-menu-icon">🌳</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌳</span>
           <span class="nav-menu-text"><span data-t="nav_plaza">Plaza Pública</span><span class="nav-menu-desc">Corazón del pueblo</span></span>
         </a>
       </div>
@@ -415,15 +418,15 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/comercio/?cat=restaurantes" data-keywords="comer restaurante empanada cazuela comida gastronomia">
-          <span class="nav-menu-icon">🍽️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🍽️</span>
           <span class="nav-menu-text"><span data-t="nav_food">Comer</span><span class="nav-menu-desc">Restaurantes y cocina típica</span></span>
         </a>
         <a href="/comercio/?cat=alojamiento" data-keywords="dormir hotel hostal cabaña alojamiento">
-          <span class="nav-menu-icon">🛏️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛏️</span>
           <span class="nav-menu-text"><span data-t="nav_lodging">Alojamientos</span><span class="nav-menu-desc">Hostales, cabañas y suites</span></span>
         </a>
         <a href="/plaza/#banos" data-keywords="baño wc toilet sanitario">
-          <span class="nav-menu-icon">🚽</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚽</span>
           <span class="nav-menu-text"><span data-t="nav_banos">Baños</span><span class="nav-menu-desc">Baños públicos disponibles</span></span>
         </a>
       </div>
@@ -433,27 +436,27 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#recorrido" data-keywords="recorrido tour ruta itinerario paso">
-          <span class="nav-menu-icon">🧭</span>
+          <span class="nav-menu-icon" aria-hidden="true">🧭</span>
           <span class="nav-menu-text"><span data-t="nav_tour">Recorrido</span><span class="nav-menu-desc">Ruta turística paso a paso</span></span>
         </a>
         <a href="#mapa" data-keywords="mapa mapa ubicacion mapa interactivo">
-          <span class="nav-menu-icon">🗺️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🗺️</span>
           <span class="nav-menu-text"><span data-t="nav_map">Mapa</span><span class="nav-menu-desc">Mapa interactivo del pueblo</span></span>
         </a>
         <a href="#clima" data-keywords="clima weather temperatura lluvia sol">
-          <span class="nav-menu-icon">🌤️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌤️</span>
           <span class="nav-menu-text"><span data-t="nav_weather">Clima</span><span class="nav-menu-desc">Condiciones actuales</span></span>
         </a>
         <a href="#galeria" data-keywords="galeria fotos imagenes foto">
-          <span class="nav-menu-icon">📸</span>
+          <span class="nav-menu-icon" aria-hidden="true">📸</span>
           <span class="nav-menu-text"><span data-t="nav_gallery">Galería</span><span class="nav-menu-desc">Fotos del pueblo</span></span>
         </a>
         <a href="#eventos" data-keywords="eventos fiestas patrias san antonio feria">
-          <span class="nav-menu-icon">📅</span>
+          <span class="nav-menu-icon" aria-hidden="true">📅</span>
           <span class="nav-menu-text"><span data-t="nav_events">Eventos</span><span class="nav-menu-desc">Fechas y festividades</span></span>
         </a>
         <a href="/mapa-turistico/" data-keywords="mapa turistico plano ilustrado">
-          <span class="nav-menu-icon">🗺️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🗺️</span>
           <span class="nav-menu-text"><span data-t="nav_map_full">Mapa Turístico</span><span class="nav-menu-desc">Plano ilustrado del pueblo</span></span>
         </a>
       </div>
