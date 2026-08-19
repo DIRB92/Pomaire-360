@@ -1,10 +1,21 @@
 (function () {
 'use strict';
+// Fix: Only initialize GA4 if user has explicitly consented ('all').
+// If no consent yet (first visit) or consent is 'essential', do NOT load GA.
+var consent;
 try {
-if (localStorage.getItem('p360_cookie_consent') === 'essential') {
-window['ga-disable-G-ZR4KWKER0B'] = true;
+consent = localStorage.getItem('p360_cookie_consent');
+} catch (e) {
+return; // localStorage unavailable, do nothing
 }
-} catch (e) {}
+// No consent stored yet (first visit) — wait for user decision
+if (!consent) return;
+// User explicitly rejected analytics
+if (consent === 'essential') {
+window['ga-disable-G-ZR4KWKER0B'] = true;
+return;
+}
+// User accepted all cookies — proceed with GA4
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 window.gtag = gtag;

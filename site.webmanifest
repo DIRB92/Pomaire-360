@@ -8,6 +8,9 @@
   "display": "standalone",
   "background_color": "#8C3D16",
   "theme_color": "#B85C2C",
+  "categories": ["travel", "tourism", "lifestyle"],
+  "lang": "es-CL",
+  "dir": "ltr",
   "icons": [
     { "src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
     { "src": "/favicon-96x96.png", "sizes": "96x96", "type": "image/png" },
