@@ -29,6 +29,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <meta name="keywords" content="Pomaire, Pomaire turismo, que hacer en Pomaire, alfarería Pomaire, cerámica Pomaire, como llegar a Pomaire, Pomaire Chile, servicios Pomaire, Los Chiñihues, Melipilla turismo, guía Pomaire, estacionamiento Pomaire, restaurantes Pomaire, emergencias Pomaire">
 <meta name="author" content="Pomaire 360">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="google" content="notranslate">
 <meta name="language" content="es-CL">
 <meta name="geo.region" content="CL-RM">
 <meta name="geo.placename" content="Pomaire, Melipilla, Región Metropolitana, Chile">
@@ -37,6 +38,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
 <!-- ══ CANONICAL ════════════════════════════════════════════ -->
 <link rel="canonical" href="https://www.pomaire360.cl/en/">
+<link rel="sitemap" type="application/xml" href="https://www.pomaire360.cl/sitemap.xml">
+<meta property="article:modified_time" content="2026-07-28T00:00:00-04:00">
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/">
@@ -196,7 +199,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <a href="#navBurger" class="skip-to-content">Skip to content</a>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <a class="nav-brand" href="#inicio"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Tourism &amp; Culture</span></span></a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleNav(event)">☰</button>
   <div class="nav-links-wrap" id="navGroups">
@@ -205,27 +208,27 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Essentials</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/en/estacionamientos/" data-keywords="parking car park lot">
-          <span class="nav-menu-icon">🅿️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🅿️</span>
           <span class="nav-menu-text"><span data-t="nav_park">Parking</span><span class="nav-menu-desc">Where to park your car</span></span>
         </a>
         <a href="/en/salud/" data-keywords="health hospital pharmacy doctor clinic">
-          <span class="nav-menu-icon">🏥</span>
+          <span class="nav-menu-icon" aria-hidden="true">🏥</span>
           <span class="nav-menu-text"><span data-t="nav_health">Health</span><span class="nav-menu-desc">Clinic, pharmacy &amp; emergencies</span></span>
         </a>
         <a href="/en/seguridad/" data-keywords="safety security police fire emergency">
-          <span class="nav-menu-icon">🚔</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚔</span>
           <span class="nav-menu-text"><span data-t="nav_security">Safety</span><span class="nav-menu-desc">Police, Fire Dept, emergencies</span></span>
         </a>
         <a href="/en/servicios/" data-keywords="services shops store atm bank">
-          <span class="nav-menu-icon">🛒</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛒</span>
           <span class="nav-menu-text"><span data-t="nav_commerce">Services</span><span class="nav-menu-desc">Shops &amp; everyday services</span></span>
         </a>
         <a href="/en/gruas/" data-keywords="towing mechanic tire car breakdown">
-          <span class="nav-menu-icon">🔧</span>
+          <span class="nav-menu-icon" aria-hidden="true">🔧</span>
           <span class="nav-menu-text"><span data-t="nav_gruas">Towing &amp; mechanics</span><span class="nav-menu-desc">Vehicle assistance</span></span>
         </a>
         <a href="/en/locomocion/" data-keywords="bus transport public transit">
-          <span class="nav-menu-icon">🚌</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚌</span>
           <span class="nav-menu-text"><span data-t="nav_locomocion">Transport</span><span class="nav-menu-desc">Buses &amp; public transport</span></span>
         </a>
       </div>
@@ -235,27 +238,27 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Visit</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/en/alfareria/" data-keywords="pottery clay ceramics workshop artisan">
-          <span class="nav-menu-icon">🏺</span>
+          <span class="nav-menu-icon" aria-hidden="true">🏺</span>
           <span class="nav-menu-text"><span data-t="nav_pottery">Pottery</span><span class="nav-menu-desc">Workshops &amp; craft tradition</span></span>
         </a>
         <a href="/en/ruta-del-vino/" data-keywords="wine route vineyard winery">
-          <span class="nav-menu-icon">🍷</span>
+          <span class="nav-menu-icon" aria-hidden="true">🍷</span>
           <span class="nav-menu-text"><span data-t="nav_winery">Wine Route</span><span class="nav-menu-desc">Nearby vineyards &amp; wineries</span></span>
         </a>
         <a href="/en/que-ver/" data-keywords="sights attractions church monument what to see">
-          <span class="nav-menu-icon">✨</span>
+          <span class="nav-menu-icon" aria-hidden="true">✨</span>
           <span class="nav-menu-text"><span data-t="nav_seewhat">What to see</span><span class="nav-menu-desc">Attractions &amp; points of interest</span></span>
         </a>
         <a href="/en/plaza/" data-keywords="square plaza park center church">
-          <span class="nav-menu-icon">🌳</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌳</span>
           <span class="nav-menu-text"><span data-t="nav_plaza">Town Square</span><span class="nav-menu-desc">Heart of the village</span></span>
         </a>
         <a href="/en/alrededores/" data-keywords="around surroundings countryside nature rural">
-          <span class="nav-menu-icon">🌄</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌄</span>
           <span class="nav-menu-text"><span data-t="nav_around">Around</span><span class="nav-menu-desc">Los Chiñihues &amp; surroundings</span></span>
         </a>
         <a href="/en/comercio/" data-keywords="shops shopping souvenirs gifts">
-          <span class="nav-menu-icon">🛍️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛍️</span>
           <span class="nav-menu-text"><span data-t="nav_shops_g">Shops</span><span class="nav-menu-desc">Souvenirs &amp; gift shops</span></span>
         </a>
       </div>
@@ -265,15 +268,15 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Eat &amp; sleep</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="/en/gastronomia/" data-keywords="eat restaurant food empanada traditional">
-          <span class="nav-menu-icon">🍽️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🍽️</span>
           <span class="nav-menu-text"><span data-t="nav_food">Eat</span><span class="nav-menu-desc">Restaurants &amp; traditional cuisine</span></span>
         </a>
         <a href="/en/alojamientos/" data-keywords="sleep hotel hostel cabin lodging accommodation">
-          <span class="nav-menu-icon">🛏️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🛏️</span>
           <span class="nav-menu-text"><span data-t="nav_lodging">Lodging</span><span class="nav-menu-desc">Hotels, cabins &amp; suites</span></span>
         </a>
         <a href="/en/plaza/#banos" data-keywords="restroom bathroom toilet wc">
-          <span class="nav-menu-icon">🚽</span>
+          <span class="nav-menu-icon" aria-hidden="true">🚽</span>
           <span class="nav-menu-text"><span data-t="nav_banos">Restrooms</span><span class="nav-menu-desc">Public restrooms available</span></span>
         </a>
       </div>
@@ -283,23 +286,23 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Plan</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
         <a href="#recorrido" data-keywords="tour route itinerary step by step">
-          <span class="nav-menu-icon">🧭</span>
+          <span class="nav-menu-icon" aria-hidden="true">🧭</span>
           <span class="nav-menu-text"><span data-t="nav_tour">Tour</span><span class="nav-menu-desc">Step-by-step tourist route</span></span>
         </a>
         <a href="#mapa" data-keywords="map interactive location">
-          <span class="nav-menu-icon">🗺️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🗺️</span>
           <span class="nav-menu-text"><span data-t="nav_map">Map</span><span class="nav-menu-desc">Interactive village map</span></span>
         </a>
         <a href="#clima" data-keywords="weather temperature rain sun forecast">
-          <span class="nav-menu-icon">🌤️</span>
+          <span class="nav-menu-icon" aria-hidden="true">🌤️</span>
           <span class="nav-menu-text"><span data-t="nav_weather">Weather</span><span class="nav-menu-desc">Current conditions</span></span>
         </a>
         <a href="#galeria" data-keywords="gallery photos images pictures">
-          <span class="nav-menu-icon">📸</span>
+          <span class="nav-menu-icon" aria-hidden="true">📸</span>
           <span class="nav-menu-text"><span data-t="nav_gallery">Gallery</span><span class="nav-menu-desc">Village photos</span></span>
         </a>
         <a href="#eventos" data-keywords="events festivals holidays celebrations">
-          <span class="nav-menu-icon">📅</span>
+          <span class="nav-menu-icon" aria-hidden="true">📅</span>
           <span class="nav-menu-text"><span data-t="nav_events">Events</span><span class="nav-menu-desc">Dates &amp; festivities</span></span>
         </a>
       </div>
