@@ -27,12 +27,16 @@
   var MAP_H = 2543;
 
   // Coordenadas reales de Pomaire (para mapear lat/lng → posición en el mapa)
-  // El mapa ilustrado del PDF cubre aproximadamente esta zona
-  // Ajustado para que los marcadores caigan sobre la imagen recortada
+  // ORIENTACIÓN DEL MAPA ILUSTRADO:
+  //   Norte real → IZQUIERDA de la imagen
+  //   Sur real   → DERECHA de la imagen
+  //   Este real  → ARRIBA de la imagen
+  //   Oeste real → ABAJO de la imagen
+  // Esto significa que el mapa está rotado 90° CW respecto a orientación geográfica estándar
   var GEO_BOUNDS = {
     minLat: -33.6580,
     maxLat: -33.6420,
-    minLng: -71.1600,
+    minLng: -71.1620,
     maxLng: -71.1380
   };
 
@@ -119,13 +123,20 @@
   }
 
   // ─── Geo → Map position ──────────────────────────────────────────────────────
-  // Mapea coordenadas geográficas a posición en pixeles del mapa ilustrado
-  // NOTA: Los valores GEO_BOUNDS deben ajustarse según la orientación real del mapa
-  // Si el norte NO está arriba, hay que intercambiar/invertir ejes
+  // ORIENTACIÓN DEL MAPA:
+  //   Norte real → IZQUIERDA de la imagen (X decrece hacia el norte)
+  //   Este real  → ARRIBA de la imagen (Y decrece hacia el este)
+  // Por lo tanto:
+  //   Longitude (Este/Oeste) controla el eje Y: más Este (mayor lng) = más arriba (menor Y)
+  //   Latitude (Norte/Sur) controla el eje X: más Norte (mayor lat) = más a la izquierda (menor X)
   function geoToMap(lat, lng) {
-    // Map geo to full image pixels
-    var fullX = ((lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng)) * IMG_FULL_W;
-    var fullY = ((lat - GEO_BOUNDS.maxLat) / (GEO_BOUNDS.minLat - GEO_BOUNDS.maxLat)) * (IMG_FULL_H - CROP_BOTTOM);
+    // Longitude → eje Y (invertido: más Este = arriba = menor Y)
+    var normalizedLng = (lng - GEO_BOUNDS.minLng) / (GEO_BOUNDS.maxLng - GEO_BOUNDS.minLng);
+    var fullY = (1 - normalizedLng) * (IMG_FULL_H - CROP_BOTTOM);
+
+    // Latitude → eje X (invertido: más Norte/mayor lat = izquierda = menor X)
+    var normalizedLat = (lat - GEO_BOUNDS.minLat) / (GEO_BOUNDS.maxLat - GEO_BOUNDS.minLat);
+    var fullX = (1 - normalizedLat) * IMG_FULL_W;
 
     // Adjust for the left crop
     var x = fullX - CROP_LEFT;
@@ -321,13 +332,15 @@
 
     // === MARCADORES DE CALIBRACIÓN ===
     // Puntos de referencia conocidos para verificar orientación del mapa
-    // Si estos no caen donde deberían, hay que ajustar GEO_BOUNDS
+    // Plaza de Pomaire: lat -33.6503, lng -71.1498 (aprox)
+    // Roberto Bravo va de Este a Oeste (arriba en el mapa, horizontal)
+    // San Antonio va paralela más abajo
     var calibrationPoints = [
-      { lat: -33.6512, lng: -71.1505, name: '📍 Plaza de Pomaire (CENTRO)', color: '#FF0000' },
-      { lat: -33.6480, lng: -71.1505, name: '⬆️ NORTE (arriba si mapa orientado normal)', color: '#00AA00' },
-      { lat: -33.6545, lng: -71.1505, name: '⬇️ SUR (abajo si mapa orientado normal)', color: '#0000FF' },
-      { lat: -33.6512, lng: -71.1550, name: '⬅️ OESTE (izquierda si mapa orientado normal)', color: '#FF8800' },
-      { lat: -33.6512, lng: -71.1460, name: '➡️ ESTE (derecha si mapa orientado normal)', color: '#8800FF' },
+      { lat: -33.6503, lng: -71.1498, name: '📍 Plaza de Pomaire', color: '#FF0000' },
+      { lat: -33.6503, lng: -71.1520, name: '🏺 Roberto Bravo (más Oeste/abajo)', color: '#FF8800' },
+      { lat: -33.6503, lng: -71.1470, name: '🍽️ Roberto Bravo (más Este/arriba)', color: '#8800FF' },
+      { lat: -33.6480, lng: -71.1498, name: '⬅️ Hacia Norte (izquierda)', color: '#00AA00' },
+      { lat: -33.6530, lng: -71.1498, name: '➡️ Hacia Sur (derecha)', color: '#0000FF' },
     ];
 
     calibrationPoints.forEach(function (pt) {
