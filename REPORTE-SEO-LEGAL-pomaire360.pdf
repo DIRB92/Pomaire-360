@@ -1,0 +1,273 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R] /Count 8 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 5 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 1306 >>
+stream
+BT /F2 16 Tf 50 640 Td (REPORTE COMPLETO Y EXHAUSTIVO) Tj ET
+BT /F2 16 Tf 50 606 Td (Ecosistema pomaire360.cl) Tj ET
+BT /F2 12 Tf 50 560 Td (Analisis SEO, Seguridad, Cumplimiento Legal Chileno y Tecnico) Tj ET
+BT /F1 10 Tf 50 528 Td (Fecha: 19 de August de 2026) Tj ET
+BT /F1 10 Tf 50 514 Td (Preparado por: Kiro \(AI Development Assistant\)) Tj ET
+BT /F1 10 Tf 50 500 Td (Cliente: Pomaire 360 / Diego Ignacio Rojas Barros) Tj ET
+50 466 m 545 466 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 10 Tf 50 438 Td (ARQUITECTURA DEL ECOSISTEMA) Tj ET
+BT /F1 10 Tf 50 422 Td (1. www.pomaire360.cl \(Pomaire-360\) - HTML estatico + JS vanilla - Guia turistica principal) Tj ET
+BT /F1 10 Tf 50 408 Td (2. comprayvende.pomaire360.cl \(pomaire360\) - Vercel Serverless + Upstash Redis - Backend API) Tj ET
+BT /F1 10 Tf 50 394 Td (3. app.pomaire360.cl \(pomaire360-app\) - Next.js 14 + Supabase - App con directorio y resenas) Tj ET
+50 360 m 545 360 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 10 Tf 50 346 Td (RESUMEN EJECUTIVO) Tj ET
+BT /F1 10 Tf 50 330 Td (Total de problemas detectados: 16) Tj ET
+BT /F1 10 Tf 50 316 Td (- Criticos \(Semana 1\): 4) Tj ET
+BT /F1 10 Tf 50 302 Td (- Importantes \(Semana 2\): 6) Tj ET
+BT /F1 10 Tf 50 288 Td (- Moderados \(Semana 3+\): 6) Tj ET
+BT /F1 10 Tf 50 274 Td (- Puntos positivos destacados: 15) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 7 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+7 0 obj
+<< /Length 3047 >>
+stream
+BT /F2 16 Tf 50 770 Td (PROBLEMAS CRITICOS \(Accion inmediata\)) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 722 Td ([!] 1. CONFLICTO DE REDIRECTS vs PAGINAS EXISTENTES) Tj ET
+BT /F2 10 Tf 50 704 Td (Afecta: www.pomaire360.cl | Severidad: ALTA | Impacto: SEO) Tj ET
+BT /F1 10 Tf 50 676 Td (El archivo _redirects define redirecciones 301 PERO las paginas originales siguen) Tj ET
+BT /F1 10 Tf 50 662 Td (existiendo como archivos HTML Y siguen en el sistema i18n generando versiones EN/PT:) Tj ET
+BT /F1 10 Tf 60 634 Td (/gastronomia/ -> /restaurantes/ \(archivo gastronomia/index.html EXISTE\)) Tj ET
+BT /F1 10 Tf 60 620 Td (/alojamientos/ -> /alojamiento/ \(archivo alojamientos/index.html EXISTE\)) Tj ET
+BT /F1 10 Tf 60 606 Td (/alrededores/ -> /turismo/ \(archivo alrededores/index.html EXISTE\)) Tj ET
+BT /F1 10 Tf 60 592 Td (/que-ver/ -> /turismo/ \(archivo que-ver/index.html EXISTE\)) Tj ET
+BT /F1 10 Tf 60 578 Td (/locomocion/ -> /transporte/ \(archivo locomocion/index.html EXISTE\)) Tj ET
+BT /F1 10 Tf 60 564 Td (/gruas/ -> /transporte/ \(archivo gruas/index.html EXISTE\)) Tj ET
+BT /F2 10 Tf 50 536 Td (Consecuencias:) Tj ET
+BT /F1 10 Tf 50 522 Td (- Google indexa ambas URLs -> contenido duplicado) Tj ET
+BT /F1 10 Tf 50 508 Td (- Hreflang de paginas deprecated apuntan a versiones EN/PT que dan 404) Tj ET
+BT /F1 10 Tf 50 494 Td (- Dependiendo del CDN, la redirect puede no dispararse si el archivo existe) Tj ET
+BT /F2 10 Tf 50 466 Td (Solucion: Eliminar archivos HTML deprecated y sacarlos del page-map.js) Tj ET
+50 432 m 545 432 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 414 Td ([!] 2. CSRF BYPASS EN API PUBLICA) Tj ET
+BT /F2 10 Tf 50 396 Td (Afecta: comprayvende.pomaire360.cl | Severidad: ALTA | Impacto: Seguridad) Tj ET
+BT /F1 10 Tf 50 368 Td (En _utils.js, la funcion verifyOrigin\(\) permite peticiones sin header Origin:) Tj ET
+BT /F1 10 Tf 60 354 Td (function verifyOrigin\(req\) {) Tj ET
+BT /F1 10 Tf 60 340 Td (if \(!origin\) { return true; } // BYPASS) Tj ET
+BT /F1 10 Tf 60 326 Td (}) Tj ET
+BT /F1 10 Tf 50 298 Td (Cualquier script/bot puede hacer POST a /api/negocios y /api/mensajes.) Tj ET
+BT /F1 10 Tf 50 284 Td (La unica defensa es rate limit por IP que se puede evadir con IPs rotativas.) Tj ET
+BT /F2 10 Tf 50 256 Td (Solucion: Solo permitir sin Origin si viene con admin token.) Tj ET
+50 222 m 545 222 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 204 Td ([!] 3. HREFLANG APUNTANDO A PAGINAS INEXISTENTES) Tj ET
+BT /F2 10 Tf 50 186 Td (Afecta: www.pomaire360.cl | Severidad: ALTA | Impacto: SEO) Tj ET
+BT /F1 10 Tf 50 158 Td (Varias paginas declaran hreflang en/pt pero NO tienen versiones generadas:) Tj ET
+BT /F1 10 Tf 60 144 Td (- /restaurantes/ - declara hreflang EN/PT pero no existe en EN ni PT) Tj ET
+BT /F1 10 Tf 60 130 Td (- /transporte/ - declara hreflang EN/PT pero no existe en EN ni PT) Tj ET
+BT /F1 10 Tf 60 116 Td (- /turismo/ - declara hreflang EN/PT pero no existe en EN ni PT) Tj ET
+BT /F1 10 Tf 60 102 Td (- /talleres/ - declara hreflang EN/PT pero no existe en EN ni PT) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 9 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+9 0 obj
+<< /Length 846 >>
+stream
+BT /F1 10 Tf 60 780 Td (- /banos/ - declara hreflang EN/PT pero no existe en EN ni PT) Tj ET
+BT /F2 10 Tf 50 752 Td (Solucion: Agregar al page-map.js o eliminar hreflang de esas paginas.) Tj ET
+50 718 m 545 718 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 700 Td ([!] 4. DATOS DE CONTACTO EXPUESTOS SIN PROTECCION) Tj ET
+BT /F2 10 Tf 50 682 Td (Afecta: comprayvende.pomaire360.cl | Severidad: ALTA | Impacto: Legal \(Ley 21.719\)) Tj ET
+BT /F1 10 Tf 50 654 Td (GET /api/negocios devuelve TODOS los negocios con telefono, WhatsApp, Instagram) Tj ET
+BT /F1 10 Tf 50 640 Td (sin rate limiting en el GET, sin CAPTCHA ni proteccion anti-scraping.) Tj ET
+BT /F1 10 Tf 50 626 Td (Un scraper puede recopilar todos los telefonos en una sola peticion.) Tj ET
+BT /F2 10 Tf 50 598 Td (Solucion: Rate limiting en GET + documentar en politica de privacidad.) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 11 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+11 0 obj
+<< /Length 1838 >>
+stream
+BT /F2 16 Tf 50 770 Td (PROBLEMAS IMPORTANTES \(Resolver pronto\)) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 722 Td ([!] 5. SIN CONTENT SECURITY POLICY EN APP Y BACKEND) Tj ET
+BT /F2 10 Tf 50 704 Td (Afecta: app.pomaire360.cl y comprayvende.pomaire360.cl) Tj ET
+BT /F1 10 Tf 50 690 Td (Ambos repos tienen headers de seguridad pero NO incluyen CSP.) Tj ET
+BT /F1 10 Tf 50 676 Td (Sin CSP, un XSS exitoso puede cargar scripts externos sin restriccion.) Tj ET
+BT /F2 12 Tf 50 640 Td ([!] 6. APP SIN SITEMAP NI ROBOTS.TXT) Tj ET
+BT /F2 10 Tf 50 622 Td (Afecta: app.pomaire360.cl) Tj ET
+BT /F1 10 Tf 50 608 Td (No tiene sitemap.xml, robots.txt, ni JSON-LD \(structured data\).) Tj ET
+BT /F1 10 Tf 50 594 Td (Google no puede descubrir los perfiles de negocios dinamicos.) Tj ET
+BT /F2 12 Tf 50 558 Td ([!] 7. APP SIN OG IMAGE POR DEFECTO) Tj ET
+BT /F2 10 Tf 50 540 Td (Afecta: app.pomaire360.cl) Tj ET
+BT /F1 10 Tf 50 526 Td (El layout.tsx tiene metadata OpenGraph pero sin propiedad images.) Tj ET
+BT /F1 10 Tf 50 512 Td (Compartir homepage/planes en redes sociales muestra tarjeta sin imagen.) Tj ET
+BT /F2 12 Tf 50 476 Td ([!] 8. INCONSISTENCIA DE CATEGORIAS ENTRE SISTEMAS) Tj ET
+BT /F1 10 Tf 50 458 Td (API POST usa slugs: alfareria, talleres, restaurantes...) Tj ET
+BT /F1 10 Tf 50 444 Td (API PUT \(moderar\) usa display names: Artesania en greda, Comida y cocineria...) Tj ET
+BT /F1 10 Tf 50 430 Td (Esto causa que la validacion de categorias sea inconsistente.) Tj ET
+BT /F2 12 Tf 50 394 Td ([!] 9. COOKIE CONSENT FALTANTE EN 2 PAGINAS) Tj ET
+BT /F1 10 Tf 50 376 Td (/mapa-ilustrado/ y /mapa-turistico/ no cargan cookie-consent.js.) Tj ET
+BT /F2 12 Tf 50 340 Td ([!] 10. PAGINAS LEGALES SIN OG TAGS NI HREFLANG) Tj ET
+BT /F1 10 Tf 50 322 Td (/terminos/ y /privacidad/ carecen de Open Graph tags y hreflang.) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 13 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+13 0 obj
+<< /Length 1339 >>
+stream
+BT /F2 16 Tf 50 770 Td (PROBLEMAS MODERADOS) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 722 Td ([~] 11. Rate limit bypass si Redis cae \(upload.js\)) Tj ET
+BT /F1 10 Tf 50 704 Td (Si Redis esta caido, las subidas de imagenes pasan sin rate limiting.) Tj ET
+BT /F2 12 Tf 50 668 Td ([~] 12. Sin rate limiting en resenas \(pomaire360-app\)) Tj ET
+BT /F1 10 Tf 50 650 Td (Formulario de resenas permite envios ilimitados. Sin CAPTCHA ni debounce.) Tj ET
+BT /F2 12 Tf 50 614 Td ([~] 13. Admin URL publica en robots.txt) Tj ET
+BT /F1 10 Tf 50 596 Td (Disallow: /admin.html revela la existencia de la pagina admin.) Tj ET
+BT /F2 12 Tf 50 560 Td ([~] 14. Operaciones admin desde cliente \(pomaire360-app\)) Tj ET
+BT /F1 10 Tf 50 542 Td (negocios-table.tsx hace updates directos a Supabase desde el navegador.) Tj ET
+BT /F1 10 Tf 50 528 Td (Seguridad depende enteramente de RLS de Supabase.) Tj ET
+BT /F2 12 Tf 50 492 Td ([~] 15. Privacidad de la app desactualizada) Tj ET
+BT /F1 10 Tf 50 474 Td (Politica dice "enero 2025" vs "agosto 2026" del sitio principal.) Tj ET
+BT /F1 10 Tf 50 460 Td (No menciona Google OAuth ni Supabase como procesadores.) Tj ET
+BT /F2 12 Tf 50 424 Td ([~] 16. Header X-XSS-Protection deprecado) Tj ET
+BT /F1 10 Tf 50 406 Td (Los 3 repos incluyen X-XSS-Protection: 1; mode=block \(deprecated\).) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 15 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+15 0 obj
+<< /Length 1578 >>
+stream
+BT /F2 16 Tf 50 770 Td (PUNTOS POSITIVOS DESTACABLES) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F1 10 Tf 50 730 Td (1. JSON-LD con @graph de 7 tipos - excepcional para SEO) Tj ET
+BT /F1 10 Tf 50 702 Td (2. Timing-safe token comparison en backend - previene timing attacks) Tj ET
+BT /F1 10 Tf 50 674 Td (3. CORS con allowlist explicita \(no wildcard\) en todos los endpoints) Tj ET
+BT /F1 10 Tf 50 646 Td (4. Cookie consent que realmente bloquea GA4 si rechazas + boton revocacion) Tj ET
+BT /F1 10 Tf 50 618 Td (5. Prevencion de Open Redirect en auth callback con allowlist) Tj ET
+BT /F1 10 Tf 50 590 Td (6. Defense-in-depth: admin verificado en middleware + layout + RLS) Tj ET
+BT /F1 10 Tf 50 562 Td (7. PWA/Service Worker con fallback por idioma para emergencias offline) Tj ET
+BT /F1 10 Tf 50 534 Td (8. Sanitizacion HTML robusta: escapeHTML, sanitizeTranslationHTML, sanitizeURL) Tj ET
+BT /F1 10 Tf 50 506 Td (9. Cumplimiento total Ley 19.496 y 21.719 en sitio principal) Tj ET
+BT /F1 10 Tf 50 478 Td (10. Performance: Critical CSS inline, fonts preloaded, lazy loading, defer) Tj ET
+BT /F1 10 Tf 50 450 Td (11. HSTS Preload con max-age 1 anio + includeSubDomains) Tj ET
+BT /F1 10 Tf 50 422 Td (12. Skip-to-content, focus trap, prefers-reduced-motion, ARIA labels) Tj ET
+BT /F1 10 Tf 50 394 Td (13. Headers de seguridad completos en los 3 repositorios) Tj ET
+BT /F1 10 Tf 50 366 Td (14. Magic byte verification en uploads - previene archivos disfrazados) Tj ET
+BT /F1 10 Tf 50 338 Td (15. i18n con 21 paginas en 3 idiomas + hreflang bidireccional en sitemap) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 17 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+17 0 obj
+<< /Length 1672 >>
+stream
+BT /F2 16 Tf 50 770 Td (PLAN DE ACCION PRIORIZADO) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 722 Td (Semana 1 \(Urgente\)) Tj ET
+BT /F1 10 Tf 50 704 Td (1. Resolver conflicto _redirects vs paginas existentes) Tj ET
+BT /F1 10 Tf 50 690 Td (2. Fix CSRF bypass en verifyOrigin\(\) del backend) Tj ET
+BT /F1 10 Tf 50 676 Td (3. Corregir hreflang que apuntan a 404s) Tj ET
+BT /F1 10 Tf 50 662 Td (4. Agregar cookie-consent.js a mapa-ilustrado y mapa-turistico) Tj ET
+BT /F2 12 Tf 50 626 Td (Semana 2 \(Importante\)) Tj ET
+BT /F1 10 Tf 50 608 Td (5. Agregar CSP a pomaire360-app y pomaire360 backend) Tj ET
+BT /F1 10 Tf 50 594 Td (6. Implementar sitemap dinamico en app Next.js) Tj ET
+BT /F1 10 Tf 50 580 Td (7. Agregar OG image default en app layout) Tj ET
+BT /F1 10 Tf 50 566 Td (8. Agregar rate limiting al GET /api/negocios) Tj ET
+BT /F2 12 Tf 50 530 Td (Semana 3 \(Mejora\)) Tj ET
+BT /F1 10 Tf 50 512 Td (9. Actualizar politica de privacidad de la app) Tj ET
+BT /F1 10 Tf 50 498 Td (10. Implementar JSON-LD LocalBusiness en paginas de negocios) Tj ET
+BT /F1 10 Tf 50 484 Td (11. Corregir inconsistencia de categorias en PUT /api/moderar) Tj ET
+BT /F1 10 Tf 50 470 Td (12. Agregar rate limiting a formulario de resenas) Tj ET
+BT /F2 12 Tf 50 434 Td (Backlog) Tj ET
+BT /F1 10 Tf 50 416 Td (13. Eliminar header X-XSS-Protection o establecer en 0) Tj ET
+BT /F1 10 Tf 50 402 Td (14. Agregar robots.txt a la app) Tj ET
+BT /F1 10 Tf 50 388 Td (15. Mejorar robots.txt del backend \(no revelar /admin.html\)) Tj ET
+BT /F1 10 Tf 50 374 Td (16. Agregar paginas nuevas al page-map i18n) Tj ET
+BT /F1 10 Tf 50 360 Td (17. Verificar politicas RLS de Supabase) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 19 0 R /Resources << /Font << /F1 3 0 R /F2 20 0 R >> >> >>
+endobj
+19 0 obj
+<< /Length 2027 >>
+stream
+BT /F2 16 Tf 50 770 Td (CALIFICACIONES POR DOMINIO) Tj ET
+50 740 m 545 740 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F2 12 Tf 50 722 Td (www.pomaire360.cl \(Sitio Principal\)) Tj ET
+BT /F1 10 Tf 50 704 Td (SEO On-Page:      ***** Excelente) Tj ET
+BT /F1 10 Tf 50 690 Td (SEO Tecnico:      ****  Muy Bueno \(3 issues: redirects, hreflang\)) Tj ET
+BT /F1 10 Tf 50 676 Td (Seguridad:        ***** Excelente) Tj ET
+BT /F1 10 Tf 50 662 Td (Legal:            ***** Cumple totalmente) Tj ET
+BT /F1 10 Tf 50 648 Td (Accesibilidad:    ***** Excelente) Tj ET
+BT /F1 10 Tf 50 634 Td (Performance:      ***** Excelente) Tj ET
+BT /F1 10 Tf 50 620 Td (Cookies:          ****  Muy Bueno \(2 paginas sin banner\)) Tj ET
+BT /F2 12 Tf 50 584 Td (comprayvende.pomaire360.cl \(Backend API\)) Tj ET
+BT /F1 10 Tf 50 566 Td (Seguridad API:    ****  Bueno \(2 issues: CSRF, rate limit\)) Tj ET
+BT /F1 10 Tf 50 552 Td (Proteccion Datos: ***   Regular \(contactos sin proteccion\)) Tj ET
+BT /F1 10 Tf 50 538 Td (Legal:            ***   Regular \(sin politica propia\)) Tj ET
+BT /F1 10 Tf 50 524 Td (Input Validation: ***** Excelente) Tj ET
+BT /F1 10 Tf 50 510 Td (Autenticacion:    ***** Excelente \(timing-safe, fail-closed\)) Tj ET
+BT /F2 12 Tf 50 474 Td (app.pomaire360.cl \(App Next.js\)) Tj ET
+BT /F1 10 Tf 50 456 Td (SEO:              ***   Regular \(sin sitemap, JSON-LD, OG image\)) Tj ET
+BT /F1 10 Tf 50 442 Td (Seguridad:        ****  Bueno \(sin CSP, sin rate limit resenas\)) Tj ET
+BT /F1 10 Tf 50 428 Td (Legal:            ***   Regular \(privacidad desactualizada\)) Tj ET
+BT /F1 10 Tf 50 414 Td (Auth/Access:      ***** Excelente) Tj ET
+BT /F1 10 Tf 50 400 Td (UX/Performance:   ***** Excelente) Tj ET
+50 366 m 545 366 l 0.7 0.7 0.7 RG 0.5 w S
+BT /F1 10 Tf 50 342 Td (--- Fin del reporte ---) Tj ET
+BT /F1 10 Tf 50 314 Td (Generado: 2026-08-19 19:14 UTC) Tj ET
+BT /F1 10 Tf 50 300 Td (Herramienta: Kiro AI Development Assistant) Tj ET
+BT /F1 10 Tf 50 286 Td (Repositorios analizados: DIRB92/Pomaire-360, DIRB92/pomaire360, DIRB92/pomaire360-app) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000168 00000 n 
+0000000265 00000 n 
+0000000402 00000 n 
+0000001760 00000 n 
+0000001897 00000 n 
+0000004996 00000 n 
+0000005133 00000 n 
+0000006030 00000 n 
+0000006169 00000 n 
+0000008060 00000 n 
+0000008199 00000 n 
+0000009591 00000 n 
+0000009730 00000 n 
+0000011361 00000 n 
+0000011500 00000 n 
+0000013225 00000 n 
+0000013364 00000 n 
+0000015444 00000 n 
+trailer
+<< /Size 21 /Root 1 0 R >>
+startxref
+15547
+%%EOF
