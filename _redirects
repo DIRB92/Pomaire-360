@@ -1,39 +1,54 @@
 # ═══════════════════════════════════════════════════════════════════════════
 # Redirects 301 — Migración de categorías v2
-# URLs antiguas redirigidas a las nuevas categorías estándar
+# URLs antiguas redirigidas al directorio principal por categoría
 # Formato: /ruta-antigua /ruta-nueva código
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Gastronomía → Restaurantes
-/gastronomia/  /restaurantes/  301
-/en/gastronomia/  /en/restaurantes/  301
-/pt/gastronomia/  /pt/restaurantes/  301
+# Gastronomía → Directorio Restaurantes
+/gastronomia/  /comercio/?cat=restaurantes  301
+/en/gastronomia/  /comercio/?cat=restaurantes  301
+/pt/gastronomia/  /comercio/?cat=restaurantes  301
 
-# Alojamientos (plural) → Alojamiento (singular)
-/alojamientos/  /alojamiento/  301
-/en/alojamientos/  /en/alojamiento/  301
-/pt/alojamientos/  /pt/alojamiento/  301
+# Alojamientos → Directorio Alojamiento
+/alojamientos/  /comercio/?cat=alojamiento  301
+/en/alojamientos/  /comercio/?cat=alojamiento  301
+/pt/alojamientos/  /comercio/?cat=alojamiento  301
 
-# Alrededores → Turismo
-/alrededores/  /turismo/  301
-/en/alrededores/  /en/turismo/  301
-/pt/alrededores/  /pt/turismo/  301
+# Alrededores → Directorio Turismo
+/alrededores/  /comercio/?cat=turismo  301
+/en/alrededores/  /comercio/?cat=turismo  301
+/pt/alrededores/  /comercio/?cat=turismo  301
 
-# Qué ver → Turismo
-/que-ver/  /turismo/  301
-/en/que-ver/  /en/turismo/  301
-/pt/que-ver/  /pt/turismo/  301
+# Qué ver → Directorio Turismo
+/que-ver/  /comercio/?cat=turismo  301
+/en/que-ver/  /comercio/?cat=turismo  301
+/pt/que-ver/  /comercio/?cat=turismo  301
 
-# Locomoción → Transporte
-/locomocion/  /transporte/  301
-/en/locomocion/  /en/transporte/  301
-/pt/locomocion/  /pt/transporte/  301
+# Locomoción → Directorio Transporte
+/locomocion/  /comercio/?cat=transporte  301
+/en/locomocion/  /comercio/?cat=transporte  301
+/pt/locomocion/  /comercio/?cat=transporte  301
 
-# Grúas → Transporte
-/gruas/  /transporte/  301
-/en/gruas/  /en/transporte/  301
-/pt/gruas/  /pt/transporte/  301
+# Grúas → Directorio Transporte
+/gruas/  /comercio/?cat=transporte  301
+/en/gruas/  /comercio/?cat=transporte  301
+/pt/gruas/  /comercio/?cat=transporte  301
 
 # Mapa legacy → Mapa Turístico
 /mapa    /mapa-turistico/  301
 /mapa/   /mapa-turistico/  301
+
+# Restaurantes standalone → Directorio Restaurantes
+/restaurantes/  /comercio/?cat=restaurantes  301
+
+# Transporte standalone → Directorio Transporte
+/transporte/  /comercio/?cat=transporte  301
+
+# Turismo standalone → Directorio Turismo
+/turismo/  /comercio/?cat=turismo  301
+
+# Talleres standalone → Directorio Talleres
+/talleres/  /comercio/?cat=talleres  301
+
+# Baños standalone → Directorio Baños
+/banos/  /comercio/?cat=banos  301
