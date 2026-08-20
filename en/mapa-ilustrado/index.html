@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#D4654A">
+
+<!-- Critical inline styles -->
+<style>
+body{font-family:'Inter',-apple-system,sans-serif;background:#FAFAF7;color:#2D1A0A;margin:0}
+nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+</style>
+
+<title>Illustrated Map of Pomaire — Explore the pottery village</title>
+<meta name="description" content="Interactive illustrated map of Pomaire in theme-park style. Discover pottery galleries, restaurants, workshops and tourist attractions on an artistic map of Chile's pottery village.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.pomaire360.cl/en/mapa-ilustrado/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Illustrated Map of Pomaire — Chile's pottery village">
+<meta property="og:description" content="Explore Pomaire with an interactive illustrated map: pottery, restaurants, workshops and attractions in artistic style.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.pomaire360.cl/en/mapa-ilustrado/">
+<meta property="og:image" content="https://www.pomaire360.cl/img/gallery/pomaire-20240916_120821-web.webp">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Pomaire 360">
+
+<!-- Fonts & Styles -->
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style-2026.css">
+<link rel="stylesheet" href="/components.css">
+<link rel="stylesheet" href="/dark-mode-overrides.css">
+<link rel="stylesheet" href="/mapa-ilustrado/mapa-ilustrado.css">
+
+<!-- Scripts -->
+<script defer src="/nav.js"></script>
+<script defer src="/a11y-enhancements.js"></script>
+<script defer src="/mapa-ilustrado/mapa-ilustrado.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/en/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline">Tourism & Culture</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 Essentials <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/comercio/?cat=estacionamientos">🅿️ Parking</a>
+        <a href="/comercio/?cat=salud">🏥 Health</a>
+        <a href="/comercio/?cat=seguridad">🚔 Security</a>
+        <a href="/comercio/?cat=servicios">🛒 Services</a>
+        <a href="/comercio/?cat=gruas">🔧 Towing & Mechanics</a>
+        <a href="/comercio/?cat=locomocion">🚌 Transportation</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 What to do <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/comercio/?cat=alfareria">🏺 Pottery</a>
+        <a href="/comercio/?cat=vino">🍷 Wine Route</a>
+        <a href="/comercio/?cat=turismo">✨ What to see</a>
+        <a href="/comercio/?cat=plaza">🌳 Public Square</a>
+        <a href="/comercio/?cat=alrededores">🌄 Surroundings</a>
+        <a href="/comercio/?cat=comercio">🛒 Commerce</a>
+      </div>
+    </div>
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ Eat & Sleep <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/comercio/?cat=restaurantes">🍽️ Eat</a>
+        <a href="/comercio/?cat=alojamiento">🛏️ Lodging</a>
+        <a href="/comercio/?cat=banos">🚽 Restrooms</a>
+      </div>
+    </div>
+    <a class="nav-map-btn" href="/en/mapa-turistico/">🗺️ Tourist Map</a>
+    <a class="nav-cta" href="/en/apoyar/">💛 Support</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="mapa-hero">
+  <h1>🗺️ Illustrated Map of Pomaire</h1>
+  <p>Explore the pottery village like a theme park. Tap each point to discover galleries, restaurants, workshops and attractions.</p>
+</header>
+
+<!-- STATS -->
+<div class="mapa-stats" id="mapaStats">
+  <span class="mapa-stat">Loading businesses...</span>
+</div>
+
+<!-- FILTER BAR -->
+<div class="mapa-filter-bar">
+  <button class="mapa-filter-btn active" data-filter="all">
+    <span>✦</span> All <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="alfareria">
+    <span>🏺</span> Pottery <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="talleres">
+    <span>🎨</span> Workshops <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="restaurantes">
+    <span>🍽️</span> Restaurants <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="alojamiento">
+    <span>🛏️</span> Lodging <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="comercio">
+    <span>🛍️</span> Commerce <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="estacionamientos">
+    <span>🅿️</span> Parking <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="turismo">
+    <span>📍</span> Tourism <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="servicios">
+    <span>🔧</span> Services <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="salud">
+    <span>🏥</span> Health <span class="filter-count">0</span>
+  </button>
+  <button class="mapa-filter-btn" data-filter="seguridad">
+    <span>🚔</span> Security <span class="filter-count">0</span>
+  </button>
+</div>
+
+<!-- MAP VIEWPORT -->
+<div class="mapa-viewport" id="mapaViewport">
+
+  <!-- Loading -->
+  <div id="mapaLoading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(90,158,74,.85);z-index:1000;pointer-events:none;">
+    <p style="font-size:1.1rem;color:#fff;background:rgba(0,0,0,.4);padding:.8rem 1.5rem;border-radius:12px;">🏺 Loading Pomaire map...</p>
+  </div>
+
+  <!-- Canvas (transformable) -->
+  <div class="mapa-canvas" id="mapaCanvas">
+    <!-- SVG Map illustration -->
+    <img src="/mapa-ilustrado/mapa-pomaire.svg" class="mapa-ilustracion" alt="Illustrated map of Pomaire" draggable="false">
+    
+    <!-- Markers layer -->
+    <div class="mapa-markers" id="mapaMarkers"></div>
+  </div>
+
+  <!-- Zoom controls -->
+  <div class="mapa-controls">
+    <button class="mapa-ctrl-btn" id="zoomIn" title="Zoom in">+</button>
+    <button class="mapa-ctrl-btn" id="zoomOut" title="Zoom out">−</button>
+    <button class="mapa-ctrl-btn" id="zoomReset" title="Reset view">⟳</button>
+  </div>
+
+  <!-- Minimap -->
+  <div class="mapa-minimap" id="mapaMinimap">
+    <div class="minimap-inner">
+      <img src="/mapa-ilustrado/mapa-pomaire.svg" style="width:100%;height:100%;object-fit:cover;opacity:.7;" alt="" draggable="false">
+      <div class="minimap-view" id="minimapView"></div>
+    </div>
+  </div>
+
+  <!-- List toggle (mobile) -->
+  <button class="mapa-list-toggle" id="listToggle">📋 View list</button>
+</div>
+
+<!-- POPUP OVERLAY -->
+<div class="mapa-popup-overlay" id="popupOverlay">
+  <div class="mapa-popup" id="popupContent">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb" style="padding:1rem 1.5rem;">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/en/"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1">
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name" aria-current="page">Illustrated Map</span>
+      <meta itemprop="position" content="2">
+    </li>
+  </ol>
+</nav>
+
+<!-- INFO SECTION -->
+<section style="padding:3rem 1.5rem;max-width:800px;margin:0 auto;text-align:center;">
+  <h2 style="font-family:var(--p-font-display);font-size:1.8rem;margin-bottom:1rem;">How to use the map?</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;text-align:left;">
+    <div style="background:var(--p-white);padding:1.2rem;border-radius:16px;border:1px solid rgba(61,53,48,.05);">
+      <p style="font-size:1.5rem;margin-bottom:.5rem;">👆</p>
+      <p style="font-weight:700;margin-bottom:.3rem;">Explore</p>
+      <p style="font-size:.85rem;color:var(--p-muted);">Drag to move around the map. Use the controls or mouse wheel to zoom in and out.</p>
+    </div>
+    <div style="background:var(--p-white);padding:1.2rem;border-radius:16px;border:1px solid rgba(61,53,48,.05);">
+      <p style="font-size:1.5rem;margin-bottom:.5rem;">🏺</p>
+      <p style="font-weight:700;margin-bottom:.3rem;">Discover</p>
+      <p style="font-size:.85rem;color:var(--p-muted);">Tap any marker to see business details: phone, hours, photos and more.</p>
+    </div>
+    <div style="background:var(--p-white);padding:1.2rem;border-radius:16px;border:1px solid rgba(61,53,48,.05);">
+      <p style="font-size:1.5rem;margin-bottom:.5rem;">🔍</p>
+      <p style="font-weight:700;margin-bottom:.3rem;">Filter</p>
+      <p style="font-size:.85rem;color:var(--p-muted);">Use the category buttons to show only what interests you: pottery, restaurants, etc.</p>
+    </div>
+  </div>
+  <p style="margin-top:2rem;font-size:.85rem;color:var(--p-muted);">
+    💡 You can also visit the <a href="/en/mapa-turistico/" style="color:var(--p-primary);font-weight:700;">satellite map</a> with routes and geolocation.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <p class="footer-brand">🏺 Pomaire 360</p>
+    <p class="footer-tagline">Tourism, culture and pottery tradition</p>
+    <div class="footer-links">
+      <a href="/en/">Home</a>
+      <a href="/en/mapa-turistico/">Satellite Map</a>
+      <a href="/comercio/?cat=alfareria">Pottery</a>
+      <a href="/comercio/?cat=restaurantes">Gastronomy</a>
+      <a href="/en/apoyar/">Support</a>
+    </div>
+    <p class="footer-copy">© 2024–2026 Pomaire 360 · Independent community project</p>
+  </div>
+</footer>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristMap",
+  "name": "Illustrated Map of Pomaire",
+  "description": "Interactive illustrated map of the pottery village of Pomaire, Chile",
+  "url": "https://www.pomaire360.cl/en/mapa-ilustrado/",
+  "about": {
+    "@type": "Place",
+    "name": "Pomaire",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Pomaire",
+      "addressRegion": "Metropolitan Region",
+      "addressCountry": "CL"
+    }
+  }
+}
+</script>
+<script defer src="/ga-loader.js"></script>
+<script defer src="/cookie-consent.js"></script>
+<script defer src="/a11y-enhancements.js"></script>
+</body>
+</html>
