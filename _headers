@@ -6,6 +6,14 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; connect-src 'self' https://api.open-meteo.com https://*.tile.openstreetmap.org https://www.google-analytics.com https://www.googletagmanager.com https://*.supabase.co https://challenges.cloudflare.com; font-src 'self'; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'
 
+/mapa-turistico/picker/*
+  X-Frame-Options: ALLOW-FROM https://app.pomaire360.cl
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(self "https://app.pomaire360.cl"), camera=(), microphone=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; connect-src 'self' https://*.tile.openstreetmap.org https://*.supabase.co; font-src 'self'; frame-ancestors 'self' https://app.pomaire360.cl https://*.pomaire360.cl; object-src 'none'; base-uri 'self'
+
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
