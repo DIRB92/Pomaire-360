@@ -11,19 +11,59 @@
   var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var TABLE = 'negocios_directorio360';
 
+  // ─── i18n: detect page language ─────────────────────────────────────────
+  var pageLang = (document.documentElement.lang || 'es').substring(0, 2);
+
+  var I18N_LABELS = {
+    es: {
+      alfareria: 'Alfarería', talleres: 'Taller', restaurantes: 'Restaurante',
+      alojamiento: 'Alojamiento', comercio: 'Comercio', servicios: 'Servicios',
+      estacionamientos: 'Estacionar', salud: 'Salud', seguridad: 'Seguridad',
+      banos: 'Baños', transporte: 'Transporte', turismo: 'Turismo',
+      all_businesses: 'Todos los negocios',
+      search_results: 'Resultados de búsqueda',
+      no_results: 'Sin resultados para',
+      view_map: 'Ver en mapa',
+      premium: 'Premium', featured: 'Destacado'
+    },
+    en: {
+      alfareria: 'Pottery', talleres: 'Workshop', restaurantes: 'Restaurant',
+      alojamiento: 'Lodging', comercio: 'Commerce', servicios: 'Services',
+      estacionamientos: 'Parking', salud: 'Health', seguridad: 'Security',
+      banos: 'Restrooms', transporte: 'Transport', turismo: 'Tourism',
+      all_businesses: 'All businesses',
+      search_results: 'Search results',
+      no_results: 'No results for',
+      view_map: 'View on map',
+      premium: 'Premium', featured: 'Featured'
+    },
+    pt: {
+      alfareria: 'Olaria', talleres: 'Oficina', restaurantes: 'Restaurante',
+      alojamiento: 'Hospedagem', comercio: 'Comércio', servicios: 'Serviços',
+      estacionamientos: 'Estacionamento', salud: 'Saúde', seguridad: 'Segurança',
+      banos: 'Banheiros', transporte: 'Transporte', turismo: 'Turismo',
+      all_businesses: 'Todos os negócios',
+      search_results: 'Resultados da busca',
+      no_results: 'Sem resultados para',
+      view_map: 'Ver no mapa',
+      premium: 'Premium', featured: 'Destaque'
+    }
+  };
+
+  var t = I18N_LABELS[pageLang] || I18N_LABELS.es;
   var CATEGORY_LABELS = {
-    alfareria: 'Alfareria',
-    talleres: 'Taller',
-    restaurantes: 'Restaurante',
-    alojamiento: 'Alojamiento',
-    comercio: 'Comercio',
-    servicios: 'Servicios',
-    estacionamientos: 'Estacionar',
-    salud: 'Salud',
-    seguridad: 'Seguridad',
-    banos: 'Banos',
-    transporte: 'Transporte',
-    turismo: 'Turismo'
+    alfareria: t.alfareria,
+    talleres: t.talleres,
+    restaurantes: t.restaurantes,
+    alojamiento: t.alojamiento,
+    comercio: t.comercio,
+    servicios: t.servicios,
+    estacionamientos: t.estacionamientos,
+    salud: t.salud,
+    seguridad: t.seguridad,
+    banos: t.banos,
+    transporte: t.transporte,
+    turismo: t.turismo
   };
 
   // ─── State ──────────────────────────────────────────────────────────────
@@ -104,9 +144,9 @@
     // Category badge over image
     html += '<span class="mod-card-img-badge">' + escapeHTML(label) + '</span>';
     if (plan === 'premium') {
-      html += '<span class="mod-card-plan-badge mod-plan-premium">Premium</span>';
+      html += '<span class="mod-card-plan-badge mod-plan-premium">' + t.premium + '</span>';
     } else if (plan === 'destacado') {
-      html += '<span class="mod-card-plan-badge mod-plan-destacado">Destacado</span>';
+      html += '<span class="mod-card-plan-badge mod-plan-destacado">' + t.featured + '</span>';
     }
     html += '</div>';
 
@@ -131,7 +171,7 @@
       // Mapa interactivo (link al mapa del sitio con coordenadas)
       if (hasCoords) {
         var mapaInteractivoUrl = '/mapa-turistico/#' + lat + ',' + lng;
-        html += '<a class="mod-btn-mapa-interactivo" href="' + mapaInteractivoUrl + '" title="Ver en mapa interactivo de Pomaire 360">'
+        html += '<a class="mod-btn-mapa-interactivo" href="' + mapaInteractivoUrl + '" title="' + t.view_map + '">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'
           + ' Mapa Interactivo</a>';
       }
@@ -213,7 +253,7 @@
     // Update search count
     if (q) {
       searchCount.textContent = filtered.length === 0
-        ? 'Sin resultados para "' + currentQuery + '"'
+        ? t.no_results + ' "' + currentQuery + '"'
         : filtered.length + (filtered.length === 1 ? ' resultado' : ' resultados');
     } else {
       searchCount.textContent = '';
@@ -221,7 +261,7 @@
 
     // Update title
     if (currentCat === 'todos') {
-      dirTitle.textContent = q ? 'Resultados de busqueda' : 'Todos los negocios';
+      dirTitle.textContent = q ? t.search_results : t.all_businesses;
     } else {
       var catLabel = CATEGORY_LABELS[currentCat] || currentCat;
       dirTitle.textContent = q ? catLabel + ' — resultados' : catLabel;
