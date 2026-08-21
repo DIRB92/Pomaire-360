@@ -68,6 +68,18 @@
     banos: '🚻', transporte: '🚌', turismo: '📍'
   };
 
+  // ─── Star Rating Helper ──────────────────────────────────────────────────
+  function renderStars(avg) {
+    var html = '';
+    var full = Math.floor(avg);
+    var half = (avg - full) >= 0.5 ? 1 : 0;
+    var empty = 5 - full - half;
+    for (var i = 0; i < full; i++) html += '<span class="mod-star mod-star-full">★</span>';
+    if (half) html += '<span class="mod-star mod-star-half">★</span>';
+    for (var j = 0; j < empty; j++) html += '<span class="mod-star mod-star-empty">☆</span>';
+    return html;
+  }
+
   // ─── Card Renderer ──────────────────────────────────────────────────────
   function renderCard(item) {
     var cat = item._categoria || item.cat || 'servicios';
@@ -76,6 +88,7 @@
     var phone = item.p || item.telefono || '';
     var wsp = item.wsp || item.whatsapp || '';
     var ig = item.ig || item.instagram || '';
+    var fb = item.fb || item.facebook || '';
     var web = item.web || item.sitio_web || '';
     var map = item.map || item.google_maps || '';
     var tag = item.tag || item.horario || '';
@@ -85,6 +98,13 @@
     var img = item.img || '';
     var lat = item.lat || null;
     var lng = item.lng || null;
+    var desc = item.desc || item.descripcion || '';
+    var ratingAvg = parseFloat(item.rating_avg) || 0;
+    var ratingCount = parseInt(item.rating_count) || 0;
+    var verificado = item.verificado || false;
+    var tiktok = item.tiktok || '';
+    var fotos = item.fotos || item.photos || [];
+    var hours = item.hours || '';
 
     var cardClass = 'mod-card';
     if (plan === 'destacado') cardClass += ' mod-featured';
@@ -108,19 +128,68 @@
     } else if (plan === 'destacado') {
       html += '<span class="mod-card-plan-badge mod-plan-destacado">Destacado</span>';
     }
+    // Verificado badge over image
+    if (verificado) {
+      html += '<span class="mod-card-verified-badge" title="Negocio verificado">✓ Verificado</span>';
+    }
     html += '</div>';
 
     // ─── Card Body ──────────────────────────────────────────────────────
     html += '<div class="mod-card-body">'
       + '<div class="mod-card-top">'
-      + '<h3 class="mod-card-name">' + escapeHTML(name) + '</h3>'
+      + '<h3 class="mod-card-name">' + escapeHTML(name);
+    if (verificado) {
+      html += ' <span class="mod-verified-icon" title="Verificado">✓</span>';
+    }
+    html += '</h3>'
       + '</div>';
 
-    if (addr) {
-      html += '<p class="mod-card-addr">' + escapeHTML(addr) + '</p>';
+    // ─── Rating ─────────────────────────────────────────────────────────
+    if (ratingAvg > 0) {
+      html += '<div class="mod-card-rating">'
+        + '<span class="mod-card-stars">' + renderStars(ratingAvg) + '</span>'
+        + '<span class="mod-card-rating-text">' + ratingAvg.toFixed(1);
+      if (ratingCount > 0) {
+        html += ' <span class="mod-card-rating-count">(' + ratingCount + (ratingCount === 1 ? ' reseña' : ' reseñas') + ')</span>';
+      }
+      html += '</span></div>';
     }
+
+    if (addr) {
+      html += '<p class="mod-card-addr">📍 ' + escapeHTML(addr) + '</p>';
+    }
+
+    // ─── Descripción ────────────────────────────────────────────────────
+    if (desc) {
+      var shortDesc = desc.length > 120 ? desc.substring(0, 120) + '…' : desc;
+      html += '<p class="mod-card-desc">' + escapeHTML(shortDesc) + '</p>';
+    }
+
     if (tag) {
       html += '<span class="mod-card-tag">' + escapeHTML(tag) + '</span>';
+    }
+
+    // ─── Horario detallado ──────────────────────────────────────────────
+    if (hours && hours !== tag) {
+      html += '<div class="mod-card-hours">'
+        + '<span class="mod-card-hours-icon">🕐</span>'
+        + '<span class="mod-card-hours-text">' + escapeHTML(hours) + '</span>'
+        + '</div>';
+    }
+
+    // ─── Galería de fotos (miniaturas) ──────────────────────────────────
+    if (fotos && fotos.length > 0) {
+      var maxPhotos = Math.min(fotos.length, 4);
+      html += '<div class="mod-card-gallery">';
+      for (var fi = 0; fi < maxPhotos; fi++) {
+        if (fotos[fi]) {
+          html += '<img class="mod-card-gallery-thumb" src="' + escapeHTML(fotos[fi]) + '" alt="Foto de ' + escapeHTML(name) + '" loading="lazy">';
+        }
+      }
+      if (fotos.length > 4) {
+        html += '<span class="mod-card-gallery-more">+' + (fotos.length - 4) + '</span>';
+      }
+      html += '</div>';
     }
 
     // ─── Map Buttons (Mapa Interactivo + Google Maps) ───────────────────
@@ -163,6 +232,13 @@
       var igHandle = ig.replace('@', '');
       html += '<a class="mod-action-ig" href="https://instagram.com/' + escapeHTML(igHandle) + '" target="_blank" rel="noopener">📷 IG</a>';
     }
+    if (fb) {
+      html += '<a class="mod-action-fb" href="' + escapeHTML(fb) + '" target="_blank" rel="noopener">📘 Facebook</a>';
+    }
+    if (tiktok) {
+      var tiktokHandle = tiktok.replace('@', '');
+      html += '<a class="mod-action-tiktok" href="https://tiktok.com/@' + escapeHTML(tiktokHandle) + '" target="_blank" rel="noopener">🎵 TikTok</a>';
+    }
     if (web) {
       html += '<a class="mod-action-web" href="' + escapeHTML(web) + '" target="_blank" rel="noopener">🌐 Web</a>';
     }
@@ -200,8 +276,10 @@
         var addr = norm(item.a || item.direccion || '');
         var tag = norm(item.tag || item.horario || '');
         var cat2 = norm(item._categoria || item.cat || '');
+        var desc = norm(item.desc || '');
         if (name.indexOf(q) === -1 && addr.indexOf(q) === -1
-            && tag.indexOf(q) === -1 && cat2.indexOf(q) === -1) {
+            && tag.indexOf(q) === -1 && cat2.indexOf(q) === -1
+            && desc.indexOf(q) === -1) {
           return false;
         }
       }
@@ -296,14 +374,22 @@
         tag: row.horario || row.tag || '',
         map: row.google_maps || row.map || '',
         ig: row.instagram || row.ig || '',
+        fb: row.facebook || row.fb || '',
         web: row.web || row.sitio_web || '',
         wsp: row.whatsapp || row.wsp || '',
+        tiktok: row.tiktok || '',
         plan: row.plan || '',
         slug: row.slug || slugify(row.nombre || row.n || ''),
         _categoria: row.categoria || row._categoria || row.cat || 'servicios',
         img: row.imagen_principal || row.foto_portada || row.img || '',
         lat: row.latitud || row.lat || null,
-        lng: row.longitud || row.lng || null
+        lng: row.longitud || row.lng || null,
+        desc: row.descripcion || row.desc || '',
+        rating_avg: parseFloat(row.rating_avg) || 0,
+        rating_count: parseInt(row.rating_count) || 0,
+        verificado: row.verificado || false,
+        fotos: row.fotos || row.photos || [],
+        hours: row.horario || row.hours || ''
       };
     });
     dataLoaded = true;
