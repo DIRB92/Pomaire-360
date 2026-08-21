@@ -626,6 +626,162 @@
   color: #fff;
 }
 
+/* ─── Verified Badge (over image) ──────────────────────────────────────── */
+.mod-card-verified-badge {
+  position: absolute;
+  bottom: .7rem;
+  right: .7rem;
+  font-size: .65rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  border-radius: 6px;
+  padding: .25rem .55rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  box-shadow: 0 2px 6px rgba(39,174,96,.3);
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+}
+.mod-verified-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: .65rem;
+  font-weight: 900;
+  color: #fff;
+  background: #2ecc71;
+  border-radius: 50%;
+  margin-left: .3rem;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* ─── Rating Stars ─────────────────────────────────────────────────────── */
+.mod-card-rating {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .1rem;
+}
+.mod-card-stars {
+  display: inline-flex;
+  gap: 1px;
+  line-height: 1;
+}
+.mod-star {
+  font-size: .9rem;
+}
+.mod-star-full {
+  color: var(--p360-amber);
+}
+.mod-star-half {
+  color: var(--p360-amber);
+  opacity: .6;
+}
+.mod-star-empty {
+  color: var(--p360-muted);
+  opacity: .4;
+}
+.mod-card-rating-text {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--p360-warm-gray);
+}
+.mod-card-rating-count {
+  font-weight: 500;
+  color: var(--p360-muted);
+}
+
+/* ─── Description ──────────────────────────────────────────────────────── */
+.mod-card-desc {
+  font-size: .8rem;
+  color: var(--p360-muted);
+  line-height: 1.5;
+  margin: .2rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Hours Detail ─────────────────────────────────────────────────────── */
+.mod-card-hours {
+  display: flex;
+  align-items: flex-start;
+  gap: .35rem;
+  font-size: .75rem;
+  color: var(--p360-muted);
+  background: var(--p360-smoke);
+  border-radius: 8px;
+  padding: .4rem .6rem;
+  line-height: 1.4;
+}
+.mod-card-hours-icon {
+  flex-shrink: 0;
+  font-size: .85rem;
+}
+.mod-card-hours-text {
+  word-break: break-word;
+}
+
+/* ─── Photo Gallery Thumbnails ─────────────────────────────────────────── */
+.mod-card-gallery {
+  display: flex;
+  gap: .35rem;
+  margin-top: .3rem;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.mod-card-gallery-thumb {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1.5px solid var(--p360-smoke);
+  transition: transform var(--p360-transition), box-shadow var(--p360-transition);
+  cursor: pointer;
+}
+.mod-card-gallery-thumb:hover {
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  z-index: 2;
+}
+.mod-card-gallery-more {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--p360-smoke);
+  color: var(--p360-muted);
+  font-size: .75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ─── Facebook & TikTok Action Buttons ─────────────────────────────────── */
+.mod-card-actions a.mod-action-fb {
+  background: #1877F2;
+  color: #fff;
+}
+.mod-card-actions a.mod-action-fb:hover {
+  background: #0d65d9;
+  box-shadow: 0 3px 10px rgba(24,119,242,.3);
+}
+.mod-card-actions a.mod-action-tiktok {
+  background: #010101;
+  color: #fff;
+}
+.mod-card-actions a.mod-action-tiktok:hover {
+  background: #333;
+  box-shadow: 0 3px 10px rgba(0,0,0,.3);
+}
+
 /* Featured / Premium Cards */
 .mod-card.mod-featured {
   border: 2px solid var(--p360-amber);
@@ -972,4 +1128,29 @@
 .dark-mode .mod-btn-google-maps:hover {
   background: #4285F4;
   color: #fff;
+}
+
+/* Dark mode: new elements */
+.dark-mode .mod-card-desc {
+  color: #A89E96;
+}
+.dark-mode .mod-card-rating-text {
+  color: #F0EBE6;
+}
+.dark-mode .mod-card-rating-count {
+  color: #A89E96;
+}
+.dark-mode .mod-card-hours {
+  background: rgba(255,255,255,.06);
+  color: #A89E96;
+}
+.dark-mode .mod-card-gallery-thumb {
+  border-color: rgba(255,255,255,.1);
+}
+.dark-mode .mod-card-gallery-more {
+  background: rgba(255,255,255,.06);
+  color: #A89E96;
+}
+.dark-mode .mod-verified-icon {
+  background: #27ae60;
 }
