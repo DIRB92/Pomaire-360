@@ -80,6 +80,19 @@
     return html;
   }
 
+  // ─── Plan Feature Levels ─────────────────────────────────────────────────
+  // Determines what each plan can show:
+  //   gratis    → básico: nombre, dirección, categoría, teléfono, tag
+  //   destacado → intermedio: + descripción, horario, WhatsApp, rating, mapa, IG
+  //   premium   → todo: + galería, verificado, Facebook, TikTok, Web
+  var PLAN_LEVELS = { gratis: 0, destacado: 1, premium: 2 };
+
+  function getPlanLevel(plan) {
+    if (plan === 'premium') return 2;
+    if (plan === 'destacado') return 1;
+    return 0; // gratis or empty
+  }
+
   // ─── Card Renderer ──────────────────────────────────────────────────────
   function renderCard(item) {
     var cat = item._categoria || item.cat || 'servicios';
@@ -106,6 +119,9 @@
     var fotos = item.fotos || item.photos || [];
     var hours = item.hours || '';
 
+    // Plan level: 0=gratis, 1=destacado, 2=premium
+    var level = getPlanLevel(plan);
+
     var cardClass = 'mod-card';
     if (plan === 'destacado') cardClass += ' mod-featured';
     if (plan === 'premium') cardClass += ' mod-premium';
@@ -114,22 +130,23 @@
       + 'id="' + escapeHTML(slug) + '" '
       + 'style="--cat-color:var(--cat-' + escapeHTML(cat) + ')">';
 
-    // ─── Image Header ───────────────────────────────────────────────────
+    // ─── Image Header (todos los planes) ────────────────────────────────
     html += '<div class="mod-card-img-wrapper">';
     if (img) {
       html += '<img class="mod-card-img" src="' + escapeHTML(img) + '" alt="' + escapeHTML(name) + '" loading="lazy">';
     } else {
       html += '<div class="mod-card-img-placeholder"><span>' + (CATEGORY_EMOJIS[cat] || '🏪') + '</span></div>';
     }
-    // Category badge over image
+    // Category badge over image (todos)
     html += '<span class="mod-card-img-badge">' + escapeHTML(label) + '</span>';
+    // Plan badge (destacado/premium)
     if (plan === 'premium') {
       html += '<span class="mod-card-plan-badge mod-plan-premium">Premium</span>';
     } else if (plan === 'destacado') {
       html += '<span class="mod-card-plan-badge mod-plan-destacado">Destacado</span>';
     }
-    // Verificado badge over image
-    if (verificado) {
+    // Verificado badge over image (solo premium)
+    if (level >= 2 && verificado) {
       html += '<span class="mod-card-verified-badge" title="Negocio verificado">✓ Verificado</span>';
     }
     html += '</div>';
@@ -138,14 +155,15 @@
     html += '<div class="mod-card-body">'
       + '<div class="mod-card-top">'
       + '<h3 class="mod-card-name">' + escapeHTML(name);
-    if (verificado) {
+    // Verificado icon en nombre (solo premium)
+    if (level >= 2 && verificado) {
       html += ' <span class="mod-verified-icon" title="Verificado">✓</span>';
     }
     html += '</h3>'
       + '</div>';
 
-    // ─── Rating ─────────────────────────────────────────────────────────
-    if (ratingAvg > 0) {
+    // ─── Rating (destacado + premium) ───────────────────────────────────
+    if (level >= 1 && ratingAvg > 0) {
       html += '<div class="mod-card-rating">'
         + '<span class="mod-card-stars">' + renderStars(ratingAvg) + '</span>'
         + '<span class="mod-card-rating-text">' + ratingAvg.toFixed(1);
@@ -155,30 +173,33 @@
       html += '</span></div>';
     }
 
+    // Dirección (todos)
     if (addr) {
       html += '<p class="mod-card-addr">📍 ' + escapeHTML(addr) + '</p>';
     }
 
-    // ─── Descripción ────────────────────────────────────────────────────
-    if (desc) {
-      var shortDesc = desc.length > 120 ? desc.substring(0, 120) + '…' : desc;
+    // ─── Descripción (destacado + premium) ──────────────────────────────
+    if (level >= 1 && desc) {
+      var maxLen = level >= 2 ? 200 : 120;
+      var shortDesc = desc.length > maxLen ? desc.substring(0, maxLen) + '…' : desc;
       html += '<p class="mod-card-desc">' + escapeHTML(shortDesc) + '</p>';
     }
 
+    // Tag (todos)
     if (tag) {
       html += '<span class="mod-card-tag">' + escapeHTML(tag) + '</span>';
     }
 
-    // ─── Horario detallado ──────────────────────────────────────────────
-    if (hours && hours !== tag) {
+    // ─── Horario detallado (destacado + premium) ────────────────────────
+    if (level >= 1 && hours && hours !== tag) {
       html += '<div class="mod-card-hours">'
         + '<span class="mod-card-hours-icon">🕐</span>'
         + '<span class="mod-card-hours-text">' + escapeHTML(hours) + '</span>'
         + '</div>';
     }
 
-    // ─── Galería de fotos (miniaturas) ──────────────────────────────────
-    if (fotos && fotos.length > 0) {
+    // ─── Galería de fotos (solo premium) ────────────────────────────────
+    if (level >= 2 && fotos && fotos.length > 0) {
       var maxPhotos = Math.min(fotos.length, 4);
       html += '<div class="mod-card-gallery">';
       for (var fi = 0; fi < maxPhotos; fi++) {
@@ -192,26 +213,23 @@
       html += '</div>';
     }
 
-    // ─── Map Buttons (Mapa Interactivo + Google Maps) ───────────────────
+    // ─── Map Buttons (destacado + premium) ──────────────────────────────
     var hasCoords = lat && lng;
     var hasMap = map || hasCoords;
-    if (hasMap) {
+    if (level >= 1 && hasMap) {
       html += '<div class="mod-card-map-buttons">';
-      // Mapa interactivo (link al mapa del sitio con coordenadas)
       if (hasCoords) {
         var mapaInteractivoUrl = '/mapa-turistico/#' + lat + ',' + lng;
         html += '<a class="mod-btn-mapa-interactivo" href="' + mapaInteractivoUrl + '" title="Ver en mapa interactivo de Pomaire 360">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'
           + ' Mapa Interactivo</a>';
       }
-      // Google Maps
       if (hasCoords) {
         var googleMapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
         html += '<a class="mod-btn-google-maps" href="' + escapeHTML(googleMapsUrl) + '" target="_blank" rel="noopener" title="Como llegar en Google Maps">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
           + ' Google Maps</a>';
       } else if (map) {
-        // Fallback: usar la URL directa de Google Maps si no hay coordenadas
         html += '<a class="mod-btn-google-maps" href="' + escapeHTML(map) + '" target="_blank" rel="noopener" title="Ver en Google Maps">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
           + ' Google Maps</a>';
@@ -219,30 +237,47 @@
       html += '</div>';
     }
 
-    // ─── Actions ────────────────────────────────────────────────────────
+    // ─── Actions (diferenciado por plan) ────────────────────────────────
     html += '<div class="mod-card-actions">';
+
+    // Teléfono: todos los planes
     if (phone) {
       html += '<a href="tel:' + escapeHTML(phone) + '">📞 Llamar</a>';
     }
-    if (wsp) {
+    // WhatsApp: destacado + premium
+    if (level >= 1 && wsp) {
       var wspNum = wsp.replace(/\D/g, '');
       html += '<a class="mod-action-wsp" href="https://wa.me/' + wspNum + '" target="_blank" rel="noopener">💬 WhatsApp</a>';
     }
-    if (ig) {
+    // Instagram: destacado + premium
+    if (level >= 1 && ig) {
       var igHandle = ig.replace('@', '');
       html += '<a class="mod-action-ig" href="https://instagram.com/' + escapeHTML(igHandle) + '" target="_blank" rel="noopener">📷 IG</a>';
     }
-    if (fb) {
+    // Facebook: solo premium
+    if (level >= 2 && fb) {
       html += '<a class="mod-action-fb" href="' + escapeHTML(fb) + '" target="_blank" rel="noopener">📘 Facebook</a>';
     }
-    if (tiktok) {
+    // TikTok: solo premium
+    if (level >= 2 && tiktok) {
       var tiktokHandle = tiktok.replace('@', '');
       html += '<a class="mod-action-tiktok" href="https://tiktok.com/@' + escapeHTML(tiktokHandle) + '" target="_blank" rel="noopener">🎵 TikTok</a>';
     }
-    if (web) {
+    // Web: solo premium
+    if (level >= 2 && web) {
       html += '<a class="mod-action-web" href="' + escapeHTML(web) + '" target="_blank" rel="noopener">🌐 Web</a>';
     }
-    html += '</div></div></article>';
+    html += '</div>';
+
+    // ─── CTA "Mejora tu plan" (solo gratis) ─────────────────────────────
+    if (level === 0) {
+      html += '<div class="mod-card-upgrade">'
+        + '<a href="/anunciate/" class="mod-upgrade-link" title="Muestra más info de tu negocio">'
+        + '✨ Destaca tu negocio'
+        + '</a></div>';
+    }
+
+    html += '</div></article>';
 
     return html;
   }

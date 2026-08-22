@@ -626,6 +626,36 @@
   color: #fff;
 }
 
+/* ─── Upgrade CTA (plan gratis) ────────────────────────────────────────── */
+.mod-card-upgrade {
+  margin-top: auto;
+  padding-top: .7rem;
+  border-top: 1px dashed rgba(61,53,48,.1);
+}
+.mod-upgrade-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  width: 100%;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--p360-amber);
+  background: var(--p360-amber-light);
+  border: 1.5px dashed var(--p360-amber);
+  border-radius: var(--p360-radius-sm);
+  padding: .55rem .8rem;
+  text-decoration: none;
+  transition: all var(--p360-transition);
+}
+.mod-upgrade-link:hover {
+  background: var(--p360-amber);
+  color: #fff;
+  border-style: solid;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232,168,56,.3);
+}
+
 /* ─── Verified Badge (over image) ──────────────────────────────────────── */
 .mod-card-verified-badge {
   position: absolute;
@@ -1153,4 +1183,17 @@
 }
 .dark-mode .mod-verified-icon {
   background: #27ae60;
+}
+.dark-mode .mod-card-upgrade {
+  border-top-color: rgba(255,255,255,.08);
+}
+.dark-mode .mod-upgrade-link {
+  color: var(--p360-amber);
+  background: rgba(232,168,56,.1);
+  border-color: rgba(232,168,56,.4);
+}
+.dark-mode .mod-upgrade-link:hover {
+  background: var(--p360-amber);
+  color: #fff;
+  border-color: var(--p360-amber);
 }
