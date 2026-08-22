@@ -213,10 +213,10 @@
       html += '</div>';
     }
 
-    // ─── Map Buttons (destacado + premium) ──────────────────────────────
+    // ─── Map Buttons (todos los planes) ───────────────────────────────────
     var hasCoords = lat && lng;
     var hasMap = map || hasCoords;
-    if (level >= 1 && hasMap) {
+    if (hasMap) {
       html += '<div class="mod-card-map-buttons">';
       if (hasCoords) {
         var mapaInteractivoUrl = '/mapa-turistico/#' + lat + ',' + lng;
