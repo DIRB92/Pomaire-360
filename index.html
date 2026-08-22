@@ -324,6 +324,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <link rel="stylesheet" href="/directory-cards.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/components.css" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/dark-mode-overrides.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/featured-businesses.css" media="print" onload="this.media='all'">
 <!-- Leaflet CSS deferred — map is below fold -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" media="print" onload="this.media='all'" />
 <noscript>
@@ -331,6 +332,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   <link rel="stylesheet" href="/directory-cards.css">
   <link rel="stylesheet" href="/components.css">
   <link rel="stylesheet" href="/dark-mode-overrides.css">
+  <link rel="stylesheet" href="/featured-businesses.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 </noscript>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
@@ -340,6 +342,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <script defer src="/app.js"></script>
 <script defer src="/map-unified.js"></script>
 <script defer src="/directory-loader.js"></script>
+<script defer src="/featured-businesses.js"></script>
 <script defer src="/tour-interactive.js"></script>
 <script defer src="/a11y-enhancements.js"></script>
 <script defer src="/app-2026.js"></script>
@@ -543,6 +546,37 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
     <span data-t="hero_scroll">Descubre</span>
   </div>
 
+</section>
+
+<!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
+<section id="featuredSection" class="featured-section" style="display:none;">
+  <div class="featured-header reveal">
+    <h2 data-t="feat_title">🏪 Negocios Destacados de Pomaire</h2>
+    <p data-t="feat_sub">Los mejores lugares recomendados para tu visita</p>
+  </div>
+
+  <div class="featured-carousel-wrap">
+    <button class="carousel-nav carousel-nav--prev" id="carouselPrev" aria-label="Anterior">‹</button>
+    <div class="featured-carousel" id="featuredCarousel">
+      <div class="featured-loading" data-t="feat_loading">Cargando negocios destacados...</div>
+    </div>
+    <button class="carousel-nav carousel-nav--next" id="carouselNext" aria-label="Siguiente">›</button>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
+  <a class="featured-all-link" href="/comercio/" data-t="feat_all">Ver todos los negocios →</a>
+</section>
+
+<!-- ══ CATEGORÍAS: DÓNDE COMER, COMPRAR Y DORMIR ══════════════════════════ -->
+<section id="categoriesSection" class="categories-section" style="display:none;">
+  <div class="categories-header reveal">
+    <h2 data-t="cat_title">Descubre Pomaire</h2>
+    <p data-t="cat_sub">Los imperdibles del pueblo alfarero más famoso de Chile</p>
+  </div>
+
+  <div class="categories-grid" id="categoriesGrid">
+    <div class="categories-loading" data-t="cat_loading">Cargando categorías...</div>
+  </div>
 </section>
 
 <!-- MAPA INTERACTIVO -->
