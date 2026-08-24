@@ -3,7 +3,7 @@
   X-Content-Type-Options: nosniff
   X-Permitted-Cross-Domain-Policies: none
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(self), camera=(), microphone=(), payment=()
+  Permissions-Policy: geolocation=(self), camera=(), microphone=(), payment=(), browsing-topics=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://challenges.cloudflare.com; style-src 'self' 'sha256-aSnokSXwUaFXG+UDWcIG7HZuIWWZZl21Un5ejTzHzPQ=' 'sha256-Kt3XnmX3xedG4ydowmNigmY/5qDSLm4P7rqDMFzADL4=' 'sha256-14mffECbMkaGqaLSphEflb1FWEWIMZM7iXFU8/Visa0=' 'sha256-6NB/i8NBlPtoK3wL9+jwuc9pnE/FJ4JxceuJ+ohbLiA=' 'sha256-6hlF2+5JTIgG4dKOuo7maLQ0nd+A5S5FoCMTPacLc9k=' 'sha256-BpiJbQwyBu0IIuSIRRUIw1lU1RrucFPMhGM+hQUGOEk=' 'sha256-C5+5BaF3EfBQbbCOkBtSVmk72fOW5+DHuCr2YMTcPB4=' 'sha256-Etmuv6vnO7icj1koHlhP1bnNvHDPVZ/+Jr96sKSajFQ=' 'sha256-Q4TxMYRvZ6jyVGyR1+zlxOuGKBLFVkvJ66XZ4xXYsnc=' 'sha256-gcLsEtGO8Zm6ucgFfkIh4XQXVLWbGsV5gmFriPfCsx8=' 'sha256-gel4yqghAu5iAHpfccWgQFLKs0B5jxvDFxagswkW3DU=' 'sha256-nQlNZcob0sY9V08BWZkZYvUx7h4zkWJ7A6pEDyOUGjg=' 'sha256-sIOeHKkyzndj4szXkEn7AAfUDqV7fy+jnIl8E7BdwtY=' 'sha256-y3qRXZKYqsOYHq5esfanKBHprfx5fMwNAWnuNdyydis='; img-src 'self' data: https: blob:; connect-src 'self' https://api.open-meteo.com https://*.tile.openstreetmap.org https://www.google-analytics.com https://www.googletagmanager.com https://*.supabase.co https://challenges.cloudflare.com; font-src 'self'; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'
 
@@ -11,7 +11,7 @@
   X-Frame-Options: ALLOW-FROM https://app.pomaire360.cl
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(self "https://app.pomaire360.cl"), camera=(), microphone=(), payment=()
+  Permissions-Policy: geolocation=(self "https://app.pomaire360.cl"), camera=(), microphone=(), payment=(), browsing-topics=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Content-Security-Policy: default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'sha256-nQlNZcob0sY9V08BWZkZYvUx7h4zkWJ7A6pEDyOUGjg='; img-src 'self' data: https: blob:; connect-src 'self' https://*.tile.openstreetmap.org https://*.supabase.co; font-src 'self'; frame-ancestors 'self' https://app.pomaire360.cl https://*.pomaire360.cl; object-src 'none'; base-uri 'self'
 
