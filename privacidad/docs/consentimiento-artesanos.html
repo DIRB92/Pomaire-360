@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Consentimiento — Pomaire 360</title>
+<style>
+  @page {
+    size: letter;
+    margin: 2cm 2.5cm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+    padding: 2cm 2.5cm;
+    max-width: 21cm;
+    margin: 0 auto;
+  }
+  @media print {
+    body { padding: 0; }
+    .no-print { display: none !important; }
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #B85C2C;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 18pt;
+    color: #B85C2C;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .header h2 {
+    font-size: 13pt;
+    color: #4a3c30;
+    font-weight: 600;
+  }
+  .header p {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 8px;
+  }
+
+  /* Sections */
+  h3 {
+    font-size: 12pt;
+    color: #B85C2C;
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e8dfd4;
+  }
+  h4 {
+    font-size: 10.5pt;
+    color: #4a3c30;
+    margin: 14px 0 6px;
+    font-weight: 600;
+  }
+
+  p, li {
+    font-size: 10.5pt;
+    margin-bottom: 6px;
+  }
+  ul, ol {
+    margin-left: 20px;
+    margin-bottom: 12px;
+  }
+  li { margin-bottom: 4px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px;
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+    border: 1px solid #d0c4b4;
+    font-size: 10pt;
+  }
+  th {
+    background: #f5ede5;
+    font-weight: 600;
+    color: #4a3c30;
+  }
+
+  /* Form fields */
+  .field-row {
+    display: flex;
+    align-items: flex-end;
+    margin: 12px 0;
+    gap: 10px;
+  }
+  .field-label {
+    font-weight: 600;
+    font-size: 10pt;
+    color: #4a3c30;
+    white-space: nowrap;
+    min-width: 160px;
+  }
+  .field-line {
+    flex: 1;
+    border-bottom: 1px solid #999;
+    min-height: 20px;
+  }
+
+  /* Signature area */
+  .signature-box {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #d0c4b4;
+    border-radius: 8px;
+    page-break-inside: avoid;
+  }
+  .sig-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  .sig-field {
+    flex: 1;
+  }
+  .sig-field .sig-line {
+    border-bottom: 1px solid #333;
+    height: 50px;
+    margin-bottom: 4px;
+  }
+  .sig-field label {
+    font-size: 9pt;
+    color: #666;
+    font-weight: 600;
+  }
+
+  /* Highlight box */
+  .info-box {
+    background: #fdf8f3;
+    border: 1px solid #e8dfd4;
+    border-left: 4px solid #B85C2C;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 4px;
+  }
+  .info-box p {
+    font-size: 10pt;
+    margin: 0;
+  }
+
+  /* Internal use */
+  .internal-use {
+    margin-top: 30px;
+    padding: 16px;
+    background: #f9f9f6;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    page-break-inside: avoid;
+  }
+  .internal-use h4 {
+    color: #888;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  /* Print button */
+  .print-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #B85C2C;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  .print-btn:hover { background: #9a4a23; }
+
+  /* Footer */
+  .footer {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 1px solid #e8dfd4;
+    font-size: 8.5pt;
+    color: #888;
+    text-align: center;
+  }
+
+  /* Page break hint */
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- Print button (no se imprime) -->
+<button class="print-btn no-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- HEADER -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="header">
+  <h1>🏺 Pomaire 360</h1>
+  <h2>Formulario de Consentimiento para Publicación de Datos Personales</h2>
+  <p>Conforme a la Ley N° 21.719 sobre Protección y Tratamiento de Datos Personales de Chile</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 1. RESPONSABLE -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<h3>1. Responsable del tratamiento de datos</h3>
+<table>
+  <tr><th style="width:35%;">Responsable</th><td>Pomaire 360 (proyecto independiente)</td></tr>
+  <tr><th>Titular/Representante</th><td>Diego Ignacio Rojas Barros</td></tr>
+  <tr><th>RUT</th><td>18.127.769-6</td></tr>
+  <tr><th>Domicilio</th><td>Irarrazabal 455, Pomaire, Melipilla, RM, Chile</td></tr>
+  <tr><th>Email de contacto</th><td>contacto@pomaire360.cl</td></tr>
+  <tr><th>Sitio web</th><td>www.pomaire360.cl</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 2. INFORMACIÓN PARA EL TITULAR -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<h3>2. Información para el titular de los datos</h3>
+
+<h4>¿Qué datos publicaremos?</h4>
+<ul>
+  <li>Nombre del local o emprendimiento</li>
+  <li>Dirección física del establecimiento</li>
+  <li>Número de teléfono de contacto</li>
+  <li>Cuenta de Instagram (si se proporciona)</li>
+  <li>Sitio web (si se proporciona)</li>
+  <li>Descripción del negocio u oficio</li>
+  <li>Fotografías del establecimiento (si se proporcionan)</li>
+  <li>Ubicación geográfica en el mapa interactivo</li>
+</ul>
+
+<h4>¿Para qué se usarán?</h4>
+<p>Los datos se publicarán en el <strong>directorio público de Pomaire 360</strong> con el único fin de:</p>
+<ol>
+  <li>Promover la actividad comercial y artesanal de Pomaire.</li>
+  <li>Facilitar que visitantes y turistas encuentren su establecimiento.</li>
+  <li>Incluir su negocio en el mapa interactivo turístico del pueblo.</li>
+</ol>
+
+<h4>¿Dónde aparecerán los datos?</h4>
+<ul>
+  <li><strong>www.pomaire360.cl</strong> — Directorio y mapa turístico</li>
+  <li><strong>app.pomaire360.cl</strong> — Plataforma de gestión</li>
+  <li><strong>comprayvende.pomaire360.cl</strong> — Directorio comunitario</li>
+</ul>
+
+<div class="info-box">
+  <p>⚠️ <strong>Visibilidad:</strong> Los datos publicados serán de <strong>acceso público</strong> a través de internet. Cualquier persona que visite el sitio podrá verlos.</p>
+</div>
+
+<h4>¿Se transfieren datos fuera de Chile?</h4>
+<p>Sí. Los datos se almacenan en servidores de <strong>Supabase Inc.</strong> (Estados Unidos), protegidos con cifrado AES-256 en reposo y TLS 1.3 en tránsito, respaldados por un Data Processing Agreement (DPA).</p>
+
+<h4>¿Cuánto tiempo se conservarán?</h4>
+<p>Los datos se conservarán mientras el consentimiento esté vigente. El titular puede solicitar su eliminación <strong>en cualquier momento</strong>.</p>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 3. DERECHOS -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<h3>3. Sus derechos (ARCO)</h3>
+
+<p>En cualquier momento, usted puede:</p>
+<table>
+  <tr><th style="width:25%;">Derecho</th><th>Descripción</th></tr>
+  <tr><td><strong>Acceso</strong></td><td>Solicitar qué datos suyos tenemos publicados.</td></tr>
+  <tr><td><strong>Rectificación</strong></td><td>Corregir datos incorrectos o desactualizados.</td></tr>
+  <tr><td><strong>Cancelación</strong></td><td>Solicitar la eliminación de sus datos del directorio.</td></tr>
+  <tr><td><strong>Oposición</strong></td><td>Oponerse al tratamiento de sus datos.</td></tr>
+</table>
+
+<div class="info-box">
+  <p>📧 Para ejercer cualquiera de estos derechos, escriba a: <strong>contacto@pomaire360.cl</strong><br>
+  Plazo máximo de respuesta: <strong>30 días hábiles</strong>.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 4. DECLARACIÓN DE CONSENTIMIENTO (PÁGINA 2) -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="page-break"></div>
+
+<div class="header" style="margin-top: 0;">
+  <h1>🏺 Pomaire 360</h1>
+  <h2>Declaración de Consentimiento</h2>
+</div>
+
+<h3>4. Declaración</h3>
+
+<p>Yo, el/la abajo firmante, declaro que:</p>
+<ol>
+  <li>He leído y comprendido la información anterior sobre el tratamiento de mis datos personales.</li>
+  <li>Otorgo mi consentimiento <strong>libre, informado, específico e inequívoco</strong> para que Pomaire 360 publique mis datos de contacto comercial en su directorio web.</li>
+  <li>Entiendo que puedo <strong>revocar este consentimiento en cualquier momento</strong> comunicándolo a contacto@pomaire360.cl, sin que esto afecte la licitud del tratamiento realizado antes de la revocación.</li>
+  <li>Confirmo que los datos que proporciono son veraces y corresponden a mi actividad comercial.</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 5. DATOS DEL TITULAR -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<h3>5. Datos del titular / comerciante</h3>
+
+<div class="field-row">
+  <span class="field-label">Nombre completo:</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">RUT (opcional):</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">Nombre del local:</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">Dirección:</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">Teléfono a publicar:</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">Instagram (opcional):</span>
+  <span class="field-line"></span>
+</div>
+<div class="field-row">
+  <span class="field-label">Sitio web (opcional):</span>
+  <span class="field-line"></span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- 6. FIRMA -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="signature-box">
+  <h3 style="border: none; margin: 0 0 6px; padding: 0;">6. Firma del titular</h3>
+  <p style="font-size: 9.5pt; color: #666;">Al firmar, confirmo que otorgo libremente mi consentimiento para el tratamiento descrito.</p>
+  
+  <div class="sig-row">
+    <div class="sig-field">
+      <div class="sig-line"></div>
+      <label>Firma</label>
+    </div>
+    <div class="sig-field" style="max-width: 200px;">
+      <div class="sig-line"></div>
+      <label>Fecha (dd/mm/aaaa)</label>
+    </div>
+  </div>
+
+  <div class="field-row" style="margin-top: 16px;">
+    <span class="field-label">Lugar:</span>
+    <span class="field-line"></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- USO INTERNO -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="internal-use">
+  <h4>📋 Para uso interno de Pomaire 360 (no completar por el titular)</h4>
+  <div class="field-row">
+    <span class="field-label">Recibido por:</span>
+    <span class="field-line"></span>
+  </div>
+  <div class="field-row">
+    <span class="field-label">Fecha de registro en BD:</span>
+    <span class="field-line"></span>
+  </div>
+  <div class="field-row">
+    <span class="field-label">ID en Supabase:</span>
+    <span class="field-line"></span>
+  </div>
+  <div class="field-row">
+    <span class="field-label">consent_status:</span>
+    <span style="font-family: monospace; font-size: 10pt; padding: 2px 8px; background: #e8f5e9; border-radius: 4px;">confirmed</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<div class="footer">
+  <p>Este formulario cumple con los arts. 3, 12 y 13 de la Ley N° 21.719 sobre Protección y Tratamiento de Datos Personales de Chile.</p>
+  <p>Pomaire 360 · www.pomaire360.cl · contacto@pomaire360.cl</p>
+  <p style="margin-top: 4px;">Versión 1.0 — Agosto 2026</p>
+</div>
+
+</body>
+</html>
