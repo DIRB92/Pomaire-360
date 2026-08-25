@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#D4654A">
+
+<title>Procedimiento de Notificación de Brechas de Seguridad — Pomaire 360</title>
+<meta name="description" content="Procedimiento interno de Pomaire 360 para la notificación de vulneraciones de seguridad conforme al art. 14 quinquies de la Ley 21.719.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.pomaire360.cl/privacidad/notificacion-brechas.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Procedimiento de Notificación de Brechas — Pomaire 360">
+<meta property="og:description" content="Protocolo de respuesta ante incidentes de seguridad que afecten datos personales, conforme a la Ley 21.719 de Chile.">
+<meta property="og:url" content="https://www.pomaire360.cl/privacidad/notificacion-brechas.html">
+<meta property="og:locale" content="es_CL">
+<meta property="og:image" content="https://www.pomaire360.cl/og-image.jpg">
+
+<link rel="icon" href="https://www.pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://www.pomaire360.cl/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style-2026.css">
+<link rel="stylesheet" href="/components.css">
+<link rel="stylesheet" href="/dark-mode-overrides.css">
+</head>
+<body>
+<a href="#contenido" class="skip-to-content">Saltar al contenido</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Navegación principal">
+  <a class="nav-brand" href="/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline">Turismo & Cultura</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+    <a href="/privacidad/">← Política de Privacidad</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="sub-hero">
+  <div class="sub-ico">🚨</div>
+  <h1>Procedimiento de Notificación de Vulneraciones de Seguridad</h1>
+  <p>Conforme al art. 14 quinquies de la Ley N° 21.719</p>
+</header>
+
+<!-- CONTENIDO -->
+<main class="sub-wrap" id="contenido">
+  <article style="max-width:780px;margin:0 auto;padding:2rem 1rem;line-height:1.8;">
+
+    <!-- ══ 1. OBJETIVO ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">1. Objetivo</h2>
+    <p>Este documento establece el procedimiento interno de <strong>Pomaire 360</strong> para detectar, evaluar, contener y notificar vulneraciones de seguridad que afecten datos personales, en cumplimiento del artículo 14 quinquies de la Ley N° 21.719 sobre Protección y Tratamiento de Datos Personales.</p>
+
+    <!-- ══ 2. ALCANCE ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">2. Alcance</h2>
+    <p>Aplica a cualquier incidente que comprometa la confidencialidad, integridad o disponibilidad de datos personales tratados por Pomaire 360 en cualquiera de sus plataformas:</p>
+    <ul style="margin:.8rem 0 1.5rem 1.5rem;">
+      <li>www.pomaire360.cl (sitio estático)</li>
+      <li>comprayvende.pomaire360.cl (directorio comunitario)</li>
+      <li>app.pomaire360.cl (plataforma de gestión)</li>
+      <li>Bases de datos en Supabase y Upstash Redis</li>
+      <li>Almacenamiento de imágenes en Vercel Blob</li>
+    </ul>
+
+    <!-- ══ 3. DEFINICIONES ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">3. Definiciones</h2>
+    <table style="width:100%;border-collapse:collapse;margin:.8rem 0 1.5rem;font-size:.9rem;">
+      <tr style="background:var(--clay-light,#f5ede5);">
+        <th style="padding:.6rem;text-align:left;border-bottom:2px solid var(--clay,#B85C2C);width:30%;">Término</th>
+        <th style="padding:.6rem;text-align:left;border-bottom:2px solid var(--clay,#B85C2C);">Definición</th>
+      </tr>
+      <tr>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;font-weight:600;">Vulneración de seguridad</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Todo evento que ocasione destrucción, pérdida accidental o ilícita, alteración, comunicación o acceso no autorizado a datos personales.</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;font-weight:600;">Datos personales afectados</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Cualquier dato que identifique o haga identificable a una persona natural (nombres, teléfonos, emails, direcciones, IPs, etc.).</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;font-weight:600;">Agencia</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Agencia de Protección de Datos Personales de Chile, creada por la Ley 21.719.</td>
+      </tr>
+    </table>
+
+    <!-- ══ 4. EQUIPO DE RESPUESTA ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">4. Equipo de respuesta a incidentes</h2>
+    <table style="width:100%;border-collapse:collapse;margin:.8rem 0 1.5rem;font-size:.9rem;">
+      <tr style="background:var(--clay-light,#f5ede5);">
+        <th style="padding:.6rem;text-align:left;border-bottom:2px solid var(--clay,#B85C2C);">Rol</th>
+        <th style="padding:.6rem;text-align:left;border-bottom:2px solid var(--clay,#B85C2C);">Responsable</th>
+        <th style="padding:.6rem;text-align:left;border-bottom:2px solid var(--clay,#B85C2C);">Contacto</th>
+      </tr>
+      <tr>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Responsable del tratamiento</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Diego Ignacio Rojas Barros</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">seguridad@pomaire360.cl</td>
+      </tr>
+      <tr>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Respuesta técnica</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">Diego Ignacio Rojas Barros</td>
+        <td style="padding:.5rem;border-bottom:1px solid #e8dfd4;">seguridad@pomaire360.cl</td>
+      </tr>
+    </table>
+
+    <!-- ══ 5. FASES DEL PROCEDIMIENTO ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">5. Fases del procedimiento</h2>
+
+    <h3 style="color:var(--clay,#B85C2C);margin-top:1.2rem;">5.1 Fase 1 — Detección e identificación (0-2 horas)</h3>
+    <ol style="margin:.5rem 0 1rem 1.5rem;">
+      <li>Cualquier evento sospechoso se reporta inmediatamente a <code>seguridad@pomaire360.cl</code>.</li>
+      <li>Se registra la hora de detección, el sistema afectado, y una descripción inicial.</li>
+      <li>Se clasifica el incidente según su severidad:
+        <ul>
+          <li><strong>Crítico:</strong> Acceso no autorizado a datos personales sensibles, exfiltración masiva.</li>
+          <li><strong>Alto:</strong> Acceso no autorizado a datos de contacto, modificación de registros.</li>
+          <li><strong>Medio:</strong> Intento frustrado de acceso, exposición de datos no sensibles.</li>
+          <li><strong>Bajo:</strong> Vulnerabilidad detectada sin explotación confirmada.</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3 style="color:var(--clay,#B85C2C);margin-top:1.2rem;">5.2 Fase 2 — Contención (2-24 horas)</h3>
+    <ol style="margin:.5rem 0 1rem 1.5rem;">
+      <li>Aislar el sistema comprometido (revocar tokens, bloquear IPs, desactivar endpoints).</li>
+      <li>Preservar evidencia forense (logs de Vercel, registros de Supabase, snapshots de Redis).</li>
+      <li>Evaluar el alcance: qué datos fueron afectados, cuántos titulares involucrados.</li>
+      <li>Implementar medidas de contención temporales (modo mantenimiento si es necesario).</li>
+    </ol>
+
+    <h3 style="color:var(--clay,#B85C2C);margin-top:1.2rem;">5.3 Fase 3 — Notificación a la Agencia (máximo 72 horas)</h3>
+    <p>Conforme al art. 14 quinquies, si la vulneración afecta datos personales, se notificará a la Agencia de Protección de Datos Personales <strong>dentro de las 72 horas</strong> siguientes a la toma de conocimiento del incidente. La notificación incluirá:</p>
+    <ol style="margin:.5rem 0 1rem 1.5rem;">
+      <li>Naturaleza de la vulneración y circunstancias en que ocurrió.</li>
+      <li>Categorías de datos y de titulares afectados.</li>
+      <li>Número aproximado de titulares afectados.</li>
+      <li>Medidas adoptadas para remediar la vulneración y mitigar sus efectos.</li>
+      <li>Medidas preventivas para evitar su repetición.</li>
+      <li>Datos de contacto del responsable del tratamiento.</li>
+    </ol>
+    <p><strong>Canal de notificación:</strong> A través del medio que la Agencia disponga (plataforma web o correo electrónico oficial).</p>
+
+    <h3 style="color:var(--clay,#B85C2C);margin-top:1.2rem;">5.4 Fase 4 — Notificación a los titulares afectados</h3>
+    <p>Si la vulneración puede suponer un <strong>riesgo alto</strong> para los derechos y libertades de los titulares, se les notificará directamente por los medios disponibles (email, aviso en el sitio web) incluyendo:</p>
+    <ol style="margin:.5rem 0 1rem 1.5rem;">
+      <li>Descripción clara y comprensible de lo ocurrido.</li>
+      <li>Datos de contacto del responsable.</li>
+      <li>Descripción de las posibles consecuencias.</li>
+      <li>Medidas adoptadas y recomendaciones para que el titular se proteja.</li>
+    </ol>
+
+    <h3 style="color:var(--clay,#B85C2C);margin-top:1.2rem;">5.5 Fase 5 — Remediación y lecciones aprendidas (1-30 días)</h3>
+    <ol style="margin:.5rem 0 1rem 1.5rem;">
+      <li>Implementar la corrección definitiva (parche de seguridad, cambio de credenciales, etc.).</li>
+      <li>Documentar el incidente completo en el registro interno de brechas.</li>
+      <li>Realizar una revisión post-incidente para identificar mejoras.</li>
+      <li>Actualizar las medidas de seguridad si corresponde.</li>
+      <li>Informar a la Agencia sobre la resolución final si fue requerido.</li>
+    </ol>
+
+    <!-- ══ 6. REGISTRO DE BRECHAS ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">6. Registro interno de brechas</h2>
+    <p>Se mantendrá un registro actualizado de todos los incidentes de seguridad, independientemente de si fueron notificados a la Agencia, que incluirá:</p>
+    <ul style="margin:.8rem 0 1.5rem 1.5rem;">
+      <li>Fecha y hora de detección.</li>
+      <li>Descripción del incidente.</li>
+      <li>Datos y titulares afectados.</li>
+      <li>Medidas de contención y remediación.</li>
+      <li>Si se notificó a la Agencia y/o a los titulares.</li>
+      <li>Estado actual (abierto/cerrado).</li>
+    </ul>
+    <p>Este registro se conservará por un mínimo de <strong>5 años</strong> y estará disponible para la Agencia en caso de fiscalización.</p>
+
+    <!-- ══ 7. MEDIDAS PREVENTIVAS ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">7. Medidas preventivas implementadas</h2>
+    <ul style="margin:.8rem 0 1.5rem 1.5rem;">
+      <li>HTTPS obligatorio con HSTS preload en todos los dominios.</li>
+      <li>Content Security Policy (CSP) restrictiva con hashes/nonces.</li>
+      <li>Rate limiting por IP en todos los endpoints de API.</li>
+      <li>Verificación de origin para prevenir CSRF.</li>
+      <li>Tokens de administración con comparación timing-safe.</li>
+      <li>Validación de magic bytes en uploads de imágenes.</li>
+      <li>Monitoreo de accesos anómalos en logs de Vercel.</li>
+      <li>Política de divulgación responsable (security.txt conforme a RFC 9116).</li>
+      <li>Sanitización de todos los inputs de usuario (XSS, inyección).</li>
+    </ul>
+
+    <!-- ══ 8. CONTACTO ══ -->
+    <h2 style="color:var(--clay-dark);font-family:'Playfair Display',serif;margin-bottom:.8rem;">8. Contacto de seguridad</h2>
+    <table style="width:100%;border-collapse:collapse;margin:.8rem 0 1.5rem;">
+      <tr><td style="padding:.4rem .8rem;font-weight:700;width:40%;">Email de seguridad:</td><td style="padding:.4rem .8rem;"><a href="mailto:seguridad@pomaire360.cl" style="color:var(--clay);font-weight:600;">seguridad@pomaire360.cl</a></td></tr>
+      <tr><td style="padding:.4rem .8rem;font-weight:700;">Reportar vulnerabilidad:</td><td style="padding:.4rem .8rem;"><a href="/seguridad/" style="color:var(--clay);font-weight:600;">www.pomaire360.cl/seguridad/</a></td></tr>
+      <tr><td style="padding:.4rem .8rem;font-weight:700;">security.txt:</td><td style="padding:.4rem .8rem;"><a href="/.well-known/security.txt" style="color:var(--clay);font-weight:600;">/.well-known/security.txt</a></td></tr>
+    </table>
+
+    <hr style="margin:2rem 0;border:none;border-top:1px solid #e8dfd4;">
+    <p style="color:var(--muted);font-size:.82rem;"><strong>Última actualización:</strong> <time datetime="2026-08-24">24 de agosto de 2026</time></p>
+    <p style="color:var(--muted);font-size:.82rem;">Este procedimiento ha sido elaborado conforme al art. 14 quinquies de la Ley N° 21.719 y a las mejores prácticas del CSIRT Nacional de Chile.</p>
+  </article>
+</main>
+
+<script src="/nav-toggle.js" defer></script>
+</body>
+</html>
