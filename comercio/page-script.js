@@ -114,9 +114,36 @@
       + 'id="' + escapeHTML(slug) + '" '
       + 'style="--cat-color:var(--cat-' + escapeHTML(cat) + ')">';
 
-    // ─── Image Header ───────────────────────────────────────────────────
+    // ─── Image Header (Carousel if multiple photos) ────────────────────────
+    // Build array of all images: portada first, then gallery
+    var allImages = [];
+    if (img) allImages.push(img);
+    if (fotos && fotos.length > 0) {
+      fotos.forEach(function (f) {
+        if (f && f !== img) allImages.push(f);
+      });
+    }
+
     html += '<div class="mod-card-img-wrapper">';
-    if (img) {
+    if (allImages.length > 1) {
+      // Carousel with swipe/scroll
+      html += '<div class="mod-card-carousel" data-carousel="' + escapeHTML(slug) + '">';
+      html += '<div class="mod-card-carousel-track">';
+      for (var ci = 0; ci < allImages.length; ci++) {
+        html += '<img class="mod-card-carousel-slide" src="' + escapeHTML(allImages[ci]) + '" alt="' + escapeHTML(name) + ' - foto ' + (ci + 1) + '" loading="lazy">';
+      }
+      html += '</div>';
+      // Nav arrows
+      html += '<button class="mod-carousel-btn mod-carousel-prev" data-dir="prev" aria-label="Foto anterior">‹</button>';
+      html += '<button class="mod-carousel-btn mod-carousel-next" data-dir="next" aria-label="Foto siguiente">›</button>';
+      // Dots indicator
+      html += '<div class="mod-carousel-dots">';
+      for (var di = 0; di < allImages.length; di++) {
+        html += '<span class="mod-carousel-dot' + (di === 0 ? ' active' : '') + '"></span>';
+      }
+      html += '</div>';
+      html += '</div>';
+    } else if (img) {
       html += '<img class="mod-card-img" src="' + escapeHTML(img) + '" alt="' + escapeHTML(name) + '" loading="lazy">';
     } else {
       html += '<div class="mod-card-img-placeholder"><span>' + (CATEGORY_EMOJIS[cat] || '🏪') + '</span></div>';
@@ -177,18 +204,13 @@
         + '</div>';
     }
 
-    // ─── Galería de fotos (miniaturas) ──────────────────────────────────
-    if (fotos && fotos.length > 0) {
-      var maxPhotos = Math.min(fotos.length, 4);
-      html += '<div class="mod-card-gallery">';
-      for (var fi = 0; fi < maxPhotos; fi++) {
-        if (fotos[fi]) {
-          html += '<img class="mod-card-gallery-thumb" src="' + escapeHTML(fotos[fi]) + '" alt="Foto de ' + escapeHTML(name) + '" loading="lazy">';
-        }
-      }
-      if (fotos.length > 4) {
-        html += '<span class="mod-card-gallery-more">+' + (fotos.length - 4) + '</span>';
-      }
+    // ─── Botón Ver Negocio en app.pomaire360.cl ────────────────────────────
+    if (slug) {
+      html += '<div class="mod-card-app-link">';
+      html += '<a class="mod-btn-ver-negocio" href="https://app.pomaire360.cl/negocios/' + escapeHTML(slug) + '" target="_blank" rel="noopener">';
+      html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg>';
+      html += ' Ver ficha completa';
+      html += '</a>';
       html += '</div>';
     }
 
@@ -259,6 +281,63 @@
     emptyState.classList.add('mod-hidden');
     grid.innerHTML = items.map(renderCard).join('');
     dirCount.textContent = items.length + (items.length === 1 ? ' negocio' : ' negocios');
+    // Initialize carousels after render
+    initCarousels();
+  }
+
+  // ─── Carousel Logic ─────────────────────────────────────────────────────
+  function initCarousels() {
+    var carousels = grid.querySelectorAll('.mod-card-carousel');
+    carousels.forEach(function (carousel) {
+      var track = carousel.querySelector('.mod-card-carousel-track');
+      var dots = carousel.querySelectorAll('.mod-carousel-dot');
+      var prevBtn = carousel.querySelector('.mod-carousel-prev');
+      var nextBtn = carousel.querySelector('.mod-carousel-next');
+      var slides = carousel.querySelectorAll('.mod-card-carousel-slide');
+      var currentIdx = 0;
+      var total = slides.length;
+
+      function goTo(idx) {
+        if (idx < 0) idx = total - 1;
+        if (idx >= total) idx = 0;
+        currentIdx = idx;
+        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          goTo(currentIdx - 1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          goTo(currentIdx + 1);
+        });
+      }
+
+      // Touch/swipe support
+      var startX = 0;
+      var dragging = false;
+      track.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+        dragging = true;
+      }, { passive: true });
+      track.addEventListener('touchend', function (e) {
+        if (!dragging) return;
+        dragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          goTo(diff > 0 ? currentIdx + 1 : currentIdx - 1);
+        }
+      }, { passive: true });
+    });
   }
 
   // ─── Filter Logic ───────────────────────────────────────────────────────
