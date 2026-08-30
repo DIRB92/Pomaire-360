@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <!-- Google Analytics (deferred, respects cookie consent) -->
 <script src="/ga-loader.js"></script>
@@ -18,7 +20,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/plaza/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/plaza/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/plaza/">
+<link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/plaza/">
 <link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/">
+
 
 
 
@@ -33,6 +37,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Public square and spaces in Pomaire">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
@@ -85,7 +90,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 }</script>
 </head>
 <body>
-<a href="#navBurger" class="skip-to-content">Skip to content</a>
+<a href="#plaza" class="skip-to-content">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -99,9 +104,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <a href="/en/estacionamientos/">🅿️ <span data-t="nav_park">Parking</span></a>
         <a href="/en/salud/">🏥 <span data-t="nav_health">Health</span></a>
         <a href="/en/seguridad/">🚔 <span data-t="nav_security">Safety</span></a>
-        <a href="/en/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
-        <a href="/en/gruas/">🔧 <span data-t="nav_gruas">Towing &amp; mechanics</span></a>
-        <a href="/en/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
+        <a href="/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Towing &amp; mechanics</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
       </div>
     </div>
 
@@ -110,9 +115,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <div class="nav-menu">
         <a href="/en/alfareria/">🏺 <span data-t="nav_pottery">Pottery</span></a>
         <a href="/en/ruta-del-vino/">🍷 <span data-t="nav_winery">Wine Route</span></a>
-        <a href="/en/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
         <a href="/en/plaza/">🌳 <span data-t="nav_plaza">Town Square</span></a>
-        <a href="/en/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
         <a href="/en/comercio/">🛒 <span data-t="nav_shops_g">Shops</span></a>
       </div>
     </div>
@@ -120,8 +125,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Eat &amp; sleep</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/en/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
-        <a href="/en/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
         <a href="/en/plaza/#banos">🚽 <span data-t="nav_banos">Restrooms</span></a>
       </div>
     </div>
@@ -159,15 +164,15 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
         <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
       </button>
-      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
-      </button>
+      <a role="option" class="lang-option" data-lang="ja" href="/ja/plaza/"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
         <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
       </button>
     </div>
   </div>
 </nav>
+
+<div class="breadcrumb"><a href="/en/">🏺 Pomaire 360</a><span class="sep">›</span><span>Town Square</span></div>
 
 <section id="plaza">
   <div class="section-inner">
@@ -215,8 +220,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   <div class="sub-cross-links">
     <a href="/en/alfareria/">🏺 <span data-t="nav_pottery">Pottery</span></a>
     <a href="/en/ruta-del-vino/">🍷 <span data-t="nav_winery">Wine Route</span></a>
-    <a href="/en/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
-    <a href="/en/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
+    <a href="/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
+    <a href="/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
     <a href="/en/#mapa">🗺️ <span data-t="nav_map">Map</span></a>
   </div>
 </div>
@@ -230,10 +235,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>
 <script src="/card-share.js"></script>
-
-
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script src="/a11y-enhancements.js" defer></script>
-</body></html>
+</body>
+</html>

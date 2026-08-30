@@ -22,7 +22,7 @@ const { hreflangBlock } = require('./head-utils');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 
-const LABEL = { es: ['🇨🇱', 'Español'], en: ['🇬🇧', 'English'], pt: ['🇧🇷', 'Português'] };
+const LABEL = { es: ['🇨🇱', 'Español'], en: ['🇬🇧', 'English'], pt: ['🇧🇷', 'Português'], ja: ['🇯🇵', '日本語'] };
 
 function buildLangOptionHtml(lang, slug, indent) {
   const [flag, name] = LABEL[lang];
@@ -39,7 +39,10 @@ function buildLangOptionHtml(lang, slug, indent) {
 function replaceLangButton(html, lang, slug) {
   const re = new RegExp(
     `([ \\t]*)<button type="button" role="option" class="lang-option( lang-active)?" data-lang="${lang}" onclick="selectLang\\('${lang}'\\)">\\n` +
-    `[ \\t]*<span class="lang-flag">[^<]*</span><span class="lang-name">[^<]*</span><span class="lang-check">[^<]*</span>\\n` +
+    // Contenido interno del botón: flag + name + (posibles spans extra, p.ej.
+    // <span class="lang-badge lang-badge-auto">Auto</span> en el home) + check.
+    // Se acepta cualquier secuencia de <span>…</span> en esta línea.
+    `[ \\t]*(?:<span[^>]*>[^<]*</span>)+\\n` +
     `[ \\t]*</button>`,
     'm'
   );
@@ -73,28 +76,30 @@ function patchOne(slug) {
     notes.push('inserted hreflang before </head> (no canonical found)');
   }
 
-  // 2) og:locale:alternate para en_US / pt_BR, solo si faltan.
+  // 2) og:locale:alternate para en_US / pt_BR / ja_JP, solo si faltan.
   const hasEn = /<meta property="og:locale:alternate" content="en_US">/.test(html);
   const hasPt = /<meta property="og:locale:alternate" content="pt_BR">/.test(html);
-  if (!hasEn || !hasPt) {
+  const hasJa = /<meta property="og:locale:alternate" content="ja_JP">/.test(html);
+  if (!hasEn || !hasPt || !hasJa) {
     const localeRe = /(<meta property="og:locale" content="[^"]*">\n)/;
     if (localeRe.test(html)) {
       let insert = '';
       if (!hasEn) insert += '<meta property="og:locale:alternate" content="en_US">\n';
       if (!hasPt) insert += '<meta property="og:locale:alternate" content="pt_BR">\n';
+      if (!hasJa) insert += '<meta property="og:locale:alternate" content="ja_JP">\n';
       html = html.replace(localeRe, `$1${insert}`);
-      notes.push('inserted og:locale:alternate en_US/pt_BR');
+      notes.push('inserted og:locale:alternate en_US/pt_BR/ja_JP');
     }
   }
 
-  // 3) Selector de idioma -> botones es/en/pt se convierten en <a> reales.
+  // 3) Selector de idioma -> botones es/en/pt/ja se convierten en <a> reales.
   let replacedCount = 0;
-  for (const lang of ['es', 'en', 'pt']) {
+  for (const lang of ['es', 'en', 'pt', 'ja']) {
     const result = replaceLangButton(html, lang, slug);
     html = result.html;
     if (result.replaced) replacedCount++;
   }
-  notes.push(`replaced ${replacedCount}/3 lang buttons`);
+  notes.push(`replaced ${replacedCount}/4 lang buttons`);
 
   fs.writeFileSync(filePath, html, 'utf8');
   console.log(entry.file, '->', notes.join('; '));

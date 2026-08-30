@@ -17,6 +17,15 @@
       "ogImageAlt": "Artesanato de barro em Pomaire — Pomaire 360, guia turístico do povoado dos oleiros",
       "twitterTitle": "Pomaire 360 — Turismo no povoado dos oleiros do Chile",
       "twitterDescription": "Guia turístico 2026 gratuito de Pomaire: ateliês de barro, restaurantes, empanadas gigantes, mapa e como chegar de Santiago."
+    },
+    "ja": {
+      "title": "ポマイレ360 — チリのポマイレ観光 2026 | 陶工の村 完全ガイド",
+      "description": "サンティアゴから約50分、チリで最も有名な陶工の村ポマイレの旅を計画しよう。陶芸工房、伝統料理店、巨大エンパナーダ、インタラクティブ地図、駐車場、宿泊情報を網羅した2026年版の無料観光ガイド。",
+      "ogTitle": "ポマイレ360 — チリのポマイレ観光 | 陶工の村ガイド 2026",
+      "ogDescription": "ポマイレの完全無料観光ガイド：陶芸工房、巨大エンパナーダの店、インタラクティブ地図、サンティアゴからの行き方、宿泊情報。",
+      "ogImageAlt": "ポマイレの陶芸品 — ポマイレ360、チリの陶工の村の観光ガイド",
+      "twitterTitle": "ポマイレ360 — チリの陶工の村の観光",
+      "twitterDescription": "ポマイレの2026年版無料観光ガイド：陶芸工房、レストラン、巨大エンパナーダ、地図、サンティアゴからの行き方。"
     }
   },
   "alfareria": {
@@ -37,6 +46,15 @@
       "ogImageAlt": "Ateliês de olaria e artesãos de barro em Pomaire",
       "twitterTitle": "Olaria em Pomaire — Ateliês e Artesãos de Barro | Pomaire 360",
       "twitterDescription": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの陶芸 — 粘土の工房と職人 | ポマイレ360",
+      "description": "工房、ろくろの実演、そしてポマイレの陶芸職人の完全リスト。",
+      "ogTitle": "ポマイレの陶芸 — 粘土の工房と職人 | ポマイレ360",
+      "ogDescription": "工房、ろくろの実演、そしてポマイレの陶芸職人の完全リスト。",
+      "ogImageAlt": "ポマイレの陶芸工房と粘土の職人",
+      "twitterTitle": "ポマイレの陶芸 — 粘土の工房と職人 | ポマイレ360",
+      "twitterDescription": "工房、ろくろの実演、そしてポマイレの陶芸職人の完全リスト。"
     }
   },
   "alojamientos": {
@@ -57,6 +75,15 @@
       "ogImageAlt": "Hospedagem e acomodações em Pomaire",
       "twitterTitle": "Onde Ficar em Pomaire — Hostels, Cabanas e Suítes | Pomaire 360",
       "twitterDescription": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile."
+    },
+    "ja": {
+      "title": "ポマイレの宿泊 — ホステル・コテージ・スイート | ポマイレ360",
+      "description": "ポマイレでの宿泊先：ホステル、コテージ、スイートを住所・電話・地図付きでご案内。チリの陶工の村での滞在に役立つ最新ガイド。",
+      "ogTitle": "ポマイレの宿泊 — ホステル・コテージ・スイート | ポマイレ360",
+      "ogDescription": "ポマイレでの宿泊先：ホステル、コテージ、スイートを住所・電話・地図付きでご案内。チリの陶工の村での滞在に役立つ最新ガイド。",
+      "ogImageAlt": "ポマイレの宿泊施設",
+      "twitterTitle": "ポマイレの宿泊 — ホステル・コテージ・スイート | ポマイレ360",
+      "twitterDescription": "ポマイレでの宿泊先：ホステル、コテージ、スイートを住所・電話・地図付きでご案内。チリの陶工の村での滞在に役立つ最新ガイド。"
     }
   },
   "alrededores": {
@@ -77,6 +104,15 @@
       "ogImageAlt": "Arredores de Pomaire e estradas rurais",
       "twitterTitle": "Arredores de Pomaire — Los Chiñihues e Como Chegar | Pomaire 360",
       "twitterDescription": "Los Chiñihues, estradas rurais do sequeiro e como chegar a Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレ周辺 — ロス・チニウエスと行き方 | ポマイレ360",
+      "description": "ロス・チニウエス、乾燥地の道、そしてポマイレへの行き方。",
+      "ogTitle": "ポマイレ周辺 — ロス・チニウエスと行き方 | ポマイレ360",
+      "ogDescription": "ロス・チニウエス、乾燥地の道、そしてポマイレへの行き方。",
+      "ogImageAlt": "ポマイレ周辺と農村の道",
+      "twitterTitle": "ポマイレ周辺 — ロス・チニウエスと行き方 | ポマイレ360",
+      "twitterDescription": "ロス・チニウエス、乾燥地の道、そしてポマイレへの行き方。"
     }
   },
   "anunciate": {
@@ -97,6 +133,15 @@
       "ogImageAlt": "Anuncie seu negócio no guia Pomaire 360",
       "twitterTitle": "Anuncie no Pomaire 360 — Planos para seu Negócio",
       "twitterDescription": "Apareça no guia de Pomaire. Planos Gratuito, Destaque e Premium."
+    },
+    "ja": {
+      "title": "ポマイレ360に掲載 — あなたのお店のプラン | ポマイレ360",
+      "description": "ポマイレでお店を営んでいますか？訪問者が使うガイドに掲載しましょう。プロフィール、地図、写真などが付く無料・注目・プレミアムの各プラン。",
+      "ogTitle": "ポマイレ360に掲載 — あなたのお店のプラン",
+      "ogDescription": "ポマイレのガイドに掲載。無料・注目・プレミアムの各プラン。",
+      "ogImageAlt": "ポマイレ360ガイドにお店を掲載",
+      "twitterTitle": "ポマイレ360に掲載 — あなたのお店のプラン",
+      "twitterDescription": "ポマイレのガイドに掲載。無料・注目・プレミアムの各プラン。"
     }
   },
   "apoyar": {
@@ -117,6 +162,15 @@
       "ogImageAlt": "Apoie o guia independente Pomaire 360",
       "twitterTitle": "Apoiar o Pomaire 360 — Contribuição Voluntária",
       "twitterDescription": "Guia independente e sem publicidade do povoado dos oleiros. Uma contribuição voluntária ajuda a mantê-lo atualizado."
+    },
+    "ja": {
+      "title": "ポマイレ360を応援 — 任意のご支援 | ポマイレ360",
+      "description": "ポマイレ360は、広告のない独立系ガイドです。任意のご支援で、陶工の村の情報を常に最新に保つお手伝いをお願いします。",
+      "ogTitle": "ポマイレ360を応援 — 任意のご支援",
+      "ogDescription": "広告のない独立系の陶工の村ガイド。任意のご支援が最新の維持に役立ちます。",
+      "ogImageAlt": "独立系ガイド、ポマイレ360を応援",
+      "twitterTitle": "ポマイレ360を応援 — 任意のご支援",
+      "twitterDescription": "広告のない独立系の陶工の村ガイド。任意のご支援が最新の維持に役立ちます。"
     }
   },
   "comercio": {
@@ -137,6 +191,15 @@
       "ogImageAlt": "Comércio e serviços no povoado de Pomaire",
       "twitterTitle": "Comércio e Serviços em Pomaire — Mercados, Caixa, Combustível | Pomaire 360",
       "twitterDescription": "Mercearias, minimercados, postos de gasolina e oficinas mecânicas em Pomaire. Tudo o que você precisa para o dia a dia ou sua visita ao povoado dos oleiros."
+    },
+    "ja": {
+      "title": "ポマイレの店とサービス — 商店・ATM・ガソリン | ポマイレ360",
+      "description": "ポマイレの商店、ミニマーケット、ガソリンスタンド、自動車工場。日常生活にも陶工の村への訪問にも必要なものがすべて。",
+      "ogTitle": "ポマイレの店とサービス — 商店・ATM・ガソリン | ポマイレ360",
+      "ogDescription": "ポマイレの商店、ミニマーケット、ガソリンスタンド、自動車工場。日常生活にも陶工の村への訪問にも必要なものがすべて。",
+      "ogImageAlt": "ポマイレの村の店とサービス",
+      "twitterTitle": "ポマイレの店とサービス — 商店・ATM・ガソリン | ポマイレ360",
+      "twitterDescription": "ポマイレの商店、ミニマーケット、ガソリンスタンド、自動車工場。日常生活にも陶工の村への訪問にも必要なものがすべて。"
     }
   },
   "elchanchoalcanciamasgrandedelmundo": {
@@ -157,6 +220,15 @@
       "ogImageAlt": "O maior cofrinho de barro do mundo em Pomaire",
       "twitterTitle": "O Maior Cofrinho de Barro do Mundo — Pomaire",
       "twitterDescription": "Criado pelo mestre oleiro César Silva Rojo. Conheça sua história."
+    },
+    "ja": {
+      "title": "世界最大の陶器の貯金箱 — ポマイレ | ポマイレ360",
+      "description": "ポマイレの陶芸家セサル・シルバ・ロホが作った、世界最大の陶器の貯金箱。その物語、見学方法、行き方をご紹介。",
+      "ogTitle": "世界最大の陶器の貯金箱 — ポマイレ",
+      "ogDescription": "陶芸家セサル・シルバ・ロホが制作。ポマイレでの見学方法とその物語をご紹介。",
+      "ogImageAlt": "ポマイレにある世界最大の陶器の貯金箱",
+      "twitterTitle": "世界最大の陶器の貯金箱 — ポマイレ",
+      "twitterDescription": "陶芸家セサル・シルバ・ロホが制作。その物語をご紹介。"
     }
   },
   "estacionamientos": {
@@ -177,6 +249,15 @@
       "ogImageAlt": "Locais para estacionar em Pomaire",
       "twitterTitle": "Estacionamento em Pomaire — Onde Estacionar | Pomaire 360",
       "twitterDescription": "Onde estacionar ao visitar Pomaire: entrada norte, rua 18 de Septiembre e dicas."
+    },
+    "ja": {
+      "title": "ポマイレの駐車場 — どこに停める | ポマイレ360",
+      "description": "ポマイレ訪問時の駐車場所：北入口、18 de Septiembre通り、そしてアドバイス。",
+      "ogTitle": "ポマイレの駐車場 — どこに停める | ポマイレ360",
+      "ogDescription": "ポマイレ訪問時の駐車場所：北入口、18 de Septiembre通り、そしてアドバイス。",
+      "ogImageAlt": "ポマイレの駐車スポット",
+      "twitterTitle": "ポマイレの駐車場 — どこに停める | ポマイレ360",
+      "twitterDescription": "ポマイレ訪問時の駐車場所：北入口、18 de Septiembre通り、そしてアドバイス。"
     }
   },
   "gastronomia": {
@@ -197,6 +278,15 @@
       "ogImageAlt": "Restaurantes e gastronomia típica de Pomaire",
       "twitterTitle": "Onde Comer em Pomaire — Restaurantes e Gastronomia | Pomaire 360",
       "twitterDescription": "Cazuela de barro, empanadas gigantes e o diretório completo de restaurantes de Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレで食べる — レストランと郷土料理 | ポマイレ360",
+      "description": "土鍋のカスエラ、巨大エンパナーダ、そしてポマイレのレストラン完全リスト。",
+      "ogTitle": "ポマイレで食べる — レストランと郷土料理 | ポマイレ360",
+      "ogDescription": "土鍋のカスエラ、巨大エンパナーダ、そしてポマイレのレストラン完全リスト。",
+      "ogImageAlt": "ポマイレのレストランと伝統料理",
+      "twitterTitle": "ポマイレで食べる — レストランと郷土料理 | ポマイレ360",
+      "twitterDescription": "土鍋のカスエラ、巨大エンパナーダ、そしてポマイレのレストラン完全リスト。"
     }
   },
   "gruas": {
@@ -217,6 +307,15 @@
       "ogImageAlt": "Guinchos e oficinas mecânicas perto de Pomaire",
       "twitterTitle": "Guincho e Mecânicos em Pomaire e Melipilla — Assistência na Estrada | Pomaire 360",
       "twitterDescription": "Oficinas mecânicas, guincho, assistência na estrada e borracharia para Pomaire e Melipilla."
+    },
+    "ja": {
+      "title": "ポマイレとメリピージャのレッカーと整備 — ロードサービス | ポマイレ360",
+      "description": "ポマイレとメリピージャの自動車工場、レッカー車、ロードサービス、タイヤ修理。訪問中に車が故障したときの対処法。",
+      "ogTitle": "ポマイレとメリピージャのレッカーと整備 — ロードサービス | ポマイレ360",
+      "ogDescription": "ポマイレとメリピージャの自動車工場、レッカー車、ロードサービス、タイヤ修理。",
+      "ogImageAlt": "ポマイレ近郊のレッカー車と自動車工場",
+      "twitterTitle": "ポマイレとメリピージャのレッカーと整備 — ロードサービス | ポマイレ360",
+      "twitterDescription": "ポマイレとメリピージャの自動車工場、レッカー車、ロードサービス、タイヤ修理。"
     }
   },
   "juegos": {
@@ -237,6 +336,15 @@
       "ogImageAlt": "Jogos arcade inspirados na olaria de Pomaire",
       "twitterTitle": "Pomaire Arcade — Tetris da Olaria e Jogos de Barro",
       "twitterDescription": "Cinco jogos clássicos inspirados no barro, na argila e nas vasilhas de Pomaire, incluindo o Tetris da Olaria. Jogue grátis, sem downloads."
+    },
+    "ja": {
+      "title": "ポマイレ アーケード — 陶芸テトリスと粘土ゲーム | ポマイレ360",
+      "description": "粘土・陶芸・ポマイレの器から着想を得た5つの定番ゲーム：陶芸テトリス、神経衰弱、成形、コレクター、パズル。ダウンロード不要で無料プレイ。",
+      "ogTitle": "ポマイレ アーケード — 陶芸テトリスと粘土ゲーム",
+      "ogDescription": "陶芸テトリスを含む、粘土・陶芸・ポマイレの器から着想を得た5つの定番ゲーム。ダウンロード不要で無料プレイ。",
+      "ogImageAlt": "ポマイレの陶芸から着想を得たアーケードゲーム",
+      "twitterTitle": "ポマイレ アーケード — 陶芸テトリスと粘土ゲーム",
+      "twitterDescription": "陶芸テトリスを含む、粘土・陶芸・ポマイレの器から着想を得た5つの定番ゲーム。ダウンロード不要で無料プレイ。"
     }
   },
   "links": {
@@ -257,6 +365,15 @@
       "ogImageAlt": "Pomaire 360 - guia completo do povoado dos oleiros do Chile",
       "twitterTitle": "Links — Pomaire 360 | Todos os Nossos Links",
       "twitterDescription": "Todos os links do Pomaire 360: redes sociais, seções do site e mais. Seu guia completo do povoado dos oleiros do Chile."
+    },
+    "ja": {
+      "title": "リンク — ポマイレ360 | すべてのリンク",
+      "description": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。",
+      "ogTitle": "リンク — ポマイレ360 | すべてのリンク",
+      "ogDescription": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。",
+      "ogImageAlt": "ポマイレ360 - チリの陶工の村の完全ガイド",
+      "twitterTitle": "リンク — ポマイレ360 | すべてのリンク",
+      "twitterDescription": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。"
     }
   },
   "locomocion": {
@@ -277,6 +394,15 @@
       "ogImageAlt": "Como chegar a Pomaire de transporte público",
       "twitterTitle": "Transporte em Pomaire — Como Chegar de Ônibus | Pomaire 360",
       "twitterDescription": "Mapa interativo de pontos de parada, rotas e horários de Santiago e Melipilla a Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの交通 — バスでの行き方 | ポマイレ360",
+      "description": "サンティアゴとメリピージャからポマイレへのバス停・路線・時刻表のインタラクティブ地図。車なしでの行き方。",
+      "ogTitle": "ポマイレの交通 — バスでの行き方 | ポマイレ360",
+      "ogDescription": "サンティアゴとメリピージャからポマイレへのバス停・路線・時刻表のインタラクティブ地図。",
+      "ogImageAlt": "公共交通機関でのポマイレへの行き方",
+      "twitterTitle": "ポマイレの交通 — バスでの行き方 | ポマイレ360",
+      "twitterDescription": "サンティアゴとメリピージャからポマイレへのバス停・路線・時刻表のインタラクティブ地図。"
     }
   },
   "plaza": {
@@ -297,6 +423,15 @@
       "ogImageAlt": "Praça pública e espaços de Pomaire",
       "twitterTitle": "Praça e Espaços Públicos de Pomaire | Pomaire 360",
       "twitterDescription": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia."
+    },
+    "ja": {
+      "title": "ポマイレの中央広場と公共スペース | ポマイレ360",
+      "description": "ポマイレの中央広場、サン・アントニオ・デ・パドヴァ教会、公衆トイレ。工芸と食に囲まれた、陶工の村の待ち合わせスポット。",
+      "ogTitle": "ポマイレの中央広場と公共スペース | ポマイレ360",
+      "ogDescription": "ポマイレの中央広場、サン・アントニオ・デ・パドヴァ教会、公衆トイレ。工芸と食に囲まれた、陶工の村の待ち合わせスポット。",
+      "ogImageAlt": "ポマイレの広場と公共スペース",
+      "twitterTitle": "ポマイレの中央広場と公共スペース | ポマイレ360",
+      "twitterDescription": "ポマイレの中央広場、サン・アントニオ・デ・パドヴァ教会、公衆トイレ。工芸と食に囲まれた、陶工の村の待ち合わせスポット。"
     }
   },
   "que-ver": {
@@ -317,6 +452,15 @@
       "ogImageAlt": "Atrações turísticas e pontos de interesse em Pomaire",
       "twitterTitle": "O que Ver em Pomaire — Atrações e Pontos de Interesse | Pomaire 360",
       "twitterDescription": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの見どころ — 名所とスポット | ポマイレ360",
+      "description": "ポマイレの名所、魅力的な店、園芸、主要スポット。",
+      "ogTitle": "ポマイレの見どころ — 名所とスポット | ポマイレ360",
+      "ogDescription": "ポマイレの名所、魅力的な店、園芸、主要スポット。",
+      "ogImageAlt": "ポマイレの観光名所とスポット",
+      "twitterTitle": "ポマイレの見どころ — 名所とスポット | ポマイレ360",
+      "twitterDescription": "ポマイレの名所、魅力的な店、園芸、主要スポット。"
     }
   },
   "ruta-del-vino": {
@@ -337,6 +481,15 @@
       "ogImageAlt": "Rota do vinho e da chicha em Pomaire",
       "twitterTitle": "Rota do Vinho e da Chicha em Pomaire e Los Chiñihues | Pomaire 360",
       "twitterDescription": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues."
+    },
+    "ja": {
+      "title": "ポマイレとロス・チニウエスのワインとチチャの道 | ポマイレ360",
+      "description": "ポマイレとロス・チニウエスの沿岸乾燥地を巡る、ワインとチチャの道。",
+      "ogTitle": "ポマイレとロス・チニウエスのワインとチチャの道 | ポマイレ360",
+      "ogDescription": "ポマイレとロス・チニウエスの沿岸乾燥地を巡る、ワインとチチャの道。",
+      "ogImageAlt": "ポマイレのワインとチチャの道",
+      "twitterTitle": "ポマイレとロス・チニウエスのワインとチチャの道 | ポマイレ360",
+      "twitterDescription": "ポマイレとロス・チニウエスの沿岸乾燥地を巡る、ワインとチチャの道。"
     }
   },
   "salud": {
@@ -357,6 +510,15 @@
       "ogImageAlt": "Serviços de saúde e urgências perto de Pomaire",
       "twitterTitle": "Saúde e Urgências em Pomaire — Posto de Saúde, Hospital, SAMU | Pomaire 360",
       "twitterDescription": "Posto de saúde CESFAM, Hospital de Melipilla, ambulância SAMU (131) e farmácias para Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの医療と緊急 — 診療所・病院・救急 | ポマイレ360",
+      "description": "ポマイレのCESFAM診療所、メリピージャ病院、SAMU救急車（131）、薬局の情報。",
+      "ogTitle": "ポマイレの医療と緊急 — 診療所・病院・救急 | ポマイレ360",
+      "ogDescription": "ポマイレのCESFAM診療所、メリピージャ病院、SAMU救急車（131）、薬局の情報。",
+      "ogImageAlt": "ポマイレ近郊の医療・緊急サービス",
+      "twitterTitle": "ポマイレの医療と緊急 — 診療所・病院・救急 | ポマイレ360",
+      "twitterDescription": "ポマイレのCESFAM診療所、メリピージャ病院、SAMU救急車（131）、薬局の情報。"
     }
   },
   "seguridad": {
@@ -377,6 +539,15 @@
       "ogImageAlt": "Serviços de segurança e emergência em Pomaire",
       "twitterTitle": "Segurança e Emergências em Pomaire — Polícia, Bombeiros | Pomaire 360",
       "twitterDescription": "Polícia, bombeiros, SAMU e outros números de emergência para Pomaire. Contatos e endereços para sua segurança durante a visita ao povoado dos oleiros."
+    },
+    "ja": {
+      "title": "ポマイレの安全と緊急 — 警察・消防 | ポマイレ360",
+      "description": "ポマイレの警察、消防、SAMUなどの緊急番号。陶工の村への訪問中の安全のための連絡先と住所。",
+      "ogTitle": "ポマイレの安全と緊急 — 警察・消防 | ポマイレ360",
+      "ogDescription": "ポマイレの警察、消防、SAMUなどの緊急番号。陶工の村への訪問中の安全のための連絡先と住所。",
+      "ogImageAlt": "ポマイレの安全・緊急サービス",
+      "twitterTitle": "ポマイレの安全と緊急 — 警察・消防 | ポマイレ360",
+      "twitterDescription": "ポマイレの警察、消防、SAMUなどの緊急番号。陶工の村への訪問中の安全のための連絡先と住所。"
     }
   },
   "sugerencias": {
@@ -397,6 +568,44 @@
       "ogImageAlt": "Envie sugestões para melhorar o guia de Pomaire",
       "twitterTitle": "Sugestões e Comentários — Pomaire 360",
       "twitterDescription": "Envie seu comentário ou sugestão para melhorar o guia de Pomaire. Chega direto por e-mail ou WhatsApp."
+    },
+    "ja": {
+      "title": "ご意見・ご提案 — 改善にご協力を | ポマイレ360",
+      "description": "ポマイレ360を良くするためのアイデア、コメント、修正はありませんか？メールまたはWhatsAppでご提案をお送りください。皆さまの声がポマイレのガイドを最新に保つ助けになります。",
+      "ogTitle": "ご意見・ご提案 — ポマイレ360",
+      "ogDescription": "ポマイレのガイドを良くするためのコメントやご提案をお送りください。メールまたはWhatsAppに直接届きます。",
+      "ogImageAlt": "ポマイレのガイド改善へのご提案を送る",
+      "twitterTitle": "ご意見・ご提案 — ポマイレ360",
+      "twitterDescription": "ポマイレのガイドを良くするためのコメントやご提案をお送りください。メールまたはWhatsAppに直接届きます。"
+    }
+  },
+  "guia-turistica": {
+    "en": {
+      "title": "Pomaire Tourist Guide 2026 — What to See, Eat & How to Get There | Pomaire 360",
+      "description": "Complete tourist guide to Pomaire: what to see, where to eat, giant empanadas, clay workshops, suggested itinerary and how to get there from Santiago.",
+      "ogTitle": "Pomaire Tourist Guide 2026 — What to See, Eat & How to Get There",
+      "ogDescription": "Complete tourist guide to Pomaire: what to see, where to eat, clay workshops, itinerary and how to get there from Santiago.",
+      "ogImageAlt": "Tourist guide to Pomaire, Chile's pottery village",
+      "twitterTitle": "Pomaire Tourist Guide 2026",
+      "twitterDescription": "What to see, where to eat, clay workshops and how to get to Pomaire from Santiago."
+    },
+    "pt": {
+      "title": "Guia Turístico de Pomaire 2026 — O que Ver, Comer e Como Chegar | Pomaire 360",
+      "description": "Guia turístico completo de Pomaire: o que ver, onde comer, empanadas gigantes, ateliês de barro, roteiro sugerido e como chegar de Santiago.",
+      "ogTitle": "Guia Turístico de Pomaire 2026 — O que Ver, Comer e Como Chegar",
+      "ogDescription": "Guia turístico completo de Pomaire: o que ver, onde comer, ateliês de barro, roteiro e como chegar de Santiago.",
+      "ogImageAlt": "Guia turístico de Pomaire, povoado dos oleiros do Chile",
+      "twitterTitle": "Guia Turístico de Pomaire 2026",
+      "twitterDescription": "O que ver, onde comer, ateliês de barro e como chegar a Pomaire de Santiago."
+    },
+    "ja": {
+      "title": "ポマイレ観光ガイド 2026 — 見どころ・食事・行き方 | ポマイレ360",
+      "description": "ポマイレの完全観光ガイド：見どころ、食事処、巨大エンパナーダ、陶芸工房、おすすめの行程、サンティアゴからの行き方。",
+      "ogTitle": "ポマイレ観光ガイド 2026 — 見どころ・食事・行き方",
+      "ogDescription": "ポマイレの完全観光ガイド：見どころ、食事処、陶芸工房、行程、サンティアゴからの行き方。",
+      "ogImageAlt": "チリの陶工の村ポマイレの観光ガイド",
+      "twitterTitle": "ポマイレ観光ガイド 2026",
+      "twitterDescription": "見どころ、食事処、陶芸工房、サンティアゴからポマイレへの行き方。"
     }
   }
 }

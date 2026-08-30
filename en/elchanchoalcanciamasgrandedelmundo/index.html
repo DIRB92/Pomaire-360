@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <!-- Google Analytics (deferred, respects cookie consent) -->
 <script src="/ga-loader.js"></script>
@@ -11,7 +13,9 @@
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/">
+<link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
+
 
 
 
@@ -28,6 +32,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The world's largest clay piggy bank in Pomaire">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,7 +222,6 @@
 </style>
 </head>
 <body>
-<a href="#navBurger" class="skip-to-content">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -231,9 +235,9 @@
         <a href="/en/estacionamientos/">🅿️ <span data-t="nav_park">Parking</span></a>
         <a href="/en/salud/">🏥 <span data-t="nav_health">Health</span></a>
         <a href="/en/seguridad/">🚔 <span data-t="nav_security">Safety</span></a>
-        <a href="/en/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
-        <a href="/en/gruas/">🔧 <span data-t="nav_gruas">Towing &amp; mechanics</span></a>
-        <a href="/en/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
+        <a href="/servicios/">🛒 <span data-t="nav_commerce">Services</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Towing &amp; mechanics</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Transport</span></a>
       </div>
     </div>
 
@@ -242,9 +246,9 @@
       <div class="nav-menu">
         <a href="/en/alfareria/">🏺 <span data-t="nav_pottery">Pottery</span></a>
         <a href="/en/ruta-del-vino/">🍷 <span data-t="nav_winery">Wine Route</span></a>
-        <a href="/en/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">What to see</span></a>
         <a href="/en/plaza/">🌳 <span data-t="nav_plaza">Town Square</span></a>
-        <a href="/en/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Around</span></a>
         <a href="/en/comercio/">🛒 <span data-t="nav_shops_g">Shops</span></a>
       </div>
     </div>
@@ -252,8 +256,8 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Eat &amp; sleep</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/en/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
-        <a href="/en/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Eat</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Lodging</span></a>
         <a href="/en/plaza/#banos">🚽 <span data-t="nav_banos">Restrooms</span></a>
       </div>
     </div>
@@ -291,9 +295,7 @@
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
         <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
       </button>
-      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
-      </button>
+      <a role="option" class="lang-option" data-lang="ja" href="/ja/elchanchoalcanciamasgrandedelmundo/"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
         <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
       </button>
@@ -302,7 +304,7 @@
 </nav>
 
 <!-- ANUNCIO LLAMATIVO: vacaciones de invierno (se muestra/oculta segun fecha) -->
-<div class="ch-promo" data-winter-promo="" style="display:none;" role="status">
+<div class="ch-promo" data-winter-promo style="display:none;" role="status">
   <span class="ch-promo-snow">❄️</span>
   <span data-t="ch_winter_promo">We'll be open during the winter break! · Monday to Sunday</span>
   <span class="ch-promo-snow">❄️</span>
@@ -313,7 +315,7 @@
   <div class="ch-hero-content">
     <span class="ch-kicker" data-t="ch_kicker">🐷 A must-see attraction in Pomaire</span>
     <h1 data-t="ch_h1">The world's largest clay piggy bank</h1>
-    <p class="ch-author" data-t="ch_author">Created by <strong>César Silva Rojo</strong></p>
+    <p class="ch-author" data-t="ch_author">Created by</p>
     <div class="ch-hero-btns">
       <a href="#autor" class="ch-btn ch-btn-primary" data-t="ch_btn_hist">See the Story</a>
       <a href="#visitar" class="ch-btn ch-btn-ghost" data-t="ch_btn_visit">How to Visit</a>
@@ -356,9 +358,9 @@
   <!-- VISITAR -->
   <section class="ch-visit" id="visitar">
     <h2 data-t="ch_visit_title">How to visit</h2>
-    <div class="ch-visit-row">📍 <span data-t="ch_addr"><strong>Address:</strong> Los Paltos 323, Pomaire, Melipilla</span></div>
-    <div class="ch-visit-row">🕒 <span data-t="ch_hours"><strong>Hours:</strong> Saturday 12:00–18:00 · Sunday 12:00–19:30 · Mon–Fri closed</span></div>
-    <div class="ch-visit-row">📞 <span data-t="ch_phone"><strong>Phone:</strong> +56 9 3356 6057</span></div>
+    <div class="ch-visit-row">📍 <span data-t="ch_addr">Address: Los Paltos 323, Pomaire, Melipilla</span></div>
+    <div class="ch-visit-row">🕒 <span data-t="ch_hours">Hours: Saturday 12:00–18:00 · Sunday 12:00–19:30 · Mon–Fri closed</span></div>
+    <div class="ch-visit-row">📞 <span data-t="ch_phone">Phone: +56 9 3356 6057</span></div>
     <div class="ch-visit-btns">
       <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ How to get there</a>
       <a class="ch-soc" style="background:var(--clay-dark)" href="/en/#lugar=po6" data-t="ch_seemap_btn">📍 View on the interactive map</a>
@@ -381,8 +383,8 @@
       <span class="games-text" data-t="gf_cta">Play!</span>
     </a>
   </div>
-  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"/></svg>
+  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&amp;utm_source=join_link&amp;utm_campaign=creatorshare_creator&amp;utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"></path></svg>
     <span class="pa-text">Patreon</span>
   </a>
   <a class="an-float" href="https://www.pomaire360.cl/anunciate/" aria-label="Agregar tu negocio en Pomaire 360">
@@ -409,10 +411,9 @@
 <script src="/a11y.js"></script>
 <script src="/seasonal.js"></script>
 <script defer src="/elchanchoalcanciamasgrandedelmundo/page-script.js"></script>
-
-
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script src="/a11y-enhancements.js" defer></script>
-</body></html>
+</body>
+</html>

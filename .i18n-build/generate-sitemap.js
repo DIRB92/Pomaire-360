@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /*
- * Regenera sitemap.xml con las 60 URLs del sitio (20 páginas x 3 idiomas
- * estáticos: es/en/pt), cada una con su bloque xhtml:link hreflang
- * apuntando a los otros dos idiomas + x-default (apuntando siempre a la
+ * Regenera sitemap.xml con las URLs del sitio (páginas x 4 idiomas
+ * estáticos: es/en/pt/ja), cada una con su bloque xhtml:link hreflang
+ * apuntando a los otros idiomas + x-default (apuntando siempre a la
  * versión en español, el idioma principal del sitio).
  *
  * Conserva lastmod/changefreq/priority definidos por página en SITEMAP_META
@@ -48,13 +48,14 @@ const SLUG_ORDER = [
   'sugerencias', 'juegos', 'links'
 ];
 
-const LANG_HREFLANG = { es: 'es', en: 'en', pt: 'pt' };
+const LANG_HREFLANG = { es: 'es', en: 'en', pt: 'pt', ja: 'ja' };
+const SITEMAP_LANGS = ['es', 'en', 'pt', 'ja'];
 
 function urlBlock(slug, lang) {
   const meta = SITEMAP_META[slug];
   const loc = SITE + pageMap.langPath(slug, lang);
   const xdefault = SITE + pageMap.langPath(slug, 'es');
-  const alternates = ['es', 'en', 'pt'].map(l =>
+  const alternates = SITEMAP_LANGS.map(l =>
     `    <xhtml:link rel="alternate" hreflang="${LANG_HREFLANG[l]}" href="${SITE + pageMap.langPath(slug, l)}"/>`
   ).join('\n');
   return [
@@ -72,7 +73,7 @@ function urlBlock(slug, lang) {
 function main() {
   const blocks = [];
   for (const slug of SLUG_ORDER) {
-    for (const lang of ['es', 'en', 'pt']) {
+    for (const lang of SITEMAP_LANGS) {
       blocks.push(urlBlock(slug, lang));
     }
   }
@@ -82,7 +83,7 @@ function main() {
     blocks.join('\n') + '\n' +
     '</urlset>\n';
   fs.writeFileSync(path.join(REPO_ROOT, 'sitemap.xml'), xml, 'utf8');
-  console.log(`Wrote sitemap.xml with ${blocks.length} URLs (${SLUG_ORDER.length} slugs x 3 langs).`);
+  console.log(`Wrote sitemap.xml with ${blocks.length} URLs (${SLUG_ORDER.length} slugs x ${SITEMAP_LANGS.length} langs).`);
 }
 
 main();

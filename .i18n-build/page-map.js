@@ -19,9 +19,9 @@ module.exports = {
 };
 
 // Idiomas con página estática real (SEO indexable).
-module.exports.STATIC_LANGS = ['es', 'en', 'pt'];
+module.exports.STATIC_LANGS = ['es', 'en', 'pt', 'ja'];
 // Idiomas que siguen funcionando solo vía el switcher JS existente (no indexados).
-module.exports.JS_ONLY_LANGS = ['fr', 'ru', 'ja', 'zh'];
+module.exports.JS_ONLY_LANGS = ['fr', 'ru', 'zh'];
 
 module.exports.langPath = function (slug, lang) {
   const entry = module.exports[slug];

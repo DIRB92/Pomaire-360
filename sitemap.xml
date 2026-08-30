@@ -3,422 +3,662 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.pomaire360.cl/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/"/>
   </url>
   <url>
+    <loc>https://www.pomaire360.cl/ja/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/guia-turistica/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/guia-turistica/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/en/guia-turistica/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/guia-turistica/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/pt/guia-turistica/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/guia-turistica/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/guia-turistica/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/guia-turistica/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/guia-turistica/"/>
+  </url>
+  <url>
     <loc>https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/estacionamientos/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/estacionamientos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/estacionamientos/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/estacionamientos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/estacionamientos/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/estacionamientos/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/estacionamientos/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/estacionamientos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/estacionamientos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/estacionamientos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/salud/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/salud/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/salud/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/salud/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/salud/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/salud/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/salud/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/salud/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/salud/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/salud/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/salud/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/salud/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/salud/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/salud/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/salud/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/salud/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/salud/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/salud/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/salud/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/salud/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/salud/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/salud/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/salud/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/salud/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/seguridad/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/seguridad/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/seguridad/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/seguridad/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/seguridad/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/seguridad/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/seguridad/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/seguridad/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/seguridad/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/seguridad/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/comercio/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/comercio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/comercio/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/comercio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/comercio/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/comercio/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/comercio/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/comercio/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/comercio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/comercio/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/alfareria/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/alfareria/</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/alfareria/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/alfareria/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/alfareria/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/ruta-del-vino/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/ruta-del-vino/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/ruta-del-vino/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/ruta-del-vino/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/ruta-del-vino/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/ruta-del-vino/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/ruta-del-vino/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/ruta-del-vino/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/ruta-del-vino/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/ruta-del-vino/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/plaza/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/plaza/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/plaza/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/plaza/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/plaza/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/plaza/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/plaza/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/plaza/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/plaza/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/plaza/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/plaza/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/plaza/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/plaza/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/plaza/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/anunciate/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/anunciate/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/anunciate/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/anunciate/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/anunciate/</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/anunciate/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/anunciate/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/anunciate/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/anunciate/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/anunciate/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/apoyar/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/apoyar/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/apoyar/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/apoyar/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/apoyar/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/apoyar/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/apoyar/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/apoyar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/apoyar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/apoyar/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/sugerencias/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/sugerencias/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/sugerencias/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/sugerencias/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/sugerencias/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/sugerencias/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/sugerencias/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/sugerencias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/sugerencias/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/sugerencias/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/juegos/</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/juegos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/juegos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/juegos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/juegos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/juegos/</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/juegos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/juegos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/juegos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/juegos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/juegos/</loc>
     <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/juegos/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/juegos/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/juegos/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/juegos/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/juegos/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/juegos/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/juegos/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/links/</loc>
-    <lastmod>2025-07-18</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/links/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/links/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/links/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/links/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/links/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/en/links/</loc>
-    <lastmod>2025-07-18</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/links/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/links/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/links/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/links/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/links/"/>
   </url>
   <url>
     <loc>https://www.pomaire360.cl/pt/links/</loc>
-    <lastmod>2025-07-18</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/links/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/links/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/links/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/links/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/links/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/links/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/links/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/links/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/links/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/links/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/links/"/>
   </url>
 </urlset>

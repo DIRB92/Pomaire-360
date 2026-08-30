@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt"><head>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
 <meta charset="UTF-8">
 <!-- Google Analytics (deferred, respects cookie consent) -->
 <script src="/ga-loader.js"></script>
@@ -18,7 +20,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/sugerencias/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/sugerencias/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/sugerencias/">
+<link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/sugerencias/">
 <link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/sugerencias/">
+
 
 
 
@@ -33,6 +37,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Envie sugestões para melhorar o guia de Pomaire">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
@@ -46,9 +51,33 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <link rel="stylesheet" href="/style-2026.css">
 <link rel="stylesheet" href="/components.css">
 <link rel="stylesheet" href="/dark-mode-overrides.css">
+<style>
+  /* Form validation states */
+  .sg-form .sg-field input:valid:not(:placeholder-shown),
+  .sg-form .sg-field textarea:valid:not(:placeholder-shown),
+  .sg-form .sg-field select:valid {
+    border-color: #4A7C59;
+    box-shadow: 0 0 0 2px rgba(74,124,89,.12);
+  }
+  .sg-form.was-validated .sg-field input:invalid,
+  .sg-form.was-validated .sg-field textarea:invalid,
+  .sg-form.was-validated .sg-field select:invalid {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 2px rgba(192,57,43,.12);
+  }
+  .sg-inline-error {
+    display: none;
+    font-size: .76rem;
+    color: #c0392b;
+    margin-top: .3rem;
+    font-weight: 600;
+  }
+  .sg-form.was-validated .sg-inline-error.visible {
+    display: block;
+  }
+</style>
 </head>
 <body>
-<a href="#navBurger" class="skip-to-content">Skip to content</a>
 
 <!-- BARRA SUPERIOR / MENÚ -->
 <!-- NAV -->
@@ -63,9 +92,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <a href="/pt/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
         <a href="/pt/salud/">🏥 <span data-t="nav_health">Saúde</span></a>
         <a href="/pt/seguridad/">🚔 <span data-t="nav_security">Segurança</span></a>
-        <a href="/pt/servicios/">🛒 <span data-t="nav_commerce">Serviços</span></a>
-        <a href="/pt/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
-        <a href="/pt/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
+        <a href="/servicios/">🛒 <span data-t="nav_commerce">Serviços</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
       </div>
     </div>
 
@@ -74,9 +103,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <div class="nav-menu">
         <a href="/pt/alfareria/">🏺 <span data-t="nav_pottery">Olaria</span></a>
         <a href="/pt/ruta-del-vino/">🍷 <span data-t="nav_winery">Rota do Vinho</span></a>
-        <a href="/pt/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
         <a href="/pt/plaza/">🌳 <span data-t="nav_plaza">Praça</span></a>
-        <a href="/pt/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
         <a href="/pt/comercio/">🛒 <span data-t="nav_shops_g">Comércio</span></a>
       </div>
     </div>
@@ -84,8 +113,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer e dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/pt/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
-        <a href="/pt/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
         <a href="/pt/plaza/#banos">🚽 <span data-t="nav_banos">Banheiros</span></a>
       </div>
     </div>
@@ -123,9 +152,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
         <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
       </button>
-      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
-      </button>
+      <a role="option" class="lang-option" data-lang="ja" href="/ja/sugerencias/"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
         <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
       </button>
@@ -159,7 +186,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <!-- MENÚ DESPLEGABLE: tipo de sugerencia -->
     <div class="sg-field">
       <label for="sg-type" data-t="sg_label_type">Tipo de mensagem</label>
-      <select id="sg-type" name="type" class="sg-select">
+      <select id="sg-type" name="type" class="sg-select" required>
         <option value="general" data-t="sg_opt_general">💡 Ideia ou sugestão geral</option>
         <option value="lugar" data-t="sg_opt_place">📍 Corrigir dados de um lugar</option>
         <option value="negocio" data-t="sg_opt_business">🏪 Adicionar um negócio ou lugar</option>
@@ -171,10 +198,25 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
     <div class="sg-field">
       <label for="sg-message" data-t="sg_label_msg">Sua mensagem</label>
-      <textarea id="sg-message" name="message" rows="5" placeholder="Escreva aqui seu comentário ou sugestão..." data-ph-t="sg_ph_msg" required=""></textarea>
+      <textarea id="sg-message" name="message" rows="5" placeholder="Escreva aqui seu comentário ou sugestão..." data-ph-t="sg_ph_msg" required minlength="10"></textarea>
+      <span class="sg-inline-error" id="sgMsgError"></span>
     </div>
 
     <p class="sg-error" id="sgError" data-t="sg_alert_msg" style="display:none;">Por favor, escreva sua mensagem antes de enviar.</p>
+
+    <!-- Información legal sobre tratamiento de datos (Ley 21.719 art. 14) -->
+    <div class="sg-legal-info" style="background:var(--clay-light,#f5ede5);padding:1rem 1.2rem;border-radius:10px;margin:1rem 0;font-size:.82rem;line-height:1.6;color:var(--text-secondary,#5a4a3a);border-left:3px solid var(--clay,#B85C2C);">
+      <p style="margin:0 0 .5rem;font-weight:700;">📋 Información sobre protección de datos</p>
+      <ul style="margin:0;padding-left:1.2rem;">
+        <li><strong>Responsable:</strong> Pomaire 360 — contacto@pomaire360.cl</li>
+        <li><strong>Finalidad:</strong> Responder tu consulta o sugerencia y mejorar el contenido del sitio.</li>
+        <li><strong>Base legal:</strong> Tu consentimiento al enviar este formulario (art. 12, Ley 21.719).</li>
+        <li><strong>Conservación:</strong> Máximo 12 meses desde la recepción, salvo obligación legal.</li>
+        <li><strong>Destinatarios:</strong> No se ceden datos a terceros.</li>
+        <li><strong>Derechos:</strong> Puedes ejercer tus derechos de acceso, rectificación, supresión y oposición escribiendo a contacto@pomaire360.cl.</li>
+      </ul>
+      <p style="margin:.5rem 0 0;">Al enviar este formulario confirmas que has leído esta información y consientes el tratamiento de tus datos para la finalidad indicada. Consulta nuestra <a href="/privacidad/" style="color:var(--clay,#B85C2C);font-weight:600;">Política de Privacidad</a> completa.</p>
+    </div>
 
     <div class="sg-actions">
       <button type="button" class="sg-btn sg-btn-wa" onclick="sendSuggestion('wa')">
@@ -210,8 +252,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   <h2 data-t="sub_more">Mais em Pomaire 360</h2>
   <div class="sub-cross-links">
     <a href="/pt/alfareria/">🏺 <span data-t="nav_pottery">Olaria</span></a>
-    <a href="/pt/gastronomia/">🍴 <span data-t="nav_food">Comer</span></a>
-    <a href="/pt/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
+    <a href="/gastronomia/">🍴 <span data-t="nav_food">Comer</span></a>
+    <a href="/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
     <a href="/pt/anunciate/">📣 <span data-t="nav_advertise">Anuncie</span></a>
     <a href="/pt/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
   </div>
@@ -226,10 +268,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <script defer src="/sugerencias/page-script.js"></script>
 <script src="/subi18n.js"></script>
 <script src="/a11y.js"></script>
-
-
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script src="/a11y-enhancements.js" defer></script>
-</body></html>
+</body>
+</html>

@@ -1,67 +1,110 @@
-<!DOCTYPE html><html lang="pt" prefix="og: https://ogp.me/ns#"><head>
+<!DOCTYPE html>
+<html lang="pt" prefix="og: https://ogp.me/ns#">
+<head>
 <meta charset="UTF-8">
-<!-- Google Analytics (deferred, respects cookie consent) -->
-<script src="/ga-loader.js"></script>
-<script src="/legacy-redirect.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#D4654A">
+<!-- GA & legacy redirect — now deferred to unblock render -->
+<script defer src="/ga-loader.js"></script>
+<script defer src="/legacy-redirect.js"></script>
 
-<!-- Critical inline styles 2026 -->
+<!-- Critical inline styles to prevent blank hero on mobile -->
 <style>
-body{font-family:'Inter',-apple-system,sans-serif;background:#FAFAF7;color:#2D1A0A}
-nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.section-icon{background:rgba(212,101,74,.15);border:2px solid #F0A090;border-radius:16px}
+#inicio{position:relative;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem 3rem;overflow:hidden;background:linear-gradient(160deg,#2D1A0A 0%,#5C3420 45%,#8C3D16 100%);contain:layout style}
+#inicio h1,#inicio .hero-sub,#inicio .hero-tag,#inicio .hero-cta-row,#inicio .sites-bar{position:relative;z-index:3;color:#fff;opacity:1}
+.hero-slideshow{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;will-change:opacity}
+.hero-slide.is-active{opacity:1}
+nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:space-between;min-height:56px}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#D4654A,#E6B246);z-index:9999;width:0;transition:width .1s}
+.bento-gallery,.cards,.bento-grid{min-height:200px}
 </style>
+
+<!-- ══ PRECONNECT & PRELOAD (rendimiento) ══════════════════ -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://api.open-meteo.com">
+<link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
+<link rel="preload" href="/style-2026.css" as="style">
+<link rel="preload" href="/langs-es.js" as="script">
+<link rel="preload" href="/app.js" as="script">
 
 <!-- ══ HREFLANG MULTIIDIOMA ════════════════════════════════ -->
 
 <!-- ══ SEO PRIMARIO ══════════════════════════════════════════ -->
-<title>Pomaire 360 — Guia de serviços, turismo e emergências em Pomaire, Chile</title>
-<meta name="description" content="Guia gratuito e completo para visitar ou morar em Pomaire (Melipilla). Estacionamento, saúde, polícia, bombeiros, olaria, gastronomia e Los Chiñihues. Atualizado em 2025.">
-<meta name="keywords" content="Pomaire, Pomaire turismo, que hacer en Pomaire, alfarería Pomaire, cerámica Pomaire, como llegar a Pomaire, Pomaire Chile, servicios Pomaire, Los Chiñihues, Melipilla turismo, guía Pomaire, estacionamiento Pomaire, restaurantes Pomaire, emergencias Pomaire">
+<title>Pomaire 360 — Turismo em Pomaire Chile 2026 | Guia completo do povoado dos oleiros</title>
+<meta name="description" content="Planeje sua visita a Pomaire, o povoado dos oleiros mais famoso do Chile a 50 min de Santiago. Guia turístico 2026 gratuito com ateliês de barro, restaurantes típicos, empanadas gigantes, mapa interativo, estacionamento e hospedagem.">
+<meta name="keywords" content="pomaire, pomaire chile, visitar pomaire, turismo pomaire 2026, pueblo alfarero chile, que hacer en pomaire, como llegar a pomaire, pomaire desde santiago, talleres greda pomaire, empanadas pomaire, artesanía pomaire, alfarería pomaire, restaurantes pomaire, estacionamiento pomaire, mapa pomaire, alojamiento pomaire, chanchito alcancía greda, paseo pomaire, excursion pomaire, guía pomaire, pomaire melipilla, pomaire hoy, pomaire fines de semana">
 <meta name="author" content="Pomaire 360">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="language" content="es-CL">
+<meta name="google" content="notranslate">
 <meta name="geo.region" content="CL-RM">
 <meta name="geo.placename" content="Pomaire, Melipilla, Región Metropolitana, Chile">
 <meta name="geo.position" content="-33.642;-71.145">
 <meta name="ICBM" content="-33.642, -71.145">
+<meta name="rating" content="general">
+<meta name="revisit-after" content="7 days">
+<meta name="language" content="es">
+<meta name="coverage" content="Chile">
+<meta name="distribution" content="global">
+<meta name="target" content="all">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pomaire 360">
+<meta name="application-name" content="Pomaire 360">
+<meta name="subject" content="Turismo en Pomaire, pueblo alfarero de Chile">
+<meta name="classification" content="Travel, Tourism, Crafts">
+<meta name="url" content="https://www.pomaire360.cl/">
+<meta name="identifier-URL" content="https://www.pomaire360.cl/">
+<meta name="category" content="turismo">
+<meta name="topic" content="Guía turística Pomaire Chile">
+<meta name="summary" content="Guía turística gratuita de Pomaire: talleres de greda, restaurantes, empanadas, mapa y transporte desde Santiago.">
+<meta name="og:latitude" content="-33.642">
+<meta name="og:longitude" content="-71.145">
+<meta name="og:locality" content="Pomaire">
+<meta name="og:region" content="Región Metropolitana">
+<meta name="og:country-name" content="Chile">
+<meta name="place:location:latitude" content="-33.642">
+<meta name="place:location:longitude" content="-71.145">
 
 <!-- ══ CANONICAL ════════════════════════════════════════════ -->
 <link rel="canonical" href="https://www.pomaire360.cl/pt/">
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/">
+<link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/">
 <link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/">
 
 
 
 
 
+<link rel="sitemap" type="application/xml" href="https://www.pomaire360.cl/sitemap.xml">
+<meta property="article:modified_time" content="2026-07-28T00:00:00-04:00">
+
 <!-- ══ OPEN GRAPH ═══════════════════════════════════════════ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pomaire 360">
-<meta property="og:title" content="Pomaire 360 — Guia completo do povoado dos oleiros do Chile">
-<meta property="og:description" content="Tudo o que você precisa para visitar ou morar em Pomaire: estacionamento, saúde, emergências, olaria artesanal, gastronomia típica e Los Chiñihues.">
+<meta property="og:title" content="Pomaire 360 — Turismo em Pomaire Chile | Guia do Povoado dos Oleiros 2026">
+<meta property="og:description" content="Guia turístico completo e gratuito de Pomaire: ateliês de barro, restaurantes de empanadas gigantes, mapa interativo, como chegar de Santiago e hospedagem.">
 <meta property="og:url" content="https://www.pomaire360.cl/pt/">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="pt_BR">
-<meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:locale:alternate" content="ru_RU">
-<meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:image" content="https://www.pomaire360.cl/og-image.jpg">
 <meta property="og:image:secure_url" content="https://www.pomaire360.cl/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Artesanato de barro em Pomaire — Pomaire 360, guia turístico">
+<meta property="og:image:alt" content="Artesanato de barro em Pomaire — Pomaire 360, guia turístico do povoado dos oleiros">
 
 <!-- ══ TWITTER / X CARDS ════════════════════════════════════ -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pomaire 360 — Guia do povoado dos oleiros do Chile">
-<meta name="twitter:description" content="Guia gratuito de serviços, turismo e emergências para Pomaire e Los Chiñihues.">
+<meta name="twitter:site" content="@pomaire360">
+<meta name="twitter:title" content="Pomaire 360 — Turismo no povoado dos oleiros do Chile">
+<meta name="twitter:description" content="Guia turístico 2026 gratuito de Pomaire: ateliês de barro, restaurantes, empanadas gigantes, mapa e como chegar de Santiago.">
 <meta name="twitter:image" content="https://www.pomaire360.cl/og-image.jpg">
 <meta name="twitter:image:alt" content="Artesanías de greda en Pomaire — Pomaire 360, guía turística">
 
@@ -82,23 +125,108 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       "@id": "https://www.pomaire360.cl/#website",
       "url": "https://www.pomaire360.cl/pt/",
       "name": "Pomaire 360",
-      "description": "Guía completa de servicios y turismo para Pomaire, Chile",
+      "alternateName": [
+        "Pomaire360",
+        "Pomaire 360 Chile",
+        "Guía Pomaire",
+        "Guía Turística Pomaire",
+        "Pomaire turismo"
+      ],
+      "description": "Guía turística gratuita de Pomaire, el pueblo alfarero de Chile: talleres de greda, restaurantes, alojamiento, transporte y mapa interactivo. A 50 min de Santiago.",
       "inLanguage": [
         "es-CL",
         "en",
-        "pt",
-        "fr",
-        "ru",
-        "ja",
-        "zh"
+        "pt"
+      ],
+      "publisher": {
+        "@id": "https://www.pomaire360.cl/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.pomaire360.cl/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.pomaire360.cl/#organization",
+      "name": "Pomaire 360",
+      "alternateName": "Pomaire360",
+      "url": "https://www.pomaire360.cl/pt/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.pomaire360.cl/#logo",
+        "url": "https://www.pomaire360.cl/android-chrome-512x512.png",
+        "contentUrl": "https://www.pomaire360.cl/android-chrome-512x512.png",
+        "caption": "Pomaire 360 — Guía Turística del Pueblo Alfarero de Chile",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://www.pomaire360.cl/og-image.jpg",
+      "description": "Centro de información turística digital gratuito de Pomaire. Alfarería, gastronomía, estacionamientos, transporte, mapa interactivo y alojamientos.",
+      "foundingDate": "2024",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pomaire, Melipilla, Región Metropolitana, Chile",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -33.642,
+          "longitude": -71.145
+        }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pomaire",
+        "addressLocality": "Melipilla",
+        "addressRegion": "Região Metropolitana",
+        "postalCode": "9630000",
+        "addressCountry": "CL"
+      },
+      "sameAs": [
+        "https://www.instagram.com/pomaire360",
+        "https://www.facebook.com/pomaire360"
+      ],
+      "knowsAbout": [
+        "Alfarería en greda",
+        "Artesanía Pomaire",
+        "Gastronomía típica chilena",
+        "Turismo Pomaire",
+        "Pueblo alfarero Chile",
+        "Excursiones desde Santiago"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.pomaire360.cl/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://www.pomaire360.cl/pt/"
+        }
       ]
     },
     {
       "@type": "TouristDestination",
       "@id": "https://www.pomaire360.cl/#destination",
       "name": "Pomaire",
-      "description": "Pueblo alfarero en la comuna de Melipilla, Región Metropolitana de Chile.",
+      "alternateName": [
+        "Pomaire Chile",
+        "Pueblo Alfarero Pomaire",
+        "Pomaire Melipilla",
+        "Pomaire turismo",
+        "Pueblo alfarero de Chile"
+      ],
+      "description": "Pomaire es el pueblo alfarero más famoso de Chile, ubicado a solo 50 km de Santiago en la comuna de Melipilla, Región Metropolitana. Con más de 300 años de tradición, es reconocido mundialmente por su artesanía en greda, gastronomía típica chilena (empanadas gigantes de horno de barro, cazuela en olla de greda) y sus talleres de alfarería artesanal donde los visitantes pueden ver y participar del proceso creativo.",
       "url": "https://www.pomaire360.cl/pt/",
+      "image": [
+        "https://www.pomaire360.cl/og-image.jpg",
+        "https://www.pomaire360.cl/img/gallery/pomaire-20240916_120821-web.webp"
+      ],
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": -33.642,
@@ -108,24 +236,117 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         "@type": "PostalAddress",
         "addressLocality": "Pomaire",
         "addressRegion": "Região Metropolitana",
-        "addressCountry": "CL"
+        "addressCountry": "CL",
+        "postalCode": "9630000"
       },
       "touristType": [
-        "Cultural tourism",
-        "Gastronomic tourism",
-        "Crafts",
-        "Family"
-      ]
+        "Turismo cultural",
+        "Turismo gastronómico",
+        "Artesanía",
+        "Familiar",
+        "Excursión de un día desde Santiago",
+        "Turismo rural"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "2840",
+        "reviewCount": "1520"
+      },
+      "containsPlace": [
+        {
+          "@type": "TouristAttraction",
+          "name": "Talleres de Alfarería de Pomaire",
+          "description": "Más de 50 talleres artesanales donde se trabaja la greda a mano y al torno. Los visitantes pueden observar y participar en la creación de piezas únicas.",
+          "image": "https://www.pomaire360.cl/img/gallery/pomaire-20240930_123030-web.webp"
+        },
+        {
+          "@type": "TouristAttraction",
+          "name": "El Chancho Alcancía Más Grande del Mundo",
+          "description": "Escultura de greda gigante de 2 metros creada por el maestro alfarero César Silva Rojo, ícono turístico de Pomaire.",
+          "url": "https://www.pomaire360.cl/pt/"
+        },
+        {
+          "@type": "TouristAttraction",
+          "name": "Plaza de Pomaire",
+          "description": "Plaza principal con la Iglesia San Antonio de Padua, puestos de artesanía y el punto de encuentro del pueblo."
+        },
+        {
+          "@type": "TouristAttraction",
+          "name": "Restaurantes típicos de Pomaire",
+          "description": "Más de 20 restaurantes con cocina tradicional chilena: empanadas gigantes de horno de barro, cazuela de vacuno, pastel de choclo y chicha artesanal."
+        },
+        {
+          "@type": "TouristAttraction",
+          "name": "Ruta del Vino de Melipilla",
+          "description": "Circuito enoturístico con viñas boutique y catas de vinos de la zona central de Chile, complemento ideal a la visita a Pomaire."
+        }
+      ],
+      "isAccessibleForFree": true,
+      "publicAccess": true,
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://www.pomaire360.cl/#event-fiestas",
+      "name": "Fiestas de la Greda — Pomaire 2026",
+      "description": "Celebración anual de la tradición alfarera de Pomaire con demostraciones de artesanos, venta de artesanía, gastronomía típica y actividades culturales para toda la familia.",
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-12",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Pomaire, Chile",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pomaire",
+          "addressRegion": "Região Metropolitana",
+          "addressCountry": "CL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -33.642,
+          "longitude": -71.145
+        }
+      },
+      "organizer": {
+        "@id": "https://www.pomaire360.cl/#organization"
+      },
+      "image": "https://www.pomaire360.cl/og-image.jpg",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CLP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.pomaire360.cl/pt/"
+      }
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.pomaire360.cl/#faq",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Como chegar a Pomaire desde Santiago?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Autopista del Sol (Rota 78), saída no km 51. Aproximadamente 50 minutos desde Santiago."
+            "text": "Toma la Autopista del Sol (Ruta 78) hasta la salida km 51 hacia Pomaire. El trayecto dura aproximadamente 50 minutos en auto desde Santiago. También puedes llegar en bus desde el Terminal San Borja hasta Melipilla y luego tomar un colectivo local. Los buses desde Melipilla salen cada 20 minutos."
           }
         },
         {
@@ -133,23 +354,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
           "name": "Há estacionamento em Pomaire?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim, na rua Rafael Morandé. Nos fins de semana enche antes das 11:00."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual número ligar em caso de emergência em Pomaire?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Polícia (Carabineros): 133. Ambulância (SAMU): 131. Bombeiros: 132."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Há hospital em Pomaire?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Há um posto de saúde CESFAM em Pomaire (+56 2 2568 8849). O Hospital de Melipilla, com urgência 24 horas, fica a 15 minutos."
+            "text": "Sí, hay estacionamiento gratuito en calle Rafael Morandé y en la entrada norte del pueblo. Los fines de semana se llena antes de las 11:00, así que recomendamos llegar temprano. Pomaire 360 muestra la ubicación exacta en su mapa interactivo."
           }
         },
         {
@@ -157,38 +362,179 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
           "name": "O que comer em Pomaire?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pomaire é famoso por suas empanadas gigantes, cazuelas em panela de barro, pastel de choclo e chicha artesanal."
+            "text": "Pomaire es famoso por sus empanadas gigantes de horno de barro, la cazuela de vacuno servida en olla de greda, el pastel de choclo, las humitas y la chicha artesanal. Hay más de 20 restaurantes típicos en el pueblo con precios accesibles."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es Pomaire y por qué es famoso?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pomaire es un pequeño pueblo alfarero ubicado en la comuna de Melipilla, Región Metropolitana de Chile, a 50 km de Santiago. Es famoso mundialmente por su tradición alfarera de más de 300 años, donde artesanos trabajan la greda (arcilla) a mano para crear vasijas, platos, ollas y el icónico chanchito alcancía. Es uno de los destinos turísticos más visitados cerca de Santiago."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta la artesanía en Pomaire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los precios de la artesanía en greda van desde $1.000 CLP por piezas pequeñas hasta $50.000 o más por obras grandes. Los chanchitos alcancía cuestan entre $2.000 y $15.000 según el tamaño. Puedes comprar directamente a los artesanos en sus talleres."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué días conviene visitar Pomaire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los fines de semana y feriados hay más ambiente y todos los locales están abiertos. Si prefieres tranquilidad y estacionamiento fácil, los días de semana (martes a viernes) son ideales. Los lunes algunos locales cierran. Los talleres abren de 09:00 a 19:00."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo necesito para recorrer Pomaire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una visita completa a Pomaire toma entre 3 y 5 horas: tiempo para recorrer los talleres de alfarería, almorzar en un restaurante típico, comprar artesanía y pasear por la plaza. Si quieres visitar los alrededores y la Ruta del Vino, reserva un día completo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Pomaire tiene alojamiento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, Pomaire cuenta con hostales, cabañas y suites para quienes desean quedarse más de un día. Las opciones incluyen alojamiento rural con vista al campo y cabañas familiares equipadas. Consulta la sección de alojamiento en Pomaire 360."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Se puede ir a Pomaire en transporte público?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Desde Santiago toma un bus en el Terminal San Borja hasta Melipilla (1 hora) y luego un colectivo o micro local hasta Pomaire (15 min). Hay buses directos desde Melipilla cada 20 minutos. El pasaje cuesta aproximadamente $2.000 CLP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro visitar Pomaire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, Pomaire es un pueblo tranquilo y seguro para turistas. Cuenta con retén de Carabineros (133), CESFAM de salud y bomberos (132). Los fines de semana hay mayor presencia policial por la afluencia de visitantes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Há hospital em Pomaire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pomaire cuenta con un CESFAM (Centro de Salud Familiar) con teléfono +56 2 2568 8849. El Hospital de Melipilla está a 15 minutos y tiene urgencias 24 horas. En emergencias llama al SAMU: 131."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Pomaire es gratis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, visitar Pomaire es completamente gratis. No hay cobro de entrada al pueblo ni a los talleres de alfarería. Solo pagas lo que consumas en restaurantes o la artesanía que compres. El estacionamiento también es gratuito."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.pomaire360.cl/#howto",
+      "name": "Cómo visitar Pomaire desde Santiago — Guía paso a paso",
+      "description": "Guía completa para planificar tu visita a Pomaire, el pueblo alfarero de Chile, desde Santiago.",
+      "totalTime": "PT5H",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "CLP",
+        "value": "15000"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Salir desde Santiago",
+          "text": "Toma la Autopista del Sol (Ruta 78) dirección Valparaíso. El viaje dura 50 minutos en auto."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Tomar la salida a Pomaire",
+          "text": "Sal en el km 51 siguiendo las señales hacia Pomaire. Son 5 minutos desde la autopista."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Estacionar",
+          "text": "Usa el estacionamiento gratuito en calle Rafael Morandé o en la entrada norte del pueblo. Llega antes de las 11:00 los fines de semana."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Recorrer los talleres de greda",
+          "text": "Visita los más de 50 talleres de alfarería donde artesanos trabajan la greda a mano. Entrada libre."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Almorzar comida típica",
+          "text": "Prueba las empanadas gigantes de horno de barro, la cazuela de vacuno en olla de greda o el pastel de choclo en uno de los 20+ restaurantes."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Comprar artesanía",
+          "text": "Lleva recuerdos de greda hechos a mano: chanchitos alcancía desde $2.000, platos, vasijas y ollas."
         }
       ]
     }
   ]
 }</script>
 
-<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="preload" href="/img/gallery/pomaire-20240916_120821-web.webp" as="image">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/img/gallery/pomaire-20240916_120821-web.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://a.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://b.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://c.tile.openstreetmap.org">
-<link rel="dns-prefetch" href="https://api.open-meteo.com">
 <link rel="stylesheet" href="/style-2026.css">
-<link rel="stylesheet" href="/components.css">
-<link rel="stylesheet" href="/dark-mode-overrides.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
-<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
-<script defer="" src="/nav.js"></script>
-<script defer="" src="/seasonal.js"></script>
-<script defer="" src="/app.js"></script>
-<script defer="" src="/tour-interactive.js"></script>
+<!-- Non-critical CSS loaded async via media trick -->
+<link rel="stylesheet" href="/enhanced-cards.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/directory-cards.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/components.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/dark-mode-overrides.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/featured-businesses.css" media="print" onload="this.media='all'">
+<!-- Leaflet CSS deferred — map is below fold -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="/enhanced-cards.css">
+  <link rel="stylesheet" href="/directory-cards.css">
+  <link rel="stylesheet" href="/components.css">
+  <link rel="stylesheet" href="/dark-mode-overrides.css">
+  <link rel="stylesheet" href="/featured-businesses.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+</noscript>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script defer src="/nav.js"></script>
+<script defer src="/seasonal.js"></script>
+<script defer src="/langs-es.js"></script>
+<script defer src="/app.js"></script>
+<script defer src="/map-unified.js"></script>
+<script defer src="/directory-loader.js"></script>
+<script defer src="/featured-businesses.js"></script>
+<script defer src="/tour-interactive.js"></script>
+<script defer src="/a11y-enhancements.js"></script>
+<script defer src="/app-2026.js"></script>
 </head>
 <body>
-<a href="#navBurger" class="skip-to-content">Skip to content</a>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Skip to content (accesibilidad para usuarios de teclado) -->
+<a href="#inicio" class="skip-to-content">Pular para o conteúdo</a>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Navegación principal">
   <a class="nav-brand" href="#inicio"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Turismo &amp; Cultura</span></span></a>
   <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" onclick="toggleNav(event)">☰</button>
   <div class="nav-links-wrap" id="navGroups">
@@ -196,53 +542,110 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Essenciais</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/pt/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
-        <a href="/pt/salud/">🏥 <span data-t="nav_health">Saúde</span></a>
-        <a href="/pt/seguridad/">🚔 <span data-t="nav_security">Segurança</span></a>
-        <a href="/pt/servicios/">🛒 <span data-t="nav_commerce">Serviços</span></a>
-        <a href="/pt/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
-        <a href="/pt/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
+        <a href="/comercio/?cat=estacionamientos" data-keywords="parking estacionar auto car">
+          <span class="nav-menu-icon" aria-hidden="true">🅿️</span>
+          <span class="nav-menu-text"><span data-t="nav_park">Estacionar</span><span class="nav-menu-desc">Dónde dejar tu auto</span></span>
+        </a>
+        <a href="/comercio/?cat=salud" data-keywords="salud health hospital farmacia doctor">
+          <span class="nav-menu-icon" aria-hidden="true">🏥</span>
+          <span class="nav-menu-text"><span data-t="nav_health">Saúde</span><span class="nav-menu-desc">CESFAM, farmacias y urgencias</span></span>
+        </a>
+        <a href="/comercio/?cat=seguridad" data-keywords="seguridad carabineros bomberos policia emergencia">
+          <span class="nav-menu-icon" aria-hidden="true">🚔</span>
+          <span class="nav-menu-text"><span data-t="nav_security">Segurança</span><span class="nav-menu-desc">Carabineros, Bomberos, emergencias</span></span>
+        </a>
+        <a href="/comercio/?cat=servicios" data-keywords="servicios almacen tienda atm cajero">
+          <span class="nav-menu-icon" aria-hidden="true">🛒</span>
+          <span class="nav-menu-text"><span data-t="nav_commerce">Serviços</span><span class="nav-menu-desc">Almacenes y servicios cotidianos</span></span>
+        </a>
+        <a href="/comercio/?cat=transporte" data-keywords="grua mecanico neumatico vulcanizacion auto bus transporte">
+          <span class="nav-menu-icon" aria-hidden="true">🚌</span>
+          <span class="nav-menu-text"><span data-t="nav_locomocion">Transporte</span><span class="nav-menu-desc">Grúas, buses, micros y colectivos</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">O que fazer</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/pt/alfareria/">🏺 <span data-t="nav_pottery">Olaria</span></a>
-        <a href="/pt/ruta-del-vino/">🍷 <span data-t="nav_winery">Rota do Vinho</span></a>
-        <a href="/pt/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
-        <a href="/pt/plaza/">🌳 <span data-t="nav_plaza">Praça</span></a>
-        <a href="/pt/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
-        <a href="/pt/comercio/">🛒 <span data-t="nav_shops_g">Comércio</span></a>
+        <a href="/comercio/?cat=alfareria" data-keywords="alfareria pottery greda ceramica taller artesano">
+          <span class="nav-menu-icon" aria-hidden="true">🏺</span>
+          <span class="nav-menu-text"><span data-t="nav_pottery">Olaria</span><span class="nav-menu-desc">Talleres y tradición alfarera</span></span>
+        </a>
+        <a href="/comercio/?cat=turismo" data-keywords="que ver atractivos iglesia monumento vino ruta">
+          <span class="nav-menu-icon" aria-hidden="true">✨</span>
+          <span class="nav-menu-text"><span data-t="nav_seewhat">O que ver</span><span class="nav-menu-desc">Atractivos y puntos de interés</span></span>
+        </a>
+        <a href="/pt/ruta-del-vino/" data-keywords="vino wine ruta viña bodega">
+          <span class="nav-menu-icon" aria-hidden="true">🍷</span>
+          <span class="nav-menu-text"><span data-t="nav_winery">Rota do Vinho</span><span class="nav-menu-desc">Viñas y bodegas cercanas</span></span>
+        </a>
+        <a href="/comercio/?cat=comercio" data-keywords="comercio tiendas compras souvenir recuerdo">
+          <span class="nav-menu-icon" aria-hidden="true">🛍️</span>
+          <span class="nav-menu-text"><span data-t="nav_shops_g">Comércio</span><span class="nav-menu-desc">Tiendas y souvenirs</span></span>
+        </a>
+        <a href="/alrededores/" data-keywords="alrededores chiñihues campo naturaleza rural">
+          <span class="nav-menu-icon" aria-hidden="true">🌄</span>
+          <span class="nav-menu-text"><span data-t="nav_around">Arredores</span><span class="nav-menu-desc">Los Chiñihues y alrededores</span></span>
+        </a>
+        <a href="/pt/plaza/" data-keywords="plaza centro parque iglesia">
+          <span class="nav-menu-icon" aria-hidden="true">🌳</span>
+          <span class="nav-menu-text"><span data-t="nav_plaza">Praça</span><span class="nav-menu-desc">Corazón del pueblo</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer e dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/pt/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
-        <a href="/pt/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
-        <a href="/pt/plaza/#banos">🚽 <span data-t="nav_banos">Banheiros</span></a>
+        <a href="/comercio/?cat=restaurantes" data-keywords="comer restaurante empanada cazuela comida gastronomia">
+          <span class="nav-menu-icon" aria-hidden="true">🍽️</span>
+          <span class="nav-menu-text"><span data-t="nav_food">Comer</span><span class="nav-menu-desc">Restaurantes y cocina típica</span></span>
+        </a>
+        <a href="/comercio/?cat=alojamiento" data-keywords="dormir hotel hostal cabaña alojamiento">
+          <span class="nav-menu-icon" aria-hidden="true">🛏️</span>
+          <span class="nav-menu-text"><span data-t="nav_lodging">Hospedagem</span><span class="nav-menu-desc">Hostales, cabañas y suites</span></span>
+        </a>
+        <a href="/pt/plaza/#banos" data-keywords="baño wc toilet sanitario">
+          <span class="nav-menu-icon" aria-hidden="true">🚽</span>
+          <span class="nav-menu-text"><span data-t="nav_banos">Banheiros</span><span class="nav-menu-desc">Baños públicos disponibles</span></span>
+        </a>
       </div>
     </div>
 
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planeje</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="#recorrido">🧭 <span data-t="nav_tour">Roteiro</span></a>
-        <a href="#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
-        <a href="#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
-        <a href="#galeria">📸 <span data-t="nav_gallery">Galeria</span></a>
-        <a href="#eventos">📅 <span data-t="nav_events">Eventos</span></a>
-        <a href="/pt/juegos/">🎮 <span data-t="nav_games">Jogos</span></a>
-        <a href="/pt/anunciate/">📣 <span data-t="nav_advertise">Anuncie</span></a>
-        <a href="/pt/sugerencias/">💬 <span data-t="nav_suggest">Sugestões</span></a>
+        <a href="#recorrido" data-keywords="recorrido tour ruta itinerario paso">
+          <span class="nav-menu-icon" aria-hidden="true">🧭</span>
+          <span class="nav-menu-text"><span data-t="nav_tour">Roteiro</span><span class="nav-menu-desc">Ruta turística paso a paso</span></span>
+        </a>
+        <a href="#mapa" data-keywords="mapa mapa ubicacion mapa interactivo">
+          <span class="nav-menu-icon" aria-hidden="true">🗺️</span>
+          <span class="nav-menu-text"><span data-t="nav_map">Mapa</span><span class="nav-menu-desc">Mapa interactivo del pueblo</span></span>
+        </a>
+        <a href="#clima" data-keywords="clima weather temperatura lluvia sol">
+          <span class="nav-menu-icon" aria-hidden="true">🌤️</span>
+          <span class="nav-menu-text"><span data-t="nav_weather">Clima</span><span class="nav-menu-desc">Condiciones actuales</span></span>
+        </a>
+        <a href="#galeria" data-keywords="galeria fotos imagenes foto">
+          <span class="nav-menu-icon" aria-hidden="true">📸</span>
+          <span class="nav-menu-text"><span data-t="nav_gallery">Galeria</span><span class="nav-menu-desc">Fotos del pueblo</span></span>
+        </a>
+        <a href="#eventos" data-keywords="eventos fiestas patrias san antonio feria">
+          <span class="nav-menu-icon" aria-hidden="true">📅</span>
+          <span class="nav-menu-text"><span data-t="nav_events">Eventos</span><span class="nav-menu-desc">Fechas y festividades</span></span>
+        </a>
+        <a href="/mapa-turistico/" data-keywords="mapa turistico plano ilustrado">
+          <span class="nav-menu-icon" aria-hidden="true">🗺️</span>
+          <span class="nav-menu-text"><span data-t="nav_map_full">Mapa Turístico</span><span class="nav-menu-desc">Plano ilustrado del pueblo</span></span>
+        </a>
       </div>
     </div>
 
-    <a class="nav-map-btn" href="#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
-    <a class="nav-cta" href="/pt/apoyar/">💛 <span data-t="nav_donate">Apoiar</span></a>
+    <a class="nav-cta" href="/pt/apoyar/" data-keywords="apoyar donar ayudar contribuir">💛 <span data-t="nav_donate">Apoiar</span></a>
   </div>
+
   <div class="lang-selector" id="langSelector">
     <button class="lang-toggle" onclick="toggleLangMenu(event)" aria-haspopup="listbox" aria-expanded="false" id="langToggleBtn">
       <span id="langCurrentFlag">🇧🇷</span>
@@ -254,20 +657,21 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <a role="option" class="lang-option" data-lang="en" href="/en/"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-check">✓</span></a>
       <a role="option" class="lang-option lang-active" data-lang="pt" href="/pt/"><span class="lang-flag">🇧🇷</span><span class="lang-name">Português</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="fr" onclick="selectLang('fr')">
-        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇫🇷</span><span class="lang-name">Français</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
-        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
-      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
-      </button>
+      <a role="option" class="lang-option" data-lang="ja" href="/ja/"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
-        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
+        <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-badge lang-badge-auto">Auto</span><span class="lang-check">✓</span>
       </button>
     </div>
   </div>
 </nav>
+
+<!-- BREADCRUMB -->
+<div class="nav-breadcrumb" id="navBreadcrumb" aria-label="Breadcrumb"></div>
 
 <!-- BARRA DE CLIMA (debajo del menú) -->
 <a id="weather-bar" class="weather-bar" href="#clima" aria-label="Clima actual en Pomaire">
@@ -295,21 +699,60 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <a class="site-btn" href="https://www.chileplayas.cl/" target="_blank" rel="noopener">🏖️ Playas Chile</a>
   </div>
   <span class="hero-pottery">🏺</span>
+
   <div class="hero-tag" data-t="hero_tag">📍 Pomaire · Melipilla · Região Metropolitana</div>
   <h1 data-t="hero_h1">Bem-vindo/a a <em>Pomaire</em></h1>
   <p class="hero-sub">
     <span data-t="hero_sub">Tudo o que você precisa saber se está visitando ou acabou de chegar à vila de cerâmica mais famosa do Chile. Serviços, emergências, estacionamento e muito mais.</span>
   </p>
   <div class="hero-cta-row">
-    <a class="hero-cta primary" href="#recorrido"><span aria-hidden="true">🧭</span><span data-t="cta_plan">Planeje sua visita</span></a>
+    <a class="hero-cta primary" href="https://www.pomaire360.cl/comercio/"><span aria-hidden="true">🏪</span><span data-t="cta_eat">Diretório de Negócios</span></a>
+    <a class="hero-cta" href="#recorrido"><span aria-hidden="true">🧭</span><span data-t="cta_plan">Planeje sua visita</span></a>
     <a class="hero-cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pomaire%2C+Melipilla%2C+Chile" target="_blank" rel="noopener"><span aria-hidden="true">🗺️</span><span data-t="cta_directions">Como chegar</span></a>
-    <a class="hero-cta" href="/pt/gastronomia/"><span aria-hidden="true">🍽️</span><span data-t="cta_eat">Onde comer</span></a>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span data-t="hero_scroll">Descubra</span>
+  </div>
+
+</section>
+
+<!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
+<section id="featuredSection" class="featured-section" style="display:none;">
+  <div class="featured-header reveal">
+    <h2 data-t="feat_title">🏪 Negócios em Destaque de Pomaire</h2>
+    <p data-t="feat_sub">Os melhores lugares recomendados para sua visita</p>
+  </div>
+
+  <div class="featured-carousel-wrap">
+    <button class="carousel-nav carousel-nav--prev" id="carouselPrev" aria-label="Anterior">‹</button>
+    <div class="featured-carousel" id="featuredCarousel">
+      <div class="featured-loading" data-t="feat_loading">Carregando negócios em destaque...</div>
+    </div>
+    <button class="carousel-nav carousel-nav--next" id="carouselNext" aria-label="Siguiente">›</button>
+  </div>
+
+  <div class="carousel-dots" id="carouselDots"></div>
+  <a class="featured-all-link" href="/pt/comercio/" data-t="feat_all">Ver todos os negócios →</a>
+</section>
+
+<!-- ══ CATEGORÍAS: DÓNDE COMER, COMPRAR Y DORMIR ══════════════════════════ -->
+<section id="categoriesSection" class="categories-section" style="display:none;">
+  <div class="categories-header reveal">
+    <h2 data-t="cat_title">Descubra Pomaire</h2>
+    <p data-t="cat_sub">Os imperdíveis do povoado dos oleiros mais famoso do Chile</p>
+  </div>
+
+  <div class="categories-grid" id="categoriesGrid">
+    <div class="categories-loading" data-t="cat_loading">Carregando categorias...</div>
   </div>
 </section>
 
 <!-- MAPA INTERACTIVO -->
 <section id="mapa">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_explore">Capítulo 1 — Explore a vila</div>
     <div class="section-header reveal">
       <span class="section-icon">🗺️</span>
       <div>
@@ -318,7 +761,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       </div>
     </div>
 
-    <!-- Controles: filtros + ubicación -->
+    <!-- Filtros compactos -->
     <div class="map-controls reveal">
       <div class="map-filters" id="mapFilters" role="group" aria-label="Filtrar lugares del mapa">
         <button type="button" class="map-filter active" data-cat="all" aria-pressed="true">🏺 <span data-t="filter_all">Todos</span></button>
@@ -330,18 +773,28 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <button type="button" class="map-filter" data-cat="lodging" aria-pressed="false">🛏️ <span data-t="filter_lodging">Dormir</span></button>
         <button type="button" class="map-filter" data-cat="highlight" aria-pressed="false">✨ <span data-t="filter_highlight">Ver</span></button>
         <button type="button" class="map-filter" data-cat="services" aria-pressed="false">🛒 <span data-t="filter_services">Serviços</span></button>
-        <button type="button" class="map-filter" data-cat="around" aria-pressed="false">🌾 <span data-t="filter_around">Arredores</span></button>
       </div>
-      <button type="button" class="locate-btn" id="locateBtn" onclick="locateUser()">
+      <button type="button" class="locate-btn" id="locateBtn" onclick="window._homeLocate &amp;&amp; window._homeLocate()">
         📍 <span data-t="locate_btn">Usar minha localização</span>
       </button>
     </div>
 
-    <!-- Mapa Leaflet -->
+    <!-- Mapa Leaflet (datos de Supabase) -->
     <div class="leaflet-wrap reveal">
       <div id="leafletMap"></div>
+      <button type="button" id="routeClearBtn" style="display:none;position:absolute;top:.8rem;right:.8rem;z-index:600;padding:.4rem .8rem;background:#fff;border:1px solid #ddd;border-radius:.5rem;font-size:.82rem;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.15);" onclick="window.clearRoute &amp;&amp; window.clearRoute(true)">✕ Cerrar ruta</button>
     </div>
     <p class="map-hint reveal" id="mapHint" data-t="map_hint">📍 Ative sua localização ou clique em um ponto de partida no mapa para calcular distâncias</p>
+
+    <!-- Lista de lugares cercanos -->
+    <div id="placesList" class="places-list reveal"></div>
+
+    <!-- CTA al mapa turístico completo -->
+    <div class="reveal" style="text-align:center;margin-top:1.2rem;">
+      <a href="/mapa-turistico/" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;background:#B85C2C;color:#fff;font-weight:600;border-radius:.8rem;text-decoration:none;font-size:.95rem;box-shadow:0 3px 10px rgba(184,92,44,.25);">
+        🗺️ <span data-t="map_full_cta">Abrir Mapa Turístico completo</span> — búsqueda, rutas, satélite →
+      </a>
+    </div>
 
     <!-- Destacado Premium: El Chancho -->
     <a class="map-featured-btn reveal" href="/pt/elchanchoalcanciamasgrandedelmundo/">
@@ -357,42 +810,6 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       </button>
       <p class="official-map-note" data-t="official_map_note">Mapa turístico oficial com o diretório numerado das oficinas de artesãos.</p>
     </div>
-
-    <!-- Rutas sugeridas -->
-    <div class="routes-block reveal">
-      <h3 data-t="routes_title">🧭 Roteiros sugeridos</h3>
-      <div class="routes-grid">
-        <button type="button" class="route-card" data-route="oficial" onclick="loadRoute('oficial')">
-          <span class="route-icon">🧳</span>
-          <strong data-t="route_oficial_name">Rota Oficial</strong>
-          <span class="route-meta" data-t="route_oficial_meta">5 paradas · dia completo</span>
-        </button>
-        <button type="button" class="route-card" data-route="artisan" onclick="loadRoute('artisan')">
-          <span class="route-icon">🏺</span>
-          <strong data-t="route_artisan_name">Rota do Artesão</strong>
-          <span class="route-meta" data-t="route_artisan_meta">3 paradas · ~1,5h</span>
-        </button>
-        <button type="button" class="route-card" data-route="family" onclick="loadRoute('family')">
-          <span class="route-icon">👨‍👩‍👧</span>
-          <strong data-t="route_family_name">Rota Familiar</strong>
-          <span class="route-meta" data-t="route_family_meta">4 paradas · ~2,5h</span>
-        </button>
-        <button type="button" class="route-card" data-route="food" onclick="loadRoute('food')">
-          <span class="route-icon">🍽️</span>
-          <strong data-t="route_food_name">Rota Gastronômica</strong>
-          <span class="route-meta" data-t="route_food_meta">3 paradas · ~1h</span>
-        </button>
-        <button type="button" class="route-card" data-route="nature" onclick="loadRoute('nature')">
-          <span class="route-icon">🌄</span>
-          <strong data-t="route_nature_name">Rota Natureza</strong>
-          <span class="route-meta" data-t="route_nature_meta">3 paradas · ~3h</span>
-        </button>
-      </div>
-      <button type="button" class="route-clear" id="routeClearBtn" onclick="clearRoute()" style="display:none;">✕ <span data-t="route_clear">Remover rota</span></button>
-    </div>
-
-    <!-- Lista de lugares con distancia -->
-    <div class="places-list reveal" id="placesList"></div>
   </div>
 </section>
 
@@ -401,6 +818,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <!-- RECORRIDO TURÍSTICO -->
 <section id="recorrido">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_plan">Capítulo 2 — Planeje sua rota</div>
     <div class="section-header reveal">
       <span class="section-icon">🧭</span>
       <div>
@@ -434,23 +852,23 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         </div>
         <div class="or-stop or-pick" data-pick="p_or_breakfast">
           <div class="or-time">10:00</div><div class="or-dot">☕</div>
-          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Desayuno"></select><span class="pick-detail"></span></div>
+          <div class="or-txt"><strong class="pick-label">Desayuno</strong><select class="stop-select" aria-label="Desayuno"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop or-pick" data-pick="p_or_workshop">
           <div class="or-time">12:00</div><div class="or-dot">🏺</div>
-          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Ateliê de barro"></select><span class="pick-detail"></span></div>
+          <div class="or-txt"><strong class="pick-label">Taller de greda</strong><select class="stop-select" aria-label="Taller de greda"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop or-pick" data-pick="p_or_lunch">
           <div class="or-time">13:30</div><div class="or-dot">🥘</div>
-          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Almuerzo"></select><span class="pick-detail"></span></div>
+          <div class="or-txt"><strong class="pick-label">Almuerzo</strong><select class="stop-select" aria-label="Almuerzo"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop or-pick" data-pick="p_or_green">
           <div class="or-time">15:10</div><div class="or-dot">🌿</div>
-          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Pausa verde"></select><span class="pick-detail"></span></div>
+          <div class="or-txt"><strong class="pick-label">Pausa verde</strong><select class="stop-select" aria-label="Pausa verde"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop or-pick" data-pick="p_or_shop">
           <div class="or-time">16:10</div><div class="or-dot">🛍️</div>
-          <div class="or-txt"><strong class="pick-label"></strong><select class="stop-select" aria-label="Compras de barro"></select><span class="pick-detail"></span></div>
+          <div class="or-txt"><strong class="pick-label">Compras de greda</strong><select class="stop-select" aria-label="Compras de greda"></select><span class="pick-detail"></span></div>
         </div>
         <div class="or-stop">
           <div class="or-time">18:00</div><div class="or-dot">🏠</div>
@@ -461,6 +879,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <div class="tour-actions" data-group="official">
         <button type="button" class="tour-see"></button>
         <button type="button" class="tour-reset"></button>
+        <a href="#mapa" onclick="window._homeShowRoute &amp;&amp; window._homeShowRoute()" class="tour-see" style="display:inline-flex;align-items:center;gap:.4rem;margin-left:.5rem;padding:.5rem 1rem;background:#B85C2C;color:#fff;border-radius:.6rem;text-decoration:none;font-size:.85rem;font-weight:600;">🗺️ Ver en el mapa</a>
       </div>
 
       <div class="or-features">
@@ -490,7 +909,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">09:00</div>
         <div class="tour-dot">🅿️</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Estacionamiento</strong>
           <select class="stop-select" aria-label="Estacionamiento"></select>
           <span class="pick-detail"></span>
         </div>
@@ -499,7 +918,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">09:30</div>
         <div class="tour-dot">☕</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Desayuno</strong>
           <select class="stop-select" aria-label="Desayuno"></select>
           <span class="pick-detail"></span>
         </div>
@@ -508,7 +927,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">10:00</div>
         <div class="tour-dot">🏺</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Talleres alfareros</strong>
           <select class="stop-select" aria-label="Talleres alfareros"></select>
           <span class="pick-detail"></span>
         </div>
@@ -517,7 +936,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">12:00</div>
         <div class="tour-dot">🛍️</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Compras de artesanía</strong>
           <select class="stop-select" aria-label="Compras de artesanía"></select>
           <span class="pick-detail"></span>
         </div>
@@ -526,7 +945,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">13:00</div>
         <div class="tour-dot">🥘</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Almuerzo típico</strong>
           <select class="stop-select" aria-label="Almuerzo típico"></select>
           <span class="pick-detail"></span>
         </div>
@@ -535,7 +954,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         <div class="tour-time">15:00</div>
         <div class="tour-dot">🏔️</div>
         <div class="tour-content">
-          <strong class="pick-label"></strong>
+          <strong class="pick-label">Paseo por los alrededores</strong>
           <select class="stop-select" aria-label="Paseo por los alrededores"></select>
           <span class="pick-detail"></span>
         </div>
@@ -561,6 +980,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <!-- CLIMA -->
 <section id="clima">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_prepare">Capítulo 3 — Prepare-se para a viagem</div>
     <div class="section-header reveal">
       <span class="section-icon">🌤️</span>
       <div>
@@ -578,6 +998,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <!-- GALERÍA -->
 <section id="galeria">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_remember">Capítulo 4 — Leve uma lembrança</div>
     <div class="section-header reveal">
       <span class="section-icon">📸</span>
       <div>
@@ -588,10 +1009,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
     <!-- Bento Gallery Grid -->
     <div class="bento-gallery reveal">
-      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagem: Pomaire e suas ruas">
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Pomaire y sus calles">
         <picture>
              <source srcset="img/gallery/pomaire-20240916_120821-thumb.webp" type="image/webp">
-             <img src="img/gallery/pomaire-20240916_120821-thumb.jpg" data-full="img/gallery/pomaire-20240916_120821-web.webp" data-full-jpg="img/gallery/pomaire-20240916_120821-web.jpg" alt="Vista panorâmica das ruas de Pomaire, povoado dos oleiros do Chile" loading="lazy" width="1200" height="889">
+             <img src="img/gallery/pomaire-20240916_120821-thumb.jpg" data-full="img/gallery/pomaire-20240916_120821-web.webp" data-full-jpg="img/gallery/pomaire-20240916_120821-web.jpg" alt="Vista panorámica de las calles de Pomaire, pueblo alfarero de Chile" loading="lazy" width="1200" height="889">
            </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_1">Cerâmica de barro</span>
@@ -599,10 +1020,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         </div>
       </div>
 
-      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagem: Tradição oleira">
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Tradición alfarera">
         <picture>
              <source srcset="img/gallery/pomaire-20240930_123030-thumb.webp" type="image/webp">
-             <img src="img/gallery/pomaire-20240930_123030-thumb.jpg" data-full="img/gallery/pomaire-20240930_123030-web.webp" data-full-jpg="img/gallery/pomaire-20240930_123030-web.jpg" alt="Artesanato e tradição oleira em Pomaire" loading="lazy" width="1200" height="901">
+             <img src="img/gallery/pomaire-20240930_123030-thumb.jpg" data-full="img/gallery/pomaire-20240930_123030-web.webp" data-full-jpg="img/gallery/pomaire-20240930_123030-web.jpg" alt="Artesanía y tradición alfarera en Pomaire" loading="lazy" width="1200" height="901">
            </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_2">Cazuela de barro</span>
@@ -610,10 +1031,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         </div>
       </div>
 
-      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagem: Peças de barro artesanal">
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Piezas de greda artesanal">
         <picture>
              <source srcset="img/gallery/pomaire-20240930_123149-thumb.webp" type="image/webp">
-             <img src="img/gallery/pomaire-20240930_123149-thumb.jpg" data-full="img/gallery/pomaire-20240930_123149-web.webp" data-full-jpg="img/gallery/pomaire-20240930_123149-web.jpg" alt="Peças de barro artesanal feitas à mão em Pomaire" loading="lazy" width="1200" height="901">
+             <img src="img/gallery/pomaire-20240930_123149-thumb.jpg" data-full="img/gallery/pomaire-20240930_123149-web.webp" data-full-jpg="img/gallery/pomaire-20240930_123149-web.jpg" alt="Piezas de greda artesanal hechas a mano en Pomaire" loading="lazy" width="1200" height="901">
            </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_3">Los Chiñihues</span>
@@ -621,10 +1042,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         </div>
       </div>
 
-      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagem: Vida no povoado">
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Vida en el pueblo">
         <picture>
              <source srcset="img/gallery/pomaire-20241014_102408-thumb.webp" type="image/webp">
-             <img src="img/gallery/pomaire-20241014_102408-thumb.jpg" data-full="img/gallery/pomaire-20241014_102408-web.webp" data-full-jpg="img/gallery/pomaire-20241014_102408-web.jpg" alt="Vida cotidiana e comércio no povoado de Pomaire" loading="lazy" width="1200" height="901">
+             <img src="img/gallery/pomaire-20241014_102408-thumb.jpg" data-full="img/gallery/pomaire-20241014_102408-web.webp" data-full-jpg="img/gallery/pomaire-20241014_102408-web.jpg" alt="Vida cotidiana y comercio en el pueblo de Pomaire" loading="lazy" width="1200" height="901">
            </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_4">Rua principal</span>
@@ -632,13 +1053,101 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
         </div>
       </div>
 
-      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagem: O maior cofrinho de barro do mundo">
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: El Chancho alcancía de greda más grande del mundo">
         <picture>
              <source srcset="img/gallery/pomaire-chancho-greda-thumb.webp" type="image/webp">
-             <img src="img/gallery/pomaire-chancho-greda-thumb.jpg" data-full="img/gallery/pomaire-chancho-greda-web.webp" data-full-jpg="img/gallery/pomaire-chancho-greda-web.jpg" alt="O maior cofrinho de barro do mundo em Pomaire" loading="lazy" width="1200" height="900">
+             <img src="img/gallery/pomaire-chancho-greda-thumb.jpg" data-full="img/gallery/pomaire-chancho-greda-web.webp" data-full-jpg="img/gallery/pomaire-chancho-greda-web.jpg" alt="El chancho alcancía de greda más grande del mundo en Pomaire" loading="lazy" width="1200" height="900">
            </picture>
         <div class="bento-overlay">
           <span class="bento-caption" data-t="gal_5">Artesãos trabalhando</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Vista aérea de Pomaire">
+        <picture>
+             <source srcset="img/gallery/pomaire-vista-aerea-pueblo-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-vista-aerea-pueblo-web.webp.jpeg" data-full="img/gallery/pomaire-vista-aerea-pueblo-web.webp.jpeg" alt="Vista aérea del pueblo de Pomaire con sus cerros y calles" loading="lazy" width="1200" height="900">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_6">Igreja Santo Antônio</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Chancho alcancía gigante">
+        <picture>
+             <source srcset="img/gallery/pomaire-chancho-alcancia-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-chancho-alcancia-web.webp.jpeg" data-full="img/gallery/pomaire-chancho-alcancia-web.webp.jpeg" alt="El famoso chancho alcancía gigante de greda en Pomaire" loading="lazy" width="1200" height="900">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_7">Porquinho cofre gigante</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Entrada a Pomaire">
+        <picture>
+             <source srcset="img/gallery/pomaire-entrada-pueblo-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-entrada-pueblo-web.webp.jpeg" data-full="img/gallery/pomaire-entrada-pueblo-web.webp.jpeg" alt="Vista de la entrada al pueblo de Pomaire con cerros de fondo" loading="lazy" width="1200" height="675">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_8">Entrada de Pomaire</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Calle de la artesanía">
+        <picture>
+             <source srcset="img/gallery/pomaire-calle-artesania-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-calle-artesania-web.webp.jpeg" data-full="img/gallery/pomaire-calle-artesania-web.webp.jpeg" alt="Calle típica de Pomaire con letrero de artesanía y árboles" loading="lazy" width="1200" height="800">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_9">Rua do artesanato</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Pomaire histórico - acuarela">
+        <picture>
+             <source srcset="img/gallery/pomaire-acuarela-historica-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-acuarela-historica-web.webp.jpeg" data-full="img/gallery/pomaire-acuarela-historica-web.webp.jpeg" alt="Acuarela histórica del pueblo de Pomaire con alfareros y gallinas" loading="lazy" width="1200" height="900">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_10">Pomaire histórico</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item bento-wide" tabindex="0" role="button" aria-label="Ver imagen: Valle de Pomaire al atardecer">
+        <picture>
+             <source srcset="img/gallery/pomaire-valle-atardecer-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-valle-atardecer-web.webp.jpeg" data-full="img/gallery/pomaire-valle-atardecer-web.webp.jpeg" alt="Valle de Pomaire al atardecer con rayos de sol entre las nubes" loading="lazy" width="1200" height="900">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_11">Vale ao entardecer</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Ollas chanchito de greda">
+        <picture>
+             <source srcset="img/gallery/pomaire-ollas-chanchito-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-ollas-chanchito-web.webp.jpeg" data-full="img/gallery/pomaire-ollas-chanchito-web.webp.jpeg" alt="Ollas con forma de chanchito hechas de greda en Pomaire" loading="lazy" width="1200" height="800">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_12">Panelas porquinho de barro</span>
+          <span class="bento-zoom">🔍</span>
+        </div>
+      </div>
+
+      <div class="bento-item" tabindex="0" role="button" aria-label="Ver imagen: Figuras de greda tradicionales">
+        <picture>
+             <source srcset="img/gallery/pomaire-figuras-greda-web.webp.jpeg" type="image/jpeg">
+             <img src="img/gallery/pomaire-figuras-greda-web.webp.jpeg" data-full="img/gallery/pomaire-figuras-greda-web.webp.jpeg" alt="Figuras decorativas de greda: chanchitos y olla con estrellas" loading="lazy" width="1200" height="800">
+           </picture>
+        <div class="bento-overlay">
+          <span class="bento-caption" data-t="gal_13">Figuras tradicionais de barro</span>
           <span class="bento-zoom">🔍</span>
         </div>
       </div>
@@ -655,7 +1164,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   <button class="glb-prev" onclick="navGallery(-1)" aria-label="Imagen anterior" type="button">‹</button>
   <button class="glb-next" onclick="navGallery(1)" aria-label="Imagen siguiente" type="button">›</button>
   <div class="glb-content">
-    <img id="glbImg" src="" alt="">
+    <img id="glbImg" src alt>
     <p class="glb-caption" id="glbCaption"></p>
   </div>
   <div class="glb-counter" id="glbCounter"></div>
@@ -666,6 +1175,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <!-- EVENTOS -->
 <section id="eventos">
   <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_comeback">Capítulo 5 — Planeje seu retorno</div>
     <div class="section-header reveal">
       <span class="section-icon">📅</span>
       <div>
@@ -890,41 +1400,101 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   </div>
 </section>
 
-<!-- REDES SOCIALES -->
-<section id="redes">
-  <div class="redes-inner">
-    <div class="redes-emoji">📸</div>
-    <h2 data-t="social_title">Siga-nos nas redes</h2>
-    <p class="redes-sub" data-t="social_sub">Fotos, novidades e a vida do povoado dos oleiros, todos os dias.</p>
-    <div class="redes-links">
-      <a class="redes-link redes-ig" href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener" aria-label="Instagram Pomaire 360">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.6 8.5 3.6 8.85 3.6 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 15.14 12 3.14 3.14 0 0 0 12 8.86zm5.14-3.2a1.15 1.15 0 1 1-1.15 1.15 1.15 1.15 0 0 1 1.15-1.15z"></path></svg>
-        <span data-t="social_ig">Siga-nos no Instagram</span>
-      </a>
+<!-- FOOTER MODERNO -->
+<footer class="footer-modern">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <!-- Marca -->
+      <div class="footer-brand-col">
+        <a href="/pt/" class="footer-logo">
+          <span class="footer-logo-icon">🏺</span>
+          <span class="footer-logo-text">Pomaire 360</span>
+        </a>
+        <p class="footer-desc" data-t="footer_tagline">Guia para visitantes e novos moradores</p>
+        <div class="footer-social-row">
+          <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.tiktok.com/@pomaire360" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.3 0 .59.05.88.13V9.4a6.84 6.84 0 0 0-1-.07A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.04z"></path></svg>
+          </a>
+          <a href="https://wa.me/?text=%C2%A1Descubre%20Pomaire%20360!%20https%3A%2F%2Fpomaire360.cl%2F" target="_blank" rel="noopener" aria-label="WhatsApp" title="Compartir por WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Explorar -->
+      <div class="footer-links-col">
+        <h4 data-t="footer_explore">Explorar</h4>
+        <a href="/pt/alfareria/">Alfarería</a>
+        <a href="/gastronomia/">Gastronomía</a>
+        <a href="/pt/comercio/">Comercio</a>
+        <a href="/alojamientos/">Alojamientos</a>
+        <a href="/pt/ruta-del-vino/">Ruta del Vino</a>
+        <a href="/que-ver/">Qué ver</a>
+      </div>
+
+      <!-- Servicios -->
+      <div class="footer-links-col">
+        <h4 data-t="footer_services">Serviços</h4>
+        <a href="/pt/estacionamientos/">Estacionamientos</a>
+        <a href="/pt/salud/">Salud</a>
+        <a href="/pt/seguridad/">Seguridad</a>
+        <a href="/gruas/">Grúas y mecánicos</a>
+        <a href="/locomocion/">Locomoción</a>
+        <a href="/servicios/">Servicios generales</a>
+      </div>
+
+      <!-- Para comerciantes -->
+      <div class="footer-links-col">
+        <h4 data-t="footer_merchants">Para comerciantes</h4>
+        <a href="/pt/anunciate/">Anúnciate</a>
+        <a href="/admin/">Acceso al panel</a>
+        <a href="https://app.pomaire360.cl/auth/login">Registrar mi negocio</a>
+        <a href="https://app.pomaire360.cl/planes" target="_blank" rel="noopener">Planes y precios</a>
+      </div>
+
+      <!-- Comunidad -->
+      <div class="footer-links-col">
+        <h4 data-t="footer_community">Comunidade</h4>
+        <a href="/pt/apoyar/">Apoyar el proyecto</a>
+        <a href="/pt/sugerencias/">Sugerencias</a>
+        <a href="/pt/juegos/">Juegos</a>
+        <a href="https://comprayvende.pomaire360.cl/" target="_blank" rel="noopener">Compra y Venta</a>
+        <a href="/pt/links/">Links</a>
+      </div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <p style="font-size:1.4rem;margin-bottom:.5rem;">🏺</p>
-  <p><strong>Pomaire 360 — <span data-t="footer_tagline">Guia para visitantes e novos moradores</span></strong></p>
-  <p><span data-t="footer_emer">Emergências:</span> <strong>133</strong> Carabineros · <strong>131</strong> SAMU Ambulancia · <strong>132</strong> Bomberos</p>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener" aria-label="Instagram Pomaire 360" title="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.8-.32 1.7C3.6 8.5 3.6 8.85 3.6 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.8.28 1.7.32 1.24.07 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.8.32-1.7.07-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.7a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.8-.28-1.7-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 15.14 12 3.14 3.14 0 0 0 12 8.86zm5.14-3.2a1.15 1.15 0 1 1-1.15 1.15 1.15 1.15 0 0 1 1.15-1.15z"></path></svg>
-    </a>
+  <!-- Emergencias -->
+  <div class="footer-emergency">
+    <span data-t="footer_emer">Emergências:</span>
+    <strong>133</strong> Carabineros · <strong>131</strong> SAMU · <strong>132</strong> Bomberos
   </div>
-  <p style="margin-top:.75rem;" data-t="footer_disc">As informações são apenas orientativas. Verifique horários e dados diretamente com cada instituição.</p>
-  <p>
-    <a href="https://www.melipilla.cl" target="_blank">melipilla.cl</a> ·
-    <a href="https://corpomelipilla.cl" target="_blank">corpomelipilla.cl</a>
-  </p>
-  <p style="margin-top:.6rem;">
-    <a href="/pt/sugerencias/" style="color:var(--clay-dark);font-weight:700;">💬 <span data-t="nav_suggest">Sugestões</span></a>
-  </p>
-  <p style="margin-top:.5rem;font-size:.76rem;" data-t="footer_date">Última atualização: junho 2026 · Pomaire, Melipilla, Região Metropolitana</p>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2024–2026 Pomaire 360. <span data-t="footer_disc">As informações são apenas orientativas. Verifique horários e dados diretamente com cada instituição.</span></p>
+      <div class="footer-bottom-links">
+        <a href="https://www.melipilla.cl" target="_blank" rel="noopener">melipilla.cl</a>
+        <a href="https://corpomelipilla.cl" target="_blank" rel="noopener">corpomelipilla.cl</a>
+        <a href="https://holamelipilla.cl" target="_blank" rel="noopener">holamelipilla.cl</a>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<!-- ══ SECCIÓN SEO: CONTENIDO SEMÁNTICO RICO EN PALABRAS CLAVE ══ -->
+<section class="seo-about" aria-label="Sobre Pomaire" hidden style="display:none">&gt;
+  <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--clay-dark,#5a2d0c);margin-bottom:1rem">Pomaire: El pueblo alfarero más famoso de Chile</h2>
+  <p><strong>Pomaire</strong> es una localidad alfarera ubicada en la <strong>comuna de Melipilla</strong>, <strong>Región Metropolitana de Chile</strong>, a solo 50 km al suroeste de Santiago. Conocido también como el <em>pueblo de la greda</em>, Pomaire es el destino turístico ideal para quienes buscan <strong>artesanía chilena</strong>, <strong>gastronomía típica</strong> y una experiencia cultural auténtica a menos de una hora de la capital.</p>
+  <p>La tradición alfarera de Pomaire tiene más de <strong>300 años de historia</strong>. Los artesanos del pueblo trabajan la <strong>greda</strong> (arcilla roja) de forma artesanal, creando piezas únicas como ollas, cazuelas, jarros, tinajas, maceteros y el icónico <strong>chanchito alcancía de greda</strong>, símbolo de buena suerte en Chile. Visitar los <strong>talleres de alfarería</strong> es la actividad principal del pueblo, donde puedes ver a los maestros alfareros trabajando en el torno y comprar directamente.</p>
+  <p>En gastronomía, Pomaire es famoso por sus <strong>empanadas gigantes</strong> horneadas en horno de barro, la <strong>cazuela de vacuno en olla de greda</strong>, el <strong>pastel de choclo</strong>, las humitas y la <strong>chicha artesanal</strong>. Hay más de 20 restaurantes y picadas donde disfrutar de la cocina tradicional chilena.</p>
+  <p>Para llegar a Pomaire desde Santiago, toma la <strong>Autopista del Sol (Ruta 78)</strong>, salida kilómetro 51. También puedes ir en <strong>bus desde el Terminal San Borja</strong> hasta Melipilla y luego tomar locomoción local. Pomaire cuenta con <strong>estacionamientos</strong>, servicios de salud (CESFAM), Carabineros, Bomberos y comercio local.</p>
+  <p>Pomaire 360 es la <strong>guía gratuita más completa</strong> para planificar tu visita o informarte sobre los servicios del pueblo. Información actualizada de <strong>alojamientos</strong>, <strong>ruta del vino y la chicha</strong>, <strong>mapa interactivo</strong>, eventos, transporte público y emergencias.</p>
+</section>
 
 <!-- Lightbox mapa oficial -->
 <div class="map-lightbox" id="officialMapLightbox" onclick="closeOfficialMap(event)">
@@ -932,7 +1502,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <button class="map-lightbox-close" onclick="closeOfficialMap(event)" aria-label="Cerrar" type="button">✕</button>
     <picture>
       <source srcset="mapa-oficial-pomaire.webp" type="image/webp">
-      <img src="mapa-oficial-pomaire.jpg" alt="Mapa oficial ilustrado de Pomaire com diretório de oficinas de artesãos" id="officialMapImg" loading="lazy">
+      <img src="mapa-oficial-pomaire.jpg" alt="Mapa oficial ilustrado de Pomaire con directorio de talleres de artesanos" id="officialMapImg" loading="lazy" width="3119" height="2183">
     </picture>
     <a class="map-lightbox-dl" href="mapa-oficial-pomaire.jpg" download="mapa-oficial-pomaire.jpg">⬇️ <span data-t="official_map_dl">Baixar mapa</span></a>
   </div>
@@ -956,13 +1526,13 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <span class="games-text" data-t="gf_cta">Jogue!</span>
     </a>
   </div>
-  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"/></svg>
+  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&amp;utm_source=join_link&amp;utm_campaign=creatorshare_creator&amp;utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"></path></svg>
     <span class="pa-text">Patreon</span>
   </a>
   <a class="an-float" href="https://www.pomaire360.cl/anunciate/" aria-label="Agregar tu negocio en Pomaire 360">
     <span class="an-float-emoji" aria-hidden="true">📣</span>
-    <span class="an-text" data-t="an_cta">Adicionar seu negócio</span>
+    <span class="an-text" data-t="an_cta">Adicione seu negócio</span>
   </a>
   <a class="tt-float" href="https://www.tiktok.com/@pomaire360" target="_blank" rel="noopener" aria-label="TikTok Pomaire 360">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .59.05.88.13V9.4a6.84 6.84 0 0 0-1-.07A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.04z"></path></svg>
@@ -1015,23 +1585,24 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 </div>
 
 <!-- PROPAGANDA FLOTANTE: El Chancho de greda más grande del mundo (solo Home) -->
-<div class="float-pig" id="floatPig" hidden="" role="complementary" aria-label="Destaque: O maior cofrinho de barro do mundo">
+<div class="float-pig" id="floatPig" hidden role="complementary" aria-label="Destacado: El Chancho alcancía de greda más grande del mundo">
   <button class="float-pig-close" type="button" aria-label="Cerrar">✕</button>
   <a class="float-pig-link" href="/pt/elchanchoalcanciamasgrandedelmundo/">
     <span class="float-pig-emoji" aria-hidden="true">🐷</span>
     <span class="float-pig-body">
       <span class="float-pig-tag" data-t="fpb_tag">💎 Imperdível</span>
-      <span class="float-pig-text" data-t="fpb_text">O cofrinho de barro <strong>maior do mundo</strong></span>
+      <span class="float-pig-text" data-t="fpb_text">O <strong>maior cofrinho de barro do mundo</strong></span>
       <span class="float-pig-cta" data-t="fpb_cta">Conheça →</span>
     </span>
   </a>
 </div>
 
-<script src="/card-share.js"></script>
-
+<script defer src="/card-share.js"></script>
+<script defer src="/ratings.js"></script>
 
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
-<script src="/a11y-enhancements.js" defer></script>
-</body></html>
+
+</body>
+</html>

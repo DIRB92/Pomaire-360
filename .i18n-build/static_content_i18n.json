@@ -51,6 +51,32 @@
       "bottom_cta_btn": "\ud83d\udcac Quero aparecer no Pomaire 360",
       "bottom_cta_wa_text": "Olá, quero que meu negócio apareça no Pomaire 360",
       "bottom_note_html": "O plano Gratuito não tem custo. Preços referenciais em pesos chilenos (CLP). Dúvidas? Escreva para nós no <a href=\"https://www.instagram.com/pomaire360/\" target=\"_blank\" rel=\"noopener\">Instagram</a>."
+    },
+    "ja": {
+      "hero_h1": "ポマイレでお店を営んでいますか？",
+      "hero_p": "ポマイレの訪問者が使うガイドに掲載しましょう。掲載方法をお選びください。",
+      "plan_free_name": "🆓 無料",
+      "plan_free_price": "$0",
+      "plan_free_period": "ずっと無料",
+      "plan_free_feats": ["ディレクトリへの掲載", "地図上に表示", "連絡先1件"],
+      "plan_free_btn": "無料で登録",
+      "plan_free_wa_text": "こんにちは、ポマイレ360の無料プランに私のお店を登録したいです \ud83c\udfba",
+      "plan_dest_name": "\u2b50 注目",
+      "plan_dest_price": "$4,990 <span>/月</span>",
+      "plan_dest_period": "または $49,900/年 \u00b7 2か月無料",
+      "plan_dest_feats": ["無料プランのすべて", "\u2b50 バッジ付きで上位に表示", "地図上で目立つマーカー", "すべてのリンク（SNS・ウェブサイト・WhatsApp）", "説明と営業時間付きの拡張掲載"],
+      "plan_dest_btn": "注目を選ぶ",
+      "plan_dest_wa_text": "こんにちは、ポマイレ360で私のお店の注目プラン（$4,990/月）を契約したいです \u2b50",
+      "plan_prem_ribbon": "一番人気",
+      "plan_prem_name": "\ud83d\udc8e プレミアム",
+      "plan_prem_price": "$9,990 <span>/月</span>",
+      "plan_prem_period": "または $99,900/年 \u00b7 2か月無料",
+      "plan_prem_feats": ["注目プランのすべて", "掲載で最優先", "プロフィールに写真ギャラリー", "お店専用のページ"],
+      "plan_prem_btn": "プレミアムを選ぶ",
+      "plan_prem_wa_text": "こんにちは、ポマイレ360で私のお店のプレミアムプラン（$9,990/月）を契約したいです \ud83d\udc8e",
+      "bottom_cta_btn": "\ud83d\udcac ポマイレ360に掲載したい",
+      "bottom_cta_wa_text": "こんにちは、私のお店をポマイレ360に掲載したいです",
+      "bottom_note_html": "無料プランは費用がかかりません。価格はチリ・ペソ（CLP）の参考価格です。ご質問は<a href=\"https://www.instagram.com/pomaire360/\" target=\"_blank\" rel=\"noopener\">Instagram</a>までどうぞ。"
     }
   },
   "links": {
@@ -105,6 +131,32 @@
       "label_pig": "O Cofrinho",
       "footer_made": "Feito com ❤️ em Pomaire",
       "footer_visit": "Visitar pomaire360.cl"
+    },
+    "ja": {
+      "html_lang": "ja",
+      "title": "リンク — ポマイレ360 | すべてのリンク",
+      "description": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。",
+      "ogTitle": "リンク — ポマイレ360 | すべてのリンク",
+      "ogDescription": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。",
+      "ogImageAlt": "ポマイレ360 - チリの陶工の村の完全ガイド",
+      "twitterTitle": "リンク — ポマイレ360 | すべてのリンク",
+      "twitterDescription": "ポマイレ360のすべてのリンク：SNS、サイトの各セクションなど。チリの陶工の村を巡る完全ガイド。",
+      "tagline": "チリの陶工の村を巡る完全ガイド",
+      "cta_add_business": "お店を追加",
+      "section_social": "SNSでフォロー",
+      "section_explore": "ポマイレを巡る",
+      "label_pottery": "陶芸",
+      "label_food": "グルメ",
+      "label_seewhat": "見どころ",
+      "label_wine": "ワインの道",
+      "label_lodging": "宿泊",
+      "label_plaza": "広場",
+      "label_parking": "駐車場",
+      "label_map": "インタラクティブ地図",
+      "label_games": "ゲーム",
+      "label_pig": "貯金箱",
+      "footer_made": "ポマイレで❤️を込めて制作",
+      "footer_visit": "pomaire360.cl を見る"
     }
   }
 }

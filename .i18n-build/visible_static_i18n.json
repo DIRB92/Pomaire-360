@@ -1,0 +1,24 @@
+{
+  "skip_to_content": {
+    "en": "Skip to content",
+    "pt": "Pular para o conteúdo",
+    "ja": "コンテンツにスキップ"
+  },
+  "dir_cta_btn": {
+    "alfareria": {
+      "en": "🏺 See all workshops & artisans",
+      "pt": "🏺 Ver todas as oficinas e artesãos",
+      "ja": "🏺 すべての工房と職人を見る"
+    },
+    "estacionamientos": {
+      "en": "🅿️ See all parking spots",
+      "pt": "🅿️ Ver todos os estacionamentos",
+      "ja": "🅿️ すべての駐車場を見る"
+    },
+    "salud": {
+      "en": "🏥 See all health services",
+      "pt": "🏥 Ver todos os serviços de saúde",
+      "ja": "🏥 すべての医療サービスを見る"
+    }
+  }
+}
