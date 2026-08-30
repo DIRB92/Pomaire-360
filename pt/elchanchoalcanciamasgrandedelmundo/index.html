@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="pt"><head>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
 <meta charset="UTF-8">
 <!-- Google Analytics (deferred, respects cookie consent) -->
 <script src="/ga-loader.js"></script>
@@ -11,7 +13,9 @@
 <link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/elchanchoalcanciamasgrandedelmundo/">
+<link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/elchanchoalcanciamasgrandedelmundo/">
 <link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/">
+
 
 
 
@@ -28,6 +32,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="O maior cofrinho de barro do mundo em Pomaire">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
@@ -217,7 +222,6 @@
 </style>
 </head>
 <body>
-<a href="#navBurger" class="skip-to-content">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -231,9 +235,9 @@
         <a href="/pt/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
         <a href="/pt/salud/">🏥 <span data-t="nav_health">Saúde</span></a>
         <a href="/pt/seguridad/">🚔 <span data-t="nav_security">Segurança</span></a>
-        <a href="/pt/servicios/">🛒 <span data-t="nav_commerce">Serviços</span></a>
-        <a href="/pt/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
-        <a href="/pt/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
+        <a href="/servicios/">🛒 <span data-t="nav_commerce">Serviços</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Guincho e mecânicos</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Transporte</span></a>
       </div>
     </div>
 
@@ -242,9 +246,9 @@
       <div class="nav-menu">
         <a href="/pt/alfareria/">🏺 <span data-t="nav_pottery">Olaria</span></a>
         <a href="/pt/ruta-del-vino/">🍷 <span data-t="nav_winery">Rota do Vinho</span></a>
-        <a href="/pt/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">O que ver</span></a>
         <a href="/pt/plaza/">🌳 <span data-t="nav_plaza">Praça</span></a>
-        <a href="/pt/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
+        <a href="/alrededores/">🌄 <span data-t="nav_around">Arredores</span></a>
         <a href="/pt/comercio/">🛒 <span data-t="nav_shops_g">Comércio</span></a>
       </div>
     </div>
@@ -252,8 +256,8 @@
     <div class="nav-group">
       <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer e dormir</span> <span class="ng-arrow">▾</span></button>
       <div class="nav-menu">
-        <a href="/pt/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
-        <a href="/pt/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Hospedagem</span></a>
         <a href="/pt/plaza/#banos">🚽 <span data-t="nav_banos">Banheiros</span></a>
       </div>
     </div>
@@ -291,9 +295,7 @@
       <button type="button" role="option" class="lang-option" data-lang="ru" onclick="selectLang('ru')">
         <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-check">✓</span>
       </button>
-      <button type="button" role="option" class="lang-option" data-lang="ja" onclick="selectLang('ja')">
-        <span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span>
-      </button>
+      <a role="option" class="lang-option" data-lang="ja" href="/ja/elchanchoalcanciamasgrandedelmundo/"><span class="lang-flag">🇯🇵</span><span class="lang-name">日本語</span><span class="lang-check">✓</span></a>
       <button type="button" role="option" class="lang-option" data-lang="zh" onclick="selectLang('zh')">
         <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-check">✓</span>
       </button>
@@ -302,7 +304,7 @@
 </nav>
 
 <!-- ANUNCIO LLAMATIVO: vacaciones de invierno (se muestra/oculta segun fecha) -->
-<div class="ch-promo" data-winter-promo="" style="display:none;" role="status">
+<div class="ch-promo" data-winter-promo style="display:none;" role="status">
   <span class="ch-promo-snow">❄️</span>
   <span data-t="ch_winter_promo">Estaremos abertos nas férias de inverno! · Segunda a domingo</span>
   <span class="ch-promo-snow">❄️</span>
@@ -313,7 +315,7 @@
   <div class="ch-hero-content">
     <span class="ch-kicker" data-t="ch_kicker">🐷 Atração imperdível de Pomaire</span>
     <h1 data-t="ch_h1">O maior cofrinho de barro do mundo</h1>
-    <p class="ch-author" data-t="ch_author">Criado por <strong>César Silva Rojo</strong></p>
+    <p class="ch-author" data-t="ch_author">Criado por</p>
     <div class="ch-hero-btns">
       <a href="#autor" class="ch-btn ch-btn-primary" data-t="ch_btn_hist">Ver História</a>
       <a href="#visitar" class="ch-btn ch-btn-ghost" data-t="ch_btn_visit">Como Visitar</a>
@@ -356,9 +358,9 @@
   <!-- VISITAR -->
   <section class="ch-visit" id="visitar">
     <h2 data-t="ch_visit_title">Como visitar</h2>
-    <div class="ch-visit-row">📍 <span data-t="ch_addr"><strong>Endereço:</strong> Los Paltos 323, Pomaire, Melipilla</span></div>
-    <div class="ch-visit-row">🕒 <span data-t="ch_hours"><strong>Horário:</strong> Sábado 12:00–18:00 · Domingo 12:00–19:30 · Seg a Sex fechado</span></div>
-    <div class="ch-visit-row">📞 <span data-t="ch_phone"><strong>Telefone:</strong> +56 9 3356 6057</span></div>
+    <div class="ch-visit-row">📍 <span data-t="ch_addr">Endereço: Los Paltos 323, Pomaire, Melipilla</span></div>
+    <div class="ch-visit-row">🕒 <span data-t="ch_hours">Horário: Sábado 12:00–18:00 · Domingo 12:00–19:30 · Seg–Sex fechado</span></div>
+    <div class="ch-visit-row">📞 <span data-t="ch_phone">Telefone: +56 9 3356 6057</span></div>
     <div class="ch-visit-btns">
       <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Como chegar</a>
       <a class="ch-soc" style="background:var(--clay-dark)" href="/pt/#lugar=po6" data-t="ch_seemap_btn">📍 Ver no mapa interativo</a>
@@ -381,13 +383,13 @@
       <span class="games-text" data-t="gf_cta">Jogue!</span>
     </a>
   </div>
-  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"/></svg>
+  <a class="pa-float" href="https://patreon.com/Pomaire360?utm_medium=unknown&amp;utm_source=join_link&amp;utm_campaign=creatorshare_creator&amp;utm_content=copyLink" target="_blank" rel="noopener" aria-label="Patreon Pomaire 360">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.82 2.41c-3.77 0-6.82 3.05-6.82 6.82 0 3.76 3.05 6.82 6.82 6.82 3.76 0 6.82-3.06 6.82-6.82 0-3.77-3.06-6.82-6.82-6.82zM2.36 21.59h3.38V2.41H2.36v19.18z"></path></svg>
     <span class="pa-text">Patreon</span>
   </a>
   <a class="an-float" href="https://www.pomaire360.cl/anunciate/" aria-label="Agregar tu negocio en Pomaire 360">
     <span class="an-float-emoji" aria-hidden="true">📣</span>
-    <span class="an-text" data-t="an_cta">Adicionar seu negócio</span>
+    <span class="an-text" data-t="an_cta">Adicione seu negócio</span>
   </a>
   <a class="tt-float" href="https://www.tiktok.com/@pomaire360" target="_blank" rel="noopener" aria-label="TikTok Pomaire 360">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .59.05.88.13V9.4a6.84 6.84 0 0 0-1-.07A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52V6.69h-1.04z"></path></svg>
@@ -409,10 +411,9 @@
 <script src="/a11y.js"></script>
 <script src="/seasonal.js"></script>
 <script defer src="/elchanchoalcanciamasgrandedelmundo/page-script.js"></script>
-
-
 <script src="/dark-mode.js" defer></script>
 <script src="/ecosystem-bar.js" defer></script>
 <script src="/cookie-consent.js" defer></script>
 <script src="/a11y-enhancements.js" defer></script>
-</body></html>
+</body>
+</html>

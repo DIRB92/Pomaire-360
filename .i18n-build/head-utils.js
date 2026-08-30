@@ -1,18 +1,20 @@
 const pageMap = require('./page-map');
 
 const SITE = 'https://www.pomaire360.cl';
-const LOCALE_MAP = { es: 'es_CL', en: 'en_US', pt: 'pt_BR' };
+const LOCALE_MAP = { es: 'es_CL', en: 'en_US', pt: 'pt_BR', ja: 'ja_JP' };
 
 // Construye el bloque <link rel="alternate" hreflang="..."> para el clúster
-// es/en/pt de una página, más x-default apuntando a la versión en español.
+// es/en/pt/ja de una página, más x-default apuntando a la versión en español.
 function hreflangBlock(slug) {
   const es = SITE + pageMap.langPath(slug, 'es');
   const en = SITE + pageMap.langPath(slug, 'en');
   const pt = SITE + pageMap.langPath(slug, 'pt');
+  const ja = SITE + pageMap.langPath(slug, 'ja');
   return [
     `<link rel="alternate" hreflang="es" href="${es}">`,
     `<link rel="alternate" hreflang="en" href="${en}">`,
     `<link rel="alternate" hreflang="pt" href="${pt}">`,
+    `<link rel="alternate" hreflang="ja" href="${ja}">`,
     `<link rel="alternate" hreflang="x-default" href="${es}">`
   ].join('\n');
 }

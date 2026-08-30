@@ -13,7 +13,15 @@
  */
 const fs = require('fs');
 const path = require('path');
-const cheerio = require('cheerio');
+// Usa cheerio si está instalado (entorno normal con acceso a npm); si no,
+// cae a un reemplazo mínimo, sin dependencias, incluido en este directorio
+// (mini-cheerio.js), para poder generar en sandboxes sin acceso al registro.
+let cheerio;
+try {
+  cheerio = require('cheerio');
+} catch (e) {
+  cheerio = require('./mini-cheerio');
+}
 
 const pageMap = require('./page-map');
 const { loadLangs, extractInlineOverride, mergeForPage } = require('./langs-loader');
@@ -27,11 +35,12 @@ const breadcrumbI18n = require('./breadcrumb_i18n.json');
 const jsonldBusinessI18n = require('./jsonld_business_i18n.json');
 const indexAltI18n = require('./index_alt_i18n.json');
 const faqI18n = require('./faq_i18n.json');
-const REGION_I18N = { en: 'Metropolitan Region', pt: 'Região Metropolitana' };
+const visibleStaticI18n = require('./visible_static_i18n.json');
+const REGION_I18N = { en: 'Metropolitan Region', pt: 'Região Metropolitana', ja: 'サンティアゴ首都州' };
 
 const { LANGS: baseLangs, DIR_TAGS } = loadLangs(REPO_ROOT);
 
-const TARGET_LANGS = ['en', 'pt'];
+const TARGET_LANGS = ['en', 'pt', 'ja'];
 
 // ---------------------------------------------------------------------------
 // Utilidades de reescritura de enlaces internos
@@ -117,7 +126,7 @@ function applyDataT($, langDict, lang) {
 // preservando fr/ru/ja/zh como el swap dinámico original (subi18n.js).
 // ---------------------------------------------------------------------------
 
-const NAV_BURGER_ARIA = { en: 'Open menu', pt: 'Abrir menu' };
+const NAV_BURGER_ARIA = { en: 'Open menu', pt: 'Abrir menu', ja: 'メニューを開く' };
 
 function patchNavAria($, lang) {
   const label = NAV_BURGER_ARIA[lang];
@@ -128,8 +137,8 @@ function patchLangSelector($, lang, slug) {
   const dropdown = $('.lang-dropdown');
   if (!dropdown.length) return;
 
-  const labelByLang = { es: ['🇨🇱', 'Español'], en: ['🇬🇧', 'English'], pt: ['🇧🇷', 'Português'] };
-  ['es', 'en', 'pt'].forEach(l => {
+  const labelByLang = { es: ['🇨🇱', 'Español'], en: ['🇬🇧', 'English'], pt: ['🇧🇷', 'Português'], ja: ['🇯🇵', '日本語'] };
+  ['es', 'en', 'pt', 'ja'].forEach(l => {
     const btn = dropdown.find(`.lang-option[data-lang="${l}"]`);
     if (!btn.length) return;
     const targetUrl = pageMap.langPath(slug, l);
@@ -144,8 +153,8 @@ function patchLangSelector($, lang, slug) {
   });
 
   // Refleja el idioma actual en el botón visible del selector.
-  const flagMap = { en: '🇬🇧', pt: '🇧🇷' };
-  const nameMap = { en: 'English', pt: 'Português' };
+  const flagMap = { en: '🇬🇧', pt: '🇧🇷', ja: '🇯🇵' };
+  const nameMap = { en: 'English', pt: 'Português', ja: '日本語' };
   if (flagMap[lang]) {
     $('#langCurrentFlag').text(flagMap[lang]);
     $('#langCurrentName').text(nameMap[lang]);
@@ -298,22 +307,76 @@ function patchIndexAltText($, lang) {
     if (alt && dict[alt]) $el.attr('alt', dict[alt]);
     const aria = $el.attr('aria-label');
     if (aria) {
+      // Prefijos y frases fijas por idioma para los aria-label del home.
+      const VIEW_IMAGE_PREFIX = { en: 'View image: ', pt: 'Ver imagem: ', ja: '画像を見る：' };
+      const ARIA_FIXED = {
+        'Destacado: El Chancho alcancía de greda más grande del mundo': {
+          en: "Featured: The world's largest clay piggy bank",
+          pt: 'Destaque: O maior cofrinho de barro do mundo',
+          ja: '注目：世界最大の陶器の貯金箱'
+        },
+        'Taller de greda': { en: 'Pottery workshop', pt: 'Ateliê de barro', ja: '粘土の工房' },
+        'Compras de greda': { en: 'Pottery shopping', pt: 'Compras de barro', ja: '粘土の買い物' }
+      };
       if (aria.startsWith('Ver imagen: ')) {
         const rest = aria.replace('Ver imagen: ', '');
         const restTranslated = dict[rest] || rest;
-        const prefix = lang === 'en' ? 'View image: ' : 'Ver imagem: ';
+        const prefix = VIEW_IMAGE_PREFIX[lang] || VIEW_IMAGE_PREFIX.en;
         $el.attr('aria-label', prefix + restTranslated);
-      } else if (aria === 'Destacado: El Chancho alcancía de greda más grande del mundo') {
-        $el.attr('aria-label', lang === 'en'
-          ? 'Featured: The world\'s largest clay piggy bank'
-          : 'Destaque: O maior cofrinho de barro do mundo');
-      } else if (aria === 'Taller de greda') {
-        $el.attr('aria-label', lang === 'en' ? 'Pottery workshop' : 'Ateliê de barro');
-      } else if (aria === 'Compras de greda') {
-        $el.attr('aria-label', lang === 'en' ? 'Pottery shopping' : 'Compras de barro');
+      } else if (ARIA_FIXED[aria] && ARIA_FIXED[aria][lang]) {
+        $el.attr('aria-label', ARIA_FIXED[aria][lang]);
       }
     }
   });
+}
+
+// Traduce textos estáticos VISIBLES que no usan data-t y que son comunes a
+// varias páginas: el enlace "saltar al contenido", la última miga visible del
+// breadcrumb (el nombre de la página) y el botón CTA "Ver todos..." del
+// directorio. Se aplica a todos los idiomas destino (en/pt/ja).
+function patchVisibleStatic($, lang, slug) {
+  // 1) Skip-to-content link (texto uniforme en todas las páginas).
+  const skip = visibleStaticI18n.skip_to_content[lang];
+  if (skip) {
+    const $skip = $('.skip-to-content');
+    if ($skip.length) $skip.text(skip);
+  }
+
+  // 2) Última miga visible del breadcrumb = nombre de la página. Reutiliza el
+  //    diccionario breadcrumbI18n (mismo que el JSON-LD). El primer enlace del
+  //    breadcrumb ("🏺 Pomaire 360") ya se reescribe por rewriteLinks.
+  if (breadcrumbI18n[slug] && breadcrumbI18n[slug][lang]) {
+    const spans = $('.breadcrumb span');
+    // El breadcrumb es: <a>🏺 Pomaire 360</a><span class="sep">›</span><span>Nombre</span>
+    // El último <span> (sin clase .sep) es el nombre de la página.
+    let $nameSpan = null;
+    spans.each((_, el) => {
+      const cls = ($(el).attr('class') || '');
+      if (!cls.includes('sep')) $nameSpan = $(el);
+    });
+    if ($nameSpan && $nameSpan.length) $nameSpan.text(breadcrumbI18n[slug][lang]);
+  }
+
+  // 3) Botón CTA "Ver todos ..." del directorio (.dir-cta-btn). Contiene un
+  //    nodo de texto (emoji + texto) seguido de un <span>→</span>. Se reemplaza
+  //    solo el nodo de texto, preservando la flecha.
+  const cta = visibleStaticI18n.dir_cta_btn[slug];
+  if (cta && cta[lang]) {
+    $('.dir-cta-btn').each((_, el) => {
+      const $el = $(el);
+      // Reemplaza el primer nodo de texto no vacío por la traducción.
+      let replaced = false;
+      $el.contents().each((__, node) => {
+        if (!replaced && node.type === 'text' && node.data.trim().length > 0) {
+          node.data = cta[lang];
+          replaced = true;
+        } else if (node.type === 'text' && node.data.trim().length > 0) {
+          // limpia posibles restos de texto español adicionales
+          node.data = '';
+        }
+      });
+    });
+  }
 }
 
 // Reemplaza el nodo de texto suelto dentro de un .hud-pill (el texto
@@ -460,7 +523,10 @@ function generatePage(slug, lang) {
   patchLangSelector($, lang, slug);
   patchNavAria($, lang);
 
-  // 7) Contenido estático especial sin data-t
+  // 7) Textos estáticos visibles comunes (skip-link, breadcrumb visible, CTA)
+  patchVisibleStatic($, lang, slug);
+
+  // 8) Contenido estático especial sin data-t
   if (slug === 'anunciate') patchAnunciate($, lang);
   if (slug === 'links') patchLinks($, lang);
   if (slug === 'juegos') patchJuegos($, lang);

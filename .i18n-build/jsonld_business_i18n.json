@@ -1,26 +1,32 @@
 {
   "alfareria": {
     "en": { "name": "Pottery Workshops in Pomaire", "description": "Workshops, live demonstrations and the full directory of Pomaire's clay artisans." },
-    "pt": { "name": "Ateliês de Olaria em Pomaire", "description": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire." }
+    "pt": { "name": "Ateliês de Olaria em Pomaire", "description": "Ateliês, demonstrações ao vivo e a lista completa de artesãos do barro de Pomaire." },
+    "ja": { "name": "ポマイレの陶芸工房", "description": "工房、ろくろの実演、そしてポマイレの陶芸職人の完全リスト。" }
   },
   "alojamientos": {
     "en": { "name": "Lodging in Pomaire", "description": "Where to stay in Pomaire: hostels, cabins and suites with address, phone and map. Updated guide for your stay in Chile's pottery village." },
-    "pt": { "name": "Hospedagem em Pomaire", "description": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile." }
+    "pt": { "name": "Hospedagem em Pomaire", "description": "Onde ficar em Pomaire: hostels, cabanas e suítes com endereço, telefone e mapa. Guia atualizado para sua estadia no povoado dos oleiros do Chile." },
+    "ja": { "name": "ポマイレの宿泊", "description": "ポマイレでの宿泊先：ホステル、コテージ、スイートを住所・電話・地図付きでご案内。チリの陶工の村での滞在に役立つ最新ガイド。" }
   },
   "elchanchoalcanciamasgrandedelmundo": {
     "en": { "name": "The World's Largest Clay Piggy Bank", "description": "The world's largest clay piggy bank, created by master potter César Silva Rojo in Pomaire." },
-    "pt": { "name": "O Maior Cofrinho de Barro do Mundo", "description": "O maior cofrinho de barro do mundo, criado pelo mestre oleiro César Silva Rojo em Pomaire." }
+    "pt": { "name": "O Maior Cofrinho de Barro do Mundo", "description": "O maior cofrinho de barro do mundo, criado pelo mestre oleiro César Silva Rojo em Pomaire." },
+    "ja": { "name": "世界最大の陶器の貯金箱", "description": "ポマイレの陶芸家セサル・シルバ・ロホが作った、世界最大の陶器の貯金箱。" }
   },
   "plaza": {
     "en": { "name": "Pomaire's Town Square", "description": "Pomaire's main square, the San Antonio de Padua Church and the public restrooms: the pottery village's meeting point, surrounded by crafts and food." },
-    "pt": { "name": "Praça de Pomaire", "description": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia." }
+    "pt": { "name": "Praça de Pomaire", "description": "A praça de Pomaire, a Igreja Santo Antônio de Pádua e os banheiros públicos: o ponto de encontro do povoado dos oleiros, rodeado de artesanato e gastronomia." },
+    "ja": { "name": "ポマイレの中央広場", "description": "ポマイレの中央広場、サン・アントニオ・デ・パドヴァ教会、公衆トイレ。工芸と食に囲まれた、陶工の村の待ち合わせスポット。" }
   },
   "que-ver": {
     "en": { "name": "Tourist Attractions in Pomaire", "description": "Attractions, charming shops, gardening and key spots in Pomaire." },
-    "pt": { "name": "Atrações Turísticas de Pomaire", "description": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire." }
+    "pt": { "name": "Atrações Turísticas de Pomaire", "description": "Atrações, lojas charmosas, jardinagem e pontos-chave de Pomaire." },
+    "ja": { "name": "ポマイレの観光スポット", "description": "ポマイレの名所、魅力的な店、園芸、主要スポット。" }
   },
   "ruta-del-vino": {
     "en": { "name": "Wine & Chicha Route - Pomaire", "description": "The wine and chicha route of the coastal dryland of Pomaire and Los Chiñihues." },
-    "pt": { "name": "Rota do Vinho e da Chicha - Pomaire", "description": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues." }
+    "pt": { "name": "Rota do Vinho e da Chicha - Pomaire", "description": "A rota do vinho e da chicha do sequeiro costeiro de Pomaire e Los Chiñihues." },
+    "ja": { "name": "ワインとチチャの道 - ポマイレ", "description": "ポマイレとロス・チニウエスの沿岸乾燥地を巡る、ワインとチチャの道。" }
   }
 }
