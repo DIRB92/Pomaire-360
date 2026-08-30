@@ -587,7 +587,11 @@ window.openProfile = openProfile;
 window.closeProfile = closeProfile;
 function selectPlan(plan) {
 if (plan === 'gratis') {
-window.open('https://app.pomaire360.cl/auth/login', '_blank', 'noopener');
+// El login debe abrirse en una pestaña con contexto de ventana completo.
+// Con 'noopener' / target=_blank aislado, el flujo OAuth de Google no
+// puede navegar y el botón "Continuar con Google" no reacciona.
+// Navegamos en la misma pestaña para iniciar sesión.
+window.location.href = 'https://app.pomaire360.cl/auth/login';
 } else {
 window.open('https://app.pomaire360.cl/planes', '_blank', 'noopener');
 }
