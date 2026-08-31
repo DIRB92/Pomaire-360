@@ -145,17 +145,6 @@
           </tr>
           <tr>
             <td>5</td>
-            <td><strong>Chat comunitario</strong> (comprayvende.pomaire360.cl)</td>
-            <td>Nombre o alias (libre), texto del mensaje, IP (para rate limiting)</td>
-            <td>Usuarios del chat comunitario</td>
-            <td>Comunicación entre visitantes y vecinos de Pomaire</td>
-            <td><span class="rat-badge rat-badge-consent">Consentimiento</span> Art. 12 Ley 21.719</td>
-            <td>Últimos 300 mensajes (rotación automática)</td>
-            <td>Sí — Upstash Redis (infraestructura AWS, con DPA)</td>
-            <td>Rate limiting (20 msg/min/IP), sanitización de input, CORS restrictivo, verificación de origen</td>
-          </tr>
-          <tr>
-            <td>6</td>
             <td><strong>Distribución del sitio web</strong> (Cloudflare)</td>
             <td>Logs de acceso (IP, user-agent, URL visitada)</td>
             <td>Todos los visitantes del sitio</td>
@@ -166,7 +155,7 @@
             <td>HTTPS obligatorio, HSTS preload, WAF, DDoS protection</td>
           </tr>
           <tr>
-            <td>7</td>
+            <td>6</td>
             <td><strong>Autenticación admin</strong> (pomaire360-app)</td>
             <td>Email, contraseña hasheada (del administrador)</td>
             <td>Administrador del sitio (1 persona)</td>
@@ -217,8 +206,8 @@
           </tr>
           <tr>
             <td>Upstash Inc.</td>
-            <td>Redis (chat comunitario)</td>
-            <td>Mensajes, alias, IPs para rate limiting</td>
+            <td>Redis (rate limiting)</td>
+            <td>IPs para rate limiting</td>
             <td>EE.UU. (AWS)</td>
             <td>DPA, cifrado TLS, retención limitada automática</td>
           </tr>
