@@ -516,25 +516,31 @@
     });
   }
 
-  // Load data: static first, then try live update
-  loadStaticData()
-    .then(function (data) {
-      if (data && data.length > 0) processData(data);
-      // Also try Supabase for fresher data
-      return loadSupabaseData();
-    })
+  // Carga de datos: Supabase primero (fuente en vivo, siempre disponible).
+  // /directory-data.json es un caché estático opcional que solo existe si el
+  // build lo generó; pedirlo primero producía un 404 ruidoso en consola. Por
+  // eso solo se usa como respaldo si Supabase falla.
+  loadSupabaseData()
     .then(function (rows) {
-      if (rows && rows.length > 0) processData(rows);
+      if (rows && rows.length > 0) {
+        processData(rows);
+        return;
+      }
+      // Supabase vacío: intentar el JSON estático.
+      return loadStaticData().then(function (data) {
+        if (data && data.length > 0) processData(data);
+      });
     })
     .catch(function () {
-      // If static failed, try Supabase directly
+      // Supabase falló: intentar el JSON estático y, si no, el DOM.
       if (!dataLoaded) {
-        loadSupabaseData()
-          .then(function (rows) {
-            if (rows && rows.length > 0) processData(rows);
+        loadStaticData()
+          .then(function (data) {
+            if (data && data.length > 0) processData(data);
+            else initFromDOM();
           })
           .catch(function () {
-            // Keep static HTML cards as fallback
+            // Mantener las tarjetas HTML estáticas como respaldo.
             initFromDOM();
           });
       }

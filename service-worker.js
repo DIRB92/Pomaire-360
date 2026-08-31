@@ -5,9 +5,11 @@
    - Recursos estáticos: cache-first con actualización en segundo plano.
    - Tiles del mapa y API de clima: siempre red (no se interceptan). */
 
-const CACHE = 'pomaire360-v14';
+const CACHE = 'pomaire360-v15';
 
-// Solo recursos del mismo origen (cross-origin como Leaflet se cachea en runtime).
+// Solo recursos del mismo origen. Las peticiones cross-origin (Leaflet, fuentes)
+// NO se interceptan: las gestiona el navegador para evitar conflictos con
+// respuestas "opaque" en peticiones en modo CORS.
 // Incluye el home en los 3 idiomas con página estática (es/en/pt) para que el
 // respaldo offline funcione en el idioma correcto, no solo en español.
 const CORE = [
@@ -67,6 +69,15 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // No interceptar peticiones cross-origin (Leaflet CSS/JS de cdnjs, fuentes, etc.).
+  // Si el SW devolvía una respuesta "opaque" cacheada para una petición en modo
+  // CORS (como <link rel="stylesheet" crossorigin>), el navegador la rechazaba con
+  // "an 'opaque' response was used for a request whose type is not 'no-cors'".
+  // Dejamos que el navegador gestione estas peticiones directamente.
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
   // Navegaciones (abrir el sitio): red primero, respaldo en caché si no hay conexión.
   // Cada página se guarda bajo su propia URL (antes se guardaba siempre bajo
   // '/index.html', lo que hacía que el respaldo offline de /en/ o /pt/
@@ -80,16 +91,42 @@ self.addEventListener('fetch', (e) => {
           return res;
         })
         .catch(() =>
-          caches.match(req).then((r) => r || caches.match(fallbackHomeFor(url.pathname)))
+          caches.match(req)
+            .then((r) => r || caches.match(fallbackHomeFor(url.pathname)))
+            .then((r) => r || new Response(
+              '<!doctype html><meta charset="utf-8"><title>Sin conexión</title>' +
+              '<p style="font-family:sans-serif;padding:2rem">Sin conexión. Vuelve a intentarlo cuando tengas internet.</p>',
+              { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } }
+            ))
         )
     );
     return;
   }
 
   // Recursos estáticos: caché primero, actualizando en segundo plano.
+  // IMPORTANTE: respondWith() debe resolver SIEMPRE con un Response válido. Si
+  // devolvía undefined (no había copia en caché y la red fallaba) el navegador
+  // lanzaba "Failed to convert value to 'Response'". Aquí garantizamos que
+  // siempre se devuelve un Response, incluso un 504 sintético como último recurso.
   e.respondWith(
     caches.match(req).then((cached) => {
-      const network = fetch(req)
+      if (cached) {
+        // Refresca en segundo plano sin bloquear la respuesta.
+        e.waitUntil(
+          fetch(req)
+            .then((res) => {
+              if (res && (res.ok || res.type === 'opaque')) {
+                const copy = res.clone();
+                return caches.open(CACHE).then((c) => c.put(req, copy));
+              }
+            })
+            .catch(() => {})
+        );
+        return cached;
+      }
+
+      // No hay copia en caché → ir a la red y cachear si procede.
+      return fetch(req)
         .then((res) => {
           if (res && (res.ok || res.type === 'opaque')) {
             const copy = res.clone();
@@ -97,8 +134,10 @@ self.addEventListener('fetch', (e) => {
           }
           return res;
         })
-        .catch(() => cached);
-      return cached || network;
+        .catch(() =>
+          // Sin caché y sin red: devolver un Response válido en vez de undefined.
+          new Response('', { status: 504, statusText: 'Offline' })
+        );
     })
   );
 });
