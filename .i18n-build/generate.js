@@ -284,9 +284,11 @@ function patchLinks($, lang) {
   $('.cta-btn').attr('href', 'https://www.pomaire360.cl/' + lang + '/anunciate/');
   $('.section-title').eq(0).text(t.section_social);
   $('.section-title').eq(1).text(t.section_explore);
+  $('.section-title').eq(2).text(t.section_community);
 
-  const labelKeys = ['label_pottery', 'label_food', 'label_seewhat', 'label_wine', 'label_lodging',
-    'label_plaza', 'label_parking', 'label_map', 'label_games', 'label_pig'];
+  const labelKeys = ['label_directory', 'label_pottery', 'label_food', 'label_lodging', 'label_seewhat',
+    'label_wine', 'label_guide', 'label_map', 'label_plaza', 'label_parking', 'label_health',
+    'label_games', 'label_pig', 'label_support', 'label_suggestions'];
   $('.link-btn .label').each((i, el) => {
     if (labelKeys[i]) $(el).text(t[labelKeys[i]]);
   });
