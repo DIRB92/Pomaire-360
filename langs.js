@@ -20,7 +20,7 @@ Object.assign(LANGS, {
   es: {
     nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
     nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
-    nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar", nav_tagline:"Turismo & Cultura",
+    nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", nav_bios:"Biografías de Alfareros", nav_map:"Mapa", nav_donate:"Apoyar", nav_tagline:"Turismo & Cultura",
     hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
     hero_h1:"Bienvenido a <em>Pomaire</em>",
     hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
@@ -116,7 +116,7 @@ Object.assign(LANGS, {
   },
   en: {
     nav_park:"Parking", nav_health:"Health", nav_security:"Safety", nav_commerce:"Services",
-    nav_pottery:"Pottery", nav_food:"Eat", nav_around:"Around", nav_shops_g:"Shops", nav_plaza:"Town Square",
+    nav_pottery:"Pottery", nav_food:"Eat", nav_around:"Around", nav_shops_g:"Shops", nav_plaza:"Town Square", nav_bios:"Potter Biographies",
     nav_map:"Map", nav_donate:"Support", nav_tagline:"Tourism & Culture",
     hero_tag:"📍 Pomaire · Melipilla · Metropolitan Region",
     hero_h1:"Welcome to <em>Pomaire</em>",
@@ -213,7 +213,7 @@ Object.assign(LANGS, {
   },
   pt: {
     nav_park:"Estacionar", nav_health:"Saúde", nav_security:"Segurança", nav_commerce:"Serviços",
-    nav_pottery:"Olaria", nav_food:"Comer", nav_around:"Arredores", nav_shops_g:"Comércio", nav_plaza:"Praça",
+    nav_pottery:"Olaria", nav_food:"Comer", nav_around:"Arredores", nav_shops_g:"Comércio", nav_plaza:"Praça", nav_bios:"Biografias de Oleiros",
     nav_map:"Mapa", nav_donate:"Apoiar", nav_tagline:"Turismo & Cultura",
     hero_tag:"📍 Pomaire · Melipilla · Região Metropolitana",
     hero_h1:"Bem-vindo/a a <em>Pomaire</em>",
@@ -309,7 +309,7 @@ Object.assign(LANGS, {
   },
   fr: {
     nav_park:"Parking", nav_health:"Santé", nav_security:"Sécurité", nav_commerce:"Services",
-    nav_pottery:"Poterie", nav_food:"Manger", nav_around:"Alentours", nav_shops_g:"Commerces", nav_plaza:"Place",
+    nav_pottery:"Poterie", nav_food:"Manger", nav_around:"Alentours", nav_shops_g:"Commerces", nav_plaza:"Place", nav_bios:"Biographies de potiers",
     nav_map:"Carte", nav_donate:"Soutenir", nav_tagline:"Tourisme & Culture",
     hero_tag:"📍 Pomaire · Melipilla · Région Métropolitaine",
     hero_h1:"Bienvenue à <em>Pomaire</em>",
@@ -386,7 +386,7 @@ Object.assign(LANGS, {
   },
   ru: {
     nav_park:"Парковка", nav_health:"Здоровье", nav_security:"Безопасность", nav_commerce:"Услуги",
-    nav_pottery:"Керамика", nav_food:"Еда", nav_around:"Окрестности", nav_shops_g:"Магазины", nav_plaza:"Площадь",
+    nav_pottery:"Керамика", nav_food:"Еда", nav_around:"Окрестности", nav_shops_g:"Магазины", nav_plaza:"Площадь", nav_bios:"Биографии гончаров",
     nav_map:"Карта", nav_donate:"Поддержать", nav_tagline:"Туризм и культура",
     hero_tag:"📍 Помайре · Мелипилья · Столичный регион",
     hero_h1:"Добро пожаловать в <em>Помайре</em>",
