@@ -129,7 +129,6 @@ var labels = {
 '/plaza/': { es: 'Plaza', en: 'Town Square', group: 'Visitar' },
 '/alrededores/': { es: 'Alrededores', en: 'Around', group: 'Visitar' },
 '/comercio/': { es: 'Comercio', en: 'Shops', group: 'Visitar' },
-'/biografias/': { es: 'Biografías de Alfareros', en: 'Potter Biographies', group: 'Visitar' },
 '/gastronomia/': { es: 'Gastronomía', en: 'Food', group: 'Comer y dormir' },
 '/alojamientos/': { es: 'Alojamientos', en: 'Lodging', group: 'Comer y dormir' },
 '/juegos/': { es: 'Juegos', en: 'Games', group: 'Planifica' },
