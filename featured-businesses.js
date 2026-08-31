@@ -364,30 +364,38 @@
 
   // ─── Init ───────────────────────────────────────────────────────────────────
   function init() {
-    // Strategy: try static JSON first (faster), then upgrade with Supabase
-    loadFromStaticJSON()
+    // Estrategia: Supabase es la fuente en vivo y siempre está disponible, así
+    // que se usa primero. El JSON estático (/directory-data.json) es un caché
+    // opcional que solo existe si el build lo generó; si no está desplegado,
+    // pedirlo primero producía un 404 ruidoso en consola en cada carga del home.
+    // Por eso solo se intenta como último recurso si Supabase falla.
+    loadFromSupabase()
       .then(function (items) {
-        if (items.length > 0) renderAll(items);
-        // Upgrade with fresh Supabase data
-        return loadFromSupabase();
-      })
-      .then(function (items) {
-        if (items && items.length > 0) renderAll(items);
+        if (items && items.length > 0) {
+          renderAll(items);
+          return;
+        }
+        // Supabase respondió vacío: intentar el JSON estático como respaldo.
+        return loadFromStaticJSON().then(function (staticItems) {
+          if (staticItems && staticItems.length > 0) renderAll(staticItems);
+        });
       })
       .catch(function () {
-        // If static failed, try Supabase directly
-        loadFromSupabase()
+        // Supabase falló (offline / error): intentar el JSON estático.
+        loadFromStaticJSON()
           .then(function (items) {
             if (items && items.length > 0) renderAll(items);
+            else hideSections();
           })
-          .catch(function () {
-            // Hide sections if all fails
-            var fs = document.getElementById('featuredSection');
-            var cs = document.getElementById('categoriesSection');
-            if (fs) fs.style.display = 'none';
-            if (cs) cs.style.display = 'none';
-          });
+          .catch(hideSections);
       });
+  }
+
+  function hideSections() {
+    var fs = document.getElementById('featuredSection');
+    var cs = document.getElementById('categoriesSection');
+    if (fs) fs.style.display = 'none';
+    if (cs) cs.style.display = 'none';
   }
 
   // Run when DOM is ready

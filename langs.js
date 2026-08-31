@@ -5,8 +5,18 @@
 
    Idiomas: es (base), en, pt, fr, ru, ja, zh
    Se carga con <script defer> ANTES de app.js
+
+   NOTA: este archivo puede cargarse de dos formas:
+   1) Directamente en subpáginas como única fuente de traducciones.
+   2) Inyectado dinámicamente por _loadFullLangs() en el home, DESPUÉS de que
+      langs-es.js ya definió window.LANGS (versión reducida solo con "es").
+   Por eso NO declaramos `const LANGS` a nivel global (provocaba
+   "Identifier 'LANGS' has already been declared"). En su lugar fusionamos
+   sobre el LANGS existente (el `const LANGS` de langs-es.js en el home, o el
+   global creado aquí en subpáginas), sin redeclarar el binding.
    ═══════════════════════════════════════════════════════════════════════════ */
-const LANGS = {
+if (typeof LANGS === 'undefined') { window.LANGS = {}; }
+Object.assign(LANGS, {
   es: {
     nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
     nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
@@ -605,12 +615,16 @@ const LANGS = {
     filter_lodging:"住宿",filter_highlight:"景点",
     ev_m1:"1-2月",ev_m2:"6月",ev_m3:"9月",ev_m4:"11-12月"
   }
-};
+});
 
-let currentLang = 'es';
+/* currentLang es un global compartido con app.js y langs-es.js.
+   NO lo declaramos con var/let/const aquí: en el home ya existe como `let`
+   (langs-es.js) y una redeclaración lanzaría SyntaxError al parsear. En
+   subpáginas se crea como global implícito con una asignación simple. */
+if (typeof currentLang === 'undefined') { window.currentLang = 'es'; }
 
 /* ══ TRADUCCIONES ADICIONALES (contenido que faltaba traducir) ══ */
-const LANG_EXTRA = {
+var LANG_EXTRA = {
   es: {
     nav_lodging:"Alojamientos", nav_banos:"Baños", nav_seewhat:"Qué ver",
     nav_g_essentials:"Esenciales", nav_g_todo:"Qué hacer", nav_g_eatsleep:"Comer y dormir", nav_g_plan:"Planifica", nav_winery:"Ruta del Vino", site_municipality:"Municipalidad", site_official_map:"Ver mapa oficial de Pomaire",
@@ -1256,7 +1270,7 @@ Object.keys(LANG_EXTRA).forEach(function(l){
 });
 
 /* ══ BADGES DE VALOR DEL HERO (multiidioma) ══ */
-const HERO_STATS_I18N = {
+var HERO_STATS_I18N = {
   es: { hs_heritage:"Tradición alfarera centenaria", hs_distance:"A 50 min de Santiago", hs_artisans:"Artesanos trabajando en vivo", hs_food:"Empanadas gigantes" },
   en: { hs_heritage:"Centuries-old pottery tradition", hs_distance:"50 min from Santiago", hs_artisans:"Artisans working live", hs_food:"Giant empanadas" },
   pt: { hs_heritage:"Tradição oleira centenária", hs_distance:"A 50 min de Santiago", hs_artisans:"Artesãos trabalhando ao vivo", hs_food:"Empanadas gigantes" },
@@ -1270,7 +1284,7 @@ Object.keys(HERO_STATS_I18N).forEach(function(l){
 });
 
 /* ══ Banner destacado del mapa (El Chancho) ══ */
-const MFB_I18N = {
+var MFB_I18N = {
   es:{ mfb_text:'Conoce <strong>El Chancho alcancía de greda más grande del mundo</strong>', mfb_go:'Ver página →' },
   en:{ mfb_text:"Discover <strong>the world's largest clay piggy bank</strong>", mfb_go:'View page →' },
   pt:{ mfb_text:'Conheça <strong>o maior cofrinho de barro do mundo</strong>', mfb_go:'Ver página →' },
@@ -1282,7 +1296,7 @@ const MFB_I18N = {
 Object.keys(MFB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], MFB_I18N[l]); });
 
 /* ══ Propaganda flotante del Chancho (Home) ══ */
-const FPB_I18N = {
+var FPB_I18N = {
   es:{ fpb_tag:'💎 Imperdible', fpb_text:'El chancho alcancía de greda <strong>más grande del mundo</strong>', fpb_cta:'Conócelo →', fpb_close:'Cerrar' },
   en:{ fpb_tag:'💎 Must-see', fpb_text:"The world's <strong>largest clay piggy bank</strong>", fpb_cta:'Discover it →', fpb_close:'Close' },
   pt:{ fpb_tag:'💎 Imperdível', fpb_text:'O <strong>maior cofrinho de barro do mundo</strong>', fpb_cta:'Conheça →', fpb_close:'Fechar' },
@@ -1294,7 +1308,7 @@ const FPB_I18N = {
 Object.keys(FPB_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], FPB_I18N[l]); });
 
 /* ══ GRÚAS Y MECÁNICOS (multiidioma) ══ */
-const GRUAS_I18N = {
+var GRUAS_I18N = {
   es: {
     nav_gruas:"Grúas y mecánicos",
     s_gm_title:"Grúas y mecánicos", s_gm_sub:"Asistencia mecánica, grúas y servicios para tu vehículo en Pomaire y la ruta",
@@ -1369,7 +1383,7 @@ const GRUAS_I18N = {
 Object.keys(GRUAS_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LANGS[l], GRUAS_I18N[l]); });
 
 /* ══ LOCOMOCIÓN (multiidioma) ══ */
-const LOCOMOCION_I18N = {
+var LOCOMOCION_I18N = {
   es: { nav_locomocion:"Locomoción" },
   en: { nav_locomocion:"Transport" },
   pt: { nav_locomocion:"Transporte" },
@@ -1388,7 +1402,7 @@ Object.keys(LOCOMOCION_I18N).forEach(function(l){ if (LANGS[l]) Object.assign(LA
    dinámico y el generador estático traduzcan estas secciones en todos los
    idiomas. Agrupadas por página. fr/ru/zh caen al texto ES incrustado.
    ═══════════════════════════════════════════════════════════════════════════ */
-const SUPPLEMENTAL_I18N = {
+var SUPPLEMENTAL_I18N = {
   es: {
     /* home: bloques dinámicos (destacados / categorías) */
     feat_title:"🏪 Negocios Destacados de Pomaire", feat_sub:"Los mejores lugares recomendados para tu visita", feat_loading:"Cargando negocios destacados...", feat_all:"Ver todos los negocios →",
