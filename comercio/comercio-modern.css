@@ -285,9 +285,6 @@
 
 /* ─── Mobile Category Scroll ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  #ecosystemBar {
-    padding-right: 3rem;
-  }
   .mod-cat-grid {
     display: flex;
     overflow-x: auto;
