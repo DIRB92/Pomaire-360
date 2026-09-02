@@ -9,7 +9,9 @@ Sube aquí las imágenes que se muestran en el **banner de eventos del inicio** 
 
 ### Evento: Concurso de la Mejor Empanada de Pomaire
 
-- **Archivo esperado:** `mejor-empanada-de-pomaire.jpg`
+- **Archivo en uso:** `mejor-empanada-de-pomaire.png` (afiche oficial, 1731×909)
+- ⚠️ **Pendiente de optimizar:** el PNG pesa ~2.3 MB. Conviene reexportarlo comprimido (WebP o JPG < 300 KB) para acelerar la carga, manteniendo el mismo nombre base. Si subes `mejor-empanada-de-pomaire.webp`, avísame para conectarlo con fallback.
+- **Nombre alternativo esperado (histórico):** `mejor-empanada-de-pomaire.jpg`
 - **Se usa en:**
   - Imagen de portada (hero) de `/evento/mejor-empanada-de-pomaire/` (y sus versiones `/en/`, `/pt/`, `/ja/`)
   - Imagen para compartir en redes (Open Graph / Twitter Card)
