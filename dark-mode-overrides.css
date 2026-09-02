@@ -39,3 +39,10 @@ html.dark-mode-transition,html.dark-mode-transition *,html.dark-mode-transition 
 .dark-mode .eb-card-text p{color:#A89E96}
 .dark-mode .eb-card-date,.dark-mode .eb-card-go{color:var(--p-primary-light)}
 .dark-mode .events-banner-all{color:var(--p-primary-light)}
+
+.dark-mode .eb-nav{background:#242020;color:var(--p-primary-light);box-shadow:0 4px 16px rgba(0,0,0,.45)}
+.dark-mode .eb-nav:hover:not(:disabled){background:var(--p-primary);color:#fff}
+.dark-mode .eb-card--feature{border-color:rgba(232,168,56,.45)}
+.dark-mode .eb-card-flag{background:rgba(232,168,56,.9);color:#2A1B00}
+.dark-mode .events-banner-track{scrollbar-color:var(--p-primary) transparent}
+.dark-mode .events-banner-track::-webkit-scrollbar-thumb{background:var(--p-primary)}

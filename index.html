@@ -567,7 +567,26 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
       <p data-t="eb_sub">Ferias, fiestas y celebraciones del pueblo alfarero. Toca un evento para ver todos los detalles.</p>
     </div>
 
-    <div class="events-banner-track reveal" role="list">
+    <div class="events-banner-carousel">
+      <button type="button" class="eb-nav eb-nav--prev" id="ebPrev" aria-label="Ver eventos anteriores">‹</button>
+
+      <div class="events-banner-track reveal" role="list" id="ebTrack" tabindex="0">
+
+      <a class="eb-card eb-card--feature" href="/evento/mejor-empanada-de-pomaire/" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🥟</span>
+          <span class="eb-card-tag" data-t="eb_tag_food">Concurso gastronómico</span>
+          <span class="eb-card-flag" data-t="eb_flag_new">¡Nuevo!</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">14</span><span class="ebd-mon" data-t="eb_mon_nov">NOV</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_empanada_title">Concurso de la Mejor Empanada de Pomaire</h3>
+            <p data-t="eb_empanada_teaser">Horno de barro, jurado popular y las míticas empanadas gigantes. ¡No te lo pierdas!</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalles →</span>
+        </div>
+      </a>
 
       <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
         <div class="eb-card-media" aria-hidden="true">
@@ -629,11 +648,43 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
         </div>
       </a>
 
+      </div>
+
+      <button type="button" class="eb-nav eb-nav--next" id="ebNext" aria-label="Ver más eventos">›</button>
     </div>
 
     <a class="events-banner-all reveal" href="#eventos" data-t="eb_all">Ver el calendario completo de eventos →</a>
   </div>
 </section>
+
+<script>
+/* Carrusel del banner de eventos (home) — sin dependencias */
+(function(){
+  var track=document.getElementById('ebTrack');
+  if(!track) return;
+  var prev=document.getElementById('ebPrev'), next=document.getElementById('ebNext');
+  function step(){
+    var card=track.querySelector('.eb-card');
+    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'16')||16;
+    return card ? card.getBoundingClientRect().width+gap : track.clientWidth*0.8;
+  }
+  function scrollByCards(dir){ track.scrollBy({left:dir*step(),behavior:'smooth'}); }
+  if(next) next.addEventListener('click',function(){scrollByCards(1);});
+  if(prev) prev.addEventListener('click',function(){scrollByCards(-1);});
+  function update(){
+    var max=track.scrollWidth-track.clientWidth-2;
+    var overflow=track.scrollWidth>track.clientWidth+4;
+    [prev,next].forEach(function(b){ if(b) b.style.display=overflow?'':'none'; });
+    if(!overflow) return;
+    if(prev) prev.disabled=track.scrollLeft<=2;
+    if(next) next.disabled=track.scrollLeft>=max;
+  }
+  track.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+  setTimeout(update,400); /* tras aplicar i18n/fuentes */
+})();
+</script>
 
 <!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
 <section id="featuredSection" class="featured-section" style="display:none;">
