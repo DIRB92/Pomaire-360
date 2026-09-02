@@ -46,6 +46,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/"/>
   </url>
   <url>
+    <loc>https://www.pomaire360.cl/historia/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/historia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/historia/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/historia/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/historia/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/historia/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/historia/origen/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/historia/origen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/historia/origen/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/historia/origen/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/historia/origen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/historia/origen/"/>
+  </url>
+  <url>
     <loc>https://www.pomaire360.cl/guia-turistica/</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
