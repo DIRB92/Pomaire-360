@@ -558,6 +558,83 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 
 </section>
 
+<!-- ══ BANNER DE EVENTOS DESTACADOS (arriba, primero que ve el visitante) ══ -->
+<section class="events-banner" id="eventos-destacados" aria-labelledby="eventsBannerTitle">
+  <div class="events-banner-inner">
+    <div class="events-banner-head reveal">
+      <span class="eb-kicker" data-t="eb_kicker">🎉 Qué está pasando en Pomaire</span>
+      <h2 id="eventsBannerTitle" data-t="eb_title">Próximos eventos y festividades</h2>
+      <p data-t="eb_sub">Ferias, fiestas y celebraciones del pueblo alfarero. Toca un evento para ver todos los detalles.</p>
+    </div>
+
+    <div class="events-banner-track reveal" role="list">
+
+      <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">⛪</span>
+          <span class="eb-card-tag" data-t="ev_tag_fest">Fiesta patronal</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">13</span><span class="ebd-mon" data-t="eb_mon_jun">JUN</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_2_title">Fiesta de San Antonio de Padua</h3>
+            <p data-t="eb_2_teaser">Procesión, actividades culturales y gastronomía especial en la plaza.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalles →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--nat" href="#evento-fiestas-patrias" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🇨🇱</span>
+          <span class="eb-card-tag" data-t="ev_tag_nat">Fiestas patrias</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">17–20</span><span class="ebd-mon" data-t="eb_mon_sep">SEP</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_3_title">Fiestas Patrias en Pomaire</h3>
+            <p data-t="eb_3_teaser">Fondas, chicha artesanal, cueca y artesanía festiva. ¡La mejor época!</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalles →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--fest" href="#evento-fiesta-greda" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🏺</span>
+          <span class="eb-card-tag" data-t="eb_tag_greda">Tradición alfarera</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">10–12</span><span class="ebd-mon" data-t="eb_mon_oct">OCT</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_greda_title">Fiestas de la Greda</h3>
+            <p data-t="eb_greda_teaser">Demostraciones de artesanos, venta de greda y actividades para toda la familia.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalles →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--xmas" href="#evento-navidad" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🎄</span>
+          <span class="eb-card-tag" data-t="ev_tag_xmas">Navidad</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">28</span><span class="ebd-mon" data-t="eb_mon_novdic">NOV–DIC</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_4_title">Feria de artesanía navideña</h3>
+            <p data-t="eb_4_teaser">Nacimientos en greda, adornos y regalos únicos hechos a mano.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalles →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <a class="events-banner-all reveal" href="#eventos" data-t="eb_all">Ver el calendario completo de eventos →</a>
+  </div>
+</section>
+
 <!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
 <section id="featuredSection" class="featured-section" style="display:none;">
   <div class="featured-header reveal">
@@ -1178,7 +1255,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
     ]
     </script>
     <div class="events-list reveal">
-      <div class="event-card">
+      <div class="event-card" id="evento-temporada-verano">
         <div class="event-month" data-t="ev_m1">ENE–FEB</div>
         <div class="event-info">
           <h3 data-t="ev_1_title">Temporada alta de verano</h3>
@@ -1186,7 +1263,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
           <span class="event-tag" data-t="ev_tag_busy">Alta demanda</span>
         </div>
       </div>
-      <div class="event-card">
+      <div class="event-card" id="evento-san-antonio">
         <div class="event-month" data-t="ev_m2">JUN</div>
         <div class="event-info">
           <h3 data-t="ev_2_title">Fiesta de San Antonio de Padua</h3>
@@ -1194,7 +1271,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
           <span class="event-tag" data-t="ev_tag_fest">Fiesta patronal</span>
         </div>
       </div>
-      <div class="event-card">
+      <div class="event-card" id="evento-fiestas-patrias">
         <div class="event-month" data-t="ev_m3">SEP</div>
         <div class="event-info">
           <h3 data-t="ev_3_title">Fiestas Patrias</h3>
@@ -1202,7 +1279,15 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
           <span class="event-tag" data-t="ev_tag_nat">Fiestas patrias</span>
         </div>
       </div>
-      <div class="event-card">
+      <div class="event-card" id="evento-fiesta-greda">
+        <div class="event-month" data-t="ev_m5">OCT</div>
+        <div class="event-info">
+          <h3 data-t="eb_greda_title">Fiestas de la Greda</h3>
+          <p data-t="ev_5_desc">Celebración anual de la tradición alfarera de Pomaire: demostraciones de artesanos, venta de artesanía, gastronomía típica y actividades culturales para toda la familia.</p>
+          <span class="event-tag" data-t="eb_tag_greda">Tradición alfarera</span>
+        </div>
+      </div>
+      <div class="event-card" id="evento-navidad">
         <div class="event-month" data-t="ev_m4">NOV–DIC</div>
         <div class="event-info">
           <h3 data-t="ev_4_title">Feria de artesanía navideña</h3>
