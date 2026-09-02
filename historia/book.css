@@ -1,0 +1,524 @@
+/* ══════════════════════════════════════════════════════════════
+   Pomaire 360 — Historia · Estilo "Libro"
+   Sistema visual para la sección de patrimonio, historia y leyendas.
+   Reutilizable por la landing y por cada artículo.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --hist-ink: #3a2415;          /* tinta / texto principal */
+  --hist-ink-soft: #5c4530;     /* tinta secundaria */
+  --hist-paper: #f4ecd8;        /* papel envejecido */
+  --hist-paper-edge: #e7d8b8;   /* borde del papel */
+  --hist-clay: #8C3D16;         /* rojo greda (títulos) */
+  --hist-clay-2: #b05a2c;
+  --hist-gold: #b8892b;         /* dorado sobrio */
+  --hist-line: #cbb890;         /* líneas / reglas */
+  --hist-shadow: rgba(60, 36, 15, .28);
+
+  /* Sellos de evidencia */
+  --seal-doc: #2e7d4f;          /* Historia documentada (verde) */
+  --seal-arch: #8a5a1c;         /* Arqueología (tierra) */
+  --seal-legend: #7b4fa0;       /* Tradición oral / Leyenda (violeta) */
+}
+
+/* ── Fondo tipo escritorio de biblioteca ─────────────────────── */
+body.hist-book {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #3a2414 0%, #26160a 60%, #1c1007 100%);
+  color: var(--hist-ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── El "libro" ──────────────────────────────────────────────── */
+.book {
+  max-width: 820px;
+  margin: 2.2rem auto 4rem;
+  background: var(--hist-paper);
+  background-image:
+    linear-gradient(rgba(255,255,255,.35) 0 0),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  border-radius: 6px;
+  box-shadow:
+    0 2px 0 var(--hist-paper-edge),
+    0 30px 60px -20px rgba(0,0,0,.7),
+    inset 0 0 60px rgba(120, 80, 30, .12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lomo / costura central sutil a la izquierda */
+.book::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 10px;
+  background: linear-gradient(90deg, rgba(90,50,20,.35), rgba(90,50,20,0));
+  pointer-events: none;
+}
+
+.book-inner {
+  padding: clamp(1.6rem, 5vw, 3.4rem) clamp(1.4rem, 6vw, 3.6rem);
+}
+
+/* ── Encabezado del artículo ─────────────────────────────────── */
+.book-kicker {
+  display: inline-block;
+  font-size: .74rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--hist-gold);
+  border: 1px solid var(--hist-line);
+  border-radius: 999px;
+  padding: .35rem .9rem;
+  margin-bottom: 1rem;
+}
+
+.book h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.9rem, 5.5vw, 3rem);
+  line-height: 1.1;
+  color: var(--hist-clay);
+  margin: 0 0 .5rem;
+  text-wrap: balance;
+}
+
+.book-lede {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+  color: var(--hist-ink-soft);
+  margin: 0 0 1.4rem;
+}
+
+.book-meta {
+  font-size: .85rem;
+  color: var(--hist-ink-soft);
+  opacity: .8;
+  margin-bottom: 1.6rem;
+}
+
+/* Filete decorativo */
+.book-rule {
+  border: 0;
+  height: 1px;
+  background:
+    linear-gradient(90deg, transparent, var(--hist-line) 20%, var(--hist-line) 80%, transparent);
+  margin: 1.8rem 0;
+}
+.book-rule.ornament {
+  height: auto;
+  background: none;
+  text-align: center;
+  color: var(--hist-gold);
+  font-size: 1.2rem;
+  letter-spacing: .6em;
+}
+.book-rule.ornament::before { content: "❧ ⁂ ❧"; }
+
+/* ── Cuerpo de texto tipo libro ──────────────────────────────── */
+.book-body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.06rem, 2.5vw, 1.2rem);
+  line-height: 1.85;
+  color: var(--hist-ink);
+}
+.book-body p { margin: 0 0 1.15rem; }
+
+/* Capitular (drop cap) en el primer párrafo de cada capítulo */
+.book-body .chapter > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.4em;
+  line-height: .8;
+  padding: .06em .12em 0 0;
+  color: var(--hist-clay);
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+.book-body h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  color: var(--hist-clay);
+  margin: 2.4rem 0 .4rem;
+  line-height: 1.2;
+}
+.book-body h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  color: var(--hist-ink-soft);
+  margin: 1.8rem 0 .3rem;
+}
+
+/* Frases sueltas de estilo poético (como el original) */
+.book-body .verse {
+  display: block;
+  margin: .1rem 0;
+}
+
+/* Cita destacada */
+.book-body blockquote {
+  margin: 1.6rem 0;
+  padding: .6rem 0 .6rem 1.4rem;
+  border-left: 3px solid var(--hist-gold);
+  font-style: italic;
+  color: var(--hist-ink-soft);
+}
+
+/* ── SELLOS DE EVIDENCIA ─────────────────────────────────────── */
+.evidence {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .28rem .7rem;
+  border-radius: 999px;
+  border: 1.5px solid;
+  background: #fff;
+  vertical-align: middle;
+}
+.evidence--doc    { color: var(--seal-doc);    border-color: var(--seal-doc);    background: #eaf5ee; }
+.evidence--arch   { color: var(--seal-arch);   border-color: var(--seal-arch);   background: #f6eede; }
+.evidence--legend { color: var(--seal-legend); border-color: var(--seal-legend); background: #f2ecf7; }
+
+/* Bloque con contenido marcado por tipo de evidencia */
+.ev-block {
+  position: relative;
+  margin: 1.6rem 0;
+  padding: 1.1rem 1.2rem 1.1rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--hist-line);
+  background: rgba(255,255,255,.5);
+}
+.ev-block::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  border-radius: 10px 0 0 10px;
+}
+.ev-block--doc::before    { background: var(--seal-doc); }
+.ev-block--arch::before   { background: var(--seal-arch); }
+.ev-block--legend::before { background: var(--seal-legend); }
+.ev-block .ev-head {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .5rem;
+}
+.ev-block .ev-source {
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+  color: var(--hist-ink-soft);
+  opacity: .85;
+  margin-top: .5rem;
+}
+.ev-block p:last-child { margin-bottom: 0; }
+
+/* ── Leyenda de sellos (aparece arriba del artículo) ─────────── */
+.evidence-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem .7rem;
+  padding: .9rem 1rem;
+  background: rgba(255,255,255,.45);
+  border: 1px dashed var(--hist-line);
+  border-radius: 10px;
+  margin: 1.2rem 0 1.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .8rem;
+}
+.evidence-key .ek-title {
+  width: 100%;
+  font-weight: 700;
+  color: var(--hist-ink-soft);
+  margin-bottom: .2rem;
+}
+
+/* ── Barra de herramientas del lector (leer + música) ────────── */
+.reader-bar {
+  position: sticky;
+  top: 64px;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  align-items: center;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: .55rem .8rem;
+  background: rgba(30, 18, 8, .82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.7);
+}
+.reader-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.06);
+  color: #f4ecd8;
+  font-family: 'Inter', sans-serif;
+  font-size: .85rem;
+  font-weight: 600;
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+.reader-btn:hover { background: rgba(255,255,255,.16); }
+.reader-btn:active { transform: scale(.97); }
+.reader-btn[aria-pressed="true"],
+.reader-btn.is-active {
+  background: #D4654A;
+  border-color: #D4654A;
+  color: #fff;
+}
+.reader-btn .rb-ico { font-size: 1rem; line-height: 1; }
+.reader-status {
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  color: rgba(244,236,216,.75);
+  margin-left: auto;
+}
+.reader-range {
+  width: 90px;
+  accent-color: #D4654A;
+}
+
+/* Resaltado del párrafo que se está leyendo (TTS) */
+.book-body .tts-active {
+  background: linear-gradient(transparent 62%, rgba(214,101,74,.28) 0);
+  border-radius: 3px;
+}
+
+/* ── Imágenes dentro del libro ───────────────────────────────── */
+.book-figure {
+  margin: 1.8rem 0;
+}
+.book-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px -14px var(--hist-shadow);
+  display: block;
+}
+.book-figure figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: .82rem;
+  color: var(--hist-ink-soft);
+  text-align: center;
+  margin-top: .5rem;
+  font-style: italic;
+}
+
+/* Placeholder para foto "por conseguir" */
+.photo-todo {
+  border: 2px dashed var(--hist-line);
+  border-radius: 10px;
+  padding: 1.4rem;
+  text-align: center;
+  color: var(--hist-ink-soft);
+  background: rgba(255,255,255,.35);
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+}
+.photo-todo .pt-ico { font-size: 1.6rem; display:block; margin-bottom:.3rem; }
+
+/* ── Línea de tiempo ─────────────────────────────────────────── */
+.timeline {
+  list-style: none;
+  margin: 1.6rem 0;
+  padding: 0;
+  position: relative;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--hist-line);
+}
+.timeline li {
+  position: relative;
+  padding: 0 0 1.1rem 2.2rem;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: .35em;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--hist-clay);
+  border: 3px solid var(--hist-paper);
+  box-shadow: 0 0 0 1px var(--hist-line);
+}
+.timeline .tl-year {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  color: var(--hist-clay);
+  display: block;
+}
+
+/* ── Navegación de fin de artículo ───────────────────────────── */
+.book-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--hist-line);
+  font-family: 'Inter', sans-serif;
+}
+.book-nav a {
+  color: var(--hist-clay);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .92rem;
+}
+.book-nav a:hover { text-decoration: underline; }
+
+/* ── Fuentes al pie ──────────────────────────────────────────── */
+.sources {
+  margin-top: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .84rem;
+  color: var(--hist-ink-soft);
+}
+.sources h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: .95rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--hist-gold);
+}
+.sources ol { padding-left: 1.2rem; }
+.sources a { color: var(--hist-clay-2); }
+
+/* ══════════════════════════════════════════════════════════════
+   LANDING de la sección Historia (4 puertas + ruta)
+   ══════════════════════════════════════════════════════════════ */
+.hist-hero {
+  text-align: center;
+  padding: clamp(3rem, 10vw, 6rem) 1.5rem clamp(2rem, 6vw, 3rem);
+  color: #f4ecd8;
+  position: relative;
+}
+.hist-hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  margin: .4rem 0 .6rem;
+  color: #f4ecd8;
+  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+}
+.hist-hero .hist-hero-sub {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #e6d3a8;
+  max-width: 40ch;
+  margin: 0 auto 1rem;
+}
+.hist-hero .hist-hero-lede {
+  font-family: 'Inter', sans-serif;
+  color: rgba(244,236,216,.85);
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+/* Las 4 puertas */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  max-width: 960px;
+  margin: 2.4rem auto;
+  padding: 0 1.2rem;
+}
+.door {
+  display: block;
+  text-decoration: none;
+  background: var(--hist-paper);
+  border-radius: 12px;
+  padding: 1.6rem 1.4rem;
+  color: var(--hist-ink);
+  box-shadow: 0 18px 40px -22px rgba(0,0,0,.8);
+  border-top: 4px solid var(--hist-clay);
+  transition: transform .15s, box-shadow .15s;
+}
+.door:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -22px rgba(0,0,0,.85); }
+.door .door-ico { font-size: 2.2rem; display: block; margin-bottom: .5rem; }
+.door h2 {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--hist-clay);
+  margin: 0 0 .35rem;
+}
+.door p { font-family: Georgia, serif; font-size: .98rem; margin: 0; color: var(--hist-ink-soft); }
+.door.door--arch  { border-top-color: var(--seal-arch); }
+.door.door--doc   { border-top-color: var(--seal-doc); }
+.door.door--legend{ border-top-color: var(--seal-legend); }
+
+/* Ruta "Pomaire a través del tiempo" */
+.route {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+}
+.route h2 {
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #f4ecd8;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+.route-sub { text-align:center; color: rgba(244,236,216,.75); font-family:'Inter',sans-serif; margin-bottom: 1.6rem; }
+.route ol { list-style: none; counter-reset: stop; padding: 0; }
+.route li {
+  counter-increment: stop;
+  position: relative;
+  background: rgba(244,236,216,.96);
+  border-radius: 10px;
+  padding: 1rem 1.1rem 1rem 3.4rem;
+  margin: 0 0 .7rem;
+}
+.route li::before {
+  content: counter(stop);
+  position: absolute;
+  left: .8rem; top: 50%;
+  transform: translateY(-50%);
+  width: 1.9rem; height: 1.9rem;
+  border-radius: 50%;
+  background: var(--hist-clay);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+.route li a { color: var(--hist-clay); text-decoration: none; font-weight: 700; font-family: Georgia, serif; }
+.route li .stop-desc { display:block; font-family:'Inter',sans-serif; font-size:.85rem; color: var(--hist-ink-soft); margin-top:.15rem; }
+.route li.is-soon { opacity: .72; }
+.route li.is-soon::after {
+  content: "Próximamente";
+  position: absolute; right: .9rem; top: .8rem;
+  font-family:'Inter',sans-serif; font-size:.66rem; font-weight:700;
+  text-transform: uppercase; letter-spacing:.06em;
+  color: var(--hist-gold);
+}
+
+/* ── Reduce motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .door, .reader-btn { transition: none; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .reader-bar { top: 58px; border-radius: 14px; }
+  .reader-status { width: 100%; margin: .2rem 0 0; order: 5; }
+}
