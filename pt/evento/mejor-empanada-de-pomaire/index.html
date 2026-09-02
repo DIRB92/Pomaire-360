@@ -108,6 +108,14 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 .article-poster{max-width:960px;margin:0 auto;padding:1.4rem 1.2rem 0;text-align:center}
 .article-poster .article-eyebrow--soon{margin-bottom:1rem}
 .article-poster-img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 34px rgba(90,40,10,.22);border:1px solid rgba(184,92,44,.12)}
+.article-program{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:1.3rem 0}
+.article-program a{display:block}
+.article-program img{width:100%;height:auto;border-radius:14px;box-shadow:0 6px 22px rgba(90,40,10,.16);border:1px solid rgba(184,92,44,.12);transition:transform .18s}
+.article-program img:hover{transform:translateY(-3px)}
+.article-guests{background:linear-gradient(135deg,#12294D,#0C1B33);color:#fff;border-radius:16px;padding:1.3rem 1.4rem;margin:1.3rem 0;box-shadow:0 8px 26px rgba(12,27,51,.35)}
+.article-guests h2{color:#FFD24A !important;margin:.1rem 0 .6rem !important}
+.article-guests p{margin:0;font-size:1.02rem;line-height:1.7}
+.article-guests strong{color:#fff}
 .article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.9rem);line-height:1.1;margin:0 0 .6rem}
 .article-lead{font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;opacity:.95;margin:0}
 .article-meta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem}
@@ -220,6 +228,22 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       <li><strong>Feira de artesanato em barro</strong> aberta o dia todo.</li>
     </ul>
 
+    <div class="article-guests">
+      <h2>🎤 Convidados de peso</h2>
+      <p>Com a animação de <strong>Willy Sabor</strong>, uma divertida <strong>Masterclass de Mikel Zulueta</strong> e a participação de <strong>Otakín</strong>, a diversão está garantida! 🙌</p>
+    </div>
+
+    <h2>Programação do dia</h2>
+    <p>Confira o cronograma completo e os convidados. Toque em uma imagem para vê-la maior.</p>
+    <div class="article-program">
+      <a href="/img/eventos/Programacion-empanada.webp" target="_blank" rel="noopener">
+        <img src="/img/eventos/Programacion-empanada.webp" alt="Programação do concurso: 11:30 Boas-vindas, 12:00 Degustação Oficial, 13:00 Apresentações Folclóricas, 15:00 Masterclass Charquicán, 16:00 Deliberação do júri, 16:15 Grande Premiação" loading="lazy" width="1080" height="1350">
+      </a>
+      <a href="/img/eventos/Programacion-empanada1.webp" target="_blank" rel="noopener">
+        <img src="/img/eventos/Programacion-empanada1.webp" alt="Convidados: Willy Sabor (animador), Masterclass de Mikel Zulueta e participação de Otakín — sábado, 5 de setembro, 11h30, Praça de Pomaire" loading="lazy" width="1080" height="1350">
+      </a>
+    </div>
+
     <h2>Como votar na sua empanada favorita?</h2>
     <p>Você escolhe a vencedora. Depois de provar as empanadas dos estabelecimentos participantes, abra o formulário de votação e marque a sua favorita. É rápido, gratuito e, com seu voto, você ajuda a coroar a Melhor Empanada de Pomaire.</p>
 
@@ -229,14 +253,6 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
     <div class="article-note">
       📌 <strong>Nota:</strong> data e horário podem mudar conforme o clima. Siga <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> para a confirmação oficial e novidades.
-    </div>
-
-    <h2>Galeria do evento</h2>
-    <p>Estas são imagens de referência. Quando tiver fotos oficiais do concurso, substitua-as na pasta <code>/img/eventos/</code>.</p>
-    <div class="article-gallery">
-      <img src="/img/gallery/1.jpeg" alt="Empanadas de Pomaire" loading="lazy" width="300" height="150">
-      <img src="/img/gallery/2.jpeg" alt="Cozinha tradicional em Pomaire" loading="lazy" width="300" height="150">
-      <div class="ag-placeholder" aria-hidden="true">🥟</div>
     </div>
 
     <h2>Aproveite sua visita</h2>
