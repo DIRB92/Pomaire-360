@@ -56,7 +56,7 @@ eb_2_teaser:"Procesión, actividades culturales y gastronomía especial en la pl
 eb_3_teaser:"Fondas, chicha artesanal, cueca y artesanía festiva. ¡La mejor época!",
 eb_4_teaser:"Nacimientos en greda, adornos y regalos únicos hechos a mano.",
 eb_greda_title:"Fiestas de la Greda", eb_greda_teaser:"Demostraciones de artesanos, venta de greda y actividades para toda la familia.", eb_tag_greda:"Tradición alfarera",
-eb_empanada_title:"Concurso de la Mejor Empanada de Pomaire", eb_empanada_teaser:"Horno de barro, jurado popular y las míticas empanadas gigantes. ¡No te lo pierdas!", eb_tag_food:"Concurso gastronómico", eb_flag_new:"¡Nuevo!",
+eb_empanada_title:"Concurso de la Mejor Empanada de Pomaire", eb_empanada_teaser:"Horno de barro, jurado popular y las míticas empanadas gigantes. ¡Este sábado, no te lo pierdas!", eb_tag_food:"Concurso gastronómico", eb_flag_new:"¡Nuevo!", eb_flag_soon:"🔥 ¡ESTE SÁBADO!",
 eb_mon_jun:"JUN", eb_mon_sep:"SEP", eb_mon_oct:"OCT", eb_mon_nov:"NOV", eb_mon_novdic:"NOV–DIC",
 filter_all:"Todos", filter_parking:"Estacionar", filter_health:"Salud", filter_security:"Seguridad",
 filter_pottery:"Alfarería", filter_food:"Comer", filter_services:"Servicios", filter_around:"Alrededores",

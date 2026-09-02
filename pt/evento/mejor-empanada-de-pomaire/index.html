@@ -65,8 +65,8 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
   "@type": "Event",
   "name": "Concurso da Melhor Empanada de Pomaire 2026",
   "description": "Concurso gastronômico anual que coroa a melhor empanada de Pomaire. Cozinheiros e restaurantes locais competem com suas empanadas gigantes de forno de barro diante de um júri popular. Degustação, música ao vivo e clima familiar na vila oleira.",
-  "startDate": "2026-11-14T11:00:00-03:00",
-  "endDate": "2026-11-14T18:00:00-03:00",
+  "startDate": "2026-09-12T11:00:00-03:00",
+  "endDate": "2026-09-12T18:00:00-03:00",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
@@ -99,6 +99,9 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 .article-hero-img{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.55;z-index:0}
 .article-hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;width:100%}
 .article-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);padding:.4rem .85rem;border-radius:999px;margin-bottom:.9rem}
+.article-eyebrow--soon{background:linear-gradient(135deg,#E23B2E,#B01B10);color:#fff;box-shadow:0 3px 12px rgba(176,27,16,.5);animation:soonPulse 1.5s ease-in-out infinite}
+@keyframes soonPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.article-eyebrow--soon{animation:none}}
 .article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.9rem);line-height:1.1;margin:0 0 .6rem}
 .article-lead{font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;opacity:.95;margin:0}
 .article-meta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem}
@@ -182,11 +185,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <header class="article-hero">
   <div class="article-hero-img" style="background-image:url('/img/eventos/mejor-empanada-de-pomaire.jpg')" aria-hidden="true"></div>
   <div class="article-hero-inner">
-    <span class="article-eyebrow">🥟 Evento gastronômico · Pomaire</span>
+    <span class="article-eyebrow article-eyebrow--soon">🔥 NESTE SÁBADO! · Evento gastronômico</span>
     <h1>Concurso da Melhor Empanada de Pomaire</h1>
     <p class="article-lead">Um dia para coroar a empanada mais gostosa da vila oleira: forno de barro, júri popular e as lendárias empanadas gigantes que deixaram Pomaire famosa.</p>
     <div class="article-meta-row">
-      <span class="article-chip">📅 14 de novembro de 2026</span>
+      <span class="article-chip">📅 Sábado, 12 de setembro de 2026</span>
       <span class="article-chip">🕚 11h – 18h</span>
       <span class="article-chip">📍 Praça de Pomaire</span>
       <span class="article-chip">🆓 Entrada gratuita</span>
@@ -201,7 +204,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
     <p>Durante um dia, cozinheiros, restaurantes e botecos locais competem com suas melhores criações. Um <strong>júri popular</strong> — os próprios visitantes — e um painel de especialistas gastronômicos decidem quem leva o título do ano.</p>
 
     <div class="event-facts" aria-label="Detalhes do evento">
-      <div class="event-fact"><span class="ef-ico">📅</span><span><span class="ef-lab">Data</span><span class="ef-val">Sábado, 14 de novembro de 2026</span></span></div>
+      <div class="event-fact"><span class="ef-ico">📅</span><span><span class="ef-lab">Data</span><span class="ef-val">Sábado, 12 de setembro de 2026</span></span></div>
       <div class="event-fact"><span class="ef-ico">🕚</span><span><span class="ef-lab">Horário</span><span class="ef-val">Das 11h às 18h</span></span></div>
       <div class="event-fact"><span class="ef-ico">📍</span><span><span class="ef-lab">Local</span><span class="ef-val">Praça de Pomaire</span></span></div>
       <div class="event-fact"><span class="ef-ico">🎟️</span><span><span class="ef-lab">Entrada</span><span class="ef-val">Grátis para o público</span></span></div>
