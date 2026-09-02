@@ -28,3 +28,21 @@ html.dark-mode-transition,html.dark-mode-transition *,html.dark-mode-transition 
 .dark-mode .official-map-note{color:#A89E96}
 .dark-mode .locate-btn{background:var(--p-sage-dark)}
 .dark-mode .locate-btn:hover{background:var(--p-sage)}.dark-mode .dir-name{color:#F0EBE6}.dark-mode .glb-next,.dark-mode .glb-prev{background:rgba(255,255,255,.12)}.dark-mode .stop-name{color:#F0EBE6}.dark-mode .stop-meta{color:#A89E96}.dark-mode .stop-desc{color:#A89E96}.dark-mode .tour-interactive-card{background:#242020;border-color:rgba(255,255,255,.06)}.dark-mode input[type="text"],.dark-mode input[type="search"],.dark-mode input[type="email"]{background:#1A1614;color:#F0EBE6;border-color:rgba(255,255,255,.12)}.dark-mode input::placeholder{color:#A89E96}.dark-mode .dir-search{background:#1A1614;color:#F0EBE6;border-color:rgba(255,255,255,.12)}.dark-mode .dir-search:focus{border-color:var(--p-primary)}.dark-mode .dir-search-wrap{background:#242020;border-color:rgba(255,255,255,.06)}.dark-mode select{background:#1A1614;color:#F0EBE6;border-color:rgba(255,255,255,.12)}
+
+.dark-mode .events-banner{background:linear-gradient(180deg,#1F1A16 0%,#1A1614 100%);border-bottom-color:rgba(255,255,255,.06)}
+.dark-mode .events-banner-head h2{color:var(--p-primary-light)}
+.dark-mode .events-banner-head p{color:#A89E96}
+.dark-mode .eb-kicker{background:rgba(232,168,56,.15);color:var(--p-amber)}
+.dark-mode .eb-card{background:#242020;border-color:rgba(255,255,255,.06);box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.dark-mode .eb-card:hover{box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.dark-mode .eb-card-text h3{color:#F0EBE6}
+.dark-mode .eb-card-text p{color:#A89E96}
+.dark-mode .eb-card-date,.dark-mode .eb-card-go{color:var(--p-primary-light)}
+.dark-mode .events-banner-all{color:var(--p-primary-light)}
+
+.dark-mode .eb-nav{background:#242020;color:var(--p-primary-light);box-shadow:0 4px 16px rgba(0,0,0,.45)}
+.dark-mode .eb-nav:hover:not(:disabled){background:var(--p-primary);color:#fff}
+.dark-mode .eb-card--feature{border-color:rgba(232,168,56,.45)}
+.dark-mode .eb-card-flag{background:rgba(232,168,56,.9);color:#2A1B00}
+.dark-mode .events-banner-track{scrollbar-color:var(--p-primary) transparent}
+.dark-mode .events-banner-track::-webkit-scrollbar-thumb{background:var(--p-primary)}
