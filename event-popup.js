@@ -14,7 +14,7 @@
   var EVENT_EXPIRES = new Date("2026-09-06T00:00:00-03:00"); // día después del evento
   var STORAGE_KEY = "p360_popup_empanada_2026"; // marca de "ya lo cerré"
   var IMAGES = [
-    { src: "/img/eventos/mejor-empanada-de-pomaire.webp", alt: "Concurso de la Mejor Empanada de Pomaire — sábado 5 de septiembre, 11:30, Plaza de Pomaire" },
+    { src: "/img/eventos/mejor-empanada-de-pomaire-hrzt.webp", alt: "Concurso de la Mejor Empanada de Pomaire — sábado 5 de septiembre, 11:30, Plaza de Pomaire" },
     { src: "/img/eventos/Programacion-empanada.webp", alt: "Programación del concurso: bienvenida, cata oficial, folclore, masterclass y premiación" },
     { src: "/img/eventos/Programacion-empanada1.webp", alt: "Invitados: Willy Sabor, Masterclass de Mikel Zulueta y Otakín" }
   ];
