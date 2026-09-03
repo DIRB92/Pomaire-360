@@ -112,10 +112,16 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 .article-program a{display:block}
 .article-program img{width:100%;height:auto;border-radius:14px;box-shadow:0 6px 22px rgba(90,40,10,.16);border:1px solid rgba(184,92,44,.12);transition:transform .18s}
 .article-program img:hover{transform:translateY(-3px)}
-.article-guests{background:linear-gradient(135deg,#12294D,#0C1B33);color:#fff;border-radius:16px;padding:1.3rem 1.4rem;margin:1.3rem 0;box-shadow:0 8px 26px rgba(12,27,51,.35)}
-.article-guests h2{color:#FFD24A !important;margin:.1rem 0 .6rem !important}
-.article-guests p{margin:0;font-size:1.02rem;line-height:1.7}
-.article-guests strong{color:#fff}
+.article-guests{background:linear-gradient(135deg,#12294D,#0C1B33);color:#fff;border-radius:18px;padding:1.5rem 1.5rem 1.6rem;margin:1.5rem 0;box-shadow:0 8px 26px rgba(12,27,51,.35)}
+.article-guests h2{color:#FFD24A !important;margin:.1rem 0 .5rem !important}
+.article-guests .ag-intro{margin:0 0 1.1rem;font-size:1rem;line-height:1.6;color:#E7EEF7}
+.article-guests-grid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.ag-guest{display:flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,210,74,.25);border-radius:14px;padding:.8rem .9rem}
+.ag-guest-ico{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FFD24A,#E8A838);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.ag-guest-txt{display:flex;flex-direction:column;line-height:1.25}
+.ag-guest-name{font-weight:800;color:#FFD24A;font-size:1rem}
+.ag-guest-role{font-size:.82rem;color:#C7D3E2}
+.article-guests .ag-close{margin:1.1rem 0 0;font-size:.98rem;color:#fff;font-weight:600}
 .article-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.9rem);line-height:1.1;margin:0 0 .6rem}
 .article-lead{font-size:clamp(1rem,2.4vw,1.2rem);max-width:60ch;opacity:.95;margin:0}
 .article-meta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.1rem}
@@ -230,7 +236,22 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
     <div class="article-guests">
       <h2>🎤 Convidados de peso</h2>
-      <p>Com a animação de <strong>Willy Sabor</strong>, uma divertida <strong>Masterclass de Mikel Zulueta</strong> e a participação de <strong>Otakín</strong>, a diversão está garantida! 🙌</p>
+      <p class="ag-intro">Um programa divertido para toda a família, com nomes conhecidos do mundo da gastronomia e do entretenimento:</p>
+      <div class="article-guests-grid">
+        <div class="ag-guest">
+          <span class="ag-guest-ico" aria-hidden="true">🎙️</span>
+          <span class="ag-guest-txt"><span class="ag-guest-name">Willy Sabor</span><span class="ag-guest-role">Animação do evento</span></span>
+        </div>
+        <div class="ag-guest">
+          <span class="ag-guest-ico" aria-hidden="true">👨‍🍳</span>
+          <span class="ag-guest-txt"><span class="ag-guest-name">Mikel Zulueta</span><span class="ag-guest-role">Masterclass de cozinha</span></span>
+        </div>
+        <div class="ag-guest">
+          <span class="ag-guest-ico" aria-hidden="true">⭐</span>
+          <span class="ag-guest-txt"><span class="ag-guest-name">Otakín</span><span class="ag-guest-role">Convidado especial</span></span>
+        </div>
+      </div>
+      <p class="ag-close">A diversão está garantida! 🙌</p>
     </div>
 
     <h2>Programação do dia</h2>
