@@ -370,13 +370,21 @@ body.hist-book::after {
    Chips con acceso a todo el contenido principal.
    ══════════════════════════════════════════════════════════════ */
 .hist-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: .7rem;
-  max-width: 900px;
-  margin: 1.4rem auto 0;
-  padding: 0 1rem;
+  align-items: center;
+  gap: .6rem;
+  margin: 0;
+  padding: .7rem 1rem;
+  background: linear-gradient(180deg, rgba(28, 16, 7, .96), rgba(28, 16, 7, .88));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(230, 178, 70, .28);
+  box-shadow: 0 8px 24px -14px rgba(0,0,0,.8);
 }
 .hist-nav a {
   display: inline-flex;
@@ -409,12 +417,14 @@ body.hist-book::after {
   color: #fff;
 }
 .hist-nav a.hn-home:hover { background: linear-gradient(180deg, #E88A63, #d95d40); }
-/* En artículos, versión compacta pegada al libro */
-.hist-nav--compact { margin-top: 0; margin-bottom: -.4rem; }
+/* La barra del lector (sticky) queda justo debajo de la barra de navegación */
+.hist-nav + .reader-bar { top: 60px; margin-top: 1rem; }
 
 @media (max-width: 520px) {
-  .hist-nav { gap: .5rem; }
-  .hist-nav a { padding: .5rem .85rem; font-size: .85rem; }
+  .hist-nav { gap: .5rem; padding: .55rem .6rem; }
+  .hist-nav a { padding: .45rem .75rem; font-size: .82rem; }
+  .hist-nav a .hn-ico { font-size: .95rem; }
+  .hist-nav + .reader-bar { top: 96px; }
 }
 
 /* ── Imágenes dentro del libro ───────────────────────────────── */
