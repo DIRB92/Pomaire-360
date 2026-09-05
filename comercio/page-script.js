@@ -60,6 +60,64 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // ─── Horarios: ordenar de lunes a domingo ────────────────────────────────
+  // El horario puede llegar de Supabase como un objeto {lunes:"...", sabado:"..."}
+  // o como un string ya formado ("sábado: 13:00-18:00 · domingo: ..."), en un
+  // orden arbitrario. Esta función normaliza ambos casos y devuelve siempre el
+  // texto ordenado de lunes a domingo.
+  var DAY_ORDER = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+  var DAY_LABELS = {
+    lunes: 'Lunes', martes: 'Martes', miercoles: 'Miércoles', jueves: 'Jueves',
+    viernes: 'Viernes', sabado: 'Sábado', domingo: 'Domingo'
+  };
+
+  function dayIndex(label) {
+    // Normaliza "Miércoles"/"miercoles"/"Mié" → índice; -1 si no es un día
+    var key = norm(label).replace(/[^a-z]/g, '');
+    for (var i = 0; i < DAY_ORDER.length; i++) {
+      // match por prefijo de 3+ letras (lun, mar, mie, jue, vie, sab, dom)
+      if (key.indexOf(DAY_ORDER[i].slice(0, 3)) === 0) return i;
+    }
+    return -1;
+  }
+
+  function formatHours(hours) {
+    if (!hours) return '';
+
+    // Caso 1: objeto {dia: "rango"}
+    if (typeof hours === 'object') {
+      var partsObj = [];
+      DAY_ORDER.forEach(function (dayKey) {
+        var val = hours[dayKey];
+        if (val && String(val).trim()) {
+          partsObj.push(DAY_LABELS[dayKey] + ': ' + String(val).trim());
+        }
+      });
+      return partsObj.join(' · ');
+    }
+
+    // Caso 2: string. Puede venir como JSON o como "día: rango · día: rango".
+    var str = String(hours).trim();
+    if (str.charAt(0) === '{') {
+      try { return formatHours(JSON.parse(str)); } catch (e) { /* no era JSON */ }
+    }
+
+    // Separar por '·', ',' o ';' y reordenar los segmentos que empiezan por un día.
+    var segments = str.split(/\s*[·,;]\s*/).filter(function (s) { return s.trim(); });
+    var dayed = [];
+    var others = [];
+    segments.forEach(function (seg) {
+      var idx = dayIndex(seg);
+      if (idx >= 0) dayed.push({ idx: idx, text: seg.trim() });
+      else others.push(seg.trim());
+    });
+    // Si no hay ningún segmento reconocible como día, devolver el texto tal cual.
+    if (dayed.length === 0) return str;
+    dayed.sort(function (a, b) { return a.idx - b.idx; });
+    var ordered = dayed.map(function (d) { return d.text; }).concat(others);
+    return ordered.join(' · ');
+  }
+
   // ─── Category Emojis (placeholder when no image) ─────────────────────────
   var CATEGORY_EMOJIS = {
     alfareria: '🏺', talleres: '🔨', restaurantes: '🍽️',
@@ -104,7 +162,7 @@
     var verificado = item.verificado || false;
     var tiktok = item.tiktok || '';
     var fotos = item.fotos || item.photos || [];
-    var hours = item.hours || '';
+    var hours = formatHours(item.hours || '');
 
     var cardClass = 'mod-card';
     if (plan === 'destacado') cardClass += ' mod-featured';
