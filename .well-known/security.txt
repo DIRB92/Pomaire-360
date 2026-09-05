@@ -3,11 +3,11 @@
 # ═══════════════════════════════════════════════════════════════════════════
 
 Contact: mailto:seguridad@pomaire360.cl
-Contact: https://pomaire360.cl/seguridad/
+Contact: https://www.pomaire360.cl/seguridad/
 Expires: 2027-08-15T00:00:00.000Z
 Preferred-Languages: es, en
-Canonical: https://pomaire360.cl/.well-known/security.txt
-Policy: https://pomaire360.cl/seguridad/#politica
+Canonical: https://www.pomaire360.cl/.well-known/security.txt
+Policy: https://www.pomaire360.cl/seguridad/#politica
 
 # ═══════════════════════════════════════════════════════════════════════════
 # Agradecemos los reportes responsables de vulnerabilidades.
