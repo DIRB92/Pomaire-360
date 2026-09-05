@@ -46,3 +46,20 @@ html.dark-mode-transition,html.dark-mode-transition *,html.dark-mode-transition 
 .dark-mode .eb-card-flag{background:rgba(232,168,56,.9);color:#2A1B00}
 .dark-mode .events-banner-track{scrollbar-color:var(--p-primary) transparent}
 .dark-mode .events-banner-track::-webkit-scrollbar-thumb{background:var(--p-primary)}
+
+
+/* ── Páginas de evento / noticia (/evento/…, /en|pt|ja/evento/…) ───────── */
+.dark-mode body{background:#1A1614;color:#F0EBE6}
+.dark-mode .article-poster-img{border-color:rgba(255,255,255,.08);box-shadow:0 10px 34px rgba(0,0,0,.45)}
+.dark-mode .article-program img{border-color:rgba(255,255,255,.08);box-shadow:0 6px 22px rgba(0,0,0,.4)}
+.dark-mode .article-body{color:#C7BDB4}
+.dark-mode .article-body h2{color:var(--p-primary-light)}
+.dark-mode .article-body strong{color:#F0EBE6}
+.dark-mode .event-facts{background:#242020;border-color:rgba(255,255,255,.06);box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.dark-mode .event-fact .ef-lab{color:var(--p-primary-light)}
+.dark-mode .event-fact .ef-val{color:#F0EBE6}
+.dark-mode .article-btn.ghost{background:#242020;color:var(--p-primary-light);border-color:rgba(212,101,74,.4)}
+.dark-mode .article-gallery img{box-shadow:0 3px 12px rgba(0,0,0,.4)}
+.dark-mode .article-gallery .ag-placeholder{background:repeating-linear-gradient(45deg,#242020,#242020 12px,#1F1A16 12px,#1F1A16 24px);color:#7A6A5A}
+.dark-mode .article-note{background:rgba(232,168,56,.12);border-left-color:#E8A838;color:#E8C77A}
+.dark-mode .article-note a{color:var(--p-amber)}
