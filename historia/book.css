@@ -577,6 +577,20 @@ body.hist-book::after {
 }
 .route li a { color: var(--hist-clay); text-decoration: none; font-weight: 700; font-family: Georgia, serif; }
 .route li .stop-desc { display:block; font-family:'Inter',sans-serif; font-size:.85rem; color: var(--hist-ink-soft); margin-top:.15rem; }
+
+/* Índices no secuenciales (Arqueología, Leyendas): viñeta de greda en vez de número */
+.route--index ol { counter-reset: none; }
+.route--index li { padding-left: 2.2rem; }
+.route--index li::before {
+  content: "";
+  width: .7rem; height: .7rem;
+  border-radius: 50%;
+  background: var(--hist-clay);
+  box-shadow: 0 0 0 4px rgba(140, 61, 22, .18);
+  left: .95rem;
+}
+.route--index.route--arch li::before   { background: var(--seal-arch);   box-shadow: 0 0 0 4px rgba(138, 90, 28, .18); }
+.route--index.route--legend li::before { background: var(--seal-legend); box-shadow: 0 0 0 4px rgba(123, 79, 160, .18); }
 .route li.is-soon { opacity: .72; }
 .route li.is-soon::after {
   content: "Próximamente";
