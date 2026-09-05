@@ -6,7 +6,7 @@ nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", na
 hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
 hero_h1:"Bienvenido a <em>Pomaire</em>",
 hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
-cta_plan:"Planifica tu visita", cta_directions:"Cómo llegar", cta_eat:"Directorio de Negocios",
+cta_plan:"Planifica tu visita", cta_directions:"Cómo llegar", cta_eat:"Negocios de Pomaire",
 wa_text:"Compartir", wa_aria:"Compartir Pomaire 360 por WhatsApp",
 wa_share:"¡Descubre Pomaire, el pueblo alfarero más famoso de Chile! 🏺 Guía completa de servicios, gastronomía y turismo: https://www.pomaire360.cl/",
 emer_police:"🚔 133 Carabineros", emer_samu:"🚑 131 SAMU Ambulancia", emer_fire:"🚒 132 Bomberos", emer_peace:"🕊️ 149 Paz ciudadana",
