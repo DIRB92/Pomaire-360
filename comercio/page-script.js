@@ -264,6 +264,8 @@
     if (web) {
       html += '<a class="mod-action-web" href="' + escapeHTML(web) + '" target="_blank" rel="noopener">🌐 Web</a>';
     }
+    // Botón compartir: copia/comparte el enlace directo /comercio/#<slug>
+    html += '<button type="button" class="mod-action-share" data-share-slug="' + escapeHTML(slug) + '" data-share-name="' + escapeHTML(name) + '" aria-label="Compartir enlace a ' + escapeHTML(name) + '">🔗 Compartir</button>';
     html += '</div></div></article>';
 
     return html;
@@ -655,6 +657,50 @@
   }
 
   window.addEventListener('hashchange', handleHashNavigation);
+
+  // ─── Compartir ficha (enlace directo /comercio/#<slug>) ─────────────────
+  function shareBusiness(slug, name) {
+    var base = window.location.origin + window.location.pathname;
+    var url = base + '#' + slug;
+    var title = name ? (name + ' — Pomaire 360') : 'Pomaire 360';
+    var text = name ? (name + ' en el directorio de Pomaire 360') : 'Directorio de Pomaire 360';
+
+    if (navigator.share) {
+      navigator.share({ title: title, text: text, url: url }).catch(function () {});
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        showShareTip(slug);
+      }).catch(function () {
+        window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
+      });
+      return;
+    }
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener');
+  }
+
+  function showShareTip(slug) {
+    var sel = '.mod-action-share[data-share-slug="' + (window.CSS && CSS.escape ? CSS.escape(slug) : slug) + '"]';
+    var btn = grid.querySelector(sel);
+    if (!btn) return;
+    if (!btn.getAttribute('data-label')) btn.setAttribute('data-label', btn.textContent);
+    btn.textContent = '✓ ¡Enlace copiado!';
+    btn.classList.add('mod-action-share-copied');
+    setTimeout(function () {
+      btn.textContent = btn.getAttribute('data-label') || '🔗 Compartir';
+      btn.classList.remove('mod-action-share-copied');
+    }, 2000);
+  }
+
+  // Delegación de eventos: funciona para tarjetas renderizadas dinámicamente
+  grid.addEventListener('click', function (e) {
+    var shareBtn = e.target.closest ? e.target.closest('.mod-action-share') : null;
+    if (!shareBtn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    shareBusiness(shareBtn.getAttribute('data-share-slug'), shareBtn.getAttribute('data-share-name'));
+  });
 
   // ─── Scroll to Top Button ───────────────────────────────────────────────
   function toggleScrollTop() {

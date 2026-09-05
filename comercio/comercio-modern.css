@@ -576,7 +576,8 @@
   padding-top: .8rem;
   border-top: 1px solid var(--p360-smoke);
 }
-.mod-card-actions a {
+.mod-card-actions a,
+.mod-card-actions button.mod-action-share {
   display: inline-flex;
   align-items: center;
   gap: .3rem;
@@ -593,11 +594,21 @@
   justify-content: center;
   white-space: nowrap;
 }
-.mod-card-actions a:hover {
+.mod-card-actions button.mod-action-share {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.mod-card-actions a:hover,
+.mod-card-actions button.mod-action-share:hover {
   background: var(--p360-primary);
   color: #fff;
   transform: translateY(-1px);
   box-shadow: 0 3px 10px rgba(212,101,74,.25);
+}
+.mod-card-actions button.mod-action-share.mod-action-share-copied {
+  background: var(--p360-sage, #6e7a5c);
+  color: #fff;
 }
 .mod-card-actions a.mod-action-map:hover {
   background: var(--p360-sage);
