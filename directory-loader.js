@@ -20,9 +20,14 @@
 (function () {
   'use strict';
 
-  // URL pública de la API de Supabase (configurada en el HTML como variable global)
-  var API_BASE = window.P360_SUPABASE_URL || '';
-  var API_KEY = window.P360_SUPABASE_ANON_KEY || '';
+  // URL pública de la API de Supabase.
+  // Se pueden sobreescribir con variables globales (window.P360_SUPABASE_*),
+  // pero por defecto se usa la config del proyecto (misma anon key pública que
+  // ya usan map-unified.js, page-script.js y ratings.js). Va aquí — en un
+  // script externo 'self' — y no como <script> inline en el HTML, porque la
+  // CSP del sitio (_headers) no permite scripts inline.
+  var API_BASE = window.P360_SUPABASE_URL || 'https://uuskvqtbsvtfsovcjazf.supabase.co';
+  var API_KEY = window.P360_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
 
   if (!API_BASE || !API_KEY) {
     console.warn('[directory-loader] Supabase no configurado. Se usará DIRECTORY local como fallback.');

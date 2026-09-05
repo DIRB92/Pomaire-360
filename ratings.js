@@ -1,5 +1,5 @@
 (function () {
-var SUPABASE_URL = 'https://uuskvqtbsvtfsocvjazf.supabase.co';
+var SUPABASE_URL = 'https://uuskvqtbsvtfsovcjazf.supabase.co';
 var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
 var APP_URL = 'https://app.pomaire360.cl';
 var ratingsCache = null;
