@@ -89,17 +89,28 @@
   </div>
 </nav>
 
+<nav class="hist-nav hist-nav--compact" aria-label="Secciones de Historia de Pomaire">
+  <a class="hn-home" href="/historia/"><span class="hn-ico" aria-hidden="true">📖</span> Historia</a>
+  <a href="/historia/#ruta"><span class="hn-ico" aria-hidden="true">📜</span> La ruta</a>
+  <a href="/historia/origen/"><span class="hn-ico" aria-hidden="true">🗿</span> Origen</a>
+  <a href="/historia/#arqueologia"><span class="hn-ico" aria-hidden="true">🏺</span> Arqueología</a>
+  <a href="/historia/#leyendas"><span class="hn-ico" aria-hidden="true">👻</span> Mitos y leyendas</a>
+</nav>
+
 <div class="reader-bar" role="region" aria-label="Herramientas de lectura">
-  <button id="btnRead" class="reader-btn" type="button" aria-pressed="false" title="Leer el artículo en voz alta">
+  <button id="btnRead" class="reader-btn reader-btn--primary" type="button" aria-pressed="false" title="Leer el artículo en voz alta">
     <span class="rb-ico" aria-hidden="true">🔊</span><span class="rb-label">Escuchar</span>
   </button>
   <button id="btnStop" class="reader-btn" type="button" title="Detener la lectura">
     <span class="rb-ico" aria-hidden="true">⏹️</span><span class="rb-label">Detener</span>
   </button>
-  <button id="btnMusic" class="reader-btn" type="button" aria-pressed="false" title="Música de ambiente">
-    <span class="rb-ico" aria-hidden="true">🎼</span><span class="rb-label">Ambiente</span>
-  </button>
-  <input id="musicVol" class="reader-range" type="range" min="0" max="100" value="35" aria-label="Volumen de la música de ambiente">
+  <span class="reader-sep" aria-hidden="true"></span>
+  <span class="reader-music">
+    <button id="btnMusic" class="reader-btn" type="button" aria-pressed="false" title="Música de ambiente">
+      <span class="rb-ico" aria-hidden="true">🎼</span><span class="rb-label">Ambiente</span>
+    </button>
+    <input id="musicVol" class="reader-range" type="range" min="0" max="100" value="35" aria-label="Volumen de la música de ambiente">
+  </span>
   <span id="readerStatus" class="reader-status" aria-live="polite"></span>
 </div>
 
