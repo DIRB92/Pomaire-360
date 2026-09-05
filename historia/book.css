@@ -21,13 +21,51 @@
   --seal-legend: #7b4fa0;       /* Tradición oral / Leyenda (violeta) */
 }
 
-/* ── Fondo tipo escritorio de biblioteca ─────────────────────── */
+/* ── Fondo inmersivo: "atardecer sobre el valle alfarero" ────── */
 body.hist-book {
-  background:
-    radial-gradient(1200px 600px at 50% -10%, #3a2414 0%, #26160a 60%, #1c1007 100%);
   color: var(--hist-ink);
   font-family: 'Inter', -apple-system, sans-serif;
   min-height: 100vh;
+  position: relative;
+  /* Base cálida en capas: resplandor superior + tierra profunda abajo */
+  background-color: #1c1007;
+  background-image:
+    /* halo dorado del "sol" tras los cerros */
+    radial-gradient(900px 520px at 50% -6%, rgba(230, 178, 70, .28) 0%, rgba(230, 178, 70, 0) 60%),
+    /* atmósfera cálida general */
+    radial-gradient(1300px 700px at 50% 0%, #55341c 0%, rgba(85, 52, 28, 0) 55%),
+    /* degradado vertical tierra → greda oscura */
+    linear-gradient(180deg, #3a2414 0%, #2b1a0d 45%, #1c1007 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Capa 1: silueta de cerros de la Cordillera de la Costa (SVG en línea) */
+body.hist-book::before {
+  content: "";
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 42vh;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='320' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23140b05' fill-opacity='0.55' d='M0,220 C160,150 300,190 460,150 C620,110 760,200 920,170 C1080,140 1240,210 1440,160 L1440,320 L0,320 Z'/%3E%3Cpath fill='%230d0703' fill-opacity='0.7' d='M0,260 C200,210 360,250 540,220 C720,190 880,255 1060,235 C1220,218 1340,255 1440,240 L1440,320 L0,320 Z'/%3E%3C/svg%3E") bottom center / 100% 100% no-repeat;
+}
+
+/* Capa 2: textura de grano/papel sutil sobre todo el fondo + viñeteado */
+body.hist-book::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .5;
+  background-image:
+    /* viñeteado para dar profundidad */
+    radial-gradient(120% 120% at 50% 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%),
+    /* grano fino */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='0.06'/%3E%3C/svg%3E");
 }
 
 /* ── El "libro" ──────────────────────────────────────────────── */
@@ -406,9 +444,45 @@ body.hist-book {
    ══════════════════════════════════════════════════════════════ */
 .hist-hero {
   text-align: center;
-  padding: clamp(3rem, 10vw, 6rem) 1.5rem clamp(2rem, 6vw, 3rem);
+  padding: clamp(3.5rem, 11vw, 7rem) 1.5rem clamp(2rem, 6vw, 3.5rem);
   color: #f4ecd8;
   position: relative;
+  isolation: isolate;
+}
+/* Resplandor cálido detrás del título del hero */
+.hist-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%; top: 38%;
+  transform: translate(-50%, -50%);
+  width: min(760px, 92%);
+  height: 360px;
+  background: radial-gradient(closest-side, rgba(230,178,70,.30), rgba(230,178,70,0) 72%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+/* Polvo dorado en suspensión (partículas sutiles animadas) */
+.hist-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 30%, rgba(255,236,190,.9), transparent 60%),
+    radial-gradient(1.5px 1.5px at 78% 22%, rgba(255,236,190,.7), transparent 60%),
+    radial-gradient(1px 1px at 34% 68%, rgba(255,236,190,.75), transparent 60%),
+    radial-gradient(2px 2px at 62% 55%, rgba(255,236,190,.55), transparent 60%),
+    radial-gradient(1px 1px at 88% 72%, rgba(255,236,190,.7), transparent 60%),
+    radial-gradient(1.5px 1.5px at 22% 84%, rgba(255,236,190,.6), transparent 60%);
+  background-repeat: no-repeat;
+  opacity: .8;
+  animation: histDust 9s ease-in-out infinite alternate;
+}
+@keyframes histDust {
+  from { transform: translateY(0) }
+  to   { transform: translateY(-14px) }
 }
 .hist-hero h1 {
   font-family: Georgia, serif;
@@ -503,6 +577,20 @@ body.hist-book {
 }
 .route li a { color: var(--hist-clay); text-decoration: none; font-weight: 700; font-family: Georgia, serif; }
 .route li .stop-desc { display:block; font-family:'Inter',sans-serif; font-size:.85rem; color: var(--hist-ink-soft); margin-top:.15rem; }
+
+/* Índices no secuenciales (Arqueología, Leyendas): viñeta de greda en vez de número */
+.route--index ol { counter-reset: none; }
+.route--index li { padding-left: 2.2rem; }
+.route--index li::before {
+  content: "";
+  width: .7rem; height: .7rem;
+  border-radius: 50%;
+  background: var(--hist-clay);
+  box-shadow: 0 0 0 4px rgba(140, 61, 22, .18);
+  left: .95rem;
+}
+.route--index.route--arch li::before   { background: var(--seal-arch);   box-shadow: 0 0 0 4px rgba(138, 90, 28, .18); }
+.route--index.route--legend li::before { background: var(--seal-legend); box-shadow: 0 0 0 4px rgba(123, 79, 160, .18); }
 .route li.is-soon { opacity: .72; }
 .route li.is-soon::after {
   content: "Próximamente";
@@ -515,6 +603,12 @@ body.hist-book {
 /* ── Reduce motion ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .door, .reader-btn { transition: none; }
+  .hist-hero::after { animation: none; }
+}
+
+/* En pantallas muy anchas, evitar que la silueta de cerros crezca demasiado */
+@media (min-width: 1600px) {
+  body.hist-book::before { height: 34vh; }
 }
 
 /* ── Responsive ──────────────────────────────────────────────── */
