@@ -105,8 +105,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 .article-eyebrow--soon{background:linear-gradient(135deg,#E23B2E,#B01B10);color:#fff;box-shadow:0 3px 12px rgba(176,27,16,.5);animation:soonPulse 1.5s ease-in-out infinite}
 @keyframes soonPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.article-eyebrow--soon{animation:none}}
+.article-eyebrow--done{background:linear-gradient(135deg,#3E7C4F,#2E5E3B);color:#fff;box-shadow:0 3px 12px rgba(46,94,59,.4)}
 .article-poster{max-width:960px;margin:0 auto;padding:1.4rem 1.2rem 0;text-align:center}
-.article-poster .article-eyebrow--soon{margin-bottom:1rem}
+.article-poster .article-eyebrow--soon,.article-poster .article-eyebrow--done{margin-bottom:1rem}
+.article-ended{background:linear-gradient(135deg,#EAF4EC,#DDEEE1);border:1px solid rgba(46,94,59,.25);border-left:4px solid #3E7C4F;border-radius:12px;padding:1.1rem 1.2rem;font-size:1rem;line-height:1.8;color:#2E5E3B;margin:1.5rem 0}
+.article-ended strong{color:#204A2B}
 .article-poster-img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 34px rgba(90,40,10,.22);border:1px solid rgba(184,92,44,.12)}
 .article-program{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:1.3rem 0}
 .article-program a{display:block}
@@ -203,7 +206,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 <div class="breadcrumb"><a href="/ja/">🏺 Pomaire 360</a><span class="sep">›</span><a href="/ja/#eventos">イベント</a><span class="sep">›</span><span>ベストエンパナーダ</span></div>
 
 <header class="article-poster">
-  <span class="article-eyebrow article-eyebrow--soon">🔥 今週の土曜！</span>
+  <span class="article-eyebrow article-eyebrow--done">✅ 開催終了</span>
   <a href="/img/eventos/mejor-empanada-de-pomaire.webp" target="_blank" rel="noopener" aria-label="コンテストのポスターを大きく見る">
     <picture>
       <source srcset="/img/eventos/mejor-empanada-de-pomaire.webp" type="image/webp">
@@ -214,6 +217,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
 <main class="article-wrap" id="articulo">
   <article class="article-body">
+    <div class="article-ended">
+      🎉 <strong>ポマイレ・ベストエンパナーダ・コンテストは無事に終了しました！</strong>参加店のみなさま、ゲストのみなさま、そして投票とお祝いのためにポマイレ広場へお越しくださった来場者のみなさまに感謝します。陶芸の町での忘れられない一日となりました。次回の開催でお会いしましょう！最新情報は <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> をご覧ください。
+    </div>
+
     <p>ポマイレとエンパナーダは切っても切れない関係です。毎週末、何千人もの観光客が、チリ観光の伝説となった<strong>土窯焼きでサクサクの巨大エンパナーダ</strong>を求めて陶芸の町を訪れます。そんな人気が、ついに独自のお祭りになりました。それが<strong>ポマイレ・ベストエンパナーダ・コンテスト</strong>です。</p>
 
     <p>この一日、地元の料理人・レストラン・食堂が自慢の一品で腕を競います。審査するのは<strong>来場者による審査（みんなの投票）</strong>とグルメの専門家パネル。今年のチャンピオンを決定します。</p>
@@ -265,15 +272,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       </a>
     </div>
 
-    <h2>お気に入りのエンパナーダに投票するには？</h2>
-    <p>優勝者を決めるのはあなたです。参加店のエンパナーダを味わったら、投票フォームを開いてお気に入りを選んでください。かんたん・無料で、あなたの一票がポマイレ・ベストエンパナーダの誕生を後押しします。</p>
-
-    <div class="article-cta-row">
-      <a class="article-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSezKsDHuqvv9oc1sOdc_BC0U62STMi3BZZ8i6sSNEBzBNZicw/viewform?pli=1" target="_blank" rel="noopener">🗳️ 投票する</a>
-    </div>
+    <h2>投票は終了しました</h2>
+    <p>来場者のみなさまが投票し、お気に入りのエンパナーダを選びました。ご投票いただいたみなさま、ありがとうございました！今回の投票はすでに終了しています。</p>
 
     <div class="article-note">
-      📌 <strong>ご注意：</strong>日程・時間は天候により変更される場合があります。公式の確定情報や最新情報は <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> でご確認ください。
+      📌 <strong>ご注意：</strong>このイベントはすでに終了しました。結果や次回開催の情報は <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> でご確認ください。
     </div>
 
     <h2>訪問を満喫しよう</h2>

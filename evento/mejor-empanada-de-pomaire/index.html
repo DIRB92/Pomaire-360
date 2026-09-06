@@ -106,8 +106,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 .article-eyebrow--soon{background:linear-gradient(135deg,#E23B2E,#B01B10);color:#fff;box-shadow:0 3px 12px rgba(176,27,16,.5);animation:soonPulse 1.5s ease-in-out infinite}
 @keyframes soonPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.article-eyebrow--soon{animation:none}}
+.article-eyebrow--done{background:linear-gradient(135deg,#3E7C4F,#2E5E3B);color:#fff;box-shadow:0 3px 12px rgba(46,94,59,.4)}
 .article-poster{max-width:960px;margin:0 auto;padding:1.4rem 1.2rem 0;text-align:center}
-.article-poster .article-eyebrow--soon{margin-bottom:1rem}
+.article-poster .article-eyebrow--soon,.article-poster .article-eyebrow--done{margin-bottom:1rem}
+.article-ended{background:linear-gradient(135deg,#EAF4EC,#DDEEE1);border:1px solid rgba(46,94,59,.25);border-left:4px solid #3E7C4F;border-radius:12px;padding:1.1rem 1.2rem;font-size:1rem;line-height:1.6;color:#2E5E3B;margin:1.5rem 0}
+.article-ended strong{color:#204A2B}
 .article-poster-img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 34px rgba(90,40,10,.22);border:1px solid rgba(184,92,44,.12)}
 .article-program{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:1.3rem 0}
 .article-program a{display:block}
@@ -212,7 +215,7 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
 <!-- HERO NOTICIA -->
 <header class="article-poster">
-  <span class="article-eyebrow article-eyebrow--soon">🔥 ¡ESTE SÁBADO!</span>
+  <span class="article-eyebrow article-eyebrow--done">✅ EVENTO FINALIZADO</span>
   <a href="/img/eventos/mejor-empanada-de-pomaire.webp" target="_blank" rel="noopener" aria-label="Ver afiche del concurso en grande">
     <picture>
       <source srcset="/img/eventos/mejor-empanada-de-pomaire.webp" type="image/webp">
@@ -223,6 +226,10 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
 
 <main class="article-wrap" id="articulo">
   <article class="article-body">
+    <div class="article-ended">
+      🎉 <strong>¡El Concurso de la Mejor Empanada de Pomaire ya se realizó!</strong> Gracias a todos los locales participantes, a los invitados y al público que llegó a la Plaza de Pomaire a votar y celebrar. Fue una jornada inolvidable en el pueblo alfarero. ¡Nos vemos en la próxima edición! Sigue a <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> para novedades.
+    </div>
+
     <p>Pomaire y la empanada son inseparables. Cada fin de semana, miles de visitantes llegan al pueblo alfarero buscando esa empanada <strong>gigante, de horno de barro y masa crujiente</strong> que se volvió una leyenda del turismo chileno. Ahora, ese amor tiene su propia fiesta: el <strong>Concurso de la Mejor Empanada de Pomaire</strong>.</p>
 
     <p>Durante una jornada, cocineros, restaurantes y picadas locales compiten con sus mejores creaciones. Un <strong>jurado popular</strong> —es decir, los propios visitantes— y un panel de expertos gastronómicos deciden cuál se lleva el título del año.</p>
@@ -274,15 +281,11 @@ nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop
       </a>
     </div>
 
-    <h2>¿Cómo votar por tu empanada favorita?</h2>
-    <p>Tú eliges a la ganadora. Después de probar las empanadas de los locales participantes, entra al formulario de votación y marca tu favorita. Es rápido, gratuito y con tu voto ayudas a coronar la Mejor Empanada de Pomaire.</p>
-
-    <div class="article-cta-row">
-      <a class="article-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSezKsDHuqvv9oc1sOdc_BC0U62STMi3BZZ8i6sSNEBzBNZicw/viewform?pli=1" target="_blank" rel="noopener">🗳️ Vota</a>
-    </div>
+    <h2>La votación ya cerró</h2>
+    <p>El público votó y eligió a su empanada favorita. ¡Gracias a todos los que participaron con su voto! La votación de esta edición ya está cerrada.</p>
 
     <div class="article-note">
-      📌 <strong>Nota:</strong> fecha y horario pueden ajustarse según condiciones climáticas. Sigue a <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> para la confirmación oficial y novedades.
+      📌 <strong>Nota:</strong> este evento ya se realizó. Sigue a <a href="https://www.instagram.com/pomaire360/" target="_blank" rel="noopener">@pomaire360</a> para conocer los resultados y enterarte de la próxima edición.
     </div>
 
     <h2>Aprovecha tu visita</h2>
