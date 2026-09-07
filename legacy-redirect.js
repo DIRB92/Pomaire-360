@@ -9,7 +9,7 @@ var map = {
 '#ruta-vino': '/ruta-del-vino/',
 '#interes': '/que-ver/',
 '#plaza': '/plaza/',
-'#alrededores': '/alrededores/',
+'#alrededores': '/comercio/#chinihues',
 '#gastronomia': '/gastronomia/',
 '#alojamientos': '/alojamientos/',
 '#anunciate': '/anunciate/',
