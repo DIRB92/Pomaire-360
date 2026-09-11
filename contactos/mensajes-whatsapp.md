@@ -1,29 +1,44 @@
-# 📱 Mensajes de WhatsApp - Pomaire 360
+# 📱 Mensajes de WhatsApp — Pomaire 360
 
-## Plantillas de mensajes para contactar negocios y artesanos
+Plantillas para invitar a los negocios y artesanos a **reclamar e inscribir su ficha**
+en Pomaire 360, la guía digital de Pomaire para los turistas.
+
+> Estas plantillas son la referencia editorial. Los mensajes **reales y personalizados
+> por negocio** los genera automáticamente `generate-fichas.js` dentro de cada link
+> `wa.me` de `fichas-contacto.html`. Si cambias el texto aquí, refléjalo también en
+> la función `getMessage()` de `generate-fichas.js`.
 
 ---
 
-## 🏺 MENSAJE PARA ARTESANOS Y TALLERES DE GREDA
+## 🧭 Propósito del sitio (incluido en todos los mensajes)
+
+> Pomaire 360 es la **guía digital de Pomaire para los turistas**: la página donde los
+> visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares
+> visitar. El objetivo es que quien busque *"qué hacer en Pomaire"* encuentre todo en
+> un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.
+
+---
+
+## 🏺 ARTESANOS / TALLERES DE GREDA / DEMOSTRACIONES
 
 ```
 ¡Hola {NOMBRE}! 👋
 
-Soy del equipo de *Pomaire 360* (pomaire360.cl), la guía digital gratuita más completa de Pomaire.
+Te escribimos del equipo de *Pomaire 360* (pomaire360.cl), la *guía digital de Pomaire para los turistas*: la página donde los visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares visitar en el pueblo. 🏺
 
-Tu taller/tienda ya aparece en nuestro directorio con tu dirección y teléfono. Ahora estamos trabajando en algo especial: queremos *contar la historia de cada artesano* de Pomaire 🏺✨
+Tu taller/tienda ya aparece en nuestro directorio y queremos que *reclames tu ficha* para destacar tu trabajo y, si quieres, *contar tu historia como artesano/a* de Pomaire 🏺✨
 
-¿Te gustaría participar? Es totalmente gratuito e incluye:
+Inscribirte es *gratis* e incluye:
 
-✅ Tu ficha destacada en pomaire360.cl con fotos
-✅ Tu historia como artesano/a (tradición familiar, técnicas, inspiración)
+✅ Tu ficha destacada con fotos de tu trabajo
+✅ Tu historia como artesano/a (opcional)
 ✅ Link directo a tu WhatsApp para que los turistas te contacten
-✅ Aparecer en Google cuando busquen "artesanos en Pomaire"
-✅ Reseñas y valoraciones de visitantes en app.pomaire360.cl
+✅ Aparecer en Google al buscar "artesanos en Pomaire"
+✅ Reseñas y valoraciones en app.pomaire360.cl
 
-Solo necesitamos una breve conversación (puede ser por audio o en persona) para conocer tu historia y unas fotos de tu trabajo.
+Nuestro propósito es simple: que cuando alguien busque "qué hacer en Pomaire", encuentre TODO en un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.
 
-¿Te interesa? ¡Respóndeme y coordinamos! 🙌
+👉 *Reclama e inscribe tu negocio gratis* respondiéndome este mensaje. ¡Solo toma unos minutos! 🙌
 
 Saludos,
 Equipo Pomaire 360
@@ -33,27 +48,27 @@ Equipo Pomaire 360
 
 ---
 
-## 🍽️ MENSAJE PARA RESTAURANTES
+## 🍽️ RESTAURANTES
 
 ```
 ¡Hola {NOMBRE}! 👋
 
-Soy del equipo de *Pomaire 360* (pomaire360.cl), la guía digital gratuita más completa de Pomaire.
+Te escribimos del equipo de *Pomaire 360* (pomaire360.cl), la *guía digital de Pomaire para los turistas*: la página donde los visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares visitar en el pueblo. 🏺
 
-Tu restaurante ya aparece en nuestro directorio. Ahora estamos mejorando las fichas de cada local gastronómico para que los visitantes los encuentren más fácil 🍽️
+Tu restaurante ya aparece en nuestro directorio y queremos que *reclames tu ficha* para destacarlo entre los miles de turistas que visitan Pomaire cada mes 🍽️
 
-¿Te gustaría tener tu ficha completa? Es *gratuito* e incluye:
+Inscribirte es *gratis* e incluye:
 
 ✅ Ficha destacada con fotos de tus platos y local
 ✅ Menú o especialidades visibles para los turistas
 ✅ Link directo a tu WhatsApp para reservas
-✅ Horarios actualizados y días de atención
+✅ Horarios y días de atención actualizados
 ✅ Reseñas y valoraciones en app.pomaire360.cl
-✅ Aparecer en Google cuando busquen "dónde comer en Pomaire"
+✅ Aparecer en Google al buscar "dónde comer en Pomaire"
 
-Solo necesito unas fotos de tu local/platos y confirmar tus horarios.
+Nuestro propósito es simple: que cuando alguien busque "qué hacer en Pomaire", encuentre TODO en un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.
 
-¿Te interesa participar? ¡Respóndeme! 🙌
+👉 *Reclama e inscribe tu negocio gratis* respondiéndome este mensaje. ¡Solo toma unos minutos! 🙌
 
 Saludos,
 Equipo Pomaire 360
@@ -63,25 +78,26 @@ Equipo Pomaire 360
 
 ---
 
-## 🛍️ MENSAJE PARA COMERCIO GENERAL (tiendas, servicios)
+## 🛏️ ALOJAMIENTOS
 
 ```
 ¡Hola {NOMBRE}! 👋
 
-Soy del equipo de *Pomaire 360* (pomaire360.cl), la guía digital gratuita de Pomaire que usan miles de turistas cada mes.
+Te escribimos del equipo de *Pomaire 360* (pomaire360.cl), la *guía digital de Pomaire para los turistas*: la página donde los visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares visitar en el pueblo. 🏺
 
-Tu negocio ya aparece en nuestro directorio. Queremos *mejorar tu ficha* para que más personas te encuentren 📍
+Tu alojamiento ya figura en nuestro directorio y queremos que *reclames tu ficha* para que los turistas que buscan dónde quedarse en Pomaire te encuentren primero 🛏️
 
-¿Te gustaría participar? Es *totalmente gratuito*:
+Inscribirte es *gratis* e incluye:
 
-✅ Ficha con fotos y descripción de tu negocio
-✅ Link directo a tu WhatsApp
-✅ Aparecer en búsquedas de Google sobre Pomaire
-✅ Reseñas de clientes en app.pomaire360.cl
+✅ Ficha destacada con fotos de tus cabañas/habitaciones
+✅ Link directo a tu WhatsApp para reservas
+✅ Servicios, precios y disponibilidad visibles
+✅ Reseñas y valoraciones en app.pomaire360.cl
+✅ Aparecer en Google al buscar "dónde alojar en Pomaire"
 
-Solo necesito unas fotos y una breve descripción de lo que ofreces.
+Nuestro propósito es simple: que cuando alguien busque "qué hacer en Pomaire", encuentre TODO en un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.
 
-¿Conversamos? 🙌
+👉 *Reclama e inscribe tu negocio gratis* respondiéndome este mensaje. ¡Solo toma unos minutos! 🙌
 
 Saludos,
 Equipo Pomaire 360
@@ -91,10 +107,61 @@ Equipo Pomaire 360
 
 ---
 
-## 📝 NOTAS DE USO
+## 🌱 VIVEROS, 📍 PUNTOS DE INTERÉS Y 🛎️ SERVICIOS
 
-1. **Reemplaza `{NOMBRE}`** por el nombre real del negocio/persona
-2. Los mensajes están optimizados para WhatsApp (negritas con asteriscos)
-3. Recomendación: envía máximo 20 mensajes por día para evitar bloqueos
-4. Usa **Listas de Difusión** en WhatsApp Business para eficiencia
-5. El mensaje se personaliza automáticamente en las fichas HTML generadas
+```
+¡Hola {NOMBRE}! 👋
+
+Te escribimos del equipo de *Pomaire 360* (pomaire360.cl), la *guía digital de Pomaire para los turistas*: la página donde los visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares visitar en el pueblo. 🏺
+
+Ya apareces en nuestro directorio y queremos que *reclames e inscribas tu ficha* para llegar a más visitantes y vecinos 📍
+
+Es *gratis* e incluye:
+
+✅ Ficha con fotos y descripción de lo que ofreces
+✅ Link directo a tu WhatsApp
+✅ Ubicación en el mapa de la guía
+✅ Aparecer en las búsquedas de Google sobre Pomaire
+✅ Reseñas de clientes en app.pomaire360.cl
+
+Nuestro propósito es simple: que cuando alguien busque "qué hacer en Pomaire", encuentre TODO en un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.
+
+👉 *Reclama e inscribe tu negocio gratis* respondiéndome este mensaje. ¡Solo toma unos minutos! 🙌
+
+Saludos,
+Equipo Pomaire 360
+🌐 pomaire360.cl
+📱 app.pomaire360.cl
+```
+
+---
+
+## ⚙️ Cómo generar y enviar (flujo seguro, sin riesgo de baneo)
+
+```bash
+cd contactos
+node extract-contacts.js   # 1. Lee el DIRECTORY de app.js -> contactos.json
+node generate-csv.js       # 2. Exporta contactos-pomaire360.csv (para Excel)
+node generate-fichas.js    # 3. Genera fichas-contacto.html (botones WhatsApp)
+```
+
+Luego abre **`fichas-contacto.html`** en el navegador y, para cada negocio, haz clic
+en **💬 Enviar WhatsApp**: se abre el chat con el mensaje ya escrito y solo presionas
+enviar. Marca cada uno como *Contactado* / *Saltado* (el avance se guarda en el
+navegador).
+
+---
+
+## 📝 NOTAS DE USO Y BUENAS PRÁCTICAS
+
+1. **Reemplaza `{NOMBRE}`** por el nombre real (las fichas HTML ya lo hacen solas).
+2. Este flujo es **semi-manual a propósito**: cada mensaje lo envías tú desde tu
+   WhatsApp. Es la vía **segura y legal** — NO usa bots ni envío automático masivo.
+3. **Evita el baneo:** WhatsApp bloquea el envío masivo no solicitado. Envía en
+   tandas pequeñas (recomendado **máx. 20–30 por día**) y desde WhatsApp Business.
+4. **Cumplimiento (Chile, Ley 21.719 / Ley 19.496):** se contacta solo a negocios ya
+   listados públicamente, con un fin informativo y ofreciendo un servicio gratuito.
+   Respeta de inmediato a quien pida no ser contactado (no reenviar).
+5. Para envío masivo real y automatizado, la vía correcta es la **WhatsApp Business
+   API oficial** (Meta / Twilio / 360dialog) con plantillas aprobadas — tiene costo
+   por conversación pero no arriesga tu número.

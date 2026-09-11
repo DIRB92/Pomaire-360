@@ -9,14 +9,51 @@ const contacts = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'contactos.json'), 'utf8')
 );
 
-// Mensajes por categoría
+// ─────────────────────────────────────────────────────────────────────────
+// Mensajes de invitación por categoría.
+//
+// Objetivo: invitar al negocio a RECLAMAR / INSCRIBIR su ficha, explicando el
+// propósito del sitio: Pomaire 360 es la guía digital de Pomaire para turistas,
+// donde pueden saber qué hacer, dónde comer, dónde comprar greda y qué visitar.
+// Todos incluyen un cierre común con el propósito y un llamado a la acción claro.
+// ─────────────────────────────────────────────────────────────────────────
+
+const INTRO = (name) =>
+  `¡Hola ${name}! 👋\n\n` +
+  `Te escribimos del equipo de *Pomaire 360* (pomaire360.cl), la *guía digital de Pomaire para los turistas*: la página donde los visitantes descubren qué hacer, dónde comer, dónde comprar greda y qué lugares visitar en el pueblo. 🏺`;
+
+const PROPOSITO = 'Nuestro propósito es simple: que cuando alguien busque "qué hacer en Pomaire", encuentre TODO en un solo lugar — y que ese lugar impulse a los negocios y artesanos locales.';
+
+const CIERRE = () =>
+  `${PROPOSITO}\n\n` +
+  `👉 *Reclama e inscribe tu negocio gratis* respondiéndome este mensaje. ¡Solo toma unos minutos! 🙌\n\n` +
+  `Saludos,\nEquipo Pomaire 360\n🌐 pomaire360.cl\n📱 app.pomaire360.cl`;
+
 function getMessage(contact) {
   const name = contact.nombre;
-  if (contact.categoria === 'Restaurante') {
-    return `¡Hola ${name}! 👋\n\nSoy del equipo de *Pomaire 360* (pomaire360.cl), la guía digital gratuita más completa de Pomaire.\n\nTu restaurante ya aparece en nuestro directorio. Ahora estamos mejorando las fichas de cada local gastronómico para que los visitantes los encuentren más fácil 🍽️\n\n¿Te gustaría tener tu ficha completa? Es *gratuito* e incluye:\n\n✅ Ficha destacada con fotos de tus platos y local\n✅ Menú o especialidades visibles para los turistas\n✅ Link directo a tu WhatsApp para reservas\n✅ Horarios actualizados y días de atención\n✅ Reseñas y valoraciones en app.pomaire360.cl\n✅ Aparecer en Google cuando busquen "dónde comer en Pomaire"\n\nSolo necesito unas fotos de tu local/platos y confirmar tus horarios.\n\n¿Te interesa participar? ¡Respóndeme! 🙌\n\nSaludos,\nEquipo Pomaire 360\n🌐 pomaire360.cl`;
+  const intro = INTRO(name);
+
+  switch (contact.categoria) {
+    case 'Restaurante':
+      return `${intro}\n\nTu restaurante ya aparece en nuestro directorio y queremos que *reclames tu ficha* para destacarlo entre los miles de turistas que visitan Pomaire cada mes 🍽️\n\nInscribirte es *gratis* e incluye:\n\n✅ Ficha destacada con fotos de tus platos y local\n✅ Menú o especialidades visibles para los turistas\n✅ Link directo a tu WhatsApp para reservas\n✅ Horarios y días de atención actualizados\n✅ Reseñas y valoraciones en app.pomaire360.cl\n✅ Aparecer en Google al buscar "dónde comer en Pomaire"\n\n${CIERRE()}`;
+
+    case 'Alojamiento':
+      return `${intro}\n\nTu alojamiento ya figura en nuestro directorio y queremos que *reclames tu ficha* para que los turistas que buscan dónde quedarse en Pomaire te encuentren primero 🛏️\n\nInscribirte es *gratis* e incluye:\n\n✅ Ficha destacada con fotos de tus cabañas/habitaciones\n✅ Link directo a tu WhatsApp para reservas\n✅ Servicios, precios y disponibilidad visibles\n✅ Reseñas y valoraciones en app.pomaire360.cl\n✅ Aparecer en Google al buscar "dónde alojar en Pomaire"\n\n${CIERRE()}`;
+
+    case 'Vivero/Jardín':
+      return `${intro}\n\nTu negocio ya aparece en nuestro directorio y queremos que *reclames e inscribas tu ficha* para llegar a más visitantes y vecinos 🌱\n\nEs *gratis* e incluye:\n\n✅ Ficha con fotos y descripción de lo que ofreces\n✅ Link directo a tu WhatsApp\n✅ Aparecer en las búsquedas de Google sobre Pomaire\n✅ Reseñas de clientes en app.pomaire360.cl\n\n${CIERRE()}`;
+
+    case 'Servicio':
+    case 'Punto de interés':
+      return `${intro}\n\nYa apareces en nuestro directorio y queremos que *reclames e inscribas tu ficha* para que los turistas te encuentren fácil dentro de su recorrido por Pomaire 📍\n\nEs *gratis* e incluye:\n\n✅ Ficha con fotos y descripción\n✅ Link directo a tu WhatsApp\n✅ Ubicación en el mapa de la guía\n✅ Aparecer en Google al buscar sobre Pomaire\n\n${CIERRE()}`;
+
+    // Artesanos, talleres de greda y demostraciones en torno
+    case 'Taller de greda':
+    case 'Demostración en torno':
+    case 'Artesano/Tienda de greda':
+    default:
+      return `${intro}\n\nTu taller/tienda ya aparece en nuestro directorio y queremos que *reclames tu ficha* para destacar tu trabajo y, si quieres, *contar tu historia como artesano/a* de Pomaire 🏺✨\n\nInscribirte es *gratis* e incluye:\n\n✅ Tu ficha destacada con fotos de tu trabajo\n✅ Tu historia como artesano/a (opcional)\n✅ Link directo a tu WhatsApp para que los turistas te contacten\n✅ Aparecer en Google al buscar "artesanos en Pomaire"\n✅ Reseñas y valoraciones en app.pomaire360.cl\n\n${CIERRE()}`;
   }
-  // Artesanos, talleres, demostraciones
-  return `¡Hola ${name}! 👋\n\nSoy del equipo de *Pomaire 360* (pomaire360.cl), la guía digital gratuita más completa de Pomaire.\n\nTu taller/tienda ya aparece en nuestro directorio. Ahora estamos trabajando en algo especial: queremos *contar la historia de cada artesano* de Pomaire 🏺✨\n\n¿Te gustaría participar? Es totalmente gratuito e incluye:\n\n✅ Tu ficha destacada en pomaire360.cl con fotos\n✅ Tu historia como artesano/a\n✅ Link directo a tu WhatsApp para que los turistas te contacten\n✅ Aparecer en Google cuando busquen "artesanos en Pomaire"\n✅ Reseñas y valoraciones en app.pomaire360.cl\n\nSolo necesitamos una breve conversación para conocer tu historia y unas fotos de tu trabajo.\n\n¿Te interesa? ¡Respóndeme y coordinamos! 🙌\n\nSaludos,\nEquipo Pomaire 360\n🌐 pomaire360.cl`;
 }
 
 function encodeWAMessage(text) {
@@ -30,6 +67,10 @@ function getCategoryIcon(cat) {
     case 'Demostración en torno': return '🌀';
     case 'Artesano/Tienda de greda': return '🏺';
     case 'Restaurante': return '🍽️';
+    case 'Alojamiento': return '🛏️';
+    case 'Vivero/Jardín': return '🌱';
+    case 'Punto de interés': return '📍';
+    case 'Servicio': return '🛎️';
     default: return '🛍️';
   }
 }
@@ -40,6 +81,10 @@ function getCategoryColor(cat) {
     case 'Demostración en torno': return '#8e44ad';
     case 'Artesano/Tienda de greda': return '#c0392b';
     case 'Restaurante': return '#27ae60';
+    case 'Alojamiento': return '#16a085';
+    case 'Vivero/Jardín': return '#2ecc71';
+    case 'Punto de interés': return '#d35400';
+    case 'Servicio': return '#7f8c8d';
     default: return '#2980b9';
   }
 }
@@ -131,10 +176,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 <div class="filters">
   <button class="filter-btn active" onclick="filterBy('all')">Todos</button>
+  <button class="filter-btn" onclick="filterBy('Artesano/Tienda de greda')">🏺 Artesanos</button>
   <button class="filter-btn" onclick="filterBy('Taller de greda')">🎨 Talleres</button>
   <button class="filter-btn" onclick="filterBy('Demostración en torno')">🌀 Demos</button>
-  <button class="filter-btn" onclick="filterBy('Artesano/Tienda de greda')">🏺 Artesanos</button>
   <button class="filter-btn" onclick="filterBy('Restaurante')">🍽️ Restaurantes</button>
+  <button class="filter-btn" onclick="filterBy('Alojamiento')">🛏️ Alojamientos</button>
+  <button class="filter-btn" onclick="filterBy('Vivero/Jardín')">🌱 Viveros</button>
+  <button class="filter-btn" onclick="filterBy('Punto de interés')">📍 Puntos de interés</button>
+  <button class="filter-btn" onclick="filterBy('Servicio')">🛎️ Servicios</button>
   <button class="filter-btn" onclick="filterBy('done')">✅ Contactados</button>
   <button class="filter-btn" onclick="filterBy('pending')">⏳ Pendientes</button>
 </div>

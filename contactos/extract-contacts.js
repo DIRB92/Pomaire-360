@@ -1,94 +1,108 @@
 /**
- * Script para extraer contactos de los archivos HTML de Pomaire 360
- * Genera un JSON con todos los negocios/artesanos
+ * extract-contacts.js
+ * ─────────────────────────────────────────────────────────────────────────
+ * Extrae TODOS los contactos de negocios/artesanos desde la fuente de verdad:
+ * el objeto `DIRECTORY` definido en app.js (mismas 8 categorías que se
+ * muestran en el sitio y que se migran a Supabase).
+ *
+ * Antes este script raspaba el HTML de /alfareria y /comercio con regex, pero
+ * esas páginas fueron rediseñadas (ahora usan tarjetas `mod-card-*` renderizadas
+ * dinámicamente desde Supabase) y el raspado devolvía 0 restaurantes / 0 comercios.
+ * Leer directamente el DIRECTORY de app.js es robusto y captura todo el catálogo.
+ *
+ * USO:   node extract-contacts.js
+ * SALIDA: contactos.json  (lista plana normalizada, deduplicada por teléfono)
+ * ─────────────────────────────────────────────────────────────────────────
  */
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
-function extractContacts(html, categoria) {
-  const contacts = [];
-  const regex = /<div class="dir-item">(.*?)<\/div><\/div>/gs;
-  let match;
+const APP_JS = path.join(__dirname, '..', 'app.js');
 
-  while ((match = regex.exec(html)) !== null) {
-    const block = match[1];
-    const nameMatch = block.match(/<span class="dir-name">(.*?)<\/span>/);
-    const addrMatch = block.match(/<span class="dir-addr">📍\s*(.*?)<\/span>/);
-    const telMatch = block.match(/href="tel:(\+\d+)"/);
-    const igMatch = block.match(/href="https:\/\/instagram\.com\/(.*?)"/);
-    const tagMatch = block.match(/<span class="dir-tag"[^>]*>(.*?)<\/span>/);
+// ── 1. Extraer el objeto DIRECTORY de app.js y evaluarlo en un sandbox seguro ──
+const source = fs.readFileSync(APP_JS, 'utf-8');
+const match = source.match(/const DIRECTORY\s*=\s*(\{[\s\S]*?\n\};)/);
+if (!match) {
+  console.error('❌ No se encontró el objeto DIRECTORY en app.js');
+  process.exit(1);
+}
+const sandbox = {};
+new vm.Script('__result = ' + match[1].replace(/;\s*$/, ''))
+  .runInContext(vm.createContext(sandbox));
+const DIRECTORY = sandbox.__result;
 
-    if (nameMatch) {
-      contacts.push({
-        nombre: nameMatch[1].trim(),
-        direccion: addrMatch ? addrMatch[1].trim() : '',
-        telefono: telMatch ? telMatch[1] : '',
-        instagram: igMatch ? '@' + igMatch[1] : '',
-        tag: tagMatch ? tagMatch[1].trim() : '',
-        categoria: categoria
-      });
-    }
+// ── 2. Mapear cada clave del DIRECTORY a una categoría legible para el mensaje ──
+const CATEGORY_MAP = {
+  restaurants:  'Restaurante',
+  talleres:     'Taller de greda',
+  demos:        'Demostración en torno',
+  jardin:       'Vivero/Jardín',
+  alojamientos: 'Alojamiento',
+  interes:      'Punto de interés',
+  servicios:    'Servicio',
+  artesanos:    'Artesano/Tienda de greda',
+};
+
+// Categorías que NO son negocios "reclamables" (servicios públicos, emergencias,
+// plazas, etc.). Se excluyen del envío de propaganda por defecto.
+const NON_BUSINESS_TAGS = new Set([
+  'Turismo', 'Salud', 'Seguridad', 'Emergencia', 'Dinero',
+  'Templo', 'Educación', 'Mirador', 'Servicios',
+]);
+
+// ── 3. Aplanar y normalizar ──────────────────────────────────────────────────
+const allRaw = [];
+for (const [key, cat] of Object.entries(CATEGORY_MAP)) {
+  const arr = DIRECTORY[key];
+  if (!Array.isArray(arr)) continue;
+  for (const item of arr) {
+    allRaw.push({
+      nombre: (item.n || '').trim(),
+      direccion: (item.a || '').trim(),
+      // Normalizar teléfono a formato +56... sin espacios para wa.me / tel:
+      telefono: (item.p || '').replace(/\s+/g, ''),
+      instagram: item.ig ? '@' + item.ig.replace(/^@/, '') : '',
+      web: item.web || '',
+      map: item.map || '',
+      tag: (item.tag || item.d || '').trim(),
+      categoria: cat,
+      _key: key,
+    });
   }
-  return contacts;
 }
 
-// Leer archivos HTML
-const basePath = path.join(__dirname, '..');
-
-
-const alfareriaHtml = fs.readFileSync(path.join(basePath, 'alfareria', 'index.html'), 'utf8');
-const comercioHtml = fs.readFileSync(path.join(basePath, 'comercio', 'index.html'), 'utf8');
-
-// Extraer secciones por categoría del archivo alfarería
-const talleres = extractContacts(
-  alfareriaHtml.match(/Talleres de greda.*?<\/div>\s*<\/div>\s*<\/div>/s)?.[0] || '',
-  'Taller de greda'
-);
-const demos = extractContacts(
-  alfareriaHtml.match(/Demostraciones en torno.*?<\/div>\s*<\/div>\s*<\/div>/s)?.[0] || '',
-  'Demostración en torno'
-);
-const artesanos = extractContacts(
-  alfareriaHtml.match(/Tiendas y artesanos.*?<\/div>\s*<\/div>\s*<\/div>/s)?.[0] || '',
-  'Artesano/Tienda de greda'
-);
-
-// Extraer del archivo comercio - panel pottery
-const comercioPottery = extractContacts(
-  comercioHtml.match(/data-panel="pottery".*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/s)?.[0] || '',
-  'Artesano/Tienda de greda'
-);
-// Panel food (restaurantes)
-const restaurantes = extractContacts(
-  comercioHtml.match(/data-panel="food".*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/s)?.[0] || '',
-  'Restaurante'
-);
-
-
-// Combinar y deduplicar por teléfono
-const allRaw = [...talleres, ...demos, ...artesanos, ...comercioPottery, ...restaurantes];
+// ── 4. Filtrar servicios públicos y deduplicar por teléfono (o nombre) ─────────
 const seen = new Set();
 const all = [];
-
+let excluidos = 0;
 for (const c of allRaw) {
-  const key = c.telefono || c.nombre;
-  if (!seen.has(key)) {
-    seen.add(key);
-    all.push(c);
+  // Excluir servicios públicos / de emergencia (no son negocios a inscribir)
+  if (c._key === 'servicios' && NON_BUSINESS_TAGS.has(c.tag)) {
+    excluidos++;
+    continue;
   }
+  const key = c.telefono || c.nombre;
+  if (seen.has(key)) continue;
+  seen.add(key);
+  delete c._key;
+  all.push(c);
 }
 
-console.log(`Total contactos extraídos: ${all.length}`);
-console.log(`- Talleres: ${talleres.length}`);
-console.log(`- Demostraciones: ${demos.length}`);
-console.log(`- Artesanos (alfarería): ${artesanos.length}`);
-console.log(`- Artesanos (comercio): ${comercioPottery.length}`);
-console.log(`- Restaurantes: ${restaurantes.length}`);
+// ── 5. Reporte y guardado ──────────────────────────────────────────────────
+const porCategoria = {};
+for (const c of all) porCategoria[c.categoria] = (porCategoria[c.categoria] || 0) + 1;
 
-// Guardar JSON
+console.log(`Total contactos extraídos: ${all.length}`);
+for (const [cat, n] of Object.entries(porCategoria)) {
+  console.log(`  - ${cat}: ${n}`);
+}
+console.log(`  (servicios públicos/emergencia excluidos: ${excluidos})`);
+console.log(`  Con teléfono: ${all.filter(c => c.telefono).length}`);
+
 fs.writeFileSync(
   path.join(__dirname, 'contactos.json'),
   JSON.stringify(all, null, 2),
   'utf8'
 );
-console.log('\n✅ Archivo contactos.json generado');
+console.log('\n✅ Archivo contactos.json generado desde app.js (DIRECTORY)');
