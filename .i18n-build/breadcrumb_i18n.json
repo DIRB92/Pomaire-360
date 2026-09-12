@@ -1,5 +1,10 @@
 {
   "alfareria": { "en": "Pottery", "pt": "Olaria", "ja": "陶芸" },
+  "como-llegar": { "en": "How to Get There", "pt": "Como Chegar", "ja": "行き方" },
+  "con-ninos": { "en": "With Kids", "pt": "Com Crianças", "ja": "子供と" },
+  "donde-comer": { "en": "Where to Eat", "pt": "Onde Comer", "ja": "食事処" },
+  "pomaire-en-un-dia": { "en": "Pomaire in One Day", "pt": "Pomaire em Um Dia", "ja": "ポマイレ1日" },
+  "preguntas-frecuentes": { "en": "FAQ", "pt": "Perguntas Frequentes", "ja": "よくある質問" },
   "alojamientos": { "en": "Lodging", "pt": "Hospedagem", "ja": "宿泊" },
   "alrededores": { "en": "Around Pomaire", "pt": "Arredores", "ja": "ポマイレ周辺" },
   "comercio": { "en": "Shops & Services", "pt": "Comércio e Serviços", "ja": "店とサービス" },

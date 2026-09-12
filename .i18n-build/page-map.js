@@ -6,6 +6,9 @@ module.exports = {
   anunciate: { file: 'anunciate/index.html', esPath: '/anunciate/' },
   apoyar: { file: 'apoyar/index.html', esPath: '/apoyar/' },
   comercio: { file: 'comercio/index.html', esPath: '/comercio/' },
+  'como-llegar': { file: 'como-llegar/index.html', esPath: '/como-llegar/' },
+  'con-ninos': { file: 'con-ninos/index.html', esPath: '/con-ninos/' },
+  'donde-comer': { file: 'donde-comer/index.html', esPath: '/donde-comer/' },
   elchanchoalcanciamasgrandedelmundo: { file: 'elchanchoalcanciamasgrandedelmundo/index.html', esPath: '/elchanchoalcanciamasgrandedelmundo/' },
   estacionamientos: { file: 'estacionamientos/index.html', esPath: '/estacionamientos/' },
   juegos: { file: 'juegos/index.html', esPath: '/juegos/' },
@@ -15,7 +18,9 @@ module.exports = {
   salud: { file: 'salud/index.html', esPath: '/salud/' },
   seguridad: { file: 'seguridad/index.html', esPath: '/seguridad/' },
   sugerencias: { file: 'sugerencias/index.html', esPath: '/sugerencias/' },
-  'guia-turistica': { file: 'guia-turistica/index.html', esPath: '/guia-turistica/' }
+  'guia-turistica': { file: 'guia-turistica/index.html', esPath: '/guia-turistica/' },
+  'pomaire-en-un-dia': { file: 'pomaire-en-un-dia/index.html', esPath: '/pomaire-en-un-dia/' },
+  'preguntas-frecuentes': { file: 'preguntas-frecuentes/index.html', esPath: '/preguntas-frecuentes/' }
 };
 
 // Idiomas con página estática real (SEO indexable).
