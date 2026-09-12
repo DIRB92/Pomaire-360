@@ -579,6 +579,151 @@
       "twitterDescription": "ポマイレのガイドを良くするためのコメントやご提案をお送りください。メールまたはWhatsAppに直接届きます。"
     }
   },
+  "donde-comer": {
+    "en": {
+      "title": "Where to Eat in Pomaire — Giant Empanadas, Restaurants & Prices 2026",
+      "description": "Where to eat in Pomaire: the famous giant empanada (a Guinness record), the best restaurants, traditional dishes and updated 2026 prices. Food guide to Chile's pottery village.",
+      "ogTitle": "Where to Eat in Pomaire — Giant Empanadas, Restaurants & Prices 2026",
+      "ogDescription": "The famous giant empanada, the best restaurants, traditional dishes and updated prices to eat in Pomaire, Chile's pottery village.",
+      "ogImageAlt": "Giant empanadas and traditional food in Pomaire, Chile",
+      "twitterTitle": "Where to Eat in Pomaire 2026",
+      "twitterDescription": "Giant empanada, best restaurants, traditional dishes and updated prices to eat in Pomaire."
+    },
+    "pt": {
+      "title": "Onde Comer em Pomaire — Empanadas Gigantes, Restaurantes e Preços 2026",
+      "description": "Onde comer em Pomaire: a famosa empanada gigante (recorde Guinness), os melhores restaurantes, pratos típicos e preços atualizados 2026. Guia gastronômico do povoado dos oleiros do Chile.",
+      "ogTitle": "Onde Comer em Pomaire — Empanadas Gigantes, Restaurantes e Preços 2026",
+      "ogDescription": "A famosa empanada gigante, os melhores restaurantes, pratos típicos e preços atualizados para comer em Pomaire, o povoado dos oleiros do Chile.",
+      "ogImageAlt": "Empanadas gigantes e comida típica em Pomaire, Chile",
+      "twitterTitle": "Onde Comer em Pomaire 2026",
+      "twitterDescription": "Empanada gigante, melhores restaurantes, pratos típicos e preços atualizados para comer em Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの食事処 — 巨大エンパナーダ・レストラン・価格 2026",
+      "description": "ポマイレの食事処：有名な巨大エンパナーダ（ギネス記録）、おすすめレストラン、郷土料理、2026年の最新価格。チリの陶工の村のグルメガイド。",
+      "ogTitle": "ポマイレの食事処 — 巨大エンパナーダ・レストラン・価格 2026",
+      "ogDescription": "有名な巨大エンパナーダ、おすすめレストラン、郷土料理、ポマイレで食べるための最新価格。チリの陶工の村。",
+      "ogImageAlt": "チリ・ポマイレの巨大エンパナーダと郷土料理",
+      "twitterTitle": "ポマイレの食事処 2026",
+      "twitterDescription": "巨大エンパナーダ、おすすめレストラン、郷土料理、ポマイレで食べるための最新価格。"
+    }
+  },
+  "como-llegar": {
+    "en": {
+      "title": "How to Get to Pomaire from Santiago — By Car, Bus & Tour 2026",
+      "description": "How to get to Pomaire from Santiago in 2026: by car via the Autopista del Sol (Route 78), by bus from Terminal San Borja via Melipilla, travel times, costs and parking. Step-by-step guide.",
+      "ogTitle": "How to Get to Pomaire from Santiago — By Car, Bus & Tour 2026",
+      "ogDescription": "All the ways to get to Pomaire from Santiago: by car via the Autopista del Sol, by bus via Melipilla, travel times, costs and parking.",
+      "ogImageAlt": "How to get to Pomaire from Santiago, Chile",
+      "twitterTitle": "How to Get to Pomaire from Santiago 2026",
+      "twitterDescription": "By car via the Autopista del Sol or by bus via Melipilla. Travel times, costs and parking."
+    },
+    "pt": {
+      "title": "Como Chegar a Pomaire desde Santiago — De Carro, Ônibus e Tour 2026",
+      "description": "Como chegar a Pomaire desde Santiago em 2026: de carro pela Autopista del Sol (Rota 78), de ônibus do Terminal San Borja via Melipilla, tempos, custos e estacionamento. Guia passo a passo.",
+      "ogTitle": "Como Chegar a Pomaire desde Santiago — De Carro, Ônibus e Tour 2026",
+      "ogDescription": "Todas as formas de chegar a Pomaire desde Santiago: de carro pela Autopista del Sol, de ônibus via Melipilla, tempos, custos e estacionamento.",
+      "ogImageAlt": "Como chegar a Pomaire desde Santiago, Chile",
+      "twitterTitle": "Como Chegar a Pomaire desde Santiago 2026",
+      "twitterDescription": "De carro pela Autopista del Sol ou de ônibus via Melipilla. Tempos, custos e estacionamento."
+    },
+    "ja": {
+      "title": "サンティアゴからポマイレへの行き方 — 車・バス・ツアー 2026",
+      "description": "2026年、サンティアゴからポマイレへの行き方：アウトピスタ・デル・ソル（78号線）を車で、サン・ボルハ・ターミナルからメリピージャ経由のバスで。所要時間・費用・駐車場を解説。",
+      "ogTitle": "サンティアゴからポマイレへの行き方 — 車・バス・ツアー 2026",
+      "ogDescription": "サンティアゴからポマイレへ行くあらゆる方法：アウトピスタ・デル・ソルを車で、メリピージャ経由のバスで。所要時間・費用・駐車場。",
+      "ogImageAlt": "サンティアゴからチリ・ポマイレへの行き方",
+      "twitterTitle": "サンティアゴからポマイレへの行き方 2026",
+      "twitterDescription": "アウトピスタ・デル・ソルを車で、またはメリピージャ経由のバスで。所要時間・費用・駐車場。"
+    }
+  },
+  "pomaire-en-un-dia": {
+    "en": {
+      "title": "Pomaire in One Day: Full Itinerary from Santiago 2026 | Pomaire 360",
+      "description": "One-day itinerary in Pomaire from Santiago: an hour-by-hour route with clay workshops, a traditional lunch, the giant piggy bank and craft shopping. The perfect day-trip plan for 2026.",
+      "ogTitle": "Pomaire in One Day: Full Itinerary from Santiago 2026",
+      "ogDescription": "An hour-by-hour route to make the most of Pomaire in one day: clay workshops, traditional lunch, the giant piggy bank and craft shopping.",
+      "ogImageAlt": "One-day itinerary in Pomaire, Chile",
+      "twitterTitle": "Pomaire in One Day: Full Itinerary 2026",
+      "twitterDescription": "An hour-by-hour route to make the most of Pomaire in one day from Santiago."
+    },
+    "pt": {
+      "title": "Pomaire em Um Dia: Roteiro Completo desde Santiago 2026 | Pomaire 360",
+      "description": "Roteiro de um dia em Pomaire desde Santiago: percurso hora a hora com ateliês de barro, almoço típico, o cofrinho gigante e compras de artesanato. O plano perfeito de bate-volta para 2026.",
+      "ogTitle": "Pomaire em Um Dia: Roteiro Completo desde Santiago 2026",
+      "ogDescription": "Percurso hora a hora para aproveitar Pomaire ao máximo em um dia: ateliês de barro, almoço típico, o cofrinho gigante e compras de artesanato.",
+      "ogImageAlt": "Roteiro de um dia em Pomaire, Chile",
+      "twitterTitle": "Pomaire em Um Dia: Roteiro Completo 2026",
+      "twitterDescription": "Percurso hora a hora para aproveitar Pomaire ao máximo em um dia desde Santiago."
+    },
+    "ja": {
+      "title": "ポマイレ1日観光：サンティアゴからの完全モデルコース 2026 | ポマイレ360",
+      "description": "サンティアゴからのポマイレ1日モデルコース：陶芸工房、郷土料理のランチ、巨大貯金箱、工芸品の買い物を時間ごとに紹介。2026年の日帰り旅行に最適なプラン。",
+      "ogTitle": "ポマイレ1日観光：サンティアゴからの完全モデルコース 2026",
+      "ogDescription": "ポマイレを1日で満喫する時間ごとのコース：陶芸工房、郷土料理のランチ、巨大貯金箱、工芸品の買い物。",
+      "ogImageAlt": "チリ・ポマイレの1日モデルコース",
+      "twitterTitle": "ポマイレ1日観光：完全モデルコース 2026",
+      "twitterDescription": "サンティアゴからポマイレを1日で満喫する時間ごとのコース。"
+    }
+  },
+  "preguntas-frecuentes": {
+    "en": {
+      "title": "Pomaire FAQ — Hours, How to Get There, Prices | Pomaire 360",
+      "description": "Frequently asked questions about Pomaire: how to get there from Santiago, opening hours, whether it opens on Mondays, where to park, prices, how long to spend and whether it's good for kids. All answered for 2026.",
+      "ogTitle": "Pomaire FAQ — Hours, How to Get There & Prices 2026",
+      "ogDescription": "All your questions answered for visiting Pomaire: transport, hours, prices, parking, whether it opens on Mondays and whether it's good for kids.",
+      "ogImageAlt": "Frequently asked questions about visiting Pomaire, Chile",
+      "twitterTitle": "Pomaire FAQ 2026",
+      "twitterDescription": "How to get there, hours, prices, parking and everything you need to know to visit Pomaire."
+    },
+    "pt": {
+      "title": "Perguntas Frequentes de Pomaire — Horários, Como Chegar, Preços | Pomaire 360",
+      "description": "Perguntas frequentes sobre Pomaire: como chegar desde Santiago, horários, se abre às segundas, onde estacionar, preços, quanto tempo dedicar e se é adequado para crianças. Tudo resolvido em 2026.",
+      "ogTitle": "Perguntas Frequentes de Pomaire — Horários, Como Chegar e Preços 2026",
+      "ogDescription": "Todas as dúvidas resolvidas para visitar Pomaire: transporte, horários, preços, estacionamento, se abre às segundas e se é adequado para crianças.",
+      "ogImageAlt": "Perguntas frequentes sobre visitar Pomaire, Chile",
+      "twitterTitle": "Perguntas Frequentes de Pomaire 2026",
+      "twitterDescription": "Como chegar, horários, preços, estacionamento e tudo o que você precisa saber para visitar Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレのよくある質問 — 営業時間・行き方・価格 | ポマイレ360",
+      "description": "ポマイレに関するよくある質問：サンティアゴからの行き方、営業時間、月曜は開いているか、駐車場、価格、滞在時間、子供連れに向くか。2026年版ですべて解決。",
+      "ogTitle": "ポマイレのよくある質問 — 営業時間・行き方・価格 2026",
+      "ogDescription": "ポマイレ観光の疑問をすべて解決：交通、営業時間、価格、駐車場、月曜の営業、子供連れの可否。",
+      "ogImageAlt": "チリ・ポマイレ観光のよくある質問",
+      "twitterTitle": "ポマイレのよくある質問 2026",
+      "twitterDescription": "行き方、営業時間、価格、駐車場など、ポマイレ観光に必要な情報。"
+    }
+  },
+  "con-ninos": {
+    "en": {
+      "title": "Pomaire with Kids: Family Things to Do near Santiago 2026 | Pomaire 360",
+      "description": "Pomaire with kids: clay workshops where children make their own pieces, the giant piggy bank, flat streets and family-friendly restaurants. The perfect family outing 50 minutes from Santiago in 2026.",
+      "ogTitle": "Pomaire with Kids: Family Things to Do near Santiago 2026",
+      "ogDescription": "Clay workshops for kids, the giant piggy bank, flat streets and family-friendly restaurants. The perfect family outing 50 minutes from Santiago.",
+      "ogImageAlt": "Pomaire with kids, a family outing in Chile",
+      "twitterTitle": "Pomaire with Kids: Family Outing 2026",
+      "twitterDescription": "Clay workshops, the giant piggy bank and family-friendly restaurants. The perfect family plan near Santiago."
+    },
+    "pt": {
+      "title": "Pomaire com Crianças: O que Fazer em Família perto de Santiago 2026 | Pomaire 360",
+      "description": "Pomaire com crianças: ateliês de barro para fazer peças, o cofrinho gigante, ruas planas e restaurantes para famílias. O passeio em família perfeito a 50 minutos de Santiago em 2026.",
+      "ogTitle": "Pomaire com Crianças: O que Fazer em Família perto de Santiago 2026",
+      "ogDescription": "Ateliês de barro para crianças, o cofrinho gigante, ruas planas e restaurantes para famílias. O passeio em família perfeito a 50 minutos de Santiago.",
+      "ogImageAlt": "Pomaire com crianças, passeio em família no Chile",
+      "twitterTitle": "Pomaire com Crianças: Passeio em Família 2026",
+      "twitterDescription": "Ateliês de barro, o cofrinho gigante e restaurantes para famílias. O plano em família perfeito perto de Santiago."
+    },
+    "ja": {
+      "title": "子供と行くポマイレ：サンティアゴ近郊の家族向けおでかけ 2026 | ポマイレ360",
+      "description": "子供と行くポマイレ：子供が自分の作品を作れる陶芸工房、巨大貯金箱、平坦な通り、家族向けレストラン。2026年、サンティアゴから50分の家族に最適なおでかけ。",
+      "ogTitle": "子供と行くポマイレ：サンティアゴ近郊の家族向けおでかけ 2026",
+      "ogDescription": "子供向けの陶芸工房、巨大貯金箱、平坦な通り、家族向けレストラン。サンティアゴから50分の家族に最適なおでかけ。",
+      "ogImageAlt": "子供と行くチリ・ポマイレの家族おでかけ",
+      "twitterTitle": "子供と行くポマイレ：家族おでかけ 2026",
+      "twitterDescription": "陶芸工房、巨大貯金箱、家族向けレストラン。サンティアゴ近郊の家族に最適なプラン。"
+    }
+  },
   "guia-turistica": {
     "en": {
       "title": "Pomaire Tourist Guide 2026 — What to See, Eat & How to Get There | Pomaire 360",
