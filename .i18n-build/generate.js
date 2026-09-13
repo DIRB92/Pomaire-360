@@ -36,6 +36,11 @@ const jsonldBusinessI18n = require('./jsonld_business_i18n.json');
 const indexAltI18n = require('./index_alt_i18n.json');
 const faqI18n = require('./faq_i18n.json');
 const visibleStaticI18n = require('./visible_static_i18n.json');
+// Traducciones del CUERPO (contenido del <article>) para páginas de guía que
+// no usan data-t. Estructura: { slug: { en: "<html interno del article>" } }.
+// Solo se aplica al idioma presente en el diccionario (por ahora, en).
+let bodyI18n = {};
+try { bodyI18n = require('./body_i18n.json'); } catch (e) { bodyI18n = {}; }
 const REGION_I18N = { en: 'Metropolitan Region', pt: 'Região Metropolitana', ja: 'サンティアゴ首都州' };
 
 const { LANGS: baseLangs, DIR_TAGS } = loadLangs(REPO_ROOT);
@@ -492,6 +497,22 @@ function patchJuegos($, lang) {
 }
 
 // ---------------------------------------------------------------------------
+// Traduce el CUERPO de las páginas de guía (contenido del <article>) que no
+// usan data-t. Reemplaza el HTML interno del <article> (identificado por su id
+// = slug) con la versión ya traducida del diccionario body_i18n.json.
+// Se aplica solo si existe entrada para ese slug e idioma. Los enlaces internos
+// del HTML inyectado se reescriben después por rewriteLinks(), por lo que en el
+// diccionario deben ir como rutas ES (p.ej. /donde-comer/).
+// ---------------------------------------------------------------------------
+
+function patchBody($, lang, slug) {
+  const entry = bodyI18n[slug] && bodyI18n[slug][lang];
+  if (!entry) return;
+  const $article = $('article#' + slug);
+  if ($article.length) $article.html(entry);
+}
+
+// ---------------------------------------------------------------------------
 // Generación principal
 // ---------------------------------------------------------------------------
 
@@ -517,6 +538,11 @@ function generatePage(slug, lang) {
 
   // 4) JSON-LD (breadcrumbs, urls)
   patchJsonLd($, lang, slug);
+
+  // 4b) Cuerpo del artículo traducido (guías sin data-t). Debe ir ANTES de
+  //     rewriteLinks para que los enlaces internos del HTML inyectado también
+  //     se reescriban al prefijo de idioma correspondiente.
+  patchBody($, lang, slug);
 
   // 5) Enlaces internos -> rutas /en/ o /pt/
   rewriteLinks($, lang, slug);
