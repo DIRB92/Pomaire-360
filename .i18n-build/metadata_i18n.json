@@ -753,6 +753,35 @@
       "twitterDescription": "陶芸工房、巨大貯金箱、家族向けレストラン。サンティアゴ近郊の家族に最適なプラン。"
     }
   },
+  "que-comprar": {
+    "en": {
+      "title": "What to Buy in Pomaire — Clay Crafts, Piggy Bank & Prices 2026 | Pomaire 360",
+      "description": "What to buy in Pomaire: the clay piggy bank, clay pots and dishes, tableware and ornaments. Reference prices, how to spot good-quality clay and tips for transporting it. 2026 guide.",
+      "ogTitle": "What to Buy in Pomaire — Clay Crafts, Piggy Bank & Prices 2026",
+      "ogDescription": "The clay piggy bank, clay pots and dishes, tableware and ornaments. Prices, how to spot good clay and tips for transporting it.",
+      "ogImageAlt": "Clay crafts from Pomaire — piggy bank and clay pieces",
+      "twitterTitle": "What to Buy in Pomaire 2026",
+      "twitterDescription": "The clay piggy bank, clay pots, tableware and ornaments. Prices and how to spot good clay."
+    },
+    "pt": {
+      "title": "O que Comprar em Pomaire — Artesanato de Barro, Cofrinho e Preços 2026 | Pomaire 360",
+      "description": "O que comprar em Pomaire: o cofrinho de barro, panelas e travessas de barro, louça e enfeites. Preços de referência, como reconhecer o bom barro e dicas para transportá-lo. Guia 2026.",
+      "ogTitle": "O que Comprar em Pomaire — Artesanato de Barro, Cofrinho e Preços 2026",
+      "ogDescription": "O cofrinho de barro, panelas e travessas de barro, louça e enfeites. Preços, como reconhecer o bom barro e dicas para transportá-lo.",
+      "ogImageAlt": "Artesanato de barro de Pomaire — cofrinho e peças de barro",
+      "twitterTitle": "O que Comprar em Pomaire 2026",
+      "twitterDescription": "O cofrinho de barro, panelas de barro, louça e enfeites. Preços e como reconhecer o bom barro."
+    },
+    "ja": {
+      "title": "ポマイレで買うもの — 陶器・貯金箱・価格 2026 | ポマイレ360",
+      "description": "ポマイレで買うもの：陶器の貯金箱、粘土の鍋や皿、食器、置物。目安価格、良い陶器の見分け方、持ち帰りのコツ。2026年ガイド。",
+      "ogTitle": "ポマイレで買うもの — 陶器・貯金箱・価格 2026",
+      "ogDescription": "陶器の貯金箱、粘土の鍋や皿、食器、置物。価格、良い陶器の見分け方、持ち帰りのコツ。",
+      "ogImageAlt": "ポマイレの陶器 — 貯金箱と粘土の作品",
+      "twitterTitle": "ポマイレで買うもの 2026",
+      "twitterDescription": "陶器の貯金箱、粘土の鍋、食器、置物。価格と良い陶器の見分け方。"
+    }
+  },
   "guia-turistica": {
     "en": {
       "title": "Pomaire Tourist Guide 2026 — What to See, Eat & How to Get There | Pomaire 360",
