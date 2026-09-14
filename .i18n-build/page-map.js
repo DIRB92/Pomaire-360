@@ -9,6 +9,7 @@ module.exports = {
   'como-llegar': { file: 'como-llegar/index.html', esPath: '/como-llegar/' },
   'con-ninos': { file: 'con-ninos/index.html', esPath: '/con-ninos/' },
   'donde-comer': { file: 'donde-comer/index.html', esPath: '/donde-comer/' },
+  'donde-dormir': { file: 'donde-dormir/index.html', esPath: '/donde-dormir/' },
   elchanchoalcanciamasgrandedelmundo: { file: 'elchanchoalcanciamasgrandedelmundo/index.html', esPath: '/elchanchoalcanciamasgrandedelmundo/' },
   estacionamientos: { file: 'estacionamientos/index.html', esPath: '/estacionamientos/' },
   juegos: { file: 'juegos/index.html', esPath: '/juegos/' },

@@ -608,6 +608,35 @@
       "twitterDescription": "巨大エンパナーダ、おすすめレストラン、郷土料理、ポマイレで食べるための最新価格。"
     }
   },
+  "donde-dormir": {
+    "en": {
+      "title": "Where to Stay in Pomaire — Cabins, Guesthouses & Lodging 2026 | Pomaire 360",
+      "description": "Where to stay in Pomaire: cabins, B&Bs, guesthouses and rural lodging near the square. Types, reference prices and tips for spending a night in Chile's pottery village in 2026.",
+      "ogTitle": "Where to Stay in Pomaire — Cabins, Guesthouses & Lodging 2026",
+      "ogDescription": "Cabins, B&Bs, guesthouses and rural lodging near the square. Types, prices and tips for spending a night in Pomaire.",
+      "ogImageAlt": "Where to stay in Pomaire, Chile — cabins and rural lodging",
+      "twitterTitle": "Where to Stay in Pomaire 2026",
+      "twitterDescription": "Cabins, B&Bs, guesthouses and rural lodging in Pomaire. Types, prices and tips."
+    },
+    "pt": {
+      "title": "Onde Dormir em Pomaire — Cabanas, Pousadas e Hospedagem 2026 | Pomaire 360",
+      "description": "Onde dormir em Pomaire: cabanas, B&Bs, pousadas e hospedagem rural perto da praça. Tipos, preços de referência e dicas para passar a noite no povoado dos oleiros do Chile em 2026.",
+      "ogTitle": "Onde Dormir em Pomaire — Cabanas, Pousadas e Hospedagem 2026",
+      "ogDescription": "Cabanas, B&Bs, pousadas e hospedagem rural perto da praça. Tipos, preços e dicas para passar a noite em Pomaire.",
+      "ogImageAlt": "Onde dormir em Pomaire, Chile — cabanas e hospedagem rural",
+      "twitterTitle": "Onde Dormir em Pomaire 2026",
+      "twitterDescription": "Cabanas, B&Bs, pousadas e hospedagem rural em Pomaire. Tipos, preços e dicas."
+    },
+    "ja": {
+      "title": "ポマイレの宿泊 — コテージ・ゲストハウス・宿 2026 | ポマイレ360",
+      "description": "ポマイレの宿泊：広場近くのコテージ、B&B、ゲストハウス、田舎の宿。2026年、チリの陶工の村で一泊するための種類・目安価格・コツ。",
+      "ogTitle": "ポマイレの宿泊 — コテージ・ゲストハウス・宿 2026",
+      "ogDescription": "広場近くのコテージ、B&B、ゲストハウス、田舎の宿。ポマイレで一泊するための種類・価格・コツ。",
+      "ogImageAlt": "チリ・ポマイレの宿泊 — コテージと田舎の宿",
+      "twitterTitle": "ポマイレの宿泊 2026",
+      "twitterDescription": "ポマイレのコテージ、B&B、ゲストハウス、田舎の宿。種類・価格・コツ。"
+    }
+  },
   "como-llegar": {
     "en": {
       "title": "How to Get to Pomaire from Santiago — By Car, Bus & Tour 2026",
