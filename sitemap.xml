@@ -354,6 +354,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/con-ninos/"/>
   </url>
   <url>
+    <loc>https://www.pomaire360.cl/que-comprar/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/que-comprar/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/en/que-comprar/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/que-comprar/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/pt/que-comprar/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/que-comprar/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/que-comprar/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/que-comprar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/que-comprar/"/>
+  </url>
+  <url>
     <loc>https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>

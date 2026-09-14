@@ -15,6 +15,7 @@ module.exports = {
   juegos: { file: 'juegos/index.html', esPath: '/juegos/' },
   links: { file: 'links/index.html', esPath: '/links/' },
   plaza: { file: 'plaza/index.html', esPath: '/plaza/' },
+  'que-comprar': { file: 'que-comprar/index.html', esPath: '/que-comprar/' },
   'ruta-del-vino': { file: 'ruta-del-vino/index.html', esPath: '/ruta-del-vino/' },
   salud: { file: 'salud/index.html', esPath: '/salud/' },
   seguridad: { file: 'seguridad/index.html', esPath: '/seguridad/' },
