@@ -33,6 +33,7 @@ const SITEMAP_META = {
   'ruta-del-vino': { lastmod: '2026-07-20', changefreq: 'monthly', priority: '0.8' },
   'guia-turistica': { lastmod: '2026-08-08', changefreq: 'weekly', priority: '0.9' },
   'donde-comer': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
+  'donde-dormir': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.8' },
   'como-llegar': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
   'preguntas-frecuentes': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.8' },
   'pomaire-en-un-dia': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.8' },
@@ -47,7 +48,7 @@ const SITEMAP_META = {
 
 // Orden de aparición — excluye slugs con 301 redirect activo.
 const SLUG_ORDER = [
-  'index', 'guia-turistica', 'donde-comer', 'como-llegar', 'pomaire-en-un-dia',
+  'index', 'guia-turistica', 'donde-comer', 'donde-dormir', 'como-llegar', 'pomaire-en-un-dia',
   'preguntas-frecuentes', 'con-ninos',
   'elchanchoalcanciamasgrandedelmundo', 'estacionamientos', 'salud',
   'seguridad', 'comercio', 'alfareria', 'ruta-del-vino',
