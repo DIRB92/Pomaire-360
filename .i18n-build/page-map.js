@@ -11,6 +11,7 @@ module.exports = {
   'donde-comer': { file: 'donde-comer/index.html', esPath: '/donde-comer/' },
   'donde-dormir': { file: 'donde-dormir/index.html', esPath: '/donde-dormir/' },
   elchanchoalcanciamasgrandedelmundo: { file: 'elchanchoalcanciamasgrandedelmundo/index.html', esPath: '/elchanchoalcanciamasgrandedelmundo/' },
+  'fiestas-patrias': { file: 'fiestas-patrias/index.html', esPath: '/fiestas-patrias/' },
   estacionamientos: { file: 'estacionamientos/index.html', esPath: '/estacionamientos/' },
   juegos: { file: 'juegos/index.html', esPath: '/juegos/' },
   links: { file: 'links/index.html', esPath: '/links/' },

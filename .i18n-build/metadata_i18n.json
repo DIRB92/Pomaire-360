@@ -782,6 +782,35 @@
       "twitterDescription": "陶器の貯金箱、粘土の鍋、食器、置物。価格と良い陶器の見分け方。"
     }
   },
+  "fiestas-patrias": {
+    "en": {
+      "title": "Fiestas Patrias in Pomaire 2026 — September 18 in the Pottery Village | Pomaire 360",
+      "description": "Spend Chile's Fiestas Patrias in Pomaire: clay-oven empanadas, artisanal chicha, country cuisine and a huaso atmosphere 50 min from Santiago. Guide to September 18, 2026 with traffic and timing tips.",
+      "ogTitle": "Fiestas Patrias in Pomaire 2026 — September 18 in the Pottery Village",
+      "ogDescription": "Clay-oven empanadas, artisanal chicha, country cuisine and a huaso atmosphere 50 min from Santiago. Guide to the Dieciocho in Pomaire with traffic and timing tips.",
+      "ogImageAlt": "Fiestas Patrias in Pomaire, Chile — empanadas, chicha and huaso atmosphere",
+      "twitterTitle": "Fiestas Patrias in Pomaire 2026 — September 18",
+      "twitterDescription": "Clay-oven empanadas, chicha and a huaso atmosphere 50 min from Santiago. Guide to the Dieciocho in Pomaire."
+    },
+    "pt": {
+      "title": "Fiestas Patrias em Pomaire 2026 — o 18 de setembro no povoado dos oleiros | Pomaire 360",
+      "description": "Passe as Fiestas Patrias do Chile em Pomaire: empanadas de forno de barro, chicha artesanal, cozinha campestre e ambiente huaso a 50 min de Santiago. Guia do 18 de setembro de 2026 com dicas de trânsito e horários.",
+      "ogTitle": "Fiestas Patrias em Pomaire 2026 — o 18 de setembro no povoado dos oleiros",
+      "ogDescription": "Empanadas de forno de barro, chicha artesanal, cozinha campestre e ambiente huaso a 50 min de Santiago. Guia do Dieciocho em Pomaire com dicas de trânsito e horários.",
+      "ogImageAlt": "Fiestas Patrias em Pomaire, Chile — empanadas, chicha e ambiente huaso",
+      "twitterTitle": "Fiestas Patrias em Pomaire 2026 — 18 de setembro",
+      "twitterDescription": "Empanadas de forno de barro, chicha e ambiente huaso a 50 min de Santiago. Guia do Dieciocho em Pomaire."
+    },
+    "ja": {
+      "title": "ポマイレの独立記念祭 2026 — 陶工の村で過ごす9月18日 | ポマイレ360",
+      "description": "チリの独立記念祭（フィエスタス・パトリアス）をポマイレで：土窯焼きエンパナーダ、自家製チチャ、田舎料理、ウアソの雰囲気。サンティアゴから50分。2026年9月18日のガイド、渋滞と時間のコツ付き。",
+      "ogTitle": "ポマイレの独立記念祭 2026 — 陶工の村で過ごす9月18日",
+      "ogDescription": "土窯焼きエンパナーダ、自家製チチャ、田舎料理、ウアソの雰囲気。サンティアゴから50分。ポマイレの独立記念祭ガイド、渋滞と時間のコツ付き。",
+      "ogImageAlt": "チリ・ポマイレの独立記念祭 — エンパナーダ、チチャ、ウアソの雰囲気",
+      "twitterTitle": "ポマイレの独立記念祭 2026 — 9月18日",
+      "twitterDescription": "土窯焼きエンパナーダ、チチャ、ウアソの雰囲気。サンティアゴから50分。ポマイレの独立記念祭ガイド。"
+    }
+  },
   "guia-turistica": {
     "en": {
       "title": "Pomaire Tourist Guide 2026 — What to See, Eat & How to Get There | Pomaire 360",
