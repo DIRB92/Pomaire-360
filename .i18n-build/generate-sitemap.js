@@ -38,6 +38,7 @@ const SITEMAP_META = {
   'preguntas-frecuentes': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.8' },
   'pomaire-en-un-dia': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.8' },
   'con-ninos': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.7' },
+  'que-comprar': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.8' },
   plaza: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
   anunciate: { lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.5' },
   apoyar: { lastmod: '2026-07-01', changefreq: 'monthly', priority: '0.5' },
@@ -49,7 +50,7 @@ const SITEMAP_META = {
 // Orden de aparición — excluye slugs con 301 redirect activo.
 const SLUG_ORDER = [
   'index', 'guia-turistica', 'donde-comer', 'donde-dormir', 'como-llegar', 'pomaire-en-un-dia',
-  'preguntas-frecuentes', 'con-ninos',
+  'preguntas-frecuentes', 'con-ninos', 'que-comprar',
   'elchanchoalcanciamasgrandedelmundo', 'estacionamientos', 'salud',
   'seguridad', 'comercio', 'alfareria', 'ruta-del-vino',
   'plaza', 'anunciate', 'apoyar',
