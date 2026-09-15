@@ -23,15 +23,15 @@ const SITE = 'https://www.pomaire360.cl';
 // señales mixtas a Google (gastronomia, alojamientos, alrededores, que-ver,
 // locomocion, gruas redirigen a URLs nuevas).
 const SITEMAP_META = {
-  index: { lastmod: '2026-08-08', changefreq: 'weekly', priority: '1.0' },
+  index: { lastmod: '2026-09-12', changefreq: 'weekly', priority: '1.0' },
   elchanchoalcanciamasgrandedelmundo: { lastmod: '2026-08-01', changefreq: 'monthly', priority: '0.8' },
   estacionamientos: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
   salud: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
   seguridad: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
   comercio: { lastmod: '2026-07-15', changefreq: 'monthly', priority: '0.7' },
-  alfareria: { lastmod: '2026-08-01', changefreq: 'weekly', priority: '0.9' },
+  alfareria: { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
   'ruta-del-vino': { lastmod: '2026-07-20', changefreq: 'monthly', priority: '0.8' },
-  'guia-turistica': { lastmod: '2026-08-08', changefreq: 'weekly', priority: '0.9' },
+  'guia-turistica': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
   'donde-comer': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
   'donde-dormir': { lastmod: '2026-09-12', changefreq: 'monthly', priority: '0.8' },
   'como-llegar': { lastmod: '2026-09-12', changefreq: 'weekly', priority: '0.9' },
