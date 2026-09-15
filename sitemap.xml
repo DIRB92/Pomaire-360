@@ -398,6 +398,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/que-comprar/"/>
   </url>
   <url>
+    <loc>https://www.pomaire360.cl/fiestas-patrias/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/en/fiestas-patrias/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/pt/fiestas-patrias/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+  </url>
+  <url>
+    <loc>https://www.pomaire360.cl/ja/fiestas-patrias/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.pomaire360.cl/en/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.pomaire360.cl/pt/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.pomaire360.cl/ja/fiestas-patrias/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/fiestas-patrias/"/>
+  </url>
+  <url>
     <loc>https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
