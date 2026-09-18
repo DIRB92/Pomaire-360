@@ -52,6 +52,18 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // Solo admite URLs de imagen con esquema seguro: http(s), ruta relativa o
+  // data:image/*. Bloquea javascript:, data: no-imagen y otros esquemas para
+  // que un valor malicioso en foto_portada/fotos (Supabase) no llegue al src.
+  function sanitizeImageURL(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    if (/^https?:\/\//i.test(url)) return url;
+    if (/^\/[^\/]/.test(url)) return url; // ruta relativa (no //host)
+    if (/^data:image\//i.test(url)) return url;
+    return ''; // cualquier otro esquema -> bloquear
+  }
+
   function renderStars(avg) {
     if (!avg || avg <= 0) return '';
     var full = Math.floor(avg);
@@ -88,8 +100,8 @@
   }
 
   function getImage(item) {
-    if (item.foto_portada) return item.foto_portada;
-    if (item.fotos && item.fotos.length > 0) return item.fotos[0];
+    if (item.foto_portada) return sanitizeImageURL(item.foto_portada);
+    if (item.fotos && item.fotos.length > 0) return sanitizeImageURL(item.fotos[0]);
     return '';
   }
 

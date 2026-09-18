@@ -60,6 +60,29 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // Devuelve la URL solo si usa un esquema seguro (http/https/tel/mailto) o es
+  // una ruta relativa; para cualquier otro esquema (javascript:, data:, etc.)
+  // devuelve cadena vacia. escapeHTML NO bloquea esquemas, por lo que los href
+  // y src que vienen de datos de usuario (Supabase) DEBEN pasar antes por aqui.
+  function sanitizeURL(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    if (/^(https?:\/\/|tel:|mailto:)/i.test(url)) return url;
+    if (/^\/[^\/]/.test(url)) return url; // ruta relativa (no //host)
+    if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return ''; // otro esquema -> bloquear
+    return url;
+  }
+
+  // Variante para <img src>: solo http(s), ruta relativa o data:image/*.
+  function sanitizeImageURL(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    if (/^https?:\/\//i.test(url)) return url;
+    if (/^\/[^\/]/.test(url)) return url;
+    if (/^data:image\//i.test(url)) return url;
+    return '';
+  }
+
   // ─── Category Emojis (placeholder when no image) ─────────────────────────
   var CATEGORY_EMOJIS = {
     alfareria: '🏺', talleres: '🔨', restaurantes: '🍽️',
@@ -130,7 +153,7 @@
       html += '<div class="mod-card-carousel" data-carousel="' + escapeHTML(slug) + '">';
       html += '<div class="mod-card-carousel-track">';
       for (var ci = 0; ci < allImages.length; ci++) {
-        html += '<img class="mod-card-carousel-slide" src="' + escapeHTML(allImages[ci]) + '" alt="' + escapeHTML(name) + ' - foto ' + (ci + 1) + '" loading="lazy">';
+        html += '<img class="mod-card-carousel-slide" src="' + escapeHTML(sanitizeImageURL(allImages[ci])) + '" alt="' + escapeHTML(name) + ' - foto ' + (ci + 1) + '" loading="lazy">';
       }
       html += '</div>';
       // Nav arrows
@@ -144,7 +167,7 @@
       html += '</div>';
       html += '</div>';
     } else if (img) {
-      html += '<img class="mod-card-img" src="' + escapeHTML(img) + '" alt="' + escapeHTML(name) + '" loading="lazy">';
+      html += '<img class="mod-card-img" src="' + escapeHTML(sanitizeImageURL(img)) + '" alt="' + escapeHTML(name) + '" loading="lazy">';
     } else {
       html += '<div class="mod-card-img-placeholder"><span>' + (CATEGORY_EMOJIS[cat] || '🏪') + '</span></div>';
     }
@@ -232,9 +255,9 @@
         html += '<a class="mod-btn-google-maps" href="' + escapeHTML(googleMapsUrl) + '" target="_blank" rel="noopener" title="Como llegar en Google Maps">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
           + ' Google Maps</a>';
-      } else if (map) {
+      } else if (map && sanitizeURL(map)) {
         // Fallback: usar la URL directa de Google Maps si no hay coordenadas
-        html += '<a class="mod-btn-google-maps" href="' + escapeHTML(map) + '" target="_blank" rel="noopener" title="Ver en Google Maps">'
+        html += '<a class="mod-btn-google-maps" href="' + escapeHTML(sanitizeURL(map)) + '" target="_blank" rel="noopener" title="Ver en Google Maps">'
           + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>'
           + ' Google Maps</a>';
       }
@@ -254,15 +277,15 @@
       var igHandle = ig.replace('@', '');
       html += '<a class="mod-action-ig" href="https://instagram.com/' + escapeHTML(igHandle) + '" target="_blank" rel="noopener">📷 IG</a>';
     }
-    if (fb) {
-      html += '<a class="mod-action-fb" href="' + escapeHTML(fb) + '" target="_blank" rel="noopener">📘 Facebook</a>';
+    if (fb && sanitizeURL(fb)) {
+      html += '<a class="mod-action-fb" href="' + escapeHTML(sanitizeURL(fb)) + '" target="_blank" rel="noopener">📘 Facebook</a>';
     }
     if (tiktok) {
       var tiktokHandle = tiktok.replace('@', '');
       html += '<a class="mod-action-tiktok" href="https://tiktok.com/@' + escapeHTML(tiktokHandle) + '" target="_blank" rel="noopener">🎵 TikTok</a>';
     }
-    if (web) {
-      html += '<a class="mod-action-web" href="' + escapeHTML(web) + '" target="_blank" rel="noopener">🌐 Web</a>';
+    if (web && sanitizeURL(web)) {
+      html += '<a class="mod-action-web" href="' + escapeHTML(sanitizeURL(web)) + '" target="_blank" rel="noopener">🌐 Web</a>';
     }
     html += '</div></div></article>';
 
