@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#D4654A">
+
+<title>Registro Interno de Brechas de Seguridad — Pomaire 360</title>
+<meta name="description" content="Registro interno de vulneraciones de seguridad de Pomaire 360 conforme al art. 14 quinquies de la Ley 21.719. Documento de uso interno.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.pomaire360.cl/privacidad/registro-brechas.html">
+
+<link rel="icon" href="https://www.pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://www.pomaire360.cl/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style-2026.css">
+<link rel="stylesheet" href="/components.css">
+<link rel="stylesheet" href="/dark-mode-overrides.css">
+
+<style>
+.brk-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.8rem; font-size: .9rem; }
+.brk-table th { background: var(--clay-light, #f5ede5); padding: .6rem; text-align: left; border-bottom: 2px solid var(--clay, #B85C2C); width: 32%; vertical-align: top; }
+.brk-table td { padding: .6rem; border-bottom: 1px solid #e8dfd4; vertical-align: top; }
+.brk-sev { display:inline-block; font-size:.78rem; padding:.2rem .7rem; border-radius:6px; font-weight:700; }
+.brk-sev-critico { background:#f8d7da; color:#721c24; }
+.brk-state { display:inline-block; font-size:.78rem; padding:.2rem .7rem; border-radius:6px; font-weight:700; background:#d4edda; color:#155724; }
+.brk-timeline { margin:.5rem 0 1.5rem 1.3rem; }
+.brk-timeline li { margin-bottom:.5rem; }
+.brk-note { background:var(--clay-light,#f5ede5); padding:1rem 1.3rem; border-radius:12px; margin:1.5rem 0; border-left:4px solid var(--clay,#B85C2C); font-size:.86rem; }
+h2.brk-h { color:var(--clay-dark); font-family:'Playfair Display',serif; margin:2rem 0 .6rem; }
+h3.brk-h3 { color:var(--clay,#B85C2C); margin:1.4rem 0 .4rem; }
+</style>
+</head>
+<body>
+<a href="#brk-content" class="skip-to-content">Saltar al contenido</a>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Navegación principal">
+  <a class="nav-brand" href="/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline">Turismo &amp; Cultura</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+    <a href="/privacidad/">← Política de Privacidad</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="sub-hero">
+  <div class="sub-ico">📒</div>
+  <h1>Registro Interno de Brechas de Seguridad</h1>
+  <p>Conforme al art. 14 quinquies de la Ley N° 21.719 · Documento de uso interno</p>
+</header>
+
+<main class="sub-wrap" id="brk-content">
+  <article style="max-width:860px;margin:0 auto;padding:2rem 1rem;line-height:1.75;">
+
+    <div class="brk-note">
+      📌 <strong>Uso interno.</strong> Este registro documenta las vulneraciones de seguridad detectadas,
+      conforme a la sección 6 del <a href="/privacidad/notificacion-brechas.html">Procedimiento de Notificación de Vulneraciones</a>.
+      Se conserva un mínimo de 5 años y queda a disposición de la Agencia de Protección de Datos Personales en caso de fiscalización.
+      <strong>Este documento es un borrador técnico</strong>; la decisión final sobre notificación a la Agencia y/o a los titulares
+      debe validarse con asesoría legal.
+    </div>
+
+    <!-- ═══════════════ INCIDENTE 2026-001 ═══════════════ -->
+    <h2 class="brk-h">Incidente N° 2026-001</h2>
+
+    <table class="brk-table">
+      <tbody>
+        <tr>
+          <th>Identificador</th>
+          <td>BRK-2026-001</td>
+        </tr>
+        <tr>
+          <th>Severidad</th>
+          <td><span class="brk-sev brk-sev-critico">CRÍTICO</span> — Acceso no autorizado a datos personales de contacto (según clasificación de la Fase 1 del procedimiento).</td>
+        </tr>
+        <tr>
+          <th>Estado actual</th>
+          <td><span class="brk-state">CERRADO</span> — Vulnerabilidad corregida y verificada.</td>
+        </tr>
+        <tr>
+          <th>Fecha y hora de detección</th>
+          <td>18 de septiembre de 2026 (durante auditoría de seguridad interna proactiva). <em>[Ajustar a la fecha/hora exacta de conocimiento.]</em></td>
+        </tr>
+        <tr>
+          <th>Origen de la detección</th>
+          <td>Auditoría interna de las políticas Row Level Security (RLS) de la base de datos Supabase, realizada por el responsable del tratamiento. No hubo reporte externo ni evidencia de explotación por terceros.</td>
+        </tr>
+        <tr>
+          <th>Sistema afectado</th>
+          <td>Base de datos Supabase — tabla <code>perfiles</code>, expuesta a través del endpoint REST público (<code>/rest/v1/perfiles</code>) del proyecto <code>uuskvqtbsvtfsovcjazf.supabase.co</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="brk-h3">1. Naturaleza de la vulneración y circunstancias</h3>
+    <p>
+      La tabla <code>perfiles</code> tenía habilitado Row Level Security (RLS), pero contenía una política de
+      lectura (<code>SELECT</code>) denominada <em>"Perfiles visibles para todos"</em> con condición
+      <code>USING (true)</code> aplicada al rol <code>public</code>. Dado que la clave anónima (<em>anon key</em>)
+      de Supabase es pública por diseño y está embebida en el código del sitio, dicha política permitía que
+      <strong>cualquier persona en Internet, sin autenticación</strong>, consultara el endpoint REST y obtuviera
+      el contenido completo de la tabla de perfiles de usuarios.
+    </p>
+    <p>
+      No se trató de una intrusión ni de un compromiso de credenciales: fue una <strong>configuración de política
+      de acceso demasiado permisiva</strong> (falla de control de acceso / exposición de datos), detectada de forma
+      proactiva durante una auditoría interna.
+    </p>
+
+    <h3 class="brk-h3">2. Categorías de datos y de titulares afectados</h3>
+    <table class="brk-table">
+      <tbody>
+        <tr>
+          <th>Categorías de datos personales expuestos</th>
+          <td>
+            Nombre completo, dirección de correo electrónico, URL de foto de perfil (avatar), rol de la cuenta
+            (p. ej. "comerciante"/"admin"), identificador de usuario (UUID) y fechas de creación/actualización.
+            <br><strong>No</strong> se expusieron contraseñas (gestionadas por Supabase Auth, fuera de esta tabla),
+            ni datos sensibles en el sentido del art. 2 de la Ley 21.719 (salud, biometría, etc.).
+          </td>
+        </tr>
+        <tr>
+          <th>Categorías de titulares</th>
+          <td>Usuarios registrados de la plataforma <code>app.pomaire360.cl</code> (comerciantes y administrador).</td>
+        </tr>
+        <tr>
+          <th>Número aproximado de titulares afectados</th>
+          <td><em>[Completar con el resultado de <code>select count(*) from public.perfiles;</code> — número de perfiles existentes en la ventana de exposición.]</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="brk-h3">3. Ventana de exposición</h3>
+    <p>
+      <strong>Inicio:</strong> desde la creación de la política <em>"Perfiles visibles para todos"</em>
+      <em>[fecha a determinar según el historial de la base de datos; potencialmente desde la puesta en marcha de la tabla]</em>.<br>
+      <strong>Fin:</strong> 18 de septiembre de 2026, al eliminarse la política permisiva.<br>
+      <strong>Evidencia de explotación:</strong> no se dispone de evidencia de que terceros hayan accedido o extraído
+      los datos durante la ventana de exposición. No obstante, por prudencia debe asumirse que los datos
+      <strong>pudieron</strong> haber sido recolectados por rastreadores automatizados (bots/scrapers), dado que el
+      endpoint era públicamente accesible.
+    </p>
+
+    <h3 class="brk-h3">4. Medidas adoptadas para remediar y mitigar</h3>
+    <ul class="brk-timeline">
+      <li><strong>Contención inmediata:</strong> se eliminó la política <code>DROP POLICY "Perfiles visibles para todos"</code> sobre <code>public.perfiles</code>, cortando el acceso anónimo.</li>
+      <li><strong>Reconstrucción de políticas de lectura:</strong> se crearon políticas restrictivas para el rol <code>authenticated</code>: cada usuario solo puede leer su propio perfil (<code>auth.uid() = id</code>) y los administradores todos (mediante función <code>SECURITY DEFINER</code> <code>es_admin()</code>, que evita recursión de RLS).</li>
+      <li><strong>Cierre de escalada de privilegios asociada:</strong> se añadió <code>WITH CHECK (auth.uid() = id)</code> a la política de actualización de perfiles y se protegió la columna <code>rol</code> para impedir que un usuario se auto-asigne el rol de administrador.</li>
+      <li><strong>Verificación:</strong> se confirmó, mediante consulta al endpoint REST con la clave anónima, que la tabla <code>perfiles</code> ya devuelve un conjunto vacío (<code>[]</code>) a solicitantes no autenticados.</li>
+      <li><strong>Auditoría del resto del modelo de datos:</strong> se revisaron las 8 tablas del esquema, confirmando RLS habilitado y políticas correctas; se corrigieron adicionalmente controles de escritura en <code>resenas</code> y <code>reservas</code>.</li>
+      <li><strong>Endurecimiento de la capa web:</strong> se reforzaron las cabeceras HTTP (CSP con <code>frame-ancestors</code>, COOP/CORP, <code>form-action</code>; eliminación de <code>X-Frame-Options: ALLOW-FROM</code> obsoleto) y se añadió saneamiento de URLs/imágenes provenientes de datos de usuario (prevención XSS).</li>
+    </ul>
+
+    <h3 class="brk-h3">5. Medidas preventivas para evitar repetición</h3>
+    <ul class="brk-timeline">
+      <li>Prohibición de políticas RLS con condición <code>USING (true)</code> sobre tablas que contengan datos personales.</li>
+      <li>Uso centralizado de la función <code>es_admin()</code> para las comprobaciones de rol, evitando lógica duplicada y recursión.</li>
+      <li>Incorporación de una revisión periódica de políticas RLS y pruebas de caja negra (lectura/escritura anónima) al procedimiento de mantenimiento.</li>
+      <li>Documentación de la pauta de auditoría RLS en el repositorio del proyecto.</li>
+    </ul>
+
+    <h3 class="brk-h3">6. Evaluación de riesgo y decisiones de notificación</h3>
+    <table class="brk-table">
+      <tbody>
+        <tr>
+          <th>¿Afecta datos personales?</th>
+          <td>Sí (datos de contacto: nombre y correo electrónico, principalmente).</td>
+        </tr>
+        <tr>
+          <th>Notificación a la Agencia (72 h)</th>
+          <td><em>[Decisión pendiente de validación legal.]</em> Al tratarse de acceso no autorizado potencial a datos personales, el procedimiento (Fase 3) contempla notificar a la Agencia dentro de 72 horas desde la toma de conocimiento. Evaluar en función del riesgo real para los titulares.</td>
+        </tr>
+        <tr>
+          <th>Notificación a titulares</th>
+          <td><em>[Decisión pendiente de validación legal.]</em> Corresponde si la vulneración supone un <strong>riesgo alto</strong> para los derechos de los titulares. Dado que los datos expuestos son de contacto (no sensibles ni financieros), evaluar si el riesgo alcanza ese umbral; en caso afirmativo, informar por email/aviso en el sitio con las recomendaciones de la Fase 4.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="brk-h3">7. Datos de contacto del responsable del tratamiento</h3>
+    <table class="brk-table">
+      <tbody>
+        <tr><th>Responsable / DPD</th><td>Diego Ignacio Rojas Barros</td></tr>
+        <tr><th>Correo de seguridad</th><td><a href="mailto:seguridad@pomaire360.cl">seguridad@pomaire360.cl</a></td></tr>
+      </tbody>
+    </table>
+
+    <hr style="margin:2rem 0;border:none;border-top:1px solid #e8dfd4;">
+    <p style="color:var(--muted);font-size:.82rem;"><strong>Registrado por:</strong> Diego Rojas B. · <strong>Fecha de registro:</strong> <time datetime="2026-09-18">18 de septiembre de 2026</time></p>
+    <p style="color:var(--muted);font-size:.82rem;">Elaborado conforme al art. 14 quinquies de la Ley N° 21.719 y al Procedimiento de Notificación de Vulneraciones de Pomaire 360. Los campos marcados con <em>[...]</em> deben completarse/verificarse antes de darse por definitivo.</p>
+
+    <p style="text-align:center;margin-top:2rem;">
+      <a href="/privacidad/" style="color:var(--clay);font-weight:600;">← Volver a Política de Privacidad</a>
+    </p>
+
+  </article>
+</main>
+
+<script src="/nav-toggle.js" defer></script>
+</body>
+</html>
