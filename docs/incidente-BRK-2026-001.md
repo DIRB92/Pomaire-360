@@ -38,12 +38,16 @@ acceso demasiado permisiva** (control de acceso / exposición de datos), detecta
 - **NO expuestos:** contraseñas (gestionadas por Supabase Auth, fuera de esta tabla) ni datos
   sensibles (art. 2 Ley 21.719).
 - **Titulares:** usuarios registrados de `app.pomaire360.cl` (comerciantes y administrador).
-- **N° aproximado de afectados:** `[Completar con select count(*) from public.perfiles;]`
+- **N° aproximado de afectados:** 17 titulares (total de perfiles registrados al momento de la detección).
 
 ## 3. Ventana de exposición
 
-- **Inicio:** desde la creación de la política permisiva `[fecha a determinar según historial de la BD]`.
+- **Inicio:** no se dispone de la fecha exacta de creación de la política permisiva. Como referencia, el
+  perfil más antiguo se registró el **25-07-2026** (`min(created_at)`); si la política existió desde el
+  diseño inicial de la tabla —lo más probable—, cada perfil estuvo expuesto desde su propia creación, por
+  lo que la exposición del conjunto se remonta al **25-07-2026**.
 - **Fin:** 18-09-2026, al eliminar la política.
+- **Duración estimada:** ~8 semanas (25-07-2026 → 18-09-2026).
 - **Evidencia de explotación:** no consta acceso de terceros. Por prudencia, asumir que los datos
   **pudieron** ser recolectados por bots/scrapers, dado que el endpoint era público.
 

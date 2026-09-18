@@ -126,16 +126,19 @@ h3.brk-h3 { color:var(--clay,#B85C2C); margin:1.4rem 0 .4rem; }
         </tr>
         <tr>
           <th>Número aproximado de titulares afectados</th>
-          <td><em>[Completar con el resultado de <code>select count(*) from public.perfiles;</code> — número de perfiles existentes en la ventana de exposición.]</em></td>
+          <td>17 titulares (total de perfiles registrados en la plataforma al momento de la detección).</td>
         </tr>
       </tbody>
     </table>
 
     <h3 class="brk-h3">3. Ventana de exposición</h3>
     <p>
-      <strong>Inicio:</strong> desde la creación de la política <em>"Perfiles visibles para todos"</em>
-      <em>[fecha a determinar según el historial de la base de datos; potencialmente desde la puesta en marcha de la tabla]</em>.<br>
+      <strong>Inicio:</strong> no se dispone de la fecha exacta de creación de la política <em>"Perfiles visibles para todos"</em>.
+      Como referencia, el perfil más antiguo se registró el <strong>25 de julio de 2026</strong>; si la política existió desde el
+      diseño inicial de la tabla —lo más probable—, cada perfil estuvo expuesto desde su propia creación, por lo que la exposición
+      del conjunto se remonta al <strong>25 de julio de 2026</strong>.<br>
       <strong>Fin:</strong> 18 de septiembre de 2026, al eliminarse la política permisiva.<br>
+      <strong>Duración estimada:</strong> aproximadamente 8 semanas.<br>
       <strong>Evidencia de explotación:</strong> no se dispone de evidencia de que terceros hayan accedido o extraído
       los datos durante la ventana de exposición. No obstante, por prudencia debe asumirse que los datos
       <strong>pudieron</strong> haber sido recolectados por rastreadores automatizados (bots/scrapers), dado que el
