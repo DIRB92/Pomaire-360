@@ -3,7 +3,7 @@
 > **Uso interno.** Conforme al art. 14 quinquies de la Ley N° 21.719 y a la sección 6
 > ("Registro interno de brechas") del Procedimiento de Notificación de Vulneraciones de Pomaire 360.
 > **Borrador técnico** — la decisión de notificar a la Agencia y/o a los titulares debe validarse con asesoría legal.
-> Los campos marcados `[...]` deben completarse/verificarse antes de darse por definitivo.
+> Registro cerrado el 18-09-2026. Decisión: conservar como registro interno, sin notificación (ver §6).
 
 ---
 
@@ -14,7 +14,7 @@
 | **Identificador** | BRK-2026-001 |
 | **Severidad** | CRÍTICO — acceso no autorizado potencial a datos personales de contacto |
 | **Estado actual** | CERRADO — vulnerabilidad corregida y verificada |
-| **Fecha/hora de detección** | 18-09-2026, durante auditoría interna. `[Ajustar a hora exacta de conocimiento]` |
+| **Fecha de detección** | 18-09-2026, durante auditoría de seguridad interna proactiva. |
 | **Origen de la detección** | Auditoría interna proactiva de políticas RLS de Supabase. Sin reporte externo. |
 | **Sistema afectado** | Supabase — tabla `perfiles`, endpoint REST público `/rest/v1/perfiles` |
 
@@ -78,8 +78,20 @@ acceso demasiado permisiva** (control de acceso / exposición de datos), detecta
 | Pregunta | Respuesta |
 |----------|-----------|
 | ¿Afecta datos personales? | Sí (contacto: nombre, email) |
-| Notificación a la Agencia (72 h) | `[Pendiente validación legal]` — evaluar según riesgo; procedimiento Fase 3 |
-| Notificación a titulares | `[Pendiente validación legal]` — procede si hay "riesgo alto"; datos de contacto, no sensibles |
+| Notificación a la Agencia (72 h) | **No se notifica.** Ver justificación abajo. |
+| Notificación a titulares | **No se notifica.** Ver justificación abajo. |
+
+**Decisión (18-09-2026):** conservar únicamente como registro interno, **sin** notificar a la Agencia
+ni a los titulares. Fundamento: (a) los datos expuestos son de contacto (nombre, correo), no sensibles
+ni financieros; (b) la vulnerabilidad se detectó de forma proactiva en auditoría interna y se remedió el
+mismo día; (c) no consta evidencia de acceso, extracción ni uso indebido por terceros; (d) el número de
+titulares es reducido (17). Se estima que la vulneración **no supone un riesgo alto** para los derechos y
+libertades de los titulares en los términos del procedimiento (Fases 3 y 4).
+
+> ⚠️ Esta es una decisión del responsable del tratamiento basada en la valoración de riesgo descrita.
+> No constituye asesoría jurídica. Si aparecen nuevos antecedentes (p. ej. evidencia de explotación),
+> la decisión debe reevaluarse. El incidente queda documentado y disponible para la Agencia en caso de
+> fiscalización, conforme al deber de conservación del registro.
 
 ## 7. Contacto del responsable
 
