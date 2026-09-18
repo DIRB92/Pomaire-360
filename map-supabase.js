@@ -39,6 +39,19 @@
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  // Devuelve la URL solo si usa un esquema seguro (http/https/tel/mailto) o es
+  // una ruta relativa; en cualquier otro caso ('' incluido javascript:/data:)
+  // devuelve cadena vacia para evitar XSS por href/src provenientes de datos
+  // de usuario (Supabase). Complementa a escapeHTML, que NO bloquea esquemas.
+  function sanitizeURL(url) {
+    if (!url) return '';
+    url = String(url).trim();
+    if (/^(https?:\/\/|tel:|mailto:)/i.test(url)) return url;
+    if (/^\/[^\/]/.test(url)) return url; // ruta relativa (no //host)
+    if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return ''; // otro esquema -> bloquear
+    return url;
+  }
+
   function buildPopup(negocio) {
     var name = escapeHTML(negocio.nombre);
     var addr = escapeHTML(negocio.direccion);
@@ -57,7 +70,8 @@
     if (phone) html += '<a href="tel:' + phone + '" style="font-size:.8em;color:#B85C2C;">📞 ' + phone + '</a>';
     if (wsp) html += '<a href="https://wa.me/' + wsp + '" target="_blank" rel="noopener" style="font-size:.8em;color:#25d366;">💬 WhatsApp</a>';
     if (ig) html += '<a href="https://instagram.com/' + ig + '" target="_blank" rel="noopener" style="font-size:.8em;color:#E1306C;">📷 @' + ig + '</a>';
-    if (negocio.web) html += '<a href="' + escapeHTML(negocio.web) + '" target="_blank" rel="noopener" style="font-size:.8em;color:#B85C2C;">🌐 Web</a>';
+    var safeWeb = sanitizeURL(negocio.web);
+    if (safeWeb) html += '<a href="' + escapeHTML(safeWeb) + '" target="_blank" rel="noopener" style="font-size:.8em;color:#B85C2C;">🌐 Web</a>';
     html += '</div>';
 
     // Enlace a reseñas en la app
