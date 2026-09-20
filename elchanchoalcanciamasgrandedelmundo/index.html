@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "TouristAttraction",
   "name": "El Chancho alcancía de greda más grande del mundo",
-  "description": "El chancho-alcancía de greda más grande del mundo, creado por el maestro alfarero César Silva Rojo en Pomaire.",
+  "description": "Chancho-alcancía de greda de 1,60 m de alto por 3 m de largo y 550 kg, fabricado en 2012 por el maestro alfarero César Silva Rojo en Pomaire. Puede visitarse en su taller.",
   "image": "https://www.pomaire360.cl/og-image.jpg",
   "url": "https://www.pomaire360.cl/elchanchoalcanciamasgrandedelmundo/",
   "telephone": "+56933566057",
@@ -162,6 +162,43 @@
   .ch-soc.ig { background: linear-gradient(45deg,#f09433,#dc2743,#bc1888); }
   .ch-soc.fb { background: #1877F2; }
   .ch-soc.maps { background: var(--clay); }
+
+  /* SECCIÓN RÉCORD (2010 / 2012) */
+  .ch-record { margin-top: 3.5rem; scroll-margin-top: 70px; }
+  .ch-record h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--clay-dark); text-align: center; margin-bottom: .8rem;
+  }
+  .ch-rec-intro { text-align: center; color: var(--text); line-height: 1.6; max-width: 640px; margin: 0 auto 2rem; }
+  .ch-rec-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.4rem; align-items: stretch; }
+  .ch-rec-card {
+    position: relative; background: var(--white); border-radius: 18px; padding: 1.6rem;
+    box-shadow: 0 4px 16px rgba(90,40,10,.08); border: 1px solid rgba(140,61,22,.10);
+  }
+  .ch-rec-card--big {
+    background: linear-gradient(160deg, #FFF3E6, #FFE4C4);
+    border: 2px solid var(--clay);
+  }
+  .ch-rec-year {
+    display: inline-block; font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: 1.6rem; color: var(--clay); background: rgba(140,61,22,.08);
+    padding: .1rem .7rem; border-radius: 12px; margin-bottom: .6rem;
+  }
+  .ch-rec-card--big .ch-rec-year { color: #fff; background: var(--clay); }
+  .ch-rec-card h3 { font-size: 1.15rem; color: var(--clay-dark); margin-bottom: .5rem; }
+  .ch-rec-card p { color: var(--text); line-height: 1.6; font-size: .95rem; }
+  .ch-rec-specs {
+    list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; padding: 0;
+  }
+  .ch-rec-specs li {
+    display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.7);
+    border: 1px solid rgba(140,61,22,.18); border-radius: 22px; padding: .45rem .9rem;
+    font-size: .9rem; color: var(--clay-dark);
+  }
+  .ch-rec-spec-ico { font-size: 1.1rem; }
+  @media (max-width: 680px) {
+    .ch-rec-grid { grid-template-columns: 1fr; }
+  }
 
   /* SECCIÓN HISTORIA (timeline) */
   .ch-historia { margin-top: 3.5rem; }
@@ -303,7 +340,7 @@
   <div class="ch-hero-content">
     <span class="ch-kicker" data-t="ch_kicker">🐷 Atractivo imperdible de Pomaire</span>
     <h1 data-t="ch_h1">El Chancho alcancía de greda más grande del mundo</h1>
-    <p class="ch-author" data-t="ch_author">Creado por <strong>César Silva Rojo</strong></p>
+    <p class="ch-author" data-t="ch_author">Creado por <strong>César Silva Rojo</strong> · 1,60 m de alto · 3 m de largo · 550 kg de greda</p>
     <div class="ch-hero-btns">
       <a href="#autor" class="ch-btn ch-btn-primary" data-t="ch_btn_hist">Ver Historia</a>
       <a href="#visitar" class="ch-btn ch-btn-ghost" data-t="ch_btn_visit">Cómo Visitar</a>
@@ -322,11 +359,34 @@
     <div class="ch-bio-text">
       <h2>César Silva Rojo</h2>
       <p class="ch-bio-role" data-t="ch_role">Maestro Alfarero · Pomaire, Chile</p>
-      <p data-t="ch_bio">Maestro alfarero pomairino y autor del chancho-alcancía de greda más grande del mundo. Con años de oficio dando forma a la greda de Pomaire, transformó una idea imposible en una obra única que hoy es atractivo del pueblo.</p>
+      <p data-t="ch_bio">Maestro alfarero pomairino y autor del chancho-alcancía de greda más grande del mundo. Tras un primer chancho en 2010, en 2012 dio forma a una pieza de 1,60 m de alto, 3 m de largo y 550 kilos de greda que hoy es atractivo del pueblo. Con años de oficio trabajando la greda de Pomaire, transformó una idea imposible en una obra única.</p>
       <div class="ch-social">
         <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Cómo llegar</a>
         <a class="ch-soc wa" href="tel:+56933566057" data-t="ch_call">📞 Llamar</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: LA HISTORIA DEL RÉCORD (dos hitos: 2010 y 2012) -->
+  <section class="ch-record" id="record">
+    <h2 data-t="ch_rec_title">De un sueño a un récord de greda</h2>
+    <p class="ch-rec-intro" data-t="ch_rec_intro">La obra que hoy visitan los turistas no nació de un día para otro: fue el resultado de dos intentos, cada uno más ambicioso que el anterior.</p>
+    <div class="ch-rec-grid">
+      <article class="ch-rec-card">
+        <span class="ch-rec-year">2010</span>
+        <h3 data-t="ch_rec1_t">El primer chancho</h3>
+        <p data-t="ch_rec1_d">En 2010 se creó una alcancía de greda con forma de chancho de <strong>0,4 metros de alto</strong> y <strong>1,55 metros de largo</strong>, con la aspiración de convertirse en récord Guinness por su tamaño. La obra fue presentada a la comunidad pomairina en un paseo de exhibición por la principal arteria turística del pueblo.</p>
+      </article>
+      <article class="ch-rec-card ch-rec-card--big">
+        <span class="ch-rec-year">2012</span>
+        <h3 data-t="ch_rec2_t">El chancho más grande del mundo</h3>
+        <p data-t="ch_rec2_d">En 2012, el artesano <strong>César Silva Rojo</strong> fabricó un chancho-alcancía de greda de <strong>1,60 metros de alto por 3 metros de largo</strong> y un peso de <strong>550 kilos</strong>. Esta es la pieza que hoy puede ser visitada por los turistas en su propio taller.</p>
+        <ul class="ch-rec-specs">
+          <li><span class="ch-rec-spec-ico">📏</span><span data-t="ch_rec2_s1"><strong>1,60 m</strong> de alto</span></li>
+          <li><span class="ch-rec-spec-ico">📐</span><span data-t="ch_rec2_s2"><strong>3 m</strong> de largo</span></li>
+          <li><span class="ch-rec-spec-ico">⚖️</span><span data-t="ch_rec2_s3"><strong>550 kg</strong> de greda</span></li>
+        </ul>
+      </article>
     </div>
   </section>
 

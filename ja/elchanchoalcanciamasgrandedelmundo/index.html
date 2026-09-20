@@ -184,6 +184,43 @@
   .ch-soc.fb { background: #1877F2; }
   .ch-soc.maps { background: var(--clay); }
 
+  /* SECCIÓN RÉCORD (2010 / 2012) */
+  .ch-record { margin-top: 3.5rem; scroll-margin-top: 70px; }
+  .ch-record h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--clay-dark); text-align: center; margin-bottom: .8rem;
+  }
+  .ch-rec-intro { text-align: center; color: var(--text); line-height: 1.6; max-width: 640px; margin: 0 auto 2rem; }
+  .ch-rec-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.4rem; align-items: stretch; }
+  .ch-rec-card {
+    position: relative; background: var(--white); border-radius: 18px; padding: 1.6rem;
+    box-shadow: 0 4px 16px rgba(90,40,10,.08); border: 1px solid rgba(140,61,22,.10);
+  }
+  .ch-rec-card--big {
+    background: linear-gradient(160deg, #FFF3E6, #FFE4C4);
+    border: 2px solid var(--clay);
+  }
+  .ch-rec-year {
+    display: inline-block; font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: 1.6rem; color: var(--clay); background: rgba(140,61,22,.08);
+    padding: .1rem .7rem; border-radius: 12px; margin-bottom: .6rem;
+  }
+  .ch-rec-card--big .ch-rec-year { color: #fff; background: var(--clay); }
+  .ch-rec-card h3 { font-size: 1.15rem; color: var(--clay-dark); margin-bottom: .5rem; }
+  .ch-rec-card p { color: var(--text); line-height: 1.6; font-size: .95rem; }
+  .ch-rec-specs {
+    list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; padding: 0;
+  }
+  .ch-rec-specs li {
+    display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.7);
+    border: 1px solid rgba(140,61,22,.18); border-radius: 22px; padding: .45rem .9rem;
+    font-size: .9rem; color: var(--clay-dark);
+  }
+  .ch-rec-spec-ico { font-size: 1.1rem; }
+  @media (max-width: 680px) {
+    .ch-rec-grid { grid-template-columns: 1fr; }
+  }
+
   /* SECCIÓN HISTORIA (timeline) */
   .ch-historia { margin-top: 3.5rem; }
   .ch-historia h2 {
@@ -335,11 +372,34 @@
     <div class="ch-bio-text">
       <h2>César Silva Rojo</h2>
       <p class="ch-bio-role" data-t="ch_role">陶芸の巨匠 · チリ、ポマイレ</p>
-      <p data-t="ch_bio">ポマイレの陶芸の巨匠であり、世界最大の陶器の貯金箱の作者。長年ポマイレの粘土を形づくってきた技で、不可能と思われたアイデアを、今や村の名所となった唯一無二の作品に変えました。</p>
+      <p data-t="ch_bio">ポマイレの陶芸の巨匠であり、世界最大の陶器の貯金箱の作者。2010年に最初の豚を作った後、2012年には高さ1.60メートル、長さ3メートル、重さ550キロの作品を仕上げ、今や村の名所となっています。長年ポマイレの粘土を扱ってきた技で、不可能と思われたアイデアを唯一無二の作品に変えました。</p>
       <div class="ch-social">
         <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ 行き方</a>
         <a class="ch-soc wa" href="tel:+56933566057" data-t="ch_call">📞 電話</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: LA HISTORIA DEL RÉCORD (dos hitos: 2010 y 2012) -->
+  <section class="ch-record" id="record">
+    <h2 data-t="ch_rec_title">夢から粘土の記録へ</h2>
+    <p class="ch-rec-intro" data-t="ch_rec_intro">今日、観光客が訪れる作品は一日でできたものではありません。前回よりも野心的な2度の挑戦の結果です。</p>
+    <div class="ch-rec-grid">
+      <article class="ch-rec-card">
+        <span class="ch-rec-year">2010</span>
+        <h3 data-t="ch_rec1_t">最初の豚</h3>
+        <p data-t="ch_rec1_d">2010年、大きさでギネス記録を目指した豚の形の陶器の貯金箱が作られました。<strong>高さ0.4メートル</strong>、<strong>長さ1.55メートル</strong>。この作品は、村の主要な観光通りを巡る展示パレードでポマイレの人々にお披露目されました。</p>
+      </article>
+      <article class="ch-rec-card ch-rec-card--big">
+        <span class="ch-rec-year">2012</span>
+        <h3 data-t="ch_rec2_t">世界最大の豚</h3>
+        <p data-t="ch_rec2_d">2012年、職人<strong>セサル・シルバ・ロホ</strong>が<strong>高さ1.60メートル、長さ3メートル</strong>、重さ<strong>550キロ</strong>の陶器の貯金箱を制作しました。これが、今日観光客が彼の工房で見学できる作品です。</p>
+        <ul class="ch-rec-specs">
+          <li><span class="ch-rec-spec-ico">📏</span><span data-t="ch_rec2_s1"><strong>高さ1.60 m</strong></span></li>
+          <li><span class="ch-rec-spec-ico">📐</span><span data-t="ch_rec2_s2"><strong>長さ3 m</strong></span></li>
+          <li><span class="ch-rec-spec-ico">⚖️</span><span data-t="ch_rec2_s3"><strong>粘土550 kg</strong></span></li>
+        </ul>
+      </article>
     </div>
   </section>
 

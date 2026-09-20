@@ -184,6 +184,43 @@
   .ch-soc.fb { background: #1877F2; }
   .ch-soc.maps { background: var(--clay); }
 
+  /* SECCIÓN RÉCORD (2010 / 2012) */
+  .ch-record { margin-top: 3.5rem; scroll-margin-top: 70px; }
+  .ch-record h2 {
+    font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--clay-dark); text-align: center; margin-bottom: .8rem;
+  }
+  .ch-rec-intro { text-align: center; color: var(--text); line-height: 1.6; max-width: 640px; margin: 0 auto 2rem; }
+  .ch-rec-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.4rem; align-items: stretch; }
+  .ch-rec-card {
+    position: relative; background: var(--white); border-radius: 18px; padding: 1.6rem;
+    box-shadow: 0 4px 16px rgba(90,40,10,.08); border: 1px solid rgba(140,61,22,.10);
+  }
+  .ch-rec-card--big {
+    background: linear-gradient(160deg, #FFF3E6, #FFE4C4);
+    border: 2px solid var(--clay);
+  }
+  .ch-rec-year {
+    display: inline-block; font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: 1.6rem; color: var(--clay); background: rgba(140,61,22,.08);
+    padding: .1rem .7rem; border-radius: 12px; margin-bottom: .6rem;
+  }
+  .ch-rec-card--big .ch-rec-year { color: #fff; background: var(--clay); }
+  .ch-rec-card h3 { font-size: 1.15rem; color: var(--clay-dark); margin-bottom: .5rem; }
+  .ch-rec-card p { color: var(--text); line-height: 1.6; font-size: .95rem; }
+  .ch-rec-specs {
+    list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; padding: 0;
+  }
+  .ch-rec-specs li {
+    display: inline-flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.7);
+    border: 1px solid rgba(140,61,22,.18); border-radius: 22px; padding: .45rem .9rem;
+    font-size: .9rem; color: var(--clay-dark);
+  }
+  .ch-rec-spec-ico { font-size: 1.1rem; }
+  @media (max-width: 680px) {
+    .ch-rec-grid { grid-template-columns: 1fr; }
+  }
+
   /* SECCIÓN HISTORIA (timeline) */
   .ch-historia { margin-top: 3.5rem; }
   .ch-historia h2 {
@@ -335,11 +372,34 @@
     <div class="ch-bio-text">
       <h2>César Silva Rojo</h2>
       <p class="ch-bio-role" data-t="ch_role">Mestre Oleiro · Pomaire, Chile</p>
-      <p data-t="ch_bio">Mestre oleiro de Pomaire e autor do maior cofrinho de barro do mundo. Com anos de ofício moldando o barro de Pomaire, transformou uma ideia impossível em uma obra única que hoje é atração do povoado.</p>
+      <p data-t="ch_bio">Mestre oleiro de Pomaire e autor do maior cofrinho de barro do mundo. Após um primeiro porquinho em 2010, em 2012 moldou uma peça de 1,60 m de altura, 3 m de comprimento e 550 quilos de barro que hoje é atração do povoado. Com anos de ofício trabalhando o barro de Pomaire, transformou uma ideia impossível em uma obra única.</p>
       <div class="ch-social">
         <a class="ch-soc maps" href="https://maps.app.goo.gl/rdCjzBBoP5XrtVuJ7" target="_blank" rel="noopener" data-t="ch_howto">🗺️ Como chegar</a>
         <a class="ch-soc wa" href="tel:+56933566057" data-t="ch_call">📞 Ligar</a>
       </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: LA HISTORIA DEL RÉCORD (dos hitos: 2010 y 2012) -->
+  <section class="ch-record" id="record">
+    <h2 data-t="ch_rec_title">De um sonho a um recorde de barro</h2>
+    <p class="ch-rec-intro" data-t="ch_rec_intro">A obra que os turistas visitam hoje não surgiu de um dia para o outro: foi o resultado de duas tentativas, cada uma mais ambiciosa que a anterior.</p>
+    <div class="ch-rec-grid">
+      <article class="ch-rec-card">
+        <span class="ch-rec-year">2010</span>
+        <h3 data-t="ch_rec1_t">O primeiro porquinho</h3>
+        <p data-t="ch_rec1_d">Em 2010 foi criado um cofrinho de barro em forma de porco de <strong>0,4 metros de altura</strong> e <strong>1,55 metros de comprimento</strong>, com a aspiração de se tornar recorde Guinness por seu tamanho. A obra foi apresentada à comunidade de Pomaire em um desfile de exibição pela principal via turística do povoado.</p>
+      </article>
+      <article class="ch-rec-card ch-rec-card--big">
+        <span class="ch-rec-year">2012</span>
+        <h3 data-t="ch_rec2_t">O maior porquinho do mundo</h3>
+        <p data-t="ch_rec2_d">Em 2012, o artesão <strong>César Silva Rojo</strong> fabricou um cofrinho de barro de <strong>1,60 metros de altura por 3 metros de comprimento</strong> e peso de <strong>550 quilos</strong>. Esta é a peça que hoje pode ser visitada pelos turistas em sua própria oficina.</p>
+        <ul class="ch-rec-specs">
+          <li><span class="ch-rec-spec-ico">📏</span><span data-t="ch_rec2_s1"><strong>1,60 m</strong> de altura</span></li>
+          <li><span class="ch-rec-spec-ico">📐</span><span data-t="ch_rec2_s2"><strong>3 m</strong> de comprimento</span></li>
+          <li><span class="ch-rec-spec-ico">⚖️</span><span data-t="ch_rec2_s3"><strong>550 kg</strong> de barro</span></li>
+        </ul>
+      </article>
     </div>
   </section>
 
