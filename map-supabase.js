@@ -8,8 +8,9 @@
 (function () {
   'use strict';
 
-  var SUPABASE_URL = 'https://uuskvqtbsvtfsovcjazf.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
+  // Config Supabase centralizada en /p360-config.js (con fallback local).
+  var SUPABASE_URL = window.P360_SUPABASE_URL || 'https://uuskvqtbsvtfsovcjazf.supabase.co';
+  var SUPABASE_ANON_KEY = window.P360_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1c2t2cXRic3Z0ZnNvdmNqYXpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2ODU4NDIsImV4cCI6MjEwMDI2MTg0Mn0.BbHI3ctSNg5msUnL9eENTNpOujQROAh6vUAZpFVcbBI';
   var TABLE = 'negocios_directorio360';
 
   // Mapeo de categorías a iconos del mapa
