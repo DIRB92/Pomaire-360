@@ -23,8 +23,8 @@
   var BANNER = {
     href: EVENT_URL,
     alt: "2° Encuentro de Bandas — Pomaire en Toque de Guerra. Viernes 26 de septiembre en Pomaire.",
-    horizontal: { src: "/img/eventos/encuentro-de-bandas-pomaire-hrzt.webp", w: 1024, h: 410 },
-    vertical:    { src: "/img/eventos/encuentro-de-bandas-pomaire.webp",      w: 576,  h: 1024 }
+    horizontal: { src: "/img/eventos/encuentro-de-bandas-pomaire-hrzt.webp", w: 1983, h: 793 },
+    vertical:    { src: "/img/eventos/encuentro-de-bandas-pomaire.webp",      w: 941,  h: 1672 }
   };
 
   // ── Textos por idioma (según <html lang>) ──────────────────────────────
