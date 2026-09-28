@@ -41,6 +41,23 @@
     turismo:          { filter: 'highlight', color: '#4A7C59', icon: '\uD83D\uDCCD' }
   };
 
+  // ─── Overrides de icono por lugar (slug) ────────────────────────────────────
+  // Permite asignar un emoji propio a un lugar puntual sin cambiar el icono
+  // del resto de su categoría. El chancho de greda usa el cerdito 🐷.
+  var PLACE_ICON_OVERRIDES = {
+    'el-chancho-alcancia-de-greda-mas-grande-del-mundo': '\uD83D\uDC37' // 🐷
+  };
+
+  // Devuelve el icono a mostrar para un negocio: override por slug si existe,
+  // si no, el icono de su categoría, con fallback a 📍.
+  function iconFor(neg) {
+    if (neg && neg.slug && PLACE_ICON_OVERRIDES[neg.slug]) {
+      return PLACE_ICON_OVERRIDES[neg.slug];
+    }
+    var cat = CATS[neg && neg.categoria];
+    return (cat && cat.icon) || '\uD83D\uDCCD';
+  }
+
   // ─── Rutas predefinidas (por slug) ─────────────────────────────────────────
   var RUTA_OFICIAL_SLUGS = ['plaza-de-pomaire', 'imperio-pomaire', 'granja-educativa-alfarera', 'restaurant-la-greda', 'vivero-luchin'];
   var RUTAS_PREDEFINIDAS = {
@@ -143,6 +160,7 @@
   function addMarker(neg) {
     if (!neg.latitud || !neg.longitud) return;
     var cat = CATS[neg.categoria] || { filter: 'services', color: '#888', icon: '\uD83D\uDCCD' };
+    var icon = iconFor(neg);
     var featured = neg.plan === 'premium' || neg.plan === 'destacado';
     var sz = featured ? 40 : 32;
     var bg = featured ? '#E6B246' : cat.color;
@@ -154,7 +172,7 @@
       zIndexOffset: featured ? 900 : 0,
       icon: L.divIcon({
         className: 'custom-marker' + (featured ? ' is-featured' : ''),
-        html: '<div style="background:' + bg + ';border:2px solid #fff;border-radius:50%;width:' + sz + 'px;height:' + sz + 'px;display:flex;align-items:center;justify-content:center;font-size:' + (featured ? 16 : 13) + 'px;' + shadow + '">' + cat.icon + '</div>',
+        html: '<div style="background:' + bg + ';border:2px solid #fff;border-radius:50%;width:' + sz + 'px;height:' + sz + 'px;display:flex;align-items:center;justify-content:center;font-size:' + (featured ? 16 : 13) + 'px;' + shadow + '">' + icon + '</div>',
         iconSize: [sz, sz],
         iconAnchor: [sz / 2, sz / 2]
       })
@@ -366,9 +384,8 @@
 
     list.innerHTML = shown.map(function (item) {
       var n = item.neg;
-      var cat = CATS[n.categoria] || { icon: '\uD83D\uDCCD' };
       return '<div class="place-row" onclick="window.focusPlace(\'' + escapeHTML(n.slug) + '\')">' +
-        '<span class="place-icon">' + cat.icon + '</span>' +
+        '<span class="place-icon">' + iconFor(n) + '</span>' +
         '<div class="place-info"><div class="place-name">' + escapeHTML(n.nombre) + '</div>' +
         '<div class="place-cat">' + escapeHTML(n.direccion || n.categoria) + '</div></div>' +
         (item.dist !== null ? '<span class="place-dist">' + fmtDist(item.dist) + '</span>' : '') +
@@ -394,7 +411,7 @@
       return {
         id: legacyId,
         cat: catMap[n.categoria] || 'services',
-        icon: (CATS[n.categoria] || {}).icon || '\uD83D\uDCCD',
+        icon: iconFor(n),
         lat: n.latitud,
         lng: n.longitud,
         name: n.nombre,
