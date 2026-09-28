@@ -41,19 +41,46 @@
     turismo:          { filter: 'highlight', color: '#4A7C59', icon: '\uD83D\uDCCD' }
   };
 
-  // ─── Overrides de icono por lugar (slug) ────────────────────────────────────
-  // Permite asignar un emoji propio a un lugar puntual sin cambiar el icono
-  // del resto de su categoría. El chancho de greda usa el cerdito 🐷.
-  var PLACE_ICON_OVERRIDES = {
-    'el-chancho-alcancia-de-greda-mas-grande-del-mundo': '\uD83D\uDC37' // 🐷
+  // ─── Overrides de icono por lugar ───────────────────────────────────────────
+  // Permite asignar un emoji propio a un lugar puntual sin cambiar el icono del
+  // resto de su categoría. El chancho de greda usa el cerdito 🐷.
+  //
+  // El slug real proviene de Supabase y su forma exacta puede variar según cómo
+  // se generó (con o sin tildes, con "alcancia"/"alcanca", "mas"/"ms", etc.).
+  // Por eso el emparejamiento NO depende de un slug exacto: se reconoce el lugar
+  // por el nombre normalizado (contiene "chancho" y "greda"), con una lista de
+  // slugs conocidos como atajo. Así el override aplica sea cual sea el slug.
+  var PIG_ICON = '\uD83D\uDC37'; // 🐷
+
+  // Slugs conocidos del chancho (distintas variantes de generación).
+  var CHANCHO_SLUGS = {
+    'el-chancho-alcancia-de-greda-mas-grande-del-mundo': 1,
+    'el-chancho-alcanca-de-greda-ms-grande-del-mundo': 1,
+    'chancho-greda': 1
   };
 
-  // Devuelve el icono a mostrar para un negocio: override por slug si existe,
-  // si no, el icono de su categoría, con fallback a 📍.
+  // Normaliza: minúsculas y sin diacríticos, para comparar por nombre.
+  function normText(s) {
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  // ¿Este negocio es el chancho de greda más grande del mundo?
+  function isChanchoGreda(neg) {
+    if (!neg) return false;
+    if (neg.slug && CHANCHO_SLUGS[neg.slug]) return true;
+    var n = normText(neg.nombre);
+    // El nombre en Supabase puede o no incluir "greda"; el chancho siempre es
+    // "chancho" + "alcancia"/"alcanca" o "greda".
+    return n.indexOf('chancho') !== -1 &&
+      (n.indexOf('greda') !== -1 || n.indexOf('alcanc') !== -1);
+  }
+
+  // Devuelve el icono a mostrar para un negocio: override si aplica, si no el
+  // icono de su categoría, con fallback a 📍.
   function iconFor(neg) {
-    if (neg && neg.slug && PLACE_ICON_OVERRIDES[neg.slug]) {
-      return PLACE_ICON_OVERRIDES[neg.slug];
-    }
+    if (isChanchoGreda(neg)) return PIG_ICON;
     var cat = CATS[neg && neg.categoria];
     return (cat && cat.icon) || '\uD83D\uDCCD';
   }
