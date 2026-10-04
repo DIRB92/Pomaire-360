@@ -1499,7 +1499,10 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 </div>
 
 <!-- Botones flotantes de redes: Instagram (arriba) y WhatsApp (abajo) -->
-<div class="social-fab">
+<div class="social-fab" id="socialFab">
+  <button class="fab-toggle" id="fabToggle" type="button" aria-label="Mostrar accesos directos" aria-expanded="false" title="Más opciones">
+    <span class="fab-toggle-icon" aria-hidden="true">+</span>
+  </button>
   <div class="games-float-wrap" id="gamesFloatWrap">
     <button class="games-float-close" type="button" aria-label="Cerrar" title="Cerrar">✕</button>
     <a class="games-float" href="/juegos/" aria-label="Pomaire Arcade — jugar gratis">

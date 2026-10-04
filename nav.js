@@ -242,10 +242,33 @@ if (wrap && wrap.parentNode) wrap.remove();
 });
 }
 }
+// Menú FAB agrupado (móvil): un botón "+" despliega/colapsa los accesos
+// secundarios para no tapar el contenido en pantallas pequeñas.
+function initFabToggle() {
+var fab = document.getElementById('socialFab');
+var toggle = document.getElementById('fabToggle');
+if (!fab || !toggle) return;
+toggle.addEventListener('click', function (e) {
+e.preventDefault();
+e.stopPropagation();
+var open = fab.classList.toggle('fab-open');
+toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+toggle.setAttribute('aria-label', open ? 'Ocultar accesos directos' : 'Mostrar accesos directos');
+});
+// Cerrar al tocar fuera del grupo de botones.
+document.addEventListener('click', function (e) {
+if (fab.classList.contains('fab-open') && !fab.contains(e.target)) {
+fab.classList.remove('fab-open');
+toggle.setAttribute('aria-expanded', 'false');
+toggle.setAttribute('aria-label', 'Mostrar accesos directos');
+}
+});
+}
+function initAll() { init(); initFabToggle(); }
 if (document.readyState === 'loading') {
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', initAll);
 } else {
-init();
+initAll();
 }
 })();
 (function () {
