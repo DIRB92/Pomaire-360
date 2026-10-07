@@ -1349,3 +1349,69 @@
 .dark-mode .mod-btn-ver-negocio {
   background: linear-gradient(135deg, var(--p360-primary), #C25540);
 }
+
+/* ─── Botón de compartir negocio (sobre la imagen de la tarjeta) ─────────── */
+.mod-card-share-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(26, 22, 20, .55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+  transition: background .18s ease, transform .18s ease;
+}
+.mod-card-share-btn:hover,
+.mod-card-share-btn:focus-visible {
+  background: var(--p360-primary, #D4654A);
+  transform: scale(1.08);
+  outline: none;
+}
+.mod-card-share-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(212, 101, 74, .5);
+}
+.mod-card-share-btn:active {
+  transform: scale(.95);
+}
+/* Tooltip de confirmación "¡Enlace copiado!" (escritorio) */
+.mod-share-tip {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: #1A1614;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .3rem .55rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+  pointer-events: none;
+  animation: modShareTipIn .15s ease;
+}
+@keyframes modShareTipIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(-4px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+.dark-mode .mod-card-share-btn {
+  background: rgba(255, 255, 255, .14);
+}
+.dark-mode .mod-card-share-btn:hover,
+.dark-mode .mod-card-share-btn:focus-visible {
+  background: var(--p360-primary, #D4654A);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mod-card-share-btn,
+  .mod-share-tip { transition: none; animation: none; }
+}
