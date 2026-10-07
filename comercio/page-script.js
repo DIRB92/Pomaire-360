@@ -182,12 +182,14 @@
     if (verificado) {
       html += '<span class="mod-card-verified-badge" title="Negocio verificado">✓ Verificado</span>';
     }
-    // Botón de compartir (comparte el link de la ficha en la app, cuyo preview
-    // muestra la foto del negocio vía Open Graph dinámico).
+    // Botón de compartir: genera un enlace directo a esta misma ficha dentro
+    // de pomaire360.cl/comercio/ (#slug + ?cat), que hace scroll y resalta la
+    // tarjeta al abrirlo.
     if (slug) {
       html += '<button type="button" class="mod-card-share-btn" '
         + 'data-share-slug="' + escapeHTML(slug) + '" '
         + 'data-share-name="' + escapeHTML(name) + '" '
+        + 'data-share-cat="' + escapeHTML(cat) + '" '
         + 'aria-label="Compartir ' + escapeHTML(name) + '" title="Compartir este negocio">'
         + '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
         + '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>'
@@ -727,14 +729,20 @@
   }
 
   // ─── Compartir negocio ──────────────────────────────────────────────────
-  // El botón de cada tarjeta comparte el enlace a la ficha del negocio en la
-  // app (app.pomaire360.cl/negocios/<slug>), cuya página genera Open Graph
-  // dinámico: así el preview en WhatsApp/redes muestra la FOTO del negocio.
-  // Usa la Web Share API nativa en móvil; en escritorio copia al portapapeles.
-  var APP_NEGOCIO_BASE = 'https://app.pomaire360.cl/negocios/';
+  // El botón de cada tarjeta comparte un enlace directo a ESA MISMA ficha
+  // dentro de pomaire360.cl/comercio/ (no sale del sitio). Usa la Web Share
+  // API nativa en móvil; en escritorio copia el enlace al portapapeles.
+  // Enlace directo a la MISMA ficha dentro de pomaire360.cl/comercio/.
+  // El hash (#slug) dispara handleHashNavigation(): hace scroll y resalta la
+  // tarjeta. Se añade ?cat=<categoria> para abrir en el contexto correcto.
+  function construirLinkNegocio(slug, cat) {
+    var base = window.location.origin + window.location.pathname;
+    var query = cat ? ('?cat=' + encodeURIComponent(cat)) : '';
+    return base + query + '#' + encodeURIComponent(slug);
+  }
 
-  function compartirNegocio(slug, name, btn) {
-    var url = APP_NEGOCIO_BASE + encodeURIComponent(slug);
+  function compartirNegocio(slug, name, cat, btn) {
+    var url = construirLinkNegocio(slug, cat);
     var titulo = name + ' — Pomaire 360';
     var texto = 'Mira ' + name + ' en Pomaire 360';
     var data = { title: titulo, text: texto, url: url };
@@ -780,6 +788,7 @@
     compartirNegocio(
       btn.getAttribute('data-share-slug'),
       btn.getAttribute('data-share-name') || 'este negocio',
+      btn.getAttribute('data-share-cat') || '',
       btn
     );
   });
