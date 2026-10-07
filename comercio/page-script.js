@@ -182,6 +182,17 @@
     if (verificado) {
       html += '<span class="mod-card-verified-badge" title="Negocio verificado">✓ Verificado</span>';
     }
+    // Botón de compartir (comparte el link de la ficha en la app, cuyo preview
+    // muestra la foto del negocio vía Open Graph dinámico).
+    if (slug) {
+      html += '<button type="button" class="mod-card-share-btn" '
+        + 'data-share-slug="' + escapeHTML(slug) + '" '
+        + 'data-share-name="' + escapeHTML(name) + '" '
+        + 'aria-label="Compartir ' + escapeHTML(name) + '" title="Compartir este negocio">'
+        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+        + '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>'
+        + '</svg></button>';
+    }
     html += '</div>';
 
     // ─── Card Body ──────────────────────────────────────────────────────
@@ -714,5 +725,63 @@
       }
     });
   }
+
+  // ─── Compartir negocio ──────────────────────────────────────────────────
+  // El botón de cada tarjeta comparte el enlace a la ficha del negocio en la
+  // app (app.pomaire360.cl/negocios/<slug>), cuya página genera Open Graph
+  // dinámico: así el preview en WhatsApp/redes muestra la FOTO del negocio.
+  // Usa la Web Share API nativa en móvil; en escritorio copia al portapapeles.
+  var APP_NEGOCIO_BASE = 'https://app.pomaire360.cl/negocios/';
+
+  function compartirNegocio(slug, name, btn) {
+    var url = APP_NEGOCIO_BASE + encodeURIComponent(slug);
+    var titulo = name + ' — Pomaire 360';
+    var texto = 'Mira ' + name + ' en Pomaire 360';
+    var data = { title: titulo, text: texto, url: url };
+
+    if (navigator.share) {
+      navigator.share(data).catch(function () {});
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function () {
+        mostrarTipCompartir(btn, '¡Enlace copiado!');
+      }).catch(function () {
+        abrirWhatsappCompartir(texto, url);
+      });
+      return;
+    }
+    abrirWhatsappCompartir(texto, url);
+  }
+
+  function abrirWhatsappCompartir(texto, url) {
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto + '\n' + url), '_blank', 'noopener');
+  }
+
+  function mostrarTipCompartir(btn, msg) {
+    if (!btn) return;
+    var prev = btn.querySelector('.mod-share-tip');
+    if (prev) prev.parentNode.removeChild(prev);
+    var tip = document.createElement('span');
+    tip.className = 'mod-share-tip';
+    tip.textContent = msg;
+    btn.appendChild(tip);
+    setTimeout(function () {
+      if (tip.parentNode) tip.parentNode.removeChild(tip);
+    }, 2000);
+  }
+
+  // Delegación: funciona aunque las tarjetas se re-rendericen por filtros.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.mod-card-share-btn') : null;
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    compartirNegocio(
+      btn.getAttribute('data-share-slug'),
+      btn.getAttribute('data-share-name') || 'este negocio',
+      btn
+    );
+  });
 
 })();
