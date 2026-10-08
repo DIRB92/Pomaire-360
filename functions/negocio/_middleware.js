@@ -1,5 +1,5 @@
 /**
- * Cloudflare Pages Function — /negocio/<slug>
+ * Cloudflare Pages Middleware — intercepta TODO bajo /negocio/
  *
  * Página "puente" DINÁMICA para compartir un negocio: genera, en el momento
  * de la petición, un HTML con Open Graph que incluye la FOTO del negocio
@@ -7,16 +7,16 @@
  * no depende de JavaScript).
  *
  * - El preview al compartir muestra la foto del negocio.
- * - Al abrir el enlace, una persona es redirigida al instante a la ficha
- *   dentro del directorio: /comercio/?cat=<categoria>#<slug>  (scroll +
- *   resaltado de la tarjeta, lógica ya existente en comercio/page-script.js).
- * - Los robots NO siguen la redirección: se quedan con las etiquetas OG.
+ * - Una PERSONA es redirigida al instante (302) a la ficha dentro del
+ *   directorio: /comercio/?cat=<categoria>#<slug> (scroll + resaltado, lógica
+ *   ya existente en comercio/page-script.js).
+ * - Un ROBOT recibe el HTML con las etiquetas Open Graph (la foto).
  *
- * Ventaja frente a generar páginas estáticas: cero mantenimiento. Lee los
- * datos frescos de Supabase en cada petición; no hay que correr scripts ni
- * commitear páginas cuando se agregan negocios o cambian fotos.
+ * Se usa _middleware.js (en vez de [[path]].js) porque intercepta de forma
+ * fiable cualquier ruta bajo /negocio/ —con o sin slash final— sin depender
+ * de la resolución de parámetros de ruta. El slug se deriva del pathname.
  *
- * Datos: usa el MISMO proyecto y anon key públicos que el directorio
+ * Datos: mismo proyecto y anon key públicos que el directorio
  * (comercio/page-script.js). La anon key ya es pública por diseño.
  */
 
@@ -57,10 +57,9 @@ function primeraFoto(row) {
   return '';
 }
 
-/** Busca el negocio por slug. Si no hay columna slug confiable, cae en buscar
- * por coincidencia de slug derivado del nombre. */
+/** Busca el negocio por slug (columna slug exacta; si no, por slug derivado
+ * del nombre). */
 async function buscarNegocio(slug) {
-  // Intento 1: por columna slug exacta.
   let url =
     SUPABASE_URL + '/rest/v1/' + TABLE +
     '?select=*&slug=eq.' + encodeURIComponent(slug) + '&limit=1';
@@ -72,7 +71,6 @@ async function buscarNegocio(slug) {
     if (Array.isArray(arr) && arr.length > 0) return arr[0];
   }
 
-  // Intento 2 (fallback): traer todos y emparejar por slug derivado del nombre.
   url = SUPABASE_URL + '/rest/v1/' + TABLE + '?select=*';
   res = await fetch(url, {
     headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY },
@@ -88,18 +86,13 @@ async function buscarNegocio(slug) {
   return null;
 }
 
-function paginaHTML(row, slug) {
+function paginaHTML(row, slug, destino) {
   const nombre = (row && (row.nombre || row.n)) || 'Negocio en Pomaire';
-  const categoria = (row && (row.categoria || row._categoria)) || '';
   const descRaw = (row && (row.descripcion || row.desc)) || '';
   const desc = descRaw
     ? (descRaw.length > 200 ? descRaw.slice(0, 197) + '…' : descRaw)
     : nombre + ' en Pomaire — directorio de negocios de Pomaire 360.';
   const ogImg = imagenAbsoluta(row ? primeraFoto(row) : '');
-
-  const destino =
-    '/comercio/' + (categoria ? '?cat=' + encodeURIComponent(categoria) : '') +
-    '#' + encodeURIComponent(slug);
   const canonical = SITE + '/negocio/' + encodeURIComponent(slug) + '/';
   const titulo = nombre + ' — Pomaire 360';
 
@@ -143,15 +136,14 @@ function paginaHTML(row, slug) {
 </html>`;
 }
 
-export async function onRequestGet(context) {
-  // Ruta catch-all: params.path captura todo lo que viene tras /negocio/.
-  // Puede ser string ("gredas-alfonso") o array (["gredas-alfonso"]); también
-  // puede traer slash final. Tomamos el primer segmento no vacío.
-  let raw = context.params.path;
-  if (Array.isArray(raw)) raw = raw[0] || '';
-  raw = String(raw || '').split('/').filter(Boolean)[0] || '';
-  const slug = slugify(decodeURIComponent(raw));
+export async function onRequest(context) {
+  const url = new URL(context.request.url);
 
+  // Slug = primer segmento tras /negocio/ (soporta slash final y mayúsculas).
+  const partes = url.pathname.split('/').filter(Boolean); // ["negocio","<slug>"]
+  const slug = slugify(decodeURIComponent(partes[1] || ''));
+
+  // Si no hay slug, al directorio.
   if (!slug) {
     return Response.redirect(SITE + '/comercio/', 302);
   }
@@ -160,8 +152,6 @@ export async function onRequestGet(context) {
   try {
     row = await buscarNegocio(slug);
   } catch (e) {
-    // Si Supabase falla, igual servimos una página puente con OG genérico que
-    // redirige al directorio: la experiencia nunca queda rota.
     row = null;
   }
 
@@ -170,31 +160,30 @@ export async function onRequestGet(context) {
     SITE + '/comercio/' + (categoria ? '?cat=' + encodeURIComponent(categoria) : '') +
     '#' + encodeURIComponent(slug);
 
-  // ¿Es un robot de redes sociales (preview de enlaces) o una persona?
-  // A los robots les entregamos el HTML con Open Graph (foto del negocio);
-  // a las personas las redirigimos de inmediato (302) a la ficha del
-  // directorio, sin que vean la URL puente /negocio/<slug>.
+  // Robot de redes (preview) vs. persona.
   const ua = (context.request.headers.get('user-agent') || '').toLowerCase();
   const esBot = /bot|facebookexternalhit|facebot|whatsapp|twitterbot|telegrambot|slackbot|discordbot|linkedinbot|pinterest|embedly|redditbot|skypeuripreview|googlebot|bingbot|applebot|vkshare|w3c_validator|preview/.test(ua);
 
   if (!esBot) {
+    // Persona: redirección inmediata a la ficha (no ve la URL puente).
     return new Response(null, {
       status: 302,
-      headers: {
-        location: destino,
-        'cache-control': 'no-store',
-      },
+      headers: { location: destino, 'cache-control': 'no-store' },
     });
   }
 
-  const html = paginaHTML(row, slug);
-
-  return new Response(html, {
+  // Robot: HTML con Open Graph (foto del negocio).
+  // CSP propia y laxa SOLO para esta página puente: permite el <script> y la
+  // <img> inline del redirect/preview (la CSP global del sitio, pensada para
+  // páginas con hashes, bloquearía el inline). La redirección real funciona
+  // igual vía <meta refresh>, que CSP no bloquea.
+  return new Response(paginaHTML(row, slug, destino), {
     status: 200,
     headers: {
       'content-type': 'text/html; charset=utf-8',
-      // Cache corto en CDN: fresco pero sin golpear Supabase en cada visita.
       'cache-control': 'public, max-age=300, s-maxage=600',
+      'content-security-policy':
+        "default-src 'self'; script-src 'unsafe-inline'; img-src 'self' https: data:; style-src 'unsafe-inline'; base-uri 'self'",
     },
   });
 }
