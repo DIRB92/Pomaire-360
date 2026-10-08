@@ -729,20 +729,18 @@
   }
 
   // ─── Compartir negocio ──────────────────────────────────────────────────
-  // El botón de cada tarjeta comparte un enlace directo a ESA MISMA ficha
-  // dentro de pomaire360.cl/comercio/ (no sale del sitio). Usa la Web Share
-  // API nativa en móvil; en escritorio copia el enlace al portapapeles.
-  // Enlace directo a la MISMA ficha dentro de pomaire360.cl/comercio/.
-  // El hash (#slug) dispara handleHashNavigation(): hace scroll y resalta la
-  // tarjeta. Se añade ?cat=<categoria> para abrir en el contexto correcto.
-  function construirLinkNegocio(slug, cat) {
-    var base = window.location.origin + window.location.pathname;
-    var query = cat ? ('?cat=' + encodeURIComponent(cat)) : '';
-    return base + query + '#' + encodeURIComponent(slug);
+  // El botón comparte la página puente /negocio/<slug>/ (dentro de
+  // pomaire360.cl). Esa página lleva og:image con la FOTO del negocio en el
+  // HTML, por lo que el preview en WhatsApp/redes muestra esa foto. Al
+  // abrirla, redirige al instante a la ficha en el directorio
+  // (/comercio/?cat=<cat>#<slug>), que hace scroll y resalta la tarjeta.
+  // Móvil: Web Share API nativa · Escritorio: copia al portapapeles.
+  function construirLinkNegocio(slug) {
+    return window.location.origin + '/negocio/' + encodeURIComponent(slug) + '/';
   }
 
   function compartirNegocio(slug, name, cat, btn) {
-    var url = construirLinkNegocio(slug, cat);
+    var url = construirLinkNegocio(slug);
     var titulo = name + ' — Pomaire 360';
     var texto = 'Mira ' + name + ' en Pomaire 360';
     var data = { title: titulo, text: texto, url: url };
