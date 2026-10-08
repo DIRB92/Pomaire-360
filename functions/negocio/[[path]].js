@@ -165,6 +165,28 @@ export async function onRequestGet(context) {
     row = null;
   }
 
+  const categoria = (row && (row.categoria || row._categoria)) || '';
+  const destino =
+    SITE + '/comercio/' + (categoria ? '?cat=' + encodeURIComponent(categoria) : '') +
+    '#' + encodeURIComponent(slug);
+
+  // ¿Es un robot de redes sociales (preview de enlaces) o una persona?
+  // A los robots les entregamos el HTML con Open Graph (foto del negocio);
+  // a las personas las redirigimos de inmediato (302) a la ficha del
+  // directorio, sin que vean la URL puente /negocio/<slug>.
+  const ua = (context.request.headers.get('user-agent') || '').toLowerCase();
+  const esBot = /bot|facebookexternalhit|facebot|whatsapp|twitterbot|telegrambot|slackbot|discordbot|linkedinbot|pinterest|embedly|redditbot|skypeuripreview|googlebot|bingbot|applebot|vkshare|w3c_validator|preview/.test(ua);
+
+  if (!esBot) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        location: destino,
+        'cache-control': 'no-store',
+      },
+    });
+  }
+
   const html = paginaHTML(row, slug);
 
   return new Response(html, {

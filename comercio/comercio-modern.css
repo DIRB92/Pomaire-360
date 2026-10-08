@@ -1352,42 +1352,87 @@
 
 /* ─── Botón de compartir negocio (sobre la imagen de la tarjeta) ─────────── */
 .mod-card-share-btn {
+  /* Posición: borde derecho, centrado verticalmente respecto a la ficha.
+     Pegado al borde interior (la tarjeta tiene overflow:hidden). */
   position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 4;
-  width: 36px;
-  height: 36px;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 6;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0;
+  height: 46px;
+  width: 46px;
+  padding: 0;
+  overflow: hidden;
   border: none;
-  border-radius: 50%;
+  border-radius: 999px;
   cursor: pointer;
   color: #fff;
-  background: rgba(26, 22, 20, .55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
-  transition: background .18s ease, transform .18s ease;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: .85rem;
+  white-space: nowrap;
+  background: linear-gradient(135deg, var(--p360-primary, #D4654A), var(--p360-primary-dark, #B84A32));
+  box-shadow: 0 6px 18px rgba(184, 74, 50, .45);
+  animation: modSharePulse 2.8s ease-in-out infinite;
+  transition: width .28s cubic-bezier(.34,1.56,.64,1), transform .2s ease, box-shadow .2s ease, gap .28s ease;
 }
+.mod-card-share-btn svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0 14px;
+}
+.mod-card-share-label {
+  opacity: 0;
+  max-width: 0;
+  transition: opacity .2s ease, max-width .28s ease;
+}
+/* Al pasar el mouse / foco: se expande y muestra el texto "Compartir". */
 .mod-card-share-btn:hover,
 .mod-card-share-btn:focus-visible {
-  background: var(--p360-primary, #D4654A);
-  transform: scale(1.08);
+  width: 148px;
+  transform: translateY(-50%) scale(1.04);
+  box-shadow: 0 10px 26px rgba(184, 74, 50, .55);
   outline: none;
+  animation: none;
+}
+.mod-card-share-btn:hover svg,
+.mod-card-share-btn:focus-visible svg {
+  margin: 0 6px 0 14px;
+}
+.mod-card-share-btn:hover .mod-card-share-label,
+.mod-card-share-btn:focus-visible .mod-card-share-label {
+  opacity: 1;
+  max-width: 90px;
+  padding-right: 16px;
 }
 .mod-card-share-btn:focus-visible {
-  box-shadow: 0 0 0 3px rgba(212, 101, 74, .5);
+  box-shadow: 0 0 0 3px rgba(212, 101, 74, .5), 0 10px 26px rgba(184, 74, 50, .55);
 }
 .mod-card-share-btn:active {
-  transform: scale(.95);
+  transform: translateY(-50%) scale(.96);
+}
+@keyframes modSharePulse {
+  0%, 100% { box-shadow: 0 6px 18px rgba(184, 74, 50, .45); }
+  50%      { box-shadow: 0 6px 18px rgba(184, 74, 50, .45), 0 0 0 8px rgba(212, 101, 74, .18); }
+}
+/* En pantallas táctiles el texto se muestra siempre (no hay hover fiable). */
+@media (hover: none) {
+  .mod-card-share-btn {
+    width: auto;
+    padding-right: 16px;
+  }
+  .mod-card-share-btn svg { margin: 0 6px 0 14px; }
+  .mod-card-share-label { opacity: 1; max-width: 90px; }
 }
 /* Tooltip de confirmación "¡Enlace copiado!" (escritorio) */
 .mod-share-tip {
   position: absolute;
   top: 50%;
-  left: calc(100% + 8px);
+  right: calc(100% + 8px);
   transform: translateY(-50%);
   white-space: nowrap;
   background: #1A1614;
@@ -1401,17 +1446,11 @@
   animation: modShareTipIn .15s ease;
 }
 @keyframes modShareTipIn {
-  from { opacity: 0; transform: translateY(-50%) translateX(-4px); }
+  from { opacity: 0; transform: translateY(-50%) translateX(4px); }
   to   { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
-.dark-mode .mod-card-share-btn {
-  background: rgba(255, 255, 255, .14);
-}
-.dark-mode .mod-card-share-btn:hover,
-.dark-mode .mod-card-share-btn:focus-visible {
-  background: var(--p360-primary, #D4654A);
 }
 @media (prefers-reduced-motion: reduce) {
   .mod-card-share-btn,
+  .mod-card-share-label,
   .mod-share-tip { transition: none; animation: none; }
 }
