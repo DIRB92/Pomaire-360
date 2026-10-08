@@ -182,20 +182,21 @@
     if (verificado) {
       html += '<span class="mod-card-verified-badge" title="Negocio verificado">✓ Verificado</span>';
     }
-    // Botón de compartir: genera un enlace directo a esta misma ficha dentro
-    // de pomaire360.cl/comercio/ (#slug + ?cat), que hace scroll y resalta la
-    // tarjeta al abrirlo.
+    html += '</div>';
+
+    // Botón de compartir: ubicado en el borde derecho-medio de la ficha.
+    // Genera un enlace a /negocio/<slug>/ (preview con foto) que redirige a
+    // esta misma ficha en el directorio (scroll + resaltado).
     if (slug) {
       html += '<button type="button" class="mod-card-share-btn" '
         + 'data-share-slug="' + escapeHTML(slug) + '" '
         + 'data-share-name="' + escapeHTML(name) + '" '
         + 'data-share-cat="' + escapeHTML(cat) + '" '
         + 'aria-label="Compartir ' + escapeHTML(name) + '" title="Compartir este negocio">'
-        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
+        + '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'
         + '<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>'
-        + '</svg></button>';
+        + '</svg><span class="mod-card-share-label">Compartir</span></button>';
     }
-    html += '</div>';
 
     // ─── Card Body ──────────────────────────────────────────────────────
     html += '<div class="mod-card-body">'
