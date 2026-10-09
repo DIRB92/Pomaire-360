@@ -655,6 +655,12 @@
 
   // ─── URL Parameter Navigation (?cat=X) ─────────────────────────────────
   function handleUrlCatParam() {
+    // Si la URL trae un #hash (enlace directo a una ficha compartida), manda
+    // el hash: handleHashNavigation() ya hizo scroll y resaltó la tarjeta,
+    // así que NO aplicamos el filtro de categoría ni robamos el scroll (eso
+    // devolvía al usuario al inicio del directorio tras ver la ficha).
+    if (window.location.hash && window.location.hash.length > 1) return;
+
     var params = new URLSearchParams(window.location.search);
     var cat = params.get('cat');
     if (!cat) return;
