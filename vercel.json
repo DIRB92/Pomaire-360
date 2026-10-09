@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/negocio/:slug", "destination": "/api/negocio?slug=:slug" },
+    { "source": "/negocio/:slug/", "destination": "/api/negocio?slug=:slug" }
+  ]
+}
