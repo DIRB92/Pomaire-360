@@ -185,8 +185,8 @@
     html += '</div>';
 
     // Botón de compartir: ubicado en el borde derecho-medio de la ficha.
-    // Genera un enlace a /negocio/<slug>/ (preview con foto) que redirige a
-    // esta misma ficha en el directorio (scroll + resaltado).
+    // Genera un enlace directo a esta ficha por su ID (/comercio/?cat=X#slug)
+    // que hace scroll y la resalta al abrirlo.
     if (slug) {
       html += '<button type="button" class="mod-card-share-btn" '
         + 'data-share-slug="' + escapeHTML(slug) + '" '
@@ -730,18 +730,21 @@
   }
 
   // ─── Compartir negocio ──────────────────────────────────────────────────
-  // El botón comparte la página puente /negocio/<slug>/ (dentro de
-  // pomaire360.cl). Esa página lleva og:image con la FOTO del negocio en el
-  // HTML, por lo que el preview en WhatsApp/redes muestra esa foto. Al
-  // abrirla, redirige al instante a la ficha en el directorio
-  // (/comercio/?cat=<cat>#<slug>), que hace scroll y resalta la tarjeta.
+  // El botón comparte un enlace directo a la ficha usando el ID de la tarjeta
+  // (el <article> tiene id="<slug>"). El enlace es:
+  //   /comercio/?cat=<categoria>#<slug>
+  // Al abrirlo, handleHashNavigation() hace scroll a esa ficha y la resalta.
+  // No usa una URL propia por negocio (eso daba 404). El negocio se identifica
+  // por su ID dentro del directorio.
   // Móvil: Web Share API nativa · Escritorio: copia al portapapeles.
-  function construirLinkNegocio(slug) {
-    return window.location.origin + '/negocio/' + encodeURIComponent(slug) + '/';
+  function construirLinkNegocio(slug, cat) {
+    var base = window.location.origin + '/comercio/';
+    var query = cat ? ('?cat=' + encodeURIComponent(cat)) : '';
+    return base + query + '#' + encodeURIComponent(slug);
   }
 
   function compartirNegocio(slug, name, cat, btn) {
-    var url = construirLinkNegocio(slug);
+    var url = construirLinkNegocio(slug, cat);
     var titulo = name + ' — Pomaire 360';
     var texto = 'Mira ' + name + ' en Pomaire 360';
     var data = { title: titulo, text: texto, url: url };
