@@ -1,5 +1,12 @@
 (function () {
 'use strict';
+
+/* ═══ Forzar scroll al inicio al cargar la página ═══ */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 var progressBar = document.getElementById('scrollProgress');
 function updateScrollProgress() {
 var scrollTop = window.scrollY || document.documentElement.scrollTop;
