@@ -1,0 +1,365 @@
+/* ==========================================================================
+   Pomaire 360 — Capa de diseño "Greda Moderna" (2027)
+   --------------------------------------------------------------------------
+   Se carga DESPUÉS de style-2026.css y del resto de CSS en TODAS las páginas
+   (es / en / pt / ja y el switcher dinámico fr / ru / zh), por lo que mejora
+   todos los idiomas a la vez sin tocar el HTML traducido.
+
+   Principios:
+   1. Menos ruido, más foco: un solo llamado a la acción claro por pantalla.
+   2. Capas flotantes ordenadas (FAB, cookies, popup, accesibilidad) que
+      NUNCA tapan el contenido principal.
+   3. Tipografía editorial (Playfair + Inter) con soporte real para CJK/cirílico.
+   4. Movimiento sutil, respetando prefers-reduced-motion.
+   5. CSP: solo CSS externo (style-src 'self'); sin estilos inline nuevos.
+   ========================================================================== */
+
+/* ---------- 0. Tokens ---------- */
+:root {
+  --p27-ink: #2a1a10;
+  --p27-line: rgba(61, 53, 48, .08);
+  --p27-shadow-1: 0 1px 2px rgba(61, 40, 28, .05), 0 4px 14px rgba(61, 40, 28, .05);
+  --p27-shadow-2: 0 2px 4px rgba(61, 40, 28, .05), 0 14px 36px rgba(61, 40, 28, .10);
+  --p27-shadow-3: 0 4px 8px rgba(61, 40, 28, .06), 0 26px 60px rgba(61, 40, 28, .16);
+  --p27-radius: 22px;
+  --p27-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --p27-section-y: clamp(3.5rem, 8vw, 6.5rem);
+  --p27-footer-bg: #1d1511;
+  --p27-footer-bg-2: #271b14;
+}
+.dark-mode {
+  --p27-line: rgba(255, 255, 255, .08);
+  --p27-shadow-1: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .22);
+  --p27-shadow-2: 0 2px 4px rgba(0, 0, 0, .3), 0 14px 36px rgba(0, 0, 0, .32);
+  --p27-shadow-3: 0 4px 8px rgba(0, 0, 0, .35), 0 26px 60px rgba(0, 0, 0, .45);
+}
+
+/* Transición suave entre páginas (MPA) — progresivo, sin JS */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .25s; }
+}
+
+/* ---------- 1. Tipografía y base ---------- */
+body { text-rendering: optimizeLegibility; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+::selection { background: var(--p-primary); color: #fff; }
+
+:focus-visible {
+  outline: 3px solid var(--p-amber);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+a:focus-visible, button:focus-visible { outline-color: var(--p-primary); }
+
+/* Ritmo vertical más generoso y consistente */
+section { padding-top: var(--p27-section-y); padding-bottom: var(--p27-section-y); }
+#inicio { padding-top: clamp(6.5rem, 12vh, 8rem); padding-bottom: clamp(4.5rem, 10vh, 6rem); }
+
+/* ---------- 2. Navegación (vidrio + pills limpias) ---------- */
+nav {
+  padding: .55rem clamp(.9rem, 2.4vw, 1.75rem);
+  -webkit-backdrop-filter: saturate(1.7) blur(18px);
+  backdrop-filter: saturate(1.7) blur(18px);
+  border-bottom: 1px solid var(--p27-line);
+  box-shadow: none;
+}
+nav.scrolled { box-shadow: 0 6px 30px rgba(61, 40, 28, .08); }
+
+.nav-brand { border-radius: 14px; box-shadow: none; border-color: var(--p27-line); }
+.nav-brand-main { letter-spacing: -.005em; }
+
+.nav-group-btn {
+  background: transparent;
+  border-color: transparent;
+  padding: .5rem .95rem;
+  font-weight: 650;
+}
+.nav-group-btn:hover { background: var(--p-smoke); border-color: transparent; color: var(--p-primary-dark); }
+.nav-group.open .nav-group-btn { background: var(--p-primary); color: #fff; }
+
+/* FIX: calc() inválido (faltaban espacios) — los desplegables no se anclaban */
+.nav-menu { top: calc(100% + .6rem); border-radius: 20px; box-shadow: var(--p27-shadow-3); padding: .6rem; }
+.nav-search-panel { top: calc(100% + .6rem); box-shadow: var(--p27-shadow-3); }
+.lang-dropdown { top: calc(100% + .5rem); box-shadow: var(--p27-shadow-3); border-radius: 18px; }
+.nav-menu a { border-radius: 14px; }
+.nav-menu a:hover { padding-left: .8rem; transform: translateX(2px); }
+.nav-menu-icon { border-radius: 12px; }
+
+.nav-cta { box-shadow: 0 4px 16px rgba(232, 168, 56, .35); }
+
+/* Enlace "Comerciantes" (inyectado por nav.js): ahora es una pill coherente */
+.nav-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .95rem;
+  border-radius: var(--p-radius-pill);
+  border: 1.5px solid var(--p27-line);
+  background: transparent;
+  color: var(--p-text);
+  font-size: .86rem;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: background var(--p-fast), border-color var(--p-fast), color var(--p-fast);
+}
+.nav-admin-btn:hover { background: var(--p-smoke); border-color: var(--p-primary-light); color: var(--p-primary-dark); }
+
+.lang-toggle { background: transparent; border-color: var(--p27-line); }
+.lang-toggle:hover { background: var(--p-smoke); }
+
+/* ---------- 3. Hero ---------- */
+#inicio::before {
+  background:
+    radial-gradient(ellipse at 50% 115%, rgba(212, 101, 74, .30) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(20, 14, 10, .55) 0%, rgba(20, 14, 10, .32) 32%, rgba(20, 14, 10, .60) 68%, rgba(20, 14, 10, .88) 100%);
+}
+/* Ken Burns muy sutil en la foto activa */
+.hero-slide.is-active { animation: p27-kenburns 16s var(--p27-ease-out) forwards; }
+@keyframes p27-kenburns { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+#inicio h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.9rem);
+  letter-spacing: -.02em;
+  line-height: 1.08;
+  max-width: 17em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .45);
+}
+.hero-tag {
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .28);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  letter-spacing: .01em;
+  max-width: 100%;
+  text-align: center;
+}
+.hero-sub { max-width: 40rem; color: rgba(255, 255, 255, .92); text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
+
+.hero-cta-row { gap: .75rem; }
+.hero-cta {
+  padding: .95rem 1.7rem;
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .35);
+  transition: transform .35s var(--p27-ease-out), box-shadow .35s var(--p27-ease-out), background .25s, color .25s;
+}
+.hero-cta.primary {
+  padding: 1.05rem 2.1rem;
+  font-size: 1.02rem;
+  background: linear-gradient(135deg, #E27257 0%, var(--p-primary-dark) 100%);
+  box-shadow: 0 10px 30px rgba(212, 101, 74, .45), inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+
+/* Los enlaces a sitios hermanos dejan de competir con el título:
+   pasan debajo de los botones, discretos */
+#inicio .sites-bar { order: 20; margin: 2.25rem 0 0; gap: .4rem; opacity: .85; }
+.site-btn { font-size: .72rem; padding: .32rem .8rem; background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .14); }
+.site-btn:hover { opacity: 1; }
+#inicio .hero-scroll-hint { bottom: 1.25rem; }
+
+/* ---------- 4. Encabezados de sección (editorial) ---------- */
+.section-header { align-items: center; gap: 1.1rem; margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+.section-icon {
+  width: 64px; height: 64px;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--p-primary-glow), rgba(232, 168, 56, .16));
+  box-shadow: inset 0 0 0 1px rgba(212, 101, 74, .22);
+}
+.section-header h2 { letter-spacing: -.015em; }
+.section-header p { max-width: 46rem; }
+.story-chapter { background: var(--p-primary-glow); color: var(--p-primary-dark); letter-spacing: .09em; }
+
+/* ---------- 5. Tarjetas y superficies ---------- */
+.card, .bento-card, .event-card, .tour-step, .route-card, .emer-card, #weather-widget, .eb-card {
+  border-radius: var(--p27-radius);
+  border: 1px solid var(--p27-line);
+  box-shadow: var(--p27-shadow-1);
+}
+.card, .bento-card, .event-card, .eb-card { transition: transform .45s var(--p27-ease-out), box-shadow .45s var(--p27-ease-out), border-color .3s; }
+.card:hover, .bento-card:hover, .event-card:hover, .eb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--p27-shadow-3);
+  border-color: rgba(212, 101, 74, .25);
+}
+.tour-step:hover, .route-card:hover { box-shadow: var(--p27-shadow-2); }
+
+.gallery-grid { gap: .9rem; }
+.gallery-item { border-radius: 20px; box-shadow: var(--p27-shadow-1); }
+.gallery-item:hover { transform: scale(1.02); box-shadow: var(--p27-shadow-3); }
+.gallery-item span { padding: 1.6rem .95rem .8rem; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s var(--p27-ease-out); }
+.gallery-item:hover span, .gallery-item:focus-visible span { opacity: 1; transform: none; }
+@media (hover: none) { .gallery-item span { opacity: 1; transform: none; } }
+
+.leaflet-wrap { border-radius: 26px; box-shadow: var(--p27-shadow-2); border-color: var(--p27-line); }
+.map-filter { padding: .5rem 1.05rem; }
+.donate-section { border-radius: 28px; box-shadow: var(--p27-shadow-2); }
+
+/* ---------- 6. Capas flotantes ordenadas (lo que más ensuciaba la UI) ---------- */
+
+/* 6a. Banner de cookies: tarjeta flotante compacta en vez de barra a todo el ancho */
+#cookieConsent {
+  left: 0; right: 0; bottom: 14px;
+  width: min(780px, calc(100% - 24px));
+  margin-inline: auto;
+  border-radius: 20px;
+  padding: .85rem 1.1rem;
+  background: rgba(36, 24, 17, .94);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+  justify-content: space-between;
+  gap: .7rem 1.25rem;
+}
+#cookieConsent .cookie-text { text-align: left; flex: 1 1 280px; font-size: .84rem; }
+#cookieConsent .cookie-buttons { flex: 0 0 auto; }
+
+/* 6b. Popup del chancho: NUNCA sobre los botones del hero y cede ante el banner de cookies.
+       - >=1200px: tarjeta abajo a la derecha, sobre los botones sociales.
+       - 769-1199px (tablet): versión compacta abajo a la izquierda, junto a los botones de accesibilidad.
+       - <=768px (móvil): banda compacta justo bajo la barra de navegación. */
+.float-pig-link { border-radius: 20px; }
+.float-pig-cta { white-space: nowrap; }
+/* Primero decide el usuario sobre cookies; luego aparece el popup */
+body:has(#cookieConsent) .float-pig { visibility: hidden; }
+@media (min-width: 1200px) {
+  .float-pig { left: auto; right: 24px; bottom: 150px; width: 340px; transform: translateY(22px); }
+  .float-pig.is-in { transform: translateY(0); }
+  .float-pig.is-out { transform: translateY(22px); }
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+  .float-pig { left: 5.5rem; bottom: 16px; width: min(400px, calc(100vw - 14rem)); transform: translateY(22px); }
+  .float-pig.is-in { transform: translateY(0); }
+  .float-pig.is-out { transform: translateY(22px); }
+  .float-pig-link { padding: .5rem .85rem; gap: .7rem; border-radius: 16px; }
+  .float-pig-emoji { font-size: 1.7rem; }
+  .float-pig-text { font-size: .82rem; }
+  .float-pig-cta, .float-pig-tag { display: none; }
+}
+@media (max-width: 768px) {
+  .float-pig { top: 84px; bottom: auto; width: min(430px, calc(100vw - 1.4rem)); transform: translateX(-50%) translateY(-18px); }
+  .float-pig.is-in { transform: translateX(-50%) translateY(0); }
+  .float-pig.is-out { transform: translateX(-50%) translateY(-18px); }
+  .float-pig-link { padding: .55rem .85rem; gap: .7rem; border-radius: 16px; }
+  .float-pig-emoji { font-size: 1.7rem; }
+  .float-pig-text { font-size: .84rem; }
+  .float-pig-cta { display: none; }
+}
+
+/* 6c. Botones sociales: en escritorio también quedan colapsados tras un botón "+"
+       (antes eran 5 pastillas apiladas permanentemente a la derecha). */
+@media (min-width: 769px) {
+  .fab-toggle { display: inline-flex; }
+  .social-fab { gap: .55rem; }
+  .social-fab .ig-float, .social-fab .tt-float, .social-fab .pa-float, .social-fab .an-float, .social-fab #gamesFloatWrap {
+    opacity: 0; transform: translateY(12px) scale(.7); pointer-events: none; max-height: 0; margin: 0; overflow: visible;
+    transition: opacity .2s var(--p-ease), transform .3s var(--p-bounce), max-height .25s var(--p-ease);
+  }
+  .social-fab.fab-open .ig-float, .social-fab.fab-open .tt-float, .social-fab.fab-open .pa-float, .social-fab.fab-open .an-float, .social-fab.fab-open #gamesFloatWrap {
+    opacity: 1; transform: none; pointer-events: auto; max-height: 64px;
+  }
+}
+/* "Compartir" (WhatsApp) sigue siempre visible pero discreto */
+.fab-toggle { box-shadow: 0 8px 24px rgba(184, 74, 50, .4); }
+.fab-toggle-icon { font-size: 2rem; font-weight: 300; line-height: 1; }
+
+/* ---------- 7. Footer oscuro, editorial y alineado ---------- */
+.footer-modern {
+  background: linear-gradient(180deg, var(--p27-footer-bg-2) 0%, var(--p27-footer-bg) 100%);
+  border-top: 0;
+  color: #cfc3b8;
+  text-align: left;
+  padding: 0;
+}
+.footer-modern .footer-top { padding: clamp(3rem, 6vw, 5rem) 1.5rem 2.5rem; }
+.footer-modern .footer-grid {
+  grid-template-columns: minmax(0, 1.7fr) repeat(5, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+.footer-modern .footer-logo-text { color: #fff; font-size: 1.5rem; }
+.footer-modern .footer-desc { color: #a99d92; max-width: 300px; }
+.footer-modern .footer-links-col { align-items: flex-start; gap: .6rem; }
+.footer-modern .footer-links-col h4 { color: var(--p-amber); letter-spacing: .1em; font-size: .72rem; margin-bottom: .5rem; }
+.footer-modern .footer-links-col a { color: #cfc3b8; font-size: .88rem; position: relative; }
+.footer-modern .footer-links-col a:hover { color: #fff; transform: translateX(3px); }
+.footer-modern .footer-social-row a { background: rgba(255, 255, 255, .07); color: #f3e9df; border-radius: 12px; width: 40px; height: 40px; }
+.footer-modern .footer-social-row a:hover { background: var(--p-primary); color: #fff; }
+.footer-modern .footer-emergency { border-color: rgba(255, 255, 255, .08); color: #a99d92; }
+.footer-modern .footer-emergency strong { color: var(--p-amber); }
+.footer-modern .footer-bottom { border-top: 1px solid rgba(255, 255, 255, .06); }
+.footer-modern .footer-bottom, .footer-modern .footer-bottom-inner { color: #a99d92; }
+.footer-modern .footer-bottom-links { flex-wrap: wrap; }
+.footer-modern .footer-bottom-links a { color: #a99d92; }
+.footer-modern .footer-bottom-links a:hover { color: #fff; }
+.footer-modern .footer-copy { opacity: .75; }
+
+@media (max-width: 1100px) {
+  .footer-modern .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-modern .footer-brand-col { grid-column: 1 / -1; }
+  .footer-modern .footer-desc { max-width: 460px; }
+}
+@media (max-width: 600px) {
+  .footer-modern .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- 8. Idiomas: tipografía correcta por escritura ---------- */
+/* Se activa con <html lang> tanto en las páginas estáticas (/ja/) como cuando
+   el switcher dinámico (subi18n.js / app.js) cambia document.documentElement.lang */
+html:lang(ja) {
+  --p-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', 'Noto Sans JP', 'Meiryo', sans-serif;
+  --p-font-display: 'Playfair Display', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'MS PMincho', serif;
+}
+html:lang(zh) {
+  --p-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --p-font-display: 'Playfair Display', 'Songti SC', 'Noto Serif SC', 'SimSun', serif;
+}
+html:lang(ru) {
+  --p-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --p-font-display: 'Playfair Display', Georgia, 'Times New Roman', serif; /* Georgia sí tiene cirílico */
+}
+/* CJK: más interlineado, sin tracking ni mayúsculas, cortes de línea correctos */
+html:lang(ja) body, html:lang(zh) body { line-height: 1.85; line-break: strict; overflow-wrap: anywhere; }
+html:lang(ja) h1, html:lang(ja) h2, html:lang(ja) h3, html:lang(ja) h4,
+html:lang(zh) h1, html:lang(zh) h2, html:lang(zh) h3, html:lang(zh) h4 { line-height: 1.3; letter-spacing: 0; font-weight: 700; }
+html:lang(ja) #inicio h1, html:lang(zh) #inicio h1 { font-size: clamp(1.9rem, 4.6vw, 3.3rem); line-height: 1.25; max-width: 20em; }
+html:lang(ja) .story-chapter, html:lang(zh) .story-chapter,
+html:lang(ja) .hero-scroll-hint, html:lang(zh) .hero-scroll-hint,
+html:lang(ja) .event-tag, html:lang(zh) .event-tag,
+html:lang(ja) .footer-links-col h4, html:lang(zh) .footer-links-col h4,
+html:lang(ja) .ws-lab, html:lang(zh) .ws-lab { text-transform: none; letter-spacing: .04em; }
+html:lang(ja) .nav-group-btn, html:lang(zh) .nav-group-btn { letter-spacing: .02em; }
+/* Cirílico: textos más largos que en español -> permitir que respiren */
+html:lang(ru) .nav-group-btn, html:lang(ru) .hero-cta { font-size: .84rem; }
+html:lang(ru) #inicio h1 { font-size: clamp(1.9rem, 4.6vw, 3.4rem); }
+html:lang(ru) .footer-links-col h4 { letter-spacing: .05em; }
+
+/* ---------- 9. Responsive fino ---------- */
+@media (max-width: 768px) {
+  #inicio { padding-inline: 1.1rem; }
+  #inicio h1 { font-size: clamp(1.95rem, 8.2vw, 2.6rem); }
+  .hero-cta-row { flex-direction: column; align-items: stretch; width: min(100%, 22rem); }
+  .hero-cta { justify-content: center; }
+  .hero-sub { margin-bottom: 1.75rem; }
+  #inicio .sites-bar { margin-top: 1.5rem; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+  .section-icon { width: 54px; height: 54px; border-radius: 16px; }
+  /* Cookies compactas en móvil: menos altura para no tapar los botones del hero */
+  #cookieConsent { bottom: 10px; padding: .6rem .8rem; border-radius: 16px; gap: .5rem .8rem; }
+  #cookieConsent .cookie-text { font-size: .76rem; line-height: 1.4; flex-basis: 100%; }
+  #cookieConsent .cookie-buttons { width: 100%; justify-content: stretch; flex-wrap: nowrap; }
+  #cookieConsent .cookie-btn-reject, #cookieConsent .cookie-btn-accept { flex: 1; padding: .5rem .6rem; font-size: .8rem; }
+}
+
+/* ---------- 10. Accesibilidad y rendimiento de movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active { animation: none; }
+  .card:hover, .bento-card:hover, .event-card:hover, .eb-card:hover, .gallery-item:hover { transform: none; }
+}
+@media (prefers-contrast: more) {
+  .nav-group-btn, .nav-admin-btn, .lang-toggle { border-color: currentColor; }
+}
+@media print {
+  #cookieConsent, .float-pig, .social-fab { display: none !important; }
+}

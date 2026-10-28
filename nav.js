@@ -303,6 +303,27 @@ initHeroSlideshow();
 }
 })();
 (function () {
+// Etiqueta del acceso a comerciantes por idioma (7 idiomas del selector).
+// Se actualiza también cuando el switcher dinámico (fr/ru/zh) cambia <html lang>.
+var ADMIN_I18N = {
+es: { t: 'Comerciantes', title: 'Acceso al panel de comerciantes' },
+en: { t: 'Merchants', title: 'Merchant dashboard access' },
+pt: { t: 'Comerciantes', title: 'Acesso ao painel de comerciantes' },
+ja: { t: '事業者向け', title: '事業者向けパネルへのアクセス' },
+fr: { t: 'Commerçants', title: 'Accès au tableau de bord des commerçants' },
+ru: { t: 'Бизнесу', title: 'Панель для предпринимателей' },
+zh: { t: '商家入口', title: '商家后台入口' }
+};
+function adminLabel() {
+var l = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+return ADMIN_I18N[l] || ADMIN_I18N.es;
+}
+function applyAdminLabel(link) {
+var d = adminLabel();
+var span = link.querySelector('span');
+if (span) span.textContent = d.t;
+link.title = d.title;
+}
 function injectAdminLink() {
 var navWrap = document.getElementById('navGroups');
 if (!navWrap) return;
@@ -311,18 +332,224 @@ if (window.location.pathname.indexOf('/admin') === 0) return;
 var link = document.createElement('a');
 link.className = 'nav-admin-btn';
 link.href = '/admin/';
-link.innerHTML = '🔐 <span data-t="nav_admin">Comerciantes</span>';
-link.title = 'Acceso al panel de comerciantes';
+link.innerHTML = '\uD83D\uDD10 <span></span>';
+applyAdminLabel(link);
 var cta = navWrap.querySelector('.nav-cta');
 if (cta && cta.nextSibling) {
 navWrap.insertBefore(link, cta.nextSibling);
 } else {
 navWrap.appendChild(link);
 }
+new MutationObserver(function () { applyAdminLabel(link); })
+.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 }
 if (document.readyState === 'loading') {
 document.addEventListener('DOMContentLoaded', injectAdminLink);
 } else {
 injectAdminLink();
+}
+})();
+
+(function () {
+// Descripciones del menú desplegable por idioma. La clave es el texto base en
+// español (tal como está en el HTML). Se re-aplica si el switcher dinámico
+// (fr/ru/zh) cambia <html lang>.
+var MENU_DESC_I18N = {
+"Dónde dejar tu auto": {
+"en": "Where to park your car",
+"pt": "Onde deixar o carro",
+"ja": "車の停め場所",
+"fr": "Où garer votre voiture",
+"ru": "Где оставить машину",
+"zh": "停车位置"
+},
+"CESFAM, farmacias y urgencias": {
+"en": "CESFAM clinic, pharmacies and emergencies",
+"pt": "CESFAM, farmácias e urgências",
+"ja": "CESFAM（地域保健センター）・薬局・救急",
+"fr": "CESFAM, pharmacies et urgences",
+"ru": "CESFAM, аптеки и неотложная помощь",
+"zh": "社区医疗中心、药店和急诊"
+},
+"Carabineros, Bomberos, emergencias": {
+"en": "Police, firefighters, emergencies",
+"pt": "Carabineros, bombeiros, emergências",
+"ja": "警察（カラビネーロス）・消防・緊急時",
+"fr": "Carabineros, pompiers, urgences",
+"ru": "Карабинеры, пожарные, экстренные службы",
+"zh": "警察、消防、紧急服务"
+},
+"Almacenes y servicios cotidianos": {
+"en": "Grocery stores and everyday services",
+"pt": "Mercearias e serviços do dia a dia",
+"ja": "食料品店と日常のサービス",
+"fr": "Épiceries et services du quotidien",
+"ru": "Магазины и повседневные услуги",
+"zh": "杂货店和日常服务"
+},
+"Grúas, buses, micros y colectivos": {
+"en": "Tow trucks, buses and shared taxis",
+"pt": "Guinchos, ônibus, micros e lotações",
+"ja": "レッカー・バス・ミニバス・乗り合いタクシー",
+"fr": "Dépanneuses, bus et taxis collectifs",
+"ru": "Эвакуаторы, автобусы и маршрутки",
+"zh": "拖车、巴士和合乘出租车"
+},
+"Talleres y tradición alfarera": {
+"en": "Workshops and pottery tradition",
+"pt": "Oficinas e tradição ceramista",
+"ja": "陶工の工房と伝統",
+"fr": "Ateliers et tradition potière",
+"ru": "Мастерские и гончарная традиция",
+"zh": "陶艺工坊与传统"
+},
+"Atractivos y puntos de interés": {
+"en": "Attractions and points of interest",
+"pt": "Atrações e pontos de interesse",
+"ja": "見どころと観光スポット",
+"fr": "Attractions et points d’intérêt",
+"ru": "Достопримечательности",
+"zh": "景点与兴趣点"
+},
+"Viñas y bodegas cercanas": {
+"en": "Nearby vineyards and wineries",
+"pt": "Vinícolas e adegas próximas",
+"ja": "近郊のワイナリー",
+"fr": "Vignobles et caves à proximité",
+"ru": "Ближайшие виноградники и винодельни",
+"zh": "附近的葡萄园和酒庄"
+},
+"Tiendas y souvenirs": {
+"en": "Shops and souvenirs",
+"pt": "Lojas e souvenirs",
+"ja": "お店とお土産",
+"fr": "Boutiques et souvenirs",
+"ru": "Магазины и сувениры",
+"zh": "商店与纪念品"
+},
+"Los Chiñihues y alrededores": {
+"en": "Los Chiñihues and surroundings",
+"pt": "Los Chiñihues e arredores",
+"ja": "チニュエスと周辺",
+"fr": "Los Chiñihues et alentours",
+"ru": "Лос-Чиньигуэс и окрестности",
+"zh": "Los Chiñihues 及周边"
+},
+"Corazón del pueblo": {
+"en": "The heart of the village",
+"pt": "Coração do povoado",
+"ja": "村の中心",
+"fr": "Le cœur du village",
+"ru": "Сердце деревни",
+"zh": "村庄的中心"
+},
+"Origen, arqueología y leyendas": {
+"en": "Origins, archaeology and legends",
+"pt": "Origem, arqueologia e lendas",
+"ja": "起源・考古学・伝説",
+"fr": "Origines, archéologie et légendes",
+"ru": "Истоки, археология и легенды",
+"zh": "起源、考古与传说"
+},
+"Historias de nuestros artesanos": {
+"en": "Stories of our artisans",
+"pt": "Histórias dos nossos artesãos",
+"ja": "職人たちの物語",
+"fr": "Histoires de nos artisans",
+"ru": "Истории наших мастеров",
+"zh": "工匠的故事"
+},
+"Restaurantes y cocina típica": {
+"en": "Restaurants and traditional cuisine",
+"pt": "Restaurantes e cozinha típica",
+"ja": "レストランと郷土料理",
+"fr": "Restaurants et cuisine typique",
+"ru": "Рестораны и традиционная кухня",
+"zh": "餐厅与特色美食"
+},
+"Hostales, cabañas y suites": {
+"en": "Hostels, cabins and suites",
+"pt": "Hostels, cabanas e suítes",
+"ja": "ホステル・コテージ・スイート",
+"fr": "Auberges, cabanes et suites",
+"ru": "Хостелы, домики и сьюты",
+"zh": "旅舍、木屋和套房"
+},
+"Baños públicos disponibles": {
+"en": "Public restrooms available",
+"pt": "Banheiros públicos disponíveis",
+"ja": "利用できる公衆トイレ",
+"fr": "Toilettes publiques disponibles",
+"ru": "Доступные общественные туалеты",
+"zh": "可用的公共卫生间"
+},
+"Ruta turística paso a paso": {
+"en": "Tourist route step by step",
+"pt": "Roteiro turístico passo a passo",
+"ja": "ステップで巡る観光ルート",
+"fr": "Itinéraire touristique pas à pas",
+"ru": "Туристический маршрут шаг за шагом",
+"zh": "分步旅游路线"
+},
+"Mapa interactivo del pueblo": {
+"en": "Interactive map of the village",
+"pt": "Mapa interativo do povoado",
+"ja": "村のインタラクティブマップ",
+"fr": "Carte interactive du village",
+"ru": "Интерактивная карта деревни",
+"zh": "村庄互动地图"
+},
+"Condiciones actuales": {
+"en": "Current conditions",
+"pt": "Condições atuais",
+"ja": "現在の天気",
+"fr": "Conditions actuelles",
+"ru": "Текущие условия",
+"zh": "当前天气"
+},
+"Fotos del pueblo": {
+"en": "Photos of the village",
+"pt": "Fotos do povoado",
+"ja": "村の写真",
+"fr": "Photos du village",
+"ru": "Фотографии деревни",
+"zh": "村庄照片"
+},
+"Fechas y festividades": {
+"en": "Dates and festivities",
+"pt": "Datas e festividades",
+"ja": "開催日とお祭り",
+"fr": "Dates et festivités",
+"ru": "Даты и праздники",
+"zh": "日期与节庆"
+},
+"Plano ilustrado del pueblo": {
+"en": "Illustrated map of the village",
+"pt": "Mapa ilustrado do povoado",
+"ja": "村のイラストマップ",
+"fr": "Plan illustré du village",
+"ru": "Иллюстрированный план деревни",
+"zh": "村庄插图地图"
+}
+};
+function applyMenuDescs() {
+var l = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+var nodes = document.querySelectorAll('.nav-menu-desc');
+for (var i = 0; i < nodes.length; i++) {
+var el = nodes[i];
+if (!el.hasAttribute('data-es')) el.setAttribute('data-es', el.textContent);
+var es = el.getAttribute('data-es');
+var t = (l !== 'es' && MENU_DESC_I18N[es] && MENU_DESC_I18N[es][l]) || es;
+if (el.textContent !== t) el.textContent = t;
+}
+}
+function initMenuDescs() {
+applyMenuDescs();
+new MutationObserver(applyMenuDescs).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+}
+if (document.readyState === 'loading') {
+document.addEventListener('DOMContentLoaded', initMenuDescs);
+} else {
+initMenuDescs();
 }
 })();
