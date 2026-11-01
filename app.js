@@ -248,11 +248,33 @@ bar.querySelector('.weather-bar-inner').innerHTML =
 `<span class="wb-item">🌡️ ${Math.round(c.apparent_temperature)}°C</span>`;
 }
 } catch(e) {
-if (box) box.innerHTML = '<div class="weather-loading">No se pudo cargar el clima. Verifica tu conexión.</div>';
+weatherOffline = true;
+renderWeatherOffline();
+}
+}
+// Mensajes cuando no hay clima (sin conexión o API caída), en los 7 idiomas del sitio.
+// Los nombres de Pomaire y las convenciones siguen las de langs.js.
+const WEATHER_OFFLINE = {
+es: { box: 'No se pudo cargar el clima. Verifica tu conexión.', bar: 'Pomaire · clima no disponible por ahora' },
+en: { box: 'Could not load the weather. Check your connection.', bar: 'Pomaire · weather unavailable right now' },
+pt: { box: 'Não foi possível carregar o clima. Verifique sua conexão.', bar: 'Pomaire · clima indisponível no momento' },
+fr: { box: 'Impossible de charger la météo. Vérifiez votre connexion.', bar: 'Pomaire · météo indisponible pour le moment' },
+ru: { box: 'Не удалось загрузить погоду. Проверьте подключение.', bar: 'Помайре · погода сейчас недоступна' },
+ja: { box: '天気を読み込めませんでした。接続を確認してください。', bar: 'ポマイレ · 現在、天気情報を取得できません' },
+zh: { box: '无法加载天气。请检查网络连接。', bar: '波马伊雷 · 暂时无法获取天气' }
+};
+let weatherOffline = false;
+function renderWeatherOffline() {
+const code = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+const m = WEATHER_OFFLINE[code] || WEATHER_OFFLINE.es;
+const box = document.getElementById('weather-widget');
+if (box) box.innerHTML = '<div class="weather-loading">' + m.box + '</div>';
 const bar = document.getElementById('weather-bar');
-if (bar) bar.querySelector('.weather-bar-inner').innerHTML = '<span class="wb-loading">📍 Pomaire · clima no disponible por ahora</span>';
+const inner = bar && bar.querySelector('.weather-bar-inner');
+if (inner) inner.innerHTML = '<span class="wb-loading">📍 ' + m.bar + '</span>';
 }
-}
+// applyLang() llama a este gancho: si el clima falló, se vuelve a escribir en el idioma elegido
+window.localizeWeather = function () { if (weatherOffline) renderWeatherOffline(); };
 loadWeather();
 function toggleLangMenu(e) {
 e.stopPropagation();
