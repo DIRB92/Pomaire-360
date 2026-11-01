@@ -725,136 +725,22 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 </section>
 
 <!-- ══ BANNER DE EVENTOS DESTACADOS (arriba, primero que ve el visitante) ══ -->
-<section class="events-banner" id="eventos-destacados" aria-labelledby="eventsBannerTitle">
-  <div class="events-banner-inner">
-    <div class="events-banner-head reveal">
-      <span class="eb-kicker" data-t="eb_kicker">🎉 ポマイレの今</span>
-      <h2 id="eventsBannerTitle" data-t="eb_title">近日開催のイベント・お祭り</h2>
-      <p data-t="eb_sub">陶芸の町の市・お祭り・催し。イベントをタップすると詳細が見られます。</p>
+<!-- ══ INTRO EDITORIAL ══════════════════════════════════════════════════ -->
+<section id="intro" class="home-intro" aria-labelledby="homeIntroTitle">
+  <div class="home-intro-inner">
+    <div class="home-intro-text reveal">
+      <span class="home-intro-kicker" data-t="intro_kicker">粘土の村へようこそ</span>
+      <h2 id="homeIntroTitle" data-t="intro_h2">3世紀にわたり手で形づくるチリ</h2>
+      <p data-t="intro_p">サンティアゴからわずか50分。ポマイレはチリで最も有名な陶芸の伝統を今も受け継いでいます。粘土の工房、約1キロのエンパナーダ、職人たちの通りがあなたを待っています。このガイドに必要なものがすべて詰まっています——しかも無料です。</p>
     </div>
-
-    <div class="events-banner-carousel">
-      <button type="button" class="eb-nav eb-nav--prev" id="ebPrev" aria-label="Ver eventos anteriores">‹</button>
-
-      <div class="events-banner-track reveal" role="list" id="ebTrack" tabindex="0">
-
-      <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">⛪</span>
-          <span class="eb-card-tag" data-t="ev_tag_fest">守護聖人祭</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">13</span><span class="ebd-mon" data-t="eb_mon_jun">6月</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_2_title">サン・アントニオ・デ・パドヴァ祭</h3>
-            <p data-t="eb_2_teaser">行列、文化イベント、広場での特別グルメ。</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--feature" href="/evento/mejor-empanada-de-pomaire/" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🥟</span>
-          <span class="eb-card-tag" data-t="eb_tag_food">グルメイベント</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">5</span><span class="ebd-mon" data-t="eb_mon_sep">9月</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="eb_empanada_title">ポマイレ・ベストエンパナーダ・コンテスト</h3>
-            <p data-t="eb_empanada_teaser">土窯焼き、来場者による審査、そして伝説の巨大エンパナーダ。今週土曜、お見逃しなく！</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--nat" href="#evento-fiestas-patrias" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🇨🇱</span>
-          <span class="eb-card-tag" data-t="ev_tag_nat">独立記念祭</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">17–20</span><span class="ebd-mon" data-t="eb_mon_sep">9月</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_3_title">独立記念祭（フィエスタス・パトリアス）</h3>
-            <p data-t="eb_3_teaser">屋台、自家製チチャ、クエカ、お祭りの工芸品。ベストシーズン！</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--fest" href="#evento-fiesta-greda" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🏺</span>
-          <span class="eb-card-tag" data-t="eb_tag_greda">陶芸の伝統</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">10–12</span><span class="ebd-mon" data-t="eb_mon_oct">10月</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="eb_greda_title">陶器（グレダ）祭り</h3>
-            <p data-t="eb_greda_teaser">職人の実演、陶器の販売、家族で楽しめる催し。</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--xmas" href="#evento-navidad" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🎄</span>
-          <span class="eb-card-tag" data-t="ev_tag_xmas">クリスマス</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">28</span><span class="ebd-mon" data-t="eb_mon_novdic">11〜12月</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_4_title">クリスマス工芸市</h3>
-            <p data-t="eb_4_teaser">陶器の降誕人形、飾り、手作りの特別な贈り物。</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
-        </div>
-      </a>
-
-      </div>
-
-      <button type="button" class="eb-nav eb-nav--next" id="ebNext" aria-label="Ver más eventos">›</button>
+    <div class="home-intro-facts reveal">
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f1_t">50分</span><span class="hi-fact-lab" data-t="intro_f1_d">サンティアゴから78号線で</span></div>
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f2_t">300年以上</span><span class="hi-fact-lab" data-t="intro_f2_d">続く粘土の陶芸の伝統</span></div>
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f3_t">1 kg</span><span class="hi-fact-lab" data-t="intro_f3_d">ポマイレ名物の巨大エンパナーダ</span></div>
     </div>
-
-    <a class="events-banner-all reveal" href="#eventos" data-t="eb_all">イベントカレンダー全体を見る →</a>
   </div>
 </section>
 
-<script>
-/* Carrusel del banner de eventos (home) — sin dependencias */
-(function(){
-  var track=document.getElementById('ebTrack');
-  if(!track) return;
-  var prev=document.getElementById('ebPrev'), next=document.getElementById('ebNext');
-  function step(){
-    var card=track.querySelector('.eb-card');
-    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'16')||16;
-    return card ? card.getBoundingClientRect().width+gap : track.clientWidth*0.8;
-  }
-  function scrollByCards(dir){ track.scrollBy({left:dir*step(),behavior:'smooth'}); }
-  if(next) next.addEventListener('click',function(){scrollByCards(1);});
-  if(prev) prev.addEventListener('click',function(){scrollByCards(-1);});
-  function update(){
-    var max=track.scrollWidth-track.clientWidth-2;
-    var overflow=track.scrollWidth>track.clientWidth+4;
-    [prev,next].forEach(function(b){ if(b) b.style.display=overflow?'':'none'; });
-    if(!overflow) return;
-    if(prev) prev.disabled=track.scrollLeft<=2;
-    if(next) next.disabled=track.scrollLeft>=max;
-  }
-  track.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update);
-  update();
-  setTimeout(update,400); /* tras aplicar i18n/fuentes */
-})();
-</script>
-
-<!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
 <section id="featuredSection" class="featured-section" style="display:none;">
   <div class="featured-header reveal">
     <h2 data-t="feat_title">🏪 ポマイレの注目のお店</h2>
@@ -873,7 +759,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   <a class="featured-all-link" href="/ja/comercio/" data-t="feat_all">すべてのお店を見る →</a>
 </section>
 
-<!-- ══ CATEGORÍAS: DÓNDE COMER, COMPRAR Y DORMIR ══════════════════════════ -->
 <section id="categoriesSection" class="categories-section" style="display:none;">
   <div class="categories-header reveal">
     <h2 data-t="cat_title">ポマイレを発見</h2>
@@ -885,7 +770,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-<!-- MAPA INTERACTIVO -->
 <section id="mapa">
   <div class="section-inner">
     <div class="story-chapter reveal" data-t="chapter_explore">第1章 — 村を探索</div>
@@ -949,9 +833,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-
-
-<!-- RECORRIDO TURÍSTICO -->
 <section id="recorrido">
   <div class="section-inner">
     <div class="story-chapter reveal" data-t="chapter_plan">第2章 — ルートを計画</div>
@@ -1112,29 +993,9 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-
-<!-- CLIMA -->
-<section id="clima">
-  <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_prepare">第3章 — 旅の準備</div>
-    <div class="section-header reveal">
-      <span class="section-icon">🌤️</span>
-      <div>
-        <h2 data-t="s_weather_title">ポマイレの現在の天気</h2>
-        <p data-t="s_weather_sub">訪問を計画するための現在の状況</p>
-      </div>
-    </div>
-    <div id="weather-widget" class="weather-box reveal">
-      <div class="weather-loading" data-t="weather_loading">⏳ 天気を読み込み中...</div>
-    </div>
-    <p class="weather-note reveal" data-t="weather_note">リアルタイムデータ · Open-Meteo · ポマイレの座標</p>
-  </div>
-</section>
-
-<!-- GALERÍA -->
 <section id="galeria">
   <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_remember">第4章 — お土産を持ち帰る</div>
+    <div class="story-chapter reveal" data-t="chapter_remember">第3章 — お土産を持ち帰る</div>
     <div class="section-header reveal">
       <span class="section-icon">📸</span>
       <div>
@@ -1311,7 +1172,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <!-- EVENTOS -->
 <section id="eventos">
   <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_comeback">第5章 — 再訪を計画</div>
+    <div class="story-chapter reveal" data-t="chapter_comeback">第4章 — 再訪を計画</div>
     <div class="section-header reveal">
       <span class="section-icon">📅</span>
       <div>
@@ -1319,6 +1180,124 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
         <p data-t="s_events_sub">ポマイレのお祭り、フェア、祝祭</p>
       </div>
     </div>
+
+    <!-- Teaser: carrusel de próximos eventos (fusionado desde el banner) -->
+    <div class="events-banner-carousel">
+      <button type="button" class="eb-nav eb-nav--prev" id="ebPrev" aria-label="Ver eventos anteriores">‹</button>
+
+      <div class="events-banner-track reveal" role="list" id="ebTrack" tabindex="0">
+
+      <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">⛪</span>
+          <span class="eb-card-tag" data-t="ev_tag_fest">守護聖人祭</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">13</span><span class="ebd-mon" data-t="eb_mon_jun">6月</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_2_title">サン・アントニオ・デ・パドヴァ祭</h3>
+            <p data-t="eb_2_teaser">行列、文化イベント、広場での特別グルメ。</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--feature" href="/evento/mejor-empanada-de-pomaire/" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🥟</span>
+          <span class="eb-card-tag" data-t="eb_tag_food">グルメイベント</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">5</span><span class="ebd-mon" data-t="eb_mon_sep">9月</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_empanada_title">ポマイレ・ベストエンパナーダ・コンテスト</h3>
+            <p data-t="eb_empanada_teaser">土窯焼き、来場者による審査、そして伝説の巨大エンパナーダ。今週土曜、お見逃しなく！</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--nat" href="#evento-fiestas-patrias" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🇨🇱</span>
+          <span class="eb-card-tag" data-t="ev_tag_nat">独立記念祭</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">終了</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">17–20</span><span class="ebd-mon" data-t="eb_mon_sep">9月</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_3_title">独立記念祭（フィエスタス・パトリアス）</h3>
+            <p data-t="eb_3_teaser">屋台、自家製チチャ、クエカ、お祭りの工芸品。ベストシーズン！</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--fest" href="#evento-fiesta-greda" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🏺</span>
+          <span class="eb-card-tag" data-t="eb_tag_greda">陶芸の伝統</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">10–12</span><span class="ebd-mon" data-t="eb_mon_oct">10月</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_greda_title">陶器（グレダ）祭り</h3>
+            <p data-t="eb_greda_teaser">職人の実演、陶器の販売、家族で楽しめる催し。</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--xmas" href="#evento-navidad" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🎄</span>
+          <span class="eb-card-tag" data-t="ev_tag_xmas">クリスマス</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">28</span><span class="ebd-mon" data-t="eb_mon_novdic">11〜12月</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_4_title">クリスマス工芸市</h3>
+            <p data-t="eb_4_teaser">陶器の降誕人形、飾り、手作りの特別な贈り物。</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">詳細を見る →</span>
+        </div>
+      </a>
+
+      </div>
+
+      <button type="button" class="eb-nav eb-nav--next" id="ebNext" aria-label="Ver más eventos">›</button>
+    </div>
+    <script>
+/* Carrusel del banner de eventos (home) — sin dependencias */
+(function(){
+  var track=document.getElementById('ebTrack');
+  if(!track) return;
+  var prev=document.getElementById('ebPrev'), next=document.getElementById('ebNext');
+  function step(){
+    var card=track.querySelector('.eb-card');
+    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'16')||16;
+    return card ? card.getBoundingClientRect().width+gap : track.clientWidth*0.8;
+  }
+  function scrollByCards(dir){ track.scrollBy({left:dir*step(),behavior:'smooth'}); }
+  if(next) next.addEventListener('click',function(){scrollByCards(1);});
+  if(prev) prev.addEventListener('click',function(){scrollByCards(-1);});
+  function update(){
+    var max=track.scrollWidth-track.clientWidth-2;
+    var overflow=track.scrollWidth>track.clientWidth+4;
+    [prev,next].forEach(function(b){ if(b) b.style.display=overflow?'':'none'; });
+    if(!overflow) return;
+    if(prev) prev.disabled=track.scrollLeft<=2;
+    if(next) next.disabled=track.scrollLeft>=max;
+  }
+  track.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+  setTimeout(update,400); /* tras aplicar i18n/fuentes */
+})();
+</script>
+
 
     <!-- Schema Event JSON-LD (eventos principales de Pomaire) -->
     <script type="application/ld+json">[
@@ -1541,6 +1520,23 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="clima">
+  <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_prepare">第5章 — 旅の準備</div>
+    <div class="section-header reveal">
+      <span class="section-icon">🌤️</span>
+      <div>
+        <h2 data-t="s_weather_title">ポマイレの現在の天気</h2>
+        <p data-t="s_weather_sub">訪問を計画するための現在の状況</p>
+      </div>
+    </div>
+    <div id="weather-widget" class="weather-box reveal">
+      <div class="weather-loading" data-t="weather_loading">⏳ 天気を読み込み中...</div>
+    </div>
+    <p class="weather-note reveal" data-t="weather_note">リアルタイムデータ · Open-Meteo · ポマイレの座標</p>
   </div>
 </section>
 

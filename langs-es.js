@@ -3,6 +3,7 @@ es: {
 nav_park:"Estacionar", nav_health:"Salud", nav_security:"Seguridad",
 nav_commerce:"Servicios", nav_pottery:"Alfarería", nav_food:"Comer",
 nav_around:"Alrededores", nav_shops_g:"Comercio", nav_plaza:"Plaza Pública", nav_map:"Mapa", nav_donate:"Apoyar", nav_tagline:"Turismo & Cultura",
+intro_kicker:"Bienvenido al pueblo de la greda", intro_h2:"Tres siglos moldeando Chile a mano", intro_p:"A solo 50 minutos de Santiago, Pomaire conserva viva la tradición alfarera más famosa del país. Talleres de greda, empanadas de casi un kilo y calles de artesanos te esperan. Esta guía reúne todo lo que necesitas —y es gratis.", intro_f1_t:"50 min", intro_f1_d:"desde Santiago por la Ruta 78", intro_f2_t:"+300 años", intro_f2_d:"de tradición alfarera en greda", intro_f3_t:"1 kg", intro_f3_d:"la mítica empanada gigante de Pomaire",
 hero_tag:"📍 Pomaire · Melipilla · Región Metropolitana",
 hero_h1:"Bienvenido a <em>Pomaire</em>",
 hero_sub:"Todo lo que necesitas saber si estás de visita o acabas de llegar al pueblo alfarero más famoso de Chile. Servicios, emergencias, estacionamientos y mucho más.",
