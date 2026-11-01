@@ -90,10 +90,11 @@
     });
 
     // Close popup
+    // El botón ✕ se crea dinámicamente en openPopup(): se cierra por delegación
+    // (un onclick inline lo bloquea la CSP y getElementById('popupClose') daba null al iniciar).
     document.getElementById('popupOverlay').addEventListener('click', function (e) {
-      if (e.target === this) closePopup();
+      if (e.target === this || (e.target.closest && e.target.closest('.popup-close'))) closePopup();
     });
-    document.getElementById('popupClose').addEventListener('click', closePopup);
 
     // Keyboard
     document.addEventListener('keydown', function (e) {
@@ -417,7 +418,7 @@
     actionsHTML += '</div>';
 
     popup.innerHTML = coverHTML +
-      '<button class="popup-close" id="popupClose" onclick="document.getElementById(\'popupOverlay\').classList.remove(\'active\')">✕</button>' +
+      '<button class="popup-close" id="popupClose" type="button" aria-label="Cerrar">✕</button>' +
       '<div class="popup-body">' +
       '<div class="popup-category"><span>' + cat.icon + '</span> ' + escapeHTML(cat.label) + '</div>' +
       '<h3 class="popup-name">' + escapeHTML(neg.nombre) + verifiedHTML + badgeHTML + '</h3>' +
