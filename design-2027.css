@@ -54,7 +54,8 @@ p, li { text-wrap: pretty; }
 a:focus-visible, button:focus-visible { outline-color: var(--p-primary); }
 
 /* Ritmo vertical más generoso y consistente */
-section { padding-top: var(--p27-section-y); padding-bottom: var(--p27-section-y); }
+/* :where() mantiene la especificidad de 'section'; /historia/ (body.hist-book) conserva su ritmo propio */
+:where(body:not(.hist-book)) section { padding-top: var(--p27-section-y); padding-bottom: var(--p27-section-y); }
 #inicio { padding-top: clamp(6.5rem, 12vh, 8rem); padding-bottom: clamp(4.5rem, 10vh, 6rem); }
 
 /* ---------- 2. Navegación (vidrio + pills limpias) ---------- */
