@@ -725,136 +725,22 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 </section>
 
 <!-- ══ BANNER DE EVENTOS DESTACADOS (arriba, primero que ve el visitante) ══ -->
-<section class="events-banner" id="eventos-destacados" aria-labelledby="eventsBannerTitle">
-  <div class="events-banner-inner">
-    <div class="events-banner-head reveal">
-      <span class="eb-kicker" data-t="eb_kicker">🎉 O que está rolando em Pomaire</span>
-      <h2 id="eventsBannerTitle" data-t="eb_title">Próximos eventos e festividades</h2>
-      <p data-t="eb_sub">Feiras, festas e celebrações da vila oleira. Toque em um evento para ver todos os detalhes.</p>
+<!-- ══ INTRO EDITORIAL ══════════════════════════════════════════════════ -->
+<section id="intro" class="home-intro" aria-labelledby="homeIntroTitle">
+  <div class="home-intro-inner">
+    <div class="home-intro-text reveal">
+      <span class="home-intro-kicker" data-t="intro_kicker">Bem-vindo ao povoado da greda</span>
+      <h2 id="homeIntroTitle" data-t="intro_h2">Três séculos moldando o Chile à mão</h2>
+      <p data-t="intro_p">A apenas 50 minutos de Santiago, Pomaire mantém viva a tradição oleira mais famosa do país. Oficinas de greda, empanadas de quase um quilo e ruas de artesãos esperam por você. Este guia reúne tudo o que você precisa — e é gratuito.</p>
     </div>
-
-    <div class="events-banner-carousel">
-      <button type="button" class="eb-nav eb-nav--prev" id="ebPrev" aria-label="Ver eventos anteriores">‹</button>
-
-      <div class="events-banner-track reveal" role="list" id="ebTrack" tabindex="0">
-
-      <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">⛪</span>
-          <span class="eb-card-tag" data-t="ev_tag_fest">Festa padroeira</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">13</span><span class="ebd-mon" data-t="eb_mon_jun">JUN</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_2_title">Festa de Santo Antônio de Pádua</h3>
-            <p data-t="eb_2_teaser">Procissão, atividades culturais e gastronomia especial na praça.</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--feature" href="/evento/mejor-empanada-de-pomaire/" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🥟</span>
-          <span class="eb-card-tag" data-t="eb_tag_food">Evento gastronômico</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">5</span><span class="ebd-mon" data-t="eb_mon_sep">SET</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="eb_empanada_title">Concurso da Melhor Empanada de Pomaire</h3>
-            <p data-t="eb_empanada_teaser">Forno de barro, júri popular e as lendárias empanadas gigantes. Neste sábado, não perca!</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--nat" href="#evento-fiestas-patrias" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🇨🇱</span>
-          <span class="eb-card-tag" data-t="ev_tag_nat">Fiestas Patrias</span>
-          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">17–20</span><span class="ebd-mon" data-t="eb_mon_sep">SET</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_3_title">Fiestas Patrias (Independência)</h3>
-            <p data-t="eb_3_teaser">Barracas, chicha artesanal, cueca e artesanato festivo. A melhor época!</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--fest" href="#evento-fiesta-greda" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🏺</span>
-          <span class="eb-card-tag" data-t="eb_tag_greda">Tradição oleira</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">10–12</span><span class="ebd-mon" data-t="eb_mon_oct">OUT</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="eb_greda_title">Festa do Barro</h3>
-            <p data-t="eb_greda_teaser">Demonstrações de artesãos, venda de peças e atividades para toda a família.</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
-        </div>
-      </a>
-
-      <a class="eb-card eb-card--xmas" href="#evento-navidad" role="listitem">
-        <div class="eb-card-media" aria-hidden="true">
-          <span class="eb-card-emoji">🎄</span>
-          <span class="eb-card-tag" data-t="ev_tag_xmas">Natal</span>
-        </div>
-        <div class="eb-card-body">
-          <span class="eb-card-date"><span class="ebd-day">28</span><span class="ebd-mon" data-t="eb_mon_novdic">NOV–DEZ</span></span>
-          <div class="eb-card-text">
-            <h3 data-t="ev_4_title">Feira de Artesanato de Natal</h3>
-            <p data-t="eb_4_teaser">Presépios em barro, enfeites e presentes únicos feitos à mão.</p>
-          </div>
-          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
-        </div>
-      </a>
-
-      </div>
-
-      <button type="button" class="eb-nav eb-nav--next" id="ebNext" aria-label="Ver más eventos">›</button>
+    <div class="home-intro-facts reveal">
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f1_t">50 min</span><span class="hi-fact-lab" data-t="intro_f1_d">de Santiago pela Rota 78</span></div>
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f2_t">+300 anos</span><span class="hi-fact-lab" data-t="intro_f2_d">de tradição oleira em greda</span></div>
+      <div class="hi-fact"><span class="hi-fact-num" data-t="intro_f3_t">1 kg</span><span class="hi-fact-lab" data-t="intro_f3_d">a lendária empanada gigante de Pomaire</span></div>
     </div>
-
-    <a class="events-banner-all reveal" href="#eventos" data-t="eb_all">Ver o calendário completo de eventos →</a>
   </div>
 </section>
 
-<script>
-/* Carrusel del banner de eventos (home) — sin dependencias */
-(function(){
-  var track=document.getElementById('ebTrack');
-  if(!track) return;
-  var prev=document.getElementById('ebPrev'), next=document.getElementById('ebNext');
-  function step(){
-    var card=track.querySelector('.eb-card');
-    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'16')||16;
-    return card ? card.getBoundingClientRect().width+gap : track.clientWidth*0.8;
-  }
-  function scrollByCards(dir){ track.scrollBy({left:dir*step(),behavior:'smooth'}); }
-  if(next) next.addEventListener('click',function(){scrollByCards(1);});
-  if(prev) prev.addEventListener('click',function(){scrollByCards(-1);});
-  function update(){
-    var max=track.scrollWidth-track.clientWidth-2;
-    var overflow=track.scrollWidth>track.clientWidth+4;
-    [prev,next].forEach(function(b){ if(b) b.style.display=overflow?'':'none'; });
-    if(!overflow) return;
-    if(prev) prev.disabled=track.scrollLeft<=2;
-    if(next) next.disabled=track.scrollLeft>=max;
-  }
-  track.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update);
-  update();
-  setTimeout(update,400); /* tras aplicar i18n/fuentes */
-})();
-</script>
-
-<!-- ══ NEGOCIOS DESTACADOS (Carrusel Premium) ══════════════════════════════ -->
 <section id="featuredSection" class="featured-section" style="display:none;">
   <div class="featured-header reveal">
     <h2 data-t="feat_title">🏪 Negócios em Destaque de Pomaire</h2>
@@ -873,7 +759,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   <a class="featured-all-link" href="/pt/comercio/" data-t="feat_all">Ver todos os negócios →</a>
 </section>
 
-<!-- ══ CATEGORÍAS: DÓNDE COMER, COMPRAR Y DORMIR ══════════════════════════ -->
 <section id="categoriesSection" class="categories-section" style="display:none;">
   <div class="categories-header reveal">
     <h2 data-t="cat_title">Descubra Pomaire</h2>
@@ -885,7 +770,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-<!-- MAPA INTERACTIVO -->
 <section id="mapa">
   <div class="section-inner">
     <div class="story-chapter reveal" data-t="chapter_explore">Capítulo 1 — Explore a vila</div>
@@ -949,9 +833,6 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-
-
-<!-- RECORRIDO TURÍSTICO -->
 <section id="recorrido">
   <div class="section-inner">
     <div class="story-chapter reveal" data-t="chapter_plan">Capítulo 2 — Planeje sua rota</div>
@@ -1112,29 +993,9 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
   </div>
 </section>
 
-
-<!-- CLIMA -->
-<section id="clima">
-  <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_prepare">Capítulo 3 — Prepare-se para a viagem</div>
-    <div class="section-header reveal">
-      <span class="section-icon">🌤️</span>
-      <div>
-        <h2 data-t="s_weather_title">Clima em Pomaire agora</h2>
-        <p data-t="s_weather_sub">Condições atuais para planejar sua visita</p>
-      </div>
-    </div>
-    <div id="weather-widget" class="weather-box reveal">
-      <div class="weather-loading" data-t="weather_loading">⏳ Carregando clima...</div>
-    </div>
-    <p class="weather-note reveal" data-t="weather_note">Dados em tempo real · Open-Meteo · Coordenadas de Pomaire</p>
-  </div>
-</section>
-
-<!-- GALERÍA -->
 <section id="galeria">
   <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_remember">Capítulo 4 — Leve uma lembrança</div>
+    <div class="story-chapter reveal" data-t="chapter_remember">Capítulo 3 — Leve uma lembrança</div>
     <div class="section-header reveal">
       <span class="section-icon">📸</span>
       <div>
@@ -1311,7 +1172,7 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
 <!-- EVENTOS -->
 <section id="eventos">
   <div class="section-inner">
-    <div class="story-chapter reveal" data-t="chapter_comeback">Capítulo 5 — Planeje seu retorno</div>
+    <div class="story-chapter reveal" data-t="chapter_comeback">Capítulo 4 — Planeje seu retorno</div>
     <div class="section-header reveal">
       <span class="section-icon">📅</span>
       <div>
@@ -1319,6 +1180,124 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
         <p data-t="s_events_sub">Festividades, feiras e celebrações em Pomaire</p>
       </div>
     </div>
+
+    <!-- Teaser: carrusel de próximos eventos (fusionado desde el banner) -->
+    <div class="events-banner-carousel">
+      <button type="button" class="eb-nav eb-nav--prev" id="ebPrev" aria-label="Ver eventos anteriores">‹</button>
+
+      <div class="events-banner-track reveal" role="list" id="ebTrack" tabindex="0">
+
+      <a class="eb-card eb-card--fest" href="#evento-san-antonio" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">⛪</span>
+          <span class="eb-card-tag" data-t="ev_tag_fest">Festa padroeira</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">13</span><span class="ebd-mon" data-t="eb_mon_jun">JUN</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_2_title">Festa de Santo Antônio de Pádua</h3>
+            <p data-t="eb_2_teaser">Procissão, atividades culturais e gastronomia especial na praça.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--feature" href="/evento/mejor-empanada-de-pomaire/" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🥟</span>
+          <span class="eb-card-tag" data-t="eb_tag_food">Evento gastronômico</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">5</span><span class="ebd-mon" data-t="eb_mon_sep">SET</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_empanada_title">Concurso da Melhor Empanada de Pomaire</h3>
+            <p data-t="eb_empanada_teaser">Forno de barro, júri popular e as lendárias empanadas gigantes. Neste sábado, não perca!</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--nat" href="#evento-fiestas-patrias" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🇨🇱</span>
+          <span class="eb-card-tag" data-t="ev_tag_nat">Fiestas Patrias</span>
+          <span class="eb-card-flag eb-card-flag--done" data-t="eb_flag_done">Encerrado</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">17–20</span><span class="ebd-mon" data-t="eb_mon_sep">SET</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_3_title">Fiestas Patrias (Independência)</h3>
+            <p data-t="eb_3_teaser">Barracas, chicha artesanal, cueca e artesanato festivo. A melhor época!</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--fest" href="#evento-fiesta-greda" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🏺</span>
+          <span class="eb-card-tag" data-t="eb_tag_greda">Tradição oleira</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">10–12</span><span class="ebd-mon" data-t="eb_mon_oct">OUT</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="eb_greda_title">Festa do Barro</h3>
+            <p data-t="eb_greda_teaser">Demonstrações de artesãos, venda de peças e atividades para toda a família.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
+        </div>
+      </a>
+
+      <a class="eb-card eb-card--xmas" href="#evento-navidad" role="listitem">
+        <div class="eb-card-media" aria-hidden="true">
+          <span class="eb-card-emoji">🎄</span>
+          <span class="eb-card-tag" data-t="ev_tag_xmas">Natal</span>
+        </div>
+        <div class="eb-card-body">
+          <span class="eb-card-date"><span class="ebd-day">28</span><span class="ebd-mon" data-t="eb_mon_novdic">NOV–DEZ</span></span>
+          <div class="eb-card-text">
+            <h3 data-t="ev_4_title">Feira de Artesanato de Natal</h3>
+            <p data-t="eb_4_teaser">Presépios em barro, enfeites e presentes únicos feitos à mão.</p>
+          </div>
+          <span class="eb-card-go" data-t="eb_go">Ver detalhes →</span>
+        </div>
+      </a>
+
+      </div>
+
+      <button type="button" class="eb-nav eb-nav--next" id="ebNext" aria-label="Ver más eventos">›</button>
+    </div>
+    <script>
+/* Carrusel del banner de eventos (home) — sin dependencias */
+(function(){
+  var track=document.getElementById('ebTrack');
+  if(!track) return;
+  var prev=document.getElementById('ebPrev'), next=document.getElementById('ebNext');
+  function step(){
+    var card=track.querySelector('.eb-card');
+    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'16')||16;
+    return card ? card.getBoundingClientRect().width+gap : track.clientWidth*0.8;
+  }
+  function scrollByCards(dir){ track.scrollBy({left:dir*step(),behavior:'smooth'}); }
+  if(next) next.addEventListener('click',function(){scrollByCards(1);});
+  if(prev) prev.addEventListener('click',function(){scrollByCards(-1);});
+  function update(){
+    var max=track.scrollWidth-track.clientWidth-2;
+    var overflow=track.scrollWidth>track.clientWidth+4;
+    [prev,next].forEach(function(b){ if(b) b.style.display=overflow?'':'none'; });
+    if(!overflow) return;
+    if(prev) prev.disabled=track.scrollLeft<=2;
+    if(next) next.disabled=track.scrollLeft>=max;
+  }
+  track.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+  setTimeout(update,400); /* tras aplicar i18n/fuentes */
+})();
+</script>
+
 
     <!-- Schema Event JSON-LD (eventos principales de Pomaire) -->
     <script type="application/ld+json">[
@@ -1541,6 +1520,23 @@ nav{position:sticky;top:0;z-index:1000;background:#2D1A0A;padding:.6rem 1.2rem;d
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="clima">
+  <div class="section-inner">
+    <div class="story-chapter reveal" data-t="chapter_prepare">Capítulo 5 — Prepare-se para a viagem</div>
+    <div class="section-header reveal">
+      <span class="section-icon">🌤️</span>
+      <div>
+        <h2 data-t="s_weather_title">Clima em Pomaire agora</h2>
+        <p data-t="s_weather_sub">Condições atuais para planejar sua visita</p>
+      </div>
+    </div>
+    <div id="weather-widget" class="weather-box reveal">
+      <div class="weather-loading" data-t="weather_loading">⏳ Carregando clima...</div>
+    </div>
+    <p class="weather-note reveal" data-t="weather_note">Dados em tempo real · Open-Meteo · Coordenadas de Pomaire</p>
   </div>
 </section>
 

@@ -450,3 +450,112 @@ html:lang(ru) .footer-links-col h4 { letter-spacing: .05em; }
 @media print {
   #cookieConsent, .float-pig, .social-fab { display: none !important; }
 }
+
+/* ==========================================================================
+   HOME EDITORIAL 2027 — banda intro + refuerzo tipográfico de secciones
+   Solo afecta al home (#intro es exclusivo de las portadas). Reaprovecha los
+   tokens y la paleta ya definidos; no cambia fuentes ni colores de marca.
+   ========================================================================== */
+
+/* ---------- Banda intro (entre el hero y el resto) ---------- */
+.home-intro {
+  padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+  background:
+    radial-gradient(120% 120% at 100% 0%, var(--p-primary-glow) 0%, transparent 55%),
+    linear-gradient(180deg, #fff 0%, var(--p-smoke, #faf6f1) 100%);
+  border-bottom: 1px solid var(--p27-line);
+}
+.home-intro-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.home-intro-kicker {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--p-primary-dark);
+  margin-bottom: .9rem;
+}
+.home-intro-text h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  color: var(--p27-ink);
+  margin: 0 0 1rem;
+}
+.home-intro-text p {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--p-muted, #6b5b50);
+  margin: 0;
+  max-width: 34rem;
+}
+/* 3 datos rápidos */
+.home-intro-facts {
+  display: grid;
+  gap: .9rem;
+}
+.hi-fact {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border: 1px solid var(--p27-line);
+  border-left: 4px solid var(--p-primary);
+  border-radius: 16px;
+  box-shadow: var(--p27-shadow-1);
+}
+.hi-fact-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--p-primary-dark);
+  line-height: 1;
+}
+.hi-fact-lab {
+  font-size: .9rem;
+  color: var(--p-muted, #6b5b50);
+  margin-top: .35rem;
+}
+@media (max-width: 820px) {
+  .home-intro-inner { grid-template-columns: 1fr; }
+  .home-intro-text p { max-width: none; }
+  .home-intro-facts { grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+  .hi-fact { padding: .8rem .7rem; }
+  .hi-fact-num { font-size: 1.2rem; }
+  .hi-fact-lab { font-size: .76rem; }
+}
+@media (max-width: 420px) {
+  .home-intro-facts { grid-template-columns: 1fr; }
+  .hi-fact { flex-direction: row; align-items: baseline; gap: .6rem; }
+  .hi-fact-num { font-size: 1.1rem; white-space: nowrap; }
+  /* Deja aire bajo las tarjetas para que los botones flotantes
+     (accesibilidad a la izquierda, WhatsApp/+ a la derecha) no las tapen. */
+  .home-intro { padding-bottom: 6.5rem; }
+}
+.dark-mode .home-intro {
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(212,101,74,.12) 0%, transparent 55%),
+    linear-gradient(180deg, #221812 0%, #1b130e 100%);
+}
+.dark-mode .hi-fact { background: #241a13; }
+.dark-mode .home-intro-text h2 { color: #f4ece4; }
+
+/* ---------- Refuerzo editorial de los encabezados de sección ---------- */
+.story-chapter {
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .4rem .9rem;
+  border-radius: 999px;
+}
+.section-header h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  line-height: 1.15;
+}
