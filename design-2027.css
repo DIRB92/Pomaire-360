@@ -54,7 +54,8 @@ p, li { text-wrap: pretty; }
 a:focus-visible, button:focus-visible { outline-color: var(--p-primary); }
 
 /* Ritmo vertical más generoso y consistente */
-section { padding-top: var(--p27-section-y); padding-bottom: var(--p27-section-y); }
+/* :where() mantiene la especificidad de 'section'; /historia/ (body.hist-book) conserva su ritmo propio */
+:where(body:not(.hist-book)) section { padding-top: var(--p27-section-y); padding-bottom: var(--p27-section-y); }
 #inicio { padding-top: clamp(6.5rem, 12vh, 8rem); padding-bottom: clamp(4.5rem, 10vh, 6rem); }
 
 /* ---------- 2. Navegación (vidrio + pills limpias) ---------- */
@@ -115,10 +116,6 @@ nav.scrolled { box-shadow: 0 6px 30px rgba(61, 40, 28, .08); }
     radial-gradient(ellipse at 50% 115%, rgba(212, 101, 74, .30) 0%, transparent 62%),
     linear-gradient(180deg, rgba(20, 14, 10, .58) 0%, rgba(20, 14, 10, .40) 32%, rgba(20, 14, 10, .62) 68%, rgba(20, 14, 10, .88) 100%);
 }
-/* Portada (letrero esculpido POMAIRE): anclada arriba para que el cielo quede
-   detrás del título y las letras del letrero se vean completas más abajo */
-.hero-slideshow .hero-slide:first-child { background-position: center top; }
-
 /* Ken Burns muy sutil en la foto activa */
 .hero-slide.is-active { animation: p27-kenburns 16s var(--p27-ease-out) forwards; }
 @keyframes p27-kenburns { from { transform: scale(1.08); } to { transform: scale(1); } }
@@ -159,9 +156,94 @@ nav.scrolled { box-shadow: 0 6px 30px rgba(61, 40, 28, .08); }
 /* Los enlaces a sitios hermanos dejan de competir con el título:
    pasan debajo de los botones, discretos */
 #inicio .sites-bar { order: 20; margin: 2.25rem 0 0; gap: .4rem; opacity: .85; }
-.site-btn { font-size: .72rem; padding: .32rem .8rem; background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .14); }
+.site-btn { font-size: .72rem; padding: .32rem .8rem; background: rgba(20, 14, 10, .5); border-color: rgba(255, 255, 255, .22); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .site-btn:hover { opacity: 1; }
 #inicio .hero-scroll-hint { bottom: 1.25rem; }
+
+/* ---------- 3b. Portada con el letrero POMAIRE: letras SIEMPRE completas ----------
+   Foto 4:3 con el cielo arriba (0-45 %), letras rojas (45-68 %) y muro/pasto abajo.
+   Estrategia: el texto vive en el cielo y las letras quedan libres debajo.
+   - Escritorio: contenido alineado arriba, foto anclada arriba y hero lo bastante
+     alto para que las letras nunca queden cortadas por el pliegue.
+   - Móvil/tablet vertical: la foto se ajusta al ANCHO completo (nada se recorta a los
+     lados) anclada abajo, y el cielo se prolonga con un degradado azul. */
+.hero-slideshow .hero-slide:first-child {
+  background-position: center top;
+  animation: none; /* sin zoom: el Ken Burns recortaría las letras de los extremos */
+}
+@media (min-width: 901px) {
+  /* Sube la foto lo justo para que el borde inferior de las letras (68 % de la foto = 51vw)
+     quede sobre el pliegue (alto de pantalla - barra y clima 6.5rem) con 2rem de margen.
+     Nunca más de lo que sobra de foto (75vw - alto del hero), para no dejar huecos. */
+  .hero-slideshow .hero-slide:first-child {
+    background-position: center calc(0px - min(max(0px, 51vw - 100dvh + 8.5rem), 75vw - min(max(100dvh, 57vw), 125dvh)));
+  }
+}
+@media (min-width: 901px) {
+  #inicio {
+    justify-content: flex-start;
+    min-height: min(max(100dvh, 57vw), 125dvh);
+    padding-top: clamp(1.5rem, 4vh, 3rem);
+  }
+  #inicio h1 { font-size: clamp(2rem, min(4.6vw, 7.4vh), 3.6rem); margin-bottom: .8rem; }
+  .hero-tag { margin-bottom: 1rem; }
+  .hero-sub { font-size: clamp(.95rem, 1.5vw, 1.15rem); margin-bottom: 1.4rem; max-width: 46rem; }
+  /* Chips de sitios hermanos: sobre el muro, debajo de las letras */
+  #inicio .sites-bar { position: absolute; left: 0; right: 0; bottom: 1.1rem; margin: 0; justify-content: center; z-index: 3; }
+  #inicio .hero-scroll-hint { display: none; }
+}
+/* Overlay: oscuro arriba (texto sobre cielo claro) y casi transparente sobre las letras */
+#inicio::before {
+  background:
+    linear-gradient(180deg, rgba(14, 22, 40, .62) 0%, rgba(14, 22, 40, .42) 38%, rgba(14, 22, 40, .06) 52%, rgba(14, 22, 40, .06) 80%, rgba(14, 22, 40, .45) 100%);
+}
+@media (max-width: 900px) {
+  #inicio {
+    justify-content: flex-start;
+    min-height: calc(100dvh - 6.5rem); /* descuenta barra + clima: las letras caben sobre el pliegue */
+    padding-top: 1.1rem;
+    /* reserva = 4rem (foto levantada) + parte de la foto bajo las letras... hasta el borde superior de las letras */
+    padding-bottom: calc(4rem + 41.25vw + .75rem);
+    background: #2a62c8;
+  }
+  #inicio .hero-tag { font-size: .72rem; padding: .35rem .85rem; margin-bottom: .7rem; }
+  #inicio h1 { font-size: clamp(1.7rem, 7.4vw, 2.4rem); margin-bottom: .6rem; }
+  #inicio .hero-sub { font-size: .95rem; line-height: 1.5; margin-bottom: 1rem; }
+  #inicio .hero-cta-row { gap: .5rem; }
+  #inicio .hero-cta { padding: .62rem 1.1rem; font-size: .95rem; }
+  .hero-slideshow .hero-slide:first-child {
+    /* Capa 1: degradado del MISMO tamaño que la foto (4:3 = 75vw de alto) y pegado abajo,
+       así su borde superior coincide exactamente con el de la imagen y no se nota la costura.
+       Capa 2: la foto a todo el ancho. */
+    /* La foto se levanta 4rem del borde inferior para que los botones flotantes
+       (accesibilidad a la izquierda, WhatsApp/compartir a la derecha) no tapen las letras.
+       Capas (de arriba a abajo): 1) fundido a pasto, 2) foto, 3) degradado de cielo del mismo
+       tamaño que la foto, 4) cielo liso hasta donde empieza la foto. Debajo: color pasto. */
+    background-image:
+      linear-gradient(180deg, rgba(74, 122, 42, 0), #4a7a2a),
+      linear-gradient(180deg, #2a62c8 0%, #2a62c8 4%, rgba(42, 98, 200, 0) 44%),
+      url('/img/gallery/pomaire-letrero-portada.webp'),
+      linear-gradient(#2a62c8, #2a62c8) !important;
+    background-size: 100% 2.5rem, 100% 75vw, 100% auto, 100% calc(100% - 3.9rem);
+    background-position: center calc(100% - 4rem), center calc(100% - 4rem), center calc(100% - 4rem), center top;
+    background-repeat: no-repeat;
+    background-color: #4a7a2a;
+  }
+  #inicio .sites-bar { position: absolute; left: 0; right: 0; bottom: .9rem; margin: 0; padding-inline: .6rem; justify-content: center; z-index: 3; }
+  #inicio .hero-scroll-hint { display: none; }
+  #inicio::before {
+    background: linear-gradient(180deg, rgba(14, 22, 40, .30) 0%, rgba(14, 22, 40, .10) 45%, rgba(14, 22, 40, 0) 70%, rgba(14, 22, 40, .35) 100%);
+  }
+}
+
+/* Tableta vertical: sin el hueco de cielo vacío entre los botones y las letras */
+@media (min-width: 600px) and (max-width: 900px) {
+  #inicio { min-height: calc(75vw + 2rem); }
+}
+/* Móviles bajitos: se oculta la bajada para que las letras queden sobre los botones flotantes */
+@media (max-width: 900px) and (max-height: 760px) {
+  #inicio .hero-sub { display: none; }
+}
 
 /* ---------- 4. Encabezados de sección (editorial) ---------- */
 .section-header { align-items: center; gap: 1.1rem; margin-bottom: clamp(1.75rem, 4vw, 3rem); }

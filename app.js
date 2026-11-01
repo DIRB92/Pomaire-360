@@ -131,7 +131,11 @@ const KEYS = {
 '[data-t="route_nature_meta"]': t => t.route_nature_meta,
 '[data-t="route_clear"]': t => t.route_clear,
 };
+// Las páginas interiores cargan app.js sin langs-es.js (ya vienen traducidas en el HTML):
+// en ellas LANGS no existe y no hay nada que aplicar.
+function hasLangs() { return typeof LANGS !== 'undefined'; }
 function applyLang(lang) {
+if (!hasLangs()) return;
 const t = LANGS[lang];
 if (!t) return;
 currentLang = lang;
@@ -175,6 +179,7 @@ if (waLabel) wa.setAttribute('aria-label', waLabel);
 try { localStorage.setItem('p360lang', lang); } catch(e){}
 }
 document.addEventListener('DOMContentLoaded', () => {
+if (!hasLangs()) return;
 const htmlLang = document.documentElement.lang;
 if (htmlLang && htmlLang !== 'es' && LANGS[htmlLang]) {
 applyLang(htmlLang);
@@ -279,6 +284,11 @@ const isOpen = sel.classList.toggle('open');
 btn.setAttribute('aria-expanded', isOpen);
 }
 function selectLang(lang) {
+if (!hasLangs()) {
+document.getElementById('langSelector').classList.remove('open');
+document.getElementById('langToggleBtn').setAttribute('aria-expanded', 'false');
+return;
+}
 if (lang !== 'es' && (!LANGS[lang]) && typeof window._loadFullLangs === 'function') {
 window._loadFullLangs().then(function() { applyLang(lang); });
 } else {
