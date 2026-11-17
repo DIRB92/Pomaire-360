@@ -794,6 +794,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.pomaire360.cl/plaza/"/>
   </url>
   <url>
+    <loc>https://www.pomaire360.cl/guia-negocio/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.pomaire360.cl/anunciate/</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>

@@ -2,3 +2,8 @@
 
 
 @media (max-width:768px){#darkModeBtn{bottom:calc(140px+env(safe-area-inset-bottom,0px));left:1rem}}
+/* Enlace a la guía de registro (/anunciate/) */
+.plans-guide-link{text-align:center;margin:1.5rem 0}
+.plans-guide-link a{display:inline-block;max-width:420px;padding:.8rem 1.4rem;border:2px solid #D4654A;border-radius:12px;color:#B84A32;font-weight:700;text-decoration:none}
+.plans-guide-link a:hover{background:rgba(212,101,74,.12)}
+html.dark-mode .plans-guide-link a{color:#F0A090}

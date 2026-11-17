@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<!-- Google Analytics (deferred, respects cookie consent) -->
+<script src="/ga-loader.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#D4654A">
+<style>
+body{font-family:'Inter',-apple-system,sans-serif;background:#FAFAF7;color:#2D1A0A}
+nav{background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.section-icon{background:rgba(212,101,74,.15);border:2px solid #F0A090;border-radius:16px}
+</style>
+<title>Guía paso a paso para registrar tu negocio en Pomaire 360 | Pomaire 360</title>
+<meta name="description" content="Guía interactiva para los pomairinos: crea tu cuenta, registra tu negocio, elige tu plan y aprende todo lo que puedes hacer en Pomaire 360.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.pomaire360.cl/guia-negocio/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pomaire 360">
+<meta property="og:title" content="Registra tu negocio en Pomaire 360, paso a paso">
+<meta property="og:description" content="Guía interactiva para los negocios de Pomaire: cuenta, ficha, plan y todo lo que puedes hacer.">
+<meta property="og:url" content="https://www.pomaire360.cl/guia-negocio/">
+<meta property="og:image" content="https://www.pomaire360.cl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Registra tu negocio en Pomaire 360, paso a paso">
+<meta name="twitter:description" content="Guía interactiva para los negocios de Pomaire.">
+<meta name="twitter:image" content="https://www.pomaire360.cl/og-image.jpg">
+<link rel="icon" href="https://www.pomaire360.cl/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://www.pomaire360.cl/apple-touch-icon.png">
+<link rel="manifest" href="https://www.pomaire360.cl/site.webmanifest">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/style-2026.css">
+<link rel="stylesheet" href="/components.css">
+<link rel="stylesheet" href="/dark-mode-overrides.css">
+<link rel="stylesheet" href="/design-2027.css">
+<link rel="stylesheet" href="/guia-negocio/guia.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="/"><span class="nav-brand-icon">🏺</span><span class="nav-brand-text"><span class="nav-brand-main">Pomaire 360</span><span class="nav-tagline" data-t="nav_tagline">Turismo & Cultura</span></span></a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false" onclick="toggleNav(event)">☰</button>
+  <div class="nav-links-wrap" id="navGroups">
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🧭 <span data-t="nav_g_essentials">Esenciales</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/estacionamientos/">🅿️ <span data-t="nav_park">Estacionar</span></a>
+        <a href="/salud/">🏥 <span data-t="nav_health">Salud</span></a>
+        <a href="/seguridad/">🚔 <span data-t="nav_security">Seguridad</span></a>
+        <a href="/servicios/">🛒 <span data-t="nav_commerce">Servicios</span></a>
+        <a href="/gruas/">🔧 <span data-t="nav_gruas">Grúas y mecánicos</span></a>
+        <a href="/locomocion/">🚌 <span data-t="nav_locomocion">Locomoción</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🏺 <span data-t="nav_g_todo">Qué hacer</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/alfareria/">🏺 <span data-t="nav_pottery">Alfarería</span></a>
+        <a href="/ruta-del-vino/">🍷 <span data-t="nav_winery">Ruta del Vino</span></a>
+        <a href="/que-ver/">✨ <span data-t="nav_seewhat">Qué ver</span></a>
+        <a href="/plaza/">🌳 <span data-t="nav_plaza">Plaza Pública</span></a>
+        <a href="https://www.pomaire360.cl/comercio/#chinihues">🌄 <span data-t="nav_around">Alrededores</span></a>
+        <a href="/comercio/">🛒 <span data-t="nav_shops_g">Comercio</span></a>
+        <a href="https://app.pomaire360.cl/biografias">📖 <span data-t="nav_bios">Biografías de Alfareros</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">🍽️ <span data-t="nav_g_eatsleep">Comer y dormir</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/gastronomia/">🍽️ <span data-t="nav_food">Comer</span></a>
+        <a href="/alojamientos/">🛏️ <span data-t="nav_lodging">Alojamientos</span></a>
+        <a href="/plaza/#banos">🚽 <span data-t="nav_banos">Baños</span></a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <button type="button" class="nav-group-btn" onclick="toggleGroup(event, this)" aria-expanded="false">📅 <span data-t="nav_g_plan">Planifica</span> <span class="ng-arrow">▾</span></button>
+      <div class="nav-menu">
+        <a href="/#recorrido">🧭 <span data-t="nav_tour">Recorrido</span></a>
+        <a href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+        <a href="/#clima">🌤️ <span data-t="nav_weather">Clima</span></a>
+        <a href="/#galeria">📸 <span data-t="nav_gallery">Galería</span></a>
+        <a href="/#eventos">📅 <span data-t="nav_events">Eventos</span></a>
+        <a href="/juegos/">🎮 <span data-t="nav_games">Juegos</span></a>
+        <a href="/anunciate/">📣 <span data-t="nav_advertise">Anúnciate</span></a>
+        <a href="/sugerencias/">💬 <span data-t="nav_suggest">Sugerencias</span></a>
+      </div>
+    </div>
+
+    <a class="nav-map-btn" href="/#mapa">🗺️ <span data-t="nav_map">Mapa</span></a>
+    <a class="nav-cta" href="/apoyar/">💛 <span data-t="nav_donate">Apoyar</span></a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/">🏺 Pomaire 360</a><span class="sep">›</span><a href="/anunciate/">Anúnciate</a><span class="sep">›</span><span>Guía para tu negocio</span></div>
+
+<header class="sub-hero">
+  <div class="sub-ico">🧭</div>
+  <h1>Tu negocio en Pomaire 360, paso a paso</h1>
+  <p>Una guía hecha para los pomairinos: cómo registrarte, qué completar y todo lo que puedes hacer después. Toma unos 15 minutos y puedes ir avanzando de a poco. Tu avance queda guardado en este dispositivo.</p>
+</header>
+
+<main class="sub-wrap gn" id="gn">
+
+  <section class="gn-card" aria-labelledby="gn-who">
+    <h2 id="gn-who">¿Qué tipo de negocio tienes?</h2>
+    <p class="gn-muted">Elige uno y la guía te muestra consejos pensados para ti.</p>
+    <div class="gn-chips" id="gnProfiles" role="radiogroup" aria-labelledby="gn-who"></div>
+  </section>
+
+  <div class="gn-progress" aria-live="polite">
+    <div class="gn-bar" role="progressbar" aria-label="Avance de la guía" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="gnBar"><span id="gnBarFill"></span></div>
+    <p id="gnBarText" class="gn-muted"></p>
+  </div>
+
+  <ol class="gn-dots" id="gnDots" aria-label="Pasos de la guía"></ol>
+
+  <div id="gnSteps">
+
+    <section class="gn-step" data-step="1" aria-labelledby="s1">
+      <h2 id="s1"><span class="gn-num">1</span> Junta tus datos antes de empezar</h2>
+      <p>Tenerlos a mano hace todo más rápido. Marca lo que ya tienes:</p>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="datos-nombre"> El nombre de tu negocio tal como lo conocen los clientes</label></li>
+        <li><label><input type="checkbox" data-check="datos-desc"> Un texto corto sobre qué ofreces (2 o 3 frases bastan)</label></li>
+        <li><label><input type="checkbox" data-check="datos-dir"> Tu dirección en Pomaire, con la calle y el número</label></li>
+        <li><label><input type="checkbox" data-check="datos-tel"> Teléfono y WhatsApp donde te contactan</label></li>
+        <li><label><input type="checkbox" data-check="datos-foto"> Una buena foto de tu local o tus productos (con luz de día, sin zoom)</label></li>
+        <li><label><input type="checkbox" data-check="datos-correo"> Un correo electrónico o una cuenta de Google</label></li>
+      </ul>
+      <p class="gn-tip" data-tip="1"></p>
+    </section>
+
+    <section class="gn-step" data-step="2" aria-labelledby="s2">
+      <h2 id="s2"><span class="gn-num">2</span> Crea tu cuenta</h2>
+      <p>Entra a la aplicación de Pomaire 360. Tienes dos formas, las dos gratis:</p>
+      <ul class="gn-list">
+        <li><strong>Con Google:</strong> un clic y listo, sin contraseña nueva.</li>
+        <li><strong>Con tu correo:</strong> escribes tu email y te llega un enlace para entrar. Revisa también la carpeta de spam.</li>
+      </ul>
+      <p><a class="gn-btn" href="https://app.pomaire360.cl/auth/login" target="_blank" rel="noopener">Ir a crear mi cuenta ↗</a></p>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="cuenta-ok"> Ya entré a mi panel</label></li>
+      </ul>
+      <p class="gn-muted">Si el enlace del correo no llega en unos minutos, escríbenos por WhatsApp (paso 7).</p>
+    </section>
+
+    <section class="gn-step" data-step="3" aria-labelledby="s3">
+      <h2 id="s3"><span class="gn-num">3</span> Crea tu negocio</h2>
+      <p>En tu panel, toca <strong>Crear mi negocio</strong>. Te pedirá estos datos:</p>
+      <div class="gn-table-wrap">
+      <table class="gn-table">
+        <thead><tr><th>Campo</th><th>Qué poner</th></tr></thead>
+        <tbody>
+          <tr><td>Nombre</td><td>Ej.: Cerámicas Doña Rosa</td></tr>
+          <tr><td>Categoría</td><td>Alfarería, talleres, restaurantes, alojamiento, comercio, servicios, estacionamientos, salud, seguridad, baños, transporte o turismo</td></tr>
+          <tr><td>Descripción</td><td>Qué vendes o haces, qué te hace especial, desde cuándo estás en Pomaire</td></tr>
+          <tr><td>Dirección y ubicación</td><td>Calle y número. También puedes marcar el punto exacto en el mapa</td></tr>
+          <tr><td>Teléfono y WhatsApp</td><td>Con código de país, ej.: +56 9 1234 5678</td></tr>
+          <tr><td>Foto de portada</td><td>Una imagen clara. Es lo primero que ve el visitante</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>Instagram, sitio web y horarios de atención se activan con el plan Destacado o Premium (paso 6).</p>
+      <p class="gn-tip" data-tip="3"></p>
+      <details class="gn-details">
+        <summary>¿Tu negocio ya aparece en la guía y no lo creaste tú?</summary>
+        <p>Puedes reclamarlo. Entra a <em>Soporte</em> en tu panel, elige el negocio y envía la solicitud de reclamo. El equipo la revisa y te lo asigna.</p>
+        <p><a href="https://app.pomaire360.cl/panel/soporte" target="_blank" rel="noopener">Abrir Soporte ↗</a></p>
+      </details>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="negocio-ok"> Guardé los datos de mi negocio</label></li>
+      </ul>
+    </section>
+
+    <section class="gn-step" data-step="4" aria-labelledby="s4">
+      <h2 id="s4"><span class="gn-num">4</span> Firma el consentimiento</h2>
+      <p>Pomaire 360 publica datos de tu negocio (nombre, dirección, teléfono). Por la Ley 21.719 de protección de datos personales, necesitamos tu autorización. En tu panel verás un aviso con el botón <strong>Firmar consentimiento ahora</strong>.</p>
+      <ul class="gn-list">
+        <li>Lee el texto, confirma tus datos y firma.</li>
+        <li>Mientras esté pendiente, el aviso te lo recordará para mantener tu negocio visible.</li>
+      </ul>
+      <p class="gn-muted">Más información en la <a href="/privacidad/">política de privacidad</a>.</p>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="consent-ok"> Firmé el consentimiento</label></li>
+      </ul>
+    </section>
+
+    <section class="gn-step" data-step="5" aria-labelledby="s5">
+      <h2 id="s5"><span class="gn-num">5</span> Mira cómo te ven los visitantes</h2>
+      <p>En tu panel usa <strong>Ver perfil público</strong>. Revisa desde el celular, porque desde ahí te mira la mayoría.</p>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="rev-nombre"> El nombre y la categoría están bien</label></li>
+        <li><label><input type="checkbox" data-check="rev-tel"> El teléfono y el WhatsApp funcionan (pruébalos)</label></li>
+        <li><label><input type="checkbox" data-check="rev-mapa"> Mi ubicación en el mapa es correcta</label></li>
+        <li><label><input type="checkbox" data-check="rev-foto"> La foto se ve bien y representa mi negocio</label></li>
+      </ul>
+      <p class="gn-muted">Tu panel también muestra tu rating promedio, el total de reseñas y si tu negocio está activo o verificado.</p>
+    </section>
+
+    <section class="gn-step" data-step="6" aria-labelledby="s6">
+      <h2 id="s6"><span class="gn-num">6</span> Elige tu plan</h2>
+      <p>Puedes empezar gratis y subir de plan cuando quieras. Toca un plan para ver qué incluye:</p>
+      <div class="gn-plans" id="gnPlans" role="radiogroup" aria-label="Planes"></div>
+      <div class="gn-plan-detail" id="gnPlanDetail" aria-live="polite"></div>
+      <p class="gn-muted">Pago por transferencia o Mercado Pago. El plan Destacado tiene 7 días de prueba gratis. Precios en pesos chilenos. <a href="/anunciate/">Ver detalle de planes</a>.</p>
+      <ul class="gn-check">
+        <li><label><input type="checkbox" data-check="plan-ok"> Ya elegí mi plan</label></li>
+      </ul>
+    </section>
+
+    <section class="gn-step" data-step="7" aria-labelledby="s7">
+      <h2 id="s7"><span class="gn-num">7</span> Saca partido a tu panel</h2>
+      <p>Lo que sigue es mantener tu negocio vivo. Esto puedes hacer desde el menú de tu panel:</p>
+      <div class="gn-grid" id="gnDo"></div>
+      <div class="gn-help">
+        <p><strong>¿Te trabaste en algún paso?</strong> Te ayudamos por WhatsApp, sin costo.</p>
+        <a class="gn-btn gn-btn-wa" href="https://wa.me/56957517166?text=Hola%2C%20necesito%20ayuda%20para%20registrar%20mi%20negocio%20en%20Pomaire%20360" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+      </div>
+      <div class="gn-done" id="gnDone" hidden>
+        <span class="gn-done-emoji">🎉</span>
+        <h3>¡Listo, tu negocio está en marcha!</h3>
+        <p>Completaste todos los pasos. Comparte tu perfil con tus clientes y pídeles que te dejen una reseña.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="gn-nav" id="gnNav">
+    <button type="button" class="gn-btn gn-btn-sec" id="gnPrev">← Anterior</button>
+    <button type="button" class="gn-link" id="gnReset">Reiniciar guía</button>
+    <button type="button" class="gn-btn" id="gnNext">Siguiente →</button>
+  </div>
+
+  <section class="gn-card gn-faq">
+    <h2>Dudas frecuentes de los pomairinos</h2>
+    <details class="faq-item"><summary>No uso mucho el computador, ¿puedo hacerlo desde el celular?</summary><p>Sí. La aplicación funciona en el celular. Si prefieres que alguien te acompañe, escríbenos por WhatsApp.</p></details>
+    <details class="faq-item"><summary>¿Cuánto cuesta registrarme?</summary><p>Nada. El plan Gratis es para siempre. Los planes Destacado ($4.990 al mes) y Premium ($9.990 al mes) son opcionales.</p></details>
+    <details class="faq-item"><summary>Soy alfarero/a y no tengo local, ¿puedo participar?</summary><p>Sí. Desde tu panel puedes crear tu biografía de alfarero/a. Las biografías se revisan antes de publicarse.</p></details>
+    <details class="faq-item"><summary>¿Qué pasa si cometo un error al llenar los datos?</summary><p>Nada grave. Puedes editar tu negocio cuando quieras desde <em>Mi negocio</em> en el panel.</p></details>
+    <details class="faq-item"><summary>¿Y si no quiero seguir en la guía?</summary><p>Escríbenos por WhatsApp o desde Soporte y gestionamos el cambio.</p></details>
+  </section>
+
+</main>
+
+<div class="sub-foot">
+  <a href="/anunciate/">📣 Ver planes para tu negocio</a> ·
+  <a href="/">🏺 Volver a la guía completa de Pomaire 360 →</a>
+</div>
+
+<noscript><p class="gn-muted gn-center">Esta guía funciona mejor con JavaScript activado, pero puedes leer todos los pasos de corrido.</p></noscript>
+
+<script src="/nav.js"></script>
+<script src="/a11y.js"></script>
+<script src="/guia-negocio/page-script.js" defer></script>
+<script src="/dark-mode.js" defer></script>
+<script src="/cookie-consent.js" defer></script>
+<script src="/a11y-enhancements.js" defer></script>
+</body>
+</html>
