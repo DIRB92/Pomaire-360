@@ -383,8 +383,7 @@
 
     // Badge
     var badgeHTML = '';
-    if (neg.plan === 'premium') badgeHTML = '<span class="popup-badge premium">💎 Premium</span>';
-    else if (neg.plan === 'destacado') badgeHTML = '<span class="popup-badge destacado">⭐ Destacado</span>';
+    if (neg.plan === 'premium' || neg.plan === 'destacado') badgeHTML = '<span class="popup-badge premium">💎 PRO</span>';
 
     // Verified
     var verifiedHTML = neg.verificado ? ' <span class="popup-verified" title="Verificado">✓</span>' : '';
