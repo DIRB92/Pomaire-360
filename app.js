@@ -488,8 +488,8 @@ return (entry && entry[currentLang]) ? entry[currentLang] : text;
 }
 const PROFILES = {};
 const PLAN_LABEL = {
-destacado: { es:'Destacado', en:'Featured', pt:'Destaque', fr:'En vedette', ru:'Рекомендуем', ja:'おすすめ', zh:'推荐' },
-premium: { es:'Premium', en:'Premium', pt:'Premium', fr:'Premium', ru:'Премиум', ja:'プレミアム', zh:'高级' }
+destacado: { es:'PRO', en:'PRO', pt:'PRO', fr:'PRO', ru:'PRO', ja:'PRO', zh:'PRO' },
+premium: { es:'PRO', en:'PRO', pt:'PRO', fr:'PRO', ru:'PRO', ja:'PRO', zh:'PRO' }
 };
 const PROFILE_T = {
 see: { es:'Ver perfil ▸', en:'View profile ▸', pt:'Ver perfil ▸', fr:'Voir le profil ▸', ru:'Профиль ▸', ja:'プロフィール ▸', zh:'查看资料 ▸' },
@@ -499,7 +499,7 @@ function planLabel(plan) { return (PLAN_LABEL[plan] && (PLAN_LABEL[plan][current
 function profileT(k) { return (PROFILE_T[k] && (PROFILE_T[k][currentLang] || PROFILE_T[k].es)) || ''; }
 function planBadge(plan) {
 if (!plan || !PLAN_LABEL[plan]) return '';
-const icon = plan === 'premium' ? '💎' : '⭐';
+const icon = '💎';
 return `<span class="dir-badge badge-${plan}">${icon} ${planLabel(plan)}</span>`;
 }
 function dirItemHTML(it) {

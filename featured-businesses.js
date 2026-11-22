@@ -129,10 +129,8 @@
     }
 
     // Badge
-    if (item.plan === 'premium') {
-      html += '<span class="featured-card__badge featured-card__badge--premium">💎 Premium</span>';
-    } else if (item.plan === 'destacado') {
-      html += '<span class="featured-card__badge featured-card__badge--destacado">⭐ Destacado</span>';
+    if (item.plan === 'premium' || item.plan === 'destacado') {
+      html += '<span class="featured-card__badge featured-card__badge--premium">💎 PRO</span>';
     }
 
     // Verified

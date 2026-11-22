@@ -239,7 +239,7 @@ function patchAnunciate($, lang) {
   $('.sub-hero p').text(t.hero_p);
 
   const cards = $('.plan-card');
-  // Gratis
+  // Free
   const free = cards.eq(0);
   free.find('.plan-name').text(t.plan_free_name);
   free.find('.plan-price-year').text(t.plan_free_period);
@@ -247,24 +247,26 @@ function patchAnunciate($, lang) {
   free.find('.plan-btn').text(t.plan_free_btn).attr('href',
     'https://wa.me/56957517166?text=' + encodeURIComponent(t.plan_free_wa_text));
 
-  // Destacado
-  const dest = cards.eq(1);
-  dest.find('.plan-name').text(t.plan_dest_name);
-  dest.find('.plan-price').html(t.plan_dest_price);
-  dest.find('.plan-price-year').text(t.plan_dest_period);
-  dest.find('.plan-feats li').each((i, el) => { if (t.plan_dest_feats[i]) $(el).text(t.plan_dest_feats[i]); });
-  dest.find('.plan-btn').text(t.plan_dest_btn).attr('href',
-    'https://wa.me/56957517166?text=' + encodeURIComponent(t.plan_dest_wa_text));
+  // PRO
+  const pro = cards.eq(1);
+  pro.find('.plan-ribbon').text(t.plan_pro_ribbon);
+  pro.find('.plan-name').text(t.plan_pro_name);
+  pro.find('.plan-price').html(t.plan_pro_price);
+  pro.find('.plan-price-year').text(t.plan_pro_period);
+  pro.find('.plan-feats li').each((i, el) => { if (t.plan_pro_feats[i]) $(el).text(t.plan_pro_feats[i]); });
+  pro.find('.plan-btn').text(t.plan_pro_btn).attr('href',
+    'https://wa.me/56957517166?text=' + encodeURIComponent(t.plan_pro_wa_text));
 
-  // Premium
-  const prem = cards.eq(2);
-  prem.find('.plan-ribbon').text(t.plan_prem_ribbon);
-  prem.find('.plan-name').text(t.plan_prem_name);
-  prem.find('.plan-price').html(t.plan_prem_price);
-  prem.find('.plan-price-year').text(t.plan_prem_period);
-  prem.find('.plan-feats li').each((i, el) => { if (t.plan_prem_feats[i]) $(el).text(t.plan_prem_feats[i]); });
-  prem.find('.plan-btn').text(t.plan_prem_btn).attr('href',
-    'https://wa.me/56957517166?text=' + encodeURIComponent(t.plan_prem_wa_text));
+  // FAQ y CTA final
+  $('.plans-faq h2').text(t.faq_h2);
+  $('.plans-faq .faq-item').each((i, el) => {
+    const f = t.faq[i];
+    if (!f) return;
+    $(el).find('summary').text(f.q);
+    $(el).find('p').text(f.a);
+  });
+  $('.plans-cta-box h3').text(t.cta_h3);
+  $('.plans-cta-box p').text(t.cta_p);
 
   $('.plans-wa-btn').text(t.bottom_cta_btn).attr('href',
     'https://wa.me/56957517166?text=' + encodeURIComponent(t.bottom_cta_wa_text));

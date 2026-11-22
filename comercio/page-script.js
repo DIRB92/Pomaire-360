@@ -130,8 +130,7 @@
     var hours = item.hours || '';
 
     var cardClass = 'mod-card';
-    if (plan === 'destacado') cardClass += ' mod-featured';
-    if (plan === 'premium') cardClass += ' mod-premium';
+    if (plan === 'destacado' || plan === 'premium') cardClass += ' mod-premium';
 
     var html = '<article class="' + cardClass + '" data-cat="' + escapeHTML(cat) + '" '
       + 'id="' + escapeHTML(slug) + '" '
@@ -173,10 +172,8 @@
     }
     // Category badge over image
     html += '<span class="mod-card-img-badge">' + escapeHTML(label) + '</span>';
-    if (plan === 'premium') {
-      html += '<span class="mod-card-plan-badge mod-plan-premium">Premium</span>';
-    } else if (plan === 'destacado') {
-      html += '<span class="mod-card-plan-badge mod-plan-destacado">Destacado</span>';
+    if (plan === 'premium' || plan === 'destacado') {
+      html += '<span class="mod-card-plan-badge mod-plan-premium">PRO</span>';
     }
     // Verificado badge over image
     if (verificado) {

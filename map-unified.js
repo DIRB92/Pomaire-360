@@ -142,8 +142,7 @@
     }
 
     var badge = '';
-    if (neg.plan === 'premium') badge = '<span style="display:inline-block;padding:.15em .5em;background:#E6B246;color:#fff;border-radius:.3em;font-size:.7em;font-weight:700;margin-left:.3em;">\uD83D\uDC8E Premium</span>';
-    else if (neg.plan === 'destacado') badge = '<span style="display:inline-block;padding:.15em .5em;background:#B85C2C;color:#fff;border-radius:.3em;font-size:.7em;font-weight:700;margin-left:.3em;">\u2B50 Destacado</span>';
+    if (neg.plan === 'premium' || neg.plan === 'destacado') badge = '<span style="display:inline-block;padding:.15em .5em;background:#E6B246;color:#fff;border-radius:.3em;font-size:.7em;font-weight:700;margin-left:.3em;">\uD83D\uDC8E PRO</span>';
 
     var html = '<div class="map-popup">';
     html += '<strong>' + escapeHTML(neg.nombre) + '</strong>';
