@@ -136,7 +136,7 @@ Hola [nombre], ¿pudiste ver lo de Pomaire 360? Si te acomoda, te ayudo a crear 
   3. Respondes las reseñas de tus clientes
 - **Destacado:** PLAN FREE $0 PARA SIEMPRE
 - **QR:** `https://app.pomaire360.cl/auth/login`
-- **Pie:** pomaire360.cl/anunciate · Instagram `@pomaire360` · WhatsApp [tu número]
+- **Pie:** pomaire360.cl/anunciate · Instagram `@pomaire360` · WhatsApp +56 9 3634 3861
 - **Estilo:** fondo crema `#FAFAF7`, terracota `#D4654A`, texto café `#2D1A0A`, ícono 🏺 y foto de greda.
 
 ---
@@ -181,6 +181,6 @@ Meta Ads: activa los anuncios 1 y 2 desde el día 1 con un presupuesto diario ba
 ---
 
 ## Pendientes antes de publicar
-- Reemplaza `[tu número]` y `[nombre]`.
+- Reemplaza `[nombre]` y `[nombre del negocio]` en los mensajes de WhatsApp.
 - Confirma que el link de registro lleva al flujo correcto en móvil.
 - Agrega tus propias fotos y capturas reales de fichas ya creadas.

@@ -13,7 +13,7 @@ Instagram, TikTok y Facebook: @pomaire360.
 Conseguir que dueños de negocios de Pomaire (talleres de alfarería, restaurantes y picadas, locales de artesanía, alojamientos, comercio y servicios) se registren y publiquen su negocio.
 - Página de planes: https://www.pomaire360.cl/anunciate/
 - Registro: https://app.pomaire360.cl/auth/login (con Google o email, toma unos 30 segundos)
-- Atención y consultas: WhatsApp [tu número]
+- Atención y consultas: WhatsApp +56 9 3634 3861
 
 ## PLANES REALES (usa solo estos datos)
 PLAN FREE: $0 para siempre.
